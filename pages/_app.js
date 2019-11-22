@@ -130,7 +130,7 @@ export default class MyApp extends App {
       <GlobalStyle />
 
       
-        <Menu right width={ '320px' } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } >
+        {/* <Menu right width={ '320px' } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } >
         {links.map(link => (
           <li key={link.label}>
             <Link  href={link.href}>
@@ -138,7 +138,7 @@ export default class MyApp extends App {
             </Link>
             </li>
         ))}
-        </Menu>
+        </Menu> */}
         <main id="page-wrap">
           <Component {...pageProps} />
         </main>

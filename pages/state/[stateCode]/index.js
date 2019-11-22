@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
-import Card from '../../components/card';
-import Masthead from '../../components/masthead';
-import states from '../../components/statesLookup.js';
+import Card from '../../../components/card';
+import Masthead from '../../../components/masthead';
+import states from '../../../components/statesLookup.js';
 
 
 const Parks = props => {
   const router = useRouter()
-  const { id } = router.query
+  const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
   // useEffect(() => {
   //     setCards(cards)
@@ -19,13 +19,14 @@ const Parks = props => {
 
   return (
     <CardsWrapper>
-    <Masthead pageTitle={`${states[id]}`}>></Masthead>
+    <Masthead pageTitle={`${states[stateCode]}`}>></Masthead>
       <CardsContainer>
         { parks.slice(0).map((item) => {
             return(
               <Card 
                 key={item.id} 
                 data={item} 
+                stateCode={stateCode}
               />
             )
           })
@@ -37,7 +38,7 @@ const Parks = props => {
   
 Parks.getInitialProps = async ({query}) => {
   const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-  const url = `https://developer.nps.gov/api/v1/parks?stateCode=${query.id}&fields=images&api_key=${apiKey}`
+  const url = `https://developer.nps.gov/api/v1/parks?stateCode=${query.stateCode}&fields=images&api_key=${apiKey}`
   console.log(url)
 
     const res = await fetch(url)

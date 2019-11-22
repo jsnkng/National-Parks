@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import states from './statesLookup.js';
 
-const Card = ({data}) => {
-
+const Card = props => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
   const toggleIsDescriptionVisible = (e)=> {
 
@@ -25,28 +24,28 @@ const Card = ({data}) => {
   // const [fullName, setFullName] = useState(data.fullName)
    
     return (
-      <Link href={`/park/${data.parkCode}`}>
+      <Link href={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
       <CardWrapper>
         <Banner>
           <Name>
-            <h2>{data.name}</h2>
+            <h2>{props.data.name}</h2>
           </Name>
           <Identifier>
             <span>
               <p>National Park Service<br />
               U.S. Department of the Interior</p>
-              <h3>{data.designation}</h3>
+              <h3>{props.data.designation}</h3>
             </span>
             <img src="/US-National-Parks-logo-sml.gif" />
           </Identifier>
         </Banner> 
-        <ResponsiveImage onMouseOver={toggleIsDescriptionVisible} onMouseOut={toggleIsDescriptionVisible} backgroundURL={data.images === undefined || data.images.length == 0 ? "" : data.images[0].url  } height="250px">
+        <ResponsiveImage onMouseOver={toggleIsDescriptionVisible} onMouseOut={toggleIsDescriptionVisible} backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "" : props.data.images[0].url  } height="250px">
         <Description  className={isDescriptionVisible === true ? 'visible' : 'hidden'}>
           <div className="parkInfo">
-            <p className="description">{data.description}</p>
+            <p className="description">{props.data.description}</p>
           </div>
           {/* <div>
-            <span className="states">{data.states}</span>
+            <span className="states">{props.data.states}</span>
           </div> */}
         </Description>
         </ResponsiveImage>

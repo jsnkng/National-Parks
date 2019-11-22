@@ -1,17 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import states from './statesLookup.js';
 
 const Masthead = props => {
 
   return (
     <HeaderMenu>
       <HeaderItem>
-        <h1>
-          <Link href="/">
-            <a>{props.pageTitle}</a>
+        <h1>{props.pageTitle}</h1>
+        <Link href={`/state/${props.stateCode}`}>
+        <h2><a>{states[props.stateCode]}</a></h2>
+        </Link>
+
+        <Link href="/">
+            <a><p>National Park Service<br />
+              U.S. Department of the Interior</p></a>
           </Link>
-       </h1>
+        
             {props.subTitle}
         
         
