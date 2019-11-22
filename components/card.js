@@ -24,7 +24,7 @@ const Card = props => {
   // const [fullName, setFullName] = useState(data.fullName)
    
     return (
-      <Link href={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
+      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
       <CardWrapper>
         <Banner>
           <Name>

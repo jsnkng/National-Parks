@@ -3,6 +3,9 @@ import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 import Masthead from '../../../../../components/masthead';
+import Places from '../../../../../components/places';
+import People from '../../../../../components/people';
+import VisitorCenters from '../../../../../components/visitorcenters';
 
 
 // const [states, setStates] = useState(data.states)
@@ -24,7 +27,10 @@ import Masthead from '../../../../../components/masthead';
 const Park = props => {
   const router = useRouter()
   const { stateCode } = router.query
-  const [park, setPark] = useState(props.data[0])
+  const [park, setPark] = useState(props.parks)
+  const [places, setPlaces] = useState(props.places)
+  const [people, setPeople] = useState(props.people)
+  const [visitorCenters, setvVisitorCenters] = useState(props.visitorCenters)
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
@@ -46,6 +52,10 @@ const Park = props => {
       {park.weatherInfo}<br />
       <h2>Location</h2>
       {park.latLong}<br />
+      
+      <Places places={places} />
+      <People people={people} />
+      <VisitorCenters visitorCenters={visitorCenters} />
     </Content>
     </>
   )
@@ -53,9 +63,38 @@ const Park = props => {
   
 Park.getInitialProps = async ({query}) => {
   const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-  const url = `https://developer.nps.gov/api/v1/parks?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const res = await fetch(url)
-  const result = await res.json()
+  const apiURL = 'https://developer.nps.gov/api/v1'
+
+  const parksEndpoint = `${apiURL}/parks?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const parksResult = await fetch(parksEndpoint)
+  const parks = await parksResult.json()
+  
+  const peopleEndpoint = `${apiURL}/people?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const peopleResult = await fetch(peopleEndpoint)
+  const people = await peopleResult.json()
+
+  const placesEndpoint = `${apiURL}/places?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const placesResult = await fetch(placesEndpoint)
+  const places = await placesResult.json()
+
+  const visitorCentersEndpoint = `${apiURL}/visitorcenters?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const visitorCentersResult = await fetch(visitorCentersEndpoint)
+  const visitorCenters = await visitorCentersResult.json()
+
+
+  const result = {
+    "parks" : parks.data[0],
+    "places" : places.data[0],
+    "people" : people.data[0],
+    "visitorCenters" : visitorCenters.data[0]
+  }
+
+  console.log(result);
+  // const url = `https://developer.nps.gov/api/v1/places?parkCode=${query.parkCode}&api_key=${apiKey}`
+  // const res = await fetch(url)
+  // const result = await res.json()
+ 
+
   return result
 }
   
