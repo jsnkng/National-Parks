@@ -5,9 +5,9 @@ import Link from 'next/link'
 const Map = () => {
     
   return (
-    <>
-
-        <div
+    <MapWrapper>
+    <h2>Find National Parks by State</h2>
+      <div 
         style={{display: "block",
         backgroundImage: "url('http://www.image-maps.com/images/maps/812073229_map_us_outline.png')", 
         position: "relative",
@@ -16,17 +16,6 @@ const Map = () => {
         height: "375px",  
         backgroundPosition: "initial initial",
         backgroundRepeat: "initial initial"}}>
-      <canvas 
-        style={{
-          width: "550px", 
-          height: "375px", 
-          position: "absolute", 
-          left: "0px, top: 0px", 
-          padding: "0px", 
-          border: "0px", 
-          opacity: "1"}}
-        height="375" 
-        width="550"></canvas>
       <img
         src="http://www.image-maps.com/images/maps/812073229_map_us_outline.png" width="550" height="375" useMap="#usa" 
         style={{opacity: "0", 
@@ -37,12 +26,8 @@ const Map = () => {
           border: "0px"}} />
       </div>
         <map name="usa">
-        <Link href="/state/WA" as="/state/WA" passHref>
-        <area shape="poly" coords="28,3,27,5,27,10,27,14,28,18,27,22,27,27,26,31,26,33,29,33,31,34,33,35,33,37,34,40,34,42,36,44,39,46,42,46,46,46,49,47,51,47,54,47,57,47,61,47,66,49,73,49,79,50,86,52,88,52,89,51,89,48,90,43,91,40,91,37,92,33,93,31,93,28,94,25,95,21,95,19,96,17,96,15,97,13,94,11,91,11,86,10,83,9,78,8,75,7,73,7,69,6,67,5,63,5,61,4,58,3,56,2,53,2,51,1,49,1,47,1,47,3,47,5,47,7,47,8,47,10,47,11,48,13,47,15,47,17,46,17,45,17,46,16,46,15,46,13,45,12,43,11,41,9,39,9,38,7,37,7,35,6,33,5,33,5,31,4,30,3"  alt="Washington" title="poly_55" target="_self"  />
-        </Link>
-        <Link href="/state/OR" as="/state/OR" passHref>
+        <area shape="poly" coords="28,3,27,5,27,10,27,14,28,18,27,22,27,27,26,31,26,33,29,33,31,34,33,35,33,37,34,40,34,42,36,44,39,46,42,46,46,46,49,47,51,47,54,47,57,47,61,47,66,49,73,49,79,50,86,52,88,52,89,51,89,48,90,43,91,40,91,37,92,33,93,31,93,28,94,25,95,21,95,19,96,17,96,15,97,13,94,11,91,11,86,10,83,9,78,8,75,7,73,7,69,6,67,5,63,5,61,4,58,3,56,2,53,2,51,1,49,1,47,1,47,3,47,5,47,7,47,8,47,10,47,11,48,13,47,15,47,17,46,17,45,17,46,16,46,15,46,13,45,12,43,11,41,9,39,9,38,7,37,7,35,6,33,5,33,5,31,4,30,3" href="/state/WA" alt="Washington" title="poly_55" target="_self"  />
         <area shape="poly" coords="26,32,22,45,13,65,8,73,7,84,28,90,64,100,75,102,83,77,83,68,90,56,88,52,77,49,51,46,36,43,33,35" href="/state/OR" alt="Oregon" title="Oregon" />
-        </Link>
         <area shape="poly" coords="8,85,6,93,2,102,1,111,2,120,3,129,8,143,9,154,10,166,17,186,27,196,44,212,48,222,73,227,76,220,82,210,82,202,74,186,38,134,47,97" href="/state/CA" alt="California" title="California" />
         <area shape="poly" coords="96,13,88,50,91,57,82,68,82,76,75,101,133,113,137,79,126,78,118,71,115,61,110,62,111,57,113,50,103,29,104,15" href="/state/ID" alt="Idaho" title="Idaho" />
         <area shape="poly" coords="48,97,38,134,81,201,81,188,83,182,89,182,105,109" href="/state/NV" alt="Nevada" title="Nevada" />
@@ -98,7 +83,7 @@ const Map = () => {
         <area shape="poly" coords="506,51,505,61,503,74,502,86,513,83,519,80,512,67" href="/state/NH" alt="New Hampshire" title="New Hampshire" />
         <area shape="poly" coords="497,88,498,97,516,93,524,95,529,91,522,87,519,83,511,83" href="/state/MA" alt="Massachusetts" title="Massachusetts" />
         </map>
-      </>
+      </MapWrapper>
   )
 }
 
@@ -107,3 +92,7 @@ const Map = () => {
 export default Map
 
 
+const MapWrapper = styled.div`
+  margin: 20px auto;
+  width: 550px;
+`

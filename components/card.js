@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link'
+import states from './statesLookup.js';
 
 const Card = ({data}) => {
 
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
+  const toggleIsDescriptionVisible = (e)=> {
+
+    setIsDescriptionVisible(!isDescriptionVisible)
+  }
   // const [states, setStates] = useState(data.states)
   // const [directionsInfo, setDirectionsInfo] = useState(data.directionsInfo)
   // const [directionsUrl, setDirectionsUrl] = useState(data.directionsUrl)
@@ -34,15 +40,16 @@ const Card = ({data}) => {
             <img src="/US-National-Parks-logo-sml.gif" />
           </Identifier>
         </Banner> 
-        <ResponsiveImage backgroundURL={data.images === undefined || data.images.length == 0 ? "" : data.images[0].url  } height="250px" />
-       
-        <div className="parkInfo">
-          <p className="description">{data.description}</p>
-        </div>
-        <div>
-          <span className="states">{data.states}</span>
-        </div>
-  
+        <ResponsiveImage onMouseOver={toggleIsDescriptionVisible} onMouseOut={toggleIsDescriptionVisible} backgroundURL={data.images === undefined || data.images.length == 0 ? "" : data.images[0].url  } height="250px">
+        <Description  className={isDescriptionVisible === true ? 'visible' : 'hidden'}>
+          <div className="parkInfo">
+            <p className="description">{data.description}</p>
+          </div>
+          {/* <div>
+            <span className="states">{data.states}</span>
+          </div> */}
+        </Description>
+        </ResponsiveImage>
       </CardWrapper>
       </Link>
     )
@@ -54,7 +61,7 @@ const CardWrapper = styled.div`
   font-family: Helvetica;
   width: 640px;
   margin: 5px 5px;
-  min-height: 470px;
+  min-height: 320px;
   border: solid 1px #cccccc;
   cursor: pointer;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
@@ -120,14 +127,25 @@ const Identifier = styled.div`
   }
   
 `
+const Description = styled.div`
+opacity: 0;
+position: absolute;
+bottom: 20px;
+width:80%;
+background-color: #fff;
+  &.visible {
+    opacity: 1;
+  }
+`
 const ResponsiveImage = styled.div`
+position: relative;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
-  background-position: center center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   width: 100%;
   height: ${props => props.height};
-
+  margin: 0;
   & button {
     position: relative;
     top: 150px;

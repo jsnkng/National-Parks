@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
-import Masthead from '../../../components/masthead';
+import Masthead from '../../components/masthead';
 // const [states, setStates] = useState(data.states)
   // const [directionsInfo, setDirectionsInfo] = useState(data.directionsInfo)
   // const [directionsUrl, setDirectionsUrl] = useState(data.directionsUrl)
