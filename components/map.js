@@ -45,14 +45,14 @@ const Map = () => {
         <area shape="poly" coords="206,195,200,253,162,251,165,258,178,273,182,282,197,293,203,283,221,289,237,314,246,330,265,335,263,319,275,302,304,287,306,267,301,246,300,236,289,232,265,231,244,225,238,222,236,197" href="/state/TX" alt="Texas" title="Texas" />
         <area shape="poly" coords="269,33,274,70,272,77,275,84,276,107,324,103,324,96,313,88,308,79,310,70,318,56,336,44,323,41,311,38,296,36,290,29,285,30" href="/state/MN" alt="Minnesota" title="Minnesota" />
         <area shape="poly" coords="274,105,274,116,282,142,326,144,329,134,328,130,337,122,330,113,325,106,322,103" href="/state/IA" alt="Iowa" title="Iowa" />
-        <area shape="poly" coords="283,143,292,162,295,181,294,197,340,197,340,203,348,196,349,188,338,172,340,165,333,162,325,152,324,143" href="/state/MS" alt="Missouri" title="Missouri" />
-        <area shape="poly" coords="295,197,295,234,300,239,302,244,333,243,333,232,341,215,346,204,340,201,341,197,337,196" href="/state/AK" alt="Arkansas" title="Arkansas" />
+        <area shape="poly" coords="283,143,292,162,295,181,294,197,340,197,340,203,348,196,349,188,338,172,340,165,333,162,325,152,324,143" href="/state/MO" alt="Missouri" title="Missouri" />
+        <area shape="poly" coords="295,197,295,234,300,239,302,244,333,243,333,232,341,215,346,204,340,201,341,197,337,196" href="/state/AR" alt="Arkansas" title="Arkansas" />
         <area shape="poly" coords="301,243,304,261,307,270,302,287,321,287,327,284,341,291,349,289,360,292,356,287,357,280,352,278,349,269,329,266,335,249,332,241" href="/state/LA" alt="Louisiana" title="Louisiana" />
         <area shape="poly" coords="314,62,309,76,310,87,323,96,326,108,331,117,357,114,358,99,362,78,356,82,356,74,341,66,327,61,323,58" href="/state/WI" alt="Wisconsin" title="Wisconsin" />
         <area shape="poly" coords="333,116,337,123,331,130,329,134,325,146,331,159,339,161,340,173,347,183,356,184,364,170,363,137,359,120,356,116" href="/state/IL" alt="Illinois" title="Illinois" />
         <area shape="poly" coords="352,185,349,193,367,192,408,188,423,173,415,161,408,159,394,156,389,163,380,172,366,176,361,177" href="/state/KY" alt="Kentucky" title="Kentucky" />
         <area shape="poly" coords="349,194,342,214,400,211,408,201,422,194,429,184,373,191,364,191" href="/state/TN" alt="Tennessee" title="Tennessee" />
-        <area shape="poly" coords="340,216,334,226,332,235,335,250,329,264,336,269,349,267,353,275,365,274,363,214" href="/state/MI" alt="Mississippi" title="Mississippi" />
+        <area shape="poly" coords="340,216,334,226,332,235,335,250,329,264,336,269,349,267,353,275,365,274,363,214" href="/state/MS" alt="Mississippi" title="Mississippi" />
         <area shape="poly" coords="364,213,363,255,365,273,377,274,373,266,402,263,403,244,391,212" href="/state/AL" alt="Alabama" title="Alabama" />
         <area shape="poly" coords="391,211,402,244,404,263,438,266,439,260,446,242,423,216,413,207" href="/state/GA" alt="Georgia" title="Georgia" />
         <area shape="poly" coords="374,266,378,273,390,273,397,277,407,278,418,275,430,280,432,298,444,316,459,328,470,328,469,310,458,283,449,268,442,260,435,260,433,264,422,264,404,265,399,261" href="/state/FL" alt="Florida" title="Florida" />
@@ -62,7 +62,7 @@ const Map = () => {
         <area shape="poly" coords="327,60,337,66,352,71,355,82,360,73,376,66,392,64,384,57,377,55,367,58,357,58,351,55,351,49,341,53" href="/state/MI" alt="Michigan" title="Michigan" />
         <area shape="poly" coords="382,68,378,77,371,84,368,95,372,112,368,124,388,121,401,120,409,103,405,89,401,90,395,96,393,88,398,72" href="/state/MI" alt="Michigan" title="Michigan" />
         <area shape="poly" coords="363,125,364,154,361,172,370,173,386,166,394,157,388,121" href="/state/IN" alt="Indiana" title="Indiana" />
-        <area shape="poly" coords="389,122,393,156,409,160,418,161,426,149,433,140,430,113,419,120,410,122,404,121,401,119" href="/state/OH" />
+        <area shape="poly" coords="389,122,393,156,409,160,418,161,426,149,433,140,430,113,419,120,410,122,404,121,401,119" href="/state/OH" alt="Ohio" title="Ohio" />
         <area shape="poly" coords="431,136,430,144,422,150,416,159,420,168,429,175,439,169,445,158,449,154,456,144,462,142,458,140,451,143,445,145,442,141,437,142" href="/state/WV" alt="West Virginia" title="West Virginia" />
         <area shape="poly" coords="430,112,434,141,486,131,489,125,484,119,486,107,479,102,455,108" href="/state/PA" alt="Pennsylvania" title="Pennsylvania" />
         <area shape="poly" coords="441,92,441,100,434,107,454,107,477,102,487,109,499,112,497,95,494,74,489,65,489,59,477,59,468,69,463,80,459,87" href="/state/NY" alt="New York" title="New York" />

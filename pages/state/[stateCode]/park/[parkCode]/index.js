@@ -28,19 +28,25 @@ const Park = props => {
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
-    <img src={park.images[0].url} style={{width:"100%"}} /><br /><br />
-    {/* {park.fullName}<br /> */}{stateCode}
-    {park.states}<br /><br />
-    {/* {park.name}<br /> */}
-    {park.description}<br /><br />
-    {/* {park.designation}<br /> */}
-    {/* {park.parkCode}<br /> */}
-    {/* {park.id}<br /> */}
-    {park.directionsInfo}<br /><br />
-    {park.directionsUrl}<br /><br />
-    {park.url}<br /><br />
-    {park.weatherInfo}<br /><br />
-    {park.latLong}<br /><br />
+    <ResponsiveImage backgroundURL={park.images[0].url === undefined || park.images[0].url.length == 0 ? "" : park.images[0].url  } height="450px" /><br /><br />
+    <Content>
+      {/* {park.fullName}<br /> */}
+      {/* {park.states}<br /><br /> */}
+      {/* {park.name}<br /> */}
+      <h2>{park.designation}</h2>
+      {park.description}<br />
+      {/* {park.designation}<br /> */}
+      {/* {park.parkCode}<br /> */}
+      {/* {park.id}<br /> */}
+      <h2>Directions</h2>
+      {park.directionsInfo}<br />
+      {park.directionsUrl}<br />
+      {park.url}<br />
+      <h2>Weather</h2>
+      {park.weatherInfo}<br />
+      <h2>Location</h2>
+      {park.latLong}<br />
+    </Content>
     </>
   )
 }
@@ -55,3 +61,23 @@ Park.getInitialProps = async ({query}) => {
   
 export default Park
 
+
+
+
+const ResponsiveImage = styled.div`
+  position: relative;
+  background-image: url(${props => props.backgroundURL});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 450px;
+  margin: 0;
+  
+`
+const Content = styled.div`
+  font-family: Helvetica;
+  padding: 15px;
+  margin: 0;
+
+`

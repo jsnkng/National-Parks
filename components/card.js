@@ -32,8 +32,8 @@ const Card = props => {
           </Name>
           <Identifier>
             <span>
-              <p>National Park Service<br />
-              U.S. Department of the Interior</p>
+              {/* <p>National Park Service<br />
+              U.S. Department of the Interior</p> */}
               <h3>{props.data.designation}</h3>
             </span>
             <img src="/US-National-Parks-logo-sml.gif" />
@@ -145,8 +145,4 @@ position: relative;
   width: 100%;
   height: ${props => props.height};
   margin: 0;
-  & button {
-    position: relative;
-    top: 150px;
-  }
 `
