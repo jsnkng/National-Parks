@@ -1,5 +1,6 @@
 // import { ObjectId, MongoClient } from "mongodb"
 // import assert from 'assert'
+import fetch from 'isomorphic-unfetch';
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 // NPS API
