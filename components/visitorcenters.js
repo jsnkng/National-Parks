@@ -3,31 +3,12 @@ import styled from 'styled-components';
 
 const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
-  if(visitorCenters !== undefined) {
-    if(Array.isArray(visitorCenters)) {
-      visitorCenters.slice(0).map((item) => {
-        return(
-          <>
-            <Content>
-              <h2>{item.name}</h2>
-              <p>{item.description}</p>
-            </Content>
-          </>
-        )
-      })
-    }
-    else {
-      return (
-        <>
-          <Content>
-            <h2>{visitorCenters.name}</h2>
-            <p>{visitorCenters.description}</p>
-          </Content>
-        </>
-      )
-    }
-  }
-  return true
+  return (
+    <Content>
+      <h3>{visitorCenters.name}</h3>
+      <p>{visitorCenters.description}</p>
+    </Content>
+  )
 }
   
 export default VisitorCenters

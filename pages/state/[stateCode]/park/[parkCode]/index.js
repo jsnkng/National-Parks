@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import fetch from 'isomorphic-unfetch';
-import styled from 'styled-components';
-import Masthead from '../../../../../components/masthead';
-import Places from '../../../../../components/places';
-import People from '../../../../../components/people';
-import VisitorCenters from '../../../../../components/visitorcenters';
-
-
-// const [states, setStates] = useState(data.states)
-  // const [directionsInfo, setDirectionsInfo] = useState(data.directionsInfo)
-  // const [directionsUrl, setDirectionsUrl] = useState(data.directionsUrl)
-  // const [url, setUrl] = useState(data.url)
-  // const [weatherInfo, setWeatherInfo] = useState(data.weatherInfo)
-  // const [name, setName] = useState(data.name)
-  // const [latLong, setLatLong] = useState(data.latLong)
-  // const [description, setDescription] = useState(data.description)
-  // const [images, setImages] = useState(data.images)
-  // const [designation, setDesignation] = useState(data.designation)
-  // const [parkCode, setParkCode] = useState(data.parkCode)
-  // const [id, setId] = useState(data.id)
-  // const [fullName, setFullName] = useState(data.fullName)
-
+import fetch from 'isomorphic-unfetch'
+import styled from 'styled-components'
+import Masthead from '../../../../../components/masthead'
+import Places from '../../../../../components/places'
+import People from '../../../../../components/people'
+import VisitorCenters from '../../../../../components/visitorcenters'
+import Events from '../../../../../components/events'
+import Articles from '../../../../../components/articles'
+import Alerts from '../../../../../components/alerts'
+import Campgrounds from '../../../../../components/campgrounds'
+import MapContainer from '../../../../../components/googlemap'
 
 
 const Park = props => {
@@ -30,7 +19,14 @@ const Park = props => {
   const [park, setPark] = useState(props.parks)
   const [places, setPlaces] = useState(props.places)
   const [people, setPeople] = useState(props.people)
-  const [visitorCenters, setvVisitorCenters] = useState(props.visitorCenters)
+  const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
+  const [events, setEvents] = useState(props.events)
+  const [articles, setArticles] = useState(props.articles)
+  const [alerts, setAlerts] = useState(props.alerts)
+  const [campgrounds, setCampgrounds] = useState(props.campgrounds)
+
+  
+
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
@@ -51,11 +47,92 @@ const Park = props => {
       <h2>Weather</h2>
       {park.weatherInfo}<br />
       <h2>Location</h2>
-      {park.latLong}<br />
+      {/* {park.latLong}<br /> */}
       
-      <Places places={places} />
-      <People people={people} />
-      <VisitorCenters visitorCenters={visitorCenters} />
+      
+
+
+      <MapContainer 
+        lat={Number(park.latLong.split(",")[0].slice(4))} 
+        lng={Number(park.latLong.split(",")[1].slice(6))}
+      />
+          
+
+
+      <h2>Campgrounds</h2>
+      { campgrounds.slice(0).map((item) => {
+          return(
+            <Campgrounds 
+              key={item.id}
+              campgrounds={item} 
+            />
+          )
+        })
+      }
+
+      <h2>Alerts</h2>
+      { alerts.slice(0).map((item) => {
+          return(
+            <Alerts 
+              key={item.id}
+              alerts={item} 
+            />
+          )
+        })
+      }
+      <h2>Articles</h2>
+      { articles.slice(0).map((item) => {
+          return(
+            <Articles 
+              key={item.id}
+              articles={item} 
+            />
+          )
+        })
+      }
+      <h2>Events</h2>
+      { events.slice(0).map((item) => {
+          return(
+            <Events 
+              key={item.id}
+              events={item} 
+            />
+          )
+        })
+      }
+
+      <h2>Places</h2>
+      { places.slice(0).map((item) => {
+          return(
+            <Places 
+              key={item.id}
+              places={item} 
+            />
+          )
+        })
+      }
+
+      <h2>People</h2>
+      { people.slice(0).map((item) => {
+          return(
+            <People 
+              key={item.id}
+              people={item} 
+            />
+          )
+        })
+      }
+
+      <h2>Visitor Centers</h2>
+      { visitorCenters.slice(0).map((item) => {
+          return(
+            <VisitorCenters 
+              key={item.id}
+              visitorCenters={item} 
+            />
+          )
+        })
+      }
     </Content>
     </>
   )
@@ -81,27 +158,49 @@ Park.getInitialProps = async ({query}) => {
   const visitorCentersResult = await fetch(visitorCentersEndpoint)
   const visitorCenters = await visitorCentersResult.json()
 
+  const eventsEndpoint = `${apiURL}/events?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const eventsResult = await fetch(eventsEndpoint)
+  const events = await eventsResult.json()
+
+  const articlesEndpoint = `${apiURL}/articles?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const articlesResult = await fetch(articlesEndpoint)
+  const articles = await articlesResult.json()
+
+  const alertsEndpoint = `${apiURL}/alerts?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const alertsResult = await fetch(alertsEndpoint)
+  const alerts = await alertsResult.json()
+
+  const campgroundsEndpoint = `${apiURL}/campgrounds?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const campgroundsResult = await fetch(campgroundsEndpoint)
+  const campgrounds = await campgroundsResult.json()
+
 
   const result = {
     "parks" : parks.data[0],
-    "places" : places.data[0],
-    "people" : people.data[0],
-    "visitorCenters" : visitorCenters.data[0]
+    "places" : places.data,
+    "people" : people.data,
+    "visitorCenters" : visitorCenters.data,
+    "events" : events.data,
+    "articles" : articles.data,
+    "alerts" : alerts.data,
+    "campgrounds" : campgrounds.data
   }
 
-  console.log(result);
+  // console.log(result);
   // const url = `https://developer.nps.gov/api/v1/places?parkCode=${query.parkCode}&api_key=${apiKey}`
   // const res = await fetch(url)
   // const result = await res.json()
  
 
+
+
+
   return result
 }
-  
+
+
 export default Park
-
-
-
+ 
 
 const ResponsiveImage = styled.div`
   position: relative;

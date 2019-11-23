@@ -1,89 +1,138 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+import Router from 'next/router'
 
 const Map = () => {
-    
+  const handleSelectState = (e) => {
+    Router.push(`/state/${e.target.value}`)
+  }
   return (
     <MapWrapper>
     <h2>Find National Parks by State</h2>
-      <div 
-        style={{display: "block",
-        backgroundImage: "url('http://www.image-maps.com/images/maps/812073229_map_us_outline.png')", 
-        position: "relative",
-        padding: "0px",
-        width: "550px", 
-        height: "375px",  
-        backgroundPosition: "initial initial",
-        backgroundRepeat: "initial initial"}}>
-      <img
-        src="http://www.image-maps.com/images/maps/812073229_map_us_outline.png" width="550" height="375" useMap="#usa" 
-        style={{opacity: "0", 
-          position: "absolute",
-          left: "0px", 
-          top: "0px",
-          padding: "0px", 
-          border: "0px"}} />
-      </div>
-        <map name="usa">
-        <area shape="poly" coords="28,3,27,5,27,10,27,14,28,18,27,22,27,27,26,31,26,33,29,33,31,34,33,35,33,37,34,40,34,42,36,44,39,46,42,46,46,46,49,47,51,47,54,47,57,47,61,47,66,49,73,49,79,50,86,52,88,52,89,51,89,48,90,43,91,40,91,37,92,33,93,31,93,28,94,25,95,21,95,19,96,17,96,15,97,13,94,11,91,11,86,10,83,9,78,8,75,7,73,7,69,6,67,5,63,5,61,4,58,3,56,2,53,2,51,1,49,1,47,1,47,3,47,5,47,7,47,8,47,10,47,11,48,13,47,15,47,17,46,17,45,17,46,16,46,15,46,13,45,12,43,11,41,9,39,9,38,7,37,7,35,6,33,5,33,5,31,4,30,3" href="/state/WA" alt="Washington" title="poly_55" target="_self"  />
-        <area shape="poly" coords="26,32,22,45,13,65,8,73,7,84,28,90,64,100,75,102,83,77,83,68,90,56,88,52,77,49,51,46,36,43,33,35" href="/state/OR" alt="Oregon" title="Oregon" />
-        <area shape="poly" coords="8,85,6,93,2,102,1,111,2,120,3,129,8,143,9,154,10,166,17,186,27,196,44,212,48,222,73,227,76,220,82,210,82,202,74,186,38,134,47,97" href="/state/CA" alt="California" title="California" />
-        <area shape="poly" coords="96,13,88,50,91,57,82,68,82,76,75,101,133,113,137,79,126,78,118,71,115,61,110,62,111,57,113,50,103,29,104,15" href="/state/ID" alt="Idaho" title="Idaho" />
-        <area shape="poly" coords="48,97,38,134,81,201,81,188,83,182,89,182,105,109" href="/state/NV" alt="Nevada" title="Nevada" />
-        <area shape="poly" coords="105,109,93,172,142,182,149,128,129,125,133,113" href="/state/UT" alt="Utah" title="Utah" />
-        <area shape="poly" coords="92,174,88,185,84,183,80,196,84,208,76,218,76,226,72,230,111,253,133,257,143,182" href="/state/AZ" alt="Arizona" title="Arizona" />
-        <area shape="poly" coords="104,16,104,34,113,49,109,61,115,62,118,73,131,78,139,75,204,82,208,30" href="/state/MT" alt="Montana" title="Montana" />
-        <area shape="poly" coords="140,75,132,125,198,134,204,83" href="/state/WY" alt="Wyoming" title="Wyoming" />
-        <area shape="poly" coords="151,130,143,180,216,188,220,136" href="/state/CO" alt="Colorado" title="Colorado" />
-        <area shape="poly" coords="145,182,133,255,142,257,144,250,161,252,163,250,199,253,206,189" href="/state/NM" alt="New Mexico" title="New Mexico" />
-        <area shape="poly" coords="208,30,206,68,274,72,267,32" href="/state/ND" alt="North Dakota" title="North Dakota" />
-        <area shape="poly" coords="206,69,203,109,254,111,265,115,274,119,276,82,271,78,272,72" href="/state/SD" alt="South Dakota" title="South Dakota" />
-        <area shape="poly" coords="202,109,200,134,218,138,219,150,287,152,282,143,274,117,265,114,259,113,250,110" href="/state/NE" alt="Nebraska" title="Nebraska" />
-        <area shape="poly" coords="220,149,217,189,294,191,293,161,289,157,288,152,282,150" href="/state/KS" alt="Kansas" title="Kansas" />
-        <area shape="poly" coords="206,189,206,195,236,197,237,223,257,231,277,235,288,234,297,236,294,192,290,191" href="/state/OK" alt="Oklahoma" title="Oklahoma" />
-        <area shape="poly" coords="206,195,200,253,162,251,165,258,178,273,182,282,197,293,203,283,221,289,237,314,246,330,265,335,263,319,275,302,304,287,306,267,301,246,300,236,289,232,265,231,244,225,238,222,236,197" href="/state/TX" alt="Texas" title="Texas" />
-        <area shape="poly" coords="269,33,274,70,272,77,275,84,276,107,324,103,324,96,313,88,308,79,310,70,318,56,336,44,323,41,311,38,296,36,290,29,285,30" href="/state/MN" alt="Minnesota" title="Minnesota" />
-        <area shape="poly" coords="274,105,274,116,282,142,326,144,329,134,328,130,337,122,330,113,325,106,322,103" href="/state/IA" alt="Iowa" title="Iowa" />
-        <area shape="poly" coords="283,143,292,162,295,181,294,197,340,197,340,203,348,196,349,188,338,172,340,165,333,162,325,152,324,143" href="/state/MO" alt="Missouri" title="Missouri" />
-        <area shape="poly" coords="295,197,295,234,300,239,302,244,333,243,333,232,341,215,346,204,340,201,341,197,337,196" href="/state/AR" alt="Arkansas" title="Arkansas" />
-        <area shape="poly" coords="301,243,304,261,307,270,302,287,321,287,327,284,341,291,349,289,360,292,356,287,357,280,352,278,349,269,329,266,335,249,332,241" href="/state/LA" alt="Louisiana" title="Louisiana" />
-        <area shape="poly" coords="314,62,309,76,310,87,323,96,326,108,331,117,357,114,358,99,362,78,356,82,356,74,341,66,327,61,323,58" href="/state/WI" alt="Wisconsin" title="Wisconsin" />
-        <area shape="poly" coords="333,116,337,123,331,130,329,134,325,146,331,159,339,161,340,173,347,183,356,184,364,170,363,137,359,120,356,116" href="/state/IL" alt="Illinois" title="Illinois" />
-        <area shape="poly" coords="352,185,349,193,367,192,408,188,423,173,415,161,408,159,394,156,389,163,380,172,366,176,361,177" href="/state/KY" alt="Kentucky" title="Kentucky" />
-        <area shape="poly" coords="349,194,342,214,400,211,408,201,422,194,429,184,373,191,364,191" href="/state/TN" alt="Tennessee" title="Tennessee" />
-        <area shape="poly" coords="340,216,334,226,332,235,335,250,329,264,336,269,349,267,353,275,365,274,363,214" href="/state/MS" alt="Mississippi" title="Mississippi" />
-        <area shape="poly" coords="364,213,363,255,365,273,377,274,373,266,402,263,403,244,391,212" href="/state/AL" alt="Alabama" title="Alabama" />
-        <area shape="poly" coords="391,211,402,244,404,263,438,266,439,260,446,242,423,216,413,207" href="/state/GA" alt="Georgia" title="Georgia" />
-        <area shape="poly" coords="374,266,378,273,390,273,397,277,407,278,418,275,430,280,432,298,444,316,459,328,470,328,469,310,458,283,449,268,442,260,435,260,433,264,422,264,404,265,399,261" href="/state/FL" alt="Florida" title="Florida" />
-        <area shape="poly" coords="416,208,417,213,433,226,447,245,462,225,470,214,453,204,442,206,439,202,428,202" href="/state/SC" alt="South Carolina" title="South Carolina" />
-        <area shape="poly" coords="428,185,415,197,402,205,407,209,424,204,439,202,456,205,471,215,487,202,492,185,488,175" href="/state/NC" alt="North Carolina" title="North Carolina" />
-        <area shape="poly" coords="422,174,412,186,444,184,487,175,487,169,482,167,480,157,474,153,470,148,465,142,458,143,453,150,447,154,442,167,434,173" href="/state/VA" alt="Virginia" title="Virginia" />
-        <area shape="poly" coords="327,60,337,66,352,71,355,82,360,73,376,66,392,64,384,57,377,55,367,58,357,58,351,55,351,49,341,53" href="/state/MI" alt="Michigan" title="Michigan" />
-        <area shape="poly" coords="382,68,378,77,371,84,368,95,372,112,368,124,388,121,401,120,409,103,405,89,401,90,395,96,393,88,398,72" href="/state/MI" alt="Michigan" title="Michigan" />
-        <area shape="poly" coords="363,125,364,154,361,172,370,173,386,166,394,157,388,121" href="/state/IN" alt="Indiana" title="Indiana" />
-        <area shape="poly" coords="389,122,393,156,409,160,418,161,426,149,433,140,430,113,419,120,410,122,404,121,401,119" href="/state/OH" alt="Ohio" title="Ohio" />
-        <area shape="poly" coords="431,136,430,144,422,150,416,159,420,168,429,175,439,169,445,158,449,154,456,144,462,142,458,140,451,143,445,145,442,141,437,142" href="/state/WV" alt="West Virginia" title="West Virginia" />
-        <area shape="poly" coords="430,112,434,141,486,131,489,125,484,119,486,107,479,102,455,108" href="/state/PA" alt="Pennsylvania" title="Pennsylvania" />
-        <area shape="poly" coords="441,92,441,100,434,107,454,107,477,102,487,109,499,112,497,95,494,74,489,65,489,59,477,59,468,69,463,80,459,87" href="/state/NY" alt="New York" title="New York" />
-        <area shape="poly" coords="445,139,448,145,459,138,468,142,472,154,480,155,487,150,478,142,481,134,470,134" href="/state/MD" alt="Maryland" title="Maryland" />
-        <area shape="poly" coords="507,153,507,164,525,164,525,153" href="/state/MD" alt="Maryland" title="Maryland" />
-        <area shape="poly" coords="507,138,507,149,525,149,525,138" href="/state/DE" alt="Delaware" title="Delaware" />
-        <area shape="poly" coords="507,122,507,133,525,133,525,122" href="/state/NJ" alt="New Jersey" title="New Jersey" />
-        <area shape="poly" coords="520,108,520,119,538,119,538,108" href="/state/CT" alt="Connecticut" title="Connecticut" />
-        <area shape="poly" coords="530,93,530,104,548,104,548,93" href="/state/RI" alt="Rhode Island" title="Rhode Island" />
-        <area shape="poly" coords="528,77,528,88,546,88,546,77" href="/state/MA" alt="Massachusetts" title="Massachusetts" />
-        <area shape="poly" coords="463,45,463,56,481,56,481,45" href="/state/VT" alt="Vermont" title="Vermont" />
-        <area shape="poly" coords="484,31,484,42,502,42,502,31" href="/state/NH" alt="New Hampshire" title="New Hampshire" />
-        <area shape="poly" coords="506,50,520,80,527,65,545,49,544,42,535,33,529,16,523,16,516,19,515,31,511,42" href="/state/ME" alt="Maine" title="Maine" />
-        <area shape="poly" coords="52,249,42,253,37,260,31,265,32,270,39,276,39,285,32,281,22,282,26,292,37,294,39,302,30,305,27,313,28,324,39,329,48,337,43,348,33,356,21,360,7,364,12,369,33,362,48,353,59,343,68,333,78,327,85,321,105,321,131,332,147,344,158,340,154,329,141,324,130,316,114,312,107,303,99,271,92,253,84,250,66,250" href="/state/AK" alt="Alaska" title="Alaska" />
-        <area shape="poly" coords="147,290,145,298,153,297,165,300,170,308,185,312,187,323,197,331,207,325,201,316,192,306,184,299,171,294,161,288,151,288" href="/state/HI" alt="Hawaii" title="Hawaii" />
-        <area shape="poly" coords="487,110,485,115,489,125,488,130,484,132,491,137,497,134,497,123,494,117" href="/state/NJ" alt="New Jersey" title="New Jersey" />
-        <area shape="poly" coords="490,59,492,73,497,86,502,80,504,63,504,55" href="/state/VT" alt="Vermont" title="Vermont" />
-        <area shape="poly" coords="506,51,505,61,503,74,502,86,513,83,519,80,512,67" href="/state/NH" alt="New Hampshire" title="New Hampshire" />
-        <area shape="poly" coords="497,88,498,97,516,93,524,95,529,91,522,87,519,83,511,83" href="/state/MA" alt="Massachusetts" title="Massachusetts" />
-        </map>
-      </MapWrapper>
+
+      <form id="simpleStateForm" onChange={handleSelectState}>
+        Select a State:
+        <select name="state" id="state">
+          <option value="">None Selected</option>
+          <option value="al">Alabama</option>
+          <option value="ak">Alaska</option>
+          <option value="as">American Samoa</option>
+          <option value="az">Arizona</option>
+          <option value="ar">Arkansas</option>
+          <option value="ca">California</option>
+          <option value="co">Colorado</option>
+          <option value="ct">Connecticut</option>
+          <option value="de">Delaware</option>
+          <option value="dc">District of Columbia</option>
+          <option value="fl">Florida</option>
+          <option value="ga">Georgia</option>
+          <option value="gu">Guam</option>
+          <option value="hi">Hawaii</option>
+          <option value="id">Idaho</option>
+          <option value="il">Illinois</option>
+          <option value="in">Indiana</option>
+          <option value="ia">Iowa</option>
+          <option value="ks">Kansas</option>
+          <option value="ky">Kentucky</option>
+          <option value="la">Louisiana</option>
+          <option value="me">Maine</option>
+          <option value="md">Maryland</option>
+          <option value="ma">Massachusetts</option>
+          <option value="mi">Michigan</option>
+          <option value="mn">Minnesota</option>
+          <option value="ms">Mississippi</option>
+          <option value="mo">Missouri</option>
+          <option value="mt">Montana</option>
+          <option value="ne">Nebraska</option>
+          <option value="nv">Nevada</option>
+          <option value="nh">New Hampshire</option>
+          <option value="nj">New Jersey</option>
+          <option value="nm">New Mexico</option>
+          <option value="ny">New York</option>
+          <option value="nc">North Carolina</option>
+          <option value="nd">North Dakota</option>
+          <option value="mp">Northern Mariana Islands</option>
+          <option value="oh">Ohio</option>
+          <option value="ok">Oklahoma</option>
+          <option value="or">Oregon</option>
+          <option value="pa">Pennsylvania</option>
+          <option value="pr">Puerto Rico</option>
+          <option value="ri">Rhode Island</option>
+          <option value="sc">South Carolina</option>
+          <option value="sd">South Dakota</option>
+          <option value="tn">Tennessee</option>
+          <option value="tx">Texas</option>
+          <option value="ut">Utah</option>
+          <option value="vt">Vermont</option>
+          <option value="vi">Virgin Islands</option>
+          <option value="va">Virginia</option>
+          <option value="wa">Washington</option>
+          <option value="wv">West Virginia</option>
+          <option value="wi">Wisconsin</option>
+          <option value="wy">Wyoming</option>
+        </select>
+      </form>
+      <img src="/US-map.jpg" alt="National Map" width="100%" border="0" useMap="#Map" />
+      <map name="Map" id="Map">
+        <area shape="rect" alt="Hawaii" coords="163,293,239,351" href="/state/hi" />
+        <area shape="rect" alt="Virgin Islands" coords="433,294,477,354" href="/state/vi" />
+        <area shape="rect" alt="Northern Mariana Islands" coords="424,218,496,287" href="/state/mp" />
+        <area shape="rect" alt="Puerto Rico" coords="368,295,426,347" href="/state/pr" />
+        <area shape="rect" alt="Guam" coords="321,295,357,348" href="/state/gu" />
+        <area shape="rect" alt="American Samoa" coords="252,294,308,342" href="/state/as" />
+        <area shape="poly" alt="Alaska" coords="93,257,102,260,130,300,116,317,122,316,140,341,129,340,107,316,77,317,71,323,65,331,62,331,60,326,47,334,43,336,43,339,37,336,31,337,21,336,27,334,53,324,52,319,49,318,43,314,42,309,36,302,38,292,44,288,47,287,52,287,50,283,41,279,42,271,50,271,53,271,52,257,65,249,80,251,84,254" href="/state/ak" />
+        <area shape="poly" alt="California" coords="21,72,14,97,30,165,57,189,76,191,83,177,54,132,48,113,53,84,21,73,67,176,65,176" href="/state/ca" />
+        <area shape="poly" alt="Nevada" coords="56,86,50,112,80,162,86,147,93,142,99,96" href="/state/nv" />
+        <area shape="poly" alt="Arizona" coords="91,152,87,175,77,195,107,210,124,213,130,154,91,152" href="/state/az" />
+        <area shape="poly" alt="New Mexico" coords="135,156,127,213,133,216,134,209,177,209,180,160" href="/state/nm" />
+        <area shape="poly" alt="Washington" coords="40,4,39,27,61,40,86,42,93,15,39,4" href="/state/wa" />
+        <area shape="poly" alt="Oregon" coords="39,35,52,45,81,47,80,88,23,71" href="/state/or" />
+        <area shape="poly" alt="Idaho" coords="94,15,87,53,83,89,124,96,128,76,107,46,104,17" href="/state/id" />
+        <area shape="poly" alt="Utah" coords="105,103,136,110,132,151,97,147,100,106" href="/state/ut" />
+        <area shape="poly" alt="Colorado" coords="140,112,136,152,190,157,194,120" href="/state/co" />
+        <area shape="poly" alt="Arkansas" coords="245,287" href="/state/ar" />
+        <area shape="poly" alt="Montana" coords="110,19,113,47,128,66,181,70,185,29" href="/state/mt" />
+        <area shape="poly" alt="Wyoming" coords="128,103,177,110,180,77,132,71" href="/state/wy" />
+        <area shape="poly" alt="Texas" coords="149,215,163,225,165,239,179,244,184,239,195,238,213,264,214,273,233,282,234,261,262,239,261,213,261,199,249,195,224,196,208,187,207,168,186,166,184,215" href="/state/tx" />
+        <area shape="poly" alt="North Dakota" coords="188,30,186,61,238,63,235,31" href="/state/nd" />
+        <area shape="poly" alt="South Dakota" coords="184,66,182,91,238,97,239,70,233,66,189,65" href="/state/sd" />
+        <area shape="poly" alt="Nebraska" coords="183,94,180,113,197,115,197,126,247,129,238,101" href="/state/ne" />
+        <area shape="poly" alt="Kansas" coords="197,131,193,159,255,158,256,138,246,132" href="/state/ks" />
+        <area shape="poly" alt="Oklahoma" coords="188,159,188,164,212,167,212,185,228,194,254,193,254,165,247,163" href="/state/ok" />
+        <area shape="poly" alt="Minnesota" coords="237,32,240,66,240,89,280,89,268,76,267,64,270,57,286,42" href="/state/mn" />
+        <area shape="poly" alt="Iowa" coords="244,92,281,93,282,100,288,108,281,120,249,120,244,102" href="/state/ia" />
+        <area shape="poly" alt="Missouri" coords="251,124,258,137,259,162,301,163,298,152,288,145,290,140,281,125" href="/state/mo" />
+        <area shape="poly" alt="Arkansas" coords="258,168,293,167,291,172,296,172,289,194,286,202,263,203,262,197,257,194" href="/state/ar" />
+        <area shape="poly" alt="Louisiana" coords="264,205,264,218,270,224,264,238,280,242,296,245,306,244,305,237,300,227,283,227,290,211,285,206" href="/state/la" />
+        <area shape="poly" alt="Wisconsin" coords="283,54,275,60,272,71,282,85,282,97,290,100,307,97,308,77,306,68,291,60" href="/state/wi" />
+        <area shape="poly" alt="Illinois" coords="291,105,282,123,293,141,303,155,308,155,313,138,311,110,305,101" href="/state/il" />
+        <area shape="poly" alt="Mississippi" coords="296,182,289,202,290,209,292,213,288,225,302,224,305,232,314,229,312,217,311,182" href="/state/ms" />
+        <area shape="poly" alt="Alabama" coords="314,180,314,219,316,229,325,228,321,222,344,220,342,211,344,206,335,179" href="/state/al" />
+        <area shape="poly" alt="Florida" coords="326,229,325,224,346,221,348,225,378,221,397,257,397,276,390,276,375,264,368,242,356,233,336,238" href="/state/fl" />
+        <area shape="poly" alt="Georgia" coords="337,178,347,206,344,212,348,222,378,220,378,211,381,204,370,194,356,180" href="/state/ga" />
+        <area shape="poly" alt="South Carolina" coords="361,174,355,177,362,181,373,193,382,202,393,188,396,181,387,174,378,175,375,173,361,174" href="/state/sc" />
+        <area shape="poly" alt="Tennessee" coords="303,165,295,180,352,177,362,167,369,157" href="/state/tn" />
+        <area shape="poly" alt="North Carolina" coords="377,155,361,173,389,172,399,180,415,175,427,154,418,151" href="/state/nc" />
+        <area shape="poly" alt="Michigan" coords="290,55,306,64,318,80,323,96,318,105,345,102,351,88,336,62,330,53,300,48" href="/state/mi" />
+        <area shape="poly" alt="Indiana" coords="313,109,315,132,314,140,314,149,327,144,332,136,335,132,333,106" href="/state/in" />
+        <area shape="poly" alt="Ohio" coords="336,107,337,132,357,135,367,122,366,98,352,107,345,104" href="/state/oh" />
+        <area shape="poly" alt="Kentucky" coords="304,163,304,158,310,157,313,151,329,146,338,135,355,137,356,142,362,147,369,155" href="/state/ky" />
+        <area shape="poly" alt="West Virginia" coords="369,123,369,123,357,137,358,142,372,155,390,132,394,122,390,119" href="/state/wv" />
+        <area shape="poly" alt="Virginia" coords="395,124,381,148,376,154,414,150,407,132" href="/state/va" />
+        <area shape="poly" alt="Maine" coords="437,21,451,21,463,43,439,63,433,45,435,40" href="/state/me" />
+        <area shape="poly" alt="New York" coords="377,82,373,94,411,88,413,93,422,84,415,66,409,56" href="/state/ny" />
+        <area shape="poly" alt="Pennsylvania" coords="371,96,368,100,369,119,393,117,395,113,412,113,415,109,411,103,412,96,408,90" href="/state/pa" />
+        <area shape="rect" alt="Washington, DC" coords="475,157,494,167" href="/state/dc" />
+        <area shape="rect" alt="Delaware" coords="475,147,494,156" href="/state/de" />
+        <area shape="rect" alt="Maryland" coords="475,136,494,146" href="/state/md" />
+        <area shape="rect" alt="New Jersey" coords="475,123,494,132" href="/state/nj" />
+        <area shape="rect" alt="Connecticut" coords="475,112,494,122" href="/state/ct" />
+        <area shape="rect" alt="Rhode Island" coords="475,99,494,109" href="/state/ri" />
+        <area shape="rect" alt="Massachusetts" coords="475,80,494,89" href="/state/ma" />
+        <area shape="rect" alt="New Hampshire" coords="475,62,494,71" href="/state/nh" />
+        <area shape="rect" alt="Vermont" coords="475,50,494,60" href="/state/vt" />
+      </map>
+    </MapWrapper>
   )
 }
 
@@ -95,4 +144,18 @@ export default Map
 const MapWrapper = styled.div`
   margin: 20px auto;
   width: 550px;
+  #simpleStateForm select {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url(../../images/icons/arrow-down.png);
+    background-position: 97% 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-left:5px;
+    text-align: left;
+    white-space: nowrap;
+    color:#737373;
+    font-weight: bold;
+    font-size:12px;
+  }
 `

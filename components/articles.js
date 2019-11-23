@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const People = props => {
-  const [people, setPeople] = useState(props.people)
+const Articles = props => {
+  const [articles, setArticles] = useState(props.articles)
   return (
     <Content>
-      <ResponsiveImage backgroundURL={people.listingimage.url === undefined || people.listingimage.url.length == 0 ? "" : people.listingimage.url  } /><br /><br />
-      <h3>{people.title}</h3>
-      <p>{people.listingdescription}</p>
+      <ResponsiveImage backgroundURL={articles.listingimage.url === undefined || articles.listingimage.url.length == 0 ? "" : articles.listingimage.url  } /><br /><br />
+      <h3>{articles.title}</h3>
+      <p>{articles.listingdescription}</p>
     </Content>
   )
 }
   
-export default People
+export default Articles
 
 const ResponsiveImage = styled.div`
   position: relative;
