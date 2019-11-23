@@ -144,7 +144,7 @@ const Park = props => {
   
 Park.getInitialProps = async ({query}) => {
 
-  const parksEndpoint = `http://localhost:3000/api/parks/${query.parkCode}`
+  const parksEndpoint = `https://national-parks.now.sh/api/parks/${query.parkCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
 
