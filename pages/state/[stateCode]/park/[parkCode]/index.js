@@ -14,23 +14,31 @@ import MapContainer from '../../../../../components/googlemap'
 
 
 const Park = props => {
+  console.log('++++++++++++++++++++++++++++++++++++++\n\n\n\n\n\n', props)
   const router = useRouter()
   const { stateCode } = router.query
-  const [park, setPark] = useState(props.parks)
-  const [places, setPlaces] = useState(props.places)
-  const [people, setPeople] = useState(props.people)
-  const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
-  const [events, setEvents] = useState(props.events)
-  const [articles, setArticles] = useState(props.articles)
-  const [alerts, setAlerts] = useState(props.alerts)
-  const [campgrounds, setCampgrounds] = useState(props.campgrounds)
+  const [park, setPark] = useState(props.parks.parks)
+  const [places, setPlaces] = useState(props.parks.places)
+  const [people, setPeople] = useState(props.parks.people)
+  const [visitorCenters, setVisitorCenters] = useState(props.parks.visitorCenters)
+  const [events, setEvents] = useState(props.parks.events)
+  const [articles, setArticles] = useState(props.parks.articles)
+  const [alerts, setAlerts] = useState(props.parks.alerts)
+  const [campgrounds, setCampgrounds] = useState(props.parks.campgrounds)
 
-  
+ 
 
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
     <ResponsiveImage backgroundURL={park.images[0].url === undefined || park.images[0].url.length == 0 ? "" : park.images[0].url  } height="450px" /><br /><br />
+    
+    <MapContainer 
+        lat={Number(park.latLong.split(",")[0].slice(4))} 
+        lng={Number(park.latLong.split(",")[1].slice(6))}
+      />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />  
+
     <Content>
       {/* {park.fullName}<br /> */}
       {/* {park.states}<br /><br /> */}
@@ -51,12 +59,6 @@ const Park = props => {
       
       
 
-
-      <MapContainer 
-        lat={Number(park.latLong.split(",")[0].slice(4))} 
-        lng={Number(park.latLong.split(",")[1].slice(6))}
-      />
-          
 
 
       <h2>Campgrounds</h2>
@@ -80,6 +82,7 @@ const Park = props => {
           )
         })
       }
+      <FlexBox>
       <h2>Articles</h2>
       { articles.slice(0).map((item) => {
           return(
@@ -90,6 +93,7 @@ const Park = props => {
           )
         })
       }
+      </FlexBox>
       <h2>Events</h2>
       { events.slice(0).map((item) => {
           return(
@@ -139,54 +143,59 @@ const Park = props => {
 }
   
 Park.getInitialProps = async ({query}) => {
-  const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-  const apiURL = 'https://developer.nps.gov/api/v1'
 
-  const parksEndpoint = `${apiURL}/parks?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  const parksEndpoint = `http://localhost:3000/api/parks/${query.parkCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
+
+  // console.log(parks)
+  // const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
+  // const apiURL = 'https://developer.nps.gov/api/v1'
+
+  // const parksEndpoint = `${apiURL}/parks?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const parksResult = await fetch(parksEndpoint)
+  // const parks = await parksResult.json()
   
-  const peopleEndpoint = `${apiURL}/people?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const peopleResult = await fetch(peopleEndpoint)
-  const people = await peopleResult.json()
+  // const peopleEndpoint = `${apiURL}/people?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const peopleResult = await fetch(peopleEndpoint)
+  // const people = await peopleResult.json()
 
-  const placesEndpoint = `${apiURL}/places?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const placesResult = await fetch(placesEndpoint)
-  const places = await placesResult.json()
+  // const placesEndpoint = `${apiURL}/places?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const placesResult = await fetch(placesEndpoint)
+  // const places = await placesResult.json()
 
-  const visitorCentersEndpoint = `${apiURL}/visitorcenters?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const visitorCentersResult = await fetch(visitorCentersEndpoint)
-  const visitorCenters = await visitorCentersResult.json()
+  // const visitorCentersEndpoint = `${apiURL}/visitorcenters?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const visitorCentersResult = await fetch(visitorCentersEndpoint)
+  // const visitorCenters = await visitorCentersResult.json()
 
-  const eventsEndpoint = `${apiURL}/events?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const eventsResult = await fetch(eventsEndpoint)
-  const events = await eventsResult.json()
+  // const eventsEndpoint = `${apiURL}/events?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const eventsResult = await fetch(eventsEndpoint)
+  // const events = await eventsResult.json()
 
-  const articlesEndpoint = `${apiURL}/articles?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const articlesResult = await fetch(articlesEndpoint)
-  const articles = await articlesResult.json()
+  // const articlesEndpoint = `${apiURL}/articles?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const articlesResult = await fetch(articlesEndpoint)
+  // const articles = await articlesResult.json()
 
-  const alertsEndpoint = `${apiURL}/alerts?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const alertsResult = await fetch(alertsEndpoint)
-  const alerts = await alertsResult.json()
+  // const alertsEndpoint = `${apiURL}/alerts?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const alertsResult = await fetch(alertsEndpoint)
+  // const alerts = await alertsResult.json()
 
-  const campgroundsEndpoint = `${apiURL}/campgrounds?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  const campgroundsResult = await fetch(campgroundsEndpoint)
-  const campgrounds = await campgroundsResult.json()
+  // const campgroundsEndpoint = `${apiURL}/campgrounds?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
+  // const campgroundsResult = await fetch(campgroundsEndpoint)
+  // const campgrounds = await campgroundsResult.json()
 
 
   const result = {
-    "parks" : parks.data[0],
-    "places" : places.data,
-    "people" : people.data,
-    "visitorCenters" : visitorCenters.data,
-    "events" : events.data,
-    "articles" : articles.data,
-    "alerts" : alerts.data,
-    "campgrounds" : campgrounds.data
+    "parks" : parks,
+    // "places" : places.data,
+    // "people" : people.data,
+    // "visitorCenters" : visitorCenters.data,
+    // "events" : events.data,
+    // "articles" : articles.data,
+    // "alerts" : alerts.data,
+    // "campgrounds" : campgrounds.data
   }
 
-  // console.log(result);
   // const url = `https://developer.nps.gov/api/v1/places?parkCode=${query.parkCode}&api_key=${apiKey}`
   // const res = await fetch(url)
   // const result = await res.json()
@@ -213,6 +222,11 @@ const ResponsiveImage = styled.div`
   margin: 0;
   
 `
+const FlexBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
 const Content = styled.div`
   font-family: Helvetica;
   padding: 15px;

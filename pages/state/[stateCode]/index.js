@@ -11,10 +11,7 @@ const Parks = props => {
   const router = useRouter()
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
-  // useEffect(() => {
-  //     setCards(cards)
-  //   }, [cards])
-  
+ 
 
 
   return (
@@ -37,14 +34,11 @@ const Parks = props => {
 }
   
 Parks.getInitialProps = async ({query}) => {
-  const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-  const url = `https://developer.nps.gov/api/v1/parks?stateCode=${query.stateCode}&fields=images&api_key=${apiKey}`
-  console.log(url)
-
-    const res = await fetch(url)
-
-    //const res = await fetch('http://localhost:3000/api/mockParks')
-    const result = await res.json()
+  const parksEndpoint = `http://localhost:3000/api/state/${query.stateCode}`
+  const parksResult = await fetch(parksEndpoint)
+  const result = await parksResult.json()
+  
+  
     return result
   }
   
