@@ -38,7 +38,7 @@ export default (req, res) => {
       const data = await col.find({ _id: parkCode }).limit(1).toArray()
       
       console.log(`|     DB    Result ----------------------> data\n|\n`)
-      console.log(data,`\n`)
+      // console.log(data,`\n`)
       console.log('\n|\n|     DB    End Result ------------------> data\n|')
 
       client.close()
@@ -106,7 +106,7 @@ export default (req, res) => {
       }
 
       console.log(`|     DB    Result ----------------------> data\n|\n`)
-      console.log(data,`\n`)
+      // console.log(data,`\n`)
       console.log('\n|\n|     DB    End Result ------------------> data\n|')
 
       cacheParks(parkCode, data)
@@ -124,7 +124,7 @@ export default (req, res) => {
     console.log(`\n|\n|     async function cacheParks(parkCode:${parkCode}) {\n|`)
     data._id = parkCode
     console.log(`|     DB    Result ----------------------> data\n|\n`)
-    console.log(data,`\n`)
+    // console.log(data,`\n`)
     console.log('\n|\n|     DB    End Result ------------------> data\n|')
 
     try {
@@ -149,7 +149,7 @@ export default (req, res) => {
   const returnParks = async (data) => {
     console.log(`\n|\n|     async function returnParks(parkCode:${parkCode}) {\n|`)
     console.log(`|     DB    Result ----------------------> data\n|\n`)
-    console.log(data,`\n`)
+    // console.log(data,`\n`)
     console.log('\n|\n|     DB    End Result ------------------> data\n|')
     res.status(200).json(data)
   }

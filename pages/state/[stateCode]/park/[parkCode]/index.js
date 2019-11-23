@@ -14,7 +14,7 @@ import MapContainer from '../../../../../components/googlemap'
 
 
 const Park = props => {
-  console.log('++++++++++++++++++++++++++++++++++++++\n\n\n\n\n\n', props)
+  // console.log('++++++++++++++++++++++++++++++++++++++\n\n\n\n\n\n', props)
   const router = useRouter()
   const { stateCode } = router.query
   const [park, setPark] = useState(props.parks.parks)
@@ -144,7 +144,7 @@ const Park = props => {
   
 Park.getInitialProps = async ({query}) => {
 
-  const parksEndpoint = `https://national-parks.now.sh/api/parks/${query.parkCode}`
+  const parksEndpoint = `http://localhost:3000/api/parks/${query.parkCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
 

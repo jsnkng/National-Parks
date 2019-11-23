@@ -42,7 +42,7 @@ export default (req, res) => {
       const data = await col.find({ _id: stateCode }).limit(1).toArray()
       
       console.log(`|     DB    Result ----------------------> data\n|\n`)
-      console.log(data,`\n`)
+    //   console.log(data,`\n`)
       console.log('\n|\n|     DB    End Result ------------------> data\n|')
 
       client.close()
@@ -71,7 +71,7 @@ export default (req, res) => {
 
 
       console.log(`|     DB    Result ----------------------> data\n|\n`)
-      console.log(data,`\n`)
+    //   console.log(data,`\n`)
       console.log('\n|\n|     DB    End Result ------------------> data\n|')
 
       cacheParks(stateCode, data)
@@ -88,7 +88,7 @@ export default (req, res) => {
     console.log(`\n|\n|     async function cacheParks(stateCode:${stateCode}) {\n|`)
     data._id = stateCode
     console.log(`|     DB    Result ----------------------> data\n|\n`)
-    console.log(data,`\n`)
+    // console.log(data,`\n`)
     console.log('\n|\n|     DB    End Result ------------------> data\n|')
 
     try {
@@ -114,7 +114,7 @@ export default (req, res) => {
   const returnParks = async (data) => {
     console.log(`\n|\n|     async function returnParks(stateCode:${stateCode}) {\n|`)
     console.log(`|     DB    Result ----------------------> data\n|\n`)
-    console.log(data,`\n`)
+    // console.log(data,`\n`)
     console.log('\n|\n|     DB    End Result ------------------> data\n|')
     res.status(200).json(data)
   }
