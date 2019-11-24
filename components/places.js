@@ -20,11 +20,12 @@ const ResponsiveImage = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 33%;
+  width: 100%;
   height: 150px;
   margin: 0;
 `
 const Content = styled.div`
+  flex-basis: 25%;  
   font-family: Helvetica;
   padding: 15px;
   margin: 0;

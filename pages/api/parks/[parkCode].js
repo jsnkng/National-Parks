@@ -1,22 +1,21 @@
-// import { ObjectId, MongoClient } from "mongodb"
-// import assert from 'assert'
 import fetch from 'isomorphic-unfetch';
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+
 // NPS API
 const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
 const apiURL = 'https://developer.nps.gov/api/v1'
 
-// MongoDB Cache
-const url = 'mongodb+srv://zeit-xfxHdiHPdmS8wb93FxDKkadB:XenSPvrs7CgMUO6G@cluster0-pexqw.mongodb.net/test?retryWrites=true&w=majority'
+// Connection URL
+const url = 'mongodb://localhost:27017';
+// const url = 'mongodb+srv://zeit-xfxHdiHPdmS8wb93FxDKkadB:XenSPvrs7CgMUO6G@cluster0-pexqw.mongodb.net'
+
+// Database Name
 const dbName = 'NationalParkService_Cache';
-const client = new MongoClient(url, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  reconnectTries: Number.MAX_VALUE,
-  // sets the delay between every retry (milliseconds)
-  reconnectInterval: 1000 
-});
+const client = new MongoClient(url, { useNewUrlParser: true , useUnifiedTopology: true });
+
+
+
 
 export default (req, res) => {
   const {
@@ -25,38 +24,127 @@ export default (req, res) => {
   } = req
 
 
-  const readParks = async (parkCode) => {
-    
-    console.log(`\n|\n|     async function readParks(parkCode:${parkCode}) {\n|`)
-    
-    try {
-      await client.connect()
-      console.log("|     DB    Connected to MongoDB Server *****\n|")
-      const db = client.db(dbName)
-      const col = db.collection('parks')
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    assert.equal(null, err)
+    console.log('Connected successfully to server')
 
-      const data = await col.find({ _id: parkCode }).limit(1).toArray()
-      
-      console.log(`|     DB    Result ----------------------> data\n|\n`)
-      // console.log(data,`\n`)
-      console.log('\n|\n|     DB    End Result ------------------> data\n|')
+    const db = client.db(dbName)
 
-      client.close()
+    getParksFromCache(db, parkCode, function(cachedParks) {
+        if(cachedParks === undefined || cachedParks.length == 0)  {
+            console.log('ERROR: Could not get parks from MongoDB cache')
+            
+            
+            fetchParksFromAPI(parkCode, function(fetchedParks) {
+                if(fetchedParks === undefined || fetchedParks.length == 0)  {
+                    console.log('ERROR: Could not fetch parks from NPS API')
+                } else {
+                    console.log('SUCCESS: Fetched parks from NPS API')
+                    
+                    writeParksToCache(db, parkCode, fetchedParks, function(newCachedParks) {
+                      if(newCachedParks === undefined || newCachedParks.length == 0)  {
+                        console.log('ERROR: Could not write parks to MongoDB cache')
+                      } else {
+                        console.log('SUCCESS: Wrote parks to MongoDB cache')
+                        res.status(200).json(newCachedParks[0])
+                      }
+                    })
 
-      if(data === undefined || data.length == 0)  {
-        console.log("|     GOTO >>> fetchParks(parkCode)\n|\n|")
-        fetchParks(parkCode)
-      } else {
-        console.log("|     GOTO >>> returnParks(data[0])\n|\n|")
-        returnParks(data[0])
-      }
-    } 
-    catch (err) {
-      console.log(err.stack)
-    }
-  }
+                }
+            })
 
-  
+
+        } else {
+          console.log('SUCCESS: Got parks from MongoDB cache')
+          res.status(200).json(cachedParks[0])
+        }
+
+
+    })
+
+  })
+}
+
+
+const getParksFromCache = function(db, parkCode, callback) {
+  // Get the parks from MongoDB cache
+  const collection = db.collection('parks')
+  // Find the parks matching parks_id
+  collection.find({'parks_id': parkCode}).toArray(function(err, parks) {
+    assert.equal(err, null)
+    // console.log(parks)
+    callback(parks)
+  });
+}
+
+const fetchParksFromAPI = function(parkCode, callback) {
+
+  const data = {}
+  // Fetch the parks from the NPS API
+  fetch(`${apiURL}/parks?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+  .then( r => r.json() )
+  .then( parks => {
+    data.parks = parks
+    fetch(`${apiURL}/people?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+    .then( r => r.json() )
+    .then( people => {
+      data.people = people
+      fetch(`${apiURL}/places?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+      .then( r => r.json() )
+      .then( places => {
+        data.places = places
+        fetch(`${apiURL}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+        .then( r => r.json() )
+        .then( visitorcenters => {
+          data.visitorcenters = visitorcenters
+          fetch(`${apiURL}/events?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+          .then( r => r.json() )
+          .then( events => {
+            data.events = events
+            fetch(`${apiURL}/articles?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+            .then( r => r.json() )
+            .then( articles => {
+              data.articles = articles
+              fetch(`${apiURL}/alerts?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+              .then( r => r.json() )
+              .then( alerts => {
+                data.alerts = alerts
+                fetch(`${apiURL}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+                .then( r => r.json() )
+                .then( campgrounds => {
+                  data.campgrounds = campgrounds
+                  console.log(data)
+                  callback(data)
+                })
+              })
+            })
+          })
+        })
+      })
+    })
+  })
+}
+
+const writeParksToCache = function(db, parkCode, parks, callback) {
+  // Write the parks to the MongoDB cache
+    parks.parks_id = parkCode
+
+    // Get the parkss collection
+    const collection = db.collection('parks')
+    // Insert parks
+    collection.insertOne(parks, function(err, result) {
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      assert.equal(1, result.ops.length)
+      console.log('Inserted 1 parks into the collection')
+      callback([parks])
+    })
+}
+
+
+
+
   const fetchParks = async (parkCode) => {
     console.log(`\n|\n|     async function fetchParks(parkCode:${parkCode}) {\n|`)
     try {
@@ -154,6 +242,4 @@ export default (req, res) => {
     res.status(200).json(data)
   }
 
-  readParks(parkCode)
-}
-  
+ 

@@ -14,19 +14,19 @@ import MapContainer from '../../../../../components/googlemap'
 
 
 const Park = props => {
-  // console.log('++++++++++++++++++++++++++++++++++++++\n\n\n\n\n\n', props)
+  // console.log('++++++++++++++++++++++++++++++++++++++\n\n\n\n\n\n', props.parks)
   const router = useRouter()
   const { stateCode } = router.query
-  const [park, setPark] = useState(props.parks.parks)
-  const [places, setPlaces] = useState(props.parks.places)
-  const [people, setPeople] = useState(props.parks.people)
-  const [visitorCenters, setVisitorCenters] = useState(props.parks.visitorCenters)
-  const [events, setEvents] = useState(props.parks.events)
-  const [articles, setArticles] = useState(props.parks.articles)
-  const [alerts, setAlerts] = useState(props.parks.alerts)
-  const [campgrounds, setCampgrounds] = useState(props.parks.campgrounds)
+  const [park, setPark] = useState(props.parks.parks.data[0])
+  const [places, setPlaces] = useState(props.parks.places.data)
+  const [people, setPeople] = useState(props.parks.people.data)
+  const [visitorCenters, setVisitorCenters] = useState(props.parks.visitorcenters.data)
+  const [events, setEvents] = useState(props.parks.events.data)
+  const [articles, setArticles] = useState(props.parks.articles.data)
+  const [alerts, setAlerts] = useState(props.parks.alerts.data)
+  const [campgrounds, setCampgrounds] = useState(props.parks.campgrounds.data)
 
- 
+//  console.log('>>>',park)
 
   return (
     <>
@@ -59,20 +59,8 @@ const Park = props => {
       
       
 
-
-
-      <h2>Campgrounds</h2>
-      { campgrounds.slice(0).map((item) => {
-          return(
-            <Campgrounds 
-              key={item.id}
-              campgrounds={item} 
-            />
-          )
-        })
-      }
-
       <h2>Alerts</h2>
+      <FlexBox>
       { alerts.slice(0).map((item) => {
           return(
             <Alerts 
@@ -82,8 +70,22 @@ const Park = props => {
           )
         })
       }
+      </FlexBox>
+      <h2>Events</h2>
       <FlexBox>
+      { events.slice(0).map((item) => {
+          return(
+            <Events 
+              key={item.id}
+              events={item} 
+            />
+          )
+        })
+      }
+      </FlexBox>
+
       <h2>Articles</h2>
+      <FlexBox>
       { articles.slice(0).map((item) => {
           return(
             <Articles 
@@ -94,18 +96,8 @@ const Park = props => {
         })
       }
       </FlexBox>
-      <h2>Events</h2>
-      { events.slice(0).map((item) => {
-          return(
-            <Events 
-              key={item.id}
-              events={item} 
-            />
-          )
-        })
-      }
-
       <h2>Places</h2>
+      <FlexBox>
       { places.slice(0).map((item) => {
           return(
             <Places 
@@ -115,8 +107,9 @@ const Park = props => {
           )
         })
       }
-
+      </FlexBox>
       <h2>People</h2>
+      <FlexBox>
       { people.slice(0).map((item) => {
           return(
             <People 
@@ -126,8 +119,9 @@ const Park = props => {
           )
         })
       }
-
+      </FlexBox>
       <h2>Visitor Centers</h2>
+      <FlexBox>
       { visitorCenters.slice(0).map((item) => {
           return(
             <VisitorCenters 
@@ -137,6 +131,20 @@ const Park = props => {
           )
         })
       }
+      </FlexBox>
+      <h2>Campgrounds</h2>
+      <FlexBox>
+      { campgrounds.slice(0).map((item) => {
+          return(
+            <Campgrounds 
+              key={item.id}
+              campgrounds={item} 
+            />
+          )
+        })
+      }
+      </FlexBox>
+
     </Content>
     </>
   )
@@ -144,63 +152,15 @@ const Park = props => {
   
 Park.getInitialProps = async ({query}) => {
 
-  const parksEndpoint = `https://national-parks.now.sh/api/parks/${query.parkCode}`
+  // const parksEndpoint = `https://national-parks.now.sh/api/parks/${query.parkCode}`
+  const parksEndpoint = `http://localhost:3000/api/parks/${query.parkCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
 
-  // console.log(parks)
-  // const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-  // const apiURL = 'https://developer.nps.gov/api/v1'
-
-  // const parksEndpoint = `${apiURL}/parks?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const parksResult = await fetch(parksEndpoint)
-  // const parks = await parksResult.json()
-  
-  // const peopleEndpoint = `${apiURL}/people?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const peopleResult = await fetch(peopleEndpoint)
-  // const people = await peopleResult.json()
-
-  // const placesEndpoint = `${apiURL}/places?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const placesResult = await fetch(placesEndpoint)
-  // const places = await placesResult.json()
-
-  // const visitorCentersEndpoint = `${apiURL}/visitorcenters?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const visitorCentersResult = await fetch(visitorCentersEndpoint)
-  // const visitorCenters = await visitorCentersResult.json()
-
-  // const eventsEndpoint = `${apiURL}/events?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const eventsResult = await fetch(eventsEndpoint)
-  // const events = await eventsResult.json()
-
-  // const articlesEndpoint = `${apiURL}/articles?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const articlesResult = await fetch(articlesEndpoint)
-  // const articles = await articlesResult.json()
-
-  // const alertsEndpoint = `${apiURL}/alerts?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const alertsResult = await fetch(alertsEndpoint)
-  // const alerts = await alertsResult.json()
-
-  // const campgroundsEndpoint = `${apiURL}/campgrounds?parkCode=${query.parkCode}&fields=images&api_key=${apiKey}`
-  // const campgroundsResult = await fetch(campgroundsEndpoint)
-  // const campgrounds = await campgroundsResult.json()
-
-
   const result = {
     "parks" : parks,
-    // "places" : places.data,
-    // "people" : people.data,
-    // "visitorCenters" : visitorCenters.data,
-    // "events" : events.data,
-    // "articles" : articles.data,
-    // "alerts" : alerts.data,
-    // "campgrounds" : campgrounds.data
+    
   }
-
-  // const url = `https://developer.nps.gov/api/v1/places?parkCode=${query.parkCode}&api_key=${apiKey}`
-  // const res = await fetch(url)
-  // const result = await res.json()
- 
-
 
 
 

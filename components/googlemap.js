@@ -10,7 +10,7 @@ const MapContainer = props => {
     return (
     <Map
         google={google}
-        zoom={9}
+        zoom={13}
         style={mapStyles}
         initialCenter={{
         "lat": props.lat,
