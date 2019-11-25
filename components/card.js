@@ -9,20 +9,7 @@ const Card = props => {
 
     setIsDescriptionVisible(!isDescriptionVisible)
   }
-  // const [states, setStates] = useState(data.states)
-  // const [directionsInfo, setDirectionsInfo] = useState(data.directionsInfo)
-  // const [directionsUrl, setDirectionsUrl] = useState(data.directionsUrl)
-  // const [url, setUrl] = useState(data.url)
-  // const [weatherInfo, setWeatherInfo] = useState(data.weatherInfo)
-  // const [name, setName] = useState(data.name)
-  // const [latLong, setLatLong] = useState(data.latLong)
-  // const [description, setDescription] = useState(data.description)
-  // const [images, setImages] = useState(data.images)
-  // const [designation, setDesignation] = useState(data.designation)
-  // const [parkCode, setParkCode] = useState(data.parkCode)
-  // const [id, setId] = useState(data.id)
-  // const [fullName, setFullName] = useState(data.fullName)
-   
+  
     return (
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
       <CardWrapper>

@@ -9,6 +9,8 @@
     "export": "next export"
   },
   "dependencies": {
+    "@themgoncalves/super-query": "^3.0.0",
+    "dotenv": "^8.2.0",
     "google-maps-react": "^2.0.2",
     "isomorphic-unfetch": "^3.0.0",
     "mongodb": "^3.3.4",
@@ -17,6 +19,8 @@
     "react": "16.12.0",
     "react-burger-menu": "^2.6.12",
     "react-dom": "^16.12.0",
+    "react-responsive-carousel": "^3.1.51",
+    "react-styled-flexboxgrid": "^3.1.0",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {

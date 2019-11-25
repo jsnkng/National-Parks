@@ -15,7 +15,6 @@ const Home = () => {
     </Head>
     
     <Masthead pageTitle="National Park Service"></Masthead>
-    {/* https://www.image-maps.com/maps/united_states/?state=Virginia */}
     <Map />
     
                   

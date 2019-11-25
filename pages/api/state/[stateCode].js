@@ -1,19 +1,20 @@
-import fetch from 'isomorphic-unfetch';
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+import fetch from 'isomorphic-unfetch'
+const MongoClient = require('mongodb').MongoClient
+const assert = require('assert')
 
 // NPS API
-const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-const apiURL = 'https://developer.nps.gov/api/v1'
+const NPS_API = process.env.NPS_API
+const NPS_KEY = process.env.NPS_KEY
+
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+const DB_URL = process.env.DB_URL
 
 // Database Name
-const dbName = 'NationalParkService_Cache';
-const client = new MongoClient(url, { useNewUrlParser: true , useUnifiedTopology: true });
+const dbName = 'NationalParkService_Cache'
+const client = new MongoClient(DB_URL, { useNewUrlParser: true , useUnifiedTopology: true })
 
-
+console.log(DB_URL)
 
 
 export default (req, res) => {
@@ -78,7 +79,7 @@ const getStateFromCache = function(db, stateCode, callback) {
 
 const fetchStateFromAPI = function(stateCode, callback) {
   // Fetch the state from the NPS API
-  fetch(`${apiURL}/parks?stateCode=${stateCode}&fields=images&api_key=${apiKey}`)
+  fetch(`${NPS_API}/parks?stateCode=${stateCode}&fields=images&api_key=${NPS_KEY}`)
     .then( r => r.json() )
     .then( state => {
       // console.log(state)

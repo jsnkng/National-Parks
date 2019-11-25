@@ -2,17 +2,19 @@ import fetch from 'isomorphic-unfetch';
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
+
 // NPS API
-const apiKey = 'O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj'
-const apiURL = 'https://developer.nps.gov/api/v1'
+const NPS_API = process.env.NPS_API
+const NPS_KEY = process.env.NPS_KEY
+
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
-// const url = 'mongodb+srv://zeit-xfxHdiHPdmS8wb93FxDKkadB:XenSPvrs7CgMUO6G@cluster0-pexqw.mongodb.net'
+const DB_URL = process.env.DB_URL
+
 
 // Database Name
 const dbName = 'NationalParkService_Cache';
-const client = new MongoClient(url, { useNewUrlParser: true , useUnifiedTopology: true });
+const client = new MongoClient(DB_URL, { useNewUrlParser: true , useUnifiedTopology: true });
 
 
 
@@ -82,40 +84,48 @@ const fetchParksFromAPI = function(parkCode, callback) {
 
   const data = {}
   // Fetch the parks from the NPS API
-  fetch(`${apiURL}/parks?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+  fetch(`${NPS_API}/parks?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
   .then( r => r.json() )
   .then( parks => {
     data.parks = parks
-    fetch(`${apiURL}/people?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+    fetch(`${NPS_API}/people?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
     .then( r => r.json() )
     .then( people => {
       data.people = people
-      fetch(`${apiURL}/places?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+      fetch(`${NPS_API}/places?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
       .then( r => r.json() )
       .then( places => {
         data.places = places
-        fetch(`${apiURL}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+        fetch(`${NPS_API}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
         .then( r => r.json() )
         .then( visitorcenters => {
           data.visitorcenters = visitorcenters
-          fetch(`${apiURL}/events?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+          fetch(`${NPS_API}/events?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
           .then( r => r.json() )
           .then( events => {
             data.events = events
-            fetch(`${apiURL}/articles?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+            fetch(`${NPS_API}/articles?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
             .then( r => r.json() )
             .then( articles => {
               data.articles = articles
-              fetch(`${apiURL}/alerts?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+              fetch(`${NPS_API}/alerts?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
               .then( r => r.json() )
               .then( alerts => {
                 data.alerts = alerts
-                fetch(`${apiURL}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${apiKey}`)
+                fetch(`${NPS_API}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
                 .then( r => r.json() )
                 .then( campgrounds => {
                   data.campgrounds = campgrounds
-                  console.log(data)
-                  callback(data)
+                  fetch(`${NPS_API}/newsreleases?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`)
+                  .then( r => r.json() )
+                  .then( newsreleases => {
+                    data.newsreleases = newsreleases
+  
+  
+                    
+                    console.log(data)
+                    callback(data)
+                  })
                 })
               })
             })
@@ -149,35 +159,35 @@ const writeParksToCache = function(db, parkCode, parks, callback) {
     console.log(`\n|\n|     async function fetchParks(parkCode:${parkCode}) {\n|`)
     try {
 
-      const parksEndpoint = `${apiURL}/parks?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const parksEndpoint = `${NPS_API}/parks?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const parksResult = await fetch(parksEndpoint)
       const parks =  await parksResult.json()
 
-      const peopleEndpoint = `${apiURL}/people?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const peopleEndpoint = `${NPS_API}/people?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const peopleResult = await fetch(peopleEndpoint)
       const people = await peopleResult.json()
 
-      const placesEndpoint = `${apiURL}/places?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const placesEndpoint = `${NPS_API}/places?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const placesResult = await fetch(placesEndpoint)
       const places = await placesResult.json()
 
-      const visitorCentersEndpoint = `${apiURL}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const visitorCentersEndpoint = `${NPS_API}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const visitorCentersResult = await fetch(visitorCentersEndpoint)
       const visitorCenters = await visitorCentersResult.json()
 
-      const eventsEndpoint = `${apiURL}/events?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const eventsEndpoint = `${NPS_API}/events?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const eventsResult = await fetch(eventsEndpoint)
       const events = await eventsResult.json()
 
-      const articlesEndpoint = `${apiURL}/articles?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const articlesEndpoint = `${NPS_API}/articles?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const articlesResult = await fetch(articlesEndpoint)
       const articles = await articlesResult.json()
 
-      const alertsEndpoint = `${apiURL}/alerts?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const alertsEndpoint = `${NPS_API}/alerts?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const alertsResult = await fetch(alertsEndpoint)
       const alerts = await alertsResult.json()
 
-      const campgroundsEndpoint = `${apiURL}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${apiKey}`
+      const campgroundsEndpoint = `${NPS_API}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${NPS_KEY}`
       const campgroundsResult = await fetch(campgroundsEndpoint)
       const campgrounds = await campgroundsResult.json()
 
