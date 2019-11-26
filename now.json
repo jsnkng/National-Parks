@@ -1,11 +1,9 @@
 {
-    "build": {
-        "env": {
-            "NPS_API": "@nps-api",
-            "NPS_KEY": "@nps-key",
-            "DB_URL": "@db-url",
-            "DB_PASSWORD": "@db-password",
-            "NEXT_API": "@next-api"
-        }
+    "env": {
+        "NPS_API": "@nps-api",
+        "NPS_KEY": "@nps-key",
+        "DB_URL": "@db-url",
+        "DB_PASSWORD": "@db-password",
+        "NEXT_API": "@next-api"
     }
 }
