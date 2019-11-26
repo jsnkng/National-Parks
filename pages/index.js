@@ -25,7 +25,7 @@ const DB_URL = process.env.DB_URL
     <Map />
     
     <div>
-      {NPS_API}, {NPS_KEY}, {DB_URL}
+      Hello{NPS_API}, {NPS_KEY}, {DB_URL}
     </div>
                   
   </>
