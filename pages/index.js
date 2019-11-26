@@ -6,6 +6,13 @@ import Map from '../components/map';
 
 const Home = () => {
   
+// NPS API
+const NPS_API = process.env.NPS_API
+const NPS_KEY = process.env.NPS_KEY
+
+
+// Connection URL
+const DB_URL = process.env.DB_URL
 
   return (
   <>
@@ -17,6 +24,9 @@ const Home = () => {
     <Masthead pageTitle="National Park Service"></Masthead>
     <Map />
     
+    <div>
+      {NPS_API}, {NPS_KEY}, {DB_URL}
+    </div>
                   
   </>
   )
