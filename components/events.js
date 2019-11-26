@@ -7,19 +7,21 @@ const Events = props => {
   return (
     <Grid>
     <Row>
+    <Col>
       { events !== undefined && events.length != 0 &&
       <h2>Events</h2>
       }
+      </Col>
     </Row>
     <Row>
-      { events.slice(0).map((item) => {
+      { events.slice(0,6).map((item) => {
         return(
-          <Col xs={12} sm={6} md={3} key={item.id}>
+          <Col xs={12} sm={4} md={4} key={item.id}>
             {item.images[0] !== undefined && item.images.length[0] != 0 &&
                 <ResponsiveImage backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "" : "https://www.nps.gov"+item.images[0].url } />
             }
             <h3>{item.title}</h3>
-            <p>{item.description}</p>
+            <div dangerouslySetInnerHTML={{__html:item.description}} />
           </Col>
         )
       })
@@ -38,6 +40,7 @@ const ResponsiveImage = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 150px;
+  height: 16vw;
+  min-height: 300px;
   margin: 0;
 `

@@ -5,15 +5,39 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
   return (
-    <Col xs={12} sm={6} md={3}>
-      <h3>{visitorCenters.name}</h3>
-      <p>{visitorCenters.description}</p>
-      <p>{visitorCenters.directionsInfo}</p>
-    </Col>
+    <GridStyled>
+      <Row>
+      <Col>
+        { visitorCenters !== undefined && visitorCenters.length != 0 &&
+        <h3>Visitor Centers</h3>
+        }
+        </Col>
+      </Row>
+      <Row>
+        { visitorCenters.slice(0).map((item) => {
+          return(
+            <Col xs={12} sm={6} md={3} key={item.id}>
+            
+              <h4>{item.name}</h4>
+              <p>{item.description}</p>
+              <p>{item.directionsInfo}</p>
+            </Col>
+          )
+        })
+      }
+      </Row>
+    </GridStyled>
   )
+  
 }
   
 export default VisitorCenters
+
+const GridStyled = styled(Grid)`
+  ${'' /* p {
+   font-size: .75em;
+  } */}
+`
 
 const ResponsiveImage = styled.div`
   position: relative;

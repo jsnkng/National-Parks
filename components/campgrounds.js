@@ -5,15 +5,33 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
-    <Col xs={12} sm={6} md={3}>
-      <ResponsiveImage backgroundURL={campgrounds.images === undefined || campgrounds.images.length == 0 ? "" : "https://www.nps.gov"+campgrounds.images[0].url  } /><br /><br />
-      <h3>{campgrounds.name}</h3>
-      <p>{campgrounds.description}</p>
-    </Col>
+    <Grid>
+      <Row>
+      <Col>
+        { campgrounds !== undefined && campgrounds.length != 0 &&
+        <h2>Campgrounds</h2>
+        }
+        </Col>
+      </Row>
+      <Row>
+        { campgrounds.slice(0).map((item) => {
+          return(
+            <Col xs={12} sm={6} md={3} key={item.id}>
+             
+              <h3>{item.name}</h3>
+              <p>{item.description}</p>
+            </Col>
+          )
+        })
+      }
+      </Row>
+    </Grid>
   )
+  
 }
   
 export default Campgrounds
+
 
 const ResponsiveImage = styled.div`
   position: relative;

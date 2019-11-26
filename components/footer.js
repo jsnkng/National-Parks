@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import states from './statesLookup.js';
 
-const Masthead = props => {
+const Footer = props => {
 
   return (
     <HeaderMenu>
@@ -28,7 +28,7 @@ const Masthead = props => {
     </HeaderMenu>
   )
 }
-export default Masthead
+export default Footer
 
 
 

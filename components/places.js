@@ -5,11 +5,29 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 const Places = props => {
   const [places, setPlaces] = useState(props.places)
   return (
-    <Col xs={12} sm={6} md={3}>
-      <ResponsiveImage backgroundURL={places.listingimage.url === undefined || places.listingimage.url.length == 0 ? "" : places.listingimage.url  } /><br /><br />
-      <h3>{places.title}</h3>
-      <p>{places.listingdescription}</p>
-    </Col>
+    <Grid>
+    <Row>
+    <Col>
+      { places !== undefined && places.length != 0 &&
+      <h2>Places</h2>
+      }
+      </Col>
+    </Row>
+    <Row>
+      { places.slice(0).map((item) => {
+        return(
+          <Col xs={12} sm={6} md={3} key={item.id}>
+            {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
+                <ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
+            }
+            <h3>{item.title}</h3>
+            <p>{item.listingdescription}</p>
+          </Col>
+        )
+      })
+    }
+    </Row>
+  </Grid>
   )
 }
   
@@ -22,6 +40,7 @@ const ResponsiveImage = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 150px;
+  height: 16vw;
+  min-height: 300px;
   margin: 0;
 `
