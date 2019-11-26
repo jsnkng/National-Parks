@@ -14,6 +14,8 @@ const DB_URL = process.env.DB_URL
 const dbName = 'NationalParkService_Cache'
 const client = new MongoClient(DB_URL, { useNewUrlParser: true , useUnifiedTopology: true })
 
+console.log(NPS_API)
+console.log(NPS_KEY)
 console.log(DB_URL)
 
 

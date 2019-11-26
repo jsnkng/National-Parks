@@ -33,8 +33,6 @@ const Park = props => {
   const [campgrounds, setCampgrounds] = useState(props.parks.campgrounds.data)
   const [newsReleases, setNewsReleases] = useState(props.parks.newsreleases.data)
 
-
-console.log()
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>

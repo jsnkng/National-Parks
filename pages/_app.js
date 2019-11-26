@@ -61,17 +61,6 @@ export default class MyApp extends App {
       <ThemeProvider theme={theme}>
       <div id="outer-container">
       <GlobalStyle />
-
-      
-        {/* <Menu right width={ '320px' } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } >
-        {links.map(link => (
-          <li key={link.label}>
-            <Link  href={link.href}>
-              <a>{link.label}</a>
-            </Link>
-            </li>
-        ))}
-        </Menu> */}
         <main id="page-wrap">
           <Component {...pageProps} />
         </main>
