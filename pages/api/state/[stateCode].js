@@ -2,12 +2,18 @@ import fetch from 'isomorphic-unfetch'
 const MongoClient = require('mongodb').MongoClient
 const assert = require('assert')
 
-// NPS API
-const NPS_API = process.env.NPS_API
-const NPS_KEY = process.env.NPS_KEY
 
-// Connection URL
-const DB_URL = process.env.DB_URL
+const NPS_KEY="O5YBusXqpWGTqfOUMaeMNBg6oGfUdeh4vYzjBRvj"
+const NPS_API="https://developer.nps.gov/api/v1"
+const DB_URL="mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongodb.net/NationalParkService_Cache?retryWrites=true&w=majority"
+
+
+// NPS API
+// const NPS_API = process.env.NPS_API
+// const NPS_KEY = process.env.NPS_KEY
+
+// // Connection URL
+// const DB_URL = process.env.DB_URL
 
 // Database Name
 const dbName = 'NationalParkService_Cache'

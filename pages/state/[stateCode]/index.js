@@ -6,9 +6,10 @@ import Card from '../../../components/card';
 import Masthead from '../../../components/masthead';
 import states from '../../../components/statesLookup.js';
 
-const NEXT_API = process.env.NEXT_API
+// const NEXT_API = process.env.NEXT_API
 
 
+const NEXT_API="https://national-parks.now.sh/api"
 
 const Parks = props => {
   const router = useRouter()

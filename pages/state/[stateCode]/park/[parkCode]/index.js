@@ -18,7 +18,8 @@ import Campgrounds from '../../../../../components/campgrounds'
 import MapContainer from '../../../../../components/googlemap'
 import NewsReleases from '../../../../../components/newsreleases'
 
-const NEXT_API = process.env.NEXT_API
+// const NEXT_API = process.env.NEXT_API
+const NEXT_API="https://national-parks.now.sh/api"
 
 const Park = props => {
   const router = useRouter()
