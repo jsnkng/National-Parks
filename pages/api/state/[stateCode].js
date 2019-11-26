@@ -6,7 +6,6 @@ const assert = require('assert')
 const NPS_API = process.env.NPS_API
 const NPS_KEY = process.env.NPS_KEY
 
-
 // Connection URL
 const DB_URL = process.env.DB_URL
 
@@ -18,14 +17,13 @@ console.log(NPS_API)
 console.log(NPS_KEY)
 console.log(DB_URL)
 
-
 export default (req, res) => {
+  console.log('req', req)
+  console.log('res', res)
   const {
     query: { stateCode },
     method
   } = req
-
-
   // Use connect method to connect to the server
   client.connect(function(err) {
     assert.equal(null, err)
@@ -36,7 +34,6 @@ export default (req, res) => {
     getStateFromCache(db, stateCode, function(cachedState) {
         if(cachedState === undefined || cachedState.length == 0)  {
             console.log('ERROR: Could not get state from MongoDB cache')
-            
             
             fetchStateFromAPI(stateCode, function(fetchedState) {
                 if(fetchedState === undefined || fetchedState.length == 0)  {
@@ -52,17 +49,12 @@ export default (req, res) => {
                         res.status(200).json(newCachedState[0])
                       }
                     })
-
                 }
             })
-
-
         } else {
           console.log('SUCCESS: Got state from MongoDB cache')
           res.status(200).json(cachedState[0])
         }
-
-
     })
 
   })
@@ -81,6 +73,7 @@ const getStateFromCache = function(db, stateCode, callback) {
 
 const fetchStateFromAPI = function(stateCode, callback) {
   // Fetch the state from the NPS API
+  console.log('fetchfromapi', `${NPS_API}/parks?stateCode=${stateCode}&fields=images&api_key=${NPS_KEY}`)
   fetch(`${NPS_API}/parks?stateCode=${stateCode}&fields=images&api_key=${NPS_KEY}`)
     .then( r => r.json() )
     .then( state => {
@@ -107,5 +100,3 @@ const writeStateToCache = function(db, stateCode, state, callback) {
       callback([state])
     })
 }
-
-
