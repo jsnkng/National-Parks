@@ -6,6 +6,9 @@ import Card from '../../../components/card';
 import Masthead from '../../../components/masthead';
 import states from '../../../components/statesLookup.js';
 
+const NEXT_API = process.env.NEXT_API
+
+
 
 const Parks = props => {
   const router = useRouter()
@@ -34,8 +37,7 @@ const Parks = props => {
 }
   
 Parks.getInitialProps = async ({query}) => {
-  // const parksEndpoint = `https://national-parks.now.sh/api/state/${query.stateCode}`
-  const parksEndpoint = `http://localhost:3000/api/state/${query.stateCode}`
+  const parksEndpoint = `${NEXT_API}/state/${query.stateCode}`
   const parksResult = await fetch(parksEndpoint)
   const result = await parksResult.json()
   

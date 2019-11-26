@@ -18,6 +18,7 @@ import Campgrounds from '../../../../../components/campgrounds'
 import MapContainer from '../../../../../components/googlemap'
 import NewsReleases from '../../../../../components/newsreleases'
 
+const NEXT_API = process.env.NEXT_API
 
 const Park = props => {
   const router = useRouter()
@@ -32,6 +33,8 @@ const Park = props => {
   const [campgrounds, setCampgrounds] = useState(props.parks.campgrounds.data)
   const [newsReleases, setNewsReleases] = useState(props.parks.newsreleases.data)
 
+
+console.log()
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
@@ -48,7 +51,6 @@ const Park = props => {
         })
       }
     </CarouselStyled>
-    
     <Description>
       <Grid>
         <Row>
@@ -126,8 +128,7 @@ const Park = props => {
   
 Park.getInitialProps = async ({query}) => {
 
-  // const parksEndpoint = `https://national-parks.now.sh/api/parks/${query.parkCode}`
-  const parksEndpoint = `http://localhost:3000/api/parks/${query.parkCode}`
+  const parksEndpoint = `${NEXT_API}/state/${query.stateCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
 
