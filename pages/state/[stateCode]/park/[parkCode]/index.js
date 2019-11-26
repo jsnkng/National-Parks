@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import { Carousel } from 'react-responsive-carousel';
+import absoluteUrl from 'next-absolute-url'
 
 import Masthead from '../../../../../components/masthead'
 import Footer from '../../../../../components/footer'
@@ -19,8 +20,6 @@ import MapContainer from '../../../../../components/googlemap'
 import NewsReleases from '../../../../../components/newsreleases'
 
 // const NEXT_API = process.env.NEXT_API
-const NEXT_API="https://national-parks.now.sh/api"
-console.log(NEXT_API)
 const Park = props => {
   const router = useRouter()
   const { stateCode } = router.query
@@ -125,8 +124,10 @@ const Park = props => {
   )
 }
   
-Park.getInitialProps = async ({query}) => {
-  const parksEndpoint = `${NEXT_API}/parks/${query.parkCode}`
+Park.getInitialProps = async (query) => {
+  const parkCode = query.query.parkCode
+  const { origin } = absoluteUrl(query.req)
+  const parksEndpoint = `${origin}/api/parks/${parkCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
   const result = {

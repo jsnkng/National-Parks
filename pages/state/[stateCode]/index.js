@@ -5,11 +5,7 @@ import styled from 'styled-components';
 import Card from '../../../components/card';
 import Masthead from '../../../components/masthead';
 import states from '../../../components/statesLookup.js';
-
-// const NEXT_API = process.env.NEXT_API
-
-
-const NEXT_API="https://national-parks.now.sh/api"
+import absoluteUrl from 'next-absolute-url'
 
 const Parks = props => {
   const router = useRouter()
@@ -37,8 +33,10 @@ const Parks = props => {
   )
 }
   
-Parks.getInitialProps = async ({query}) => {
-  const parksEndpoint = `${NEXT_API}/state/${query.stateCode}`
+Parks.getInitialProps = async (query) => {
+  const stateCode = query.query.stateCode
+  const { origin } = absoluteUrl(query.req)
+  const parksEndpoint = `${origin}/api/state/${stateCode}`
   const parksResult = await fetch(parksEndpoint)
   const result = await parksResult.json()
   

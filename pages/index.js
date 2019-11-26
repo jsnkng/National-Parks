@@ -14,7 +14,6 @@ const DB_URL="mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongo
 const NPS_API1 = process.env.NPS_API
 const NPS_KEY1 = process.env.NPS_KEY
 
-
 // // Connection URL
 const DB_URL1 = process.env.DB_URL
 
