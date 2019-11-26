@@ -11,12 +11,12 @@ const NPS_API="https://developer.nps.gov/api/v1"
 const DB_URL="mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongodb.net/NationalParkService_Cache?retryWrites=true&w=majority"
 
 // NPS API
-// const NPS_API = process.env.NPS_API
-// const NPS_KEY = process.env.NPS_KEY
+const NPS_API1 = process.env.NPS_API
+const NPS_KEY1 = process.env.NPS_KEY
 
 
 // // Connection URL
-// const DB_URL = process.env.DB_URL
+const DB_URL1 = process.env.DB_URL
 
   return (
   <>
@@ -29,6 +29,7 @@ const DB_URL="mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongo
     <Map />
     
     <div>
+      Secrets{NPS_API1}, {NPS_KEY1}, {DB_URL1}
       Hello{NPS_API}, {NPS_KEY}, {DB_URL}
     </div>
                   
