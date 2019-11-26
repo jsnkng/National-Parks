@@ -20,7 +20,7 @@ import NewsReleases from '../../../../../components/newsreleases'
 
 // const NEXT_API = process.env.NEXT_API
 const NEXT_API="https://national-parks.now.sh/api"
-
+console.log(NEXT_API)
 const Park = props => {
   const router = useRouter()
   const { stateCode } = router.query
@@ -42,7 +42,7 @@ const Park = props => {
     <CarouselStyled showArrows={true} showThumbs={false} infiniteLoop emulateTouch>
       { park.images.slice(0).map((item) => {
           return(
-            <ResponsiveImage backgroundURL={item.url}>
+            <ResponsiveImage key={item.id} backgroundURL={item.url}>
               <h4>{item.title}</h4>
               {/* <h5>{item.caption}</h5> */}
             </ResponsiveImage>

@@ -147,7 +147,6 @@ const MapWrapper = styled.div`
   #simpleStateForm select {
     background-color: transparent;
     background-repeat: no-repeat;
-    background-image: url(../../images/icons/arrow-down.png);
     background-position: 97% 12px;
     border: 1px solid #ddd;
     border-radius: 4px;

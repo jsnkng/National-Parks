@@ -12,11 +12,11 @@ const Alerts = props => {
        
         { alerts.slice(0).map((item) => {
           return(
-            <div>
-            <div style={{fontSize:'9px'}}>{item.category}</div>
-              <h4 style={{fontSize:'.75em',margin:'2px 0 8px 0'}}>{item.title}</h4>
-              {/* <h5 style={{fontSize:'9px';}}>{item.category}</h5> */}
-              {/* <p>{item.description}</p> */}
+            <div key={item.id}>
+              <div style={{fontSize:'9px'}}>{item.category}</div>
+                <h4 style={{fontSize:'.75em',margin:'2px 0 8px 0'}}>{item.title}</h4>
+                {/* <h5 style={{fontSize:'9px';}}>{item.category}</h5> */}
+                {/* <p>{item.description}</p> */}
               </div>
           )
         })
