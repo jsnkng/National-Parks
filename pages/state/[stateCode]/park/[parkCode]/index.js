@@ -127,11 +127,9 @@ console.log()
 }
   
 Park.getInitialProps = async ({query}) => {
-
-  const parksEndpoint = `${NEXT_API}/state/${query.stateCode}`
+  const parksEndpoint = `${NEXT_API}/parks/${query.parkCode}`
   const parksResult = await fetch(parksEndpoint)
   const parks = await parksResult.json()
-
   const result = {
     "parks" : parks,
     
