@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
-import Card from '../../../components/card';
+import Park from '../../../components/parks';
 import Masthead from '../../../components/masthead';
 import states from '../../../components/statesLookup.js';
 import absoluteUrl from 'next-absolute-url'
@@ -15,12 +15,12 @@ const Parks = props => {
 
 
   return (
-    <CardsWrapper>
+    <ParksWrapper>
     <Masthead pageTitle={`${states[stateCode]}`}>></Masthead>
-      <CardsContainer>
+      <ParksContainer>
         { parks.slice(0).map((item) => {
             return(
-              <Card 
+              <Park 
                 key={item.id} 
                 data={item} 
                 stateCode={stateCode}
@@ -28,8 +28,8 @@ const Parks = props => {
             )
           })
         }
-      </CardsContainer>
-    </CardsWrapper>
+      </ParksContainer>
+    </ParksWrapper>
   )
 }
   
@@ -39,17 +39,15 @@ Parks.getInitialProps = async (query) => {
   const parksEndpoint = `${origin}/api/state/${stateCode}`
   const parksResult = await fetch(parksEndpoint)
   const result = await parksResult.json()
-  
-  
     return result
   }
   
 export default Parks
 
-const CardsWrapper = styled.div`
+const ParksWrapper = styled.div`
   margin: 0;
 `
-const CardsContainer = styled.div`
+const ParksContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: top;

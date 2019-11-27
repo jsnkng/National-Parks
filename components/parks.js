@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import states from './statesLookup.js';
 
-const Card = props => {
+const Park = props => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
   const toggleIsDescriptionVisible = (e)=> {
 
@@ -12,7 +12,7 @@ const Card = props => {
   
     return (
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
-      <CardWrapper>
+      <ParkWrapper>
         <Banner>
           <Name>
             <h2>{props.data.name}</h2>
@@ -36,14 +36,14 @@ const Card = props => {
           </div> */}
         </Description>
         </ResponsiveImage>
-      </CardWrapper>
+      </ParkWrapper>
       </Link>
     )
 }
   
-export default Card
+export default Park
 
-const CardWrapper = styled.div`
+const ParkWrapper = styled.div`
   font-family: Helvetica;
   width: 640px;
   margin: 5px 5px;
