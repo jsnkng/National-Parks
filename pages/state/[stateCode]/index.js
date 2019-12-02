@@ -12,11 +12,13 @@ const Parks = props => {
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
  
+  // console.log(stateCode)
+  // console.log(parks)
 
 
   return (
     <ParksWrapper>
-    <Masthead pageTitle={`${states[stateCode]}`}>></Masthead>
+      <Masthead pageTitle={`${states[stateCode]}`}>></Masthead>
       <ParksContainer>
         { parks.slice(0).map((item) => {
             return(
@@ -39,8 +41,8 @@ Parks.getInitialProps = async (query) => {
   const parksEndpoint = `${origin}/api/state/${stateCode}`
   const parksResult = await fetch(parksEndpoint)
   const result = await parksResult.json()
-    return result
-  }
+  return result
+}
   
 export default Parks
 

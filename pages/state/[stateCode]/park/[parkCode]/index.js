@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import fetch from 'isomorphic-unfetch'
-import styled from 'styled-components'
-import SuperQuery from '@themgoncalves/super-query';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import { useRouter } from 'next/router'
 import { Carousel } from 'react-responsive-carousel';
 import absoluteUrl from 'next-absolute-url'
+import fetch from 'isomorphic-unfetch'
+import styled from 'styled-components'
+// import SuperQuery from '@themgoncalves/super-query';
 
 import Masthead from '../../../../../components/masthead'
 import Footer from '../../../../../components/footer'
@@ -23,15 +23,15 @@ import NewsReleases from '../../../../../components/newsreleases'
 const Park = props => {
   const router = useRouter()
   const { stateCode } = router.query
-  const [park, setPark] = useState(props.parks.parks.data[0])
-  const [places, setPlaces] = useState(props.parks.places.data)
-  const [people, setPeople] = useState(props.parks.people.data)
-  const [visitorCenters, setVisitorCenters] = useState(props.parks.visitorcenters.data)
-  const [events, setEvents] = useState(props.parks.events.data)
-  const [articles, setArticles] = useState(props.parks.articles.data)
-  const [alerts, setAlerts] = useState(props.parks.alerts.data)
-  const [campgrounds, setCampgrounds] = useState(props.parks.campgrounds.data)
-  const [newsReleases, setNewsReleases] = useState(props.parks.newsreleases.data)
+  const [park, setPark] = useState(props.data[0])
+  const [places, setPlaces] = useState(props.places.data)
+  const [people, setPeople] = useState(props.people.data)
+  const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
+  const [events, setEvents] = useState(props.events.data)
+  const [articles, setArticles] = useState(props.articles.data)
+  const [alerts, setAlerts] = useState(props.alerts.data)
+  const [campgrounds, setCampgrounds] = useState(props.campgrounds.data)
+  const [newsReleases, setNewsReleases] = useState(props.newsreleases.data)
 
   return (
     <>
@@ -71,8 +71,7 @@ const Park = props => {
     <MapWrapper>
     
       <MapContainer
-        lat={Number(park.latLong.split(",")[0].slice(4))} 
-        lng={Number(park.latLong.split(",")[1].slice(6))}
+        latLong={park.latLong}
         name={park.name}
         designation={park.designation}
       />
@@ -103,21 +102,16 @@ const Park = props => {
     <NewsReleases newsReleases={newsReleases} />
 
     <Events events={events} />
-    
       
     <CampgroundsStyled>
       <Campgrounds campgrounds={campgrounds} />
     </CampgroundsStyled>     
       
     <Places places={places} />
-        
 
     <Articles articles={articles} />
-      
     
     <People people={people} />
-        
-      
 
     <Footer pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Footer>
     </>
@@ -129,20 +123,11 @@ Park.getInitialProps = async (query) => {
   const { origin } = absoluteUrl(query.req)
   const parksEndpoint = `${origin}/api/parks/${parkCode}`
   const parksResult = await fetch(parksEndpoint)
-  const parks = await parksResult.json()
-  const result = {
-    "parks" : parks,
-    
-  }
-
-
-
+  const result = await parksResult.json()
   return result
 }
 
-
 export default Park
- 
 
 const DirectionsWeather = styled.div`
   font-family: Helvetica;
@@ -216,9 +201,7 @@ max-height: 400px !important;
   z-index: -10;
 `
 
-
 const CarouselStyled = styled(Carousel)`
-
 
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
   -webkit-transition: all 0.25s ease-in;
