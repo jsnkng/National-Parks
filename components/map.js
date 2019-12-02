@@ -123,17 +123,17 @@ const Map = () => {
       <Link href="/state/[stateCode]"  as='/state/me/'><area shape="poly" alt="Maine" coords="437,21,451,21,463,43,439,63,433,45,435,40" /></Link>
       <Link href="/state/[stateCode]"  as='/state/ny/'><area shape="poly" alt="New York" coords="377,82,373,94,411,88,413,93,422,84,415,66,409,56" /></Link>
       <Link href="/state/[stateCode]"  as='/state/pa/'><area shape="poly" alt="Pennsylvania" coords="371,96,368,100,369,119,393,117,395,113,412,113,415,109,411,103,412,96,408,90" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/dc/'><area shape="rect" alt="Washington, DC" coords="475,157,494,167" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/de/'><area shape="rect" alt="Delaware" coords="475,147,494,156" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/md/'><area shape="rect" alt="Maryland" coords="475,136,494,146" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/nj/'><area shape="rect" alt="New Jersey" coords="475,123,494,132" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/ct/'><area shape="rect" alt="Connecticut" coords="475,112,494,122" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/ri/'><area shape="rect" alt="Rhode Island" coords="475,99,494,109" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/ma/'><area shape="rect" alt="Massachusetts" coords="475,80,494,89" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/nh/'><area shape="rect" alt="New Hampshire" coords="475,62,494,71" /></Link>
-        <Link href="/state/[stateCode]"  as='/state/vt/'><area shape="rect" alt="Vermont" coords="475,50,494,60" /></Link>
-      </map>
-    </MapWrapper>
+      <Link href="/state/[stateCode]"  as='/state/dc/'><area shape="rect" alt="Washington, DC" coords="475,157,494,167" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/de/'><area shape="rect" alt="Delaware" coords="475,147,494,156" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/md/'><area shape="rect" alt="Maryland" coords="475,136,494,146" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/nj/'><area shape="rect" alt="New Jersey" coords="475,123,494,132" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/ct/'><area shape="rect" alt="Connecticut" coords="475,112,494,122" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/ri/'><area shape="rect" alt="Rhode Island" coords="475,99,494,109" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/ma/'><area shape="rect" alt="Massachusetts" coords="475,80,494,89" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/nh/'><area shape="rect" alt="New Hampshire" coords="475,62,494,71" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/vt/'><area shape="rect" alt="Vermont" coords="475,50,494,60" /></Link>
+    </map>
+  </MapWrapper>
   )
 }
 

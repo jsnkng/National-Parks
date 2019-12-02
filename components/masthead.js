@@ -12,7 +12,8 @@ const Masthead = props => {
       </HeaderItem> 
       <HeaderItem>
         <h2>{props.subTitle}</h2>
-        <Link href={`/state/${props.stateCode}`}>
+
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
           <h3><a>{states[props.stateCode]}</a></h3>
         </Link>
         <Link href="/">
