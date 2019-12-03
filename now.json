@@ -1,6 +1,4 @@
 {
-    "name": "national parks",
-    "version": 1,
     "build": {
     "env": {
         "NPS_API": "https://developer.nps.gov/api/v1",
