@@ -14,6 +14,11 @@ const Home = () => {
     
     <Masthead pageTitle="National Park Service"></Masthead>
     <Map />
+    
+    <div>
+      {/* Secrets{NPS_API1}, {NPS_KEY1}, {DB_URL1} */}
+      Hello{process.env.NPS_URI}, {process.env.NPS_KEY}, {process.env.MONGODB_URI}
+    </div>
                   
   </>
   )
