@@ -9,17 +9,18 @@ const Masthead = props => {
     <HeaderMenu>
       <HeaderItem>
         <h1>{props.pageTitle}</h1>
+        <h2>{props.subTitle}</h2>
       </HeaderItem> 
       <HeaderItem>
-        <h2>{props.subTitle}</h2>
 
+        
         <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
           <h3><a>{states[props.stateCode]}</a></h3>
         </Link>
-        <Link href="/">
+        {/* <Link href="/">
           <p><a>U.S. Department of the Interior<br />
           National Park Service</a></p>
-        </Link>
+        </Link> */}
       </HeaderItem> 
       <HeaderItem>
         <Link href="/">
@@ -50,7 +51,7 @@ const HeaderMenu = styled.header`
 `
 
 const HeaderItem = styled.div`
-  padding: 0 10px 0 10px;
+  padding: 0;
   align-items: left;
   box-sizing: border-box;
   list-style-type: none;
@@ -60,23 +61,23 @@ const HeaderItem = styled.div`
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 2.65em;
+    font-size: 1.5em;
     width: 100%;
   }
   h2 {
     margin: 4px 0 0 0;
-    font-weight: 600;
-    letter-spacing: -1.5px;
+    font-weight: 500;
+    letter-spacing: -1px;
     line-height: 1;
-    font-size: .85em;
+    font-size: 1em;
     width: 100%;
   }
   h3 {
     margin: 0;
     font-weight: 400;
-    letter-spacing: -1.5px;
-    line-height: 1;
-    font-size: .85em;
+    letter-spacing: -1px;
+    line-height: 2;
+    font-size: 1em;
   }
   a {
       color: #fff;

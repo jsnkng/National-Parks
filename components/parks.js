@@ -15,27 +15,16 @@ const Park = props => {
       <ParkWrapper>
         <Banner>
           <Name>
+            {/* <img src="/US-National-Parks-logo-sml-bw.png" /> */}
             <h2>{props.data.name}</h2>
+            <h3>{props.data.designation}</h3>
           </Name>
-          <Identifier>
-            <span>
-              {/* <p>National Park Service<br />
-              U.S. Department of the Interior</p> */}
-              <h3>{props.data.designation}</h3>
-            </span>
-            <img src="/US-National-Parks-logo-sml.gif" />
-          </Identifier>
         </Banner> 
-        <ResponsiveImage onMouseOver={toggleIsDescriptionVisible} onMouseOut={toggleIsDescriptionVisible} backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "" : props.data.images[0].url  } height="250px">
-        <Description  className={isDescriptionVisible === true ? 'visible' : 'hidden'}>
-          <div className="parkInfo">
-            <p className="description">{props.data.description}</p>
-          </div>
-          {/* <div>
-            <span className="states">{props.data.states}</span>
-          </div> */}
-        </Description>
-        </ResponsiveImage>
+        <ResponsiveImage 
+          onMouseOver={toggleIsDescriptionVisible} 
+          onMouseOut={toggleIsDescriptionVisible} 
+          backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "" : props.data.images[0].url  } 
+          height="250px" />
       </ParkWrapper>
       </Link>
     )
@@ -51,7 +40,6 @@ const ParkWrapper = styled.div`
   border: solid 1px #cccccc;
   cursor: pointer;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
-
 
   & .parkInfo {
     max-width: 85%;
@@ -78,10 +66,8 @@ const Banner = styled.div`
   color: #ffffff;
 `
 const Name = styled.div`
-  width: 62%;
-    float: left;
-
   h2 {
+    float:left;
     margin: 0;
     font-weight: 700;
     letter-spacing: -1.5px;
@@ -89,42 +75,29 @@ const Name = styled.div`
     font-size: 1.75em;
     font-weight: 600;
   }
-`
-const Identifier = styled.div`
-  width: 38%;
-  float: right;
-  p {
-    font-weight: 500;
-    font-size: .6em;
-    margin: 0;
-  }
   h3 {
+    float:right;
     font-weight: 600;
-    font-size: .85em;
+    font-size: .66em;
     margin: .25em 0 0 0;
-  }
-  span {
-    width: 80%;
-    float: left;
   }
   img {
     float: right;
     width: 32px;
   }
-  
 `
 const Description = styled.div`
-opacity: 0;
-position: absolute;
-bottom: 20px;
-width:80%;
-background-color: #fff;
+  opacity: 0;
+  position: absolute;
+  bottom: 20px;
+  width:80%;
+  background-color: #fff;
   &.visible {
     opacity: 1;
   }
 `
 const ResponsiveImage = styled.div`
-position: relative;
+  position: relative;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center bottom;

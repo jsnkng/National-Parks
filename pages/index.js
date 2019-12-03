@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Head from 'next/head'
 import Masthead from '../components/masthead';
 import Map from '../components/map';
+import SelectState from '../components/selectstate';
 
 const Home = () => {
   return (
@@ -12,10 +13,10 @@ const Home = () => {
       <link rel='icon' href='/favicon.ico' />
     </Head>
     
-    <Masthead pageTitle="National Park Service"></Masthead>
+    <Masthead pageTitle="National Parks"></Masthead>
+    <SelectState />
     <Map />
-    
-         
+        
   </>
   )
 }

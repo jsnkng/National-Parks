@@ -35,11 +35,10 @@ const Parks = props => {
   )
 }
   
-Parks.getInitialProps = async (query) => {
-  const stateCode = query.query.stateCode
-  const { origin } = absoluteUrl(query.req)
-  const parksEndpoint = `${origin}/api/state/${stateCode}`
-  const parksResult = await fetch(parksEndpoint)
+Parks.getInitialProps = async (context) => {
+  const {stateCode} = context.query
+  const {origin}  = absoluteUrl(context.req)
+  const parksResult = await fetch(`${origin}/api/state/${stateCode}`)
   const result = await parksResult.json()
   return result
 }
