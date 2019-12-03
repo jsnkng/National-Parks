@@ -9,30 +9,22 @@ const Masthead = props => {
     <HeaderMenu>
       <HeaderItem>
         <h1>{props.pageTitle}</h1>
-        <h2>{props.subTitle}</h2>
+        <h2><a>{states[props.stateCode]}</a></h2>
       </HeaderItem> 
       <HeaderItem>
-
-        
         <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
-          <h3><a>{states[props.stateCode]}</a></h3>
+        <h3>{props.subTitle}</h3>
         </Link>
-        {/* <Link href="/">
-          <p><a>U.S. Department of the Interior<br />
-          National Park Service</a></p>
-        </Link> */}
       </HeaderItem> 
       <HeaderItem>
         <Link href="/">
-          <a><img src="/US-National-Parks-logo-sml-bw.png" width="60" /></a>
+          <a><img src="/US-National-Parks-logo-sml-bw.png" width="32" /></a>
         </Link>
       </HeaderItem> 
     </HeaderMenu>
   )
 }
 export default Masthead
-
-
 
 const HeaderMenu = styled.header`
   display: grid;
@@ -46,7 +38,6 @@ const HeaderMenu = styled.header`
   right: 0;
   padding: 15px;
   margin: 0;
-  height: 70px;
 
 `
 
@@ -73,11 +64,14 @@ const HeaderItem = styled.div`
     width: 100%;
   }
   h3 {
-    margin: 0;
+    float: right;
+    text-align: right;
+    margin: .85em 1.5em 0 0;
     font-weight: 400;
     letter-spacing: -1px;
-    line-height: 2;
-    font-size: 1em;
+    line-height: 1;
+    font-size: .75em;
+    width: 100%;
   }
   a {
       color: #fff;

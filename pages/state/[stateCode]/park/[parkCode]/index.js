@@ -68,7 +68,7 @@ const Park = props => {
       </Row>
     </Grid>
     </Description>
-    <MapWrapper>
+    <MapWrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
     
       <MapContainer
         latLong={park.latLong}

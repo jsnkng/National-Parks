@@ -2,17 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import Router from 'next/router'
 import Link from 'next/link'
+import SuperQuery from '@themgoncalves/super-query'
 
 const Map = () => {
   return (
     <MapWrapper>
-    <h2>Find National Parks by State</h2>
-
-      
-      <img src="/US-map.jpg" alt="National Map" width="100%" border="0" useMap="#Map" />
+      <img src="/US-map.png" alt="National Map" width="550" border="0" useMap="#Map" />
       <map name="Map" id="Map">
       <Link href="/state/[stateCode]"  as='/state/hi/'><area shape="rect" alt="Hawaii" coords="163,293,239,351" /></Link>
-      <Link href="/state/[stateCode]"  as='/state/vt/'><area shape="rect" alt="Virgin Islands" coords="433,294,477,354" /></Link>
+      <Link href="/state/[stateCode]"  as='/state/vi/'><area shape="rect" alt="Virgin Islands" coords="433,294,477,354" /></Link>
       <Link href="/state/[stateCode]"  as='/state/mp/'><area shape="rect" alt="Northern Mariana Islands" coords="424,218,496,287" /></Link>
       <Link href="/state/[stateCode]"  as='/state/pr/'><area shape="rect" alt="Puerto Rico" coords="368,295,426,347" /></Link>
       <Link href="/state/[stateCode]"  as='/state/gu/'><area shape="rect" alt="Guam" coords="321,295,357,348" /></Link>
@@ -80,6 +78,8 @@ export default Map
 
 const MapWrapper = styled.div`
   margin: 20px auto;
-  width: 550px;
-  
+  area:hover {
+    cursor: pointer;
+  }
+  text-align: center;
 `

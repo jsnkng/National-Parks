@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 import Park from '../../../components/parks';
 import Masthead from '../../../components/masthead';
+import Footer from '../../../components/footer'
 import states from '../../../components/statesLookup.js';
 import absoluteUrl from 'next-absolute-url'
 
@@ -31,6 +32,8 @@ const Parks = props => {
           })
         }
       </ParksContainer>
+
+    <Footer pageTitle={`${states[stateCode]}`} subTitle="National Parks" stateCode={stateCode}></Footer>
     </ParksWrapper>
   )
 }

@@ -1,21 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import Router from 'next/router'
+import Link from 'next/link'
 import states from './statesLookup'
+import SuperQuery from '@themgoncalves/super-query'
 
 const SelectState = () => {
-  const handleSelectState = (e) => {
-    Router.push(`/state/${e.target.value}`)
-  }
   return (
     <SelectStateWrapper>
-    <form id="simpleStateForm" onChange={handleSelectState}>
-      Select a State:
-      <select name="state" id="state">
-        <option value="">None Selected</option>
-        { Object.entries(states).map(([key, value]) => <option value={key}>{value}</option>)}
-      </select>
-    </form>
+    <div class="states__container">
+        { Object.entries(states).map(([key, value]) => {
+          const as = "/state/" + key
+         return ( <div class="states__item"><Link href="/state/[stateCode]"  as={as}><a>{value}</a></Link></div>)} )
+        }
+    </div>
     </SelectStateWrapper>
   )
 }
@@ -23,6 +21,10 @@ const SelectState = () => {
 export default SelectState
 
 const SelectStateWrapper = styled.div`
+  margin: 0 auto;
+  min-width:400px;
+  max-width: 640px;
+
   select {
     background-color: transparent;
     background-repeat: no-repeat;
@@ -35,5 +37,25 @@ const SelectStateWrapper = styled.div`
     color:#737373;
     font-weight: bold;
     font-size:12px;
+  }
+
+  .states__container {
+    margin: 2em;
+    columns: 2;
+    ${SuperQuery().minWidth.sm.css`
+      columns: 3;
+    `}
+  }
+  .states__item {
+    width: 140px;
+    a {
+      color: #333;
+      font-weight: 500;
+      letter-spacing: -.5px;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #888;
+    }
   }
 `

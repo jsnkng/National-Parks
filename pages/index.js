@@ -13,9 +13,9 @@ const Home = () => {
       <link rel='icon' href='/favicon.ico' />
     </Head>
     
-    <Masthead pageTitle="National Parks"></Masthead>
-    <SelectState />
+    <Masthead pageTitle="U.S. National Parks"></Masthead>
     <Map />
+    <SelectState />
         
   </>
   )
