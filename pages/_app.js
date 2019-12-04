@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
+import SuperQuery from '@themgoncalves/super-query'
 
 import Link from 'next/link'
 const links = [
@@ -23,6 +24,17 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: #fafafa;
     line-height: 1.6;
+    font-size:14px;
+
+    ${SuperQuery().minWidth.sm.css`
+      font-size:17px;
+    `}
+    ${SuperQuery().minWidth.md.css`
+      font-size:20px;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      font-size:23px;
+    `}
   }
   h1,h2,h3,h4,h5,h6,p {
     margin: .4em 0;

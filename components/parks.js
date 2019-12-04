@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link'
+import SuperQuery from '@themgoncalves/super-query'
 import states from './statesLookup.js';
 
 const Park = props => {
@@ -17,18 +18,18 @@ const Park = props => {
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
       <ParkWrapper onClick={handleBannerClick}>
         <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <div class="sk-cube-grid">
-          <div class="sk-cube sk-cube1"></div>
-          <div class="sk-cube sk-cube2"></div>
-          <div class="sk-cube sk-cube3"></div>
-          <div class="sk-cube sk-cube4"></div>
-          <div class="sk-cube sk-cube5"></div>
-          <div class="sk-cube sk-cube6"></div>
-          <div class="sk-cube sk-cube7"></div>
-          <div class="sk-cube sk-cube8"></div>
-          <div class="sk-cube sk-cube9"></div>
-        Loading
-        </div>
+          <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+          Loading
+          </div>
         </Spinner>
         <Banner>
           <Name>
@@ -40,8 +41,7 @@ const Park = props => {
         <ResponsiveImage 
           onMouseOver={toggleIsDescriptionVisible} 
           onMouseOut={toggleIsDescriptionVisible} 
-          backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "" : props.data.images[0].url  } 
-          height="250px" />
+          backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "" : props.data.images[0].url } />
       </ParkWrapper>
       </Link>
     )
@@ -50,13 +50,17 @@ const Park = props => {
 export default Park
 
 const ParkWrapper = styled.div`
+  width: 100%;
+  position: relative;
   font-family: Helvetica;
-  width: 640px;
-  margin: 5px 5px;
-  min-height: 320px;
-  border: solid 1px #cccccc;
+  height: 360px;
   cursor: pointer;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
+
+  ${SuperQuery().minWidth.lg.css`
+    width: 50%;
+    height: 400px;
+  `}
 
   & .parkInfo {
     max-width: 85%;
@@ -76,10 +80,64 @@ const ParkWrapper = styled.div`
   }
    
 `
+const Banner = styled.div`
+  background-color: rgba(0,0,0,.70);
+  height: 40px;
+  padding: 15px;
+  color: #ffffff;
+  z-index: 230;
+`
+const ResponsiveImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.70);
+  background-image: url(${props => props.backgroundURL});
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: -10;
+
+`
+const Name = styled.div`
+  h2 {
+    float:left;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    font-size: 1.75em;
+    font-weight: 600;
+  }
+  h3 {
+    float:right;
+    font-weight: 600;
+    font-size: .66em;
+    margin: .25em 0 0 0;
+  }
+  img {
+    float: right;
+    width: 32px;
+  }
+`
+const Description = styled.div`
+  opacity: 0;
+  position: absolute;
+  bottom: 20px;
+  width:80%;
+  background-color: #fff;
+  &.visible {
+    opacity: 1;
+  }
+`
+
 
 const Spinner = styled.div`
-  width: 640px;
-  min-height: 320px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   z-index: 100;
   background-color: rgba(0,0,0,0.7);
@@ -152,53 +210,4 @@ const Spinner = styled.div`
             transform: scale3D(0, 0, 1);
   } 
 }
-`
-
-
-const Banner = styled.div`
-  background-color: #1e1d1e;
-  height: 40px;
-  padding: 15px;
-  color: #ffffff;
-`
-const Name = styled.div`
-  h2 {
-    float:left;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-    line-height: 1;
-    font-size: 1.75em;
-    font-weight: 600;
-  }
-  h3 {
-    float:right;
-    font-weight: 600;
-    font-size: .66em;
-    margin: .25em 0 0 0;
-  }
-  img {
-    float: right;
-    width: 32px;
-  }
-`
-const Description = styled.div`
-  opacity: 0;
-  position: absolute;
-  bottom: 20px;
-  width:80%;
-  background-color: #fff;
-  &.visible {
-    opacity: 1;
-  }
-`
-const ResponsiveImage = styled.div`
-  position: relative;
-  background-image: url(${props => props.backgroundURL});
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: ${props => props.height};
-  margin: 0;
 `

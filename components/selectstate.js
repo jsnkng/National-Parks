@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Router from 'next/router'
 import Link from 'next/link'
 import states from './statesLookup'
 import SuperQuery from '@themgoncalves/super-query'

@@ -46,7 +46,6 @@ const HeaderItem = styled.div`
   align-items: left;
   box-sizing: border-box;
   list-style-type: none;
-
   h1 {
     margin: 0;
     font-weight: 700;
