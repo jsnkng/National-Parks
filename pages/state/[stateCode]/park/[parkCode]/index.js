@@ -38,7 +38,7 @@ const Park = props => {
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
      {/* <ResponsiveImage backgroundURL={park.images[0].url === undefined || park.images[0].url.length == 0 ? "" : park.images[0].url  } height="450px" /><br /><br /> */}
    
-    <CarouselStyled showArrows={true} showThumbs={false} infiniteLoop emulateTouch>
+    <CarouselStyled showArrows={true} showThumbs={false} infiniteLoop={true} emulateTouch={true} showStatus={false}>
       { park.images.slice(0).map((item) => {
           return(
             <ResponsiveImage key={item.id} backgroundURL={item.url}>
@@ -52,21 +52,22 @@ const Park = props => {
     <Description>
       <Grid>
         <Row>
-        <Col xs={12} sm={8} md={9}>
-          {/* {park.fullName}<br /> */}
-          {/* {park.states}<br /><br /> */}
-          <h2>{park.name} {park.designation}</h2>
-          <p>{park.description}<br /></p>
-          {/* <a href="{park.url}">National Park Service’s {park.name} Resource.</a> */}
-          {/* {park.parkCode}<br /> */}
-          {/* {park.id}<br /> */}
-      </Col>
-      <Col xs={12} sm={4} md={3}>
-      <Alerts alerts={alerts} />
-        
-      </Col>
-      </Row>
-    </Grid>
+          <Col xs={12} sm={8} md={9}>
+            {/* {park.fullName}<br /> */}
+            <h2>{park.name} {park.designation}</h2>
+            <p>{park.description}<br /></p>
+            <a href="{park.url}">National Park Service’s {park.name} Resource.</a><br /><br />
+            {/* {park.parkCode}<br /> */}
+            {/* {park.id}<br /> */}
+            {park.states}
+          </Col>
+          <Col xs={12} sm={4} md={3}>
+
+            <Alerts alerts={alerts} />
+            
+          </Col>
+        </Row>
+      </Grid>
     </Description>
     <MapWrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
     
@@ -76,24 +77,28 @@ const Park = props => {
         designation={park.designation}
       />
     </MapWrapper>
-    <DirectionsWeather>
+    <DirectionsWeatherWrapper>
     <Grid>
       <Row>
         <Col xs={12} sm={6} md={6}>
+          <DirectionsWeather>
             <h3>Directions</h3>
             <p>{park.directionsInfo}</p>
             {/* {park.directionsUrl}<br />*/}
-          </Col>
-          <Col xs={12} sm={6} md={6}>
-             {/* {park.url}<br /> */}
-            <h3>Weather</h3>
-            <p>{park.weatherInfo}</p>
-            {/* {park.latLong}<br /> */}
-            {/* <ResponsiveImage backgroundURL={park.images[1].url === undefined || park.images[1].url.length == 0 ? "" : park.images[1].url  } height="250px" /><br /><br /> */}
+          </DirectionsWeather>
+        </Col>
+        <Col xs={12} sm={6} md={6}>
+          <DirectionsWeather>
+            {/* {park.url}<br /> */}
+          <h3>Weather</h3>
+          <p>{park.weatherInfo}</p>
+          {/* {park.latLong}<br /> */}
+          {/* <ResponsiveImage backgroundURL={park.images[1].url === undefined || park.images[1].url.length == 0 ? "" : park.images[1].url  } height="250px" /><br /><br /> */}
+          </DirectionsWeather>
         </Col>
       </Row>
     </Grid>
-    </DirectionsWeather>
+    </DirectionsWeatherWrapper>
 
     <VisitorCentersStyled>
       <VisitorCenters visitorCenters={visitorCenters} />
@@ -129,16 +134,38 @@ Park.getInitialProps = async (query) => {
 
 export default Park
 
-const DirectionsWeather = styled.div`
+const DirectionsWeatherWrapper = styled.div`
   font-family: Helvetica;
   padding: 35px 0;
   background-color: #1e1d1e;
   color: #ffffff;
+  padding: 0;
+  margin: 0;
 
   p {
    font-size: .9em;
   }
 `
+const DirectionsWeather = styled.div`
+  font-family: Helvetica;
+  background-color: #d2d0b6;
+  color: #333333; 
+  margin: 1em 0;
+
+  p {
+   font-size: .9em;
+   padding: 13px;
+  }
+  h3 {
+    background-color: #333333;
+    color: #d2d0b6;
+    margin: 0;
+    padding: 10px 15px 10px 10px;
+    line-height: 1;
+    align-self: center;
+  }
+`
+
 
 const ResponsiveImage = styled.div`
   position: relative;
@@ -183,6 +210,9 @@ const Description = styled.div`
   margin: 0;
   background-color: #1e1d1e;
   color: #ffffff;
+  a {
+    color: #4c93d9;
+  }
 `
 
 const CampgroundsStyled = styled.div`
@@ -193,12 +223,10 @@ const CampgroundsStyled = styled.div`
 `
 const VisitorCentersStyled = styled.div`
   font-family: Helvetica;
-  padding: 35px 0;
+  padding: 1px 15px 15px 15px;
   margin: 0;
+  background-color: #ffffff;
 
-  p {
-   font-size: .9em;
-  }
 `
 
 const MapWrapper = styled.div`

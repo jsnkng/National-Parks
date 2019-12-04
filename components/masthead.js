@@ -9,6 +9,11 @@ const Masthead = props => {
   return (
     <HeaderMenu>
       <HeaderItem>
+        <Link href="/">
+          <a><img src="/US-National-Parks-logo-sml-bw.png" width="42" /></a>
+        </Link>
+      </HeaderItem> 
+      <HeaderItem>
         <h1>{props.pageTitle}</h1>
         <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
         <h2><a>{states[props.stateCode]}</a></h2>
@@ -17,11 +22,6 @@ const Masthead = props => {
       <HeaderItem>
         <h3>{props.subTitle}</h3>
       </HeaderItem> 
-      <HeaderItem>
-        <Link href="/">
-          <a><img src="/US-National-Parks-logo-sml-bw.png" width="32" /></a>
-        </Link>
-      </HeaderItem> 
     </HeaderMenu>
   )
 }
@@ -29,7 +29,7 @@ export default Masthead
 
 const HeaderMenu = styled.header`
   display: grid;
-  grid-template-columns: 12fr 6fr 1fr;
+  grid-template-columns: 1fr 12fr 6fr ;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   font-family: Helvetica;

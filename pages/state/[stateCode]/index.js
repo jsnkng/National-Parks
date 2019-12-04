@@ -18,7 +18,7 @@ const Parks = props => {
  
   return (
     <ParksWrapper>
-      <Masthead pageTitle={`${states[stateCode]}`}>></Masthead>
+      <Masthead pageTitle="U.S. National Parks" stateCode={stateCode}></Masthead>
       <ParksContainer>
         { parks.slice(0).map((item) => {
             return(
