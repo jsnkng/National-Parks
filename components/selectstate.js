@@ -8,10 +8,10 @@ import SuperQuery from '@themgoncalves/super-query'
 const SelectState = () => {
   return (
     <SelectStateWrapper>
-    <div class="states__container">
+    <div className="states__container">
         { Object.entries(states).map(([key, value]) => {
           const as = "/state/" + key
-         return ( <div class="states__item"><Link href="/state/[stateCode]"  as={as}><a>{value}</a></Link></div>)} )
+         return ( <div key={key} className="states__item"><Link href="/state/[stateCode]"  as={as}><a>{value}</a></Link></div>)} )
         }
     </div>
     </SelectStateWrapper>

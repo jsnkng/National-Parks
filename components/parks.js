@@ -5,14 +5,31 @@ import states from './statesLookup.js';
 
 const Park = props => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
   const toggleIsDescriptionVisible = (e)=> {
-
     setIsDescriptionVisible(!isDescriptionVisible)
   }
-  
+  const handleBannerClick = () => {
+    console.log('banner clicked')
+    setIsSpinnerVisible(true)
+  }
     return (
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
-      <ParkWrapper>
+      <ParkWrapper onClick={handleBannerClick}>
+        <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+        <div class="sk-cube-grid">
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+        Loading
+        </div>
+        </Spinner>
         <Banner>
           <Name>
             {/* <img src="/US-National-Parks-logo-sml-bw.png" /> */}
@@ -59,6 +76,85 @@ const ParkWrapper = styled.div`
   }
    
 `
+
+const Spinner = styled.div`
+  width: 640px;
+  min-height: 320px;
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0,0,0,0.7);
+  color: #ffffff;
+  font-size: .7em;
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
+  .sk-cube-grid {
+    width: 40px;
+    height: 40px;
+    margin: 100px auto;
+  }
+
+  .sk-cube-grid .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: #ffffff;
+    float: left;
+    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+            animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+  }
+  .sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s; }
+  .sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1); 
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  } 
+}
+`
+
+
 const Banner = styled.div`
   background-color: #1e1d1e;
   height: 40px;

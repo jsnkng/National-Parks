@@ -7,6 +7,7 @@ import SuperQuery from '@themgoncalves/super-query'
 const Map = () => {
   return (
     <MapWrapper>
+    
       <img src="/US-map.png" alt="National Map" width="550" border="0" useMap="#Map" />
       <map name="Map" id="Map">
       <Link href="/state/[stateCode]"  as='/state/hi/'><area shape="rect" alt="Hawaii" coords="163,293,239,351" /></Link>

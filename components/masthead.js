@@ -9,12 +9,12 @@ const Masthead = props => {
     <HeaderMenu>
       <HeaderItem>
         <h1>{props.pageTitle}</h1>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
         <h2><a>{states[props.stateCode]}</a></h2>
+        </Link>
       </HeaderItem> 
       <HeaderItem>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
         <h3>{props.subTitle}</h3>
-        </Link>
       </HeaderItem> 
       <HeaderItem>
         <Link href="/">
