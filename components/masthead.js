@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import states from './statesLookup.js';
+import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
 
@@ -29,16 +30,24 @@ export default Masthead
 const HeaderMenu = styled.header`
   display: grid;
   grid-template-columns: 12fr 6fr 1fr;
-  background-color: #1e1d1e;
+  background-color: rgba(0,0,0,.8);
   color: #ffffff;
   font-family: Helvetica;
   position: relative;
   top: 0;
   left: 0;
   right: 0;
+  height: 50px;
   padding: 15px;
+  z-index: 10;
   margin: 0;
 
+  ${SuperQuery().minWidth.md.css`
+    height: 60px;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 70px;
+  `}
 `
 
 const HeaderItem = styled.div`
@@ -73,9 +82,9 @@ const HeaderItem = styled.div`
     width: 100%;
   }
   a {
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
     }
   p {
     margin: 5px 0;

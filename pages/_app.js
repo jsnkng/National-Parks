@@ -27,13 +27,13 @@ const GlobalStyle = createGlobalStyle`
     font-size:14px;
 
     ${SuperQuery().minWidth.sm.css`
-      font-size:17px;
+      font-size:16px;
     `}
     ${SuperQuery().minWidth.md.css`
-      font-size:20px;
+      font-size:18px;
     `}
     ${SuperQuery().minWidth.lg.css`
-      font-size:23px;
+      font-size:20px;
     `}
   }
   h1,h2,h3,h4,h5,h6,p {

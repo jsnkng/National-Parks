@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import absoluteUrl from 'next-absolute-url'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
-// import SuperQuery from '@themgoncalves/super-query';
+import SuperQuery from '@themgoncalves/super-query';
 
 import Masthead from '../../../../../components/masthead'
 import Footer from '../../../../../components/footer'
@@ -148,10 +148,17 @@ const ResponsiveImage = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 60vw;
+  height: 65vh;
   max-width: 100%;
-  max-height: 800px;
 
+  ${SuperQuery().minWidth.md.css`
+    height: 60vw;
+    max-height: 72vh;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 70vw;
+    max-height: 82vh;
+  `}
   h4 {
     position: absolute;
     bottom: 35px;
@@ -172,7 +179,7 @@ const ResponsiveImage = styled.div`
 
 const Description = styled.div`
   font-family: Helvetica;
-  padding: 35px 0;
+  padding: 15px 0 35px 0;
   margin: 0;
   background-color: #1e1d1e;
   color: #ffffff;
@@ -203,6 +210,14 @@ const MapWrapper = styled.div`
 `
 
 const CarouselStyled = styled(Carousel)`
+  margin-top: -80px;
+
+  ${SuperQuery().minWidth.md.css`
+    margin-top: -90px;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    margin-top: -100px;
+  `}
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;
     -moz-transition: all 0.25s ease-in;

@@ -9,27 +9,22 @@ const Footer = props => {
     <HeaderMenu>
       <HeaderItem>
         <h1>{props.pageTitle}</h1>
-      </HeaderItem> 
-      <HeaderItem>
-        <h2>{props.subTitle}</h2>
-        <Link href={`/state/${props.stateCode}`}>
-          <h3><a>{states[props.stateCode]}</a></h3>
-        </Link>
-        <Link href="/">
-          <p><a>U.S. Department of the Interior<br />
-          National Park Service</a></p>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
+        <h2><a>{states[props.stateCode]}</a></h2>
         </Link>
       </HeaderItem> 
       <HeaderItem>
+        <h3>{props.subTitle}</h3>
+      </HeaderItem> 
+      <HeaderItem>
         <Link href="/">
-          <a><img src="/US-National-Parks-logo-sml-bw.png" width="60" /></a>
+          <a><img src="/US-National-Parks-logo-sml-bw.png" width="32" /></a>
         </Link>
       </HeaderItem> 
     </HeaderMenu>
   )
 }
 export default Footer
-
 
 
 const HeaderMenu = styled.header`
@@ -44,38 +39,39 @@ const HeaderMenu = styled.header`
   right: 0;
   padding: 15px;
   margin: 0;
-  height: 70px;
 
 `
 
 const HeaderItem = styled.div`
-  padding: 0 10px 0 10px;
+  padding: 0;
   align-items: left;
   box-sizing: border-box;
   list-style-type: none;
-
   h1 {
     margin: 0;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 2.65em;
+    font-size: 1.5em;
     width: 100%;
   }
   h2 {
     margin: 4px 0 0 0;
-    font-weight: 600;
-    letter-spacing: -1.5px;
+    font-weight: 500;
+    letter-spacing: -1px;
     line-height: 1;
-    font-size: .85em;
+    font-size: 1em;
     width: 100%;
   }
   h3 {
-    margin: 0;
+    float: right;
+    text-align: right;
+    margin: .85em 1.5em 0 0;
     font-weight: 400;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     line-height: 1;
-    font-size: .85em;
+    font-size: .75em;
+    width: 100%;
   }
   a {
       color: #fff;
