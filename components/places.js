@@ -5,29 +5,31 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 const Places = props => {
   const [places, setPlaces] = useState(props.places)
   return (
-    <Grid>
-    <Row>
-    <Col>
+    <PlacesWrapper>
+    <PlacesGrid>
+    <PlacesRow>
+    <PlacesCol>
       { places !== undefined && places.length != 0 &&
-      <h2>Places</h2>
+      <h3>Places</h3>
       }
-      </Col>
-    </Row>
-    <Row>
+      </PlacesCol>
+    </PlacesRow>
+    <PlacesRow>
       { places.slice(0).map((item) => {
         return(
-          <Col xs={12} sm={6} md={3} key={item.id}>
+          <PlacesCol xs={12} sm={6} md={3} key={item.id}>
             {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
                 <ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
             }
-            <h3>{item.title}</h3>
+            <h4>{item.title}</h4>
             <p>{item.listingdescription}</p>
-          </Col>
+          </PlacesCol>
         )
       })
     }
-    </Row>
-  </Grid>
+    </PlacesRow>
+  </PlacesGrid>
+  </PlacesWrapper>
   )
 }
   
@@ -43,4 +45,34 @@ const ResponsiveImage = styled.div`
   height: 16vw;
   min-height: 300px;
   margin: 0;
+`
+
+const PlacesWrapper = styled.div`
+  font-family: Helvetica;
+  padding: 1em 0;
+
+  h3 {
+    background-color: #333333;
+    color: #ffffff;
+    margin: 0;
+    padding: 10px 15px 10px 10px;
+    line-height: 1;
+    align-self: center;
+  }
+  h4 {
+  }
+  p {
+   font-size: .9em;
+  }
+`
+const PlacesGrid = styled(Grid)`
+  
+`
+const PlacesRow = styled(Row)`
+`
+
+const PlacesCol = styled(Col)`
+flex: 1 1 300px;
+align-items: stretch;
+padding: 10px;
 `

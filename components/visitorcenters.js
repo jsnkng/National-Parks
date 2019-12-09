@@ -5,56 +5,61 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
   return (
-    <VisitorCenterWrapper>
-      { visitorCenters !== undefined && visitorCenters.length != 0 &&
-      <h3>Visitor Centers</h3>
-      }
-       
-      { visitorCenters.slice(0).map((item) => {
-        return(
-          <VisitorCenterItem key={item.id}>
-            <h4>{item.name}</h4>
-            <p>{item.description}</p>
-            <p>{item.directionsInfo}</p>
-          </VisitorCenterItem>
-        )
-      })
-      }
-    </VisitorCenterWrapper>
+    <VisitorCentersWrapper>
+      <VisitorCenterGrid>
+        <VisitorCenterRow>
+          <VisitorCenterCol>
+          { visitorCenters !== undefined && visitorCenters.length != 0 &&
+          <h3>Visitor Centers</h3>
+          }
+          </VisitorCenterCol>
+        </VisitorCenterRow>
+        
+        <VisitorCenterRow>
+        { visitorCenters.slice(0).map((item) => {
+          return(
+            <VisitorCenterCol key={item.id}>
+              <h4>{item.name}</h4>
+              <p>{item.description}</p>
+              <p>{item.directionsInfo}</p>
+            </VisitorCenterCol>
+          )
+        })
+        }
+        </VisitorCenterRow>
+      </VisitorCenterGrid>
+    </VisitorCentersWrapper>
   )
 }
   
 export default VisitorCenters
 
-const VisitorCenterWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+const VisitorCentersWrapper = styled.div`
   font-family: Helvetica;
-  background-color: #a1dde9;
-  color: #333333; 
-  margin: 1em 0 0 0;
+  padding: 1em 0;
 
   h3 {
     background-color: #333333;
-    color: #a1dde9;
+    color: #ffffff;
     margin: 0;
     padding: 10px 15px 10px 10px;
     line-height: 1;
     align-self: center;
   }
   h4 {
-    padding: 0 0 0 10px;
   }
   p {
-    font-size: .75em;
-    padding: 0 10px ;
+   font-size: .9em;
   }
 `
+const VisitorCenterGrid = styled(Grid)`
+  
+`
+const VisitorCenterRow = styled(Row)`
+`
 
-const VisitorCenterItem = styled.div`
-  flex: 1 1 300px;
-  align-items: stretch;
-  line-height: 1.25;
-  padding: 10px;
-
+const VisitorCenterCol = styled(Col)`
+flex: 1 1 300px;
+align-items: stretch;
+padding: 10px;
 `

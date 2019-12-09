@@ -18,16 +18,16 @@ const Park = props => {
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
       <ParkWrapper onClick={handleBannerClick}>
         <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-          <div class="sk-cube-grid">
-            <div class="sk-cube sk-cube1"></div>
-            <div class="sk-cube sk-cube2"></div>
-            <div class="sk-cube sk-cube3"></div>
-            <div class="sk-cube sk-cube4"></div>
-            <div class="sk-cube sk-cube5"></div>
-            <div class="sk-cube sk-cube6"></div>
-            <div class="sk-cube sk-cube7"></div>
-            <div class="sk-cube sk-cube8"></div>
-            <div class="sk-cube sk-cube9"></div>
+          <div className="sk-cube-grid">
+            <div className="sk-cube sk-cube1"></div>
+            <div className="sk-cube sk-cube2"></div>
+            <div className="sk-cube sk-cube3"></div>
+            <div className="sk-cube sk-cube4"></div>
+            <div className="sk-cube sk-cube5"></div>
+            <div className="sk-cube sk-cube6"></div>
+            <div className="sk-cube sk-cube7"></div>
+            <div className="sk-cube sk-cube8"></div>
+            <div className="sk-cube sk-cube9"></div>
           Loading
           </div>
         </Spinner>
@@ -41,7 +41,7 @@ const Park = props => {
         <ResponsiveImage 
           onMouseOver={toggleIsDescriptionVisible} 
           onMouseOut={toggleIsDescriptionVisible} 
-          backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "" : props.data.images[0].url } />
+          backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : props.data.images[0].url } />
       </ParkWrapper>
       </Link>
     )

@@ -70,7 +70,6 @@ const Park = props => {
       </Grid>
     </Description>
     <MapWrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
-    
       <MapContainer
         latLong={park.latLong}
         name={park.name}
@@ -100,22 +99,12 @@ const Park = props => {
     </Grid>
     </DirectionsWeatherWrapper>
 
-    <VisitorCentersStyled>
-      <VisitorCenters visitorCenters={visitorCenters} />
-    </VisitorCentersStyled>
-
+    <VisitorCenters visitorCenters={visitorCenters} />
     <NewsReleases newsReleases={newsReleases} />
-
     <Events events={events} />
-      
-    <CampgroundsStyled>
-      <Campgrounds campgrounds={campgrounds} />
-    </CampgroundsStyled>     
-      
+    <Campgrounds campgrounds={campgrounds} />
     <Places places={places} />
-
     <Articles articles={articles} />
-    
     <People people={people} />
 
     <Footer pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Footer>
@@ -148,8 +137,7 @@ const DirectionsWeatherWrapper = styled.div`
 `
 const DirectionsWeather = styled.div`
   font-family: Helvetica;
-  background-color: #d2d0b6;
-  color: #333333; 
+  color: #ffffff; 
   margin: 1em 0;
 
   p {
@@ -157,8 +145,7 @@ const DirectionsWeather = styled.div`
    padding: 13px;
   }
   h3 {
-    background-color: #333333;
-    color: #d2d0b6;
+    color: #ffffff;
     margin: 0;
     padding: 10px 15px 10px 10px;
     line-height: 1;
@@ -215,19 +202,6 @@ const Description = styled.div`
   }
 `
 
-const CampgroundsStyled = styled.div`
-  font-family: Helvetica;
-  padding: 35px 0;
-  background-color: #1e1d1e;
-  color: #ffffff; 
-`
-const VisitorCentersStyled = styled.div`
-  font-family: Helvetica;
-  padding: 1px 15px 15px 15px;
-  margin: 0;
-  background-color: #ffffff;
-
-`
 
 const MapWrapper = styled.div`
   width: 100%;
