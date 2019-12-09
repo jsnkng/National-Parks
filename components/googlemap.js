@@ -2,23 +2,25 @@ import React from 'react'
 import styled from 'styled-components';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 const mapStyles = {
-    width: '100%',
-    height: '100%'
+    
   };
 
 const MapContainer = props => {
-  
+  console.log(props.zoom)
   const onMarkerClick = (props, marker, e) => {
       alert(props.name)
   }
   if (props.latLong !== undefined && props.latLong !== "") {
-    const lat = props.latLong.split(",")[0].slice(4)
-    const lng = props.latLong.split(",")[1].slice(6)
+    console.log(props.latLong)
+    var desired = props.latLong.replace(/[^\w\s-:,.]/gi, '')
+    var clean = desired.replace(/lng/gi, 'long')
+    const lat = clean.split(",")[0].slice(4)
+    const lng = clean.split(",")[1].slice(6)
   
     return (
       <MapStyled
         google={google}
-        zoom={10}
+        zoom={props.zoom}
         style={mapStyles}
         initialCenter={{
         "lat": lat,
@@ -39,8 +41,6 @@ export default GoogleApiWrapper({
 })(MapContainer);
 
 const MapStyled = styled(Map)`
-  width: 100%;
-  height: 60vw !important;
   max-width: 100%;
   max-height: 400px !important;
 `

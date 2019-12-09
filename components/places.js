@@ -23,6 +23,7 @@ const Places = props => {
             }
             <h4>{item.title}</h4>
             <p>{item.listingdescription}</p>
+            <a href={item.url} target="_blank">Read more...</a>
           </PlacesCol>
         )
       })

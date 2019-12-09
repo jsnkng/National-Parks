@@ -74,6 +74,7 @@ const Park = props => {
         latLong={park.latLong}
         name={park.name}
         designation={park.designation}
+        zoom={10}
       />
     </MapWrapper>
     <DirectionsWeatherWrapper>

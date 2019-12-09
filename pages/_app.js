@@ -40,6 +40,68 @@ const GlobalStyle = createGlobalStyle`
     margin: .4em 0;
     padding: 0;
   }
+  .accordion {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+  }
+
+  .accordion__item + .accordion__item {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .accordion__button {
+      background-color: #f4f4f4;
+      color: #444;
+      cursor: pointer;
+      padding: 12px 0 ;
+      width: 100%;
+      text-align: left;
+      border: none;
+
+      p {
+      padding: 0 36px;
+      }
+  }
+
+  .accordion__button:hover {
+      background-color: #ddd;
+  }
+
+  .accordion__button:before {
+      display: inline-block;
+      content: '';
+      height: 10px;
+      width: 10px;
+      margin-left: 12px;
+      margin-right: 12px;
+      border-bottom: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: rotate(-45deg);
+  }
+
+  .accordion__button[aria-expanded='true']::before,
+  .accordion__button[aria-selected='true']::before {
+      transform: rotate(45deg);
+  }
+
+  .accordion__panel {
+      animation: fadein 0.35s ease-in;
+  }
+
+  /* -------------------------------------------------- */
+  /* ---------------- Animation part ------------------ */
+  /* -------------------------------------------------- */
+
+  @keyframes fadein {
+      0% {
+          opacity: 0;
+      }
+
+      100% {
+          opacity: 1;
+      }
+  }
+
 `
 
 const theme = {

@@ -15,7 +15,7 @@ const NewsReleases = props => {
           </NewsReleasesCol>
         </NewsReleasesRow>
         <NewsReleasesRow>
-          { newsReleases.slice(0).map((item) => {
+          { newsReleases.slice(0,4).map((item) => {
             return(
               <NewsReleasesCol xs={12} sm={6} md={3} key={item.id}>
                 {item.image.url !== undefined && item.image.url != 0 &&
