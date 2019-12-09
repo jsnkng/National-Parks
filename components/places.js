@@ -7,27 +7,20 @@ const Places = props => {
   return (
     <PlacesWrapper>
     <PlacesGrid>
-    <PlacesRow>
-    <PlacesCol>
-      { places !== undefined && places.length != 0 &&
-      <h3>Places</h3>
+      <PlacesRow>
+        { places.slice(0).map((item) => {
+          return(
+            <PlacesCol xs={12} sm={6} md={3} key={item.id}>
+              {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
+                  <ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
+              }
+              <h4>{item.title}</h4>
+              <p>{item.listingdescription}</p>
+              <a href={item.url} target="_blank">Read more...</a>
+            </PlacesCol>
+          )
+        })
       }
-      </PlacesCol>
-    </PlacesRow>
-    <PlacesRow>
-      { places.slice(0).map((item) => {
-        return(
-          <PlacesCol xs={12} sm={6} md={3} key={item.id}>
-            {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
-                <ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
-            }
-            <h4>{item.title}</h4>
-            <p>{item.listingdescription}</p>
-            <a href={item.url} target="_blank">Read more...</a>
-          </PlacesCol>
-        )
-      })
-    }
     </PlacesRow>
   </PlacesGrid>
   </PlacesWrapper>
@@ -50,7 +43,7 @@ const ResponsiveImage = styled.div`
 
 const PlacesWrapper = styled.div`
   font-family: Helvetica;
-  padding: 1em 0;
+  padding: 36px;
 
   h3 {
     background-color: #333333;

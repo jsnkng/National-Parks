@@ -8,13 +8,6 @@ const Articles = props => {
     <ArticlesWrapper>
     <ArticlesGrid>
       <ArticlesRow>
-        <ArticlesCol>
-        { articles !== undefined && articles.length != 0 &&
-          <h3>Articles</h3>
-        }
-        </ArticlesCol>
-      </ArticlesRow>
-      <ArticlesRow>
         { articles.slice(0,8).map((item) => {
           return(
             <ArticlesCol xs={12} sm={6} md={3} key={item.id}>
@@ -50,7 +43,7 @@ const ResponsiveImage = styled.div`
 
 const ArticlesWrapper = styled.div`
   font-family: Helvetica;
-  padding: 1em 0;
+  padding: 36px;
 
   h3 {
     background-color: #333333;

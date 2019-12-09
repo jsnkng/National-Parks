@@ -8,13 +8,6 @@ const People = props => {
     <PeopleWrapper>
       <PeopleGrid>
         <PeopleRow>
-          <PeopleCol>
-          { people !== undefined && people.length != 0 &&
-            <h3>People</h3>
-          }
-          </PeopleCol>
-        </PeopleRow>
-        <PeopleRow>
           { people.slice(0).map((item) => {
             return(
               <PeopleCol xs={12} sm={6} md={3} key={item.id}>
@@ -50,7 +43,8 @@ const ResponsiveImage = styled.div`
 
 const PeopleWrapper = styled.div`
   font-family: Helvetica;
-  padding: 1em 0;
+  padding: 36px;
+
 
   h3 {
     background-color: #333333;

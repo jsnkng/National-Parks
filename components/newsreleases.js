@@ -8,13 +8,6 @@ const NewsReleases = props => {
     <NewsReleasesWrapper>
       <NewsReleasesGrid>
         <NewsReleasesRow>
-          <NewsReleasesCol>
-          { newsReleases !== undefined && newsReleases.length != 0 &&
-            <h3>News Releases</h3>
-          }
-          </NewsReleasesCol>
-        </NewsReleasesRow>
-        <NewsReleasesRow>
           { newsReleases.slice(0,4).map((item) => {
             return(
               <NewsReleasesCol xs={12} sm={6} md={3} key={item.id}>
@@ -53,7 +46,7 @@ const ResponsiveImage = styled.div`
 
 const NewsReleasesWrapper = styled.div`
   font-family: Helvetica;
-  padding: 1em 0;
+  padding: 36px;
 
   h3 {
     background-color: #333333;

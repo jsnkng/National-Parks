@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import { useRouter } from 'next/router'
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel'
 import absoluteUrl from 'next-absolute-url'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
-import SuperQuery from '@themgoncalves/super-query';
+import SuperQuery from '@themgoncalves/super-query'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion'
 
 import Masthead from '../../../../../components/masthead'
 import Footer from '../../../../../components/footer'
@@ -100,13 +107,108 @@ const Park = props => {
     </Grid>
     </DirectionsWeatherWrapper>
 
-    <VisitorCenters visitorCenters={visitorCenters} />
-    <NewsReleases newsReleases={newsReleases} />
-    <Events events={events} />
-    <Campgrounds campgrounds={campgrounds} />
-    <Places places={places} />
-    <Articles articles={articles} />
-    <People people={people} />
+    <AccordionWrapper>
+    { newsReleases !== undefined && newsReleases.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <h3>News Releases</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+          <NewsReleases newsReleases={newsReleases} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+
+      { events !== undefined && events.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <h3>Events</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+
+        <Events events={events} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+      { visitorCenters !== undefined && visitorCenters.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+          <h3>Visitor Centers</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+          <VisitorCenters visitorCenters={visitorCenters} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+
+      { campgrounds !== undefined && campgrounds.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <h3>Campgrounds</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+
+        <Campgrounds campgrounds={campgrounds} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+
+      { articles !== undefined && articles.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <h3>Articles</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+
+        <Articles articles={articles} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+
+
+      { places !== undefined && places.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <h3>Places</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+
+        <Places places={places} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+
+      { people !== undefined && people.length != 0 &&
+      <AccordionItem>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <h3>People</h3>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel>
+
+        <People people={people} />
+        </AccordionItemPanel>
+      </AccordionItem>
+      }
+
+
+
+
+    </AccordionWrapper>
+    
 
     <Footer pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Footer>
     </>
@@ -202,6 +304,28 @@ const Description = styled.div`
     color: #4c93d9;
   }
 `
+
+
+const AccordionWrapper = styled(Accordion)`
+h3, h4 {
+  display: inline;
+}
+h5 {
+  display: inline;
+  padding: 0 25px;
+}
+p {
+}
+ul {
+  font-size: .8em;
+  list-style-type: none;
+  padding-left: 20px;
+}
+li {
+  list-style-type: none;
+  padding: 0 4px;
+}
+}`
 
 
 const MapWrapper = styled.div`

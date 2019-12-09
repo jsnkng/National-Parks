@@ -24,16 +24,10 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: #fafafa;
     line-height: 1.6;
-    font-size:14px;
+    font-size:16px;
 
     ${SuperQuery().minWidth.sm.css`
-      font-size:16px;
-    `}
-    ${SuperQuery().minWidth.md.css`
       font-size:18px;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size:20px;
     `}
   }
   h1,h2,h3,h4,h5,h6,p {
@@ -50,8 +44,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .accordion__button {
-      background-color: #f4f4f4;
-      color: #444;
+  background-color: #1e1d1e;
+  color: #ffffff;
       cursor: pointer;
       padding: 12px 0 ;
       width: 100%;
@@ -64,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .accordion__button:hover {
-      background-color: #ddd;
+      background-color: #333333;
   }
 
   .accordion__button:before {

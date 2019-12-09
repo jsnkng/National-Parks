@@ -14,16 +14,6 @@ const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
     <CampgroundsWrapper>
-      <CampgroundsGrid>
-        <CampgroundsRow>
-          <CampgroundsCol>
-          { campgrounds !== undefined && campgrounds.length != 0 &&
-          <h3>Campgrounds</h3>
-          }
-          </CampgroundsCol>
-        </CampgroundsRow>
-        <CampgroundsRow>
-          <CampgroundsCol>
 
 
       { campgrounds.slice(0).map((item) => {
@@ -221,9 +211,7 @@ const Campgrounds = props => {
           })
         }
 
-        </CampgroundsCol>
-        </CampgroundsRow>
-      </CampgroundsGrid>
+      
     </CampgroundsWrapper>
   )
   
@@ -256,7 +244,6 @@ flex: 1 1 300px;
 
 const CampgroundsWrapper = styled.div`
   font-family: Helvetica;
-  padding: 1em 0;
 
   h3 {
     background-color: #333333;
@@ -286,6 +273,23 @@ const CampgroundsWrapper = styled.div`
     list-style-type: none;
     padding: 0 4px;
   }
+  .accordion__button {
+  background-color: #ffffff;
+  color: #111111;
+      cursor: pointer;
+      padding: 12px 0 ;
+      width: 100%;
+      text-align: left;
+      border: none;
+
+      p {
+      padding: 0 36px;
+      }
+  }
+
+  .accordion__button:hover {
+      background-color: #f1f1f1;
+  }
 `
 const CampgroundsGrid = styled(Grid)`
    word-wrap:break-word;
@@ -297,5 +301,5 @@ const CampgroundsRow = styled(Row)`
 const CampgroundsCol = styled(Col)`
 flex: 1 1 300px;
 align-items: stretch;
-padding: 10px;
+padding: 5px 0px;
 `

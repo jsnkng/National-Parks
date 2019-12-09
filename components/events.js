@@ -4,31 +4,29 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 
 const Events = props => {
   const [events, setEvents] = useState(props.events)
+  console.log(events)
   return (
     <EventsWrapper>
-    <EventsGrid>
-    <EventsRow>
-    <EventsCol>
-      { events !== undefined && events.length != 0 &&
-      <h3>Events</h3>
-      }
-      </EventsCol>
-    </EventsRow>
-    <EventsRow>
-      { events.slice(0,6).map((item) => {
-        return(
-          <EventsCol xs={12} sm={4} md={4} key={item.id}>
-            {item.images[0] !== undefined && item.images.length[0] != 0 &&
-                <ResponsiveImage backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "" : "https://www.nps.gov"+item.images[0].url } />
-            }
-            <h4>{item.title}</h4>
-            <div dangerouslySetInnerHTML={{__html:item.description}} />
-          </EventsCol>
-        )
-      })
-    }
-    </EventsRow>
-  </EventsGrid>
+      <EventsGrid>
+        <EventsRow>
+          { events.slice(0,6).map((item) => {
+            return(
+              <EventsCol xs={12} sm={4} md={4} key={item.id}>
+                {item.images[0] !== undefined && item.images.length[0] != 0 &&
+                    <ResponsiveImage backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "" : "https://www.nps.gov"+item.images[0].url } />
+                }
+                <h4>{item.title}</h4>
+                <h5>{item.location}</h5>
+                <h5>{item.timeinfo}</h5>
+                <h5>{item.dates.join(', ')}</h5>
+                <a href={item.infourl} target="_blank">More Info...</a>
+                <div dangerouslySetInnerHTML={{__html:item.description}} />
+              </EventsCol>
+            )
+        })
+        }
+        </EventsRow>
+    </EventsGrid>
   </EventsWrapper>
   )
 }
@@ -49,7 +47,7 @@ const ResponsiveImage = styled.div`
 
 const EventsWrapper = styled.div`
   font-family: Helvetica;
-  padding: 1em 0;
+  padding: 36px;
 
   h3 {
     background-color: #333333;
