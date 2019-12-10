@@ -10,7 +10,7 @@ const Footer = props => {
       <HeaderItem>
         <h1>{props.pageTitle}</h1>
         <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
-        <h2><a>{states[props.stateCode]}</a></h2>
+        <h2><a>{states[props.stateCode][0]}</a></h2>
         </Link>
       </HeaderItem> 
       <HeaderItem>

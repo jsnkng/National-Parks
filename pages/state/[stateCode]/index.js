@@ -31,7 +31,7 @@ const Parks = props => {
           })
         }
       </ParksContainer>
-      <Footer pageTitle={`${states[stateCode]}`} subTitle="National Parks" stateCode={stateCode}></Footer>
+      <Footer pageTitle={`${states[stateCode][0]}`} subTitle="National Parks" stateCode={stateCode}></Footer>
     </ParksWrapper>
   )
 }
