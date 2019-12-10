@@ -14,6 +14,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
+import states from '../../../../../components/statesLookup'
 import Masthead from '../../../../../components/masthead'
 import Footer from '../../../../../components/footer'
 import Places from '../../../../../components/places'
@@ -40,11 +41,33 @@ const Park = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds.data)
   const [newsReleases, setNewsReleases] = useState(props.newsreleases.data)
 
+  const SVG = props => {
+    return (
+      <svg
+        width="100%"
+        height="100%"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="174 100 959 593" 
+        enableBackground="new 174 100 959 593" 
+      >
+        { Object.entries(states).map(([key, value]) => {
+          const as = "/state/" + key
+          return ( 
+              <path key={key} id={key} className={park.states.split(',').includes(key.toUpperCase()) ? 'highlight' : ''} fill="#D3D3D3" d={value[1]} />
+          )
+        })
+        }
+        <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
+      </svg>
+    )
+  }
+
   return (
     <>
     <Masthead pageTitle={park.name} subTitle={park.designation} stateCode={stateCode}></Masthead>
      {/* <ResponsiveImage backgroundURL={park.images[0].url === undefined || park.images[0].url.length == 0 ? "" : park.images[0].url  } height="450px" /><br /><br /> */}
-   
+  
     <CarouselStyled showArrows={true} showThumbs={false} infiniteLoop={true} emulateTouch={true} showStatus={false}>
       { park.images.slice(0).map((item) => {
           return(
@@ -66,7 +89,10 @@ const Park = props => {
             <a href="{park.url}">National Park Service’s {park.name} Resource.</a><br /><br />
             {/* {park.parkCode}<br /> */}
             {/* {park.id}<br /> */}
-            {park.states}
+            {/* {park.states} */}
+            <SVGWrapper>
+              <SVG states={park.states} />
+            </SVGWrapper>
           </Col>
           <Col xs={12} sm={4} md={3}>
 
@@ -326,6 +352,24 @@ li {
   padding: 0 4px;
 }
 }`
+
+const SVGWrapper = styled.div`
+  margin: 20px auto;
+  width: 400px;
+  path.highlight{
+    stroke: #00ac47 !important;
+    stroke-width: 0px;
+    stroke-linejoin: round;
+    fill: #00ac47 !important;
+    cursor: pointer;
+  }
+  #path67 {
+    fill: none !important;
+    stroke: #A9A9A9 !important;
+    cursor: default;
+  }
+  
+`
 
 
 const MapWrapper = styled.div`
