@@ -4,6 +4,13 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 
 const Events = props => {
   const [events, setEvents] = useState(props.events)
+  const toDateFormat = (date) => {
+    const d = date.split(' ')
+    const d1 = Date.parse(d[0])
+    const nd = new Date(d1)
+    return Intl.DateTimeFormat('en-US').format(nd)
+  }
+
   console.log(events)
   return (
     <Container>
@@ -15,10 +22,10 @@ const Events = props => {
               <Col xs={12} sm={6} md={4} key={item.id}>
                 <Item>
                 <a href={item.infourl} target="_blank"><Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } /></a>
+                
+                <h6>{item.dates.map((date) => toDateFormat(date)).join(', ')}</h6>
                 <h4><a href={item.infourl} target="_blank">{item.title}</a></h4>
                 <h5>{item.location}</h5>
-                <h6>{item.timeinfo}</h6>
-                <h6>{item.dates.join(', ')}</h6>
                 <p dangerouslySetInnerHTML={{__html:item.description}} />
                 </Item>
               </Col>
