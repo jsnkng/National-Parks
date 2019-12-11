@@ -56,7 +56,6 @@ const HeaderItem = styled.div`
   box-sizing: border-box;
   list-style-type: none;
   h1 {
-    margin: 0;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;

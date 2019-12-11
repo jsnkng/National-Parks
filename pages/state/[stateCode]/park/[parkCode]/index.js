@@ -62,11 +62,13 @@ const Park = props => {
       </Description__Wrapper>
 
 
+      { newsReleases !== undefined && newsReleases.length != 0 &&
       <NewsReleases__Wrapper>
 
         <NewsReleases__Component newsReleases={newsReleases} />
 
       </NewsReleases__Wrapper>
+      }
 
       { events !== undefined && events.length != 0 &&
       <Events__Wrapper>
@@ -75,14 +77,14 @@ const Park = props => {
 
       </Events__Wrapper>
       }
-      <Accordion__Wrapper>
-        <Accordion>
+      {/* <Accordion__Wrapper>
+        <Accordion allowZeroExpanded={true}>
 
           <AccordionItem>
-            <AccordionItemHeading>
+            <AccordionItemHeading aria-level="3">
               <AccordionItemButton>
 
-              <h3>Weather</h3>
+              Weather
 
               </AccordionItemButton>
             </AccordionItemHeading>
@@ -94,10 +96,10 @@ const Park = props => {
           </AccordionItem>
 
           <AccordionItem>
-            <AccordionItemHeading>
+            <AccordionItemHeading aria-level="3">
               <AccordionItemButton>
 
-              <h3>Directions</h3>
+              Directions
 
               </AccordionItemButton>
             </AccordionItemHeading>
@@ -109,7 +111,7 @@ const Park = props => {
           </AccordionItem>
         </Accordion>
 
-      </Accordion__Wrapper>
+      </Accordion__Wrapper> */}
 
       <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
 
@@ -119,29 +121,49 @@ const Park = props => {
           designation={park.designation}
           zoom={9}
         />
-
       </MapLive__Wrapper>
+      <Directions__Wrapper>
+        <Grid>
+            <Row>
+              <Col xs={12} sm={6} md={6}>
+                <Directions__Component park={park} />
+                <Weather__Component park={park} />
+              </Col>
+              <Col xs={12} sm={6} md={6}>
+                { visitorCenters !== undefined && visitorCenters.length != 0 &&
+                  <VisitorCenters__Component visitorCenters={visitorCenters} />
+                }
+              </Col>
+            </Row>
+          </Grid>
+        
+      </Directions__Wrapper>
 
-      { visitorCenters !== undefined && visitorCenters.length != 0 &&
-        <VisitorCenters__Wrapper>
+      <Accordion__Wrapper>
+        <Accordion allowZeroExpanded={true}>
+        {/* { visitorCenters !== undefined && visitorCenters.length != 0 &&
+        <AccordionItem>
+          <AccordionItemHeading aria-level="3">
+            <AccordionItemButton>
 
-          <h3>Visitor Centers</h3>
+            Visitor Centers
+
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
 
           <VisitorCenters__Component visitorCenters={visitorCenters} />
 
-        </VisitorCenters__Wrapper>
-      }
-
-      <Accordion__Wrapper>
-        <Accordion>
-
+          </AccordionItemPanel>
+        </AccordionItem>
+        } */}
         
         { campgrounds !== undefined && campgrounds.length != 0 &&
         <AccordionItem>
-          <AccordionItemHeading>
+          <AccordionItemHeading aria-level="3">
             <AccordionItemButton>
 
-              <h3>Campgrounds</h3>
+              Campgrounds
 
             </AccordionItemButton>
           </AccordionItemHeading>
@@ -155,10 +177,10 @@ const Park = props => {
 
         { articles !== undefined && articles.length != 0 &&
         <AccordionItem>
-          <AccordionItemHeading>
+          <AccordionItemHeading aria-level="3">
             <AccordionItemButton>
 
-              <h3>Articles</h3>
+              Articles
 
             </AccordionItemButton>
           </AccordionItemHeading>
@@ -172,10 +194,10 @@ const Park = props => {
 
         { places !== undefined && places.length != 0 &&
         <AccordionItem>
-          <AccordionItemHeading>
+          <AccordionItemHeading aria-level="3">
             <AccordionItemButton>
 
-              <h3>Places</h3>
+              Places
 
             </AccordionItemButton>
           </AccordionItemHeading>
@@ -189,10 +211,10 @@ const Park = props => {
 
         { people !== undefined && people.length != 0 &&
         <AccordionItem>
-          <AccordionItemHeading>
+          <AccordionItemHeading aria-level="3">
             <AccordionItemButton>
 
-              <h3>People</h3>
+              People
 
             </AccordionItemButton>
           </AccordionItemHeading>

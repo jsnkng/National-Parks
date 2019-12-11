@@ -39,6 +39,7 @@ const MapDiagram = props => {
           } else {
             return ( 
               <path 
+                key={key}
                 id={key} 
                 className={props.states.split(',').includes(key.toUpperCase())  ? 'highlight' : 'nohighlight'} 
                 d={value[1]} />

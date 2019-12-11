@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Head from 'next/head'
 import Masthead from '../components/masthead';
 import Footer from '../components/footer'
-import MapDiagram from '../components/MapDiagram';
-import TerritoryList from '../components/TerritoryList';
+import MapDiagram from '../components/mapdiagram';
+import TerritoryList from '../components/territorylist';
 import SuperQuery from '@themgoncalves/super-query'
 
 
@@ -46,11 +46,12 @@ const MapDiagramWrapper = styled.div`
 `
 const TerritoryListWrapper = styled.div`
   
-  margin: 2em 5em;
-  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2em 1em 2em;
+  max-width: 360px;
 
   ${SuperQuery().minWidth.md.css`
-    margin: 2em auto;
+  max-width: 800px;
   `}
 
 `

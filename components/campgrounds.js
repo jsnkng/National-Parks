@@ -13,7 +13,6 @@ import {
 
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
-
   return (
     <CampgroundsWrapper>
       { campgrounds.slice(0).map((item) => {
@@ -235,8 +234,6 @@ flex: 1 1 300px;
 `
 
 const CampgroundsWrapper = styled.div`
-  font-family: Helvetica;
-
   h3 {
     background-color: #333333;
     color: #ffffff;
@@ -275,10 +272,9 @@ const CampgroundsWrapper = styled.div`
     border: none;
 
     p {
-    padding: 0 36px;
+      padding: 0 36px;
     }
   }
-
   .accordion__button:hover {
       background-color: #f1f1f1;
   }

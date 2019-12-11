@@ -1,53 +1,74 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion'
 
 const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
+
   return (
-    <VisitorCenterGrid>
-      <VisitorCenterRow>
-      { visitorCenters.slice(0).map((item) => {
+    <Container>
+    <h3>Visitor Centers</h3>
+      <Accordion allowZeroExpanded={true}>
+        { visitorCenters.slice(0).map((item) => {
+
         return(
-          <VisitorCenterCol key={item.id}>
-            <h4>{item.name}</h4>
-            <p>{item.description}</p>
-            <p>{item.directionsInfo}</p>
-          </VisitorCenterCol>
+            <AccordionItem key={item.id} >
+              <AccordionItemHeading>
+                <AccordionItemButton>
+                  <h4>{item.name}</h4>
+                </AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel>
+                <p>{item.description}</p>
+                <p>{item.directionsInfo}</p>
+              </AccordionItemPanel>
+            </AccordionItem>
+          )}
         )
-      })
       }
-      </VisitorCenterRow>
-    </VisitorCenterGrid>
+      </Accordion>
+    </Container>
   )
 }
   
 export default VisitorCenters
 
-const VisitorCenterGrid = styled(Grid)`
-font-family: Helvetica;
-padding: 36px;
-
-h3 {
-  background-color: #333333;
+const Container = styled.div`
+  h3 {
   color: #ffffff;
   margin: 0;
-  padding: 10px 15px 10px 10px;
   line-height: 1;
   align-self: center;
-}
-h4 {
-}
-p {
- font-size: .9em;
-}
+  }
+  h4 {
+    display: inline;
+  }
   
-`
-const VisitorCenterRow = styled(Row)`
-`
+  p {
+    padding: 0 25px;
+    font-size: .8em;
+  }
+  .accordion__panel {
+    color: #ffffff;
+  }
+  .accordion__button {
+    cursor: pointer;
+    padding: 12px 0 ;
+    width: 100%;
+    text-align: left;
+    border: none;
 
-const VisitorCenterCol = styled(Col)`
-flex: 1 1 300px;
-align-items: stretch;
-padding: 10px;
-`
+    p {
+      padding: 0 36px;
+    }
+  }
+  .accordion__button:hover {
+      background-color: #333333;
+  }
+` 

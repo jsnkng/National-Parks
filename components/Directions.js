@@ -8,45 +8,27 @@ const Directions = props => {
   return (
     <Container>
       <h3>Directions</h3>
-      <Group>
-        <Row>
-          <Col xs={12}>
-            <Item>
-              <p>{park.directionsInfo}</p>
-            </Item>
-          </Col>
-        </Row>
-      </Group>
+      <p>{park.directionsInfo}</p>
     </Container>
   )
 }
 
 export default Directions
 
-const Container = styled(Grid)`
-background-color: #1e1d1e;
-color: #ffffff; 
-display: flex;
-flex-wrap: wrap;
-margin: 0 auto;
-padding: 10px 0;
+const Container = styled.div`
+  background-color: #1e1d1e;
+  color: #ffffff; 
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 10px 0;
 h3 {
   color: #ffffff;
   margin: 0;
-  padding: 10px 15px 10px 10px;
   line-height: 1;
   align-self: center;
 }
 p {
   font-size: .9em;
 }
-`
-const Group = styled.div`
-padding: 10px;
-`
-const Item = styled.div`
-flex: 1 1 300px;
-align-items: stretch;
-line-height: 1.25;
-padding: 10 0px;
 `

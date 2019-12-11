@@ -32,9 +32,6 @@ const TerritoryList = props => {
 export default TerritoryList
 
 const TerritoryListWrapper = styled.div`
-  margin: 0 auto;
-  min-width: 400px;
-  max-width: 640px;
   columns: 2;
   
   select {
