@@ -29,7 +29,7 @@ export default Masthead
 
 const HeaderMenu = styled.header`
   display: grid;
-  grid-template-columns: 1fr 12fr 6fr ;
+  grid-template-columns: 2fr 10fr 6fr ;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   font-family: Helvetica;

@@ -8,7 +8,7 @@ const Alerts = props => {
     <AlertsWrapper>
       <h3>Alerts & Conditions</h3>
       { alerts === undefined || alerts.length === 0 &&
-        <h4 style={{fontSize:'.75em',margin:'2px 0 8px 0'}}>No Alerts at this Time.</h4>
+        <h4 style={{fontSize:'.75em',margin:'2px 0 8px 0'}}>No Active Alerts</h4>
       }
       
       { alerts.slice(0).map((item) => {

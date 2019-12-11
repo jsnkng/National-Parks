@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import SuperQuery from '@themgoncalves/super-query'
 const mapStyles = {
     
   };
@@ -41,6 +42,10 @@ export default GoogleApiWrapper({
 })(MapContainer);
 
 const MapStyled = styled(Map)`
-  max-width: 100%;
-  max-height: 400px !important;
+  max-height: 60vh;
+
+  ${SuperQuery().minWidth.md.css`
+    max-height: 45vh;
+  `}
+
 `
