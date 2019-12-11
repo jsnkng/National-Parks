@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
@@ -7,7 +7,7 @@ const SlideShow = props => {
   const [park, setPark] = useState(props.park)
 
   return (
-    <SlideShowStyled showArrows={true} showThumbs={false} infiniteLoop={true} emulateTouch={true} showStatus={false}>
+    <SlideShow__Container showArrows={true} showThumbs={false} infiniteLoop={true} emulateTouch={true} showStatus={false}>
       { park.images.slice(0).map((item) => {
           return(
             <ResponsiveImage key={item.id} backgroundURL={item.url}>
@@ -16,7 +16,7 @@ const SlideShow = props => {
           )
         })
       }
-    </SlideShowStyled>
+    </SlideShow__Container>
   )
 }
 
@@ -59,7 +59,7 @@ const ResponsiveImage = styled.div`
     text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
   }
 `
-const SlideShowStyled = styled(Carousel)`
+const SlideShow__Container = styled(Carousel)`
   margin-top: -80px;
 
   ${SuperQuery().minWidth.md.css`

@@ -4,72 +4,84 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 
 const NewsReleases = props => {
   const [newsReleases, setNewsReleases] = useState(props.newsReleases)
+  const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+  
   return (
-    <NewsReleasesWrapper>
-      <NewsReleasesGrid>
-        <NewsReleasesRow>
+    <Container>
+      <h3>News Releases</h3>
+      <Group>
+        <Row>
           { newsReleases.slice(0,4).map((item) => {
             return(
-              <NewsReleasesCol xs={12} sm={6} md={3} key={item.id}>
-                {item.image.url !== undefined && item.image.url != 0 &&
-                  <ResponsiveImage backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "" : item.image.url  }>
-
-                  </ResponsiveImage>
-                }
-                <h4 style={{fontSize:'.9em',margin:'2px 0 8px 0'}}>{item.title}</h4>
-                <div style={{fontSize:'9px'}}>{item.releasedate}</div>
-                <p>{item.abstract.substring(0, 200)}</p>
-                <a href={item.url} target="_blank">Read more...</a>
-              </NewsReleasesCol>
+              <Col xs={12} sm={6} md={6} key={item.id}>
+                <Item>
+                  <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : item.image.url  } /></a>
+                  <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>
+                  <h5>{item.releasedate}</h5>
+                  <p>{item.abstract.substring(0, 200)}</p>
+                </Item>
+              </Col>
             )
           })
           }
-        </NewsReleasesRow>
-      </NewsReleasesGrid> 
-    </NewsReleasesWrapper>
+        </Row>
+      </Group>
+    </Container>
   )
 }
   
 export default NewsReleases
 
-const ResponsiveImage = styled.div`
-  position: relative;
-  background-image: url(${props => props.backgroundURL});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 16vw;
-  min-height: 300px;
-  margin: 0;
-`
-
-const NewsReleasesWrapper = styled.div`
-  font-family: Helvetica;
-  padding: 36px;
-
+const Container = styled(Grid)`
+  background-color: #d7d6cb;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
   h3 {
-    background-color: #333333;
-    color: #ffffff;
+    color: #d7d6cb;
     margin: 0;
     padding: 10px 15px 10px 10px;
     line-height: 1;
     align-self: center;
   }
   h4 {
+    font-size: .9em;
+    width: 50%;
+    margin-left: 4%;
+    float: left;
+  }
+  h5 {
+    font-size: .75em;
+    width: 50%;
+    margin-left: 4%;
+    float: left;
   }
   p {
-   font-size: .9em;
+    font-size: .75em;
+    clear: both;
+    padding: 10px 10px 10px 0;
   }
 `
-const NewsReleasesGrid = styled(Grid)`
-  
+const Group = styled.div`
+  padding: 10px;
 `
-const NewsReleasesRow = styled(Row)`
+const Item = styled.div`
+  flex: 1 1 300px;
+  align-items: stretch;
+  line-height: 1.25;
+  padding: 10px 0px;
 `
-
-const NewsReleasesCol = styled(Col)`
-flex: 1 1 300px;
-align-items: stretch;
-padding: 10px;
+const Image = styled.div`
+  float: left;
+  background-image: url(${props => props.backgroundURL});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 40vw;
+  min-width: 140px;
+  max-width: 40%;
+  height: 10vw;
+  min-height: 100px;
+  max-height: 140px;
+  margin: 0;
 `

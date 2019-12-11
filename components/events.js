@@ -6,71 +6,88 @@ const Events = props => {
   const [events, setEvents] = useState(props.events)
   console.log(events)
   return (
-    <EventsWrapper>
-      <EventsGrid>
-        <EventsRow>
+    <Container>
+      <h3>Events</h3>
+      <Group>
+        <Row>
           { events.slice(0,6).map((item) => {
             return(
-              <EventsCol xs={12} sm={4} md={4} key={item.id}>
-                {item.images[0] !== undefined && item.images.length[0] != 0 &&
-                    <ResponsiveImage backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "" : "https://www.nps.gov"+item.images[0].url } />
-                }
-                <h4>{item.title}</h4>
+              <Col xs={12} sm={6} md={4} key={item.id}>
+                <Item>
+                <a href={item.infourl} target="_blank"><Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } /></a>
+                <h4><a href={item.infourl} target="_blank">{item.title}</a></h4>
                 <h5>{item.location}</h5>
-                <h5>{item.timeinfo}</h5>
-                <h5>{item.dates.join(', ')}</h5>
-                <a href={item.infourl} target="_blank">More Info...</a>
-                <div dangerouslySetInnerHTML={{__html:item.description}} />
-              </EventsCol>
+                <h6>{item.timeinfo}</h6>
+                <h6>{item.dates.join(', ')}</h6>
+                <p dangerouslySetInnerHTML={{__html:item.description}} />
+                </Item>
+              </Col>
             )
         })
         }
-        </EventsRow>
-    </EventsGrid>
-  </EventsWrapper>
+        </Row>
+      </Group>
+    </Container>
   )
 }
   
 export default Events
 
-const ResponsiveImage = styled.div`
-  position: relative;
-  background-image: url(${props => props.backgroundURL});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 16vw;
-  min-height: 300px;
-  margin: 0;
-`
-
-const EventsWrapper = styled.div`
-  font-family: Helvetica;
-  padding: 36px;
-
+const Container = styled(Grid)`
+  background-color: #d7d6cb;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
   h3 {
-    background-color: #333333;
-    color: #ffffff;
+    color: #d7d6cb;
     margin: 0;
     padding: 10px 15px 10px 10px;
     line-height: 1;
     align-self: center;
   }
   h4 {
+    font-size: .75em;
+    width: 50%;
+    margin-left: 4%;
+    float: left;
   }
-  p {
-   font-size: .9em;
+  h5 {
+    font-size: .75em;
+    width: 50%;
+    margin-left: 4%;
+    float: left;
   }
-`
-const EventsGrid = styled(Grid)`
+  h6 {
+    clear: both;
+    padding: 5px;
+    font-size: .75em;
+  }
+  p{
+    font-size: .9em;
+  }
   
 `
-const EventsRow = styled(Row)`
+const Group = styled.div`
+  padding: 10px;
+`
+const Item = styled.div`
+  flex: 1 1 300px;
+  align-items: stretch;
+  line-height: 1.25;
+  padding: 10px 0px;
+`
+const Image = styled.div`
+  float: left;
+  background-image: url(${props => props.backgroundURL});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 40vw;
+  min-width: 140px;
+  max-width: 40%;
+  height: 10vw;
+  min-height: 100px;
+  max-height: 140px;
+  margin: 0;
 `
 
-const EventsCol = styled(Col)`
-flex: 1 1 300px;
-align-items: stretch;
-padding: 10px;
-`

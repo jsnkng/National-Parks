@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Masthead from '../components/masthead';
 import Footer from '../components/footer'
 import MapDiagram from '../components/MapDiagram';
-import TerritoryList from '../components/territorylist';
+import TerritoryList from '../components/TerritoryList';
 import SuperQuery from '@themgoncalves/super-query'
 
 

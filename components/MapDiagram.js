@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import states from './statesLookup'
+import states from './datastates'
 
 const MapDiagram = props => {
 
@@ -65,7 +65,7 @@ path {
     stroke: #ffffff;
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: #b1b0a7;
+    fill: #d7d6cb;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
 	 	-o-transition: fill .4s ease;
@@ -76,7 +76,7 @@ path {
     stroke: #00ac47;
     stroke-width:2px;
     stroke-linejoin: round;
-    fill: #00ac47;
+    fill: #69bb37;
     cursor: pointer;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -87,7 +87,7 @@ path {
     cursor: default;
     stroke: #00ac47;
     stroke-linejoin: round;
-    fill: #00ac47;
+    fill: #69bb37;
     stroke-width:0px;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -98,7 +98,7 @@ path {
     stroke: #D3D3D3;
     stroke-width:0px;
     stroke-linejoin: round;
-    fill: #D3D3D3;
+    fill: #d7d6cb;
     cursor: default;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -107,7 +107,7 @@ path {
   }
   #path67 {
     fill: none !important;
-    stroke: #b1b0a7 !important;
+    stroke: #d7d6cb !important;
     cursor: default;
   }
 `

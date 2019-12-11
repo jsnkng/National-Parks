@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import states from './statesLookup.js';
+import states from './datastates';
 import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
@@ -90,5 +90,4 @@ const HeaderItem = styled.div`
     margin: 5px 0;
     font-size: .625em;
   }
-
 `

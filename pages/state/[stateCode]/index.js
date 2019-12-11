@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query';
 
-import Park from '../../../components/parks';
-import Masthead from '../../../components/masthead';
-import Footer from '../../../components/footer'
+import Park__Component from '../../../components/park';
+import Masthead__Component from '../../../components/masthead';
+import Footer__Component from '../../../components/footer'
 
-import states from '../../../components/statesLookup';
+import states from '../../../components/datastates';
 
 const Parks = props => {
   const router = useRouter()
@@ -18,11 +18,11 @@ const Parks = props => {
  
   return (
     <ParksWrapper>
-      <Masthead pageTitle="U.S. National Parks" stateCode={stateCode}></Masthead>
+      <Masthead__Component pageTitle="U.S. National Parks" stateCode={stateCode} />
       <ParksContainer>
         { parks.slice(0).map((item) => {
             return(
-              <Park 
+              <Park__Component 
                 key={item.id} 
                 data={item} 
                 stateCode={stateCode}
@@ -31,7 +31,7 @@ const Parks = props => {
           })
         }
       </ParksContainer>
-      <Footer pageTitle={`${states[stateCode][0]}`} subTitle="National Parks" stateCode={stateCode}></Footer>
+      <Footer__Component pageTitle={`${states[stateCode][0]}`} subTitle="National Parks" stateCode={stateCode} />
     </ParksWrapper>
   )
 }

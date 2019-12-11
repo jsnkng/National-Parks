@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import states from './statesLookup.js';
+import states from './datastates';
 
 const Footer = props => {
 

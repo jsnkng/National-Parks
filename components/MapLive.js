@@ -6,7 +6,7 @@ const mapStyles = {
     
   };
 
-const MapContainer = props => {
+const MapLive = props => {
   console.log(props.zoom)
   const onMarkerClick = (props, marker, e) => {
       alert(props.name)
@@ -39,7 +39,7 @@ const MapContainer = props => {
 }
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyD0bj9Rnm0zlgFyNLtrbKyMe6mxTOEuHAA'
-})(MapContainer);
+})(MapLive);
 
 const MapStyled = styled(Map)`
   max-height: 60vh;

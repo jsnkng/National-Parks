@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
-import states from './statesLookup.js';
+import states from './datastates';
 
 const Park = props => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
