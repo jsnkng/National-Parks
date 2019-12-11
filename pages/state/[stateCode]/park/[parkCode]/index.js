@@ -7,8 +7,6 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from 'react-accessible-accordion'
 
-// import states from '../../../../../components/datastates'
-
 import Masthead__Component from '../../../../../components/masthead'
 import SlideShow__Component from '../../../../../components/slideshow'
 import Alerts__Component from '../../../../../components/alerts'
@@ -25,7 +23,6 @@ import MapLive__Component from '../../../../../components/maplive'
 import Footer__Component from '../../../../../components/footer'
 import Description__Component from '../../../../../components/description'
 
-// const NEXT_API = process.env.NEXT_API
 const Park = props => {
   const router = useRouter()
   const { stateCode } = router.query
@@ -77,42 +74,7 @@ const Park = props => {
 
       </Events__Wrapper>
       }
-      {/* <Accordion__Wrapper>
-        <Accordion allowZeroExpanded={true}>
-
-          <AccordionItem>
-            <AccordionItemHeading aria-level="3">
-              <AccordionItemButton>
-
-              Weather
-
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel>
-
-            <Weather__Component park={park} />
-              
-            </AccordionItemPanel>
-          </AccordionItem>
-
-          <AccordionItem>
-            <AccordionItemHeading aria-level="3">
-              <AccordionItemButton>
-
-              Directions
-
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel>
-
-              <Directions__Component park={park} />
-
-            </AccordionItemPanel>
-          </AccordionItem>
-        </Accordion>
-
-      </Accordion__Wrapper> */}
-
+     
       <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
 
         <MapLive__Component
@@ -141,22 +103,6 @@ const Park = props => {
 
       <Accordion__Wrapper>
         <Accordion allowZeroExpanded={true}>
-        {/* { visitorCenters !== undefined && visitorCenters.length != 0 &&
-        <AccordionItem>
-          <AccordionItemHeading aria-level="3">
-            <AccordionItemButton>
-
-            Visitor Centers
-
-            </AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-
-          <VisitorCenters__Component visitorCenters={visitorCenters} />
-
-          </AccordionItemPanel>
-        </AccordionItem>
-        } */}
         
         { campgrounds !== undefined && campgrounds.length != 0 &&
         <AccordionItem>
