@@ -11,7 +11,6 @@ import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, Ac
 
 import Masthead__Component from '../../../../../components/masthead'
 import SlideShow__Component from '../../../../../components/slideshow'
-import Description__Component from '../../../../../components/description'
 import Alerts__Component from '../../../../../components/alerts'
 import NewsReleases__Component from '../../../../../components/newsreleases'
 import Weather__Component from '../../../../../components/weather'
@@ -24,6 +23,7 @@ import People__Component from '../../../../../components/people'
 import Articles__Component from '../../../../../components/articles'
 import MapLive__Component from '../../../../../components/maplive'
 import Footer__Component from '../../../../../components/footer'
+import Description__Component from '../../../../../components/description'
 
 // const NEXT_API = process.env.NEXT_API
 const Park = props => {

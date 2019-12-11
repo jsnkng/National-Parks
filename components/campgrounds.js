@@ -13,9 +13,11 @@ import {
 
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
+
   return (
     <CampgroundsWrapper>
       { campgrounds.slice(0).map((item) => {
+        
       return(
         <Accordion key={item.id} allowZeroExpanded={true}>
           <AccordionItem>
