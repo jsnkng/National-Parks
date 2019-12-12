@@ -13,26 +13,17 @@ const VisitorCenters = props => {
 
   return (
     <Container>
-    <h3>Visitor Centers</h3>
-      <Accordion allowZeroExpanded={true}>
+      <h3>Visitor Centers</h3>
         { visitorCenters.slice(0).map((item) => {
-
         return(
-            <AccordionItem key={item.id} >
-              <AccordionItemHeading>
-                <AccordionItemButton>
-                  <h4>{item.name}</h4>
-                </AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel>
-                <p>{item.description}</p>
-                <p>{item.directionsInfo}</p>
-              </AccordionItemPanel>
-            </AccordionItem>
+           <details>
+              <summary>{item.name}</summary>
+              <p>{item.description}</p>
+              <p>{item.directionsInfo}</p>
+            </details>
           )}
         )
       }
-      </Accordion>
     </Container>
   )
 }
@@ -40,36 +31,20 @@ const VisitorCenters = props => {
 export default VisitorCenters
 
 const Container = styled.div`
+  margin: 0 ;
+  padding: 10px 0;
   h3 {
-  color: #ffffff;
-  margin: 0;
-  line-height: 1;
-  align-self: center;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
   }
-  h4 {
-    display: inline;
-  }
-  
   p {
     padding: 0 25px;
     font-size: .8em;
   }
-  .accordion__panel {
-    color: #ffffff;
-  }
-  .accordion__button {
-    cursor: pointer;
-    padding: 12px 0;
+  details {
     width: 100%;
-    text-align: left;
-    border: none;
-
-    p {
-      padding: 0 36px;
-    }
-  }
-  .accordion__button:hover {
-      background-color: transparent;
-      border: none;
+    color: #ffffff;
   }
 ` 

@@ -8,30 +8,24 @@ const Description = props => {
   const [park, setPark] = useState(props.park)
 
   return (
-    <Container>
+    <Grid__Container>
       <Row>
         <Item>
-          {/* {park.fullName}<br /> */}
           <h2>{park.name} {park.designation}</h2>
           <p>{park.description}</p>
-          {/* {park.parkCode}<br /> */}
-          {/* {park.id}<br /> */}
-          {/* {park.states} */}
-
           <MapDiagramWrapper>
             <MapDiagram highlighted={null} onHighlight={(terr) => setHighlight(terr)} states={park.states} />
           </MapDiagramWrapper>
           {/* <a href="{park.url}">National Park Service’s {park.name} Resource.</a> */}
-
         </Item>
       </Row>
-    </Container>
+    </Grid__Container>
   )
 }
   
 export default Description
 
-const Container = styled(Grid)`
+const Grid__Container = styled(Grid)`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;

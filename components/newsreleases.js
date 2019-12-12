@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
@@ -12,26 +12,28 @@ const NewsReleases = props => {
     const nd = new Date(d1)
     return Intl.DateTimeFormat('en-US').format(nd)
   }
-
+  console.log(newsReleases)
   return (
     <Grid__Container>
-      <h3>Latest Park News</h3>
-      <Group>
-        <Row>
-          { newsReleases.slice(0,6).map((item) => {
-            return(
-              <Col__Container xs={12} sm={6} md={4} key={item.id}>
-                  <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : item.image.url  } /></a>
-                  
-                  <date>{ toDateFormat(item.releasedate) }</date>
-                  <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>
-                  <p>{item.abstract.substring(0, 350)}</p>
-              </Col__Container>
-            )
-          })
-          }
-        </Row>
-      </Group>
+      <Row>
+        <Col__Container>
+          <h3>Latest Park News</h3>
+        </Col__Container>
+      </Row>
+      <Row>
+        { newsReleases.slice(0,6).map((item) => {
+          return(
+            <Col__Container xs={12} sm={6} md={4} key={item.id}>
+              {item.image.url !== undefined && item.image.url.length !== 0 &&
+                <a href={item.url} target="_blank"><Image backgroundURL={item.image.url} /></a>
+              } 
+              <date>{ toDateFormat(item.releasedate) }</date>
+              <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>
+              <p>{item.abstract.substring(0, 350)}</p>
+            </Col__Container>
+          )
+        })}
+      </Row>
     </Grid__Container>
   )
 }
@@ -41,16 +43,14 @@ export default NewsReleases
 const Grid__Container = styled(Grid)`
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 20px;
   h3 {
     margin: 0;
-    padding: 10px 15px 10px 10px;
+    padding: 0;
     line-height: 1;
-    align-self: center;
   }
   h4 {
     font-size: 1em;
-    margin: 0;
     width: 60%;
     margin-left: 4%;
     float: left;
@@ -80,14 +80,11 @@ const Grid__Container = styled(Grid)`
     `}
   }
 `
-const Group = styled.div`
-  padding: 10px;
-`
 const Col__Container = styled(Col)`
   flex: 1 1 100px;
   align-items: stretch;
   line-height: 1.25;
-  padding: 1em 1em 1em 0;
+  margin-bottom: 1em;
 `
 const Image = styled.div`
   float: left;

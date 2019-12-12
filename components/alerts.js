@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 
 const Alerts = props => {
   const [alerts, setAlerts] = useState(props.alerts)
+
   return (
     <Grid__Container>
       <Row>
         <Col xs={12} sm={4} md={4} lg={6}>
           <h3>Alerts & Conditions</h3>
         </Col>
-
         { alerts === undefined || alerts.length === 0 &&
           <Col xs={12} sm={8} md={8} lg={6}>
             <h4>No Active Alerts</h4>
           </Col>
         }
+      </Row>
+      <Row>
         { alerts.slice(0).map((item) => {
-          return(
+          return (
             <Col xs={6} sm={4} md={4} lg={3} key={item.id}>
               <Item key={item.id}>
                 <p>{item.category}</p>
@@ -29,12 +31,10 @@ const Alerts = props => {
               </Item>
             </Col>
           )
-          })
-          }
+        })}
       </Row>
     </Grid__Container>
   )
-
 }
   
 export default Alerts

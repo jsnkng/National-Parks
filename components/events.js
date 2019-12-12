@@ -14,44 +14,46 @@ const Events = props => {
   console.log(events)
   return (
     <Grid__Container>
-      <h3>Events at the Park</h3>
-        { events.slice(0,6).map((item) => {
-          return(
-            <Row__Container key={item.id}>
-              {item.images.length !== 0 &&
-                <>
-                <Col__Container xs={12} sm={4} md={4}>
-                  <h4>{item.title}</h4>
-                  <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                </Col__Container>
-                <Col__Container xs={12} sm={4} md={4} className="details">
-                  <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
-                  <p><strong>Location:</strong> {item.location}</p>
-                  <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
-                </Col__Container>
-                <Col__Container xs={12} sm={4} md={4}>
-                  <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
-                </Col__Container>
+      <Row>
+        <Col__Container>
+          <h3>Events at the Park</h3>
+        </Col__Container>
+      </Row>
+      { events.slice(0,6).map((item) => {
+        return(
+          <Row__Container key={item.id}>
+            {item.images.length !== 0 &&
+              <>
+              <Col__Container xs={12} sm={4} md={4}>
+                <h4>{item.title}</h4>
+                <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+              </Col__Container>
+              <Col__Container xs={12} sm={4} md={4} className="details">
+                <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
+                <p><strong>Location:</strong> {item.location}</p>
+                <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+              </Col__Container>
+              <Col__Container xs={12} sm={4} md={4}>
+                <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
+              </Col__Container>
               </>
-              }
-              {item.images.length === 0 &&
-                <>
-                <Col__Container xs={12} sm={8} md={8}>
-                  <h4>{item.title}</h4>
-                  <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                </Col__Container>
-                <Col__Container xs={12} sm={4} md={4}>
-                  <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
-                  <p><strong>Location:</strong> {item.location}</p>
-                  <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
-                </Col__Container>
+            }
+            {item.images.length === 0 &&
+              <>
+              <Col__Container xs={12} sm={8} md={8}>
+                <h4>{item.title}</h4>
+                <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+              </Col__Container>
+              <Col__Container xs={12} sm={4} md={4}>
+                <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
+                <p><strong>Location:</strong> {item.location}</p>
+                <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+              </Col__Container>
               </>
-              }
-             
-            </Row__Container>
-          )
-      })
-      }
+            }
+          </Row__Container>
+        )
+    })}
     </Grid__Container>
   )
 }
@@ -59,14 +61,13 @@ const Events = props => {
 export default Events
 
 const Grid__Container = styled(Grid)`
-background-color: #1e1d1e;
   display: flex;
   flex-wrap: wrap;
+  padding: 20px;
   h3 {
-    margin: 10px 0;
-    padding: 10px 15px 10px 10px;
+    margin: 0;
+    padding: 0;
     line-height: 1;
-    align-self: center;
   }
   h4 {
     margin: 0;
@@ -100,7 +101,6 @@ const Row__Container = styled(Row)`
   padding: .5em 0 0 0;
 `
 const Col__Container = styled(Col)`
-  padding: 1em 1em 0 0;
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
@@ -111,4 +111,3 @@ const Image = styled.div`
   height: 160px;
   margin: 0 0 1em 0;
 `
-
