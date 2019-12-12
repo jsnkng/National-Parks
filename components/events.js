@@ -13,88 +13,102 @@ const Events = props => {
 
   console.log(events)
   return (
-    <Container>
-      <h3>Events</h3>
-      <Group>
-        <Row>
-          { events.slice(0,6).map((item) => {
-            return(
-              <Col xs={12} sm={6} md={4} key={item.id}>
-                <Item>
-                <a href={item.infourl} target="_blank"><Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } /></a>
-                
-                <h6>{item.dates.map((date) => toDateFormat(date)).join(', ')}</h6>
-                <h4><a href={item.infourl} target="_blank">{item.title}</a></h4>
-                <h5>{item.location}</h5>
-                <p dangerouslySetInnerHTML={{__html:item.description}} />
-                </Item>
-              </Col>
-            )
-        })
-        }
-        </Row>
-      </Group>
-    </Container>
+    <Grid__Container>
+      <h3>Events at the Park</h3>
+        { events.slice(0,6).map((item) => {
+          return(
+            <Row__Container key={item.id}>
+              {item.images.length !== 0 &&
+                <>
+                <Col__Container xs={12} sm={4} md={4}>
+                  <h4>{item.title}</h4>
+                  <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+                </Col__Container>
+                <Col__Container xs={12} sm={4} md={4} className="details">
+                  <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
+                  <p><strong>Location:</strong> {item.location}</p>
+                  <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                </Col__Container>
+                <Col__Container xs={12} sm={4} md={4}>
+                  <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
+                </Col__Container>
+              </>
+              }
+              {item.images.length === 0 &&
+                <>
+                <Col__Container xs={12} sm={8} md={8}>
+                  <h4>{item.title}</h4>
+                  <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+                </Col__Container>
+                <Col__Container xs={12} sm={4} md={4}>
+                  <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
+                  <p><strong>Location:</strong> {item.location}</p>
+                  <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                </Col__Container>
+              </>
+              }
+             
+            </Row__Container>
+          )
+      })
+      }
+    </Grid__Container>
   )
 }
   
 export default Events
 
-const Container = styled(Grid)`
-  background-color: #d7d6cb;
+const Grid__Container = styled(Grid)`
+background-color: #1e1d1e;
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 0;
   h3 {
-    color: #d7d6cb;
-    margin: 0;
+    margin: 10px 0;
     padding: 10px 15px 10px 10px;
     line-height: 1;
     align-self: center;
   }
   h4 {
-    font-size: .75em;
-    width: 50%;
-    margin-left: 4%;
-    float: left;
+    margin: 0;
+    padding: 0;
   }
-  h5 {
-    font-size: .75em;
-    width: 50%;
-    margin-left: 4%;
-    float: left;
+  p {
+    font-size: .825em;
+    padding: .25em 0 0 0;
+    line-height: 1.5;
+  } 
+  ul {
+    font-size: .825em;
+    padding: 0 0 0 1.125em ;
+  } 
+  a {
+    font-size: .825em;
+    padding: 0;
   }
-  h6 {
-    clear: both;
-    padding: 5px;
-    font-size: .75em;
-  }
-  p{
-    font-size: .9em;
+  .details {
+    p {
+      font-size: .75em;
+      padding: .25em 0 0 0;
+    } 
+    strong {
+      font-weight: 600;
+    }
   }
   
 `
-const Group = styled.div`
-  padding: 10px;
+const Row__Container = styled(Row)`
+  padding: .5em 0 0 0;
 `
-const Item = styled.div`
-  flex: 1 1 300px;
-  align-items: stretch;
-  line-height: 1.25;
-  padding: 10px 0px;
+const Col__Container = styled(Col)`
+  padding: 1em 1em 0 0;
 `
 const Image = styled.div`
-  float: left;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 40vw;
-  min-width: 140px;
-  max-width: 40%;
-  height: 10vw;
-  min-height: 100px;
-  max-height: 140px;
-  margin: 0;
+  width: 100%;
+  height: 160px;
+  margin: 0 0 1em 0;
 `
 

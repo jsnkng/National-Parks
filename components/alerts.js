@@ -5,24 +5,34 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 const Alerts = props => {
   const [alerts, setAlerts] = useState(props.alerts)
   return (
-    <AlertsContainer>
-      <h3>Alerts & Conditions</h3>
-      { alerts === undefined || alerts.length === 0 &&
-        <h4>No Active Alerts</h4>
-      }
-      
-      { alerts.slice(0).map((item) => {
-        return(
-          <AlertItem key={item.id}>
-            <div>{item.category}</div>
-            <h4>{item.title}</h4>
-            {/* <h5 style={{fontSize:'9px';}}>{item.category}</h5> */}
-            {/* <p>{item.description}</p> */}
-          </AlertItem>
-        )
-      })
-      }
-    </AlertsContainer>
+    <Grid__Container>
+      <Row>
+        <Col xs={12} sm={4} md={4} lg={6}>
+          <h3>Alerts & Conditions</h3>
+        </Col>
+
+        { alerts === undefined || alerts.length === 0 &&
+          <Col xs={12} sm={8} md={8} lg={6}>
+            <h4>No Active Alerts</h4>
+          </Col>
+        }
+        { alerts.slice(0).map((item) => {
+          return(
+            <Col xs={6} sm={4} md={4} lg={3} key={item.id}>
+              <Item key={item.id}>
+                <p>{item.category}</p>
+                
+                <details>
+                  <summary>{item.title}</summary>
+                  {item.description}
+                </details>
+              </Item>
+            </Col>
+          )
+          })
+          }
+      </Row>
+    </Grid__Container>
   )
 
 }
@@ -30,36 +40,33 @@ const Alerts = props => {
 export default Alerts
 
 
-const AlertsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+const Grid__Container = styled(Grid)`
   background-color: #ffca13;
   color: #333333; 
+  padding: 0 0 .5em 0;
+  margin: 0;
 
   h3 {
     background-color: #333333;
     color: #ffca13;
-    margin: 0;
-    padding: 10px 15px 10px 10px;
+    padding: .85em 0 .85em .85em;
     line-height: 1;
-    align-self: center;
+    width: 100%;
   }
-  div {
-    font-size: 12px;
+  details {
+    font-size: .75em;
+  }
+  summary {
+    margin: .5em 0;
+    font-weight: 600;
+    cursor: pointer;
+
   }
   h4 {
-    font-size: 1em;
-    margin: 12px 0 8px 8px;
+    font-size: .75em;
   }
 `
-
-const AlertItem = styled.div`
-  flex: 1 1 100px;
-  align-items: stretch;
-  line-height: 1.25;
-  padding: 10px;
-  h4 {
-    font-size: 1em;
-    margin: 2px 0 8px 0;
-  }
+const Item = styled.div`
+  line-height: 1.125em;
+  padding: 0 0 .5em 1.25em;
 `

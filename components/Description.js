@@ -13,8 +13,7 @@ const Description = props => {
         <Item>
           {/* {park.fullName}<br /> */}
           <h2>{park.name} {park.designation}</h2>
-          <p>{park.description}<br />
-          <a href="{park.url}">National Park Service’s {park.name} Resource.</a><br /><br /></p>
+          <p>{park.description}</p>
           {/* {park.parkCode}<br /> */}
           {/* {park.id}<br /> */}
           {/* {park.states} */}
@@ -22,6 +21,7 @@ const Description = props => {
           <MapDiagramWrapper>
             <MapDiagram highlighted={null} onHighlight={(terr) => setHighlight(terr)} states={park.states} />
           </MapDiagramWrapper>
+          {/* <a href="{park.url}">National Park Service’s {park.name} Resource.</a> */}
 
         </Item>
       </Row>
@@ -37,8 +37,9 @@ const Container = styled(Grid)`
   margin: 0 auto;
   padding: 10px 0;
   a {
+    font-size: .9em;
     float: left;
-    width: 66%;
+    width: 100%;
   }
   p {
     float: left;

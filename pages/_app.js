@@ -109,15 +109,15 @@ const theme = {
     outerMargin: 1, // rem
     mediaQuery: 'only screen',
     container: {
-      sm: 46, // rem
-      md: 61, // rem
-      lg: 76  // rem
+      sm: 46,
+      md: 61,
+      lg: 76
     },
     breakpoints: {
-      xs: 0,  // em
-      sm: 48, // em
-      md: 64, // em
-      lg: 75  // em
+      xs: 0,
+      sm: 48,
+      md: 64,
+      lg: 75
     }
   }
 }

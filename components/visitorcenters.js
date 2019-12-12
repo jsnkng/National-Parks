@@ -59,7 +59,7 @@ const Container = styled.div`
   }
   .accordion__button {
     cursor: pointer;
-    padding: 12px 0 ;
+    padding: 12px 0;
     width: 100%;
     text-align: left;
     border: none;
@@ -69,6 +69,7 @@ const Container = styled.div`
     }
   }
   .accordion__button:hover {
-      background-color: #333333;
+      background-color: transparent;
+      border: none;
   }
 ` 

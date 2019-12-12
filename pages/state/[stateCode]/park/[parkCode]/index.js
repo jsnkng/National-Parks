@@ -49,15 +49,20 @@ const Park = props => {
         <Grid>
           <Row>
             <Col xs={12} sm={12} md={12}>
+
               <Description__Component park={park} />
+
             </Col>
             <Col xs={12} sm={12} md={12}>
+
               <Alerts__Component alerts={alerts} />
+              
+              {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
             </Col>
           </Row>
         </Grid>
       </Description__Wrapper>
-
+      
 
       { newsReleases !== undefined && newsReleases.length != 0 &&
       <NewsReleases__Wrapper>
@@ -211,7 +216,7 @@ const Description__Wrapper = styled.div`
 
 const NewsReleases__Wrapper = styled.div`
   background-color: #1e1d1e;
-  color: #333333; 
+  color: #ffffff; 
   margin: 0;
   padding: 20px 0;
   a {
@@ -219,7 +224,6 @@ const NewsReleases__Wrapper = styled.div`
     text-decoration: none;
   }
   h3 {
-    background-color: #333333;
     color: #ffffff;
   }
 `
@@ -228,13 +232,10 @@ const Events__Wrapper = styled.div`
   background-color: #1e1d1e;
   margin: 0;
   padding: 20px 0;
+  color: #ffffff;
   a {
     color: #4c93d9;
     text-decoration: none;
-  }
-  h3 {
-    background-color: #333333;
-    color: #ffffff;
   }
 `
 const Accordion__Wrapper = styled.div`
@@ -259,7 +260,6 @@ const Accordion__Wrapper = styled.div`
 }
 `
 const VisitorCenters__Wrapper = styled.div`
-  font-family: Helvetica;
   background-color: #1e1d1e;
   color: #ffffff; 
   margin: 1em 0;
@@ -296,7 +296,6 @@ const Directions__Wrapper = styled.div`
 `
 
 const DirectionsWeather = styled.div`
-  font-family: Helvetica;
   background-color: #1e1d1e;
   color: #ffffff; 
   margin: 1em 0;
