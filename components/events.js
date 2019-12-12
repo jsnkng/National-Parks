@@ -29,7 +29,9 @@ const Events = props => {
                 <div dangerouslySetInnerHTML={{__html:item.description}}></div>
               </Col__Container>
               <Col__Container xs={12} sm={4} md={4} className="details">
-                <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
+                {item.times[0] !== undefined && item.times.length[0] !== 0 &&
+                  <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p> 
+                }
                 <p><strong>Location:</strong> {item.location}</p>
                 <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
               </Col__Container>
@@ -45,7 +47,9 @@ const Events = props => {
                 <div dangerouslySetInnerHTML={{__html:item.description}}></div>
               </Col__Container>
               <Col__Container xs={12} sm={4} md={4}>
+                {item.times[0] !== undefined && item.times.length[0] !== 0 &&
                 <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p>
+                }
                 <p><strong>Location:</strong> {item.location}</p>
                 <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
               </Col__Container>
@@ -63,7 +67,7 @@ export default Events
 const Grid__Container = styled(Grid)`
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 1em 1em 0 1em;
   h3 {
     margin: 0;
     padding: 0;

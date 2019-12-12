@@ -154,7 +154,7 @@ const Campgrounds = props => {
                       <span>
                         <h5>Regulations</h5>
                         <p>{item.regulationsoverview}</p>
-                        {item.regulationsurl}
+                        <p>{item.regulationsurl}</p>
                       </span>
                     }
 
@@ -167,21 +167,21 @@ const Campgrounds = props => {
 
                     {item.reservationssitesfirstcome !== undefined && item.reservationssitesfirstcome != 0 && 
                       <span>
-                        <h5>reservationssitesfirstcome</h5>
+                        <h5>Reservations Sites First Come</h5>
                         <p>{item.reservationssitesfirstcome}</p>
                       </span>
                     }
 
                     {item.reservationssitesreservable !== undefined && item.reservationssitesreservable != 0 && 
                       <span>
-                        <h5>reservationssitesreservable</h5>
+                        <h5>Reservations Reservable</h5>
                         <p>{item.reservationssitesreservable}</p>
                       </span>
                     }
 
                     {item.reservationsurl !== undefined && item.reservationsurl != 0 && 
                       <span>
-                        <h5>reservationsurl</h5>
+                        <h5>Reservations URL</h5>
                         <p>{item.reservationsurl}</p>
                       </span>
                     }
@@ -282,14 +282,14 @@ const CampgroundsWrapper = styled.div`
   }
 `
 const CampgroundsGrid = styled(Grid)`
-   word-wrap:break-word;
-   padding: 0;
+  word-wrap:break-word;
+  padding: 0;
 `
 const CampgroundsRow = styled(Row)`
 `
 
 const CampgroundsCol = styled(Col)`
-flex: 1 1 300px;
-align-items: stretch;
-padding: 5px 0px;
+  flex: 1 1 300px;
+  align-items: stretch;
+  padding: 5px 0px;
 `

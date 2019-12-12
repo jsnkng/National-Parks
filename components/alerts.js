@@ -39,7 +39,6 @@ const Alerts = props => {
   
 export default Alerts
 
-
 const Grid__Container = styled(Grid)`
   background-color: #ffca13;
   color: #333333; 
@@ -53,6 +52,9 @@ const Grid__Container = styled(Grid)`
     line-height: 1;
     width: 100%;
   }
+  h4 {
+    font-size: .75em;
+  }
   details {
     font-size: .75em;
   }
@@ -60,10 +62,6 @@ const Grid__Container = styled(Grid)`
     margin: .5em 0;
     font-weight: 600;
     cursor: pointer;
-
-  }
-  h4 {
-    font-size: .75em;
   }
 `
 const Item = styled.div`

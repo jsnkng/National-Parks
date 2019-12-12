@@ -10,13 +10,13 @@ import {
 
 const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
-
+  console.log(visitorCenters)
   return (
     <Container>
       <h3>Visitor Centers</h3>
         { visitorCenters.slice(0).map((item) => {
         return(
-           <details>
+           <details key={item.id}>
               <summary>{item.name}</summary>
               <p>{item.description}</p>
               <p>{item.directionsInfo}</p>

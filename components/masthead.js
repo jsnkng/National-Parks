@@ -29,7 +29,7 @@ export default Masthead
 
 const HeaderMenu = styled.header`
   display: grid;
-  grid-template-columns: 2fr 10fr 6fr ;
+  grid-template-columns: 1fr 13fr 5fr;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   font-family: Helvetica;
@@ -38,11 +38,12 @@ const HeaderMenu = styled.header`
   left: 0;
   right: 0;
   height: 50px;
-  padding: 15px;
+  padding: 15px 0 15px 10px;
   z-index: 10;
   margin: 0;
 
-  ${SuperQuery().minWidth.md.css`
+  ${SuperQuery().minWidth.sm.css`
+    grid-template-columns: 1fr 10fr 5fr;
     height: 60px;
   `}
   ${SuperQuery().minWidth.lg.css`
@@ -61,6 +62,7 @@ const HeaderItem = styled.div`
     line-height: 1;
     font-size: 1.5em;
     width: 100%;
+    margin:0;
   }
   h2 {
     margin: 4px 0 0 0;
@@ -69,6 +71,7 @@ const HeaderItem = styled.div`
     line-height: 1;
     font-size: 1em;
     width: 100%;
+    margin:0;
   }
   h3 {
     float: right;

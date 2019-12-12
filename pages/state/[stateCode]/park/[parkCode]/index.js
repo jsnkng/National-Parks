@@ -54,9 +54,9 @@ const Park = props => {
 
             </Col>
             <Col xs={12} sm={12} md={12}>
-
-              <Alerts__Component alerts={alerts} />
-              
+              { alerts !== undefined && alerts.length != 0 &&
+                <Alerts__Component alerts={alerts} />
+              }
               {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
             </Col>
           </Row>
@@ -136,9 +136,9 @@ const Park = props => {
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-
-          <Articles__Component articles={articles} />
-
+          <Articles__Wrapper>
+            <Articles__Component articles={articles} />
+          </Articles__Wrapper>
           </AccordionItemPanel>
         </AccordionItem>
         }
@@ -295,20 +295,16 @@ const Directions__Wrapper = styled.div`
   margin: 0;
 `
 
-const DirectionsWeather = styled.div`
+const Articles__Wrapper = styled.div`
   background-color: #1e1d1e;
   color: #ffffff; 
-  margin: 1em 0;
-
-  p {
-   font-size: .9em;
-   padding: 13px;
+  margin: 0;
+  padding: 20px 0;
+  a {
+    color: #4c93d9;
+    text-decoration: none;
   }
   h3 {
     color: #ffffff;
-    margin: 0;
-    padding: 10px 15px 10px 10px;
-    line-height: 1;
-    align-self: center;
   }
 `
