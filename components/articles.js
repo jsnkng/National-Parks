@@ -49,10 +49,9 @@ const Grid__Container = styled(Grid)`
     font-size: 1.25em;
     line-height: 1.125;
     float: left;
-    width: 80%;
+    width: 100%;
     margin: 0 0 1em 0;
     ${SuperQuery().minWidth.md.css`
-      width: 100%;
       margin: 0 0 .5em 0;
     `}
   }

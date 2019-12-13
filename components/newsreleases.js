@@ -82,7 +82,7 @@ const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
   padding: 2.25em 0 1em 0;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #3c3a3c;
   &:first-child {
     padding: 1em 0 1em 0;
   }

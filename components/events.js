@@ -59,7 +59,7 @@ const Events = props => {
                 <h4>{item.title}</h4>
                 <div dangerouslySetInnerHTML={{__html:item.description}}></div>
               </Col__Container>
-              <Col__Container xs={12} sm={12} md={4} lg={4} xl={4}>
+              <Col__Container xs={12} sm={12} md={4} lg={4} xl={4} className="details">
                 {item.times[0] !== undefined && item.times.length[0] !== 0 &&
                   <p><strong>Time:</strong> {item.times[0].sunrisestart === "true" ? "Sunrise" : item.times[0].timestart}–{item.times[0].sunsetend === "true" ? "Sunset" : item.times[0].timeend}</p>
                 }
@@ -106,14 +106,16 @@ const Grid__Container = styled(Grid)`
     padding: 0 0 0 1.125em ;
   } 
   a {
-    font-size: .825em;
     padding: 0;
   }
   .details {
     p {
-      font-size: .75em;
+      font-size: .85em;
       padding: 0 0 0;
       margin:0;
+    ${SuperQuery().minWidth.md.css`
+      font-size: .75em;
+    `}
     } 
     strong {
       font-weight: 600;
@@ -124,9 +126,10 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
   padding: 1.75em 0;
   margin: 0;
-  border-bottom:1px solid;
+  border-bottom:1px solid #3c3a3c;
   &:first-child {
     padding: 0;
+    border-bottom:1px solid #ffffff;
   }
   &:last-child {
     border: none;

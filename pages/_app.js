@@ -34,6 +34,9 @@ const GlobalStyle = createGlobalStyle`
     margin: .4em 0;
     padding: 0;
   }
+  summary {
+    outline: none;
+  }
   .accordion {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;

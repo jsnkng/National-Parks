@@ -13,7 +13,7 @@ import Alerts__Component from '../../../../../components/alerts'
 import NewsReleases__Component from '../../../../../components/newsreleases'
 import Weather__Component from '../../../../../components/weather'
 import Directions__Component from '../../../../../components/directions'
-import VisitorCenters__Component from '../../../../../components/visitorcenters'
+import VisitorInfo__Component from '../../../../../components/visitorcenters'
 import Events__Component from '../../../../../components/events'
 import Campgrounds__Component from '../../../../../components/campgrounds'
 import Places__Component from '../../../../../components/places'
@@ -48,24 +48,30 @@ const Park = props => {
       }
 
       <Description__Wrapper>
-        <Grid>
-          <Row>
-            <Col xs={12} sm={12} md={12}>
-
               <Description__Component park={park} />
 
-            </Col>
-            <Col xs={12} sm={12} md={12}>
+          
               { alerts !== undefined && alerts.length != 0 &&
                 <Alerts__Component alerts={alerts} />
               }
               {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
-            </Col>
-          </Row>
-        </Grid>
+           
       </Description__Wrapper>
       
 
+      <VisitorInfo__Wrapper>
+        <VisitorInfo__Component park={park} visitorCenters={visitorCenters} />
+      </VisitorInfo__Wrapper>
+
+      <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
+
+        <MapLive__Component
+          latLong={park.latLong}
+          name={park.name}
+          designation={park.designation}
+          zoom={9}
+        />
+      </MapLive__Wrapper>
       { newsReleases !== undefined && newsReleases.length != 0 &&
       <NewsReleases__Wrapper>
 
@@ -82,19 +88,9 @@ const Park = props => {
       </Events__Wrapper>
       }
      
-      <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
-
-        <MapLive__Component
-          latLong={park.latLong}
-          name={park.name}
-          designation={park.designation}
-          zoom={9}
-        />
-      </MapLive__Wrapper>
-
-      { park.directionsInfo !== undefined && park.directionsInfo.length != 0 || 
-        park.weatherInfo !== undefined && park.weatherInfo.length != 0 ||
-        visitorCenters !== undefined && visitorCenters.length != 0 &&
+      {/* { (park.directionsInfo !== undefined && park.directionsInfo.length !== 0 || 
+        park.weatherInfo !== undefined && park.weatherInfo.length !== 0 ||
+        visitorCenters !== undefined && visitorCenters.length !== 0) &&
       <Directions__Wrapper>
         <Grid>
             <Row>
@@ -115,7 +111,7 @@ const Park = props => {
             </Row>
           </Grid>
       </Directions__Wrapper>
-      }
+      } */}
       <Accordion__Wrapper>
         <Accordion allowZeroExpanded={true}>
         
@@ -212,25 +208,20 @@ const Container = styled.div`
 
 `
 const Description__Wrapper = styled.div`
-  padding: 15px 0;
+  padding: 1em 0;
   margin: 0;
   background-color: #1e1d1e;
   color: #ffffff; 
   margin: 0;
 
-  a {
-    color: #4c93d9;
-  }
 `
-
-
 const NewsReleases__Wrapper = styled.div`
   background-color: #1e1d1e;
   color: #ffffff; 
   margin: 0;
   padding: 20px 0;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
   h3 {
@@ -242,6 +233,15 @@ const Events__Wrapper = styled.div`
   background-color: #1e1d1e;
   margin: 0;
   padding: 20px 0;
+  color: #ffffff;
+  a {
+    color: #a1dde9;
+    text-decoration: none;
+  }
+`
+const VisitorInfo__Wrapper = styled.div`
+  background-color: #1e1d1e;
+  padding: 1em 0;
   color: #ffffff;
   a {
     color: #4c93d9;
@@ -266,25 +266,6 @@ const Accordion__Wrapper = styled.div`
   li {
     list-style-type: none;
     padding: 0 4px;
-  }
-}
-`
-const VisitorCenters__Wrapper = styled.div`
-  background-color: #1e1d1e;
-  color: #ffffff; 
-  margin: 1em 0;
-
-  p {
-   font-size: .9em;
-   padding: 13px;
-  }
-
-  h3 {
-    color: #ffffff;
-    margin: 0;
-    padding: 10px 15px 10px 10px;
-    line-height: 1;
-    align-self: center;
   }
 `
 const MapLive__Wrapper = styled.div`
