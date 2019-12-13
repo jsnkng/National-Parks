@@ -98,11 +98,9 @@ const Grid__Container = styled(Grid)`
   
 `
 const Row__Container = styled(Row)`
-  background-color: #ffffff;
-  color: #000000;
   padding: 1em;
   margin: .5em 0;
-  border:1px solid;
+  border-bottom:1px solid;
   ${SuperQuery().minWidth.sm.css`
     background-color: transparent;
     color: #ffffff;

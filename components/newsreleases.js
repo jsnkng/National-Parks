@@ -73,13 +73,14 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
   padding: 1em 0;
   margin: .5em 0;
+  &:nth-child(1) {
   border-bottom: 1px solid;
+  }
 `
 const Col__Container = styled(Col)`
-  background-color: #ffffff;
-  color: #000000;
   line-height: 1.25;
   padding: 0 .5em 0 0 ;
+    border-bottom: 1px solid;
   &:nth-child(1),
   &:nth-child(4) {
     padding: 0 .5em 0 0;
@@ -92,8 +93,6 @@ const Col__Container = styled(Col)`
     padding: 0 0 0 .5em;
   }
   ${SuperQuery().minWidth.sm.css`
-    background-color: transparent;
-    color: #ffffff;
     padding: 0 1em 0 0;
     margin: 0;
     border: 0px solid;
