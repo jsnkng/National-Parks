@@ -60,19 +60,19 @@ const MapWrapper = styled.div`
   margin: 20px auto;
 
   *{
-	     pointer-events: fill;
-	 	}
-path {
-    stroke: #ffffff;
-    stroke-width:1px;
-    stroke-linejoin: round;
-    fill: #d7d6cb;
-	 	-webkit-transition: fill .4s ease;
-	 	-moz-transition: fill .4s ease;
-	 	-o-transition: fill .4s ease;
-	 	transition: fill .4s ease;	 
+      pointer-events: fill;
+  }
+  path {
+      stroke: #ffffff;
+      stroke-width:1px;
+      stroke-linejoin: round;
+      fill: #d7d6cb;
+      -webkit-transition: fill .4s ease;
+      -moz-transition: fill .4s ease;
+      -o-transition: fill .4s ease;
+      transition: fill .4s ease;	 
 
-}
+  }
   path:hover, circle:hover {
     stroke: #00ac47;
     stroke-width:2px;
@@ -110,5 +110,8 @@ path {
     fill: none !important;
     stroke: #d7d6cb !important;
     cursor: default;
+  }
+  path#path67:hover {
+    stroke-width: 1px;
   }
 `
