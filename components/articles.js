@@ -15,19 +15,20 @@ const Articles = props => {
   console.log(articles)
   return (
     <Grid__Container>
-      <Row>
-        { articles.slice(0,8).map((item) => {
+      <Row__Container>
+        { articles.slice(0,12).map((item) => {
             return(
-              <Col xs={12} sm={4} md={4} key={item.id}>
-                <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : item.listingimage.url  } alt={item.listingimage.altText} />
+              <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
+                <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.listingimage.url  } alt={item.listingimage.altText} />
                 <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-                <p>{item.listingdescription} <a href={item.url} target="_blank">Read more...</a></p>
                 
-              </Col>
+                <p>{item.listingdescription}<br /><a href={item.url} target="_blank">Read more...</a></p>
+                
+              </Col__Container>
             )
           })
           }
-      </Row>
+      </Row__Container>
     </Grid__Container>
   )
 }
@@ -37,20 +38,20 @@ export default Articles
 
 
 const Grid__Container = styled(Grid)`
-  display: flex;
-  flex-wrap: wrap;
   padding: 1em 1em 0 1em;
   h3 {
+    font-size: 2em;
     margin: 0;
     padding: 0;
     line-height: 1;
   }
   h4 {
-    font-size: 1em;
+    font-size: 1.25em;
+    line-height: 1.125;
     float: left;
-    width: 60%;
-    margin: 0 0 1em 1em;
-    ${SuperQuery().minWidth.lg.css`
+    width: 80%;
+    margin: 0 0 1em 0;
+    ${SuperQuery().minWidth.md.css`
       width: 100%;
       margin: 0 0 .5em 0;
     `}
@@ -60,20 +61,59 @@ const Grid__Container = styled(Grid)`
     float: right;
   }
   p {
-      font-size: 1em;
-      clear: both;
-      width: 100%;
-      margin: 0 0 1em 0;
-    ${SuperQuery().minWidth.lg.css`
+    font-size: 1em;
+    clear: both;
+    width: 100%;
+    margin: 0 0 1em 0;
+    ${SuperQuery().minWidth.md.css`
       font-size: .825em;
     `}
   }
 `
+const Row__Container = styled(Row)`
+  padding: 1em 0;
+  margin: 0;
+  &:first-child {
+    padding: 0;
+    border-bottom: 1px solid;
+  }
+  &:last-child {
+    border: none;
+  }
+`
+
 const Col__Container = styled(Col)`
-  flex: 1 1 100px;
-  align-items: stretch;
-  line-height: 1.25;
-  margin-bottom: .5em;
+  padding: 2.25em 0 1em 0;
+  border-bottom: 1px solid;
+  &:first-child {
+    padding: 1em 0 1em 0;
+  }
+  &:last-child {
+    border: none;
+  }
+  ${SuperQuery().minWidth.md.css`
+    margin: 0;
+    border: 0px solid;
+    &:nth-child(odd) {
+      padding: .5em .75em .5em 0;
+    }
+    &:nth-child(even) {
+      padding: .5em 0 .5em .75em;
+    }
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    margin: 0;
+    border: 0px solid;
+    &:nth-child(3n + 1) {
+      padding: .25em 1em .5em 0;
+    }
+    &:nth-child(3n + 2) {
+      padding: .25em .5em .5em .5em;
+    }
+    &:nth-child(3n + 3) {
+      padding: .25em 0 .5em 1em;
+    }
+  `}
 `
 const Image = styled.div`
   float: left;
@@ -81,13 +121,13 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 33%;
-  height: 6em;
-  margin: 0 0 .625em 0;
-
-  ${SuperQuery().minWidth.md.css`
-    width: 100%;
-    height: 160px;
-    margin: 0 0 1em 0;
-  `}
+  width: 100%;
+  height: 12em;
+  margin: 0 0 1em 0;
+  &.hidden {
+    display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
+  }
 `

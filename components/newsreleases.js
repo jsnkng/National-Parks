@@ -13,19 +13,18 @@ const NewsReleases = props => {
     return Intl.DateTimeFormat('en-US').format(nd)
   }
   console.log(newsReleases)
-  
 
   
   return (
     <Grid__Container>
       <Row__Container>
-          <h3>Latest Park News</h3>
+        <h3>Latest Park News</h3>
       </Row__Container>
       <Row__Container>
         { newsReleases.slice(0,6).map((item) => {
           return(
             <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
-              <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.image.url } /></a>
+              <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "https://fakeimg.pl/600x300/1e1d1e/?text=%20" : item.image.url } className={item.image.url === undefined || item.image.url.length == 0 ? "hidden" : "" }/></a>
               <span>{toDateFormat(item.releasedate)}</span>
               <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>
               <p>{item.abstract.substring(0, 370)}</p>
@@ -84,9 +83,12 @@ const Row__Container = styled(Row)`
 const Col__Container = styled(Col)`
   padding: 2.25em 0 1em 0;
   border-bottom: 1px solid;
-    &:first-child {
+  &:first-child {
     padding: 1em 0 1em 0;
-    }
+  }
+  &:last-child {
+    border: none;
+  }
   ${SuperQuery().minWidth.md.css`
     margin: 0;
     border: 0px solid;
@@ -115,13 +117,18 @@ const Col__Container = styled(Col)`
   `}
 `
 const Image = styled.div`
-float: left;
-background-image: url(${props => props.backgroundURL});
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
-width: 100%;
-height: 12em;
-margin: 0 0 1em 0;
-
+  float: left;
+  background-image: url(${props => props.backgroundURL});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 12em;
+  margin: 0 0 1em 0;
+  &.hidden {
+    display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
+  }
 `

@@ -35,13 +35,24 @@ const Events = props => {
                 }
                 <p><strong>Location:</strong> {item.location}</p>
                 <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === true ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
+                {item.regresinfo !== "" &&
+                  <p><strong>Reservations:</strong> {item.regresinfo}
+                  {item.regresurl !== "" &&
+                    <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
+                  }
+                </p> 
+                }
+                
                 <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                {item.infourl !== "" &&
+                  <p><strong>More Info:</strong> <a href={item.infourl} target="_blank">{item.infourl}</a></p> 
+                }
               </Col__Container>
               <Col__Container xs={12} sm={12} md={3}>
                 <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
               </Col__Container>
-</>
- }
+              </>
+            }
             {item.images.length === 0 &&
               <>
               <Col__Container xs={12} sm={12} md={8} lg={8} xl={4}>
@@ -56,6 +67,13 @@ const Events = props => {
                   <p><strong>Location:</strong> {item.location}</p>
                 }
                 <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === "true" ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
+                {item.regresinfo !== "" &&
+                  <p><strong>Reservations:</strong> {item.regresinfo}
+                  {item.regresurl !== "" &&
+                    <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
+                  }
+                </p> 
+                }
                 <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
               </Col__Container>
               </>
@@ -107,9 +125,12 @@ const Row__Container = styled(Row)`
   padding: 1.75em 0;
   margin: 0;
   border-bottom:1px solid;
-    &:first-child {
-      padding: 0;
-    }
+  &:first-child {
+    padding: 0;
+  }
+  &:last-child {
+    border: none;
+  }
   ${SuperQuery().minWidth.md.css`
     background-color: transparent;
     color: #ffffff;
