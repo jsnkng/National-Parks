@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: #fafafa;
     line-height: 1.6;
-    font-size:16px;
+    font-size: 16px;
 
     ${SuperQuery().minWidth.sm.css`
       font-size:18px;
@@ -99,9 +99,6 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const theme = {
-  colors: {
-    primary: 'gold'
-  },
   flexboxgrid: {
     // Defaults
     gridSize: 12, // columns
@@ -109,15 +106,18 @@ const theme = {
     outerMargin: 1, // rem
     mediaQuery: 'only screen',
     container: {
-      sm: 46,
-      md: 61,
-      lg: 76
+      xs: 0,  // em
+      sm: 36, // em
+      md: 48, // em
+      lg: 62,  // em
+      xl: 75
     },
     breakpoints: {
-      xs: 0,
-      sm: 48,
-      md: 64,
-      lg: 75
+      xs: 0,  // em
+      sm: 36, // em
+      md: 48, // em
+      lg: 62,  // em
+      xl: 75
     }
   }
 }

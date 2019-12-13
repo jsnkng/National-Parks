@@ -8,7 +8,7 @@ const Alerts = props => {
   return (
     <Grid__Container>
       <Row>
-        <Col xs={12} sm={4} md={4} lg={6}>
+        <Col xs={12} sm={4} md={4} lg={4}>
           <h3>Alerts & Conditions</h3>
         </Col>
         { alerts === undefined || alerts.length === 0 &&
@@ -18,7 +18,7 @@ const Alerts = props => {
         }
         { alerts.slice(0).map((item) => {
           return (
-            <Col xs={6} sm={4} md={4} lg={3} key={item.id}>
+            <Col xs={6} sm={4} md={4} lg={4} key={item.id}>
               <Item>
                 <span>{item.category}</span>
                 
@@ -48,22 +48,24 @@ const Grid__Container = styled(Grid)`
     color: #ffca13;
     padding: .85em 0 .85em .85em;
     line-height: 1;
-    width: 100%;
+    width: 96%;
   }
   h4 {
     font-size: .75em;
   }
   details {
     font-size: .75em;
+    
   }
   summary {
     margin: .25em 0;
     font-weight: 600;
     cursor: pointer;
+    line-height: 1;
   }
   span {
     display: block;
-    margin: 1em 0 0 0;
+    margin: .675em 0 0 0;
   }
 `
 const Item = styled.div`

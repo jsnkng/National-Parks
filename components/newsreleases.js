@@ -13,17 +13,18 @@ const NewsReleases = props => {
     return Intl.DateTimeFormat('en-US').format(nd)
   }
   console.log(newsReleases)
+  
+
+  
   return (
     <Grid__Container>
       <Row__Container>
-        <Col__Container>
           <h3>Latest Park News</h3>
-        </Col__Container>
       </Row__Container>
       <Row__Container>
         { newsReleases.slice(0,6).map((item) => {
           return(
-            <Col__Container xs={12} sm={6} md={4} key={item.id}>
+            <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
               <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.image.url } /></a>
               <span>{toDateFormat(item.releasedate)}</span>
               <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>
@@ -38,6 +39,7 @@ const NewsReleases = props => {
   
 export default NewsReleases
 
+
 const Grid__Container = styled(Grid)`
   padding: 1em 1em 0 1em;
   h3 {
@@ -47,11 +49,12 @@ const Grid__Container = styled(Grid)`
     line-height: 1;
   }
   h4 {
-    font-size: 1em;
+    font-size: 1.25em;
+    line-height: 1.125;
     float: left;
-    width: 60%;
+    width: 80%;
     margin: 0 0 1em 0;
-    ${SuperQuery().minWidth.lg.css`
+    ${SuperQuery().minWidth.md.css`
       width: 100%;
       margin: 0 0 .5em 0;
     `}
@@ -65,52 +68,60 @@ const Grid__Container = styled(Grid)`
     clear: both;
     width: 100%;
     margin: 0 0 1em 0;
-    ${SuperQuery().minWidth.lg.css`
+    ${SuperQuery().minWidth.md.css`
       font-size: .825em;
     `}
   }
 `
 const Row__Container = styled(Row)`
   padding: 1em 0;
-  margin: .5em 0;
-  &:nth-child(1) {
-  border-bottom: 1px solid;
+  margin: 0;
+  &:first-child {
+    padding: 0;
+    border-bottom: 1px solid;
   }
 `
 const Col__Container = styled(Col)`
-  line-height: 1.25;
-  padding: 0 .5em 0 0 ;
-    border-bottom: 1px solid;
-  &:nth-child(1),
-  &:nth-child(4) {
-    padding: 0 .5em 0 0;
-  }&:nth-child(2),
-  &:nth-child(5) {
-    padding: 0 .5em;
-  }
-  &:nth-child(3),
-  &:nth-child(6) {
-    padding: 0 0 0 .5em;
-  }
-  ${SuperQuery().minWidth.sm.css`
-    padding: 0 1em 0 0;
+  padding: 2.25em 0 1em 0;
+  border-bottom: 1px solid;
+    &:first-child {
+    padding: 1em 0 1em 0;
+    }
+  ${SuperQuery().minWidth.md.css`
     margin: 0;
     border: 0px solid;
+    &:nth-child(odd) {
+      padding: .5em .75em .5em 0;
+    }
+    &:nth-child(even) {
+      padding: .5em 0 .5em .75em;
+    }
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    margin: 0;
+    border: 0px solid;
+    &:nth-child(1),
+    &:nth-child(4) {
+      padding: .25em 1em .5em 0;
+    }
+    &:nth-child(2),
+    &:nth-child(5) {
+      padding: .25em .5em .5em .5em;
+    }
+    &:nth-child(3),
+    &:nth-child(6) {
+      padding: .25em 0 .5em 1em;
+    }
   `}
 `
 const Image = styled.div`
-  float: left;
-  background-image: url(${props => props.backgroundURL});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 33%;
-  height: 6em;
-  margin: 1em 1em .625em 0;
+float: left;
+background-image: url(${props => props.backgroundURL});
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+width: 100%;
+height: 12em;
+margin: 0 0 1em 0;
 
-  ${SuperQuery().minWidth.md.css`
-    width: 100%;
-    height: 160px;
-    margin: 0 0 1em 0;
-  `}
 `

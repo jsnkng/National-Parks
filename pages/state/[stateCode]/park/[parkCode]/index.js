@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
@@ -35,7 +35,6 @@ const Park = props => {
   const [alerts, setAlerts] = useState(props.alerts.data)
   const [campgrounds, setCampgrounds] = useState(props.campgrounds.data)
   const [newsReleases, setNewsReleases] = useState(props.newsreleases.data)
-  const [highlighted, setHighlight] = useState(null)
 
   console.log(park)
 
