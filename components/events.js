@@ -25,11 +25,12 @@ const Events = props => {
           <Row__Container key={item.id}>
             {item.images.length !== 0 &&
               <>
-              <Col__Container xs={12} sm={8} md={6} >
+              <Col__Container xs={12} md={6} >
                 <h4>{item.title}</h4>
                 <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+              
               </Col__Container>
-              <Col__Container xs={12} sm={4} md={3} className="details">
+              <Col__Container xs={12} md={3} className="details">
                 {item.times[0] !== undefined && item.times.length[0] !== 0 &&
                   <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p> 
                 }
@@ -42,24 +43,26 @@ const Events = props => {
                   }
                 </p> 
                 }
-                
+            
                 <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
                 {item.infourl !== "" &&
                   <p><strong>More Info:</strong> <a href={item.infourl} target="_blank">{item.infourl}</a></p> 
                 }
               </Col__Container>
-              <Col__Container xs={12} sm={12} md={3}>
+
+              
+              <Col__Container xs={12} md={3}>
                 <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
               </Col__Container>
               </>
             }
             {item.images.length === 0 &&
               <>
-              <Col__Container xs={12} sm={12} md={8} lg={8} xl={4}>
+              <Col__Container xs={12} sm={12} md={6}>
                 <h4>{item.title}</h4>
                 <div dangerouslySetInnerHTML={{__html:item.description}}></div>
               </Col__Container>
-              <Col__Container xs={12} sm={12} md={4} lg={4} xl={4} className="details">
+              <Col__Container xs={12} sm={12} md={6} className="details">
                 {item.times[0] !== undefined && item.times.length[0] !== 0 &&
                   <p><strong>Time:</strong> {item.times[0].sunrisestart === "true" ? "Sunrise" : item.times[0].timestart}–{item.times[0].sunsetend === "true" ? "Sunset" : item.times[0].timeend}</p>
                 }
@@ -97,7 +100,7 @@ const Grid__Container = styled(Grid)`
   }
   h4 {
     font-size: 1.5em;
-    margin: 0;
+    margin: 0 0 .5em 0;
     padding: 0;
     line-height: 1.125;
   }
@@ -108,10 +111,15 @@ const Grid__Container = styled(Grid)`
   a {
     padding: 0;
   }
+  p {
+      padding:0;
+      margin:0;
+  }
   .details {
+      margin:.25em 0 0 0;
     p {
       font-size: .85em;
-      padding: 0 0 0;
+      padding:0;
       margin:0;
     ${SuperQuery().minWidth.md.css`
       font-size: .75em;
@@ -127,7 +135,7 @@ const Row__Container = styled(Row)`
   padding: 1.75em 0;
   margin: 0;
   border-bottom:1px solid #3c3a3c;
-  &:first-child {
+  &:nth-of-type(1) {
     padding: 0;
     border-bottom:1px solid #ffffff;
   }
@@ -139,7 +147,7 @@ const Row__Container = styled(Row)`
     color: #ffffff;
     padding: 1.5em 0;
     border: 0px solid;
-    border-bottom: 1px solid;
+  border-bottom:1px solid #3c3a3c;
   `}
 `
 const Col__Container = styled(Col)`

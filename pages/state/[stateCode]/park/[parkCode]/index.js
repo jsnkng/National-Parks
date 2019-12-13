@@ -59,19 +59,6 @@ const Park = props => {
       </Description__Wrapper>
       
 
-      <VisitorInfo__Wrapper>
-        <VisitorInfo__Component park={park} visitorCenters={visitorCenters} />
-      </VisitorInfo__Wrapper>
-
-      <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
-
-        <MapLive__Component
-          latLong={park.latLong}
-          name={park.name}
-          designation={park.designation}
-          zoom={9}
-        />
-      </MapLive__Wrapper>
       { newsReleases !== undefined && newsReleases.length != 0 &&
       <NewsReleases__Wrapper>
 
@@ -87,6 +74,19 @@ const Park = props => {
 
       </Events__Wrapper>
       }
+      <VisitorInfo__Wrapper>
+        <VisitorInfo__Component park={park} campgrounds={campgrounds} visitorCenters={visitorCenters} />
+      </VisitorInfo__Wrapper>
+
+      {/* <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
+
+        <MapLive__Component
+          latLong={park.latLong}
+          name={park.name}
+          designation={park.designation}
+          zoom={9}
+        />
+      </MapLive__Wrapper> */}
      
       {/* { (park.directionsInfo !== undefined && park.directionsInfo.length !== 0 || 
         park.weatherInfo !== undefined && park.weatherInfo.length !== 0 ||
@@ -112,26 +112,17 @@ const Park = props => {
           </Grid>
       </Directions__Wrapper>
       } */}
-      <Accordion__Wrapper>
-        <Accordion allowZeroExpanded={true}>
         
         { campgrounds !== undefined && campgrounds.length != 0 &&
-        <AccordionItem>
-          <AccordionItemHeading aria-level="3">
-            <AccordionItemButton>
-
-              Campgrounds
-
-            </AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-
+        
+        <Campgrounds__Wrapper>
           <Campgrounds__Component campgrounds={campgrounds} />
+        </Campgrounds__Wrapper>
 
-          </AccordionItemPanel>
-        </AccordionItem>
         }
 
+        <Accordion__Wrapper>
+        <Accordion allowZeroExpanded={true}>
         { articles !== undefined && articles.length != 0 &&
         <AccordionItem>
           <AccordionItemHeading aria-level="3">
@@ -240,6 +231,15 @@ const Events__Wrapper = styled.div`
   }
 `
 const VisitorInfo__Wrapper = styled.div`
+  background-color: #1e1d1e;
+  padding: 1em 0;
+  color: #ffffff;
+  a {
+    color: #4c93d9;
+    text-decoration: none;
+  }
+`
+const Campgrounds__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;

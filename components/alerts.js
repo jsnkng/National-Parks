@@ -43,7 +43,7 @@ const Grid__Container = styled(Grid)`
 
   margin: 0 1em;
   ${SuperQuery().minWidth.md.css`
-    margin: 0 auto;
+    margin: 1em auto 0 auto;
   `}
   h3 {
     background-color: #333333;
@@ -64,7 +64,7 @@ const Grid__Container = styled(Grid)`
       margin: 0 1em 0 1em;
     ${SuperQuery().minWidth.md.css`
       margin: 0;
-      padding: 0;
+      padding: 0 1em 0 0;
     `}
   }
   summary {
