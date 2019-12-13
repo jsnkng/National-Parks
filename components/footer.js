@@ -6,28 +6,28 @@ import states from './datastates';
 const Footer = props => {
 
   return (
-    <HeaderMenu>
-      <HeaderItem>
+    <FooterMenu>
+      <FooterItem>
         <h1>{props.pageTitle}</h1>
         <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
         <h2><a>{states[props.stateCode] !== undefined ? states[props.stateCode][0] : props.highlighted}</a></h2>
         </Link>
-      </HeaderItem> 
-      <HeaderItem>
+      </FooterItem> 
+      <FooterItem>
         <h3>{props.subTitle}</h3>
-      </HeaderItem> 
-      <HeaderItem>
+      </FooterItem> 
+      <FooterItem>
         <Link href="/">
           <a><img src="/US-National-Parks-logo-sml-bw.png" width="32" /></a>
         </Link>
-      </HeaderItem> 
-    </HeaderMenu>
+      </FooterItem> 
+    </FooterMenu>
   )
 }
 export default Footer
 
 
-const HeaderMenu = styled.header`
+const FooterMenu = styled.header`
   display: grid;
   grid-template-columns: 12fr 6fr 1fr;
   background-color: #1e1d1e;
@@ -42,7 +42,7 @@ const HeaderMenu = styled.header`
 
 `
 
-const HeaderItem = styled.div`
+const FooterItem = styled.div`
   padding: 0;
   align-items: left;
   box-sizing: border-box;

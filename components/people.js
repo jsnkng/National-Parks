@@ -12,11 +12,10 @@ const People = props => {
             return(
               <PeopleCol xs={12} sm={6} md={3} key={item.id}>
                 {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
-                  <ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
+                  <a href={item.url} target="_blank"><ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} /></a>
               }
                 <h4>{item.title}</h4>
-                <p>{item.listingdescription}</p>
-                <a href={item.url} target="_blank">Read more...</a>
+                <p>{item.listingdescription}<a href={item.url} target="_blank">Read more...</a></p>
               </PeopleCol>
             )
           })
@@ -44,7 +43,6 @@ const ResponsiveImage = styled.div`
 const PeopleWrapper = styled.div`
   font-family: Helvetica;
   padding: 36px;
-
 
   h3 {
     background-color: #333333;

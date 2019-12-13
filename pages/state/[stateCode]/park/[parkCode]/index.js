@@ -37,13 +37,16 @@ const Park = props => {
   const [newsReleases, setNewsReleases] = useState(props.newsreleases.data)
   const [highlighted, setHighlight] = useState(null)
 
+  console.log(park)
 
   return (
     <Container>
       
       <Masthead__Component pageTitle={park.name} subTitle={park.designation} stateCode={stateCode} />
   
-      <SlideShow__Component park={park} />
+      { park.images !== undefined && park.images.length != 0 &&
+        <SlideShow__Component park={park} />
+      }
 
       <Description__Wrapper>
         <Grid>
@@ -89,12 +92,21 @@ const Park = props => {
           zoom={9}
         />
       </MapLive__Wrapper>
+
+      { park.directionsInfo !== undefined && park.directionsInfo.length != 0 || 
+        park.weatherInfo !== undefined && park.weatherInfo.length != 0 ||
+        visitorCenters !== undefined && visitorCenters.length != 0 &&
       <Directions__Wrapper>
         <Grid>
             <Row>
               <Col xs={12} sm={6} md={6}>
-                <Directions__Component park={park} />
-                <Weather__Component park={park} />
+                { park.directionsInfo !== undefined && park.directionsInfo.length != 0 &&
+                  <Directions__Component park={park} />
+                }
+
+                { park.weatherInfo !== undefined && park.weatherInfo.length != 0 &&
+                  <Weather__Component park={park} />
+                }
               </Col>
               <Col xs={12} sm={6} md={6}>
                 { visitorCenters !== undefined && visitorCenters.length != 0 &&
@@ -103,9 +115,8 @@ const Park = props => {
               </Col>
             </Row>
           </Grid>
-        
       </Directions__Wrapper>
-
+      }
       <Accordion__Wrapper>
         <Accordion allowZeroExpanded={true}>
         

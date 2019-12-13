@@ -48,10 +48,10 @@ const TerritoryListWrapper = styled.div`
   
   margin: 0 auto;
   padding: 0 2em 1em 2em;
-  max-width: 360px;
+  max-width: 610px;
 
   ${SuperQuery().minWidth.md.css`
-  max-width: 800px;
+    max-width: 800px;
   `}
 
 `

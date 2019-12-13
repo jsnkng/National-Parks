@@ -16,13 +16,11 @@ const Alerts = props => {
             <h4>No Active Alerts</h4>
           </Col>
         }
-      </Row>
-      <Row>
         { alerts.slice(0).map((item) => {
           return (
             <Col xs={6} sm={4} md={4} lg={3} key={item.id}>
-              <Item key={item.id}>
-                <p>{item.category}</p>
+              <Item>
+                <span>{item.category}</span>
                 
                 <details>
                   <summary>{item.title}</summary>
@@ -59,9 +57,13 @@ const Grid__Container = styled(Grid)`
     font-size: .75em;
   }
   summary {
-    margin: .5em 0;
+    margin: .25em 0;
     font-weight: 600;
     cursor: pointer;
+  }
+  span {
+    display: block;
+    margin: 1em 0 0 0;
   }
 `
 const Item = styled.div`

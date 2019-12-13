@@ -13,15 +13,15 @@ const TerritoryList = props => {
       { Object.entries(states).map(([key, value]) => {
         const as = "/state/" + key
         return ( 
-          <div key={key} className={props.highlighted === value[0] ? 'highlight' : ''}  
+          <Link 
+            href="/state/[stateCode]" 
+            as={as}>
+            <div key={key} className={props.highlighted === value[0] ? 'highlight' : ''}  
               onMouseOver={() => handleHover(value[0])}
               onMouseOut={() => handleHover(null)}>
-            <Link 
-              href="/state/[stateCode]" 
-              as={as} >
               <a>{value[0]}</a>
-            </Link>
-          </div>
+            </div>
+          </Link>
         )
       })
       }
@@ -34,21 +34,7 @@ export default TerritoryList
 const TerritoryListWrapper = styled.div`
   columns: 2;
   
-  select {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: 97% 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-left:5px;
-    text-align: left;
-    white-space: nowrap;
-    color:#737373;
-    font-weight: bold;
-    font-size:12px;
-  }
   div {
-    width: 140px;
     a {
       font-weight: 500;
       letter-spacing: -.5px;
