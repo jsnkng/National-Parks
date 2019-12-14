@@ -19,7 +19,7 @@ const Alerts = props => {
         }
         { alerts.slice(0).map((item) => {
           return (
-            <Col__Container xs={6} sm={4} md={4} lg={4} key={item.id}>
+            <Col__Container xs={12} sm={4} md={4} lg={4} key={item.id}>
               <span>{item.category}</span>
               
               <details>
