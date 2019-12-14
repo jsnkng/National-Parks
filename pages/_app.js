@@ -2,6 +2,7 @@
 import App from 'next/app'
 import React from 'react'
 import styled from 'styled-components';
+import Masthead from '../components/masthead';
 import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
@@ -129,6 +130,8 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+
+    {/* <Masthead highlighted={highlighted} pageTitle="U.S. National Parks"></Masthead> */}
       <main id="page-wrap">
         <Component {...pageProps} />
       </main>
@@ -139,11 +142,11 @@ const MyApp = ({ Component, pageProps }) => {
 // every single page in your application. This disables the ability to
 // perform automatic static optimization, causing every page in your app to
 // be server-side rendered.
-MyApp.getInitialProps = async (appContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getInitialProps(appContext);
+// MyApp.getInitialProps = async (appContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
 
-  return { ...appProps }
-}
+//   return { ...appProps }
+// }
 
 export default MyApp
