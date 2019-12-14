@@ -14,9 +14,10 @@ const TerritoryList = props => {
         const as = "/state/" + key
         return ( 
           <Link 
+            key={key} 
             href="/state/[stateCode]" 
             as={as}>
-            <div key={key} className={props.highlighted === value[0] ? 'highlight' : ''}  
+            <div className={props.highlighted === value[0] ? 'highlight' : ''}  
               onMouseOver={() => handleHover(value[0])}
               onMouseOut={() => handleHover(null)}>
               <a>{value[0]}</a>

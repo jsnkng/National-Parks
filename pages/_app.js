@@ -1,11 +1,12 @@
 
 import App from 'next/app'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
-import Masthead from '../components/masthead';
 import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
+import Masthead__Component from '../components/masthead';
+import Footer__Component from '../components/footer'
 
 import Link from 'next/link'
 const links = [
@@ -85,11 +86,6 @@ const GlobalStyle = createGlobalStyle`
   .accordion__panel {
       animation: fadein 0.35s ease-in;
   }
-
-  /* -------------------------------------------------- */
-  /* ---------------- Animation part ------------------ */
-  /* -------------------------------------------------- */
-
   @keyframes fadein {
       0% {
           opacity: 0;
@@ -99,7 +95,6 @@ const GlobalStyle = createGlobalStyle`
           opacity: 1;
       }
   }
-
 `
 
 const theme = {
@@ -125,16 +120,26 @@ const theme = {
     }
   }
 }
-
 const MyApp = ({ Component, pageProps }) => {
+  const [pageTitle, setPageTitle] = useState(null)
+  const [pageSubTitle, setPageSubTitle] = useState(null)
+  const [pageStateCode, setPageStateCode] = useState(null)
+  pageProps.setPageTitle = setPageTitle
+  pageProps.setPageSubTitle = setPageSubTitle
+  pageProps.setPageStateCode = setPageStateCode
+  // console.dir(pageProps)
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-
-    {/* <Masthead highlighted={highlighted} pageTitle="U.S. National Parks"></Masthead> */}
-      <main id="page-wrap">
-        <Component {...pageProps} />
-      </main>
+        <Masthead__Component 
+          pageTitle={pageTitle} 
+          pageSubTitle={pageSubTitle}
+          pageStateCode={pageStateCode}
+        />
+        <main id="page-wrap">
+          <Component {...pageProps} />
+        </main>
+      <Footer__Component pageTitle="U.S. National Parks" />
     </ThemeProvider>
   )
 }

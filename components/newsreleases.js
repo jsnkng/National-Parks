@@ -21,9 +21,9 @@ const NewsReleases = props => {
         <h3>Latest Park News</h3>
       </Row__Container>
       <Row__Container>
-        { newsReleases.slice(0,4).map((item) => {
+        { newsReleases.slice(0,3).map((item) => {
           return(
-            <Col__Container xs={12} sm={12} md={6} lg={3} key={item.id}>
+            <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
               <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length == 0 ? "https://fakeimg.pl/600x300/1e1d1e/?text=%20" : item.image.url } className={item.image.url === undefined || item.image.url.length == 0 ? "hidden" : "" }/></a>
               <span>{toDateFormat(item.releasedate)}</span>
               <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>

@@ -3,6 +3,7 @@
     "env": {
         "NPS_URI": "https://developer.nps.gov/api/v1",
         "NPS_KEY": "@nps-key",
+        "GOO_KEY": "@goo-key",
         "MONGODB_URI": "mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongodb.net/NationalParkService_Cache?retryWrites=true&w=majority",
         "DB_NAME": "NationalParkService_Cache",
         "DB_PASSWORD": "@db-password",

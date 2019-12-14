@@ -6,6 +6,9 @@ import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
 
+  console.log(props)
+
+
   return (
     <HeaderMenu>
       <HeaderItem>
@@ -15,12 +18,13 @@ const Masthead = props => {
       </HeaderItem> 
       <HeaderItem>
         <h1>{props.pageTitle}</h1>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
-        <h2><a>{states[props.stateCode] !== undefined ? states[props.stateCode][0] : props.highlighted}</a></h2>
-        </Link>
+        <h2>{props.pageSubTitle}</h2>
       </HeaderItem> 
       <HeaderItem>
-        <h3>{props.subTitle}</h3>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`}>
+          <h3><a>{states[props.pageStateCode] !== undefined ? states[props.pageStateCode][0] : ""}</a></h3>
+        </Link>
+        
       </HeaderItem> 
     </HeaderMenu>
   )

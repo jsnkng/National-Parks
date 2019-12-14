@@ -1,15 +1,22 @@
 import React, {useState} from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
+import fetch from 'isomorphic-unfetch'
+import absoluteUrl from 'next-absolute-url'
 import Head from 'next/head'
-import Masthead from '../components/masthead';
-import Footer from '../components/footer'
-import MapDiagram from '../components/mapdiagram';
-import TerritoryList from '../components/territorylist';
+import MapDiagram from '../components/mapdiagram'
+import FeaturedPark from '../components/featuredpark'
+import TerritoryList from '../components/territorylist'
 import SuperQuery from '@themgoncalves/super-query'
 
 
-const Home = () => {
+
+const Home = props => {
+  props.setPageTitle("U.S. National Parks")
+  props.setPageSubTitle("")
+  props.setPageStateCode("")
+
   const [highlighted, setHighlight] = useState(null)
+  const [park, setPark] = useState(props.data[0])
   return (
   <>
     <Head>
@@ -17,24 +24,33 @@ const Home = () => {
       <link rel='icon' href='/favicon.ico' />
     </Head>
     
-    <Masthead highlighted={highlighted} pageTitle="U.S. National Parks"></Masthead>
     
-    <MapDiagramWrapper>
+    {/* <FeaturedPark__Wrapper>
+      <FeaturedPark park={park} />
+    </FeaturedPark__Wrapper> */}
+
+    <MapDiagram__Wrapper>
       <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} />
-    </MapDiagramWrapper>
+    </MapDiagram__Wrapper>
 
-    <TerritoryListWrapper>
+    <TerritoryList__Wrapper>
       <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
-    </TerritoryListWrapper>
+    </TerritoryList__Wrapper>
 
-    <Footer highlighted={highlighted} pageTitle="U.S. National Parks" ></Footer>
   </>
   )
 }
-
+Home.getInitialProps = async (query) => {
+  const parkCode = "deva"
+  const { origin } = absoluteUrl(query.req)
+  const parksEndpoint = `${origin}/api/parks/${parkCode}`
+  const parksResult = await fetch(parksEndpoint)
+  const result = await parksResult.json()
+  return result
+}
 export default Home
 
-const MapDiagramWrapper = styled.div`
+const FeaturedPark__Wrapper = styled.div`
   
   margin: 2em;
   max-width: 800px;
@@ -44,7 +60,17 @@ const MapDiagramWrapper = styled.div`
   `}
 
 `
-const TerritoryListWrapper = styled.div`
+const MapDiagram__Wrapper = styled.div`
+  
+  margin: 2em;
+  max-width: 800px;
+
+  ${SuperQuery().minWidth.md.css`
+    margin: 2em auto;
+  `}
+
+`
+const TerritoryList__Wrapper = styled.div`
   
   margin: 0 auto;
   padding: 0 2em 1em 2em;

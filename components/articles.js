@@ -16,6 +16,11 @@ const Articles = props => {
   return (
     <Grid__Container>
       <Row__Container>
+        <Col__Container xs={12}>
+          <h3>Articles</h3>
+        </Col__Container>
+      </Row__Container>
+      <Row__Container>
         { articles.slice(0,12).map((item) => {
             return(
               <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>

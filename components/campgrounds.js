@@ -23,9 +23,9 @@ console.log(campgrounds)
       </Row__Container>
       { campgrounds.slice(0).map((item) => {
       return(
-      <Row__Container>
+      <Row__Container key={item.id}>
         <Col__Container xs={12}>
-        <details key={item.id}>
+        <details>
           <summary>
             {item.name}
           </summary>
@@ -246,8 +246,8 @@ const CampgroundImages = styled.div`
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
   :nth-of-type(1) {
-  padding: 1em 1em 0 1em;
-}
+    padding: 1em 1em 0 1em;
+  }
   h3 {
     font-size: 2em;
     margin: 0;
@@ -292,8 +292,15 @@ const Grid__Container = styled(Grid)`
   }
 `
 const Row__Container = styled(Row)`
+  margin: 0;
+  &:first-child {
+  padding: 0 0 .5em 0;
+    border-bottom: 1px solid;
+  }
+  &:last-child {
+    border: none;
+  }
 `
-
 const Col__Container = styled(Col)`
   &.amenities {
     ul {

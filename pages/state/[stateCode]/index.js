@@ -5,8 +5,6 @@ import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 
 import Park__Component from '../../../components/park'
-import Masthead__Component from '../../../components/masthead'
-import Footer__Component from '../../../components/footer'
 
 import states from '../../../components/datastates'
 
@@ -14,10 +12,13 @@ const Parks = props => {
   const router = useRouter()
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
- 
+  props.setPageTitle("U.S. National Parks")
+  props.setPageSubTitle("")
+  props.setPageStateCode(stateCode)
+
+  console.log("deez",props)
   return (
     <ParksWrapper>
-      <Masthead__Component pageTitle="U.S. National Parks" stateCode={stateCode} />
       <ParksContainer>
         { parks.slice(0).map((item) => {
             return(
@@ -30,7 +31,6 @@ const Parks = props => {
           })
         }
       </ParksContainer>
-      <Footer__Component pageTitle={`${states[stateCode][0]}`} subTitle="National Parks" stateCode={stateCode} />
     </ParksWrapper>
   )
 }

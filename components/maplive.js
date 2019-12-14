@@ -38,7 +38,7 @@ const MapLive = props => {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD0bj9Rnm0zlgFyNLtrbKyMe6mxTOEuHAA'
+  apiKey: process.env.GOO_KEY
 })(MapLive);
 
 const MapStyled = styled(Map)`

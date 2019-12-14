@@ -64,7 +64,7 @@ const Grid__Container = styled(Grid)`
       margin: 0 1em 0 1em;
     ${SuperQuery().minWidth.md.css`
       margin: 0;
-      padding: 0 1em 0 0;
+      padding: 0 1em 0 1em;
     `}
   }
   summary {
@@ -74,11 +74,34 @@ const Grid__Container = styled(Grid)`
     line-height: 1;
   }
   span {
+    font-size: .75em;
     display: block;
+    text-transform: uppercase;
     margin: .675em 0 0 1em;
     ${SuperQuery().minWidth.md.css`
-      margin: .675em 0 0 .25em;
+      margin: .675em 0 0 1em;
     `}
+  }
+  details
+{
+    transition: height .5s ease;
+    overflow: hidden;
+}
+
+details:not([open])
+{
+    height: 2.5em;
+}
+
+details[open]
+{
+    height: 13.50em;
+}
+  
+  
+  @keyframes sweep {
+    0%    {opacity: 0; margin-left: -10px}
+    100%  {opacity: 1; margin-left: 0px}
   }
 `
 const Row__Container = styled(Row)`

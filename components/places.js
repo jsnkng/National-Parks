@@ -1,72 +1,116 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import SuperQuery from '@themgoncalves/super-query'
 
 const Places = props => {
   const [places, setPlaces] = useState(props.places)
   return (
-    <PlacesWrapper>
-    <PlacesGrid>
-      <PlacesRow>
+    <Grid__Container>
+      <Row__Container>
+        <Col__Container xs={12}>
+          <h3>Places of Interest</h3>
+        </Col__Container>
+      </Row__Container>
+      <Row__Container>
         { places.slice(0).map((item) => {
           return(
-            <PlacesCol xs={12} sm={6} md={3} key={item.id}>
+            <Col__Container xs={12} sm={12} md={12} key={item.id}>
               {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
-                  <ResponsiveImage backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
+                  <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
               }
               <h4>{item.title}</h4>
               <p>{item.listingdescription}</p>
               <a href={item.url} target="_blank">Read more...</a>
-            </PlacesCol>
+            </Col__Container>
           )
         })
       }
-    </PlacesRow>
-  </PlacesGrid>
-  </PlacesWrapper>
+    </Row__Container>
+  </Grid__Container>
   )
 }
   
 export default Places
 
-const ResponsiveImage = styled.div`
-  position: relative;
+
+const Grid__Container = styled(Grid)`
+  padding: 1em 1em 0 1em;
+  h3 {
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+  h4 {
+    font-size: 1.25em;
+    line-height: 1.125;
+    float: left;
+    width: 100%;
+    margin: 0 0 1em 0;
+    ${SuperQuery().minWidth.md.css`
+      margin: 0 0 .5em 0;
+    `}
+  }
+  span {
+    font-size: .675em;
+    float: right;
+  }
+  p {
+    font-size: 1em;
+    clear: both;
+    width: 100%;
+    margin: 0 0 1em 0;
+    ${SuperQuery().minWidth.md.css`
+      font-size: .825em;
+    `}
+  }
+`
+const Row__Container = styled(Row)`
+  padding: 1em 0;
+  margin: 0;
+  &:first-child {
+    padding: 0;
+    border-bottom: 1px solid;
+  }
+  &:last-child {
+    border: none;
+  }
+`
+
+const Col__Container = styled(Col)`
+  padding: 2.25em 0 1em 0;
+  border-bottom: 1px solid;
+  &:first-child {
+    padding: 1em 0 1em 0;
+  }
+  &:last-child {
+    border: none;
+  }
+  ${SuperQuery().minWidth.md.css`
+    margin: 0;
+    border: 0px solid;
+   
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    margin: 0;
+    border: 0px solid;
+    
+  `}
+`
+const Image = styled.div`
+  float: left;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 16vw;
-  min-height: 300px;
-  margin: 0;
-`
-
-const PlacesWrapper = styled.div`
-  font-family: Helvetica;
-  padding: 36px;
-
-  h3 {
-    background-color: #333333;
-    color: #ffffff;
-    margin: 0;
-    padding: 10px 15px 10px 10px;
-    line-height: 1;
-    align-self: center;
+  height: 12em;
+  margin: 0 0 1em 0;
+  &.hidden {
+    display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
   }
-  h4 {
-  }
-  p {
-   font-size: .9em;
-  }
-`
-const PlacesGrid = styled(Grid)`
-  
-`
-const PlacesRow = styled(Row)`
-`
-
-const PlacesCol = styled(Col)`
-flex: 1 1 300px;
-align-items: stretch;
-padding: 10px;
 `
