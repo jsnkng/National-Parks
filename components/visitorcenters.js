@@ -3,17 +3,14 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
-import MapLive__Component from './maplive'
-
 const VisitorCenters = props => {
   const [park, setPark] = useState(props.park)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
-  console.log(visitorCenters)
   return (
     <Grid__Container>
       <Row__Container>
         <Col__Container>
-          <h3>Visitor Centers</h3>
+          <h3>Visitor Centers at {props.park.name}</h3>
         </Col__Container>
       </Row__Container>
       
@@ -48,14 +45,12 @@ const Grid__Container = styled(Grid)`
     padding: 0;
     line-height: 1;
   }
-  
   summary {
     color: #a1dde9;
     font-size: 1.25em;
     font-weight: 600;
     padding:  .5em 0 ;
     border-bottom: 1px solid #3c3a3c;
- 
   }
   h4 {
     display: inline;

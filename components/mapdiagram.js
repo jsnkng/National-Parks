@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import states from './datastates'
 
 const MapDiagram = props => {
-
   const handleHover = (territory) => {
     props.onHighlight(territory)
   }
+
   return (
     <MapWrapper>
       <svg
@@ -58,7 +58,6 @@ export default MapDiagram
 
 const MapWrapper = styled.div`
   margin: 20px auto;
-
   *{
       pointer-events: fill;
   }
@@ -71,7 +70,6 @@ const MapWrapper = styled.div`
       -moz-transition: fill .4s ease;
       -o-transition: fill .4s ease;
       transition: fill .4s ease;	 
-
   }
   path:hover, circle:hover {
     stroke: #00ac47;

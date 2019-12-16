@@ -12,13 +12,11 @@ const NewsReleases = props => {
     const nd = new Date(d1)
     return Intl.DateTimeFormat('en-US').format(nd)
   }
-  console.log(newsReleases)
-
   
   return (
     <Grid__Container>
       <Row__Container>
-        <h3>Latest Park News</h3>
+        <h3>News from {props.park.name}</h3>
       </Row__Container>
       <Row__Container>
         { newsReleases.slice(0,3).map((item) => {
@@ -37,7 +35,6 @@ const NewsReleases = props => {
 }
   
 export default NewsReleases
-
 
 const Grid__Container = styled(Grid)`
   padding: 1em 1em 0 1em;

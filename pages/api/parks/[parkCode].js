@@ -12,8 +12,9 @@ handler.get(async (req, res) => {
   } = req
   let [parks] = await req.db.collection('parks').find({ parks_id: parkCode }).toArray()
 
+
+
   if (parks === undefined || parks.length === 0) {
-    console.log('[1]', parks)
     parks = await fetch(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       .then(fetchResponse => fetchResponse.json())
       .catch(err => {
@@ -63,7 +64,6 @@ handler.get(async (req, res) => {
 
     parks.parks_id = parkCode
 
-    console.log('[2]', parks)
     await req.db.collection('parks').insertOne(parks)
   }
 

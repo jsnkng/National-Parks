@@ -1,14 +1,12 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import fetch from 'isomorphic-unfetch'
-import absoluteUrl from 'next-absolute-url'
 import Head from 'next/head'
-import MapDiagram from '../components/mapdiagram'
-import FeaturedPark from '../components/featuredpark'
-import TerritoryList from '../components/territorylist'
+import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-
-
+import FeaturedPark from '../components/featuredpark'
+import MapDiagram from '../components/mapdiagram'
+import TerritoryList from '../components/territorylist'
 
 const Home = props => {
   props.setPageTitle("U.S. National Parks")
@@ -23,7 +21,6 @@ const Home = props => {
       <title>Home</title>
       <link rel='icon' href='/favicon.ico' />
     </Head>
-    
     
     {/* <FeaturedPark__Wrapper>
       <FeaturedPark park={park} />
@@ -40,6 +37,7 @@ const Home = props => {
   </>
   )
 }
+
 Home.getInitialProps = async (query) => {
   const parkCode = "deva"
   const { origin } = absoluteUrl(query.req)
@@ -48,36 +46,29 @@ Home.getInitialProps = async (query) => {
   const result = await parksResult.json()
   return result
 }
+
 export default Home
 
 const FeaturedPark__Wrapper = styled.div`
-  
   margin: 2em;
   max-width: 800px;
-
   ${SuperQuery().minWidth.md.css`
     margin: 2em auto;
   `}
-
 `
 const MapDiagram__Wrapper = styled.div`
-  
   margin: 2em;
   max-width: 800px;
-
   ${SuperQuery().minWidth.md.css`
     margin: 2em auto;
   `}
 
 `
 const TerritoryList__Wrapper = styled.div`
-  
   margin: 0 auto;
   padding: 0 2em 1em 2em;
   max-width: 610px;
-
   ${SuperQuery().minWidth.md.css`
     max-width: 800px;
   `}
-
 `

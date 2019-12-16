@@ -6,12 +6,14 @@ import MapDiagram from './mapdiagram'
 
 const FeaturedPark = props => {
   const [park, setPark] = useState(props.park)
-  console.log(park)
   return (
     <Grid__Container>
       <Row__Container>
         <Col__Container xs={12}>
-          {/* <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} /></a>   */}
+          <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
+      
+          <a href={item.url} target="_blank"><Image backgroundURL={park.images[0].url === undefined || park.images[0].url.length == 0 ? "" : park.images[0].url  }  /></a>  
+          </Link>
           <h2>{park.name} {park.designation}</h2>
         </Col__Container>
       </Row__Container>

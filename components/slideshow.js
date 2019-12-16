@@ -22,7 +22,6 @@ const SlideShow = props => {
 
 export default SlideShow
 
-
 const ResponsiveImage = styled.div`
   position: relative;
   background-image: url(${props => props.backgroundURL});
@@ -61,7 +60,6 @@ const ResponsiveImage = styled.div`
 `
 const SlideShow__Container = styled(Carousel)`
   margin-top: -80px;
-
   ${SuperQuery().minWidth.md.css`
     margin-top: -90px;
   `}

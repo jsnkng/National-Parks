@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
+import SuperQuery from '@themgoncalves/super-query'
+import states from '../../../components/datastates'
 
 import Park__Component from '../../../components/park'
-
-import states from '../../../components/datastates'
+import MapLive__Component from '../../../components/maplive'
 
 const Parks = props => {
   const router = useRouter()
@@ -15,12 +16,25 @@ const Parks = props => {
   props.setPageTitle("U.S. National Parks")
   props.setPageSubTitle("")
   props.setPageStateCode(stateCode)
+console.log(parks)
 
-  console.log("deez",props)
+const latLong = "lat:45.30777545, long:-68.30063316"
+let markers = []
+
   return (
     <ParksWrapper>
+      <MapLive__Wrapper>
+      <MapLive__Component
+          latLong={latLong}
+          name={states[stateCode][0]}
+          designation="D"
+          zoom={7}
+          markers={markers}
+        />
+      </MapLive__Wrapper>
       <ParksContainer>
         { parks.slice(0).map((item) => {
+          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
             return(
               <Park__Component 
                 key={item.id} 
@@ -54,4 +68,15 @@ const ParksContainer = styled.div`
   align-items: top;
   justify-content: center;
   margin: 0px;
+`
+
+const MapLive__Wrapper = styled.div`
+  z-index: -10; 
+  width: 100%;
+  height: 60vh;
+  
+  max-height: 400px !important;
+  ${SuperQuery().minWidth.md.css`
+    height: 45vh;
+  `}
 `

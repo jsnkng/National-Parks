@@ -12,12 +12,11 @@ const Events = props => {
     return Intl.DateTimeFormat('en-US').format(nd)
   }
 
-  console.log(events)
   return (
     <Grid__Container>
       <Row__Container>
         <Col__Container>
-          <h3>Events at the Park</h3>
+          <h3>Events at {props.park.name}</h3>
         </Col__Container>
       </Row__Container>
       { events.slice(0,6).map((item) => {

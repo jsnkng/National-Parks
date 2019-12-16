@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
@@ -15,7 +15,7 @@ const Places = props => {
       <Row__Container>
         { places.slice(0).map((item) => {
           return(
-            <Col__Container xs={12} sm={12} md={12} key={item.id}>
+            <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
               {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
                   <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
               }
@@ -90,12 +90,25 @@ const Col__Container = styled(Col)`
   ${SuperQuery().minWidth.md.css`
     margin: 0;
     border: 0px solid;
-   
+    &:nth-child(odd) {
+      padding: .5em .75em .5em 0;
+    }
+    &:nth-child(even) {
+      padding: .5em 0 .5em .75em;
+    }
   `}
   ${SuperQuery().minWidth.lg.css`
     margin: 0;
     border: 0px solid;
-    
+    &:nth-child(3n + 1) {
+      padding: .25em 1em .5em 0;
+    }
+    &:nth-child(3n + 2) {
+      padding: .25em .5em .5em .5em;
+    }
+    &:nth-child(3n + 3) {
+      padding: .25em 0 .5em 1em;
+    }
   `}
 `
 const Image = styled.div`

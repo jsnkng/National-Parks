@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
 const People = props => {
   const [people, setPeople] = useState(props.people)
+
   return (
     <Grid__Container>
+      <Row__Container>
+        <Col__Container xs={12}>
+          <h3>People Who Made History</h3>
+        </Col__Container>
+      </Row__Container>
       <Row__Container>
         { people.slice(0).map((item) => {
           return(
@@ -70,7 +76,6 @@ const Row__Container = styled(Row)`
     border: none;
   }
 `
-
 const Col__Container = styled(Col)`
   padding: 2.25em 0 1em 0;
   border-bottom: 1px solid;

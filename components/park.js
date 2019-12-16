@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
-import states from './datastates';
+import states from './datastates'
 
 const Park = props => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
@@ -11,40 +11,39 @@ const Park = props => {
     setIsDescriptionVisible(!isDescriptionVisible)
   }
   const handleBannerClick = () => {
-    console.log('banner clicked')
     setIsSpinnerVisible(true)
   }
-    return (
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
-      <ParkWrapper onClick={handleBannerClick}>
-        <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-          <div className="sk-cube-grid">
-            <div className="sk-cube sk-cube1"></div>
-            <div className="sk-cube sk-cube2"></div>
-            <div className="sk-cube sk-cube3"></div>
-            <div className="sk-cube sk-cube4"></div>
-            <div className="sk-cube sk-cube5"></div>
-            <div className="sk-cube sk-cube6"></div>
-            <div className="sk-cube sk-cube7"></div>
-            <div className="sk-cube sk-cube8"></div>
-            <div className="sk-cube sk-cube9"></div>
-          Loading
-          </div>
-        </Spinner>
-        <Banner>
-          <Name>
-            {/* <img src="/US-National-Parks-logo-sml-bw.png" /> */}
-            <h2>{props.data.name}</h2>
-            <h3>{props.data.designation}</h3>
-          </Name>
-        </Banner> 
-        <ResponsiveImage 
-          onMouseOver={toggleIsDescriptionVisible} 
-          onMouseOut={toggleIsDescriptionVisible} 
-          backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : props.data.images[0].url } />
-      </ParkWrapper>
-      </Link>
-    )
+
+  return (
+    <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
+    <ParkWrapper onClick={handleBannerClick}>
+      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+        <div className="sk-cube-grid">
+          <div className="sk-cube sk-cube1"></div>
+          <div className="sk-cube sk-cube2"></div>
+          <div className="sk-cube sk-cube3"></div>
+          <div className="sk-cube sk-cube4"></div>
+          <div className="sk-cube sk-cube5"></div>
+          <div className="sk-cube sk-cube6"></div>
+          <div className="sk-cube sk-cube7"></div>
+          <div className="sk-cube sk-cube8"></div>
+          <div className="sk-cube sk-cube9"></div>
+        Loading
+        </div>
+      </Spinner>
+      <Banner>
+        <Name>
+          <h2>{props.data.name}</h2>
+          <h3>{props.data.designation}</h3>
+        </Name>
+      </Banner> 
+      <ResponsiveImage 
+        onMouseOver={toggleIsDescriptionVisible} 
+        onMouseOut={toggleIsDescriptionVisible} 
+        backgroundURL={props.data.images === undefined || props.data.images.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : props.data.images[0].url } />
+    </ParkWrapper>
+    </Link>
+  )
 }
   
 export default Park
@@ -61,7 +60,6 @@ const ParkWrapper = styled.div`
     width: 50%;
     height: 400px;
   `}
-
   & .parkInfo {
     max-width: 85%;
     margin: 0 auto 20px;
@@ -78,7 +76,6 @@ const ParkWrapper = styled.div`
     text-transform: uppercase;
     padding: 2px 10px;
   }
-   
 `
 const Banner = styled.div`
   background-color: rgba(0,0,0,.70);
@@ -100,7 +97,6 @@ const ResponsiveImage = styled.div`
   height: 100%;
   margin: 0;
   z-index: -10;
-
 `
 const Name = styled.div`
   h2 {
@@ -133,8 +129,6 @@ const Description = styled.div`
     opacity: 1;
   }
 `
-
-
 const Spinner = styled.div`
   width: 100%;
   height: 100%;
@@ -154,7 +148,6 @@ const Spinner = styled.div`
     height: 40px;
     margin: 100px auto;
   }
-
   .sk-cube-grid .sk-cube {
     width: 33%;
     height: 33%;
@@ -190,7 +183,6 @@ const Spinner = styled.div`
 .sk-cube-grid .sk-cube9 {
   -webkit-animation-delay: 0.2s;
           animation-delay: 0.2s; }
-
 @-webkit-keyframes sk-cubeGridScaleDelay {
   0%, 70%, 100% {
     -webkit-transform: scale3D(1, 1, 1);
@@ -200,7 +192,6 @@ const Spinner = styled.div`
             transform: scale3D(0, 0, 1); 
   }
 }
-
 @keyframes sk-cubeGridScaleDelay {
   0%, 70%, 100% {
     -webkit-transform: scale3D(1, 1, 1);

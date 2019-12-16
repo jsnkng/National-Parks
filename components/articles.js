@@ -12,12 +12,11 @@ const Articles = props => {
     const nd = new Date(d1)
     return Intl.DateTimeFormat('en-US').format(nd)
   }
-  console.log(articles)
   return (
     <Grid__Container>
       <Row__Container>
         <Col__Container xs={12}>
-          <h3>Articles</h3>
+          <h3>Learn More About {props.park.name}</h3>
         </Col__Container>
       </Row__Container>
       <Row__Container>

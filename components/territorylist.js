@@ -48,10 +48,8 @@ const TerritoryListWrapper = styled.div`
       text-decoration: underline;
     }
   }
-
   ${SuperQuery().minWidth.sm.css`
     columns: 3;
   `
-}
-
+  }
 `
