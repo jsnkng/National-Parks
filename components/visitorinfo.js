@@ -10,8 +10,9 @@ const VisitorInfo = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   let markers = []
-  // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description})
-          
+  // let i = 1
+  // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.name})
+  // console.log(i++,markers)      
   return (
     <Grid__Container>
       <Row__Container>
@@ -52,7 +53,7 @@ const VisitorInfo = props => {
       <Row__Container>
         <Col__Container xs={12} >
           { visitorCenters.slice(0).map((item) => {
-            markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
+            markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.name})
   
             return(
               <details key={item.id}>
@@ -78,7 +79,7 @@ const VisitorInfo = props => {
         </Col__Container>
       </Row__Container>
       { campgrounds.slice(0).map((item) => {  
-      markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
+      markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.name})
   
       return(
       <Row__Container key={item.id}>
