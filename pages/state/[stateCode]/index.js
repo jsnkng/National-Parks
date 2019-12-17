@@ -16,21 +16,20 @@ const Parks = props => {
   props.setPageTitle("U.S. National Parks")
   props.setPageSubTitle("")
   props.setPageStateCode(stateCode)
-console.log(parks)
+// console.log(parks)
 
 const latLong = "lat:45.30777545, long:-68.30063316"
 let markers = []
-
   return (
     <ParksWrapper>
       <MapLive__Wrapper>
-      <MapLive__Component
-          latLong={latLong}
-          name={states[stateCode][0]}
-          designation="D"
-          zoom={7}
-          markers={markers}
-        />
+        <MapLive__Component
+            latLong={states[stateCode][2]}
+            name={states[stateCode][0]}
+            designation="D"
+            zoom={5}
+            markers={markers}
+          />
       </MapLive__Wrapper>
       <ParksContainer>
         { parks.slice(0).map((item) => {
@@ -73,10 +72,7 @@ const ParksContainer = styled.div`
 const MapLive__Wrapper = styled.div`
   z-index: -10; 
   width: 100%;
-  height: 60vh;
-  
-  max-height: 400px !important;
+  height: 400px;
   ${SuperQuery().minWidth.md.css`
-    height: 45vh;
   `}
 `

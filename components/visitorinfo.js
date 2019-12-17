@@ -26,7 +26,7 @@ const VisitorInfo = props => {
               latLong={park.latLong}
               name={park.name}
               designation={park.designation}
-              zoom={9}
+              zoom={10}
               markers={markers}
             />
           </MapLive__Wrapper>
@@ -42,12 +42,13 @@ const VisitorInfo = props => {
           <p>{park.weatherInfo}</p>
         </Col__Container>
       </Row__Container>
+      { visitorCenters !== undefined && visitorCenters.length != 0 &&
+      <>
       <Row__Container>
         <Col__Container>
-          <h3>Visitor Centers at {props.park.name}</h3>
+          <h3>Visitor Centers</h3>
         </Col__Container>
       </Row__Container>
-      
       <Row__Container>
         <Col__Container xs={12} >
           { visitorCenters.slice(0).map((item) => {
@@ -64,11 +65,13 @@ const VisitorInfo = props => {
           }
         </Col__Container>
       </Row__Container> 
+      </>
+      }
       
       
       
-      
-      
+      { campgrounds !== undefined && campgrounds.length != 0 &&
+      <>
       <Row__Container>
         <Col__Container xs={12}>
           <h3>Campgrounds</h3>
@@ -269,7 +272,8 @@ const VisitorInfo = props => {
         </Col__Container>
         </Row__Container>)
       })}
-
+      </>
+      }
 
 
 

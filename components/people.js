@@ -16,7 +16,7 @@ const People = props => {
       <Row__Container>
         { people.slice(0).map((item) => {
           return(
-            <Col__Container xs={12} sm={6} md={4} key={item.id}>
+            <Col__Container xs={12} sm={6} md={6} lg={4} key={item.id}>
               {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
                 <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} /></a>
             }
@@ -76,6 +76,7 @@ const Row__Container = styled(Row)`
     border: none;
   }
 `
+
 const Col__Container = styled(Col)`
   padding: 2.25em 0 1em 0;
   border-bottom: 1px solid;
@@ -113,7 +114,7 @@ const Image = styled.div`
   float: left;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
   height: 12em;

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import { useRouter } from 'next/router'
 import SuperQuery from '@themgoncalves/super-query'
 
 const mapStyles = {
@@ -8,10 +9,12 @@ const mapStyles = {
 }
 
 const MapLive = props => {
-  console.log('deez',props.markers)
   let markers = []
+  const router = useRouter()
+
   const onMarkerClick = (props, marker, e) => {
-    alert(props.name)
+    // alert(props.name)
+    router.push('/state/nj')
   }
 
   const cleanLatLong = (dirtyLatLong) => {
@@ -24,31 +27,6 @@ const MapLive = props => {
     return {lat: lat, lng: lng}
   }
 
-  // console.log(cleanLatLong(props.markers))
-
-//   const markers = props.markers !== undefined || props.markers.length !== 0
-//     ? () => {
-//       console.log("no marker", marker)
-//       return (
-//         <Marker onClick={onMarkerClick}
-//           name={props.name} 
-//           title={props.designation}
-//           position={{lat: "44.4534555", lng: "-33.234234"}} />
-//       )
-//     } 
-//     : () => {
-//       props.markers.map((marker) => {
-//         console.log("no marker", marker)
-//         return (
-//           <Marker onClick={onMarkerClick}
-//             name={props.name} 
-//             title={props.designation}
-//             position={cleanLatLong(marker.latLong)} />
-//         )
-//       })
-//     }
-// console.log(markers)
-
 
 
     return (
@@ -56,16 +34,17 @@ const MapLive = props => {
         google={google}
         zoom={props.zoom}
         style={mapStyles}
-        initialCenter={markers[0]}>
+        initialCenter={cleanLatLong(props.latLong)}>
         { props.markers.map((item) => {
-          console.log("markers", item)
-          console.log("READY", cleanLatLong(item.latLong))
           return (
+        
           <Marker key={item.id} 
             onClick={onMarkerClick}
             name={item.name} 
-            title={item.description}
+            title={item.name}
             position={cleanLatLong(item.latLong)} />
+
+         
           )
         })}
       </MapStyled>
@@ -77,9 +56,5 @@ export default GoogleApiWrapper({
 })(MapLive);
 
 const MapStyled = styled(Map)`
-  max-height: 60vh;
-
-  ${SuperQuery().minWidth.md.css`
-    max-height: 45vh;
-  `}
+  max-height: 400px;
 `
