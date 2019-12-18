@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad from 'react-lazyload'
 
 const SlideShow = props => {
   const [park, setPark] = useState(props.park)

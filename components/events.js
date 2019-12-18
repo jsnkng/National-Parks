@@ -21,6 +21,7 @@ const Events = props => {
   }
 
   return (
+    <LazyLoad height={200} offset={100}>
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
@@ -63,7 +64,7 @@ const Events = props => {
                   }
                   </Col__Container>
                   <Col__Container xs={12} md={3}>
-                  <LazyLoad height={200} offset={100}><Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } /></LazyLoad>
+                  <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
                   </Col__Container>
                 </Row__Container>
              
@@ -102,7 +103,7 @@ const Events = props => {
            
     </Grid__Container>
   </Accordion>
-
+</LazyLoad>
 
   )
 }

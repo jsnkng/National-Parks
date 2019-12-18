@@ -71,9 +71,9 @@ handler.get(async (req, res) => {
         params.Key = url.replace(/[/:-]/g, '_')
         params.Body = sharp(buffer).resize({ width: 1440 })
         params.ACL = 'public-read'
-        s3Client.upload(params, (err, data) => {
-          if (err) {
-            console.log({ error: 'Error -> ' + err })
+        s3Client.upload(params, (e, d) => {
+          if (e) {
+            console.log({ error: 'Error -> ' + e })
           }
           console.log({message: 'File uploaded successfully! -> keyname = ' + url.replace(/[/:-]/g, '_')})
         })
