@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad from 'react-lazyload'
 import {
   Accordion,
   AccordionItem,
@@ -62,7 +63,7 @@ const Events = props => {
                   }
                   </Col__Container>
                   <Col__Container xs={12} md={3}>
-                    <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
+                  <LazyLoad height={200} offset={100}><Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } /></LazyLoad>
                   </Col__Container>
                 </Row__Container>
              

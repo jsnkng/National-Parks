@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import MapLive__Component from './maplive'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad from 'react-lazyload'
 import {
   Accordion,
   AccordionItem,
@@ -37,7 +38,7 @@ const Campgrounds = props => {
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
                         <CampgroundImagesWrapper> 
-                          <CampgroundImages backgroundURL={item.images[0].url} /> 
+                        <LazyLoad height={200} offset={100}><CampgroundImages backgroundURL={item.images[0].url} /></LazyLoad>
                         </CampgroundImagesWrapper>
                         }
                         <p>{item.description}</p>

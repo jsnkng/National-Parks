@@ -8,8 +8,8 @@
         "DB_NAME": "NationalParkService_Cache",
         "DB_PASSWORD": "@db-password",
         "WEB_URI": "https://national-parks.now.sh/api",
-        "AWS_ACCESS_KEY": "AKIA4GSICJRKJ3BC6WL7",
-        "AWS_SECRET_ACCESS_KEY": "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",
+        "AWS_ACCESS_KEY": "@aws-key",
+        "AWS_SECRET_ACCESS_KEY": "@aws-secret-key",
         "REGION": "us-east-1",
         "Bucket": "national-park-images"
     }

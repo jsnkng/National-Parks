@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
+import LazyLoad from 'react-lazyload'
 const Articles = props => {
   const [articles, setArticles] = useState(props.articles)
   const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
@@ -23,7 +24,7 @@ const Articles = props => {
         { articles.slice(0,12).map((item) => {
             return(
               <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
-                <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.listingimage.url  } alt={item.listingimage.altText} />
+               <LazyLoad height={200} offset={100}> <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.listingimage.url  } alt={item.listingimage.altText} /></LazyLoad>
                 <h4><a href={item.url} target="_blank">{item.title}</a></h4>
                 
                 <p>{item.listingdescription}<br /><a href={item.url} target="_blank">Read more...</a></p>

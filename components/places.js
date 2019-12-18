@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad from 'react-lazyload'
 
 const Places = props => {
   const [places, setPlaces] = useState(props.places)
@@ -17,7 +18,7 @@ const Places = props => {
           return(
             <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
               {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
-                  <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} />
+                <LazyLoad height={200} offset={100}><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} /></LazyLoad>
               }
               <h4>{item.title}</h4>
               <p>{item.listingdescription}</p>
