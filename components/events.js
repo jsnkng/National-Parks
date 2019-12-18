@@ -90,6 +90,7 @@ const Events = props => {
 export default Events
 
 const Grid__Container = styled(Grid)`
+word-wrap:break-word;
   padding: 1em 1em 0 1em;
   h3 {
     font-size: 2em;

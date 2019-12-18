@@ -37,6 +37,8 @@ const Park = props => {
   props.setPageSubTitle(park.designation)
   props.setPageStateCode(stateCode)
   let markers = []
+
+    markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
   return (
     <Container>
       
@@ -69,9 +71,6 @@ const Park = props => {
       }
 
       <VisitorInfo__Wrapper>
-        { 
-          markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
-       }
         <VisitorInfo__Component park={park} visitorCenters={visitorCenters} campgrounds={campgrounds} markers={markers} />
       </VisitorInfo__Wrapper>
       

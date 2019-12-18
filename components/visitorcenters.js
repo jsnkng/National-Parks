@@ -117,7 +117,7 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
-  padding: 0 0 .5em 0;
+    padding: 0;
     border-bottom: 1px solid;
   }
   &:last-child {
