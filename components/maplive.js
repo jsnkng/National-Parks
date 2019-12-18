@@ -70,7 +70,6 @@ export default GoogleApiWrapper({
 })(MapLive);
 
 const MapStyled = styled(Map)`
-  max-height: 400px;
 `
 
 const InfoWindowStyled = styled(InfoWindow)`

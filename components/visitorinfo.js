@@ -48,26 +48,15 @@ export default VisitorInfo
 const MapLive__Wrapper = styled.div`
   position:relative;
   width: 100%;
-  height: 60vw !important;
+  height: 70vh !important;
   max-width: 100%;
-  max-height: 400px !important;
   z-index: 10;
   ${SuperQuery().minWidth.md.css`
-  width: 100%;
-  margin: 1em 0 0 0;
+    width: 100%;
+    margin: 1em 0 0 0;
+    height: 60vw !important;
+    max-height: 400px !important;
   `}
-`
-const CampgroundImagesWrapper = styled.div`
-  display: flex;
-`
-const CampgroundImages = styled.div`
-  background-image: url(${props => props.backgroundURL});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 20em;
-  margin: 0;
 `
 const Grid__Container = styled(Grid)`
   padding: 1em 1em 0 1em;

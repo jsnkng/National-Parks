@@ -52,10 +52,11 @@ const GlobalStyle = createGlobalStyle`
     color: #a1dde9;
     font-size: 1.25em;
     font-weight: 600;
-    padding:  .5em 0;
+    padding:  1em 0;
     border-bottom: 1px solid #3c3a3c;
     outline: 0;
     cursor: pointer;
+    line-height: 1.25;
   }
 
   .accordion__button:hover {

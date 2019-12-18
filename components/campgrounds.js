@@ -232,16 +232,17 @@ const Campgrounds = props => {
 export default Campgrounds
 
 const MapLive__Wrapper = styled.div`
-  position:relative;
+position:relative;
+width: 100%;
+height: 70vh !important;
+max-width: 100%;
+z-index: 10;
+${SuperQuery().minWidth.md.css`
   width: 100%;
+  margin: 1em 0 0 0;
   height: 60vw !important;
-  max-width: 100%;
   max-height: 400px !important;
-  z-index: 10;
-  ${SuperQuery().minWidth.md.css`
-  width: 100%;
-  margin: 2em 0 0 0;
-  `}
+`}
 `
 const CampgroundImagesWrapper = styled.div`
   display: flex;

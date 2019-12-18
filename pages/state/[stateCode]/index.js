@@ -69,9 +69,14 @@ const ParksContainer = styled.div`
 `
 
 const MapLive__Wrapper = styled.div`
-  z-index: -10; 
+  position:relative;
   width: 100%;
-  height: 400px;
+  height: 70vh !important;
+  max-width: 100%;
+  z-index: 10;
   ${SuperQuery().minWidth.md.css`
+    width: 100%;
+    height: 60vw !important;
+    max-height: 400px !important;
   `}
 `
