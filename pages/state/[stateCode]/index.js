@@ -16,7 +16,7 @@ const Parks = props => {
   props.setPageTitle("U.S. National Parks")
   props.setPageSubTitle("")
   props.setPageStateCode(stateCode)
-  console.log(parks)
+  // console.log(parks)
 
 let markers = []
   return (

@@ -62,9 +62,13 @@ handler.get(async (req, res) => {
         console.log(err.stack)
       })
 
+    parks.parks_id = parkCode
+
+    await req.db.collection('parks').insertOne(parks)
+
     const { s3Client } = s3
     const params = s3.uploadParams
-    parks.data[0].images.forEach(image => {
+    await parks.data[0].images.forEach(image => {
       const { url } = image
       request({ url, encoding: null }, (err, resp, buffer) => {
 
@@ -81,9 +85,6 @@ handler.get(async (req, res) => {
       console.log(image.url.replace(/[/:-]/g, '_'))
     })
 
-    parks.parks_id = parkCode
-
-    await req.db.collection('parks').insertOne(parks)
   }
 
   res.json(parks)
