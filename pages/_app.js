@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     color: #a1dde9;
     font-size: 1.25em;
     font-weight: 600;
-    padding:  1em 0 0 1em;
+    padding:  1em 0 1em 1em;
     border-bottom: 1px solid #3c3a3c;
     outline: 0;
     cursor: pointer;
