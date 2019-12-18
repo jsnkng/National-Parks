@@ -5,10 +5,6 @@ import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
 
 
-
-
-// import database from '../../../../../middlewares/database'
-
 import Alerts__Component from '../../../../../components/alerts'
 import Articles__Component from '../../../../../components/articles'
 import Campgrounds__Component from '../../../../../components/campgrounds'
@@ -36,9 +32,10 @@ const Park = props => {
   props.setPageTitle(park.name)
   props.setPageSubTitle(park.designation)
   props.setPageStateCode(stateCode)
+  
   let markers = []
+  markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
-    markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
   return (
     <Container>
       
@@ -48,7 +45,6 @@ const Park = props => {
 
       <Description__Wrapper>
         <Description__Component park={park} />
-
     
         { alerts !== undefined && alerts.length != 0 &&
           <Alerts__Component alerts={alerts} />
@@ -59,7 +55,7 @@ const Park = props => {
       
 
       <VisitorInfo__Wrapper>
-        <VisitorInfo__Component park={park} visitorCenters={visitorCenters} campgrounds={campgrounds} markers={markers} />
+        <VisitorInfo__Component park={park} markers={markers} />
       </VisitorInfo__Wrapper>
       
       { visitorCenters !== undefined && visitorCenters.length != 0 &&

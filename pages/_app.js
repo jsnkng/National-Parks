@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
   .accordion {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
+    padding: 0 .5em;
   }
 
   .accordion__item + .accordion__item {

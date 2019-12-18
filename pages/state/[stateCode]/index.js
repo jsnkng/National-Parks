@@ -16,8 +16,8 @@ const Parks = props => {
   props.setPageTitle("U.S. National Parks")
   props.setPageSubTitle("")
   props.setPageStateCode(stateCode)
+  console.log(parks)
 
-const latLong = "lat:45.30777545, long:-68.30063316"
 let markers = []
   return (
     <ParksWrapper>
@@ -48,10 +48,11 @@ let markers = []
 }
   
 Parks.getInitialProps = async (context) => {
+  console.log("context")
   const {stateCode} = context.query
   const {origin}  = absoluteUrl(context.req)
-  const parksResult = await fetch(`${origin}/api/state/${stateCode}`)
-  const result = await parksResult.json()
+  const stateResult = await fetch(`${origin}/api/state/${stateCode}`)
+  const result = await stateResult.json()
   return result
 }
   

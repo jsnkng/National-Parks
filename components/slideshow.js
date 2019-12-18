@@ -9,8 +9,9 @@ const SlideShow = props => {
   return (
     <SlideShow__Container showArrows={true} showThumbs={false} infiniteLoop={true} emulateTouch={true} showStatus={false}>
       { park.images.slice(0).map((item) => {
+        const url = "http://national-park-images.s3-website-us-east-1.amazonaws.com/" + item.url.replace(/[/:-]/g, '_')
           return(
-            <ResponsiveImage key={item.id} backgroundURL={item.url}>
+            <ResponsiveImage key={item.id} backgroundURL={url}>
               <h4>{item.title}</h4>
             </ResponsiveImage>
           )

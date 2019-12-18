@@ -14,7 +14,7 @@ import {
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
-    <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+    <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
           <Col__Container xs={12}>
@@ -23,7 +23,7 @@ const Campgrounds = props => {
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
-            <Row__Container>
+            <Row__Container key={item.id}>
               <Col__Container xs={12}>
                 <AccordionItem>
                   <AccordionItemHeading>
@@ -222,7 +222,7 @@ const Campgrounds = props => {
         )
       }
       </Grid__Container>
-    </AccordionWrapper>
+    </Accordion>
     
 
 
@@ -232,17 +232,17 @@ const Campgrounds = props => {
 export default Campgrounds
 
 const MapLive__Wrapper = styled.div`
-position:relative;
-width: 100%;
-height: 70vh !important;
-max-width: 100%;
-z-index: 10;
-${SuperQuery().minWidth.md.css`
+  position:relative;
   width: 100%;
-  margin: 1em 0 0 0;
-  height: 60vw !important;
-  max-height: 400px !important;
-`}
+  height: 70vh !important;
+  max-width: 100%;
+  z-index: 10;
+  ${SuperQuery().minWidth.md.css`
+    width: 100%;
+    margin: 1em 0 0 0;
+    height: 60vw !important;
+    max-height: 400px !important;
+  `}
 `
 const CampgroundImagesWrapper = styled.div`
   display: flex;
@@ -256,9 +256,6 @@ const CampgroundImages = styled.div`
   height: 20em;
   margin: 0;
 `
-const AccordionWrapper = styled(Accordion)`
-  padding: 0 .5em;
-}`
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
   padding: 1em 1em 0 .5em;

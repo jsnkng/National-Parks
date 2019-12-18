@@ -20,7 +20,7 @@ const Events = props => {
   }
 
   return (
-    <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+    <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
           <Col__Container xs={12}>
@@ -29,7 +29,7 @@ const Events = props => {
         </Row__Container>
         { events.slice(0,6).map((item) => {
           return (
-        <Row__Container>
+        <Row__Container key={item.id}>
           <Col__Container xs={12}>
             <AccordionItem>
               <AccordionItemHeading>
@@ -100,16 +100,13 @@ const Events = props => {
     }
            
     </Grid__Container>
-  </AccordionWrapper>
+  </Accordion>
 
 
   )
 }
   
 export default Events
-const AccordionWrapper = styled(Accordion)`
-  padding: 1em 1em 0 .5em;
-}`
 
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;

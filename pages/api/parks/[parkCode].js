@@ -1,6 +1,9 @@
 import fetch from 'isomorphic-unfetch'
 import nextConnect from 'next-connect'
 import database from '../../../middlewares/database'
+import s3 from '../../../config/s3.config'
+import request from 'request'
+import sharp from 'sharp'
 
 const handler = nextConnect()
 
@@ -11,8 +14,6 @@ handler.get(async (req, res) => {
     query: { parkCode }
   } = req
   let [parks] = await req.db.collection('parks').find({ parks_id: parkCode }).toArray()
-
-
 
   if (parks === undefined || parks.length === 0) {
     parks = await fetch(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
@@ -61,6 +62,24 @@ handler.get(async (req, res) => {
         console.log(err.stack)
       })
 
+    const { s3Client } = s3
+    const params = s3.uploadParams
+    parks.data[0].images.forEach(image => {
+      const { url } = image
+      request({ url, encoding: null }, (err, resp, buffer) => {
+
+        params.Key = url.replace(/[/:-]/g, '_')
+        params.Body = sharp(buffer).resize({ width: 1440 })
+        params.ACL = 'public-read'
+        s3Client.upload(params, (err, data) => {
+          if (err) {
+            console.log({ error: 'Error -> ' + err })
+          }
+          console.log({message: 'File uploaded successfully! -> keyname = ' + url.replace(/[/:-]/g, '_')})
+        })
+      })
+      console.log(image.url.replace(/[/:-]/g, '_'))
+    })
 
     parks.parks_id = parkCode
 

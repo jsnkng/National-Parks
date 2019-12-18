@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
-import SuperQuery from '@themgoncalves/super-query'
 
 const mapStyles = {
     
@@ -56,8 +55,8 @@ const MapLive = props => {
           <h3 style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
           <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
 
-          { selectedPlace !== undefined && selectedPlace.parkCode !== undefined &&
-            <Link href={`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}/`}><a>More Information</a></Link> }
+          {/* { selectedPlace !== undefined && selectedPlace.parkCode !== undefined &&
+            <Link href="/state/[stateCode]/park/[parkCode]/" as={`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}/`}><a>More Information</a></Link> } */}
           </div>
       </InfoWindowStyled>
         

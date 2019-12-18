@@ -11,10 +11,9 @@ import {
 } from 'react-accessible-accordion'
 
 const VisitorCenters = props => {
-  const [park, setPark] = useState(props.park)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
   return (  
-    <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+    <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
           <Col__Container xs={12}>
@@ -23,7 +22,7 @@ const VisitorCenters = props => {
         </Row__Container>
         { visitorCenters.slice(0).map((item) => {
           return (
-            <Row__Container>
+            <Row__Container key={item.id}>
               <Col__Container xs={12}>
                 <AccordionItem>
                   <AccordionItemHeading>
@@ -42,14 +41,12 @@ const VisitorCenters = props => {
           )
         }
       </Grid__Container>
-    </AccordionWrapper>
+    </Accordion>
   )
 }
   
 export default VisitorCenters
-const AccordionWrapper = styled(Accordion)`
-  padding: 0 .5em;
-}`
+
 
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
