@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad from 'react-lazyload'
 
 import MapLive__Component from './maplive'
 
@@ -18,7 +19,7 @@ const VisitorInfo = props => {
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12}>
-          <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
+        <LazyLoad height={200} offset={100}><MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
             <MapLive__Component
               latLong={park.latLong}
               name={park.name}
@@ -26,7 +27,7 @@ const VisitorInfo = props => {
               zoom={10}
               markers={markers}
             />
-          </MapLive__Wrapper>
+          </MapLive__Wrapper></LazyLoad>
         </Col__Container>
       </Row__Container>
       <Row__Container>
