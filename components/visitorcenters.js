@@ -2,29 +2,44 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion'
 
 const VisitorCenters = props => {
   const [park, setPark] = useState(props.park)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
-  return (
+  return (  
     <Grid__Container>
       <Row__Container>
         <Col__Container>
-          <h3>Visitor Centers at {props.park.name}</h3>
+          <h3>Visitor Centers</h3>
         </Col__Container>
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12} >
-          { visitorCenters.slice(0).map((item) => {
+        <AccordionWrapper allowZeroExpanded={true}>
+        { visitorCenters.slice(0).map((item) => {
             return(
-              <details key={item.id}>
-                <summary>{item.name}</summary>
-                <p>{item.description}</p>
-                <p>{item.directionsInfo}</p>
-              </details>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    {item.name}
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>{item.description}</p>
+                  <p>{item.directionsInfo}</p>
+                </AccordionItemPanel>
+              </AccordionItem>
               )}
             )
           }
+            </AccordionWrapper>
         </Col__Container>
       </Row__Container>
     </Grid__Container>
@@ -32,6 +47,26 @@ const VisitorCenters = props => {
 }
   
 export default VisitorCenters
+const AccordionWrapper = styled(Accordion)`
+h3, h4 {
+  display: inline;
+}
+h5 {
+  display: inline;
+  padding: 0 25px;
+}
+p {
+}
+ul {
+  font-size: .8em;
+  list-style-type: none;
+  padding-left: 20px;
+}
+li {
+  list-style-type: none;
+  padding: 0 4px;
+}
+}`
 
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
