@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 import SuperQuery from '@themgoncalves/super-query'
 
@@ -15,25 +16,16 @@ const MapLive = props => {
   const [selectedPlace, setSelectedPlace] = useState()
 
   const onMarkerClick = (props, marker, e) => {
-    // alert(props.name)
-    // console.log(props)
-    // console.log(marker)
-    // console.log(e)
     setShowingInfoWindow(true)
     setActiveMarker(marker)
     setSelectedPlace(props)
-    console.log(showingInfoWindow)
-    console.log(activeMarker)
-    console.log(selectedPlace)
   }
 
   const cleanLatLong = (dirtyLatLong) => {
     const desired = dirtyLatLong.replace(/[^\w\s-:,.]/gi, '')
     const clean = desired.replace(/lng/gi, 'long')
-    
     const lat = clean !== undefined && clean.length !==0 ? clean.split(",")[0].slice(4) : ""
     const lng = clean !== undefined && clean.length !==0 ? clean.split(",")[1].slice(6) : ""
-
     return {lat: lat, lng: lng}
   }
 
@@ -48,8 +40,10 @@ const MapLive = props => {
         return (
           <Marker key={item.id}
             onClick={onMarkerClick}
+            stateCode={item.stateCode}
+            parkCode={item.parkCode}
             name={item.name} 
-            title={item.description}
+            description={item.description}
             position={cleanLatLong(item.latLong)} />
         )
         })
@@ -59,8 +53,11 @@ const MapLive = props => {
         marker={activeMarker}
         visible={showingInfoWindow}>
           <div>
-          <h2 style={{color: '#444444'}}>{selectedPlace !== undefined ? selectedPlace.name : "Not Known"}</h2>
-          {/* <p style={{color: '#444444'}}>{selectedPlace !== undefined ? "/state/"+selectedPlace.name : "Not Known"}</p> */}
+          <h3 style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
+          <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
+
+          { selectedPlace !== undefined && selectedPlace.parkCode !== undefined &&
+            <Link href={`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}/`}><a>More Information</a></Link> }
           </div>
       </InfoWindowStyled>
         

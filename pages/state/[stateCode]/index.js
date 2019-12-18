@@ -16,7 +16,6 @@ const Parks = props => {
   props.setPageTitle("U.S. National Parks")
   props.setPageSubTitle("")
   props.setPageStateCode(stateCode)
-// console.log(parks)
 
 const latLong = "lat:45.30777545, long:-68.30063316"
 let markers = []
@@ -33,7 +32,7 @@ let markers = []
       </MapLive__Wrapper>
       <ParksContainer>
         { parks.slice(0).map((item) => {
-          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
+          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:stateCode, parkCode:item.parkCode})
             return(
               <Park__Component 
                 key={item.id} 

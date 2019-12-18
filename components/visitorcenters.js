@@ -13,7 +13,6 @@ const VisitorCenters = props => {
           <h3>Visitor Centers at {props.park.name}</h3>
         </Col__Container>
       </Row__Container>
-      
       <Row__Container>
         <Col__Container xs={12} >
           { visitorCenters.slice(0).map((item) => {

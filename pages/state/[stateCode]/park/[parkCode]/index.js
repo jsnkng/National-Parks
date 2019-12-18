@@ -8,7 +8,7 @@ import absoluteUrl from 'next-absolute-url'
 
 import Alerts__Component from '../../../../../components/alerts'
 import Articles__Component from '../../../../../components/articles'
-// import Campgrounds__Component from '../../../../../components/campgrounds'
+import Campgrounds__Component from '../../../../../components/campgrounds'
 import Description__Component from '../../../../../components/description'
 import Events__Component from '../../../../../components/events'
 import NewsReleases__Component from '../../../../../components/newsreleases'
@@ -16,7 +16,7 @@ import People__Component from '../../../../../components/people'
 import Places__Component from '../../../../../components/places'
 import SlideShow__Component from '../../../../../components/slideshow'
 import VisitorInfo__Component from '../../../../../components/visitorinfo'
-// import VisitorCenters__Component from '../../../../../components/visitorcenters'
+import VisitorCenters__Component from '../../../../../components/visitorcenters'
 
 const Park = props => {
   const router = useRouter()
@@ -30,17 +30,16 @@ const Park = props => {
   const [people, setPeople] = useState(props.people.data)
   const [places, setPlaces] = useState(props.places.data)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
-
   props.setPageTitle(park.name)
   props.setPageSubTitle(park.designation)
   props.setPageStateCode(stateCode)
-
+  let markers = []
   return (
     <Container>
       
-      {/* { park.images !== undefined && park.images.length != 0 &&
+      { park.images !== undefined && park.images.length != 0 &&
         <SlideShow__Component park={park} />
-      } */}
+      }
 
       <Description__Wrapper>
         <Description__Component park={park} />
@@ -67,23 +66,38 @@ const Park = props => {
       }
 
       <VisitorInfo__Wrapper>
-        <VisitorInfo__Component park={park} visitorCenters={visitorCenters} campgrounds={campgrounds}  />
+        { 
+          markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
+       }
+        <VisitorInfo__Component park={park} visitorCenters={visitorCenters} campgrounds={campgrounds} markers={markers} />
       </VisitorInfo__Wrapper>
       
-      {/* { visitorCenters !== undefined && visitorCenters.length != 0 &&
+      { visitorCenters !== undefined && visitorCenters.length != 0 &&
+      
       <VisitorCenters__Wrapper>
+        { visitorCenters.slice(0).map((item) => {
+          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
+        })}
         <VisitorCenters__Component park={park} visitorCenters={visitorCenters} />
       </VisitorCenters__Wrapper>
-      } */}
+      }
         
-      {/* { campgrounds !== undefined && campgrounds.length != 0 &&
+      { campgrounds !== undefined && campgrounds.length != 0 &&
+
+       
         <Campgrounds__Wrapper>
+          { campgrounds.slice(0).map((item) => {
+            markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
+          })}
           <Campgrounds__Component park={park} campgrounds={campgrounds} />
         </Campgrounds__Wrapper>
-      } */}
+      }
       
       { places !== undefined && places.length != 0 &&
         <Places__Wrapper>
+          { places.slice(0).map((item) => {
+            markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription}) 
+          })}
           <Places__Component park={park} places={places} />
         </Places__Wrapper>
       }
