@@ -20,109 +20,87 @@ const Events = props => {
   }
 
   return (
-    <Grid__Container>
-      <Row__Container>
-        <Col__Container>
-          <h3>Events</h3>
-        </Col__Container>
-      </Row__Container>
-      <Row__Container>
-        <Col__Container xs={12} >
-        <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+    <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+      <Grid__Container>
+        <Row__Container>
+          <Col__Container xs={12}>
+            <h3>Events</h3>
+          </Col__Container>
+        </Row__Container>
         { events.slice(0,6).map((item) => {
-            return (
-              <div>
-              { item.images.length !== 0 &&
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      {item.title}
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-
-    <Grid__Container>
-      <Row__Container>
-                  <Col__Container xs={12} md={6} >
-                    <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                  
+          return (
+        <Row__Container>
+          <Col__Container xs={12}>
+            <AccordionItem>
+              <AccordionItemHeading>
+                <AccordionItemButton>
+                  {item.title}
+                </AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel>
+        { item.images.length !== 0 &&
+              <Row__Container>
+                <Col__Container xs={12} md={6} >
+                  <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+                </Col__Container>
+                <Col__Container xs={12} md={3} className="details">
+                  {item.times[0] !== undefined && item.times.length[0] !== 0 &&
+                    <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p> 
+                  }
+                  <p><strong>Location:</strong> {item.location}</p>
+                  <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === true ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
+                  {item.regresinfo !== "" &&
+                    <p><strong>Reservations:</strong> {item.regresinfo}
+                    {item.regresurl !== "" &&
+                      <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
+                    }
+                  </p> 
+                  }
+                  <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                  {item.infourl !== "" &&
+                    <p><strong>More Info:</strong> <a href={item.infourl} target="_blank">{item.infourl}</a></p> 
+                  }
                   </Col__Container>
-                  <Col__Container xs={12} md={3} className="details">
-                    {item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                      <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p> 
-                    }
-                    <p><strong>Location:</strong> {item.location}</p>
-                    <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === true ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
-                    {item.regresinfo !== "" &&
-                      <p><strong>Reservations:</strong> {item.regresinfo}
-                      {item.regresurl !== "" &&
-                        <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
-                      }
-                    </p> 
-                    }
-                
-                    <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
-                    {item.infourl !== "" &&
-                      <p><strong>More Info:</strong> <a href={item.infourl} target="_blank">{item.infourl}</a></p> 
-                    }
-                  </Col__Container>
-
-                  
                   <Col__Container xs={12} md={3}>
                     <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
                   </Col__Container>
-      </Row__Container>
-    </Grid__Container>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              }
-              {item.images.length === 0 &&
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      {item.title}
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-
-    <Grid__Container>
-      <Row__Container>
-                  <Col__Container xs={12} sm={12} md={6}>
-                    <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                  </Col__Container>
-                  <Col__Container xs={12} sm={12} md={6} className="details">
-                    {item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                      <p><strong>Time:</strong> {item.times[0].sunrisestart === "true" ? "Sunrise" : item.times[0].timestart}–{item.times[0].sunsetend === "true" ? "Sunset" : item.times[0].timeend}</p>
-                    }
-                    {item.location !== undefined && item.location.length !== 0 &&
-                      <p><strong>Location:</strong> {item.location}</p>
-                    }
-                    <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === "true" ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
-                    {item.regresinfo !== "" &&
-                      <p><strong>Reservations:</strong> {item.regresinfo}
-                      {item.regresurl !== "" &&
-                        <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
-                      }
-                    </p> 
-                    }
-                    <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
-                  </Col__Container>
-      </Row__Container>
-    </Grid__Container>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              }
-           
-           
-           
-              </div> )}
-          )
+                </Row__Container>
+             
         }
+        { item.images.length === 0 &&
+              <Row__Container>
+                <Col__Container xs={12} sm={12} md={6}>
+                  <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+                </Col__Container>
+                <Col__Container xs={12} sm={12} md={6} className="details">
+                  {item.times[0] !== undefined && item.times.length[0] !== 0 &&
+                    <p><strong>Time:</strong> {item.times[0].sunrisestart === "true" ? "Sunrise" : item.times[0].timestart}–{item.times[0].sunsetend === "true" ? "Sunset" : item.times[0].timeend}</p>
+                  }
+                  {item.location !== undefined && item.location.length !== 0 &&
+                    <p><strong>Location:</strong> {item.location}</p>
+                  }
+                  <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === "true" ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
+                  {item.regresinfo !== "" &&
+                    <p><strong>Reservations:</strong> {item.regresinfo}
+                    {item.regresurl !== "" &&
+                      <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
+                    }
+                  </p> 
+                  }
+                  <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                </Col__Container>
+              </Row__Container>
+        }
+            </AccordionItemPanel>
+          </AccordionItem>
+          </Col__Container>
+        </Row__Container> 
+        )}
+      )
+    }
            
-          </AccordionWrapper>
-        </Col__Container>
-      </Row__Container>
     </Grid__Container>
+  </AccordionWrapper>
 
 
   )
@@ -130,44 +108,19 @@ const Events = props => {
   
 export default Events
 const AccordionWrapper = styled(Accordion)`
-  h3, h4 {
-    display: inline;
-  }
-  h5 {
-    display: inline;
-    padding: 0 25px;
-  }
-  p {
-  }
-  ul {
-    font-size: .8em;
-    list-style-type: none;
-    padding-left: 20px;
-  }
-  li {
-    list-style-type: none;
-    padding: 0 4px;
-  }
+  padding: 1em 1em 0 .5em;
 }`
 
 const Grid__Container = styled(Grid)`
-  padding: 1em 0 0 0;
+  word-wrap:break-word;
+  padding: 1em 1em 0 .5em;
   h3 {
+    display: inline;
     font-size: 2em;
     margin: 0;
     padding: 0;
     line-height: 1;
   }
-  h4 {
-    font-size: 1.5em;
-    margin: 0 0 .5em 0;
-    padding: 0;
-    line-height: 1.125;
-  }
-  ul {
-    font-size: .825em;
-    padding: 0 0 0 1.125em ;
-  } 
   a {
     padding: 0;
   }
@@ -192,22 +145,16 @@ const Grid__Container = styled(Grid)`
   
 `
 const Row__Container = styled(Row)`
-  padding: 1.75em 0;
   margin: 0;
-  border-bottom:1px solid #3c3a3c;
-  &:nth-of-type(1) {
+  &:first-child {
     padding: 0;
-    border-bottom:1px solid #ffffff;
+    border-bottom: 1px solid;
   }
   &:last-child {
     border: none;
   }
   ${SuperQuery().minWidth.md.css`
     background-color: transparent;
-    color: #ffffff;
-    padding: 1.5em 0;
-    border: 0px solid;
-  border-bottom:1px solid #3c3a3c;
   `}
 `
 const Col__Container = styled(Col)`

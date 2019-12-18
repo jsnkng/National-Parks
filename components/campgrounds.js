@@ -14,25 +14,25 @@ import {
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
-    <Grid__Container>
-      <Row__Container>
-        <Col__Container>
-          <h3>Campgrounds</h3>
-        </Col__Container>
-      </Row__Container>
-      <Row__Container>
-        <Col__Container xs={12} >
-        <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+    <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
+      <Grid__Container>
+        <Row__Container>
+          <Col__Container xs={12}>
+            <h3>Campgrounds</h3>
+          </Col__Container>
+        </Row__Container>
         { campgrounds.slice(0).map((item) => {
-            return(
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    {item.name}
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <Grid__Container>
+          return(
+            <Row__Container>
+              <Col__Container xs={12}>
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                      {item.name}
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                  
                     <Row__Container>
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
@@ -212,16 +212,18 @@ const Campgrounds = props => {
                         }
                         </Col__Container>
                       </Row__Container>
-                  </Grid__Container>
+                  
                 </AccordionItemPanel>
               </AccordionItem>
-              )}
-            )
-          }
-          </AccordionWrapper>
-        </Col__Container>
-      </Row__Container>
-    </Grid__Container>
+             
+            </Col__Container>
+          </Row__Container> 
+          )}
+        )
+      }
+      </Grid__Container>
+    </AccordionWrapper>
+    
 
 
   )
@@ -254,45 +256,24 @@ const CampgroundImages = styled.div`
   margin: 0;
 `
 const AccordionWrapper = styled(Accordion)`
-  h3 {
-    display: inline;
-  }
-  h5 {
-    display: inline;
-    padding: 0 25px;
-  }
-  p {
-  }
-  ul {
-    font-size: .8em;
-    list-style-type: none;
-    padding-left: 20px;
-  }
-  li {
-    list-style-type: none;
-    padding: 0 4px;
-  }
+  padding: 0 .5em;
 }`
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
-  padding: 0 !important;
+  padding: 1em 1em 0 .5em;
   h3 {
+    display: inline;
     font-size: 2em;
     margin: 0;
     padding: 0;
     line-height: 1;
-  }
-  h5 {
-    font-size: 1.5em;
-    padding: 0;
-    margin: 0;
   }
   p {
     font-size: .9em;
     padding: 0 1em;
   }
   ul {
-    font-size: .9em;
+    font-size: .8em;
     column-count: 1;
     list-style-type: none;
     padding: .25em 0 .5em 0;
@@ -306,11 +287,12 @@ const Grid__Container = styled(Grid)`
     padding: .3125em 0;
     font-weight: 200;
   }
+
 `
 const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
-    padding: 0 0 .5em 0;
+    padding: 0;
     border-bottom: 1px solid;
   }
   &:last-child {
@@ -318,12 +300,13 @@ const Row__Container = styled(Row)`
   }
 `
 const Col__Container = styled(Col)`
+  padding: 0;
   &.amenities {
     ul {
-    column-count: 2;
-    ${SuperQuery().minWidth.sm.css`
-    column-count: 4;
-    `}
+      column-count: 2;
+      ${SuperQuery().minWidth.sm.css`
+        column-count: 4;
+      `}
     }
   }
   p {
