@@ -28,7 +28,7 @@ const Events = props => {
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12} >
-        <AccordionWrapper allowZeroExpanded={true}>
+        <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
         { events.slice(0,6).map((item) => {
             return (
               <div>
@@ -151,7 +151,7 @@ const AccordionWrapper = styled(Accordion)`
 }`
 
 const Grid__Container = styled(Grid)`
-  padding: 1em 1em 0 1em;
+  padding: 1em 0 0 0;
   h3 {
     font-size: 2em;
     margin: 0;

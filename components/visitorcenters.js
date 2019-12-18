@@ -22,7 +22,7 @@ const VisitorCenters = props => {
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12} >
-        <AccordionWrapper allowZeroExpanded={true}>
+        <AccordionWrapper allowZeroExpanded={true} allowMultipleExpanded={true}>
         { visitorCenters.slice(0).map((item) => {
             return(
               <AccordionItem>
@@ -48,24 +48,24 @@ const VisitorCenters = props => {
   
 export default VisitorCenters
 const AccordionWrapper = styled(Accordion)`
-h3, h4 {
-  display: inline;
-}
-h5 {
-  display: inline;
-  padding: 0 25px;
-}
-p {
-}
-ul {
-  font-size: .8em;
-  list-style-type: none;
-  padding-left: 20px;
-}
-li {
-  list-style-type: none;
-  padding: 0 4px;
-}
+  h3, h4 {
+    display: inline;
+  }
+  h5 {
+    display: inline;
+    padding: 0 25px;
+  }
+  p {
+  }
+  ul {
+    font-size: .8em;
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  li {
+    list-style-type: none;
+    padding: 0 4px;
+  }
 }`
 
 const Grid__Container = styled(Grid)`

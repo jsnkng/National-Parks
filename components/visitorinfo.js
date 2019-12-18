@@ -54,7 +54,7 @@ const MapLive__Wrapper = styled.div`
   z-index: 10;
   ${SuperQuery().minWidth.md.css`
   width: 100%;
-  margin: 2em 0 0 0;
+  margin: 1em 0 0 0;
   `}
 `
 const CampgroundImagesWrapper = styled.div`

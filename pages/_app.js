@@ -49,21 +49,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .accordion__button {
-  background-color: #1e1d1e;
-  color: #ffffff;
-      cursor: pointer;
-      padding: 12px 0 ;
-      width: 100%;
-      text-align: left;
-      border: none;
-
-      p {
-      padding: 0 36px;
-      }
+    color: #a1dde9;
+    font-size: 1.25em;
+    font-weight: 600;
+    padding:  .5em 0;
+    border-bottom: 1px solid #3c3a3c;
+    outline: 0;
+    cursor: pointer;
   }
 
   .accordion__button:hover {
-      background-color: #333333;
+      color: #ffffff;
   }
 
   .accordion__button:before {
@@ -71,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
       content: '';
       height: 10px;
       width: 10px;
-      margin-left: 12px;
+      margin-left: 0px;
       margin-right: 12px;
       border-bottom: 2px solid currentColor;
       border-right: 2px solid currentColor;
