@@ -15,6 +15,7 @@ import {
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
+    
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
@@ -24,6 +25,7 @@ const Campgrounds = props => {
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
+            <LazyLoad height={200} offset={100}>
             <Row__Container key={item.id}>
               <Col__Container xs={12}>
                 <AccordionItem>
@@ -38,7 +40,7 @@ const Campgrounds = props => {
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
                         <CampgroundImagesWrapper> 
-                        <LazyLoad height={200} offset={100}><CampgroundImages backgroundURL={item.images[0].url} /></LazyLoad>
+                        <CampgroundImages backgroundURL={item.images[0].url} />
                         </CampgroundImagesWrapper>
                         }
                         <p>{item.description}</p>
@@ -219,6 +221,7 @@ const Campgrounds = props => {
              
             </Col__Container>
           </Row__Container> 
+          </LazyLoad>
           )}
         )
       }
