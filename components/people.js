@@ -17,13 +17,15 @@ const People = props => {
       <Row__Container>
         { people.slice(0).map((item) => {
           return(
-            <Col__Container xs={12} sm={6} md={6} lg={4} key={item.id}>
+            <LazyLoad height={200} offset={100} key={item.id}>
+            <Col__Container xs={12} sm={6} md={6} lg={4}>
               {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
-                <LazyLoad height={200} offset={100}><a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} /></a></LazyLoad>
+                <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  } alt={item.listingimage.altText} /></a>
             }
               <h4>{item.title}</h4>
               <p>{item.listingdescription}<a href={item.url} target="_blank">Read more...</a></p>
             </Col__Container>
+            </LazyLoad>
           )
         })
         }

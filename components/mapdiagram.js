@@ -23,6 +23,7 @@ const MapDiagram = props => {
             return ( 
               <Link  
                 key={key}
+                prefetch
                 href="/state/[stateCode]" 
                 as={"/state/" + key}>
                 <a>

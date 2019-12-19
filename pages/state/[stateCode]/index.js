@@ -19,6 +19,8 @@ const Parks = props => {
   // console.log(parks)
 
 let markers = []
+// markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
+
   return (
     <ParksWrapper>
       <MapLive__Wrapper>

@@ -15,6 +15,7 @@ const TerritoryList = props => {
         return ( 
           <Link 
             key={key} 
+            prefetch
             href="/state/[stateCode]" 
             as={as}>
             <div className={props.highlighted === value[0] ? 'highlight' : ''}  

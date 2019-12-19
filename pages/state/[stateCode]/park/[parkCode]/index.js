@@ -18,6 +18,7 @@ import VisitorInfo__Component from '../../../../../components/visitorinfo'
 import VisitorCenters__Component from '../../../../../components/visitorcenters'
 
 const Park = props => {
+  console.log(props)
   const router = useRouter()
   const { stateCode } = router.query
   const [park, setPark] = useState(props.data[0])
