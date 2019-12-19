@@ -123,9 +123,14 @@ const Grid__Container = styled(Grid)`
   a {
     padding: 0;
   }
+
   p {
-      padding:0;
-      margin:0;
+    font-size: .9em;
+    padding: 0 1.5em 1em 1.5em;
+  }
+  p:last-child {
+    font-size: .9em;
+    padding: 0 1.5em 0em 1.5em;
   }
   .details {
       margin:.25em 0 0 0;

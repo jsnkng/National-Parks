@@ -36,7 +36,7 @@ const MapDiagramWrapper = styled.div`
   width: 60%;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
-    margin: -1.5em 0 0 0;
+    margin: 0;
   `}
 `
 

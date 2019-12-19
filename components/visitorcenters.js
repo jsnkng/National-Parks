@@ -62,7 +62,11 @@ const Grid__Container = styled(Grid)`
   }
   p {
     font-size: .9em;
-    padding: 0 1em;
+    padding: 0 1.5em 1em 1.5em;
+  }
+  p:last-child {
+    font-size: .9em;
+    padding: 0 1.5em 0em 1.5em;
   }
 `
 const Row__Container = styled(Row)`
@@ -85,9 +89,7 @@ padding: 0;
       `}
     }
   }
-  p {
-    padding: 0;
-  }
+  
   &.details {
     p {
       font-weight: 200;

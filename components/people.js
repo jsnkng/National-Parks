@@ -11,7 +11,7 @@ const People = props => {
     <Grid__Container>
       <Row__Container>
         <Col__Container xs={12}>
-          <h3>People Who Made History</h3>
+          <h3>Related People</h3>
         </Col__Container>
       </Row__Container>
       <Row__Container>

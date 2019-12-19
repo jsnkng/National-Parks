@@ -21,7 +21,7 @@ const Articles = props => {
         </Col__Container>
       </Row__Container>
       <Row__Container>
-        { articles.slice(0,12).map((item) => {
+        { articles.slice(0,3).map((item) => {
             return(
               <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
                <LazyLoad height={200} offset={100}> <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.listingimage.url  } alt={item.listingimage.altText} /></LazyLoad>

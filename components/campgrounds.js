@@ -25,7 +25,7 @@ const Campgrounds = props => {
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
-            <LazyLoad height={200} offset={100} key={item.id}>
+          <LazyLoad height={200} offset={100} key={item.id}>
             <Row__Container>
               <Col__Container xs={12}>
                 <AccordionItem>
@@ -35,21 +35,20 @@ const Campgrounds = props => {
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                  
-                    <Row__Container>
+                  <CampgroundWrapper>
+                    <Row__Container className="section">
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
                         <CampgroundImagesWrapper> 
-                        <CampgroundImages backgroundURL={item.images[0].url} />
+                          <CampgroundImages backgroundURL={item.images[0].url} />
                         </CampgroundImagesWrapper>
                         }
-                        <p>{item.description}</p>
+                        <p className="introduction">{item.description}</p>
                       </Col__Container>
                     </Row__Container>
                     
-                    <Row__Container>
+                    <Row__Container className="section">
                       <Col__Container xs={12} sm={6}>
-
                         {item.directionsoverview !== undefined && item.directionsoverview != 0 && 
                           <span>
                             <h5>Directions</h5>
@@ -63,7 +62,6 @@ const Campgrounds = props => {
                           </span>
                         }
                       </Col__Container>
-                    
                       <Col__Container xs={12} sm={6}>
                         <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
                           <MapLive__Component
@@ -72,13 +70,12 @@ const Campgrounds = props => {
                             designation={item.description}
                             zoom={13}
                             markers={[{id: item.id, latLong: item.latLong, name: item.name, description: item.description}]}
-                
                           />
                         </MapLive__Wrapper> 
                       </Col__Container>
                     </Row__Container>
                     
-                    <Row__Container>
+                    <Row__Container className="section">
                       <Col__Container xs={12}>
                         <h5>Accessibility</h5>
                         <ul>
@@ -120,9 +117,10 @@ const Campgrounds = props => {
                           }
                         </ul>
                       </Col__Container>
+                    </Row__Container>
+                    
+                    <Row__Container className="section">
                       <Col__Container xs={12}  className="amenities">
-
-
                         <h5>Amenities</h5>
                         <ul>
                           {item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0 && 
@@ -165,48 +163,42 @@ const Campgrounds = props => {
                             <li><strong>Toilets:</strong> {item.amenities.toilets}</li>
                           }
                         </ul>
-                      
-                        </Col__Container>
-                        
+                      </Col__Container>
+                    </Row__Container>
+                    
+                    <Row__Container className="section">
                       <Col__Container xs={12} className="details">
-
-                      {item.regulationsoverview !== undefined && item.regulationsoverview != 0 && 
+                        {item.regulationsoverview !== undefined && item.regulationsoverview != 0 && 
                           <span>
                             <h5>Regulations</h5>
                             <p>{item.regulationsoverview}</p>
                             <p><a href={item.regulationsurl} target="_blank">{item.regulationsurl}</a></p>
                           </span>
                         }
-
                         {item.reservationsdescription !== undefined && item.reservationsdescription != 0 && 
                           <span>
                             <h5>Reservations</h5>
                             <p>{item.reservationsdescription}</p>
                           </span>
                         }
-
                         {item.reservationssitesfirstcome !== undefined && item.reservationssitesfirstcome != 0 && 
                           <span>
                             <h5>Reservations Sites First Come</h5>
                             <p>{item.reservationssitesfirstcome}</p>
                           </span>
                         }
-
                         {item.reservationssitesreservable !== undefined && item.reservationssitesreservable != 0 && 
                           <span>
                             <h5>Reservations Reservable</h5>
                             <p>{item.reservationssitesreservable}</p>
                           </span>
                         }
-
                         {item.reservationsurl !== undefined && item.reservationsurl != 0 && 
                           <span>
                             <h5>Reservations URL</h5>
                             <p><a href={item.reservationsurl} target="_blank">{item.reservationsurl}</a></p>
                           </span>
                         }
-
-
                         {item.weatheroverview !== undefined && item.weatheroverview != 0 && 
                           <span>
                             <h5>Weather Overview</h5>
@@ -215,12 +207,11 @@ const Campgrounds = props => {
                         }
                         </Col__Container>
                       </Row__Container>
-                  
-                </AccordionItemPanel>
-              </AccordionItem>
-             
-            </Col__Container>
-          </Row__Container> 
+                  </CampgroundWrapper>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              </Col__Container>
+            </Row__Container> 
           </LazyLoad>
           )}
         )
@@ -248,6 +239,9 @@ const MapLive__Wrapper = styled.div`
     max-height: 400px !important;
   `}
 `
+const CampgroundWrapper = styled.div`
+  padding: 1em 1.35em .5em 1.35em;
+`
 const CampgroundImagesWrapper = styled.div`
   display: flex;
 `
@@ -270,15 +264,26 @@ const Grid__Container = styled(Grid)`
     padding: 0;
     line-height: 1;
   }
+  h5 {
+    margin:0;
+    padding: 0;
+  }
   p {
     font-size: .9em;
-    padding: 0 1em;
+    padding: 0 0 1em 0;
+    margin: 0;
+  }
+  p.introduction {
+    font-size: 1.25em;
+    line-height: 1.625;
+    margin: 1.5em 0 0 0;
+    padding:0;
   }
   ul {
     font-size: .8em;
     column-count: 1;
     list-style-type: none;
-    padding: .25em 0 .5em 0;
+    padding: .25em 0 .25em 0;
     margin: 0;
     ${SuperQuery().minWidth.sm.css`
     column-count: 2;
@@ -292,13 +297,11 @@ const Grid__Container = styled(Grid)`
 
 `
 const Row__Container = styled(Row)`
-  margin: 0;
-  &:first-child {
-    padding: 0;
-    border-bottom: 1px solid;
-  }
-  &:last-child {
-    border: none;
+  margin: 0;  
+  .section {
+    padding: 0 0 2em 0;
+    margin:  0 0 2em 0;
+    border-bottom: 4px solid #333333;
   }
 `
 const Col__Container = styled(Col)`
@@ -310,9 +313,6 @@ const Col__Container = styled(Col)`
         column-count: 4;
       `}
     }
-  }
-  p {
-    padding: 0;
   }
   &.details {
     p {
