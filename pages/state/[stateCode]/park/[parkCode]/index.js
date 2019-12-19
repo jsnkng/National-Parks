@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
+import states from '../../../../../components/datastates'
 
 
 import Alerts__Component from '../../../../../components/alerts'
@@ -30,9 +31,13 @@ const Park = props => {
   const [people, setPeople] = useState(props.people.data)
   const [places, setPlaces] = useState(props.places.data)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
-  props.setPageTitle(park.name)
-  props.setPageSubTitle(park.designation)
+ 
   props.setPageStateCode(stateCode)
+  props.setPageTitle("US National Park Service")
+  props.setPageSubTitle("A State-by-State Guide")
+ 
+  props.setPageSubSubTitle(states[stateCode][0])
+  props.setPageSubSubSubTitle(`${park.name} ${park.designation}`)
   
   let markers = []
   markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 

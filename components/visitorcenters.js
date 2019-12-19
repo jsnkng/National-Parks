@@ -63,17 +63,21 @@ const Grid__Container = styled(Grid)`
   p {
     font-size: .9em;
     padding: 0 1.5em 1em 1.5em;
+    ${SuperQuery().minWidth.md.css`
+    padding: 1.125em 1.5em;
+      width: 75%;
+    `}
   }
   p:last-child {
     font-size: .9em;
-    padding: 0 1.5em 0em 1.5em;
+    padding: 0 1.5em 1.5em 1.5em;
   }
 `
 const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
-    padding: 0;
-    border-bottom: 1px solid;
+    padding: .125em;
+    border-bottom: 2px solid;
   }
   &:last-child {
     border: none;

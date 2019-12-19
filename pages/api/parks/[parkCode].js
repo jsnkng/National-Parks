@@ -52,8 +52,6 @@ handler.get(async (req, res) => {
         console.log(err.stack)
       })
 
-
-
     parks.parks_id = parkCode
 
     await req.db.collection('parks').insertOne(parks)

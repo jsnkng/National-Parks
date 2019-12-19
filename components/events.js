@@ -42,10 +42,10 @@ const Events = props => {
                 <AccordionItemPanel>
           { item.images.length !== 0 &&
                 <Row__Container>
-                  <Col__Container xs={12} md={6} >
+                  <Col__Container xs={12} md={6} className="description">
                     <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                   </Col__Container>
-                  <Col__Container xs={12} md={3} className="details">
+                  <Col__Container xs={12} md={6} lg={3} className="details">
                     {item.times[0] !== undefined && item.times.length[0] !== 0 &&
                       <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p> 
                     }
@@ -63,15 +63,15 @@ const Events = props => {
                       <p><strong>More Info:</strong> <a href={item.infourl} target="_blank">{item.infourl}</a></p> 
                     }
                     </Col__Container>
-                    <Col__Container xs={12} md={3}>
-                    <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
+                    <Col__Container xs={12} md={12} lg={3}>
+                      <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
                     </Col__Container>
                   </Row__Container>
               
           }
           { item.images.length === 0 &&
                 <Row__Container>
-                  <Col__Container xs={12} sm={12} md={6}>
+                  <Col__Container xs={12} sm={12} md={6} className="description">
                     <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                   </Col__Container>
                   <Col__Container xs={12} sm={12} md={6} className="details">
@@ -124,23 +124,31 @@ const Grid__Container = styled(Grid)`
     padding: 0;
   }
 
-  p {
-    font-size: .9em;
-    padding: 0 1.5em 1em 1.5em;
-  }
-  p:last-child {
-    font-size: .9em;
-    padding: 0 1.5em 0em 1.5em;
+  ${'' /* p {
+      font-size: .9em;
+      padding: 0;
+    }
+  ${SuperQuery().minWidth.md.css`
+    p {
+      font-size: .9em;
+      padding: 0 1.5em 1em 1.5em;
+    }
+    p:last-child {
+      font-size: .9em;
+      padding: 0 1.5em 0em 1.5em;
+    }
+  `} */}
+  .description {
+    p {
+      font-size: 1em;
+      padding: .5em 0;
+    }
   }
   .details {
-      margin:.25em 0 0 0;
     p {
-      font-size: .85em;
-      padding:0;
-      margin:0;
-    ${SuperQuery().minWidth.md.css`
-      font-size: .75em;
-    `}
+      font-size: 1em;
+      padding: 1em 0;
+      margin: 0;
     } 
     strong {
       font-weight: 600;
@@ -151,8 +159,8 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
-    padding: 0;
-    border-bottom: 1px solid;
+    padding: .125em;
+    border-bottom: 2px solid;
   }
   &:last-child {
     border: none;
@@ -191,9 +199,9 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 12em;
+  height: 20em;
   margin: .625em 0 .625em 0;
   ${SuperQuery().minWidth.md.css`
-    margin: .25em 0;
+    margin: 1.5em 0;
   `}
 `

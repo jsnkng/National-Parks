@@ -13,9 +13,11 @@ const Parks = props => {
   const router = useRouter()
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
-  props.setPageTitle("U.S. National Parks")
-  props.setPageSubTitle("")
+  props.setPageTitle("US National Park Service")
+  props.setPageSubTitle("A State-by-State Guide")
   props.setPageStateCode(stateCode)
+  props.setPageSubSubTitle(states[stateCode][0])
+  props.setPageSubSubSubTitle()
   // console.log(parks)
 
 let markers = []
@@ -28,7 +30,7 @@ let markers = []
             latLong={states[stateCode][2]}
             name={states[stateCode][0]}
             designation="D"
-            zoom={5}
+            zoom={6}
             markers={markers}
           />
       </MapLive__Wrapper>
@@ -73,12 +75,11 @@ const ParksContainer = styled.div`
 const MapLive__Wrapper = styled.div`
   position:relative;
   width: 100%;
-  height: 70vh !important;
+  height: 60vh !important;
   max-width: 100%;
   z-index: 10;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
-    height: 60vw !important;
     max-height: 400px !important;
   `}
 `

@@ -19,7 +19,7 @@ const links = [
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    font-family: Helvetica -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -120,24 +120,36 @@ const theme = {
 }
 const MyApp = ({ Component, pageProps }) => {
   const [pageTitle, setPageTitle] = useState(null)
-  const [pageSubTitle, setPageSubTitle] = useState(null)
   const [pageStateCode, setPageStateCode] = useState(null)
+  const [pageSubTitle, setPageSubTitle] = useState(null)
+  const [pageSubSubTitle, setPageSubSubTitle] = useState(null)
+  const [pageSubSubSubTitle, setPageSubSubSubTitle] = useState(null)
   pageProps.setPageTitle = setPageTitle
-  pageProps.setPageSubTitle = setPageSubTitle
   pageProps.setPageStateCode = setPageStateCode
+  pageProps.setPageSubTitle = setPageSubTitle
+  pageProps.setPageSubSubTitle = setPageSubSubTitle
+  pageProps.setPageSubSubSubTitle = setPageSubSubSubTitle
   // console.dir(pageProps)
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
         <Masthead__Component 
           pageTitle={pageTitle} 
-          pageSubTitle={pageSubTitle}
           pageStateCode={pageStateCode}
+          pageSubTitle={pageSubTitle}
+          pageSubSubTitle={pageSubSubTitle}
+          pageSubSubSubTitle={pageSubSubSubTitle}
         />
         <main id="page-wrap">
           <Component {...pageProps} />
         </main>
-      <Footer__Component pageTitle="U.S. National Parks" />
+      <Footer__Component
+          pageTitle={pageTitle} 
+          pageStateCode={pageStateCode}
+          pageSubTitle={pageSubTitle}
+          pageSubSubTitle={pageSubSubTitle}
+          pageSubSubSubTitle={pageSubSubSubTitle}
+       />
     </ThemeProvider>
   )
 }

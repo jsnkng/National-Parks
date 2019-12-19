@@ -102,10 +102,10 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
   padding: 0 0 1em 0;
   margin: 0;
-  &:nth-of-type(1) {
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid;
+  
+  &:first-child {
+    padding: .125em;
+    border-bottom: 2px solid;
   }
   &:last-child {
     border: none;

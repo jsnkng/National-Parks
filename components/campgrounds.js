@@ -49,18 +49,26 @@ const Campgrounds = props => {
                     
                     <Row__Container className="section">
                       <Col__Container xs={12} sm={6}>
-                        {item.directionsoverview !== undefined && item.directionsoverview != 0 && 
-                          <span>
-                            <h5>Directions</h5>
-                            <p>{item.directionsoverview}<br /><a href={item.directionsUrl} target="_blank">{item.directionsUrl}</a></p>
-                            <h5>Campsites</h5>
-                            {item.campsites !== undefined && item.campsites != 0 && 
+                          <>
+
+                            { item.directionsoverview !== undefined && item.directionsoverview !== 0 && 
+                              <>
+                              <h5>Directions</h5>
+                              <p>{item.directionsoverview}<br />
+                                <a href={item.directionsUrl} target="_blank">{item.directionsUrl}</a>
+                              </p>
+                          </>
+                            }
+                            { item.campsites !== undefined && item.campsites !== 0 && 
+                              <>
+                              <h5>Campsites</h5>
                               <ul> 
                                 { Object.entries(item.campsites).map((item) => item[1] !== '0' ? <li key={item[0]}><strong>{item[0]}:</strong> {item[1]} </li> : '') }
                               </ul>
+                          </>
                             }
-                          </span>
-                        }
+                          </>
+                        
                       </Col__Container>
                       <Col__Container xs={12} sm={6}>
                         <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
@@ -240,7 +248,10 @@ const MapLive__Wrapper = styled.div`
   `}
 `
 const CampgroundWrapper = styled.div`
-  padding: 1em 1.35em .5em 1.35em;
+  padding: 1em 0;
+  ${SuperQuery().minWidth.md.css`
+  padding: 1em 0 .5em 0;
+  `}
 `
 const CampgroundImagesWrapper = styled.div`
   display: flex;
@@ -252,7 +263,11 @@ const CampgroundImages = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   height: 20em;
+
   margin: 0;
+  ${SuperQuery().minWidth.md.css`
+  height: 30em;
+  `}
 `
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
@@ -265,6 +280,7 @@ const Grid__Container = styled(Grid)`
     line-height: 1;
   }
   h5 {
+    font-size: 1.2em;
     margin:0;
     padding: 0;
   }
@@ -280,7 +296,7 @@ const Grid__Container = styled(Grid)`
     padding:0;
   }
   ul {
-    font-size: .8em;
+    font-size: 1em;
     column-count: 1;
     list-style-type: none;
     padding: .25em 0 .25em 0;
@@ -290,6 +306,7 @@ const Grid__Container = styled(Grid)`
     `}
   }
   li {
+    font-size: .9em;
     list-style-type: none;
     padding: .3125em 0;
     font-weight: 200;
@@ -298,9 +315,13 @@ const Grid__Container = styled(Grid)`
 `
 const Row__Container = styled(Row)`
   margin: 0;  
+  &:first-child {
+    padding: .125em;
+    border-bottom: 2px solid;
+  }
   .section {
-    padding: 0 0 2em 0;
-    margin:  0 0 2em 0;
+    padding: 0 0 1.5em 0;
+    margin:  0 0 1.5em 0;
     border-bottom: 4px solid #333333;
   }
 `

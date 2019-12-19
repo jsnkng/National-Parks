@@ -1,24 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import states from './datastates';
+import SuperQuery from '@themgoncalves/super-query'
 
 const Footer = props => {
 
   return (
     <FooterMenu>
       <FooterItem>
+      <>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`}>
+          <h3><a>{props.pageSubSubTitle}</a></h3>
+        </Link>
+        <h4>{props.pageSubSubSubTitle}</h4>
+        </>
+      </FooterItem> 
+      <FooterItem>
+      <Link href="/">
         <h1>{props.pageTitle}</h1>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.stateCode}`}>
-        <h2><a>{states[props.stateCode] !== undefined ? states[props.stateCode][0] : props.highlighted}</a></h2>
+        </Link>
+        <Link href="/">
+        <h2>{props.pageSubTitle}</h2>
         </Link>
       </FooterItem> 
       <FooterItem>
-        <h3>{props.subTitle}</h3>
-      </FooterItem> 
-      <FooterItem>
         <Link href="/">
-          <a><img src="/US-National-Parks-logo-sml-bw.png" width="32" /></a>
+          <a><img src="/us-nps.png" width="90" /></a>
         </Link>
       </FooterItem> 
     </FooterMenu>
@@ -29,7 +36,7 @@ export default Footer
 
 const FooterMenu = styled.header`
   display: grid;
-  grid-template-columns: 12fr 6fr 1fr;
+  grid-template-columns: 6fr 6fr 1fr;
   background-color: #1e1d1e;
   color: #ffffff;
   font-family: Helvetica;
@@ -47,32 +54,55 @@ const FooterItem = styled.div`
   align-items: left;
   box-sizing: border-box;
   list-style-type: none;
+
   h1 {
-    margin: 0;
+    clear:both;
+    float: right;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1.5em;
-    width: 100%;
+    font-size: 1em;
+    margin: .375em .5em 0 .5em;
+    cursor: pointer;
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.5em;
+    `}
   }
   h2 {
+    clear:both;
+    float: right;
     margin: 4px 0 0 0;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: 1em;
-    width: 100%;
+    font-size: .875em;
+    margin: 0 .5em 0 .75em;
+    cursor: pointer;
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1em;
+    `}
   }
-  h3 {
-    float: right;
+  h3, h4 {
+    clear:both;
+    float: left;
     text-align: right;
-    margin: .85em 1.5em 0 0;
-    font-weight: 400;
-    letter-spacing: -1px;
+    margin: .25em .5em 0 0;
+    font-weight: 600;
+    letter-spacing: -.5px;
     line-height: 1;
-    font-size: .75em;
-    width: 100%;
+    font-size: 1em;
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.5em;
+    `}
   }
+  h4 { 
+    font-weight: 200;
+    font-size: .r75em;
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1em;
+    `}
+  }
+
   a {
       color: #fff;
       text-decoration: none;

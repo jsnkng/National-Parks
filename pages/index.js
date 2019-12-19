@@ -6,9 +6,12 @@ import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
 const Home = props => {
-  props.setPageTitle("U.S. National Parks")
-  props.setPageSubTitle("")
-  props.setPageStateCode("")
+  props.setPageTitle("US National Park Service")
+  props.setPageSubTitle("A State-by-State Guide")
+
+  props.setPageStateCode()
+  props.setPageSubSubTitle()
+  props.setPageSubSubSubTitle()
 
   const [highlighted, setHighlight] = useState(null)
   console.log(highlighted)

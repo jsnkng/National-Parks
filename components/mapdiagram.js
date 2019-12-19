@@ -17,7 +17,8 @@ const MapDiagram = props => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="174 100 959 593" 
         enableBackground="new 174 100 959 593" 
-      >
+      > 
+      <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
         { Object.entries(states).map(([key, value]) => {
           if(props.states === "none") {
             return ( 
@@ -47,8 +48,7 @@ const MapDiagram = props => {
           }
         })
         }
-        <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
-      </svg>
+        </svg>
     </MapWrapper>
   )
 }
@@ -92,6 +92,7 @@ const MapWrapper = styled.div`
 	 	-moz-transition: fill .4s ease;
 	 	-o-transition: fill .4s ease;
 	 	transition: fill .4s ease;	 
+    cursor: pointer;
   }
   path.nohighlight{
     stroke: #D3D3D3;
