@@ -25,8 +25,8 @@ const Campgrounds = props => {
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
-            <LazyLoad height={200} offset={100}>
-            <Row__Container key={item.id}>
+            <LazyLoad height={200} offset={100} key={item.id}>
+            <Row__Container>
               <Col__Container xs={12}>
                 <AccordionItem>
                   <AccordionItemHeading>

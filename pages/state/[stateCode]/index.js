@@ -48,7 +48,6 @@ let markers = []
 }
   
 Parks.getInitialProps = async (context) => {
-  console.log("context")
   const {stateCode} = context.query
   const {origin}  = absoluteUrl(context.req)
   const stateResult = await fetch(`${origin}/api/state/${stateCode}`)
