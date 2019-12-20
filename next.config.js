@@ -10,6 +10,7 @@ module.exports = {
     DB_NAME: process.env.DB_NAME,
     DB_PASSWORD: process.env.DB_PASSWORD,
     WEB_URI: process.env.WEB_URI,
+    AWS_URI: process.env.AWS_URI,
     AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
     REGION: process.env.REGION,

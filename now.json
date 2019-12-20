@@ -8,6 +8,7 @@
         "DB_NAME": "NationalParkService_Cache",
         "DB_PASSWORD": "@db-password",
         "WEB_URI": "https://national-parks.now.sh/api",
+        "AWS_URI": "http://national-park-images.s3-website-us-east-1.amazonaws.com/",
         "AWS_ACCESS_KEY": "@aws-key",
         "AWS_SECRET_ACCESS_KEY": "@aws-secret-key",
         "REGION": "us-east-1",

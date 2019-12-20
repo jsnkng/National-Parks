@@ -26,7 +26,7 @@ const MapDiagram = props => {
                 key={key}
                 href="/state/[stateCode]" 
                 as={"/state/" + key}
-                passhref>
+                passHref>
                 <a>
                   <path 
                     id={key} 

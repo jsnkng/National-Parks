@@ -14,4 +14,8 @@ s3.uploadParams = {
   Body: null, // pass file body
 }
 
+s3.existParams = {
+  Bucket: process.env.Bucket,
+  Key: '', // pass key
+}
 export default s3

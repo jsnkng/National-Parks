@@ -10,7 +10,7 @@ const Masthead = props => {
   return (
     <HeaderMenu>
       <HeaderItem>
-        <Link href="/" passhref>
+        <Link href="/" passHref>
           <a><img src="/us-nps.png" width="90" /></a>
         </Link>
       </HeaderItem> 
@@ -30,14 +30,14 @@ const Masthead = props => {
         <h4>{props.pageSubSubSubTitle}</h4>
         </>
       </HeaderItem> 
-      <HeaderItem>
+      {/* <HeaderItem>
         <>
         <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passHref>
           <h3><a>{props.pageSubSubTitle}</a></h3>
         </Link>
         <h4>{props.pageSubSubSubTitle}</h4>
         </>
-      </HeaderItem> 
+      </HeaderItem>  */}
     </HeaderMenu>
   )
 }

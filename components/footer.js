@@ -9,22 +9,22 @@ const Footer = props => {
     <FooterMenu>
       <FooterItem>
       <>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passhref>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passHref>
           <h3><a>{props.pageSubSubTitle}</a></h3>
         </Link>
         <h4>{props.pageSubSubSubTitle}</h4>
         </>
       </FooterItem> 
       <FooterItem>
-      <Link href="/" passhref>
+      <Link href="/" passHref>
         <h1>{props.pageTitle}</h1>
         </Link>
-        <Link href="/" passhref>
+        <Link href="/" passHref>
         <h2>{props.pageSubTitle}</h2>
         </Link>
       </FooterItem> 
       <FooterItem>
-        <Link href="/" passhref>
+        <Link href="/" passHref>
           <a><img src="/us-nps.png" width="90" /></a>
         </Link>
       </FooterItem> 
