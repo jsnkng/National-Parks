@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../../../components/datastates'
+import Masthead__Component from '../../../components/masthead';
+import Footer__Component from '../../../components/footer'
 
 import Park__Component from '../../../components/park'
 import MapLive__Component from '../../../components/maplive'
@@ -13,18 +15,20 @@ const Parks = props => {
   const router = useRouter()
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
-  // props.setPageTitle("US National Park Service")
-  // props.setPageSubTitle("A State-by-State Guide")
-  // props.setPageStateCode(stateCode)
-  // props.setPageSubSubTitle(states[stateCode][0])
-  // props.setPageSubSubSubTitle()
-  // console.log(parks)
+
 
 let markers = []
 // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
   return (
     <ParksWrapper>
+    <Masthead__Component 
+      pageTitle={'USA National Park Service'} 
+      pageStateCode={stateCode}
+      pageSubTitle={'A State-by-State Guide'}
+      pageSubSubTitle={states[stateCode][0]}
+      pageSubSubSubTitle={''}
+    />
       <MapLive__Wrapper>
         <MapLive__Component
             latLong={states[stateCode][2]}
@@ -47,6 +51,13 @@ let markers = []
           })
         }
       </ParksContainer>
+      <Footer__Component
+        pageTitle={'USA National Park Service'} 
+        pageStateCode={stateCode}
+        pageSubTitle={'A State-by-State Guide'}
+        pageSubSubTitle={states[stateCode][0]}
+        pageSubSubSubTitle={''}
+       />
     </ParksWrapper>
   )
 }

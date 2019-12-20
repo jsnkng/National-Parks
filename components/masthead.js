@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
-console.log(props.headInfo)
+  console.log(props.headInfo)
+
+// const [headInfo, setHeadInfo] = useState(props.headInfo)
+
+// console.log(headInfo)
+// console.log(headInfo.pageSubSubTitle)
+// console.log(headInfo.pageTitle)
+// props.headInfo.setPageTitle("hookabooka-booka")
+// console.log(props.headInfo)
   return (
     <HeaderMenu>
       <HeaderItem>
@@ -14,18 +22,18 @@ console.log(props.headInfo)
       </HeaderItem> 
       <HeaderItem>
         <Link href="/">
-        <h1>{props.headInfo.pageTitle}</h1>
+        <h1>{props.pageTitle}</h1>
         </Link>
         <Link href="/">
-        <h2>{props.headInfo.pageSubTitle}</h2>
+        <h2>{props.pageSubTitle}</h2>
         </Link>
       </HeaderItem> 
       <HeaderItem>
         <>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.headInfo.pageStateCode}`}>
-          <h3><a>{props.headInfo.pageSubSubTitle}</a></h3>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`}>
+          <h3><a>{props.pageSubSubTitle}</a></h3>
         </Link>
-        <h4>{props.headInfo.pageSubSubSubTitle}</h4>
+        <h4>{props.pageSubSubSubTitle}</h4>
         </>
       </HeaderItem> 
     </HeaderMenu>

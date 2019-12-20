@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
 import states from '../../../../../components/datastates'
+import Masthead__Component from '../../../../../components/masthead';
+import Footer__Component from '../../../../../components/footer'
 
 
 import Alerts__Component from '../../../../../components/alerts'
@@ -31,20 +33,19 @@ const Park = props => {
   const [people, setPeople] = useState(props.people.data)
   const [places, setPlaces] = useState(props.places.data)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
- 
-  props.headInfo.setPageStateCode(stateCode)
-  props.headInfo.setPageTitle("US National Park Service")
-  props.headInfo.setPageSubTitle("A State-by-State Guide")
- 
-  props.headInfo.setPageSubSubTitle(states[stateCode][0])
-  props.headInfo.setPageSubSubSubTitle(`${park.name} ${park.designation}`)
-  
+
   let markers = []
   markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
   return (
     <Container>
-      
+      <Masthead__Component 
+        pageTitle={"USA National Park Service"} 
+        pageStateCode={stateCode}
+        pageSubTitle={"A State-by-State Guide"}
+        pageSubSubTitle={states[stateCode][0]}
+        pageSubSubSubTitle={`${park.name} ${park.designation}`}
+      />
       { park.images !== undefined && park.images.length != 0 &&
         <SlideShow__Component park={park} />
       }
@@ -117,7 +118,13 @@ const Park = props => {
           <People__Component park={park} people={people} />
         </People__Wrapper>
       }
-
+      <Footer__Component
+        pageTitle={"USA National Park Service"} 
+        pageStateCode={stateCode}
+        pageSubTitle={"A State-by-State Guide"}
+        pageSubSubTitle={states[stateCode][0]}
+        pageSubSubSubTitle={`${park.name} ${park.designation}`}
+       />
     </Container>
   )
 }

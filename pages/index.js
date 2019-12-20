@@ -4,15 +4,10 @@ import Head from 'next/head'
 import SuperQuery from '@themgoncalves/super-query'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
+import Masthead__Component from '../components/masthead';
+import Footer__Component from '../components/footer'
 
 const Home = props => {
-  console.log(props.headInfo.pageTitle)
-  // props.setPageTitle("US National Park Service")
-  // props.setPageSubTitle("A State-by-State Guide")
-
-  // props.setPageStateCode()
-  // props.setPageSubSubTitle()
-  // props.setPageSubSubSubTitle()
 
   const [highlighted, setHighlight] = useState(null)
   return (
@@ -30,6 +25,13 @@ const Home = props => {
        <meta name="mobile-web-app-capable" content="yes" />
     </Head>
     
+    <Masthead__Component 
+      pageTitle={"USA National Park Service"} 
+      pageStateCode={''}
+      pageSubTitle={"A State-by-State Guide"}
+      pageSubSubTitle={''}
+      pageSubSubSubTitle={''}
+      />
     <MapDiagram__Wrapper>
       <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} />
     </MapDiagram__Wrapper>
@@ -38,6 +40,13 @@ const Home = props => {
       <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
     </TerritoryList__Wrapper>
 
+    <Footer__Component
+      pageTitle={'USA National Park Service'} 
+      pageStateCode={''}
+      pageSubTitle={'A State-by-State Guide'}
+      pageSubSubTitle={''}
+      pageSubSubSubTitle={''}
+      />
   </>
   )
 }
