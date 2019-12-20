@@ -2,35 +2,37 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
+import Router from 'next/router'
+
 
 const Masthead = props => {
-  console.log(props.headInfo)
-
-// const [headInfo, setHeadInfo] = useState(props.headInfo)
-
-// console.log(headInfo)
-// console.log(headInfo.pageSubSubTitle)
-// console.log(headInfo.pageTitle)
-// props.headInfo.setPageTitle("hookabooka-booka")
-// console.log(props.headInfo)
+  
   return (
     <HeaderMenu>
       <HeaderItem>
-        <Link href="/">
+        <Link href="/" passhref>
           <a><img src="/us-nps.png" width="90" /></a>
         </Link>
       </HeaderItem> 
       <HeaderItem>
-        <Link href="/">
+        <Link href="/" passHref>
         <h1>{props.pageTitle}</h1>
         </Link>
-        <Link href="/">
+        <Link href="/" passHref>
         <h2>{props.pageSubTitle}</h2>
         </Link>
       </HeaderItem> 
       <HeaderItem>
         <>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`}>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passHref>
+          <h3><a>{props.pageSubSubTitle}</a></h3>
+        </Link>
+        <h4>{props.pageSubSubSubTitle}</h4>
+        </>
+      </HeaderItem> 
+      <HeaderItem>
+        <>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passHref>
           <h3><a>{props.pageSubSubTitle}</a></h3>
         </Link>
         <h4>{props.pageSubSubSubTitle}</h4>

@@ -7,7 +7,6 @@ import states from '../../../../../components/datastates'
 import Masthead__Component from '../../../../../components/masthead';
 import Footer__Component from '../../../../../components/footer'
 
-
 import Alerts__Component from '../../../../../components/alerts'
 import Articles__Component from '../../../../../components/articles'
 import Campgrounds__Component from '../../../../../components/campgrounds'
@@ -60,7 +59,9 @@ const Park = props => {
            
       </Description__Wrapper>
       
-
+      <div>
+      {/* Click <button onClick={() => Router.push('/state/ca/park/chis')}>here</button> to read more */}
+    </div>
       <VisitorInfo__Wrapper>
         <VisitorInfo__Component park={park} markers={markers} />
       </VisitorInfo__Wrapper>
