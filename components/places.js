@@ -38,7 +38,7 @@ export default Places
 
 
 const Grid__Container = styled(Grid)`
-  padding: 1em 1em 0 1em;
+  padding: 1em .5em 0 1em;
   h3 {
     font-size: 2em;
     margin: 0;
@@ -49,9 +49,10 @@ const Grid__Container = styled(Grid)`
     font-size: 1.25em;
     line-height: 1.125;
     float: left;
-    width: 100%;
+    width: 80%;
     margin: 0 0 1em 0;
     ${SuperQuery().minWidth.md.css`
+      width: 100%;
       margin: 0 0 .5em 0;
     `}
   }
@@ -70,26 +71,19 @@ const Grid__Container = styled(Grid)`
   }
 `
 const Row__Container = styled(Row)`
-  padding: 1em 0;
   margin: 0;
   &:first-child {
-    padding: 0;
-    border-bottom: 1px solid;
+    padding: .125em;
+    border-bottom: 2px solid;
   }
   &:last-child {
     border: none;
   }
 `
-
 const Col__Container = styled(Col)`
-  padding: 2.25em 0 1em 0;
-  border-bottom: 1px solid;
-  &:first-child {
-    padding: 1em 0 1em 0;
-  }
-  &:last-child {
-    border: none;
-  }
+  border-bottom: 2px solid #3c3a3c;
+  padding: 1.5em 0 .5em 0;
+  
   ${SuperQuery().minWidth.md.css`
     margin: 0;
     border: 0px solid;
@@ -103,14 +97,21 @@ const Col__Container = styled(Col)`
   ${SuperQuery().minWidth.lg.css`
     margin: 0;
     border: 0px solid;
-    &:nth-child(3n + 1) {
-      padding: .25em 1em .5em 0;
+    &:nth-child(1),
+    &:nth-child(5) {
+      padding: .25em .5em .5em 0;
     }
-    &:nth-child(3n + 2) {
+    &:nth-child(2),
+    &:nth-child(6) {
       padding: .25em .5em .5em .5em;
     }
-    &:nth-child(3n + 3) {
-      padding: .25em 0 .5em 1em;
+    &:nth-child(3),
+    &:nth-child(7) {
+      padding: .25em .5em .5em .5em;
+    }
+    &:nth-child(4),
+    &:nth-child(8) {
+      padding: .25em 0 .5em .5em;
     }
   `}
 `
@@ -121,7 +122,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 12em;
+  height: 20em;
   margin: 0 0 1em 0;
   &.hidden {
     display: none;
@@ -129,4 +130,7 @@ const Image = styled.div`
       display: block;
     `}
   }
+  ${SuperQuery().minWidth.md.css`
+    height: 12em;
+  `}
 `

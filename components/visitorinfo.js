@@ -52,9 +52,9 @@ const MapLive__Wrapper = styled.div`
   height: 70vh !important;
   max-width: 100%;
   z-index: 10;
+  margin: 1em 0 0 0;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
-    margin: 1em 0 0 0;
     height: 60vw !important;
     max-height: 400px !important;
   `}

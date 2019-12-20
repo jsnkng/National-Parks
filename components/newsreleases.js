@@ -40,7 +40,7 @@ const NewsReleases = props => {
 export default NewsReleases
 
 const Grid__Container = styled(Grid)`
-  padding: 1em 1em 0 1em;
+  padding: 1em .5em 0 1em;
   h3 {
     font-size: 2em;
     margin: 0;
@@ -73,22 +73,19 @@ const Grid__Container = styled(Grid)`
   }
 `
 const Row__Container = styled(Row)`
-  padding: 1em 0;
   margin: 0;
   &:first-child {
-    padding: 0;
-    border-bottom: 1px solid;
-  }
-`
-const Col__Container = styled(Col)`
-  padding: 2.25em 0 1em 0;
-  border-bottom: 1px solid #3c3a3c;
-  &:first-child {
-    padding: 1em 0 1em 0;
+    padding: .125em;
+    border-bottom: 2px solid;
   }
   &:last-child {
     border: none;
   }
+`
+const Col__Container = styled(Col)`
+  border-bottom: 2px solid #3c3a3c;
+  padding: 1.5em 0 .5em 0;
+  
   ${SuperQuery().minWidth.md.css`
     margin: 0;
     border: 0px solid;
@@ -127,7 +124,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 12em;
+  height: 20em;
   margin: 0 0 1em 0;
   &.hidden {
     display: none;
@@ -135,4 +132,7 @@ const Image = styled.div`
       display: block;
     `}
   }
+  ${SuperQuery().minWidth.md.css`
+    height: 12em;
+  `}
 `

@@ -31,8 +31,12 @@ const VisitorCenters = props => {
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    <p>{item.description}</p>
-                    <p>{item.directionsInfo}</p>
+                  <Row__Container className="center">
+                    <Col__Container xs={12}>
+                      <p>{item.description}</p>
+                      <p>{item.directionsInfo}</p>
+                    </Col__Container>
+                  </Row__Container>
                   </AccordionItemPanel>
                 </AccordionItem>
               </Col__Container>
@@ -49,12 +53,8 @@ export default VisitorCenters
 
 
 const Grid__Container = styled(Grid)`
-  word-wrap:break-word;
-  :nth-of-type(1) {
-    padding: 1em 1em 0 .5em;
-  }
+padding: 1em .5em 0 .5em;
   h3 {
-    display: inline;
     font-size: 2em;
     margin: 0;
     padding: 0;
@@ -62,25 +62,28 @@ const Grid__Container = styled(Grid)`
   }
   p {
     font-size: .9em;
-    padding: 0 1.5em 1em 1.5em;
+    padding: 0 1.5em 1em 0em;
     ${SuperQuery().minWidth.md.css`
-    padding: 1.125em 1.5em;
+      padding: 1.125em 0em;
       width: 75%;
     `}
   }
   p:last-child {
     font-size: .9em;
-    padding: 0 1.5em 1.5em 1.5em;
+    padding: 0 0 1.5em 0;
   }
 `
 const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #ffffff;
   }
   &:last-child {
     border: none;
+  }
+  &.center {
+    border-bottom: 2px solid #ffffff;
   }
 `
 const Col__Container = styled(Col)`

@@ -41,7 +41,7 @@ const Events = props => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
           { item.images.length !== 0 &&
-                <Row__Container>
+                <Row__Container className="event">
                   <Col__Container xs={12} md={6} className="description">
                     <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                   </Col__Container>
@@ -70,7 +70,7 @@ const Events = props => {
               
           }
           { item.images.length === 0 &&
-                <Row__Container>
+                <Row__Container className="event">
                   <Col__Container xs={12} sm={12} md={6} className="description">
                     <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                   </Col__Container>
@@ -110,11 +110,10 @@ const Events = props => {
   
 export default Events
 
+
 const Grid__Container = styled(Grid)`
-  word-wrap:break-word;
-  padding: 1em 1em 0 .5em;
+  padding: 1em .5em 0 .5em;
   h3 {
-    display: inline;
     font-size: 2em;
     margin: 0;
     padding: 0;
@@ -124,46 +123,31 @@ const Grid__Container = styled(Grid)`
     padding: 0;
   }
 
-  ${'' /* p {
-      font-size: .9em;
-      padding: 0;
-    }
-  ${SuperQuery().minWidth.md.css`
-    p {
-      font-size: .9em;
-      padding: 0 1.5em 1em 1.5em;
-    }
-    p:last-child {
-      font-size: .9em;
-      padding: 0 1.5em 0em 1.5em;
-    }
-  `} */}
   .description {
-    p {
-      font-size: 1em;
-      padding: .5em 0;
-    }
+  padding: 1em 0;
+   
   }
   .details {
-    p {
-      font-size: 1em;
-      padding: 1em 0;
-      margin: 0;
-    } 
-    strong {
-      font-weight: 600;
-    }
+   
+   
+  }
+  strong {
+    font-weight: 600;
   }
   
 `
 const Row__Container = styled(Row)`
   margin: 0;
+  
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #ffffff;
   }
   &:last-child {
     border: none;
+  }
+  .event {
+    border-bottom: 2px solid #ffffff;
   }
   ${SuperQuery().minWidth.md.css`
     background-color: transparent;
@@ -172,24 +156,16 @@ const Row__Container = styled(Row)`
 const Col__Container = styled(Col)`
   margin: 0;
   padding: 0;
-  
 
   ${SuperQuery().minWidth.md.css`
     margin: 0;
     border: 0px solid;
     &:nth-child(2){
-      padding: 0 .5em;
+      padding: 1em;
     }
 
   `}
-  ${SuperQuery().minWidth.lg.css`
-    margin: 0;
-    border: 0px solid;
-    &:nth-child(2){
-      padding: 0 1em;
-    }
 
-  `}
 
 
 `
@@ -201,7 +177,14 @@ const Image = styled.div`
   width: 100%;
   height: 20em;
   margin: .625em 0 .625em 0;
+ 
+  &.hidden {
+    display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
+  }
   ${SuperQuery().minWidth.md.css`
-    margin: 1.5em 0;
+    height: 12em;
   `}
 `

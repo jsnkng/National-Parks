@@ -271,7 +271,7 @@ const CampgroundImages = styled.div`
 `
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
-  padding: 1em 1em 0 .5em;
+  padding: 1em .5em 0 .5em;
   h3 {
     display: inline;
     font-size: 2em;
@@ -314,16 +314,32 @@ const Grid__Container = styled(Grid)`
 
 `
 const Row__Container = styled(Row)`
-  margin: 0;  
+  margin: 0;
+  
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #ffffff;
   }
+  &:last-child {
+    border: none;
+  }
+  .event {
+    border-bottom: 2px solid #ffffff;
+  }
+
   .section {
     padding: 0 0 1.5em 0;
     margin:  0 0 1.5em 0;
     border-bottom: 4px solid #333333;
   }
+  .section:last-child {
+    padding: 0 0 1.5em 0;
+    margin:  0;
+    border-bottom: 2px solid #ffffff;
+  }
+  ${SuperQuery().minWidth.md.css`
+    background-color: transparent;
+  `}
 `
 const Col__Container = styled(Col)`
   padding: 0;
