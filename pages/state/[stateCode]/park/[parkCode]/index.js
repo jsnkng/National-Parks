@@ -32,12 +32,12 @@ const Park = props => {
   const [places, setPlaces] = useState(props.places.data)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
  
-  props.setPageStateCode(stateCode)
-  props.setPageTitle("US National Park Service")
-  props.setPageSubTitle("A State-by-State Guide")
+  props.headInfo.setPageStateCode(stateCode)
+  props.headInfo.setPageTitle("US National Park Service")
+  props.headInfo.setPageSubTitle("A State-by-State Guide")
  
-  props.setPageSubSubTitle(states[stateCode][0])
-  props.setPageSubSubSubTitle(`${park.name} ${park.designation}`)
+  props.headInfo.setPageSubSubTitle(states[stateCode][0])
+  props.headInfo.setPageSubSubSubTitle(`${park.name} ${park.designation}`)
   
   let markers = []
   markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 

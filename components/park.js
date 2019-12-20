@@ -16,7 +16,7 @@ const Park = props => {
   const url =   props.data.images === undefined || props.data.images.length == 0 ? "/US-National-Parks-logo-sml-bw.png" : "http://national-park-images.s3-website-us-east-1.amazonaws.com/" + props.data.images[0].url.replace(/[/:-]/g, '_')
   return (
     <LazyLoad height={'100%'} offset={100}>
-    <Link prefetch href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
+    <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`}>
     <ParkWrapper onClick={handleBannerClick}>
       <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
         <div className="sk-cube-grid">

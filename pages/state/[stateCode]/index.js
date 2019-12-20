@@ -13,11 +13,11 @@ const Parks = props => {
   const router = useRouter()
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
-  props.setPageTitle("US National Park Service")
-  props.setPageSubTitle("A State-by-State Guide")
-  props.setPageStateCode(stateCode)
-  props.setPageSubSubTitle(states[stateCode][0])
-  props.setPageSubSubSubTitle()
+  // props.setPageTitle("US National Park Service")
+  // props.setPageSubTitle("A State-by-State Guide")
+  // props.setPageStateCode(stateCode)
+  // props.setPageSubSubTitle(states[stateCode][0])
+  // props.setPageSubSubSubTitle()
   // console.log(parks)
 
 let markers = []

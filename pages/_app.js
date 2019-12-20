@@ -8,13 +8,90 @@ import SuperQuery from '@themgoncalves/super-query'
 import Masthead__Component from '../components/masthead';
 import Footer__Component from '../components/footer'
 
-import Link from 'next/link'
-const links = [
-  { href: '/', label: 'Home' }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
+
+export default class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props
+    pageProps.headInfo = {
+      setPageTitle: (title) => pageProps.headInfo.pageTitle = title,
+      setPageStateCode: (stateCode) => pageProps.headInfo.pageStateCode = stateCode,
+      setPageSubTitle: (subtitle) => pageProps.headInfo.pageSubTitle = subtitle,
+      setPageSubSubTitle: (subsubtitle) => pageProps.headInfo.pageSubSubTitle = subsubtitle,
+      setPageSubSubSubTitle: (subsubsubtitle) => pageProps.headInfo.pageSubSubSubTitle = subsubsubtitle,
+      getPageTitle: () => pageProps.headInfo.pageTitle,
+    }
+    console.log(pageProps.headInfo.pageTitle)
+    return (
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Masthead__Component 
+          headInfo={pageProps.headInfo} 
+        />
+        <main id="page-wrap">
+          <Component {...pageProps} />
+        </main>
+      <Footer__Component
+          // pageTitle={pageTitle} 
+          // pageStateCode={pageStateCode}
+          // pageSubTitle={pageSubTitle}
+          // pageSubSubTitle={pageSubSubTitle}
+          // pageSubSubSubTitle={pageSubSubSubTitle}
+       />
+      </ThemeProvider>
+    )
+  }
+}
+
+
+// const MyApp = ({ Component, pageProps }) => {
+  // const [pageHead, setPageHead] = useState({})
+  // const [pageTitle, setPageTitle] = useState(null)
+  // const [pageStateCode, setPageStateCode] = useState(null)
+  // const [pageSubTitle, setPageSubTitle] = useState(null)
+  // const [pageSubSubTitle, setPageSubSubTitle] = useState(null)
+  // const [pageSubSubSubTitle, setPageSubSubSubTitle] = useState(null)
+  // pageProps.setPageTitle = setPageTitle
+  // pageProps.setPageStateCode = setPageStateCode
+  // pageProps.setPageSubTitle = setPageSubTitle
+  // pageProps.setPageSubSubTitle = setPageSubSubTitle
+  // pageProps.setPageSubSubSubTitle = setPageSubSubSubTitle
+  // console.dir(pageProps)
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <GlobalStyle />
+//         <Masthead__Component 
+//           pageTitle={pageTitle} 
+//           pageStateCode={pageStateCode}
+//           pageSubTitle={pageSubTitle}
+//           pageSubSubTitle={pageSubSubTitle}
+//           pageSubSubSubTitle={pageSubSubSubTitle}
+//         />
+//         <main id="page-wrap">
+//           <Component {...pageProps} />
+//         </main>
+//       <Footer__Component
+//           pageTitle={pageTitle} 
+//           pageStateCode={pageStateCode}
+//           pageSubTitle={pageSubTitle}
+//           pageSubSubTitle={pageSubSubTitle}
+//           pageSubSubSubTitle={pageSubSubSubTitle}
+//        />
+//     </ThemeProvider>
+//   )
+// }
+// Only uncomment this method if you have blocking data requirements for
+// every single page in your application. This disables the ability to
+// perform automatic static optimization, causing every page in your app to
+// be server-side rendered.
+// MyApp.getInitialProps = async (appContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
+
+//   return { ...appProps }
+// }
+
+// export default MyApp
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -118,50 +195,3 @@ const theme = {
     }
   }
 }
-const MyApp = ({ Component, pageProps }) => {
-  const [pageTitle, setPageTitle] = useState(null)
-  const [pageStateCode, setPageStateCode] = useState(null)
-  const [pageSubTitle, setPageSubTitle] = useState(null)
-  const [pageSubSubTitle, setPageSubSubTitle] = useState(null)
-  const [pageSubSubSubTitle, setPageSubSubSubTitle] = useState(null)
-  pageProps.setPageTitle = setPageTitle
-  pageProps.setPageStateCode = setPageStateCode
-  pageProps.setPageSubTitle = setPageSubTitle
-  pageProps.setPageSubSubTitle = setPageSubSubTitle
-  pageProps.setPageSubSubSubTitle = setPageSubSubSubTitle
-  // console.dir(pageProps)
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-        <Masthead__Component 
-          pageTitle={pageTitle} 
-          pageStateCode={pageStateCode}
-          pageSubTitle={pageSubTitle}
-          pageSubSubTitle={pageSubSubTitle}
-          pageSubSubSubTitle={pageSubSubSubTitle}
-        />
-        <main id="page-wrap">
-          <Component {...pageProps} />
-        </main>
-      <Footer__Component
-          pageTitle={pageTitle} 
-          pageStateCode={pageStateCode}
-          pageSubTitle={pageSubTitle}
-          pageSubSubTitle={pageSubSubTitle}
-          pageSubSubSubTitle={pageSubSubSubTitle}
-       />
-    </ThemeProvider>
-  )
-}
-// Only uncomment this method if you have blocking data requirements for
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
-// MyApp.getInitialProps = async (appContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-
-//   return { ...appProps }
-// }
-
-export default MyApp

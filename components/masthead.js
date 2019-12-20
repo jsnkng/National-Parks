@@ -4,7 +4,7 @@ import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
-console.log(props)
+console.log(props.headInfo)
   return (
     <HeaderMenu>
       <HeaderItem>
@@ -14,18 +14,18 @@ console.log(props)
       </HeaderItem> 
       <HeaderItem>
         <Link href="/">
-        <h1>{props.pageTitle}</h1>
+        <h1>{props.headInfo.pageTitle}</h1>
         </Link>
         <Link href="/">
-        <h2>{props.pageSubTitle}</h2>
+        <h2>{props.headInfo.pageSubTitle}</h2>
         </Link>
       </HeaderItem> 
       <HeaderItem>
         <>
-        <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`}>
-          <h3><a>{props.pageSubSubTitle}</a></h3>
+        <Link href={`/state/[stateCode]/`} as={`/state/${props.headInfo.pageStateCode}`}>
+          <h3><a>{props.headInfo.pageSubSubTitle}</a></h3>
         </Link>
-        <h4>{props.pageSubSubSubTitle}</h4>
+        <h4>{props.headInfo.pageSubSubSubTitle}</h4>
         </>
       </HeaderItem> 
     </HeaderMenu>
