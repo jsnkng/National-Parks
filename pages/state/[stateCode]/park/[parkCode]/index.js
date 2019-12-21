@@ -46,6 +46,7 @@ const handleSwipe = (e) => {
   } else {
     history.back()
   }
+  alert('swipe')
 }
   return (
     <Hammer  onSwipe={handleSwipe}>
