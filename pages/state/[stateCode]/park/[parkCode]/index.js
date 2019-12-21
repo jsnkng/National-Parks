@@ -20,7 +20,6 @@ import VisitorInfo__Component from '../../../../../components/visitorinfo'
 import VisitorCenters__Component from '../../../../../components/visitorcenters'
 
 const Park = props => {
-  // console.log(props)
   const router = useRouter()
   const { stateCode } = router.query
   const [park, setPark] = useState(props.data[0])
@@ -35,7 +34,7 @@ const Park = props => {
 
   let markers = []
   markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
-
+console.log(park)
   return (
     <Container>
       <Masthead__Component 
@@ -45,10 +44,12 @@ const Park = props => {
         pageSubSubTitle={states[stateCode][0]}
         pageSubSubSubTitle={`${park.name} ${park.designation}`}
       />
-      { park.images !== undefined && park.images.length != 0 &&
+      { park.images !== undefined && park.images.length !== 0 &&
         <SlideShow__Component park={park} />
       }
-
+      { park.images.length === 0  &&
+        <div style={{height:'80px'}}></div>
+      }
       <Description__Wrapper>
         <Description__Component park={park} />
     

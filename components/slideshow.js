@@ -33,6 +33,7 @@ const ResponsiveImage = styled.div`
   margin: 0;
   width: 100%;
   height: 65vh;
+  min-height:80px;
   max-width: 100%;
 
   ${SuperQuery().minWidth.md.css`

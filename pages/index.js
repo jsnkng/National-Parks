@@ -32,14 +32,15 @@ const Home = props => {
       pageSubSubTitle={''}
       pageSubSubSubTitle={''}
       />
-    <MapDiagram__Wrapper>
-      <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} />
-    </MapDiagram__Wrapper>
+      <Content__Wrapper>
+        <MapDiagram__Wrapper>
+          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} />
+        </MapDiagram__Wrapper>
 
-    <TerritoryList__Wrapper>
-      <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
-    </TerritoryList__Wrapper>
-
+        <TerritoryList__Wrapper>
+          <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
+        </TerritoryList__Wrapper>
+      </Content__Wrapper>
     <Footer__Component
       pageTitle={'USA National Park Service'} 
       pageStateCode={''}
@@ -54,12 +55,12 @@ const Home = props => {
 
 export default Home
 
-const FeaturedPark__Wrapper = styled.div`
-  margin: 2em;
-  max-width: 800px;
-  ${SuperQuery().minWidth.md.css`
-    margin: 2em auto;
-  `}
+const Content__Wrapper = styled.div`
+  background-color: #ffffff;
+  padding: 3em 0 4em;
+  margin: 80px auto 0;
+  width: 100%;
+ 
 `
 const MapDiagram__Wrapper = styled.div`
   margin: 2em;

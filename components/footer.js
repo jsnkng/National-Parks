@@ -37,7 +37,7 @@ export default Footer
 const FooterMenu = styled.header`
   display: grid;
   grid-template-columns: 6fr 6fr 1fr;
-  background-color: #1e1d1e;
+  background-color: rgba(0,0,0,.8);
   color: #ffffff;
   font-family: Helvetica;
   position: relative;

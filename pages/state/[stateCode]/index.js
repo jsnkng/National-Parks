@@ -79,7 +79,7 @@ const ParksContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: top;
-  justify-content: center;
+  justify-content: left;
   margin: 0px;
 `
 
@@ -89,6 +89,7 @@ const MapLive__Wrapper = styled.div`
   height: 60vh !important;
   max-width: 100%;
   z-index: 10;
+  margin: 80px auto 0;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
     max-height: 400px !important;

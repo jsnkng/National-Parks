@@ -49,7 +49,7 @@ const HeaderMenu = styled.header`
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   font-family: Helvetica;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;

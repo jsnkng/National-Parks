@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.6;
     font-size: 16px;
 
+    background-color: #3c3a3c;
     ${SuperQuery().minWidth.sm.css`
       font-size:18px;
     `}
