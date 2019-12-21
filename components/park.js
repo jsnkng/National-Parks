@@ -16,7 +16,7 @@ const Park = props => {
   const url =   props.data.images === undefined || props.data.images.length == 0 
     ? "/us-nps.png" : process.env.AWS_URI + props.data.images[0].url.replace(/[/:-\s]/g, '_')
   return (
-    <LazyLoad height={'100%'} offset={100}>
+    <LazyLoad height={'100%'} offset={0}>
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`} passHref>
       <ParkWrapper onClick={handleBannerClick}>
         <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>

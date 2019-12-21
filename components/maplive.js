@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 const mapStyles = {
-    
 }
 
 const MapLive = props => {
@@ -34,32 +32,26 @@ const MapLive = props => {
       zoom={props.zoom}
       style={mapStyles}
       initialCenter={cleanLatLong(props.latLong)}>
-      
       { props.markers.map((item) => {
-        return (
-          <Marker key={item.id}
-            onClick={onMarkerClick}
-            stateCode={item.stateCode}
-            parkCode={item.parkCode}
-            name={item.name} 
-            description={item.description}
-            position={cleanLatLong(item.latLong)} />
-        )
+          return (
+            <Marker key={item.id}
+              onClick={onMarkerClick}
+              stateCode={item.stateCode}
+              parkCode={item.parkCode}
+              name={item.name} 
+              description={item.description}
+              position={cleanLatLong(item.latLong)} />
+          )
         })
       }
-      
       <InfoWindowStyled
         marker={activeMarker}
         visible={showingInfoWindow}>
           <div>
-          <h3 style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
-          <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
-
-          {/* { selectedPlace !== undefined && selectedPlace.parkCode !== undefined &&
-            <Link href="/state/[stateCode]/park/[parkCode]/" as={`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}/`}><a>More Information</a></Link> } */}
+            <h3 style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
+            <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
           </div>
       </InfoWindowStyled>
-        
     </MapStyled>
   )
   
@@ -70,9 +62,7 @@ export default GoogleApiWrapper({
 
 const MapStyled = styled(Map)`
 `
-
 const InfoWindowStyled = styled(InfoWindow)`
-color: #333333;
+  color: #333333;
   h1 {color: #333333;}
-
 `
