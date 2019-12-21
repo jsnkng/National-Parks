@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
+import Hammer from 'react-hammerjs'
 import states from '../../../components/datastates'
 import Masthead__Component from '../../../components/masthead';
 import Footer__Component from '../../../components/footer'
@@ -20,7 +21,18 @@ const Parks = props => {
 let markers = []
 // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
+
+const handleSwipe = (e) => {
+  e.preventDefault()
+  console.log(e)
+  if(e.overallVelocity > 0) {
+    history.forward()
+  } else {
+    history.back()
+  }
+}
   return (
+    <Hammer  onSwipe={handleSwipe}>
     <ParksWrapper>
     <Masthead__Component 
       pageTitle={'National Park Service'} 
@@ -59,6 +71,7 @@ let markers = []
         pageSubSubSubTitle={''}
        />
     </ParksWrapper>
+    </Hammer>
   )
 }
   
