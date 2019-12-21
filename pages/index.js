@@ -57,13 +57,15 @@ export default Home
 
 const Content__Wrapper = styled.div`
   background-color: #ffffff;
-  padding: 3em 0 4em;
-  margin: 80px auto 0;
   width: 100%;
+  padding: 52px 0 52px 0;
+${SuperQuery().minWidth.sm.css`
+  padding: 80px 0 80px 0;
+`}
  
 `
 const MapDiagram__Wrapper = styled.div`
-  margin: 2em;
+  margin: 2em 0 0 .5em;
   max-width: 800px;
   ${SuperQuery().minWidth.md.css`
     margin: 2em auto;

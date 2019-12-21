@@ -73,7 +73,10 @@ Parks.getInitialProps = async (context) => {
 export default Parks
 
 const ParksWrapper = styled.div`
-  margin: 0;
+  padding: 52px 0 0 0;
+  ${SuperQuery().minWidth.sm.css`
+    padding: 80px 0 0 0;
+  `}
 `
 const ParksContainer = styled.div`
   display: flex;
@@ -82,17 +85,8 @@ const ParksContainer = styled.div`
   justify-content: left;
   margin: 0px;
 `
-
 const MapLive__Wrapper = styled.div`
   position:relative;
-  width: 100%;
-  height: 60vh !important;
-  max-width: 100%;
+  height: 400px !important;
   z-index: 10;
-  margin: 68px auto 0;
-  ${SuperQuery().minWidth.md.css`
-    width: 100%;
-    margin: 78px auto 0;
-    max-height: 400px !important;
-  `}
 `

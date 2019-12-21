@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
+import SuperQuery from '@themgoncalves/super-query'
 import states from '../../../../../components/datastates'
 import Masthead__Component from '../../../../../components/masthead';
 import Footer__Component from '../../../../../components/footer'
@@ -34,15 +35,15 @@ const Park = props => {
 
   let markers = []
   markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
-console.log(park)
+
   return (
     <Container>
       <Masthead__Component 
         pageTitle={"National Park Service"} 
         pageStateCode={stateCode}
-        pageSubTitle={"A State-by-State Guide"}
+        pageSubTitle={park.name}
         pageSubSubTitle={states[stateCode][0]}
-        pageSubSubSubTitle={`${park.name} ${park.designation}`}
+        pageSubSubSubTitle={park.designation}
       />
       { park.images !== undefined && park.images.length !== 0 &&
         <SlideShow__Component park={park} />
@@ -144,8 +145,13 @@ Park.getInitialProps = async (query) => {
 
 export default Park
 
+
+
 const Container = styled.div`
-  margin: 0;
+  padding: 52px 0 0 0;
+  ${SuperQuery().minWidth.sm.css`
+    padding: 80px 0 0 0;
+  `}
 `
 const Description__Wrapper = styled.div`
   padding: 1em 0;
