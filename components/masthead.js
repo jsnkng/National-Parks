@@ -5,14 +5,14 @@ import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
   return (
-    <HeaderMenu>
+    <HeaderMenu >
       <Link href="/" passHref>
         <img className="logo" src="/us-nps.png" width="90" />
       </Link>
-      <Link href="/" passHref>
+      <Link href="#" passHref>
         <h1>{props.pageTitle}</h1>
       </Link>
-      <Link href="/" passHref>
+      <Link href="#" passHref>
         <h2>{props.pageSubTitle}</h2>
       </Link>
       <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
@@ -85,20 +85,20 @@ const HeaderMenu = styled.header`
   }
   h3{
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 55px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -.5px;
     line-height: 1;
-    font-size: 1em;
+    font-size: 1.25em;
     ${SuperQuery().minWidth.sm.css`
-      top: 5px;    
+      top: 13px;    
       right: 95px;
-      font-size: 1.5em;
+      font-size: 2em;
     `}
   }
-  h4 { 
+  ${'' /* h4 { 
     display: block;
     position: absolute;
     top: 20px;
@@ -112,5 +112,5 @@ const HeaderMenu = styled.header`
       right: 95px;
       font-size: 1em;
     `}
-  }
+  } */}
 `

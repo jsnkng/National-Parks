@@ -29,7 +29,7 @@ export default Footer
 const FooterMenu = styled.footer`
   position: relative;
   display: grid;
-  grid-template-columns: 6fr 3fr;
+  grid-template-columns: 6fr 3fr ;
   top: 0;
   left: 0;
   right: 0;
@@ -85,20 +85,20 @@ const FooterMenu = styled.footer`
   }
   h3{
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 55px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -.5px;
     line-height: 1;
-    font-size: 1em;
+    font-size: 1.25em;
     ${SuperQuery().minWidth.sm.css`
-      top: 5px;    
+      top: 13px;    
       right: 95px;
-      font-size: 1.5em;
+      font-size: 2em;
     `}
   }
-  h4 { 
+  ${'' /* h4 { 
     display: block;
     position: absolute;
     top: 20px;
@@ -112,5 +112,6 @@ const FooterMenu = styled.footer`
       right: 95px;
       font-size: 1em;
     `}
-  }
+  } */}
 `
+

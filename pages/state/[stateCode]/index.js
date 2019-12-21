@@ -4,35 +4,31 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-import Hammer from 'react-hammerjs'
 import states from '../../../components/datastates'
-import Masthead__Component from '../../../components/masthead';
+import Masthead__Component from '../../../components/masthead'
 import Footer__Component from '../../../components/footer'
 
 import Park__Component from '../../../components/park'
 import MapLive__Component from '../../../components/maplive'
 
 const Parks = props => {
+  console.log(props)
+
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
+
+  const handleBannerClick = () => {
+    setIsSpinnerVisible(true)
+  }
+
+  
   const router = useRouter()
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
 
-
 let markers = []
 // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
-
-const handleSwipe = (e) => {
-  e.preventDefault()
-  console.log(e)
-  if(e.overallVelocity > 0) {
-    history.forward()
-  } else {
-    history.back()
-  }
-}
   return (
-    <Hammer  onSwipe={handleSwipe}>
     <ParksWrapper>
     <Masthead__Component 
       pageTitle={'National Park Service'} 
@@ -41,6 +37,20 @@ const handleSwipe = (e) => {
       pageSubSubTitle={states[stateCode][0]}
       pageSubSubSubTitle={''}
     />
+     <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+          <div className="sk-cube-grid">
+            <div className="sk-cube sk-cube1"></div>
+            <div className="sk-cube sk-cube2"></div>
+            <div className="sk-cube sk-cube3"></div>
+            <div className="sk-cube sk-cube4"></div>
+            <div className="sk-cube sk-cube5"></div>
+            <div className="sk-cube sk-cube6"></div>
+            <div className="sk-cube sk-cube7"></div>
+            <div className="sk-cube sk-cube8"></div>
+            <div className="sk-cube sk-cube9"></div>
+          Loading
+          </div>
+        </Spinner>
       <MapLive__Wrapper>
         <MapLive__Component
             latLong={states[stateCode][2]}
@@ -50,7 +60,7 @@ const handleSwipe = (e) => {
             markers={markers}
           />
       </MapLive__Wrapper>
-      <ParksContainer>
+      <ParksContainer  onClick={handleBannerClick}>
         { parks.slice(0).map((item) => {
           markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:stateCode, parkCode:item.parkCode})
             return(
@@ -71,7 +81,6 @@ const handleSwipe = (e) => {
         pageSubSubSubTitle={''}
        />
     </ParksWrapper>
-    </Hammer>
   )
 }
   
@@ -86,6 +95,7 @@ Parks.getInitialProps = async (context) => {
 export default Parks
 
 const ParksWrapper = styled.div`
+position:relative;
   padding: 52px 0 0 0;
   ${SuperQuery().minWidth.sm.css`
     padding: 90px 0 0 0;
@@ -102,4 +112,77 @@ const MapLive__Wrapper = styled.div`
   position:relative;
   height: 400px !important;
   z-index: 10;
+`
+const Spinner = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 400;
+  background-color: rgba(26,42,59,0.8);
+  color: #ffffff;
+  font-size: .7em;
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
+  .sk-cube-grid {
+    width: 60px;
+    height: 60px;
+    margin: 100px auto;
+  }
+  .sk-cube-grid .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: #ffffff;
+    float: left;
+    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+            animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+  }
+  .sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s; }
+  .sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1); 
+  }
+}
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  } 
+}
 `

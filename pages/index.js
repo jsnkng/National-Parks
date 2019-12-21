@@ -2,30 +2,14 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
 import SuperQuery from '@themgoncalves/super-query'
-import Hammer from 'react-hammerjs'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 import Masthead__Component from '../components/masthead';
 import Footer__Component from '../components/footer'
 
 const Home = props => {
-
+console.log(props)
   const [highlighted, setHighlight] = useState(null)
-
-
-  const handleTap = () => {
-    alert('tap')
-  }
-
-  const handleSwipe = (e) => {
-    e.preventDefault()
-    console.log(e)
-    if(e.overallVelocity > 0) {
-      history.forward()
-    } else {
-      history.back()
-    }
-  }
   return (
   <>
     <Head>
@@ -46,19 +30,17 @@ const Home = props => {
       pageStateCode={''}
       pageSubTitle={"A State-by-State Guide"}
       pageSubSubTitle={''}
-      pageSubSubSubTitle={''}
+      pageSubSubSubTitle={''} 
       />
-    <Hammer onSwipe={handleSwipe}>
       <Content__Wrapper>
         <MapDiagram__Wrapper>
-          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} />
+          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'}  onClick={() => props.toggleIsSpinnerVisible(true)} />
         </MapDiagram__Wrapper>
 
-        <TerritoryList__Wrapper>
+        <TerritoryList__Wrapper  onClick={() => props.toggleIsSpinnerVisible(true)}>
           <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
         </TerritoryList__Wrapper>
       </Content__Wrapper>
-    </Hammer>
     <Footer__Component
       pageTitle={'National Park Service'} 
       pageStateCode={''}
