@@ -23,7 +23,7 @@ let markers = []
   return (
     <ParksWrapper>
     <Masthead__Component 
-      pageTitle={'USA National Park Service'} 
+      pageTitle={'National Park Service'} 
       pageStateCode={stateCode}
       pageSubTitle={'A State-by-State Guide'}
       pageSubSubTitle={states[stateCode][0]}
@@ -52,7 +52,7 @@ let markers = []
         }
       </ParksContainer>
       <Footer__Component
-        pageTitle={'USA National Park Service'} 
+        pageTitle={'National Park Service'} 
         pageStateCode={stateCode}
         pageSubTitle={'A State-by-State Guide'}
         pageSubSubTitle={states[stateCode][0]}
@@ -89,9 +89,10 @@ const MapLive__Wrapper = styled.div`
   height: 60vh !important;
   max-width: 100%;
   z-index: 10;
-  margin: 80px auto 0;
+  margin: 68px auto 0;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
+    margin: 78px auto 0;
     max-height: 400px !important;
   `}
 `

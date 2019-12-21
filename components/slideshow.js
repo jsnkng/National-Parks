@@ -37,11 +37,11 @@ const ResponsiveImage = styled.div`
   max-width: 100%;
 
   ${SuperQuery().minWidth.md.css`
-    height: 60vw;
-    max-height: 72vh;
+    height: 80vw;
+    max-height: 82vh;
   `}
   ${SuperQuery().minWidth.lg.css`
-    height: 70vw;
+    height: 75vw;
     max-height: 82vh;
   `}
   h4 {

@@ -26,7 +26,7 @@ const Home = props => {
     </Head>
     
     <Masthead__Component 
-      pageTitle={"USA National Park Service"} 
+      pageTitle={"National Park Service"} 
       pageStateCode={''}
       pageSubTitle={"A State-by-State Guide"}
       pageSubSubTitle={''}
@@ -42,7 +42,7 @@ const Home = props => {
         </TerritoryList__Wrapper>
       </Content__Wrapper>
     <Footer__Component
-      pageTitle={'USA National Park Service'} 
+      pageTitle={'National Park Service'} 
       pageStateCode={''}
       pageSubTitle={'A State-by-State Guide'}
       pageSubSubTitle={''}

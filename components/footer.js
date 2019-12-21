@@ -24,8 +24,8 @@ const Footer = props => {
         </Link>
       </FooterItem> 
       <FooterItem>
-        <Link href="/" passHref>
-          <a><img src="/us-nps.png" width="90" /></a>
+        <Link href="/">
+          <a><img className="logo" src="/us-nps.png" width="90" /></a>
         </Link>
       </FooterItem> 
     </FooterMenu>
@@ -35,78 +35,89 @@ export default Footer
 
 
 const FooterMenu = styled.header`
-  display: grid;
-  grid-template-columns: 6fr 6fr 1fr;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
-  font-family: Helvetica;
   position: relative;
   top: 0;
   left: 0;
   right: 0;
-  padding: 15px;
-  margin: 0;
-
+  height: 80px;
 `
-
 const FooterItem = styled.div`
-  padding: 0;
-  align-items: left;
-  box-sizing: border-box;
-  list-style-type: none;
+  .logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    ${SuperQuery().minWidth.sm.css`
+      top: 10px;
+      right: 10px;
+      width: 60px;
+    `}
+  }
 
   h1 {
-    clear:both;
-    float: right;
+    position: absolute;
+    top: 5px;
+    left: 20px;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1em;
-    margin: .375em .5em 0 .5em;
+    font-size: 1.25em;
     cursor: pointer;
-    ${SuperQuery().minWidth.md.css`
+    ${SuperQuery().minWidth.sm.css`
+      top: 5px;
       font-size: 1.5em;
     `}
+   
   }
   h2 {
-    clear:both;
-    float: right;
-    margin: 4px 0 0 0;
+    position: absolute;
+    top: 27px;
+    left: 20px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .875em;
-    margin: 0 .5em 0 .75em;
+    font-size: 1em;
     cursor: pointer;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1em;
+    ${SuperQuery().minWidth.sm.css`
+      top: 32px;
+      font-size: 1.125em;
     `}
+   
   }
-  h3, h4 {
-    clear:both;
-    float: left;
+  h3{
+    position: absolute;
+    top: 5px;
+    right: 67px;
     text-align: right;
-    margin: .25em .5em 0 0;
     font-weight: 600;
     letter-spacing: -.5px;
     line-height: 1;
-    font-size: 1em;
-    ${SuperQuery().minWidth.md.css`
+    font-size: 1.25em;
+    ${SuperQuery().minWidth.sm.css`
+      top: 5px;    
+      right: 80px;
       font-size: 1.5em;
     `}
   }
   h4 { 
+    display: block;
+    position: absolute;
+    top: 23px;
+    right: 67px;
     font-weight: 200;
-    font-size: .r75em;
-    ${SuperQuery().minWidth.md.css`
+    font-size: 1em;
+    ${SuperQuery().minWidth.sm.css`
+      top: 32px;
+      right: 80px;
       font-size: 1em;
     `}
   }
-
   a {
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
     }
   p {
     margin: 5px 0;

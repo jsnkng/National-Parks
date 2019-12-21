@@ -38,7 +38,7 @@ console.log(park)
   return (
     <Container>
       <Masthead__Component 
-        pageTitle={"USA National Park Service"} 
+        pageTitle={"National Park Service"} 
         pageStateCode={stateCode}
         pageSubTitle={"A State-by-State Guide"}
         pageSubSubTitle={states[stateCode][0]}
@@ -121,7 +121,7 @@ console.log(park)
         </People__Wrapper>
       }
       <Footer__Component
-        pageTitle={"USA National Park Service"} 
+        pageTitle={"National Park Service"} 
         pageStateCode={stateCode}
         pageSubTitle={"A State-by-State Guide"}
         pageSubSubTitle={states[stateCode][0]}
@@ -145,7 +145,7 @@ Park.getInitialProps = async (query) => {
 export default Park
 
 const Container = styled.div`
-  font-family: Helvetica;
+  margin: 0;
 `
 const Description__Wrapper = styled.div`
   padding: 1em 0;

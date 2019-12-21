@@ -14,7 +14,7 @@ const Places = props => {
         </Col__Container>
       </Row__Container>
       <Row__Container>
-        { places.slice(0).map((item) => {
+        { places.slice(0,3).map((item) => {
           return(
             <LazyLoad height={200} offset={100} key={item.id}>
             <Col__Container xs={12} sm={12} md={6} lg={4}>

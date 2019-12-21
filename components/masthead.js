@@ -11,16 +11,17 @@ const Masthead = props => {
     <HeaderMenu>
       <HeaderItem>
         <Link href="/" passHref>
-          <a><img src="/us-nps.png" width="90" /></a>
+          <a><img className="logo" src="/us-nps.png" width="90" /></a>
         </Link>
-      </HeaderItem> 
-      <HeaderItem>
         <Link href="/" passHref>
         <h1>{props.pageTitle}</h1>
         </Link>
         <Link href="/" passHref>
         <h2>{props.pageSubTitle}</h2>
         </Link>
+      </HeaderItem> 
+      <HeaderItem>
+        
       </HeaderItem> 
       <HeaderItem>
         <>
@@ -45,69 +46,90 @@ export default Masthead
 
 const HeaderMenu = styled.header`
   display: grid;
-  grid-template-columns: 1fr 6fr 6fr;
+  grid-template-columns: 6fr 3fr ;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
-  font-family: Helvetica;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 52px;
   padding: .5em;
   z-index: 120;
   margin: 0;
-  ${SuperQuery().minWidth.md.css`
-    grid-template-columns: 1fr 6fr 6fr;
+  ${SuperQuery().minWidth.sm.css`
+    grid-template-columns: 4fr 4fr;
+    height: 60px;
   `}
 `
 const HeaderItem = styled.div`
-  padding: 0;
-  align-items: left;
-  box-sizing: border-box;
-  list-style-type: none;
+ .logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    ${SuperQuery().minWidth.sm.css`
+      top: 10px;
+      right: 10px;
+      width: 60px;
+    `}
+  }
+
   h1 {
+    position: absolute;
+    top: 5px;
+    left: 20px;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1em;
-    width: 100%;
-    margin: .375em 0 0 .5em;
+    font-size: 1.25em;
     cursor: pointer;
-    ${SuperQuery().minWidth.md.css`
+    ${SuperQuery().minWidth.sm.css`
+      top: 5px;
       font-size: 1.5em;
     `}
+   
   }
   h2 {
-    margin: 4px 0 0 0;
+    position: absolute;
+    top: 27px;
+    left: 20px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .875em;
-    width: 100%;
-    margin: 0 0 0 .75em;
+    font-size: 1em;
     cursor: pointer;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1em;
+    ${SuperQuery().minWidth.sm.css`
+      top: 32px;
+      font-size: 1.125em;
     `}
+   
   }
-  h3, h4 {
-    float: right;
+  h3{
+    position: absolute;
+    top: 5px;
+    right: 67px;
     text-align: right;
-    margin: .25em .5em 0 0;
     font-weight: 600;
     letter-spacing: -.5px;
     line-height: 1;
-    font-size: 1em;
-    width: 100%;
-    ${SuperQuery().minWidth.md.css`
+    font-size: 1.25em;
+    ${SuperQuery().minWidth.sm.css`
+      top: 5px;    
+      right: 80px;
       font-size: 1.5em;
     `}
   }
   h4 { 
+    display: block;
+    position: absolute;
+    top: 23px;
+    right: 67px;
     font-weight: 200;
-    font-size: .r75em;
-    ${SuperQuery().minWidth.md.css`
+    font-size: 1em;
+    ${SuperQuery().minWidth.sm.css`
+      top: 32px;
+      right: 80px;
       font-size: 1em;
     `}
   }
@@ -120,4 +142,5 @@ const HeaderItem = styled.div`
     margin: 5px 0;
     font-size: .625em;
   }
+
 `
