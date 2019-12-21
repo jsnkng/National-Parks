@@ -114,7 +114,7 @@ export default Events
 const Grid__Container = styled(Grid)`
   padding: 1em .5em 0 .5em;
   h3 {
-    font-size: 2em;
+    font-size: 1.625em;
     margin: 0;
     padding: 0;
     line-height: 1;
@@ -141,13 +141,13 @@ const Row__Container = styled(Row)`
   
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
   }
   &:last-child {
     border: none;
   }
   .event {
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
   }
   ${SuperQuery().minWidth.md.css`
     background-color: transparent;

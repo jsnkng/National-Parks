@@ -124,9 +124,9 @@ const Park = props => {
       <Footer__Component
         pageTitle={"National Park Service"} 
         pageStateCode={stateCode}
-        pageSubTitle={"A State-by-State Guide"}
+        pageSubTitle={park.name}
         pageSubSubTitle={states[stateCode][0]}
-        pageSubSubSubTitle={`${park.name} ${park.designation}`}
+        pageSubSubSubTitle={park.designation}
        />
     </Container>
   )
@@ -150,7 +150,7 @@ export default Park
 const Container = styled.div`
   padding: 52px 0 0 0;
   ${SuperQuery().minWidth.sm.css`
-    padding: 80px 0 0 0;
+    padding: 90px 0 0 0;
   `}
 `
 const Description__Wrapper = styled.div`

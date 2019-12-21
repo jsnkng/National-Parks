@@ -42,7 +42,7 @@ const MapDiagramWrapper = styled.div`
 
 
 const Grid__Container = styled(Grid)`
-  padding: 1em 1em 0 1em;
+  padding: .5em 1em;
   h2 {
     font-size: 2em;
     margin: 0;
@@ -54,6 +54,9 @@ const Grid__Container = styled(Grid)`
     padding: 0 1em 0 0;
   `}
   }
+  ${SuperQuery().minWidth.md.css`
+  padding: 1em 1em 0 1em;
+  `}
   
 `
 const Row__Container = styled(Row)`

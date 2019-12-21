@@ -60,7 +60,7 @@ const Content__Wrapper = styled.div`
   width: 100%;
   padding: 52px 0 52px 0;
 ${SuperQuery().minWidth.sm.css`
-  padding: 80px 0 80px 0;
+  padding: 90px 0 80px 0;
 `}
  
 `

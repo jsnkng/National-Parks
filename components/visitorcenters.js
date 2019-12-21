@@ -55,29 +55,29 @@ export default VisitorCenters
 const Grid__Container = styled(Grid)`
 padding: 1em .5em 0 .5em;
   h3 {
-    font-size: 2em;
+    font-size: 1.625em;
     margin: 0;
     padding: 0;
     line-height: 1;
   }
   p {
     font-size: .9em;
-    padding: 0 1.5em 1em 0em;
+      padding: .25em 1.5em 1em .375em;
     ${SuperQuery().minWidth.md.css`
-      padding: 1.125em 0em;
+      padding: 1em 1.5em .75em .5em;
       width: 75%;
     `}
   }
   p:last-child {
-    font-size: .9em;
-    padding: 0 0 1.5em 0;
+    padding-top: 0;
+    padding-bottom: 1.5em;
   }
 `
 const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
   }
   &:last-child {
     border: none;

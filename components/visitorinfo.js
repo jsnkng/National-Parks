@@ -48,27 +48,18 @@ export default VisitorInfo
 
 const MapLive__Wrapper = styled.div`
   position:relative;
-  width: 100%;
-  height: 70vh !important;
-  max-width: 100%;
+  height: 400px !important;
   z-index: 10;
-  margin: 1em 0 0 0;
-  ${SuperQuery().minWidth.md.css`
-    width: 100%;
-    height: 60vw !important;
-    max-height: 400px !important;
-  `}
 `
 const Grid__Container = styled(Grid)`
-  padding: 1em 1em 0 1em;
   h3 {
-    font-size: 2em;
+    font-size: 1.625em;
     margin: 0;
     padding: 0;
     line-height: 1;
   }
   h4 {
-    font-size: 1.5em;
+    font-size: 1.375em;
     line-height: 1.125;
     float: left;
     width: 100%;
@@ -81,6 +72,7 @@ const Grid__Container = styled(Grid)`
     font-size: 1em;
     clear: both;
     padding: 0 1em 1em 0;
+    font-weight: 300;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
     `}
@@ -100,12 +92,12 @@ const Grid__Container = styled(Grid)`
   }
 `
 const Row__Container = styled(Row)`
-  padding: 0 0 1em 0;
+  padding: 1em 0 0 0;
   margin: 0;
   
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
   }
   &:last-child {
     border: none;

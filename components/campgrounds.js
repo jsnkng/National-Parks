@@ -274,7 +274,7 @@ const Grid__Container = styled(Grid)`
   padding: 1em .5em 0 .5em;
   h3 {
     display: inline;
-    font-size: 2em;
+    font-size: 1.625em;
     margin: 0;
     padding: 0;
     line-height: 1;
@@ -309,7 +309,7 @@ const Grid__Container = styled(Grid)`
     font-size: .9em;
     list-style-type: none;
     padding: .3125em 0;
-    font-weight: 200;
+    font-weight: 300;
   }
 
 `
@@ -318,7 +318,7 @@ const Row__Container = styled(Row)`
   
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
   }
   &:last-child {
     border: none;

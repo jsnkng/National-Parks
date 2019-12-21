@@ -1,12 +1,9 @@
 
 import App from 'next/app'
-import React, { useState } from 'react'
-import styled from 'styled-components';
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import Masthead__Component from '../components/masthead';
-import Footer__Component from '../components/footer'
 
 
 export default class MyApp extends App {
@@ -37,18 +34,15 @@ export default class MyApp extends App {
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: Helvetica, "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #fafafa;
     line-height: 1.6;
     font-size: 16px;
-
     background-color: #3c3a3c;
     ${SuperQuery().minWidth.sm.css`
-      font-size:18px;
+      font-size: 20px;
+      line-height: 1.6;
     `}
   }
   h1,h2,h3,h4,h5,h6,p {
@@ -65,52 +59,65 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .accordion__item + .accordion__item {
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .accordion__button {
     color: #a1dde9;
-    font-size: 1.25em;
+    font-size: 1em;
+    line-height: 1.25;
     font-weight: 600;
     padding:  1em 0 1em 1em;
     border-bottom: 1px solid #3c3a3c;
     outline: 0;
     cursor: pointer;
-    line-height: 1.25;
+    ${SuperQuery().minWidth.sm.css`
+      font-size: 1.25em;
+      line-height: 1.375;
+    `}
   }
 
   .accordion__button:hover {
-      color: #ffffff;
+    color: #ffffff;
   }
 
   .accordion__button:before {
-      display: inline-block;
-      content: '';
-      height: 10px;
-      width: 10px;
-      margin-left: -22px;
-      margin-right: 12px;
-      border-bottom: 2px solid currentColor;
-      border-right: 2px solid currentColor;
-      transform: rotate(-45deg);
+    display: inline-block;
+    content: '';
+    height: .5em;
+    width: .5em;
+    margin-left: -20px;
+    margin-right: 10px;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(-45deg);
+    ${SuperQuery().minWidth.sm.css`
+      margin-right: 20px;
+      border-bottom: 3px solid currentColor;
+      border-right: 3px solid currentColor;
+    `}
   }
 
   .accordion__button[aria-expanded='true']::before,
   .accordion__button[aria-selected='true']::before {
-      transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-left: -18px;
+    margin-right: 8px;
+    ${SuperQuery().minWidth.sm.css`
+      margin-right: 18px;
+    `}
   }
 
   .accordion__panel {
-      animation: fadein 0.35s ease-in;
+    animation: fadein 0.35s ease-in;
   }
   @keyframes fadein {
-      0% {
-          opacity: 0;
-      }
-
-      100% {
-          opacity: 1;
-      }
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `
 

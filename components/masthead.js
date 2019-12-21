@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
-import Router from 'next/router'
-
 
 const Masthead = props => {
-  
   return (
     <HeaderMenu>
       <Link href="/" passHref>
@@ -18,10 +15,10 @@ const Masthead = props => {
       <Link href="/" passHref>
         <h2>{props.pageSubTitle}</h2>
       </Link>
-      <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passHref>
+      <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
         <h3>{props.pageSubSubTitle}</h3>
       </Link>
-      <Link href={`/state/[stateCode]/`} as={`/state/${props.pageStateCode}`} passHref>
+      <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
         <h4>{props.pageSubSubSubTitle}</h4>
       </Link>
     </HeaderMenu>
@@ -42,18 +39,18 @@ const HeaderMenu = styled.header`
   z-index: 120;
   ${SuperQuery().minWidth.sm.css`
     grid-template-columns: 4fr 4fr;
-    height: 80px;
+    height: 90px;
   `}
  .logo {
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: 10px;
     width: 35px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 10px;
       right: 12px;
-      width: 60px;
+      width: 70px;
     `}
   }
   h1 {
@@ -81,7 +78,7 @@ const HeaderMenu = styled.header`
     font-size: .875em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      top: 32px;
+      top: 35px;
       left: 15px;
       font-size: 1.125em;
     `}
@@ -97,7 +94,7 @@ const HeaderMenu = styled.header`
     font-size: 1em;
     ${SuperQuery().minWidth.sm.css`
       top: 5px;    
-      right: 80px;
+      right: 95px;
       font-size: 1.5em;
     `}
   }
@@ -111,8 +108,8 @@ const HeaderMenu = styled.header`
     line-height: 1;
     font-size: .875em;
     ${SuperQuery().minWidth.sm.css`
-      top: 32px;
-      right: 80px;
+      top: 35px;
+      right: 95px;
       font-size: 1em;
     `}
   }
