@@ -44,7 +44,7 @@ const Park = props => {
         pageStateCode={stateCode}
         pageSubTitle={park.designation}
         pageSubSubTitle={states[stateCode][0]}
-        pageSubSubSubTitle=""
+        pageSubSubSubTitle="" 
       />
       { park.images !== undefined && park.images.length !== 0 &&
         <SlideShow__Component park={park} />

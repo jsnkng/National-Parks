@@ -8,7 +8,15 @@ import Masthead__Component from '../components/masthead';
 import Footer__Component from '../components/footer'
 
 const Home = props => {
-console.log(props)
+  console.log(props)
+
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
+
+  const handleBannerClick = () => {
+    setIsSpinnerVisible(true)
+  }
+
+  
   const [highlighted, setHighlight] = useState(null)
   return (
   <>
@@ -32,13 +40,27 @@ console.log(props)
       pageSubSubTitle={''}
       pageSubSubSubTitle={''} 
       />
+     <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+        <div className="sk-cube-grid">
+          <div className="sk-cube sk-cube1"></div>
+          <div className="sk-cube sk-cube2"></div>
+          <div className="sk-cube sk-cube3"></div>
+          <div className="sk-cube sk-cube4"></div>
+          <div className="sk-cube sk-cube5"></div>
+          <div className="sk-cube sk-cube6"></div>
+          <div className="sk-cube sk-cube7"></div>
+          <div className="sk-cube sk-cube8"></div>
+          <div className="sk-cube sk-cube9"></div>
+        Loading
+        </div>
+      </Spinner>
       <Content__Wrapper>
         <MapDiagram__Wrapper>
-          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'}  onClick={() => props.toggleIsSpinnerVisible(true)} />
+          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} handleBannerClick={handleBannerClick} />
         </MapDiagram__Wrapper>
 
-        <TerritoryList__Wrapper  onClick={() => props.toggleIsSpinnerVisible(true)}>
-          <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
+        <TerritoryList__Wrapper >
+          <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} handleBannerClick={handleBannerClick} />
         </TerritoryList__Wrapper>
       </Content__Wrapper>
     <Footer__Component
@@ -79,4 +101,20 @@ const TerritoryList__Wrapper = styled.div`
   ${SuperQuery().minWidth.md.css`
     max-width: 800px;
   `}
+`
+
+const Spinner = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 400;
+  background-color: rgba(0,0,0,0.8);
+  color: #ffffff;
+  font-size: .7em;
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
 `

@@ -4,10 +4,19 @@ import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
 
 const Masthead = props => {
+
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
+
+  const handleBannerClick = () => {
+    setIsSpinnerVisible(true)
+    console.log('setIsSpinnerVisible')
+  }
+
+  
   return (
     <HeaderMenu >
       <Link href="/" passHref>
-        <img className="logo" src="/us-nps.png" width="90" />
+        <img className="logo" src="/us-nps.png" width="90"  onClick={props.pageStateCode ? handleBannerClick : ""} />
       </Link>
       <Link href="#" passHref>
         <h1>{props.pageTitle}</h1>
@@ -16,11 +25,25 @@ const Masthead = props => {
         <h2>{props.pageSubTitle}</h2>
       </Link>
       <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h3>{props.pageSubSubTitle}</h3>
+        <h3  onClick={handleBannerClick} >{props.pageSubSubTitle}</h3>
       </Link>
       <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h4>{props.pageSubSubSubTitle}</h4>
+        <h4  onClick={handleBannerClick} >{props.pageSubSubSubTitle}</h4>
       </Link>
+        <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+          <div className="sk-cube-grid">
+            <div className="sk-cube sk-cube1"></div>
+            <div className="sk-cube sk-cube2"></div>
+            <div className="sk-cube sk-cube3"></div>
+            <div className="sk-cube sk-cube4"></div>
+            <div className="sk-cube sk-cube5"></div>
+            <div className="sk-cube sk-cube6"></div>
+            <div className="sk-cube sk-cube7"></div>
+            <div className="sk-cube sk-cube8"></div>
+            <div className="sk-cube sk-cube9"></div>
+          Loading
+          </div>
+        </Spinner>
     </HeaderMenu>
   )
 }
@@ -113,4 +136,21 @@ const HeaderMenu = styled.header`
       font-size: 1em;
     `}
   } */}
+`
+
+
+const Spinner = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 400;
+  background-color: rgba(0,0,0,0.8);
+  color: #ffffff;
+  font-size: .7em;
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
 `

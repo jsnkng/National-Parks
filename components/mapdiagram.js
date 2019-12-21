@@ -27,15 +27,13 @@ const MapDiagram = props => {
                 href="/state/[stateCode]" 
                 as={"/state/" + key}
                 passHref>
-                <a>
                   <path 
                     id={key} 
                     className={props.highlighted === value[0] ? 'highlight' : ''} 
                     onMouseOver={() => handleHover(value[0])} 
                     onMouseOut={() => handleHover(null)} 
-                    onClick={() => {}} 
-                    d={value[1]} />
-                </a>
+                    d={value[1]} 
+                    onClick={props.handleBannerClick} />
               </Link>
             )
           } else {
