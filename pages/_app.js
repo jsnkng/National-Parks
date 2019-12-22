@@ -98,7 +98,7 @@ const GlobalStyle = createGlobalStyle`
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase;
-    text-decoration: underline !important; 
+  text-decoration: underline !important; 
   color: #a1dde9;
   border:1px solid #a1dde9;
   background-color: rgba(0,0,0,.9);
@@ -114,9 +114,8 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       border:1px solid #a1dde9;
       background-color: rgba(255,255,255,0);
-    text-decoration: none !important; 
-    margin:0;
-      
+      text-decoration: none !important; 
+      margin:0;
     }
   `}
 }
