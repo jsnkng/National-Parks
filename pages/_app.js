@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #3c3a3c;
     ${SuperQuery().minWidth.sm.css`
       font-size: 20px;

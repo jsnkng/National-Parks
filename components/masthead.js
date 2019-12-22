@@ -123,7 +123,7 @@ const HeaderMenu = styled.header`
     font-weight: 600;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1.825em;
+    font-size: 1.625em;
     cursor: pointer;
     max-width: 50%;
     ${SuperQuery().minWidth.sm.css`
