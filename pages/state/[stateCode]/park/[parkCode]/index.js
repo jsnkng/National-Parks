@@ -51,9 +51,6 @@ const Park = props => {
         <SlideShow__Component park={park} />
       }
 
-      { park.images.length === 0  &&
-        <div style={{height:'80px'}}></div>
-      }
 
       <Description__Wrapper>
         <Description__Component park={park} />

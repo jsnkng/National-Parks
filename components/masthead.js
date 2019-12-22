@@ -51,8 +51,6 @@ export default Masthead
 
 const HeaderMenu = styled.header`
   position: fixed;
-  display: grid;
-  grid-template-columns: 6fr 3fr ;
   top: 0;
   left: 0;
   right: 0;
@@ -66,9 +64,9 @@ const HeaderMenu = styled.header`
   `}
  .logo {
     position: absolute;
-    top: 8px;
-    left: 10px;
-    width: 45px;
+    top: 12px;
+    left: 7px;
+    width: 40px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 10px;
@@ -78,13 +76,15 @@ const HeaderMenu = styled.header`
   }
   h1 {
     position: absolute;
-    top: 5px;
+    text-align:right;
+    top: 2px;
     right: 10px;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1.25em;
+    font-size: 1.125em;
     cursor: pointer;
+    max-width: 60%;
     ${SuperQuery().minWidth.sm.css`
       top: 3px;
       right: 15px;
@@ -93,13 +93,14 @@ const HeaderMenu = styled.header`
   }
   h2 {
     position: absolute;
-    top: 26px;
+    top: 22px;
     right: 10px;
     font-weight: 500;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
     line-height: 1;
     font-size: .95em;
     cursor: pointer;
+    max-width: 60%;
     ${SuperQuery().minWidth.sm.css`
       top: 35px;
       right: 15px;
@@ -108,14 +109,15 @@ const HeaderMenu = styled.header`
   }
   h3{
     position: absolute;
-    top: 10px;
-    left: 60px;
+    top: 12px;
+    left: 52px;
     text-align: right;
     font-weight: 600;
-    letter-spacing: -.5px;
+    letter-spacing: -1.5px;
     line-height: 1;
     font-size: 1.5em;
     cursor: pointer;
+    max-width: 40%;
     ${SuperQuery().minWidth.sm.css`
       top: 10px;    
       left: 85px;

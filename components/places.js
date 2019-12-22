@@ -59,19 +59,18 @@ export default Places
 const Grid__Container = styled(Grid)`
   padding: 1em .5em 0 1em;
   h3 {
-    font-size: 1.625em;
+    font-size: 2em;
     margin: 0;
     padding: 0;
     line-height: 1;
   }
   h4 {
-    font-size: 1em;
+    font-size: 1.5em;
     line-height: 1.25;
     float: left;
-    width: 80%;
     margin: 0 0 .625em 0;
     ${SuperQuery().minWidth.md.css`
-      width: 100%;
+      font-size: 1.125em;
       margin: 0 0 .5em 0;
     `}
   }
@@ -93,13 +92,13 @@ const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid #b1b0a7;
+    border-bottom: 1px solid #767276;
   }
   &:last-child {
     border: none;
   }
   &.center {
-    border-bottom: 2px solid #b1b0a7;
+    border-bottom: 2px solid #767276;
   }
 `
 

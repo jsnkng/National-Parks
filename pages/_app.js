@@ -47,6 +47,12 @@ const GlobalStyle = createGlobalStyle`
     margin: .4em 0;
     padding: 0;
   }
+
+  h1,h2,h3,h4,h5,h6 {
+    letter-spacing:-1px;
+  }
+
+
   summary {
     outline: none;
   }
@@ -87,7 +93,7 @@ const GlobalStyle = createGlobalStyle`
 .btn__read-more {
   float: right;
   border: 1px solid #ddd;
-  padding: .75em 1.75em;
+  padding: .25em 1.25em;
   margin: .5em;
   font-size: .875em;
   font-weight: 500;
@@ -100,14 +106,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
-  &:hover {
-    background-color: rgba(255,255,255,0);
-    text-decoration: underline;
-  }
+ 
     padding: .15em 1.15em;
-    margin: .15em;
-    border: 0;
-    background-color: transparent;
+    margin: 1em;
   `}
 }
 #spinner.show {

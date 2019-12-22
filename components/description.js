@@ -48,6 +48,7 @@ const Grid__Container = styled(Grid)`
     margin: 0;
     padding: 0;
     line-height: 1;
+    letter-spacing: -1.5px;
   }
   p {
   ${SuperQuery().minWidth.md.css`

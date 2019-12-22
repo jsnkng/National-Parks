@@ -273,7 +273,7 @@ const Grid__Container = styled(Grid)`
   padding: 1em .5em 0 .5em;
   h3 {
     display: inline;
-    font-size: 1.625em;
+    font-size: 2em;
     margin: 0;
     padding: 0;
     line-height: 1;

@@ -43,7 +43,7 @@ const FooterMenu = styled.footer`
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 31px;
+    width: 32px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 16px;
