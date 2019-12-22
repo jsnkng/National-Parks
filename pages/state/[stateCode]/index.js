@@ -9,7 +9,7 @@ import Masthead__Component from '../../../components/masthead'
 import Footer__Component from '../../../components/footer'
 
 import Park__Component from '../../../components/park'
-import MapLive__Component from '../../../components/maplive'
+// import MapLive__Component from '../../../components/maplive'
 
 const Parks = props => {
 
@@ -24,7 +24,7 @@ const Parks = props => {
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
 
-let markers = []
+// let markers = []
 // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
   return (
@@ -51,7 +51,7 @@ let markers = []
           Loading
           </div>
         </Spinner>
-      <MapLive__Wrapper>
+      {/* <MapLive__Wrapper>
         <MapLive__Component
             latLong={states[stateCode][2]}
             name={states[stateCode][0]}
@@ -60,10 +60,10 @@ let markers = []
             markers={markers}
             link={true}
           />
-      </MapLive__Wrapper>
+      </MapLive__Wrapper> */}
       <ParksContainer  onClick={handleBannerClick}>
         { parks.slice(0).map((item) => {
-          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:stateCode, parkCode:item.parkCode})
+          {/* markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:stateCode, parkCode:item.parkCode}) */}
             return(
               <Park__Component 
                 key={item.id} 
