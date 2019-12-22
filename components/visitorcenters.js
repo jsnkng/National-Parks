@@ -60,10 +60,10 @@ padding: 1em .5em 0 .5em;
   }
   p {
     font-size: .9em;
-    padding: .25em 1.5em 1em .375em;
+    padding: .75em 1.5em .254em .75em;
     ${SuperQuery().minWidth.md.css`
-      padding: 1em 1.5em .75em .5em;
-      width: 75%;
+      padding: 1em 1.5em .25em 1.5em;
+      width: 50%;
     `}
   }
   p:last-child {
@@ -101,3 +101,13 @@ padding: 0;
     }
   }
 `
+// .description {
+//   padding: .75em 1.5em;
+   
+//   }
+//   .details {
+   
+//     font-size: .9em;
+//   padding: 0em 1.5em 1.5em 1.5em;
+   
+//   }

@@ -157,12 +157,18 @@ const GlobalStyle = createGlobalStyle`
     color: #a1dde9;
     font-size: 1em;
     font-weight: 600;
-    padding:  .75em 0 .75em 1em;
+    text-indent: 0;
+    margin-left: .5em;
+    padding:  .75em 0 .75em .5em;
     border-bottom: 1px solid #3c3a3c;
     outline: 0;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       font-size: 1.125em;
+    `}
+    ${SuperQuery().minWidth.md.css`
+    text-indent: -.125em;
+    padding:  .75em 0 .75em .5em;
     `}
   }
 
@@ -175,26 +181,19 @@ const GlobalStyle = createGlobalStyle`
     content: '';
     height: .5em;
     width: .5em;
-    margin-left: -20px;
-    margin-right: 10px;
+    margin-left: -25px;
+    margin-right: 12px;
     border-bottom: 2px solid currentColor;
     border-right: 2px solid currentColor;
     transform: rotate(-45deg);
-    ${SuperQuery().minWidth.sm.css`
-      margin-right: 20px;
-      border-bottom: 3px solid currentColor;
-      border-right: 3px solid currentColor;
-    `}
+ 
   }
 
   .accordion__button[aria-expanded='true']::before,
   .accordion__button[aria-selected='true']::before {
     transform: rotate(45deg);
-    margin-left: -18px;
-    margin-right: 8px;
-    ${SuperQuery().minWidth.sm.css`
-      margin-right: 18px;
-    `}
+      margin-left: -25px;
+      margin-right: 12px;
   }
 
   .accordion__panel {
@@ -223,14 +222,14 @@ const theme = {
       xs: 0,  // em
       sm: 36, // em
       md: 48, // em
-      lg: 75,  // em
+      lg: 72,  // em
       xl: 100
     },
     breakpoints: {
       xs: 0,  // em
       sm: 36, // em
       md: 48, // em
-      lg: 75,  // em
+      lg: 72,  // em
       xl: 100
     }
   }
