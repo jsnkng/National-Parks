@@ -6,7 +6,6 @@ import LazyLoad from 'react-lazyload'
 
 const NewsReleases = props => {
 
-  console.log(props)
 
   const [newsReleases, setNewsReleases] = useState(props.newsReleases)
   const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())

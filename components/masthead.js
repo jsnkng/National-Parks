@@ -10,8 +10,6 @@ const Masthead = props => {
   const handleBannerClick = () => {
     setIsSpinnerVisible(true)
   }
-  console.log(props)
-  console.log(props.pageStateCode)
   
   return (
     <HeaderMenu >

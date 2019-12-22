@@ -5,11 +5,7 @@ import SuperQuery from '@themgoncalves/super-query'
 
 import LazyLoad from 'react-lazyload'
 
-const scrollToRef = (ref) => {
-  // window.scrollTo(0, ref.current.offsetTop)  
-  location.hash = "#" + ref
-  console.log(ref)
-}
+
 
 const Articles = props => {
   const [articles, setArticles] = useState(props.articles)

@@ -17,7 +17,6 @@ const MapLive = props => {
     setShowingInfoWindow(true)
     setActiveMarker(marker)
     setSelectedPlace(props)
-    console.log(props)
   }
 
   const cleanLatLong = (dirtyLatLong) => {
