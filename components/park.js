@@ -83,15 +83,19 @@ const Name = styled.div`
     margin: 0;
     font-weight: 700;
     letter-spacing: -1.5px;
-    line-height: 1;
-    font-size: 1.75em;
+    line-height: .75;
+    font-size: 1.5em;
     font-weight: 600;
+    width: 70%;
   }
   h3 {
     float:right;
+    text-align: right;
     font-weight: 600;
     font-size: .66em;
+    line-height: 1;
     margin: .25em 0 0 0;
+    width: 30%;
   }
   img {
     float: right;

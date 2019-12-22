@@ -83,47 +83,46 @@ const HeaderMenu = styled.header`
     `}
   }
   h1 {
-    position: absolute;
+    float: right;
+    clear: right;
+    margin: 10px 7px 0 0;
     text-align:right;
-    top: 2px;
-    right: 10px;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1.125em;
+    font-size: .875em;
     cursor: pointer;
     max-width: 60%;
     ${SuperQuery().minWidth.sm.css`
-      top: 3px;
-      right: 15px;
+      margin: 10px 15px 0 0;
       font-size: 1.5em;
     `}
   }
   h2 {
-    position: absolute;
-    top: 22px;
-    right: 10px;
+    float: right;
+    clear: right;
+    margin: 0px 7px 0 0;
+    text-align:right;
     font-weight: 500;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: .95em;
+    font-size: .75em;
     cursor: pointer;
-    max-width: 60%;
+    max-width: 45%;
     ${SuperQuery().minWidth.sm.css`
-      top: 35px;
-      right: 15px;
+      margin: 0px 15px 0 0;
       font-size: 1.125em;
     `}
   }
   h3{
     position: absolute;
-    top: 7px;
+    top: 12px;
     left: 52px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1.625em;
+    font-size: 1.25em;
     cursor: pointer;
     max-width: 50%;
     ${SuperQuery().minWidth.sm.css`
