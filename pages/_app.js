@@ -98,6 +98,7 @@ const GlobalStyle = createGlobalStyle`
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase;
+    text-decoration: underline !important; 
   color: #a1dde9;
   border:1px solid #a1dde9;
   background-color: rgba(0,0,0,.9);
@@ -106,9 +107,17 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
- 
     padding: .15em 1.15em;
-    margin: 1em;
+    margin: 1px;
+    border: 0;
+    background-color: transparent;
+    &:hover {
+      border:1px solid #a1dde9;
+      background-color: rgba(255,255,255,0);
+    text-decoration: none !important; 
+    margin:0;
+      
+    }
   `}
 }
 #spinner.show {

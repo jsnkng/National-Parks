@@ -117,19 +117,19 @@ const HeaderMenu = styled.header`
   }
   h3{
     position: absolute;
-    top: 12px;
+    top: 7px;
     left: 52px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1.5em;
+    font-size: 1.825em;
     cursor: pointer;
     max-width: 40%;
     ${SuperQuery().minWidth.sm.css`
-      top: 10px;    
+      top: 0px;    
       left: 85px;
-      font-size: 1.75em;
+      font-size: 2.25em;
     `}
   }
   ${'' /* h4 { 

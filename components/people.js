@@ -15,11 +15,13 @@ const People = props => {
     return(
       <LazyLoad height={560} offset={600} key={item.id} once>
       <Col__Container xs={12} sm={6} md={6} lg={4}>
-        {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
+        {item.listingimage.url !== "" && item.listingimage.url !== 0 &&
           <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
-      }
-        <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-        <p>{item.listingdescription}<a href={item.url} className="btn__read-more" target="_blank">Read More</a></p>
+        }
+        {item.listingimage.url === "" || item.listingimage.url.length === 0 
+        ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+        :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+        }
       </Col__Container>
       </LazyLoad>
     )

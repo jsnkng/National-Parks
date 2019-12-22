@@ -5,6 +5,9 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const NewsReleases = props => {
+
+  console.log(props)
+
   const [newsReleases, setNewsReleases] = useState(props.newsReleases)
   const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
   const toDateFormat = (date) => {
@@ -25,8 +28,13 @@ const NewsReleases = props => {
       <Col__Container xs={12} sm={12} md={6} lg={4}>
       <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length === 0 ? "https://fakeimg.pl/600x300/1e1d1e/?text=%20" : item.image.url } className={item.image.url === undefined || item.image.url.length === 0 ? "hidden" : "" }/></a>
         <span>{toDateFormat(item.releasedate)}</span>
-        <h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4>
-        <p>{item.abstract.substring(0, 370)}</p>
+       
+        
+
+        {item.image.url === undefined || item.image.url.length === 0 
+        ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4><p style={{fontSize: '1em'}}>{item.abstract.substring(0, 350)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+        :  <><h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4><p>{item.abstract.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+        }
       </Col__Container>
       </LazyLoad>
     )
