@@ -115,10 +115,11 @@ const HeaderMenu = styled.header`
     letter-spacing: -.5px;
     line-height: 1;
     font-size: 1.25em;
+    cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 13px;    
       right: 95px;
-      font-size: 2em;
+      font-size: 1.5em;
     `}
   }
   ${'' /* h4 { 

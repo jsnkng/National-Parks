@@ -13,9 +13,7 @@ const VisitorInfo = props => {
   return (
     <Grid__Container>
       <Row__Container>
-        <Col__Container>
           <h3>Visitor Information</h3>
-        </Col__Container>
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12}>
@@ -97,7 +95,7 @@ const Row__Container = styled(Row)`
   
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #b1b0a7;
   }
   &:last-child {
     border: none;

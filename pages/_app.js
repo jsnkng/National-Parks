@@ -223,15 +223,15 @@ const theme = {
       xs: 0,  // em
       sm: 36, // em
       md: 48, // em
-      lg: 62,  // em
-      xl: 75
+      lg: 75,  // em
+      xl: 100
     },
     breakpoints: {
       xs: 0,  // em
       sm: 36, // em
       md: 48, // em
-      lg: 62,  // em
-      xl: 75
+      lg: 75,  // em
+      xl: 100
     }
   }
 }

@@ -92,10 +92,13 @@ const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #b1b0a7;
   }
   &:last-child {
     border: none;
+  }
+  &.center {
+    border-bottom: 2px solid #b1b0a7;
   }
 `
 const Col__Container = styled(Col)`

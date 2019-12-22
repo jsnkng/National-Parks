@@ -36,9 +36,7 @@ const Places = props => {
   return (
     <Grid__Container>
       <Row__Container>
-        <Col__Container xs={12}>
           <h3>Places of Interest</h3>
-        </Col__Container>
       </Row__Container>
       <Row__Container>
         <DisplayRows />
@@ -62,7 +60,7 @@ export default Places
 const Grid__Container = styled(Grid)`
   padding: 1em .5em 0 1em;
   h3 {
-    font-size: 2em;
+    font-size: 1.625em;
     margin: 0;
     padding: 0;
     line-height: 1;
@@ -96,10 +94,13 @@ const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid #b1b0a7;
   }
   &:last-child {
     border: none;
+  }
+  &.center {
+    border-bottom: 2px solid #b1b0a7;
   }
 `
 

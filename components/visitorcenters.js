@@ -16,9 +16,7 @@ const VisitorCenters = props => {
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
-          <Col__Container xs={12}>
             <h3>Visitor Centers</h3>
-          </Col__Container>
         </Row__Container>
         { visitorCenters.slice(0).map((item) => {
           return (
@@ -77,13 +75,13 @@ const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #b1b0a7;
   }
   &:last-child {
     border: none;
   }
   &.center {
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #b1b0a7;
   }
 `
 const Col__Container = styled(Col)`
