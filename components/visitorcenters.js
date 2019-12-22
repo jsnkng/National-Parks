@@ -62,7 +62,7 @@ padding: 1em .5em 0 .5em;
   }
   p {
     font-size: .9em;
-      padding: .25em 1.5em 1em .375em;
+    padding: .25em 1.5em 1em .375em;
     ${SuperQuery().minWidth.md.css`
       padding: 1em 1.5em .75em .5em;
       width: 75%;

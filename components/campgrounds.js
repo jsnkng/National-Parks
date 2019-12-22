@@ -280,23 +280,23 @@ const Grid__Container = styled(Grid)`
     line-height: 1;
   }
   h5 {
-    font-size: 1.2em;
+    font-size: 1.125em;
     margin:0;
     padding: 0;
   }
   p {
-    font-size: .9em;
+    font-size: .875em;
     padding: 0 0 1em 0;
     margin: 0;
   }
   p.introduction {
-    font-size: 1.25em;
+    font-size: 1.125em;
     line-height: 1.625;
-    margin: 1.5em 0 0 0;
+    margin: 1em 0 0 0;
     padding:0;
   }
   ul {
-    font-size: 1em;
+    font-size: .875em;
     column-count: 1;
     list-style-type: none;
     padding: .25em 0 .25em 0;

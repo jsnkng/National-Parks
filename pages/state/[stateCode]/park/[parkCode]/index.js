@@ -69,6 +69,12 @@ const Park = props => {
         <VisitorInfo__Component park={park} markers={markers} />
       </VisitorInfo__Wrapper>
       
+        
+      { events !== undefined && events.length != 0 &&
+      <Events__Wrapper>
+        <Events__Component park={park} events={events} />
+      </Events__Wrapper>
+      }
       { visitorCenters !== undefined && visitorCenters.length != 0 &&
       
       <VisitorCenters__Wrapper>
@@ -78,7 +84,6 @@ const Park = props => {
         <VisitorCenters__Component park={park} visitorCenters={visitorCenters} />
       </VisitorCenters__Wrapper>
       }
-        
       { campgrounds !== undefined && campgrounds.length != 0 &&
 
        
@@ -90,11 +95,6 @@ const Park = props => {
         </Campgrounds__Wrapper>
       }
 
-      { events !== undefined && events.length != 0 &&
-      <Events__Wrapper>
-        <Events__Component park={park} events={events} />
-      </Events__Wrapper>
-      }
 
       { newsReleases !== undefined && newsReleases.length != 0 &&
       <NewsReleases__Wrapper>

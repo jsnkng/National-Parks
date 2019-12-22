@@ -4,7 +4,6 @@ import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
-
 export default class MyApp extends App {
 
   render() {
@@ -60,6 +59,22 @@ const GlobalStyle = createGlobalStyle`
   background-color: rgba(0,0,0,0.8);
   color: #ffffff;
   font-size: .7em;
+}
+
+.btn__load-more {
+  clear: both;
+  width: 160px;
+  height: 45px;
+  margin: 1em auto;
+  font-size: .875em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #a1dde9;
+  border:1px solid #a1dde9;
+  background-color: rgba(0,0,0,.9);
+  &.hidden {
+    display:none;
+  }
 }
 #spinner.show {
     display: block;
@@ -141,15 +156,13 @@ const GlobalStyle = createGlobalStyle`
   .accordion__button {
     color: #a1dde9;
     font-size: 1em;
-    line-height: 1.25;
     font-weight: 600;
-    padding:  1em 0 1em 1em;
+    padding:  .75em 0 .75em 1em;
     border-bottom: 1px solid #3c3a3c;
     outline: 0;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      font-size: 1.25em;
-      line-height: 1.375;
+      font-size: 1.125em;
     `}
   }
 

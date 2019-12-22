@@ -23,13 +23,15 @@ const Articles = props => {
   
   let DisplayRows = () => articles.slice(0,limit).map((item) => {
       return(
+        <LazyLoad height={'100%'} offset={100} key={item.id} once>
         <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
-         <LazyLoad height={200} offset={100}> <Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "https://fakeimg.pl/600x300/252425/1e1d1e/?text=No%20Image" : item.listingimage.url  } alt={item.listingimage.altText} /></LazyLoad>
+         <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
           <h4><a href={item.url} target="_blank">{item.title}</a></h4>
           
-          <p>{item.listingdescription}<br /><a href={item.url} target="_blank">Read more...</a></p>
+          <p>{item.listingdescription}<br /><a href={item.url} target="_blank"> More...</a></p>
           
         </Col__Container>
+      </LazyLoad>
       )
     })
   const readMore = () => {
@@ -44,7 +46,10 @@ const Articles = props => {
       </Row__Container>
       <Row__Container>
         <DisplayRows />
-        <button onClick={readMore}>Read More</button>
+      </Row__Container>
+
+      <Row__Container>
+        <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More</button>
       </Row__Container>
     </Grid__Container>
   )
@@ -63,8 +68,8 @@ const Grid__Container = styled(Grid)`
     line-height: 1;
   }
   h4 {
-    font-size: 1.25em;
-    line-height: 1.125;
+    font-size: 1em;
+    line-height: 1.25;
     float: left;
     width: 80%;
     margin: 0 0 1em 0;
@@ -131,6 +136,7 @@ const Col__Container = styled(Col)`
 
 
 `
+
 const Image = styled.div`
   float: left;
   background-image: url(${props => props.backgroundURL});
@@ -142,9 +148,7 @@ const Image = styled.div`
   margin: 0 0 1em 0;
   &.hidden {
     display: none;
-    ${SuperQuery().minWidth.md.css`
-      display: block;
-    `}
+    
   }
   ${SuperQuery().minWidth.md.css`
     height: 12em;

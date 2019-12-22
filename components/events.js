@@ -129,6 +129,7 @@ const Grid__Container = styled(Grid)`
   }
   .details {
    
+    font-size: .9em;
    
   }
   strong {
