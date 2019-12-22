@@ -7,7 +7,9 @@ const Masthead = props => {
 
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
 
-  const handleBannerClick = (fire) => fire && setIsSpinnerVisible(true)
+  const handleBannerClick = () => {
+    setIsSpinnerVisible(true)
+  }
   console.log(props)
   console.log(props.pageStateCode)
   
@@ -22,10 +24,16 @@ const Masthead = props => {
       <Link href="#" passHref>
         <h2>{props.pageSubTitle}</h2>
       </Link>
+    { props.pageLinkState !== false &&
       <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h3 onClick={handleBannerClick(props.pageLinkState)}>{props.pageSubSubTitle}</h3>
+        <h3 onClick={handleBannerClick}>{props.pageSubSubTitle}</h3>
       </Link>
-    
+    }
+    { props.pageLinkState === false &&
+      <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
+        <h3>{props.pageSubSubTitle}</h3>
+      </Link>
+    }
     
       {/* <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
         <h4  onClick={handleBannerClick} >{props.pageSubSubSubTitle}</h4>

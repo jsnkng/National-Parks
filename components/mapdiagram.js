@@ -62,7 +62,7 @@ const MapWrapper = styled.div`
   }
   path {
       stroke: #ffffff;
-      stroke-width:2px;
+      stroke-width:1px;
       stroke-linejoin: round;
       fill: #d7d6cb;
       -webkit-transition: fill .4s ease;
