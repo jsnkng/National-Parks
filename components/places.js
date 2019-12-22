@@ -62,7 +62,7 @@ export default Places
 
 
 const Grid__Container = styled(Grid)`
-  padding: 1em .5em 0 1em;
+  padding: 1em 1em 0 1em;
   h3 {
     font-size: 2em;
     margin: 0;
