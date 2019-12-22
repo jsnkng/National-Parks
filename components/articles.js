@@ -23,7 +23,7 @@ const Articles = props => {
   
   let DisplayRows = () => articles.slice(0,limit).map((item) => {
       return(
-        <LazyLoad height={'100%'} offset={100} key={item.id} once>
+        <LazyLoad height={560} offset={100} key={item.id} once>
         <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
          <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
           <h4><a href={item.url} target="_blank">{item.title}</a></h4>

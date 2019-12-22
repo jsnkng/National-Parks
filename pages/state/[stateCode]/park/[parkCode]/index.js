@@ -189,7 +189,7 @@ const VisitorInfo__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
 `
@@ -198,7 +198,7 @@ const VisitorCenters__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
 `
@@ -207,7 +207,7 @@ const Campgrounds__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
 `
@@ -216,7 +216,7 @@ const Articles__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
 `
@@ -225,7 +225,7 @@ const Places__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
 `
@@ -234,7 +234,7 @@ const People__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #4c93d9;
+    color: #a1dde9;
     text-decoration: none;
   }
 `
