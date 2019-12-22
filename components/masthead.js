@@ -68,12 +68,12 @@ const HeaderMenu = styled.header`
     position: absolute;
     top: 8px;
     left: 10px;
-    width: 70px;
+    width: 45px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 10px;
       left: 12px;
-      width: 90px;
+      width: 65px;
     `}
   }
   h1 {
@@ -109,7 +109,7 @@ const HeaderMenu = styled.header`
   h3{
     position: absolute;
     top: 10px;
-    left: 90px;
+    left: 60px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -.5px;
@@ -118,7 +118,7 @@ const HeaderMenu = styled.header`
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 10px;    
-      left: 115px;
+      left: 85px;
       font-size: 1.75em;
     `}
   }

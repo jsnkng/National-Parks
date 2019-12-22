@@ -15,7 +15,7 @@ const Footer = props => {
       <Link href="/" passHref>
         <h4>A State-by-State Guide</h4>
       </Link>
-      <p>&copy; 2019 Jason King </p>
+      <p><a href="https://jsnkng.com">Jason King</a> | 2019</p>
      
     </FooterMenu>
   )
@@ -83,5 +83,14 @@ const FooterMenu = styled.footer`
   p {
     font-size: .5em;
     padding: 2em;
+    a {
+      color: #fff;
+      text-decoration:none;
+      font-weight: 700;
+    &:hover {
+      text-decoration: underline;
+    }
+    }
+    
   }
 `
