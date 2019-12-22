@@ -5,6 +5,11 @@ import SuperQuery from '@themgoncalves/super-query'
 
 import LazyLoad from 'react-lazyload'
 
+const scrollToRef = (ref) => {
+  // window.scrollTo(0, ref.current.offsetTop)  
+  location.hash = "#" + ref
+  console.log(ref)
+}
 
 const Articles = props => {
   const [articles, setArticles] = useState(props.articles)
@@ -20,22 +25,22 @@ const Articles = props => {
   useEffect(() => {
    
   }, [limit])
-  
+  let i = 1
   let DisplayRows = () => articles.slice(0,limit).map((item) => {
-      return(
-        <LazyLoad height={560} offset={100} key={item.id} once>
-        <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}>
-         <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
+    return(
+      <LazyLoad height={560} offset={100} key={item.id} once>
+        <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}  name={`myRef__${i++}`}>
+          <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
           <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-          
           <p>{item.listingdescription}<br /><a href={item.url} target="_blank"> More...</a></p>
-          
         </Col__Container>
       </LazyLoad>
       )
     })
   const readMore = () => {
-    setLimit(limit+3)
+    let l = limit
+    setLimit(limit + 3)
+    scrollToRef(`myRef__${l+1}`)
   }
 
 
