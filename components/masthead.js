@@ -125,7 +125,7 @@ const HeaderMenu = styled.header`
     line-height: 1;
     font-size: 1.825em;
     cursor: pointer;
-    max-width: 40%;
+    max-width: 50%;
     ${SuperQuery().minWidth.sm.css`
       top: 0px;    
       left: 85px;

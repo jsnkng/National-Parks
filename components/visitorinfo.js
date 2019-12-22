@@ -75,6 +75,7 @@ const Grid__Container = styled(Grid)`
     clear: both;
     padding: 0 1em 1em 0;
     font-weight: 300;
+    overflow-wrap: break-word;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
     `}
