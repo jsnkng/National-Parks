@@ -31,7 +31,7 @@ const ResponsiveImage = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 65vh;
+  height: 80vh;
   min-height:80px;
   max-width: 100%;
 
