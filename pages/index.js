@@ -8,7 +8,6 @@ import Masthead__Component from '../components/masthead';
 import Footer__Component from '../components/footer'
 
 const Home = props => {
-  console.log(props)
 
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
 

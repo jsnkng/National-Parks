@@ -23,7 +23,7 @@ const Campgrounds = props => {
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
-            <Row__Container>
+            <Row__Container key={item.id}>
               <Col__Container xs={12}>
                 <AccordionItem>
                   <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
@@ -37,7 +37,7 @@ const Campgrounds = props => {
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
                         <CampgroundImagesWrapper> 
-                          <LazyLoad height={440} offset={600} key={item.id}>
+                          <LazyLoad height={440} offset={600}>
                             <CampgroundImages backgroundURL={item.images[0].url} />
                           </LazyLoad>
                         </CampgroundImagesWrapper>

@@ -9,7 +9,6 @@ const Masthead = props => {
 
   const handleBannerClick = () => {
     setIsSpinnerVisible(true)
-    console.log('setIsSpinnerVisible')
   }
 
   
