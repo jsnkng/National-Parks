@@ -7,10 +7,9 @@ const Masthead = props => {
 
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
 
-  const handleBannerClick = () => {
-    setIsSpinnerVisible(true)
-  }
-
+  const handleBannerClick = (fire) => fire && setIsSpinnerVisible(true)
+  console.log(props)
+  console.log(props.pageStateCode)
   
   return (
     <HeaderMenu >
@@ -24,11 +23,13 @@ const Masthead = props => {
         <h2>{props.pageSubTitle}</h2>
       </Link>
       <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h3  onClick={handleBannerClick} >{props.pageSubSubTitle}</h3>
+        <h3 onClick={handleBannerClick(props.pageLinkState)}>{props.pageSubSubTitle}</h3>
       </Link>
-      <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
+    
+    
+      {/* <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
         <h4  onClick={handleBannerClick} >{props.pageSubSubSubTitle}</h4>
-      </Link>
+      </Link> */}
         <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
           <div className="sk-cube-grid">
             <div className="sk-cube sk-cube1"></div>

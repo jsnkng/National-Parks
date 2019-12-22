@@ -35,6 +35,7 @@ let markers = []
       pageSubTitle={'A State-by-State Guide'}
       pageSubSubTitle={states[stateCode][0]}
       pageSubSubSubTitle={''}
+      pageLinkState={false}
     />
      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
           <div className="sk-cube-grid">
