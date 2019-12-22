@@ -4,6 +4,7 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import MapLive__Component from './maplive'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
+import { forceCheck } from 'react-lazyload'
 import {
   Accordion,
   AccordionItem,
@@ -15,21 +16,17 @@ import {
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
-    
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
-          <Col__Container xs={12}>
             <h3>Campgrounds</h3>
-          </Col__Container>
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
-          <LazyLoad height={200} offset={100} key={item.id}>
             <Row__Container>
               <Col__Container xs={12}>
                 <AccordionItem>
-                  <AccordionItemHeading>
+                  <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                     <AccordionItemButton>
                       {item.name}
                     </AccordionItemButton>
@@ -40,7 +37,9 @@ const Campgrounds = props => {
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
                         <CampgroundImagesWrapper> 
-                          <CampgroundImages backgroundURL={item.images[0].url} />
+                          <LazyLoad height={440} offset={600} key={item.id}>
+                            <CampgroundImages backgroundURL={item.images[0].url} />
+                          </LazyLoad>
                         </CampgroundImagesWrapper>
                         }
                         <p className="introduction">{item.description}</p>
@@ -50,7 +49,6 @@ const Campgrounds = props => {
                     <Row__Container className="section">
                       <Col__Container xs={12} sm={6}>
                           <>
-
                             { item.directionsoverview !== undefined && item.directionsoverview !== 0 && 
                               <>
                               <h5>Directions</h5>
@@ -72,6 +70,7 @@ const Campgrounds = props => {
                       </Col__Container>
                       <Col__Container xs={12} sm={6}>
                         <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
+                      <LazyLoad height={440} offset={600} key={item.id}>
                           <MapLive__Component
                             latLong={item.latLong}
                             name={item.name}
@@ -79,6 +78,7 @@ const Campgrounds = props => {
                             zoom={13}
                             markers={[{id: item.id, latLong: item.latLong, name: item.name, description: item.description}]}
                           />
+                        </LazyLoad>
                         </MapLive__Wrapper> 
                       </Col__Container>
                     </Row__Container>
@@ -220,7 +220,6 @@ const Campgrounds = props => {
                 </AccordionItem>
               </Col__Container>
             </Row__Container> 
-          </LazyLoad>
           )}
         )
       }

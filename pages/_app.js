@@ -63,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
 
 .btn__load-more {
   clear: both;
+  display:none;
   width: 160px;
   height: 45px;
   margin: 1em auto;
@@ -72,9 +73,42 @@ const GlobalStyle = createGlobalStyle`
   color: #a1dde9;
   border:1px solid #a1dde9;
   background-color: rgba(0,0,0,.9);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(255,255,255,.015);
+  }
   &.hidden {
     display:none;
   }
+  ${SuperQuery().minWidth.md.css`
+    display:block;
+  `}
+}
+.btn__read-more {
+  float: right;
+  border: 1px solid #ddd;
+  padding: .75em 1.75em;
+  margin: .5em;
+  font-size: .875em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #a1dde9;
+  border:1px solid #a1dde9;
+  background-color: rgba(0,0,0,.9);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(255,255,255,.015);
+  }
+  ${SuperQuery().minWidth.md.css`
+  &:hover {
+    background-color: rgba(255,255,255,0);
+    text-decoration: underline;
+  }
+    padding: .15em 1.15em;
+    margin: .15em;
+    border: 0;
+    background-color: transparent;
+  `}
 }
 #spinner.show {
     display: block;

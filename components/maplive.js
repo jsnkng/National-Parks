@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
+import Router from 'next/router'
 const mapStyles = {
 }
 
@@ -16,6 +17,7 @@ const MapLive = props => {
     setShowingInfoWindow(true)
     setActiveMarker(marker)
     setSelectedPlace(props)
+    console.log(props)
   }
 
   const cleanLatLong = (dirtyLatLong) => {
@@ -48,7 +50,7 @@ const MapLive = props => {
         marker={activeMarker}
         visible={showingInfoWindow}>
           <div>
-            <h3 style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
+            <h3  style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
             <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
           </div>
       </InfoWindowStyled>
@@ -56,6 +58,12 @@ const MapLive = props => {
   )
   
 }
+
+// onClick={ ()=> { 
+//                 console.log(`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}`) 
+//                 Router.push(`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}`)
+//               } 
+//             }
 export default GoogleApiWrapper({
   apiKey: process.env.GOO_KEY
 })(MapLive);

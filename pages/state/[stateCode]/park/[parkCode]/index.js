@@ -46,47 +46,43 @@ const Park = props => {
         pageSubSubTitle={states[stateCode][0]}
         pageSubSubSubTitle="" 
       />
+
       { park.images !== undefined && park.images.length !== 0 &&
         <SlideShow__Component park={park} />
       }
+
       { park.images.length === 0  &&
         <div style={{height:'80px'}}></div>
       }
+
       <Description__Wrapper>
         <Description__Component park={park} />
-    
-        { alerts !== undefined && alerts.length != 0 &&
-          <Alerts__Component alerts={alerts} />
-        }
-        {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
-           
+          { alerts !== undefined && alerts.length != 0 &&
+            <Alerts__Component alerts={alerts} />
+          }
+          {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
       </Description__Wrapper>
       
-      <div>
-      {/* Click <button onClick={() => Router.push('/state/ca/park/chis')}>here</button> to read more */}
-    </div>
       <VisitorInfo__Wrapper>
         <VisitorInfo__Component park={park} markers={markers} />
       </VisitorInfo__Wrapper>
       
-        
       { events !== undefined && events.length != 0 &&
-      <Events__Wrapper>
-        <Events__Component park={park} events={events} />
-      </Events__Wrapper>
+        <Events__Wrapper>
+          <Events__Component park={park} events={events} />
+        </Events__Wrapper>
       }
-      { visitorCenters !== undefined && visitorCenters.length != 0 &&
-      
-      <VisitorCenters__Wrapper>
-        { visitorCenters.slice(0).map((item) => {
-          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
-        })}
-        <VisitorCenters__Component park={park} visitorCenters={visitorCenters} />
-      </VisitorCenters__Wrapper>
-      }
-      { campgrounds !== undefined && campgrounds.length != 0 &&
 
-       
+      { visitorCenters !== undefined && visitorCenters.length != 0 &&
+        <VisitorCenters__Wrapper>
+          { visitorCenters.slice(0).map((item) => {
+            markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
+          })}
+          <VisitorCenters__Component park={park} visitorCenters={visitorCenters} />
+        </VisitorCenters__Wrapper>
+      }
+
+      { campgrounds !== undefined && campgrounds.length != 0 &&
         <Campgrounds__Wrapper>
           { campgrounds.slice(0).map((item) => {
             markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
@@ -97,9 +93,9 @@ const Park = props => {
 
 
       { newsReleases !== undefined && newsReleases.length != 0 &&
-      <NewsReleases__Wrapper>
-        <NewsReleases__Component park={park} newsReleases={newsReleases} />
-      </NewsReleases__Wrapper>
+        <NewsReleases__Wrapper>
+          <NewsReleases__Component park={park} newsReleases={newsReleases} />
+        </NewsReleases__Wrapper>
       }
       
       { places !== undefined && places.length != 0 &&
@@ -149,9 +145,9 @@ export default Park
 
 
 const Container = styled.div`
-  padding: 52px 0 0 0;
+  padding: 60px 0 0 0;
   ${SuperQuery().minWidth.sm.css`
-    padding: 90px 0 0 0;
+    padding: 80px 0 0 0;
   `}
 `
 const Description__Wrapper = styled.div`
@@ -169,6 +165,9 @@ const NewsReleases__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   h3 {
     color: #ffffff;
@@ -182,6 +181,9 @@ const Events__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 const VisitorInfo__Wrapper = styled.div`
@@ -191,6 +193,9 @@ const VisitorInfo__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 const VisitorCenters__Wrapper = styled.div`
@@ -200,6 +205,9 @@ const VisitorCenters__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 const Campgrounds__Wrapper = styled.div`
@@ -209,6 +217,9 @@ const Campgrounds__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 const Articles__Wrapper = styled.div`
@@ -218,6 +229,9 @@ const Articles__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 const Places__Wrapper = styled.div`
@@ -227,6 +241,9 @@ const Places__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 const People__Wrapper = styled.div`
@@ -236,5 +253,8 @@ const People__Wrapper = styled.div`
   a {
     color: #a1dde9;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `

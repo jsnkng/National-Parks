@@ -32,15 +32,13 @@ const Articles = props => {
         <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id}  name={`myRef__${i++}`}>
           <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
           <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-          <p>{item.listingdescription}<br /><a href={item.url} target="_blank"> More...</a></p>
+          <p>{item.listingdescription}<br /><a href={item.url} className="btn__read-more" target="_blank">Read More</a></p>
         </Col__Container>
       </LazyLoad>
       )
     })
   const readMore = () => {
-    let l = limit
     setLimit(limit + 3)
-    scrollToRef(`myRef__${l+1}`)
   }
 
 
@@ -52,7 +50,6 @@ const Articles = props => {
       <Row__Container>
         <DisplayRows />
       </Row__Container>
-
       <Row__Container>
         <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More</button>
       </Row__Container>
@@ -77,7 +74,7 @@ const Grid__Container = styled(Grid)`
     line-height: 1.25;
     float: left;
     width: 80%;
-    margin: 0 0 1em 0;
+    margin: 0 0 .625em 0;
     ${SuperQuery().minWidth.md.css`
       width: 100%;
       margin: 0 0 .5em 0;
@@ -111,10 +108,9 @@ const Row__Container = styled(Row)`
   }
 `
 const Col__Container = styled(Col)`
-  border-bottom: 2px solid #3c3a3c;
-  padding: 1.5em 0 .5em 0;
+  padding: .5em 0 1.25em 0;
   
-  
+
   ${SuperQuery().minWidth.md.css`
       margin: 0;
       border: 0px solid;

@@ -17,7 +17,7 @@ const VisitorInfo = props => {
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12}>
-        <LazyLoad height={200} offset={100}><MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
+        <LazyLoad height={400} offset={400}><MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
             <MapLive__Component
               latLong={park.latLong}
               name={park.name}

@@ -12,7 +12,6 @@ import Park__Component from '../../../components/park'
 import MapLive__Component from '../../../components/maplive'
 
 const Parks = props => {
-  console.log(props)
 
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
 
@@ -58,6 +57,7 @@ let markers = []
             designation="D"
             zoom={6}
             markers={markers}
+            link={true}
           />
       </MapLive__Wrapper>
       <ParksContainer  onClick={handleBannerClick}>
@@ -96,9 +96,9 @@ export default Parks
 
 const ParksWrapper = styled.div`
 position:relative;
-  padding: 52px 0 0 0;
+  padding: 60px 0 0 0;
   ${SuperQuery().minWidth.sm.css`
-    padding: 90px 0 0 0;
+    padding: 80px 0 0 0;
   `}
 `
 const ParksContainer = styled.div`

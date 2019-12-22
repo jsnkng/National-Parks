@@ -10,19 +10,16 @@ const Footer = props => {
         <img className="logo" src="/us-nps.png" width="90" />
       </Link>
       <Link href="/" passHref>
-        <h1>{props.pageTitle}</h1>
+        <h3>National Park Service</h3>
       </Link>
       <Link href="/" passHref>
-        <h2>{props.pageSubTitle}</h2>
+        <h4>A State-by-State Guide</h4>
       </Link>
-      <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h3>{props.pageSubSubTitle}</h3>
-      </Link>
-      <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h4>{props.pageSubSubSubTitle}</h4>
-      </Link>
+      <p>&copy; 2019 Jason King </p>
+     
     </FooterMenu>
   )
+
 }
 export default Footer
 
@@ -41,77 +38,50 @@ const FooterMenu = styled.footer`
     grid-template-columns: 4fr 4fr;
     height: 90px;
   `}
- .logo {
+ 
+  .logo {
     position: absolute;
-    top: 8px;
-    right: 10px;
-    width: 35px;
+    top: 12px;
+    right: 12px;
+    width: 31px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      top: 10px;
+      top: 16px;
       right: 12px;
-      width: 70px;
+      width: 45px;
     `}
+    
   }
-  h1 {
+  h3 {
     position: absolute;
-    top: 5px;
-    left: 10px;
+    top: 2px;
+    right: 50px;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1em;
+    font-size: 1.25em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 5px;
-      left: 15px;
-      font-size: 1.5em;
+      right: 65px;
     `}
   }
-  h2 {
+  h4 {
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 21px;
+    right: 50px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .875em;
+    font-size: .95em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      top: 35px;
-      left: 15px;
-      font-size: 1.125em;
+      top: 29px;
+      right: 65px;
     `}
   }
-  h3{
-    position: absolute;
-    top: 10px;
-    right: 55px;
-    text-align: right;
-    font-weight: 600;
-    letter-spacing: -.5px;
-    line-height: 1;
-    font-size: 1.25em;
-    ${SuperQuery().minWidth.sm.css`
-      top: 13px;    
-      right: 95px;
-      font-size: 2em;
-    `}
+  p {
+    font-size: .5em;
+    padding: 2em;
   }
-  ${'' /* h4 { 
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 55px;
-    font-weight: 500;
-    letter-spacing: -1px;
-    line-height: 1;
-    font-size: .875em;
-    ${SuperQuery().minWidth.sm.css`
-      top: 35px;
-      right: 95px;
-      font-size: 1em;
-    `}
-  } */}
 `
-

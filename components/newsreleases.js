@@ -21,7 +21,7 @@ const NewsReleases = props => {
  
  let DisplayRows = () => newsReleases.slice(0,limit).map((item) => {
     return(
-      <LazyLoad height={'100%'} offset={100} key={item.id} once>
+      <LazyLoad height={560} offset={600} key={item.id} once>
       <Col__Container xs={12} sm={12} md={6} lg={4}>
       <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length === 0 ? "https://fakeimg.pl/600x300/1e1d1e/?text=%20" : item.image.url } className={item.image.url === undefined || item.image.url.length === 0 ? "hidden" : "" }/></a>
         <span>{toDateFormat(item.releasedate)}</span>
@@ -68,7 +68,7 @@ const Grid__Container = styled(Grid)`
     line-height: 1.25;
     float: left;
     width: 80%;
-    margin: 0 0 1em 0;
+    margin: 0 0 .625em 0;
     ${SuperQuery().minWidth.md.css`
       width: 100%;
       margin: 0 0 .5em 0;
@@ -102,9 +102,7 @@ const Row__Container = styled(Row)`
   }
 `
 const Col__Container = styled(Col)`
-  border-bottom: 2px solid #3c3a3c;
-  padding: 1.5em 0 .5em 0;
-  
+padding: .5em 0 1.25em 0;
   
   
   ${SuperQuery().minWidth.md.css`

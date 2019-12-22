@@ -56,70 +56,70 @@ const HeaderMenu = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  height: 52px;
+  height: 60px;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   z-index: 120;
   ${SuperQuery().minWidth.sm.css`
     grid-template-columns: 4fr 4fr;
-    height: 90px;
+    height: 80px;
   `}
  .logo {
     position: absolute;
     top: 8px;
-    right: 10px;
-    width: 35px;
+    left: 10px;
+    width: 70px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 10px;
-      right: 12px;
-      width: 70px;
+      left: 12px;
+      width: 90px;
     `}
   }
   h1 {
     position: absolute;
     top: 5px;
-    left: 10px;
+    right: 10px;
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
-    font-size: 1em;
+    font-size: 1.25em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      top: 5px;
-      left: 15px;
+      top: 3px;
+      right: 15px;
       font-size: 1.5em;
     `}
   }
   h2 {
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 26px;
+    right: 10px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .875em;
+    font-size: .95em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 35px;
-      left: 15px;
+      right: 15px;
       font-size: 1.125em;
     `}
   }
   h3{
     position: absolute;
     top: 10px;
-    right: 55px;
+    left: 90px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -.5px;
     line-height: 1;
-    font-size: 1.25em;
+    font-size: 1.5em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      top: 13px;    
-      right: 95px;
-      font-size: 1.5em;
+      top: 10px;    
+      left: 115px;
+      font-size: 1.75em;
     `}
   }
   ${'' /* h4 { 

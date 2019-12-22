@@ -13,13 +13,13 @@ const People = props => {
   
   let DisplayRows = () => people.slice(0,limit).map((item) => {
     return(
-      <LazyLoad height={200} offset={100} key={item.id} once={true}>
+      <LazyLoad height={560} offset={600} key={item.id} once>
       <Col__Container xs={12} sm={6} md={6} lg={4}>
         {item.listingimage.url !== undefined && item.listingimage.url != 0 &&
           <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
       }
         <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-        <p>{item.listingdescription}<a href={item.url} target="_blank"> More...</a></p>
+        <p>{item.listingdescription}<a href={item.url} className="btn__read-more" target="_blank">Read More</a></p>
       </Col__Container>
       </LazyLoad>
     )
@@ -60,7 +60,7 @@ const Grid__Container = styled(Grid)`
     line-height: 1.25;
     float: left;
     width: 80%;
-    margin: 0 0 1em 0;
+    margin: 0 0 .625em 0;
     ${SuperQuery().minWidth.md.css`
       width: 100%;
       margin: 0 0 .5em 0;
@@ -95,9 +95,7 @@ const Row__Container = styled(Row)`
 `
 
 const Col__Container = styled(Col)`
-  border-bottom: 2px solid #3c3a3c;
-  padding: 1.5em 0 .5em 0;
-  
+padding: .5em 0 1.25em 0;
   
   ${SuperQuery().minWidth.md.css`
       margin: 0;

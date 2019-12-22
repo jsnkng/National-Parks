@@ -30,7 +30,7 @@ const Events = props => {
         </Row__Container>
         { events.slice(0,6).map((item) => {
           return (
-        <LazyLoad height={200} offset={100} key={item.id}>
+        <LazyLoad height={70} offset={600} key={item.id}>
           <Row__Container>
             <Col__Container xs={12}>
               <AccordionItem>
