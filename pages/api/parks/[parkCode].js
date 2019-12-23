@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 import nextConnect from 'next-connect'
 import database from '../../../middlewares/database'
-// import s3Images from '../_utils/_s3Images'
+import s3Images from '../_utils/_s3Images'
 
 const handler = nextConnect()
 
@@ -56,7 +56,7 @@ handler.get(async (req, res) => {
     await req.db.collection('parks').insertOne(parks)
 
     // Separate function to handle checking if image exists on s3 and uploading if not
-    // await s3Images(parks.data[0].images)
+    await s3Images(parks.data[0].images)
   }
 
   if (alerts === undefined || alerts.length === 0) {
