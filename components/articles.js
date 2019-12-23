@@ -8,7 +8,6 @@ import LazyLoad from 'react-lazyload'
 
 
 const Articles = props => {
-  console.log(props)
   const [articles, setArticles] = useState(props.articles)
   const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
   const toDateFormat = (date) => {

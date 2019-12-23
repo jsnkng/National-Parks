@@ -19,6 +19,7 @@ handler.get(async (req, res) => {
   const [articles] = await req.db.collection('articles').find({ parks_id: parkCode }).toArray()
 
   if (parks === undefined || parks.length === 0) {
+    console.log('parks was undefined or length 0')
     parks = await fetch(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       .then(fetchResponse => fetchResponse.json())
       .catch(err => {
