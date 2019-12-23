@@ -13,19 +13,23 @@ const VisitorInfo = props => {
   return (
     <Grid__Container>
       <Row__Container>
-        <h3>Visitor Information</h3>
+        <Col__Container xs={12}>
+          <h3>Visitor Information</h3>
+        </Col__Container>
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12}>
-        <LazyLoad height={400} offset={400}><MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
-            <MapLive__Component
-              latLong={park.latLong}
-              name={park.name}
-              designation={park.designation}
-              zoom={10}
-              markers={markers}
-            />
-          </MapLive__Wrapper></LazyLoad>
+          <LazyLoad height={400} offset={400}>
+            <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
+              <MapLive__Component
+                latLong={park.latLong}
+                name={park.name}
+                designation={park.designation}
+                zoom={10}
+                markers={markers}
+              />
+            </MapLive__Wrapper>
+          </LazyLoad>
         </Col__Container>
       </Row__Container>
       <Row__Container>
@@ -48,36 +52,40 @@ const VisitorInfo = props => {
   
 export default VisitorInfo
 
-const MapLive__Wrapper = styled.div`
-  position:relative;
-  height: 400px !important;
-  z-index: 10;
-`
 const Grid__Container = styled(Grid)`
+  padding: 0;
+  
   h3 {
     font-size: 2em;
-    margin: 0;
-    padding: 0;
     line-height: 1;
+    margin: 0;
+    padding: .5em;
+    border-bottom: 2px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      margin: 0;
+      padding: .25em;
+    `}
   }
   h4 {
     font-size: 1.375em;
     line-height: 1.125;
     letter-spacing: -1px;
     float: left;
-    width: 100%;
+    padding: 0 1em; 
     margin: 0;
     ${SuperQuery().minWidth.md.css`
+    padding: 0 .625em; 
     `}
   }
   p {
     font-size: 1em;
     clear: both;
-    padding: 0 1em 1em 0;
+    padding: 0 1em 1em 1.375em;
     font-weight: 300;
     overflow-wrap: break-word;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
+      padding: 0 1em 1em 1em;
     `}
   }
   details {
@@ -95,19 +103,19 @@ const Grid__Container = styled(Grid)`
   }
 `
 const Row__Container = styled(Row)`
-  padding: 1em 0 0 0;
   margin: 0;
-  
-  &:first-child {
-    padding: .125em;
-    border-bottom: 3px solid #ffffff;
-  }
-  &:last-child {
-    border: none;
-  }
 `
 const Col__Container = styled(Col)`
-  position: relative;
   padding:  0;
-
+`
+const MapLive__Wrapper = styled.div`
+  position:relative;
+  height: 22em;
+  z-index: 10;
+  margin: 0 0 1.5em 0;
+  padding:  0;
+  ${SuperQuery().minWidth.md.css`
+    margin: .5em 0 1.5em 0;
+    padding:  0;
+  `}
 `

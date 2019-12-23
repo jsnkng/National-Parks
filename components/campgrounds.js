@@ -16,8 +16,8 @@ import {
 const Campgrounds = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
   return (
-    <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-      <Grid__Container>
+    <Grid__Container>
+      <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row__Container>
           <Col__Container xs={12}>
             <h3>Campgrounds</h3>
@@ -225,11 +225,8 @@ const Campgrounds = props => {
           )}
         )
       }
-      </Grid__Container>
-    </Accordion>
-    
-
-
+      </Accordion>
+    </Grid__Container>
   )
 }
   
@@ -311,14 +308,11 @@ const Col__Container = styled(Col)`
 const MapLive__Wrapper = styled.div`
   position:relative;
   width: 100%;
-  height: 20em;
+  height: 22em;
   max-width: 100%;
   z-index: 10;
   ${SuperQuery().minWidth.md.css`
-    width: 100%;
     margin: 1em 0 0 0;
-    height: 30em !important;
-    max-height: 400px !important;
   `}
 `
 const CampgroundWrapper = styled.div`

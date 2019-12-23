@@ -21,8 +21,8 @@ const Events = props => {
   }
 
   return (
-    <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-      <Grid__Container>
+    <Grid__Container>
+      <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row__Container>
           <Col__Container xs={12}>
             <h3>Events</h3>
@@ -33,31 +33,26 @@ const Events = props => {
           { events.slice(0,10).map((item) => {
             return (
               <LazyLoad height={70} offset={600} key={item.id}>
-            
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
                       {item.title}
                     </AccordionItemButton>
                   </AccordionItemHeading>
-                  
                   <AccordionItemPanel>
                     { item.images.length !== 0 &&
                         <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 
                           ? "/US-National-Parks-logo-sml-bw.png" 
                           : "https://www.nps.gov"+item.images[0].url } />
                     }
-
                     <Row__Container>
                       <Col__Container xs={12} md={8} className="description">
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </Col__Container>
                       <Col__Container xs={12} md={4} className="details">
-                        
                         { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                         }
-                        
                         <p><strong>Location: </strong>{item.location}</p>
                         <p><strong>Cost: </strong> 
                           { item.isfree === "false" 
@@ -67,7 +62,6 @@ const Events = props => {
                             : "FREE" 
                           }
                         </p> 
-                        
                         { item.regresinfo !== "" &&
                           <p><strong>Reservations: </strong>{item.regresinfo}
                           { item.regresurl !== "" &&
@@ -75,13 +69,11 @@ const Events = props => {
                           }
                         </p> 
                         }
-
                         <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
 
                         {item.infourl !== "" &&
                           <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
                         }
-
                       </Col__Container>
                     </Row__Container>
                   </AccordionItemPanel>
@@ -92,8 +84,8 @@ const Events = props => {
           }
           </Col__Container>
         </Row__Container> 
-      </Grid__Container>
-    </Accordion>     
+      </Accordion>     
+    </Grid__Container>
   )
 }
   
@@ -132,7 +124,7 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
-padding: 0;
+  padding: 0;
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

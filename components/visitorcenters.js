@@ -14,8 +14,8 @@ const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
 
   return (  
-    <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-      <Grid__Container>
+    <Grid__Container>
+      <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row__Container>
           <Col__Container xs={12}>
             <h3>Visitor Centers</h3>
@@ -41,8 +41,8 @@ const VisitorCenters = props => {
           }
           </Col__Container>
         </Row__Container>
-      </Grid__Container>
-    </Accordion>
+      </Accordion>
+    </Grid__Container>
   )
 }
   

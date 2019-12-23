@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   float: right;
   border: 1px solid #ddd;
   padding: .25em 1.25em;
-  margin: .5em;
+  margin: 0 2em 2em 0;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase; 
@@ -190,7 +190,7 @@ const GlobalStyle = createGlobalStyle`
 .accordion {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  padding: 0 .5em;
+  padding: 0 7px;
 }
 
 .accordion__item + .accordion__item {
@@ -248,7 +248,7 @@ const GlobalStyle = createGlobalStyle`
 .accordion__panel {
   background-color: #252425;
   ${'' /* border-top: 1px solid #000000; */}
-  border-bottom: 1px solid #5f5c5f;
+  
   padding: .875em;
   animation: fadein 0.35s ease-in;
   ${SuperQuery().minWidth.md.css`

@@ -16,42 +16,37 @@ const Articles = props => {
     const nd = new Date(d1)
     return Intl.DateTimeFormat('en-US').format(nd)
   }
-  
- const [limit, setLimit] = useState(3)
-  useEffect(() => {
-   
-  }, [limit])
-  let i = 1
-  let DisplayRows = () => articles.slice(0,limit).map((item) => {
-    return(
-      <LazyLoad height={560} offset={100} key={item.id} once>
-        <Col__Container xs={12} sm={12} md={4} lg={4} key={item.id} name={`myRef__${i++}`}>
-          <a href={item.url} target="_blank">
-            <Image 
-              backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} 
-              className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" } />
-          </a>
-
-          {item.listingimage.url === undefined || item.listingimage.url.length === 0 
-          ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-          :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-          }
-        </Col__Container>
-      </LazyLoad>
-      )
-    })
-  const readMore = () => {
-    setLimit(limit + 3)
-  }
-
+    
+  const [limit, setLimit] = useState(3)
+  const readMore = () =>  setLimit(limit + 3)
 
   return (
     <Grid__Container>
       <Row__Container>
+        <Col__Container xs={12}>
           <h3>Learn More</h3>
+        </Col__Container>
       </Row__Container>
       <Row__Container>
-        <DisplayRows />
+      { articles.slice(0,limit).map((item) => {
+        return(
+          <LazyLoad height={560} offset={100} key={item.id} once>
+            <Col__Container xs={12} sm={12} md={4} lg={4} className="content">
+              <a href={item.url} target="_blank">
+                <Image 
+                  backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} 
+                  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" } />
+              </a>
+
+              {item.listingimage.url === undefined || item.listingimage.url.length === 0 
+              ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+              :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+              }
+            </Col__Container>
+          </LazyLoad>
+        )
+        })
+      }
       </Row__Container>
       <Row__Container>
         <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More Articles</button>
@@ -65,84 +60,64 @@ export default Articles
 
 
 const Grid__Container = styled(Grid)`
-padding: 1em 1em 0 1em;
+  padding: 0;
+  
   h3 {
     font-size: 2em;
-    margin: 0;
-    padding: 0;
     line-height: 1;
+    margin: 0;
+    padding: .5em;
+    border-bottom: 2px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      padding: .25em;
+    `}
   }
   h4 {
-    font-size: 1.5em;
-    line-height: 1.25;
-    float: left;
-    margin: 0 0 .625em 0;
+    font-size: 1.75em;
+    line-height: 1;
+    padding: .5em .75em 0 .75em;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.125em;
-      margin: 0 0 .5em 0;
+      padding: .5em 0 0 0;
+      font-size: 1.5em;
     `}
   }
   span {
-    font-size: .675em;
+    font-size: .75em;
+    font-weight: 600;
+    margin: 0 2em 0 0;
     float: right;
   }
   p {
     font-size: 1em;
-    clear: both;
-    width: 100%;
-    margin: 0 0 1em 0;
+    padding: 0 1.25em 0em 1.25em;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
+      padding: 0;
     `}
   }
 `
 const Row__Container = styled(Row)`
   margin: 0;
-  &:first-child {
-    padding: .125em;
-    border-bottom: 3px solid #ffffff;
-  }
-  &:last-child {
-    border: none;
-  }
-  &.center {
-    border-bottom: 2px solid #767276;
-  }
 `
 const Col__Container = styled(Col)`
-  padding: .5em 0 1.25em 0;
+  padding: 0;
   
-
-  ${SuperQuery().minWidth.sm.css`
+  &.content {
+    ${SuperQuery().minWidth.md.css`
       margin: 0;
       border: 0px solid;
-      padding: .5em 0 0 .5em;
-    &:nth-child(2n+1) {
-      padding: .5em .5em 0 0em;
-    }
-  `}
-  
-  ${SuperQuery().minWidth.md.css`
-      margin: 0;
-      border: 0px solid;
-      padding: .5em 0 0 .5em;
-    
       &:nth-child(3n+1) {
-        padding: .75em .5em .5em 0;
+        padding: .5em .5em .5em 0;
       } 
       &:nth-child(3n+2) {
-        padding: .75em .5em 0 .5em;
+        padding: .5em .5em 0 .5em;
       } 
       &:nth-child(3n+3) {
-        padding: .75em 0 .5em .5em;
+        padding: .5em 0 .5em .5em;
       } 
-  `}
-
-
-
-
+    `}
+  }
 `
-
 const Image = styled.div`
   float: left;
   background-image: url(${props => props.backgroundURL});
@@ -154,7 +129,6 @@ const Image = styled.div`
   margin: 0 0 1em 0;
   &.hidden {
     display: none;
-    
   }
   ${SuperQuery().minWidth.md.css`
     height: 12em;
