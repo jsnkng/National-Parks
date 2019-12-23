@@ -4,6 +4,7 @@ import request from 'request'
 import sharp from 'sharp'
 import database from '../../../middlewares/database'
 import s3 from '../../../config/s3.config'
+import s3Images from '../_utils/_s3Images'
 
 const handler = nextConnect()
 
@@ -56,54 +57,8 @@ handler.get(async (req, res) => {
 
     await req.db.collection('parks').insertOne(parks)
 
-    const { s3Client } = s3
-    
-
-    await parks.data[0].images.forEach(image => {
-      const { url } = image
-      s3.existParams.Key = url.replace(/[/:-\s]/g, '_')
-      s3Client.headObject(s3.existParams, (err, metadata) => {
-        console.log(err)
-        if (err && err.code === 'NotFound') {
-          // Handle no object on cloud here
-          console.log("we did not find it")
-          request({ url, encoding: null }, (err, resp, buffer) => {
-
-            s3.uploadParams.Key = url.replace(/[/:-\s]/g, '_')
-            s3.uploadParams.Body = sharp(buffer).resize({ width: 1440 })
-            s3.uploadParams.ACL = 'public-read'
-            s3Client.upload(s3.uploadParams, (e, d) => {
-              if (e) {
-                console.log({ error: 'Error -> ' + e })
-              }
-              console.log({message: 'File uploaded successfully! -> keyname = ' + url.replace(/[/:-\s]/g, '_')})
-            })
-          })
-        } else {
-          // s3.getSignedUrl('getObject', params, callback)
-          console.log("we found it")
-        }
-      })
-    })
-
-    // await parks.data[0].images.forEach(image => {
-    //   const { url } = image
-    //   request({ url, encoding: null }, (err, resp, buffer) => {
-
-    //     params.Key = url.replace(/[/:-]/g, '_')
-    //     params.Body = sharp(buffer).resize({ width: 1440 })
-    //     params.ACL = 'public-read'
-    //     s3Client.upload(params, (e, d) => {
-    //       if (e) {
-    //         console.log({ error: 'Error -> ' + e })
-    //       }
-    //       console.log({message: 'File uploaded successfully! -> keyname = ' + url.replace(/[/:-]/g, '_')})
-    //     })
-    //   })
-    //   console.log(image.url.replace(/[/:-]/g, '_'))
-    // })
+    await s3Images(parks.data[0].images)
   }
-
 
   if (alerts === undefined || alerts.length === 0) {
     parks.alerts = await fetch(`${process.env.NPS_URI}/alerts?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
