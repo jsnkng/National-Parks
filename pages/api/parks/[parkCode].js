@@ -1,10 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 import nextConnect from 'next-connect'
-import request from 'request'
-import sharp from 'sharp'
 import database from '../../../middlewares/database'
-import s3 from '../../../config/s3.config'
-import s3Images from '../_utils/_s3Images'
+// import s3Images from '../_utils/_s3Images'
 
 const handler = nextConnect()
 
