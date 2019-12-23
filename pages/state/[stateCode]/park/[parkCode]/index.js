@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
@@ -38,6 +39,20 @@ const Park = props => {
   
  
   return (
+    <>
+    <Head>
+      <title>Home</title>
+      <link rel='icon' href='/favicon.ico' />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+       <meta name="theme-color" content="#ff6600" />
+       <link rel="apple-touch-icon" href="/static/icon.png" />
+       <meta name="apple-mobile-web-app-title" content="Hacker News" />
+       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+       <meta name="apple-mobile-web-app-capable" content="yes" />
+       <meta name="mobile-web-app-capable" content="yes" />
+       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+    </Head>
     <Container>
       <Masthead__Component 
         pageTitle={park.name}
@@ -123,6 +138,7 @@ const Park = props => {
         pageSubSubSubTitle=""
        />
     </Container>
+    </>
   )
 }
   
@@ -159,15 +175,18 @@ const NewsReleases__Wrapper = styled.div`
   color: #ffffff; 
   margin: 0;
   padding: 20px 0;
-  a {
+  h4 a {
     color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
-  }
-  h3 {
-    color: #ffffff;
   }
 `
 const Events__Wrapper = styled.div`
@@ -175,8 +194,17 @@ const Events__Wrapper = styled.div`
   margin: 0;
   padding: 20px 0;
   color: #ffffff;
-  a {
+  .accordion__button {
     color: #a1dde9;
+  }
+  h4 a {
+    color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -188,7 +216,7 @@ const VisitorInfo__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   a {
-    color: #a1dde9;
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -199,8 +227,17 @@ const VisitorCenters__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  a {
+  .accordion__button {
     color: #a1dde9;
+  }
+  h4 a {
+    color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -211,8 +248,17 @@ const Campgrounds__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  a {
+  .accordion__button {
     color: #a1dde9;
+  }
+  h4 a {
+    color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -223,8 +269,14 @@ const Articles__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  a {
+  h4 a {
     color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -235,8 +287,14 @@ const Places__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  a {
+  h4 a {
     color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -247,8 +305,14 @@ const People__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  a {
+  h4 a {
     color: #a1dde9;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  a {
+    color: #3db7e3;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #3c3a3c;
     ${SuperQuery().minWidth.sm.css`
       font-size: 20px;
@@ -70,14 +70,14 @@ const GlobalStyle = createGlobalStyle`
 .btn__load-more {
   clear: both;
   display:none;
-  width: 160px;
   height: 45px;
-  margin: 1em auto;
+  margin: 2em auto 0;
+  padding: 0 1em;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase;
   color: #a1dde9;
-  border:1px solid #a1dde9;
+  border:1px solid #3db7e3;
   background-color: rgba(0,0,0,.9);
   cursor: pointer;
   &:hover {
@@ -97,8 +97,7 @@ const GlobalStyle = createGlobalStyle`
   margin: .5em;
   font-size: .875em;
   font-weight: 500;
-  text-transform: uppercase;
-  text-decoration: underline !important; 
+  text-transform: uppercase; 
   color: #a1dde9;
   border:1px solid #a1dde9;
   background-color: rgba(0,0,0,.9);
@@ -111,6 +110,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 1px;
     border: 0;
     background-color: transparent;
+    text-decoration: underline !important;
     &:hover {
       border:1px solid #a1dde9;
       background-color: rgba(255,255,255,0);
@@ -200,9 +200,9 @@ const GlobalStyle = createGlobalStyle`
     color: #a1dde9;
     font-size: 1em;
     font-weight: 600;
-    text-indent: 0;
+    text-indent: .125em;
     margin-left: .5em;
-    padding:  .75em 0 .75em .5em;
+    padding:  .75em 0 .75em .75em;
     border-bottom: 1px solid #3c3a3c;
     outline: 0;
     cursor: pointer;
@@ -264,16 +264,16 @@ const theme = {
     container: {
       xs: 0,  // em
       sm: 36, // em
-      md: 48, // em
+      md: 56, // em
       lg: 72,  // em
-      xl: 100
+      xl: 80
     },
     breakpoints: {
       xs: 0,  // em
       sm: 36, // em
-      md: 48, // em
+      md: 56, // em
       lg: 72,  // em
-      xl: 100
+      xl: 80
     }
   }
 }

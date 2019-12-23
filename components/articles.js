@@ -8,6 +8,7 @@ import LazyLoad from 'react-lazyload'
 
 
 const Articles = props => {
+  console.log(props)
   const [articles, setArticles] = useState(props.articles)
   const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
   const toDateFormat = (date) => {
@@ -25,7 +26,7 @@ const Articles = props => {
   let DisplayRows = () => articles.slice(0,limit).map((item) => {
     return(
       <LazyLoad height={560} offset={100} key={item.id} once>
-        <Col__Container xs={12} sm={12} md={6} lg={4} key={item.id} name={`myRef__${i++}`}>
+        <Col__Container xs={12} sm={12} md={4} lg={4} key={item.id} name={`myRef__${i++}`}>
           <a href={item.url} target="_blank">
             <Image 
               backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} 
@@ -33,8 +34,8 @@ const Articles = props => {
           </a>
 
           {item.listingimage.url === undefined || item.listingimage.url.length === 0 
-          ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-          :  <><h4><a href={item.url} target="_blank">{toTitleCase(item.title)}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+          ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+          :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
           }
         </Col__Container>
       </LazyLoad>
@@ -54,7 +55,7 @@ const Articles = props => {
         <DisplayRows />
       </Row__Container>
       <Row__Container>
-        <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More</button>
+        <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More Articles</button>
       </Row__Container>
     </Grid__Container>
   )
@@ -100,7 +101,7 @@ const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid #767276;
+    border-bottom: 3px solid #ffffff;
   }
   &:last-child {
     border: none;
@@ -113,7 +114,7 @@ const Col__Container = styled(Col)`
   padding: .5em 0 1.25em 0;
   
 
-  ${SuperQuery().minWidth.md.css`
+  ${SuperQuery().minWidth.sm.css`
       margin: 0;
       border: 0px solid;
       padding: .5em 0 0 .5em;
@@ -122,7 +123,7 @@ const Col__Container = styled(Col)`
     }
   `}
   
-  ${SuperQuery().minWidth.lg.css`
+  ${SuperQuery().minWidth.md.css`
       margin: 0;
       border: 0px solid;
       padding: .5em 0 0 .5em;

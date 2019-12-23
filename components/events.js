@@ -28,7 +28,7 @@ const Events = props => {
             <h3>Events</h3>
           </Col__Container>
         </Row__Container>
-        { events.slice(0,6).map((item) => {
+        { events.slice(0,10).map((item) => {
           return (
         <LazyLoad height={70} offset={600} key={item.id}>
           <Row__Container>
@@ -143,7 +143,7 @@ const Row__Container = styled(Row)`
   
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
   }
   &:last-child {
     border: none;

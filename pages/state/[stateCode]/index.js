@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
@@ -28,6 +29,20 @@ const Parks = props => {
 // markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
 
   return (
+    <>
+    <Head>
+      <title>Home</title>
+      <link rel='icon' href='/favicon.ico' />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+       <meta name="theme-color" content="#ff6600" />
+       <link rel="apple-touch-icon" href="/static/icon.png" />
+       <meta name="apple-mobile-web-app-title" content="Hacker News" />
+       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+       <meta name="apple-mobile-web-app-capable" content="yes" />
+       <meta name="mobile-web-app-capable" content="yes" />
+       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+    </Head>
     <ParksWrapper>
     <Masthead__Component 
       pageTitle={'National Park Service'} 
@@ -82,6 +97,7 @@ const Parks = props => {
         pageSubSubSubTitle={''}
        />
     </ParksWrapper>
+    </>
   )
 }
   

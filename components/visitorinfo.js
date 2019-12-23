@@ -100,7 +100,7 @@ const Row__Container = styled(Row)`
   
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid #b1b0a7;
+    border-bottom: 3px solid #ffffff;
   }
   &:last-child {
     border: none;

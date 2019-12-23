@@ -16,7 +16,7 @@ const Places = props => {
   let DisplayRows = () => places.slice(0,limit).map((item) => {
     return(
       <LazyLoad height={560} offset={600} key={item.id} once>
-      <Col__Container xs={12} sm={12} md={6} lg={4}>
+      <Col__Container xs={12} sm={12} md={4} lg={4}>
         
         {item.listingimage.url !== "" && item.listingimage.url !== 0 &&
           <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
@@ -47,7 +47,7 @@ const Places = props => {
       </Row__Container>
 
       <Row__Container>
-        <button  className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" }  onClick={readMore}>Load More</button>
+        <button  className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" }  onClick={readMore}>Load More Places</button>
       </Row__Container>
 
       <Row__Container>
@@ -97,7 +97,7 @@ const Row__Container = styled(Row)`
   margin: 0;
   &:first-child {
     padding: .125em;
-    border-bottom: 1px solid #767276;
+    border-bottom: 3px solid #ffffff;
   }
   &:last-child {
     border: none;
@@ -110,7 +110,7 @@ const Row__Container = styled(Row)`
 const Col__Container = styled(Col)`
 padding: .5em 0 1.25em 0;
   
-  ${SuperQuery().minWidth.md.css`
+  ${SuperQuery().minWidth.sm.css`
       margin: 0;
       border: 0px solid;
       padding: .5em 0 0 .5em;
@@ -119,7 +119,7 @@ padding: .5em 0 1.25em 0;
     }
   `}
   
-  ${SuperQuery().minWidth.lg.css`
+  ${SuperQuery().minWidth.md.css`
       margin: 0;
       border: 0px solid;
       padding: .5em 0 0 .5em;
