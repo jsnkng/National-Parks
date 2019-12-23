@@ -22,130 +22,112 @@ const Events = props => {
 
   return (
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-    <Grid__Container>
-      <Row__Container>
-        <Col__Container xs={12}>
-          <h3>Events</h3>
-        </Col__Container>
-      </Row__Container>
-      <Row__Container>
-        <Col__Container xs={12}>
-       
-        { events.slice(0,10).map((item) => {
-          return (
-        <LazyLoad height={70} offset={600} key={item.id}>
-          
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    {item.title}
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                
-                <AccordionItemPanel>
+      <Grid__Container>
+        <Row__Container>
+          <Col__Container xs={12}>
+            <h3>Events</h3>
+          </Col__Container>
+        </Row__Container>
+        <Row__Container>
+          <Col__Container xs={12}>
+          { events.slice(0,10).map((item) => {
+            return (
+              <LazyLoad height={70} offset={600} key={item.id}>
+            
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                      {item.title}
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  
+                  <AccordionItemPanel>
+                    { item.images.length !== 0 &&
+                        <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 
+                          ? "/US-National-Parks-logo-sml-bw.png" 
+                          : "https://www.nps.gov"+item.images[0].url } />
+                    }
 
-                { item.images.length !== 0 &&
-                  <Row__Container className="event">
-                    <Col__Container xs={12} md={6} className="description">
-                      <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                    </Col__Container>
-                    <Col__Container xs={12} md={6} lg={3} className="details">
-                      {item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                        <p><strong>Time:</strong> {item.times[0].timestart}–{item.times[0].timeend}</p> 
-                      }
-                      <p><strong>Location:</strong> {item.location}</p>
-                      <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === true ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
-                      {item.regresinfo !== "" &&
-                        <p><strong>Reservations:</strong> {item.regresinfo}
-                        {item.regresurl !== "" &&
-                          <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
-                        }
-                      </p> 
-                      }
-                      <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
-                      {item.infourl !== "" &&
-                        <p><strong>More Info:</strong> <a href={item.infourl} target="_blank">{item.infourl}</a></p> 
-                      }
-                      </Col__Container>
-                      <Col__Container xs={12} md={12} lg={3}>
-                        <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 ? "/US-National-Parks-logo-sml-bw.png" : "https://www.nps.gov"+item.images[0].url } />
-                      </Col__Container>
-                    </Row__Container>
-                  }
-
-                  { item.images.length === 0 &&
-                    <Row__Container className="event">
-                      <Col__Container xs={12} sm={12} md={6} className="description">
+                    <Row__Container>
+                      <Col__Container xs={12} md={8} className="description">
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </Col__Container>
-                      <Col__Container xs={12} sm={12} md={6} className="details">
-                        {item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                          <p><strong>Time:</strong> {item.times[0].sunrisestart === "true" ? "Sunrise" : item.times[0].timestart}–{item.times[0].sunsetend === "true" ? "Sunset" : item.times[0].timeend}</p>
+                      <Col__Container xs={12} md={4} className="details">
+                        
+                        { item.times[0] !== undefined && item.times.length[0] !== 0 &&
+                          <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                         }
-                        {item.location !== undefined && item.location.length !== 0 &&
-                          <p><strong>Location:</strong> {item.location}</p>
-                        }
-                        <p><strong>Cost:</strong> {item.isfree === "false" ? item.feeinfo : item.feeinfo.length !== 0 && item.isfree === "true" ? "FREE (" + item.feeinfo + ")" : "FREE" }</p> 
-                        {item.regresinfo !== "" &&
-                          <p><strong>Reservations:</strong> {item.regresinfo}
-                          {item.regresurl !== "" &&
-                            <strong><a href={item.regresurl} target="_blank"> Click here for reservations.</a></strong>
+                        
+                        <p><strong>Location: </strong>{item.location}</p>
+                        <p><strong>Cost: </strong> 
+                          { item.isfree === "false" 
+                          ? item.feeinfo 
+                          : item.feeinfo.length !== 0 && item.isfree === true 
+                            ? "FREE (" + item.feeinfo + ")" 
+                            : "FREE" 
+                          }
+                        </p> 
+                        
+                        { item.regresinfo !== "" &&
+                          <p><strong>Reservations: </strong>{item.regresinfo}
+                          { item.regresurl !== "" &&
+                            <strong> <a href={item.regresurl} target="_blank">Click here for reservations.</a></strong>
                           }
                         </p> 
                         }
-                        <p><strong>Dates:</strong> {item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+
+                        <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+
+                        {item.infourl !== "" &&
+                          <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
+                        }
+
                       </Col__Container>
                     </Row__Container>
-                  }
-
                   </AccordionItemPanel>
                 </AccordionItem>
               </LazyLoad>
-          )}
-        )
-      }
-        </Col__Container>
-      </Row__Container> 
-    </Grid__Container>
-      </Accordion>     
-
+              )
+            })
+          }
+          </Col__Container>
+        </Row__Container> 
+      </Grid__Container>
+    </Accordion>     
   )
 }
   
 export default Events
 
 const Grid__Container = styled(Grid)`
+  padding: 0em;
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: 0;
-    border-bottom: 3px solid #ffffff;
+    padding: .125em;
+    border-bottom: 2px solid #ffffff;
+  }
+  p {
+    padding: 0 1em 1em 1em;
+    &:last-child {
+      padding: 0 1em 0 1em;
+    }
   }
   .description {
-    padding: .75em 0 .75em .75em;
-    ${SuperQuery().minWidth.md.css`
-      padding: .75em 1.5em 0em 1.25em;
-    `}
+    padding: 0 1.5em 0 0;
   }
   .details {
-    font-size: .9em;
-    padding: 0 0 .75em .75em;
-  }
-  .event {
-    border-bottom: 1px solid #ffffff;
+    background-color: #323132;
+    font-size: .875em;
+    margin: .5em 0;
+    padding: 1em .25em;
+  
   }
 `
 const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
-  ${SuperQuery().minWidth.md.css`
-    margin: 0;
-    ${'' /* border: 0px solid; */}
-    &:nth-child(2){
-      padding: 1em;
-    }
-  `}
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
@@ -153,16 +135,21 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 20em;
-  margin: .625em 0 .625em 0;
- 
+  height: 17em;
+  margin: -15px -15px 15px -15px;
+  padding: 15px 15px;
+  ${SuperQuery().minWidth.sm.css`
+    margin: -20px -20px 20px -20px;
+    padding: 20px 20px;
+  `}
+  ${SuperQuery().minWidth.md.css`
+    margin: -30px -30px 30px -30px;
+    padding: 30px 30px;
+  `}
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`
       display: block;
     `}
   }
-  ${SuperQuery().minWidth.md.css`
-    height: 12em;
-  `}
 `

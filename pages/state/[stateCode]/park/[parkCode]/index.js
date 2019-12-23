@@ -194,9 +194,7 @@ const Events__Wrapper = styled.div`
   margin: 0;
   padding: 20px 0;
   color: #ffffff;
-  .accordion__button {
-    color: #a1dde9;
-  }
+  
   h4 a {
     color: #a1dde9;
   }
@@ -227,9 +225,7 @@ const VisitorCenters__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  .accordion__button {
-    color: #a1dde9;
-  }
+  
   h4 a {
     color: #a1dde9;
   }
@@ -248,9 +244,7 @@ const Campgrounds__Wrapper = styled.div`
   background-color: #1e1d1e;
   padding: 1em 0;
   color: #ffffff;
-  .accordion__button {
-    color: #a1dde9;
-  }
+  
   h4 a {
     color: #a1dde9;
   }

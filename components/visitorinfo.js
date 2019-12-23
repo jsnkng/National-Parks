@@ -13,7 +13,7 @@ const VisitorInfo = props => {
   return (
     <Grid__Container>
       <Row__Container>
-          <h3>Visitor Information</h3>
+        <h3>Visitor Information</h3>
       </Row__Container>
       <Row__Container>
         <Col__Container xs={12}>

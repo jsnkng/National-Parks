@@ -19,7 +19,9 @@ const Campgrounds = props => {
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
+          <Col__Container xs={12}>
             <h3>Campgrounds</h3>
+          </Col__Container>
         </Row__Container>
         { campgrounds.slice(0).map((item) => {
           return(
@@ -233,50 +235,15 @@ const Campgrounds = props => {
   
 export default Campgrounds
 
-const MapLive__Wrapper = styled.div`
-  position:relative;
-  width: 100%;
-  height: 70vh !important;
-  max-width: 100%;
-  z-index: 10;
-  ${SuperQuery().minWidth.md.css`
-    width: 100%;
-    margin: 1em 0 0 0;
-    height: 60vw !important;
-    max-height: 400px !important;
-  `}
-`
-const CampgroundWrapper = styled.div`
-  padding: 1em 0;
-  ${SuperQuery().minWidth.md.css`
-  padding: 1em 0 .5em 0;
-  `}
-`
-const CampgroundImagesWrapper = styled.div`
-  display: flex;
-`
-const CampgroundImages = styled.div`
-  background-image: url(${props => props.backgroundURL});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 20em;
-
-  margin: 0;
-  ${SuperQuery().minWidth.md.css`
-  height: 30em;
-  `}
-`
 const Grid__Container = styled(Grid)`
   word-wrap:break-word;
-  padding: 1em .5em 0 .5em;
+  padding: 0em;
   h3 {
-    display: inline;
     font-size: 2em;
-    margin: 0;
-    padding: 0;
     line-height: 1;
+    margin: 0;
+    padding: .125em;
+    border-bottom: 2px solid #ffffff;
   }
   h5 {
     font-size: 1.125em;
@@ -291,7 +258,6 @@ const Grid__Container = styled(Grid)`
   p.introduction {
     font-size: 1.125em;
     line-height: 1.625;
-    margin: 1em 0 0 0;
     padding:0;
   }
   ul {
@@ -311,37 +277,21 @@ const Grid__Container = styled(Grid)`
     font-weight: 300;
   }
 
-`
-const Row__Container = styled(Row)`
-  margin: 0;
-  
-  &:first-child {
-    padding: .125em;
-    border-bottom: 1px solid #ffffff;
-  }
-  &:last-child {
-    border: none;
-  }
-  .event {
-    border-bottom: 2px solid #ffffff;
-  }
-
   .section {
     padding: 0 0 1.5em 0;
     margin:  0 0 1.5em 0;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
-    padding: 0 0 1.5em 0;
+    padding: 0;
     margin:  0;
-    border-bottom: 2px solid #ffffff;
+    border: none;
   }
-  ${SuperQuery().minWidth.md.css`
-    background-color: transparent;
-  `}
+`
+const Row__Container = styled(Row)`
+ 
 `
 const Col__Container = styled(Col)`
-  padding: 0;
   &.amenities {
     ul {
       column-count: 2;
@@ -350,9 +300,49 @@ const Col__Container = styled(Col)`
       `}
     }
   }
-  &.details {
-    p {
-      font-weight: 200;
-    }
+  
+`
+
+const MapLive__Wrapper = styled.div`
+  position:relative;
+  width: 100%;
+  height: 70vh !important;
+  max-width: 100%;
+  z-index: 10;
+  ${SuperQuery().minWidth.md.css`
+    width: 100%;
+    margin: 1em 0 0 0;
+    height: 60vw !important;
+    max-height: 400px !important;
+  `}
+`
+const CampgroundWrapper = styled.div`
+
+`
+const CampgroundImagesWrapper = styled.div`
+  display: flex;
+`
+const CampgroundImages = styled.div`
+  background-image: url(${props => props.backgroundURL});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 17em;
+  margin: -15px -15px 15px -15px;
+  padding: 15px 15px;
+  ${SuperQuery().minWidth.sm.css`
+    margin: -20px -20px 20px -20px;
+    padding: 20px 20px;
+  `}
+  ${SuperQuery().minWidth.md.css`
+    margin: -30px -30px 30px -30px;
+    padding: 30px 30px;
+  `}
+  &.hidden {
+    display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
   }
 `

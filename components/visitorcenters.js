@@ -49,23 +49,27 @@ const VisitorCenters = props => {
 export default VisitorCenters
 
 const Grid__Container = styled(Grid)`
+  padding: 0;
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: 0;
-    border-bottom: 3px solid #ffffff;
+    padding: 0 0 .125em 0;
+    border-bottom: 2px solid #ffffff;
   }
   p {
-    padding: .75em 1.5em .25em .75em;
+    padding: 0 0 1em 0;
+    &:last-child {
+    padding: 0;
+    }
     ${SuperQuery().minWidth.md.css`
-      padding: 1em 1.5em 0em 1.125em;
-      width: 50%;
+      width: 75%;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      width: 66%;
     `}
   }
   p:last-child {
-    padding-top: 0;
-    padding-bottom: 1.5em;
   }
 `
 const Row__Container = styled(Row)`
