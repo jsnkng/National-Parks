@@ -22,7 +22,7 @@ const Places = props => {
           <a href={item.url} target="_blank"><Image backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url  }  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" }/></a>
         }
         {item.listingimage.url === "" || item.listingimage.url.length === 0 
-        ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+        ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
         :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
         }
       
@@ -69,13 +69,13 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .25em;
+    padding: .375em .25em;
     border-bottom: 2px solid #ffffff;
   }
   h4 {
     font-size: 1.75em;
     line-height: 1;
-    padding: .5em .75em 0 .75em;
+    padding: 1.5em .75em 0 .75em;
     ${SuperQuery().minWidth.md.css`
       padding: .5em 0 0 0;
       font-size: 1.5em;
@@ -138,8 +138,8 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 20em;
-  margin: 0 0 1em 0;
+  height: 15em;
+  margin: 0 0 2em 0;
   &.hidden {
     display: none;
   }

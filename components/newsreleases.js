@@ -57,7 +57,7 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .25em;
+    padding: .375em .25em;
     border-bottom: 2px solid #ffffff;
   }
   h4 {
@@ -72,7 +72,7 @@ const Grid__Container = styled(Grid)`
   span {
     font-size: .75em;
     font-weight: 600;
-    margin: 0 2em 0 0;
+    margin: .5em 2em 0 0;
     float: right;
   }
   p {
@@ -125,8 +125,8 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 20em;
-  margin: 0 0 1em 0;
+  height: 15em;
+  margin: 0 0 2em 0;
   &.hidden {
     display: none;
   }

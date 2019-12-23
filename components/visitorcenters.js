@@ -55,7 +55,7 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .25em;
+    padding: .375em .25em;
     border-bottom: 2px solid #ffffff;
   }
   p {

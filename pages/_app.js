@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   float: right;
   border: 1px solid #ddd;
   padding: .25em 1.25em;
-  margin: 0 2em 2em 0;
+  margin: 0 2em 3em 0;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase; 
@@ -107,6 +107,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
+  font-size: .625em;
     padding: .15em 1.15em;
     margin: 1px;
     border: 0;
