@@ -75,9 +75,9 @@ const HeaderMenu = styled.header`
     width: 40px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-      top: 10px;
-      left: 12px;
-      width: 65px;
+      top: 14px;
+      left: 15px;
+      width: 52px;
     `}
   }
   h1 {
@@ -86,7 +86,7 @@ const HeaderMenu = styled.header`
     margin: 10px 7px 0 0;
     text-align:right;
     font-weight: 700;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     line-height: 1;
     font-size: .875em;
     cursor: pointer;
@@ -94,6 +94,7 @@ const HeaderMenu = styled.header`
     ${SuperQuery().minWidth.sm.css`
       margin: 10px 15px 0 0;
       font-size: 1.5em;
+      letter-spacing: -1.5px;
     `}
   }
   h2 {
@@ -102,7 +103,7 @@ const HeaderMenu = styled.header`
     margin: 0px 7px 0 0;
     text-align:right;
     font-weight: 500;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     line-height: 1;
     font-size: .75em;
     cursor: pointer;
@@ -110,6 +111,7 @@ const HeaderMenu = styled.header`
     ${SuperQuery().minWidth.sm.css`
       margin: 0px 15px 0 0;
       font-size: 1.125em;
+      letter-spacing: -1.5px;
     `}
   }
   h3{
