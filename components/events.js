@@ -93,13 +93,17 @@ export default Events
 
 const Grid__Container = styled(Grid)`
   padding: 0;
-  
+
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .375em .25em;
+    padding: .425em .3em;
     border-bottom: 2px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+    border-bottom: 4px solid #ffffff;
+      padding: .425em .25em .425em 0;
+    `}
   }
   .description {
     padding: .5em 1em;
@@ -108,6 +112,7 @@ const Grid__Container = styled(Grid)`
     `}
   }
   .details {
+    overflow-wrap: break-word;
     background-color: #323132;
     font-size: .875em;
     padding: .5em 1.25em ;

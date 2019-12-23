@@ -57,11 +57,12 @@ const FooterMenu = styled.footer`
     top: 2px;
     right: 50px;
     font-weight: 700;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     line-height: 1;
     font-size: 1.25em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
+      letter-spacing: -1.5px;
       top: 5px;
       right: 65px;
     `}
@@ -76,6 +77,7 @@ const FooterMenu = styled.footer`
     font-size: .95em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
+      letter-spacing: -1.5px;
       top: 29px;
       right: 65px;
     `}

@@ -86,7 +86,7 @@ const HeaderMenu = styled.header`
     margin: 10px 7px 0 0;
     text-align:right;
     font-weight: 700;
-    letter-spacing: -1px;
+    letter-spacing: -.5px;
     line-height: 1;
     font-size: .875em;
     cursor: pointer;
@@ -103,7 +103,7 @@ const HeaderMenu = styled.header`
     margin: 0px 7px 0 0;
     text-align:right;
     font-weight: 500;
-    letter-spacing: -1px;
+    letter-spacing: -.5px;
     line-height: 1;
     font-size: .75em;
     cursor: pointer;
