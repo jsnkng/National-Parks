@@ -110,6 +110,19 @@ const Col__Container = styled(Col)`
       margin: 0;
       border: 0px solid;
       &:nth-child(3n+1) {
+        padding: .5em .5em .5em ;
+      } 
+      &:nth-child(3n+2) {
+        padding: .5em .25em 0 .25em;
+      } 
+      &:nth-child(3n+3) {
+        padding: .5em .625em .5em .5em;
+      } 
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      margin: 0;
+      border: 0px solid;
+      &:nth-child(3n+1) {
         padding: .5em .5em .5em 0;
       } 
       &:nth-child(3n+2) {

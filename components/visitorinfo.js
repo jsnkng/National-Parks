@@ -34,13 +34,13 @@ const VisitorInfo = props => {
       </Row__Container>
       <Row__Container>
       {park.directionsInfo !== "" && 
-        <Col__Container xs={12} md={6}>
+        <Col__Container xs={12} md={6} className="content">
           <h4>Directions</h4>
           <p>{park.directionsInfo}</p>
         </Col__Container>
       }
       {park.weatherInfo !== "" && 
-        <Col__Container xs={12} md={6}>
+        <Col__Container xs={12} md={6} className="content">
           <h4>Weather</h4>
           <p>{park.weatherInfo}</p>
         </Col__Container>
@@ -80,12 +80,12 @@ const Grid__Container = styled(Grid)`
   p {
     font-size: 1em;
     clear: both;
-    padding: 0 1em 1em 1.375em;
+    padding: 0 1em 0 1.375em;
     font-weight: 300;
     overflow-wrap: break-word;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
-      padding: 0 1em 1em 1em;
+      padding: 0 1em 0 1em;
     `}
   }
   details {
@@ -107,6 +107,9 @@ const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
   padding:  0;
+  &.content {
+    padding: 1em 0 0 0;
+  }
 `
 const MapLive__Wrapper = styled.div`
   position:relative;

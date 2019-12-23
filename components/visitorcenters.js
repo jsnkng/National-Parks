@@ -69,6 +69,14 @@ const Grid__Container = styled(Grid)`
     ${SuperQuery().minWidth.lg.css`
       width: 85%;
     `}
+    &:first-of-type {
+      padding-top:0;
+      margin-top:0;
+    }
+    &:last-of-type {
+      padding-top:0;
+      margin-top:0;
+    }
   }
   p:last-child {
   }
