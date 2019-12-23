@@ -223,13 +223,13 @@ const GlobalStyle = createGlobalStyle`
   content: '';
   height: .5em;
   width: .5em;
-  margin-left: -20px;
+  margin-left: -22px;
   margin-right: 10px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
   transform: rotate(-45deg);
   ${SuperQuery().minWidth.md.css`
-  margin-left: -15px;
+  margin-left: -18px;
   margin-right: 10px;
   `}
 

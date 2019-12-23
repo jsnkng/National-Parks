@@ -100,34 +100,39 @@ const Events = props => {
 export default Events
 
 const Grid__Container = styled(Grid)`
-  padding: 0em;
+  padding: 0;
+  
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .125em;
+    padding: .5em;
     border-bottom: 2px solid #ffffff;
-  }
-  p {
-    padding: 0 1em 1em 1em;
-    &:last-child {
-      padding: 0 1em 0 1em;
-    }
+    ${SuperQuery().minWidth.md.css`
+      margin: 0;
+      padding: .25em;
+    `}
   }
   .description {
-    padding: 0 1.5em 0 0;
+    padding: .5em 1em;
+    ${SuperQuery().minWidth.md.css`
+      padding: 0 .25em;
+    `}
   }
   .details {
     background-color: #323132;
     font-size: .875em;
-    margin: .5em 0;
-    padding: 1em .25em;
-  
+    padding: .5em 1.25em ;
+    margin: 1em 0 .25em 0;
+    ${SuperQuery().minWidth.md.css`
+      margin: -.25em 0 0 0;
+    `}
   }
 `
 const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
+padding: 0;
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

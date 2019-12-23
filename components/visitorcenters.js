@@ -50,23 +50,24 @@ export default VisitorCenters
 
 const Grid__Container = styled(Grid)`
   padding: 0;
+  
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: 0 0 .125em 0;
+    padding: .5em;
     border-bottom: 2px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      padding: .25em;
+    `}
   }
   p {
-    padding: 0 0 1em 0;
-    &:last-child {
-    padding: 0;
-    }
+    padding: .5em 1em;
     ${SuperQuery().minWidth.md.css`
-      width: 75%;
+      padding: .25em;
     `}
     ${SuperQuery().minWidth.lg.css`
-      width: 66%;
+      width: 85%;
     `}
   }
   p:last-child {
@@ -75,4 +76,5 @@ const Grid__Container = styled(Grid)`
 const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
+  padding: 0;
 `

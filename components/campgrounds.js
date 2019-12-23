@@ -236,14 +236,18 @@ const Campgrounds = props => {
 export default Campgrounds
 
 const Grid__Container = styled(Grid)`
-  word-wrap:break-word;
-  padding: 0em;
+  padding: 0;
+  
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .125em;
+    padding: .5em;
     border-bottom: 2px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      margin: 0;
+      padding: .25em;
+    `}
   }
   h5 {
     font-size: 1.125em;
@@ -254,6 +258,7 @@ const Grid__Container = styled(Grid)`
     font-size: .875em;
     padding: 0 0 1em 0;
     margin: 0;
+    word-wrap:break-word;
   }
   p.introduction {
     font-size: 1.125em;
@@ -292,6 +297,7 @@ const Row__Container = styled(Row)`
  
 `
 const Col__Container = styled(Col)`
+  padding: 0;
   &.amenities {
     ul {
       column-count: 2;
@@ -300,19 +306,18 @@ const Col__Container = styled(Col)`
       `}
     }
   }
-  
 `
 
 const MapLive__Wrapper = styled.div`
   position:relative;
   width: 100%;
-  height: 70vh !important;
+  height: 20em;
   max-width: 100%;
   z-index: 10;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
     margin: 1em 0 0 0;
-    height: 60vw !important;
+    height: 30em !important;
     max-height: 400px !important;
   `}
 `
