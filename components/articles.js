@@ -66,13 +66,17 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .375em .25em;
-    border-bottom: 2px solid #ffffff;
+    padding: .425em .625em;
+    border-bottom: 4px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      padding: .425em .625em .425em 0;
+    `}
   }
   h4 {
     font-size: 1.75em;
     line-height: 1;
-    padding: .5em .75em 0 .75em;
+    padding: 0 .75em 0 .75em;
+    margin: 0;
     ${SuperQuery().minWidth.md.css`
       padding: .5em 0 0 0;
       font-size: 1.5em;

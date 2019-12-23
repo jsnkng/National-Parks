@@ -50,13 +50,16 @@ export default VisitorCenters
 
 const Grid__Container = styled(Grid)`
   padding: 0;
-  
+   
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .375em .25em;
-    border-bottom: 2px solid #ffffff;
+    padding: .425em .625em;
+    border-bottom: 4px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      padding: .425em .625em .425em 0;
+    `}
   }
   p {
     padding: .5em 1em;

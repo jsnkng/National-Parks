@@ -52,28 +52,36 @@ export default NewsReleases
 
 const Grid__Container = styled(Grid)`
   padding: 0;
-  
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .375em .25em;
-    border-bottom: 2px solid #ffffff;
+    padding: .425em .625em;
+    border-bottom: 4px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      padding: .425em .625em .425em 0;
+    `}
   }
   h4 {
     font-size: 1.75em;
     line-height: 1;
-    padding: .5em .75em 0 .75em;
+    padding: 0 .75em 0 .75em;
+    margin: 0;
     ${SuperQuery().minWidth.md.css`
       padding: .5em 0 0 0;
       font-size: 1.5em;
     `}
   }
   span {
-    font-size: .75em;
-    font-weight: 600;
-    margin: .5em 2em 0 0;
-    float: right;
+    display: block;
+    font-size: 1em;
+    padding: 1em 1.25em 0em 1.25em;
+    margin: 0;
+    ${SuperQuery().minWidth.md.css`
+      font-size: .825em;
+      padding: 1em 0 0 0;
+    `}
+  }
   }
   p {
     font-size: 1em;
@@ -92,7 +100,7 @@ const Col__Container = styled(Col)`
   &.content {
     ${SuperQuery().minWidth.md.css`
       margin: 0;
-      border: 0px solid;
+      border: none;
       &:nth-child(3n+1) {
         padding: .5em .5em .5em ;
       } 
