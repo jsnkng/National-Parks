@@ -12,36 +12,35 @@ import {
 
 const VisitorCenters = props => {
   const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
+
   return (  
     <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
       <Grid__Container>
         <Row__Container>
+          <Col__Container xs={12}>
             <h3>Visitor Centers</h3>
+          </Col__Container>
         </Row__Container>
-        { visitorCenters.slice(0).map((item) => {
-          return (
-            <Row__Container key={item.id}>
-              <Col__Container xs={12}>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      {item.name}
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                  <Row__Container className="center">
-                    <Col__Container xs={12}>
-                      <p>{item.description}</p>
-                      <p>{item.directionsInfo}</p>
-                    </Col__Container>
-                  </Row__Container>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              </Col__Container>
-            </Row__Container>
-          )}
-          )
-        }
+        <Row__Container>
+          <Col__Container xs={12}>
+          { visitorCenters.slice(0).map((item) => {
+            return (
+            <AccordionItem key={item.id}>
+              <AccordionItemHeading>
+                <AccordionItemButton>
+                  {item.name}
+                </AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel>
+                <p>{item.description}</p>
+                <p>{item.directionsInfo}</p>
+              </AccordionItemPanel>
+            </AccordionItem>
+            )
+            })
+          }
+          </Col__Container>
+        </Row__Container>
       </Grid__Container>
     </Accordion>
   )
@@ -49,20 +48,18 @@ const VisitorCenters = props => {
   
 export default VisitorCenters
 
-
 const Grid__Container = styled(Grid)`
-padding: 1em .5em 0 .5em;
   h3 {
     font-size: 2em;
+    line-height: 1;
     margin: 0;
     padding: 0;
-    line-height: 1;
+    border-bottom: 3px solid #ffffff;
   }
   p {
-    font-size: .9em;
-    padding: .75em 1.5em .254em .75em;
+    padding: .75em 1.5em .25em .75em;
     ${SuperQuery().minWidth.md.css`
-      padding: 1em 1.5em .25em 1.5em;
+      padding: 1em 1.5em 0em 1.125em;
       width: 50%;
     `}
   }
@@ -72,42 +69,6 @@ padding: 1em .5em 0 .5em;
   }
 `
 const Row__Container = styled(Row)`
-  margin: 0;
-  &:first-child {
-    padding: .125em;
-    border-bottom: 3px solid #ffffff;
-  }
-  &:last-child {
-    border: none;
-  }
-  &.center {
-    border-bottom: 2px solid #b1b0a7;
-  }
 `
 const Col__Container = styled(Col)`
-padding: 0;
-  &.amenities {
-    ul {
-      column-count: 2;
-      ${SuperQuery().minWidth.sm.css`
-        column-count: 4;
-      `}
-    }
-  }
-  
-  &.details {
-    p {
-      font-weight: 200;
-    }
-  }
 `
-// .description {
-//   padding: .75em 1.5em;
-   
-//   }
-//   .details {
-   
-//     font-size: .9em;
-//   padding: 0em 1.5em 1.5em 1.5em;
-   
-//   }

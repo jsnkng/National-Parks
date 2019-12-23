@@ -39,6 +39,7 @@ const Home = props => {
       pageSubTitle={"A State-by-State Guide"}
       pageSubSubTitle={'Find A Park'}
       pageSubSubSubTitle={''} 
+      pageLinkState={false}
       />
      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
         <div className="sk-cube-grid">

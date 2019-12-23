@@ -10,7 +10,7 @@ import Masthead__Component from '../../../components/masthead'
 import Footer__Component from '../../../components/footer'
 
 import Park__Component from '../../../components/park'
-// import MapLive__Component from '../../../components/maplive'
+import MapLive__Component from '../../../components/maplive'
 
 const Parks = props => {
 
@@ -25,8 +25,7 @@ const Parks = props => {
   const { stateCode } = router.query
   const [parks, setParks] = useState(props.data)
 
-// let markers = []
-// markers.push({id: park.id, latLong: park.latLong, name: park.name, description: park.description}) 
+let markers = []
 
   return (
     <>
@@ -66,19 +65,10 @@ const Parks = props => {
           Loading
           </div>
         </Spinner>
-      {/* <MapLive__Wrapper>
-        <MapLive__Component
-            latLong={states[stateCode][2]}
-            name={states[stateCode][0]}
-            designation="D"
-            zoom={6}
-            markers={markers}
-            link={true}
-          />
-      </MapLive__Wrapper> */}
+     
       <ParksContainer  onClick={handleBannerClick}>
         { parks.slice(0).map((item) => {
-          {/* markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:stateCode, parkCode:item.parkCode}) */}
+          markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:stateCode, parkCode:item.parkCode})
             return(
               <Park__Component 
                 key={item.id} 
@@ -89,6 +79,16 @@ const Parks = props => {
           })
         }
       </ParksContainer>
+       <MapLive__Wrapper>
+        <MapLive__Component
+            latLong={states[stateCode][2]}
+            name={states[stateCode][0]}
+            designation="D"
+            zoom={6}
+            markers={markers}
+            link={true}
+          />
+      </MapLive__Wrapper>
       <Footer__Component
         pageTitle={'National Park Service'} 
         pageStateCode={stateCode}
@@ -127,7 +127,7 @@ const ParksContainer = styled.div`
 `
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 400px !important;
+  height: 600px !important;
   z-index: 10;
 `
 const Spinner = styled.div`
