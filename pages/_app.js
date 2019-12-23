@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   float: right;
   border: 1px solid #ddd;
   padding: .25em 1.25em;
-  margin: 0 2em 3em 0;
+  margin: 0 2em 4em 0;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase; 
@@ -103,6 +103,8 @@ const GlobalStyle = createGlobalStyle`
   border:1px solid #a1dde9;
   background-color: rgba(0,0,0,.9);
   cursor: pointer;
+
+  
   &:hover {
     background-color: rgba(255,255,255,.015);
   }
@@ -189,7 +191,6 @@ const GlobalStyle = createGlobalStyle`
 
 
 .accordion {
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   padding: 0 7px;
 }
@@ -201,19 +202,23 @@ const GlobalStyle = createGlobalStyle`
 .accordion__button {
   color: #3db7e3;
   font-size: 1em;
+  line-height:1.2;
   font-weight: 600;
-  text-indent: 1em;
-  padding:  .75em 0 .75em .75em;
+  padding:  1em 0 .75em 1.75em;
   border-bottom: 1px solid #3c3a3c;
   outline: 0;
   cursor: pointer;
+  text-indent: -10px;
   ${SuperQuery().minWidth.sm.css`
     font-size: 1.125em;
+    padding:  1em 0 .75em 1em;
   `}
-  ${SuperQuery().minWidth.md.css`
-    padding:  .75em 0 .75em .5em;
-    text-indent: .75em;
-  `}
+  h4 {
+    font-size: 1.125em;
+    display: inline-block;
+    padding:  0 0 0 .5em;
+    margin: 0 0 .25em 0;
+  }
 }
 .accordion__button:hover {
   color: #a1dde9;
@@ -224,14 +229,14 @@ const GlobalStyle = createGlobalStyle`
   content: '';
   height: .5em;
   width: .5em;
-  margin-left: -22px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 8px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
   transform: rotate(-45deg);
   ${SuperQuery().minWidth.md.css`
-  margin-left: -18px;
-  margin-right: 10px;
+    margin-left: -4px;
+    margin-right: 8px;
   `}
 
 }
@@ -250,10 +255,10 @@ const GlobalStyle = createGlobalStyle`
   background-color: #252425;
   ${'' /* border-top: 1px solid #000000; */}
   
-  padding: .875em;
+  padding: 0 .5em;
   animation: fadein 0.35s ease-in;
   ${SuperQuery().minWidth.md.css`
-    padding: 1.5em;
+    padding: 0 .5em;
   `}
 }
 @keyframes fadein {

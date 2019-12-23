@@ -59,10 +59,10 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .425em .3em;
+    padding: .425em .575em;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
-    border-bottom: 4px solid #ffffff;
+      border-bottom: 4px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
@@ -70,37 +70,14 @@ const Grid__Container = styled(Grid)`
     font-size: 1.375em;
     line-height: 1.125;
     letter-spacing: -1px;
-    float: left;
-    padding: 0 1em; 
     margin: 0;
-    ${SuperQuery().minWidth.md.css`
-    padding: 0 .625em; 
-    `}
   }
   p {
     font-size: 1em;
-    clear: both;
-    padding: 0 1em 0 1.375em;
     font-weight: 300;
     overflow-wrap: break-word;
-    ${SuperQuery().minWidth.md.css`
-      font-size: .825em;
-      padding: 0 1em 0 1em;
-    `}
   }
-  details {
-    padding: 0;
-    p {
-      padding: 0;
-    }
-  }
-  summary {
-    color: #a1dde9;
-    font-size: 1.25em;
-    font-weight: 600;
-    padding:  .5em 0 ;
-    border-bottom: 1px solid #3c3a3c;
-  }
+  
 `
 const Row__Container = styled(Row)`
   margin: 0;
@@ -108,17 +85,26 @@ const Row__Container = styled(Row)`
 const Col__Container = styled(Col)`
   padding:  0;
   &.content {
-    padding: 1em 0 0 0;
+    padding: 0 1.25em 0 1.25em;
+    &:first-child {
+      padding: 0 1.25em 1em 1.25em;
+    }
+    ${SuperQuery().minWidth.md.css`
+      &:first-child {
+        padding: 1em 1.5em 0 0;
+      }
+    `}
   }
 `
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 22em;
+  height: 30em;
   z-index: 10;
   margin: 0 0 1.5em 0;
   padding:  0;
   ${SuperQuery().minWidth.md.css`
     margin: .5em 0 1.5em 0;
     padding:  0;
+    height: 22em;
   `}
 `

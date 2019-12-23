@@ -30,12 +30,12 @@ const Campgrounds = props => {
                 <AccordionItem>
                   <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                     <AccordionItemButton>
-                      {item.name}
+                      <h4>{item.name}</h4>
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
                   <CampgroundWrapper>
-                    <Row__Container className="section">
+                    <Row__Container>
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
                         <CampgroundImagesWrapper> 
@@ -44,7 +44,7 @@ const Campgrounds = props => {
                           </LazyLoad>
                         </CampgroundImagesWrapper>
                         }
-                        <p className="introduction">{item.description}</p>
+                        <p className="section introduction">{item.description}</p>
                       </Col__Container>
                     </Row__Container>
                     
@@ -235,15 +235,14 @@ export default Campgrounds
 const Grid__Container = styled(Grid)`
   padding: 0;
   
-  
   h3 {
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .425em .3em;
+    padding: .425em .575em;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
-    border-bottom: 4px solid #ffffff;
+      border-bottom: 4px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
@@ -261,7 +260,6 @@ const Grid__Container = styled(Grid)`
   p.introduction {
     font-size: 1.125em;
     line-height: 1.625;
-    padding:0;
   }
   ul {
     font-size: .875em;
@@ -281,13 +279,11 @@ const Grid__Container = styled(Grid)`
   }
 
   .section {
-    padding: 0 0 1.5em 0;
-    margin:  0 0 1.5em 0;
+    padding: 1.25em;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
-    padding: 0;
-    margin:  0;
+    padding: 1.25em;
     border: none;
   }
 `
@@ -328,17 +324,10 @@ const CampgroundImages = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 17em;
-  margin: -15px -15px 15px -15px;
-  padding: 15px 15px;
-  ${SuperQuery().minWidth.sm.css`
-    margin: -20px -20px 20px -20px;
-    padding: 20px 20px;
-  `}
-  ${SuperQuery().minWidth.md.css`
-    margin: -30px -30px 30px -30px;
-    padding: 30px 30px;
-  `}
+  height: 15em;
+  margin: 0;
+  padding: 0;
+  
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`

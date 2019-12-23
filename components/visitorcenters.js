@@ -28,7 +28,7 @@ const VisitorCenters = props => {
             <AccordionItem key={item.id}>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  {item.name}
+                  <h4>{item.name}</h4>
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
@@ -55,32 +55,27 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .425em .3em;
+    padding: .425em .575em;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
-    border-bottom: 4px solid #ffffff;
+      border-bottom: 4px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
   p {
-    padding: .5em 1em;
+    padding: 2em 0;
+    margin: 0 .825em 0 .825em;
     ${SuperQuery().minWidth.md.css`
       padding: .25em;
     `}
     ${SuperQuery().minWidth.lg.css`
       width: 85%;
     `}
-    &:first-of-type {
-      padding-top:0;
-      margin-top:0;
-    }
-    &:last-of-type {
-      padding-top:0;
-      margin-top:0;
+    &:last-child {
+      padding: 0 0 2em 0;
     }
   }
-  p:last-child {
-  }
+  
 `
 const Row__Container = styled(Row)`
 `

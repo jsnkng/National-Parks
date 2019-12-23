@@ -10,7 +10,7 @@ import Masthead__Component from '../../../components/masthead'
 import Footer__Component from '../../../components/footer'
 
 import Park__Component from '../../../components/park'
-import MapLive__Component from '../../../components/maplive'
+// import MapLive__Component from '../../../components/maplive'
 
 const Parks = props => {
 
@@ -79,7 +79,7 @@ let markers = []
           })
         }
       </ParksContainer>
-       <MapLive__Wrapper>
+       {/* <MapLive__Wrapper>
         <MapLive__Component
             latLong={states[stateCode][2]}
             name={states[stateCode][0]}
@@ -88,7 +88,7 @@ let markers = []
             markers={markers}
             link={true}
           />
-      </MapLive__Wrapper>
+      </MapLive__Wrapper> */}
       <Footer__Component
         pageTitle={'National Park Service'} 
         pageStateCode={stateCode}
