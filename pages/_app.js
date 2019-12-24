@@ -36,6 +36,7 @@ const theme = {
   // },
   colors:{
     background: "#1e1d1e",
+    offbackground: "#474547",
     text: "#ffffff",
     color_one: "#3db7e3",
     color_two: "#a1dde9",
@@ -307,12 +308,12 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .accordion__button {
-  color: ${props => props.theme.colors.color_two};
+  color: ${props => props.theme.colors.color_one};
   line-height: 1.2;
   font-weight: 600;
   text-indent: .5em;
   padding:  1em 0 1em .5em;
-  border-bottom: 1px solid ${props => props.theme.colors.text};
+  border-bottom: 1px solid ${props => props.theme.colors.offbackground};
   outline: 0;
   cursor: pointer;
   text-indent: 0;
@@ -330,7 +331,7 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 .accordion__button:hover {
-  color: ${props => props.theme.colors.color_one};
+  color: ${props => props.theme.colors.color_two};
 }
 
 .accordion__button:before {
@@ -347,7 +348,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .accordion__button[aria-expanded='true'],
 .accordion__button[aria-selected='true'] {
-  color: ${props => props.theme.colors.color_one};
+  color: ${props => props.theme.colors.color_two};
 }
 .accordion__button[aria-expanded='true']::before,
 .accordion__button[aria-selected='true']::before {
