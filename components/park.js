@@ -86,7 +86,7 @@ const Name = styled.div`
     line-height: .75;
     font-size: 1.5em;
     font-weight: 600;
-    width: 70%;
+    border:none;
   }
   h3 {
     float:right;
@@ -95,7 +95,6 @@ const Name = styled.div`
     font-size: .66em;
     line-height: 1;
     margin: .25em 0 0 0;
-    width: 30%;
   }
   img {
     float: right;
