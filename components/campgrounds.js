@@ -53,7 +53,7 @@ const Campgrounds = props => {
                                 <>
                                 <h5>Directions</h5>
                                 <p>{item.directionsoverview}<br />
-                                  <a href={item.directionsUrl} target="_blank">{item.directionsUrl}</a>
+                                  <a href={item.directionsUrl} target="_blank">Click for Directions</a>
                                 </p>
                             </>
                               }
