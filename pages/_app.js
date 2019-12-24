@@ -204,11 +204,10 @@ const GlobalStyle = createGlobalStyle`
   font-size: 1em;
   line-height:1.2;
   font-weight: 600;
-  padding:  1em 0 .75em 1.75em;
+  padding:  1em 0 .75em .5em;
   border-bottom: 1px solid #3c3a3c;
   outline: 0;
   cursor: pointer;
-  text-indent: -10px;
   ${SuperQuery().minWidth.sm.css`
     font-size: 1.125em;
     padding:  1em 0 .75em .7em;
@@ -218,10 +217,13 @@ const GlobalStyle = createGlobalStyle`
     padding:  1em 0 .75em 1em;
   `}
   h4 {
+
+    vertical-align: middle;
     font-size: 1.125em;
     display: inline-block;
-    padding:  0 0 0 .5em;
+    padding:  0 ;
     margin: 0 0 .25em 0;
+    width: 90%;
   }
 }
 .accordion__button:hover {
@@ -231,8 +233,8 @@ const GlobalStyle = createGlobalStyle`
 .accordion__button:before {
   display: inline-block;
   content: '';
-  height: .5em;
-  width: .5em;
+  height: 6px;
+  width: 6px;
   margin-left: 0px;
   margin-right: 8px;
   border-bottom: 2px solid currentColor;

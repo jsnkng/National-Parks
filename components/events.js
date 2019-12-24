@@ -100,6 +100,7 @@ const Grid__Container = styled(Grid)`
 
   vertical-align: text-top;
   h3 {
+    overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
     margin: 0;
