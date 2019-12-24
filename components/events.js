@@ -36,14 +36,18 @@ const Events = props => {
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
-                      {item.title}
+                      <h4>{item.title}</h4>
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
                     { item.images.length !== 0 &&
+                    <Row__Container>
+                      <Col__Container xs={12}>
                         <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 
                           ? "/US-National-Parks-logo-sml-bw.png" 
                           : "https://www.nps.gov"+item.images[0].url } />
+                      </Col__Container>
+                    </Row__Container>
                     }
                     <Row__Container>
                       <Col__Container xs={12} md={8} className="description">
@@ -94,6 +98,7 @@ export default Events
 const Grid__Container = styled(Grid)`
   padding: 0;
 
+  vertical-align: text-top;
   h3 {
     font-size: 2em;
     line-height: 1;
@@ -106,23 +111,27 @@ const Grid__Container = styled(Grid)`
     `}
   }
   .description {
-    padding: .5em 1em;
-    ${SuperQuery().minWidth.md.css`
-      padding: 0 .25em;
+    p {
+    margin: 1.5em .825em 1.5em 1.125em;
+    ${SuperQuery().minWidth.lg.css`
+      width: 85%;
     `}
+    }
   }
   .details {
     overflow-wrap: break-word;
     background-color: #323132;
     font-size: .875em;
-    padding: .5em 1.25em ;
-    margin: 1em 0 .25em 0;
+    padding: 1em 1.25em;
+    margin: 0;
     ${SuperQuery().minWidth.md.css`
-      margin: -.25em 0 0 0;
+      padding: .5em 1.25em 0 1.25em;
+      margin: 1em 0;
     `}
   }
 `
 const Row__Container = styled(Row)`
+  padding: 0;
 `
 const Col__Container = styled(Col)`
   padding: 0;
@@ -133,17 +142,10 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 17em;
-  margin: -15px -15px 15px -15px;
-  padding: 15px 15px;
-  ${SuperQuery().minWidth.sm.css`
-    margin: -20px -20px 20px -20px;
-    padding: 20px 20px;
-  `}
-  ${SuperQuery().minWidth.md.css`
-    margin: -30px -30px 30px -30px;
-    padding: 30px 30px;
-  `}
+  height: 15em;
+  margin: 0;
+  padding: 0;
+  
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`

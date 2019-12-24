@@ -91,7 +91,7 @@ const Col__Container = styled(Col)`
     }
     ${SuperQuery().minWidth.md.css`
       &:first-child {
-        padding: 1em 1.5em 0 0;
+        padding: 0 1.5em 0 0;
       }
     `}
   }

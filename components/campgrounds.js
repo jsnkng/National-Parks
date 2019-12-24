@@ -38,11 +38,9 @@ const Campgrounds = props => {
                     <Row__Container>
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
-                        <CampgroundImagesWrapper> 
-                          <LazyLoad height={440} offset={600}>
-                            <CampgroundImages backgroundURL={item.images[0].url} />
-                          </LazyLoad>
-                        </CampgroundImagesWrapper>
+                        <LazyLoad height={440} offset={600}>
+                          <Image backgroundURL={item.images[0].url} />
+                        </LazyLoad>
                         }
                         <p className="section introduction">{item.description}</p>
                       </Col__Container>
@@ -315,10 +313,8 @@ const MapLive__Wrapper = styled.div`
 const CampgroundWrapper = styled.div`
 
 `
-const CampgroundImagesWrapper = styled.div`
-  display: flex;
-`
-const CampgroundImages = styled.div`
+
+const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;

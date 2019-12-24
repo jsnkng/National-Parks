@@ -211,6 +211,10 @@ const GlobalStyle = createGlobalStyle`
   text-indent: -10px;
   ${SuperQuery().minWidth.sm.css`
     font-size: 1.125em;
+    padding:  1em 0 .75em .7em;
+  `}
+  ${SuperQuery().minWidth.md.css`
+    font-size: 1.125em;
     padding:  1em 0 .75em 1em;
   `}
   h4 {
