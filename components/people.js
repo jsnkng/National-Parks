@@ -12,7 +12,7 @@ const People = props => {
     <Grid>
       <Row>
         <Col xs={12}>
-          <h3>Related People</h3>
+          <h2>Related People</h2>
         </Col>
       </Row>
       <Row>
@@ -48,7 +48,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 12.5em;
-  margin: .125em;
+  margin: .5em 0 0 0;
   &.hidden {
     display: none;
   }

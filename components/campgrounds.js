@@ -21,7 +21,7 @@ const Campgrounds = props => {
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
           <Row>
             <Col xs={12}>
-              <h3>Campgrounds</h3>
+              <h2>Campgrounds</h2>
             </Col>
           </Row>
           { campgrounds.slice(0).map((item) => {
@@ -31,7 +31,7 @@ const Campgrounds = props => {
                   <AccordionItem>
                     <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                       <AccordionItemButton>
-                        {item.name}
+                        <h3>{item.name}</h3>
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
@@ -235,11 +235,9 @@ const Campground__Wrapper = styled.div`
   p.introduction {
     font-size: 1.125em;
     line-height: 1.625;
-    margin: .75em 1em;
   }
   .section {
     padding: .75em 0;
-    margin: 0 .625em;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
@@ -270,7 +268,6 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 15em;
-  margin: .75em 1em;
   
   &.hidden {
     display: none;

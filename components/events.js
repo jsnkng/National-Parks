@@ -26,7 +26,7 @@ const Events = props => {
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row>
           <Col xs={12}>
-            <h3>Events</h3>
+            <h2>Events</h2>
           </Col>
         </Row>
         <Row>
@@ -37,7 +37,7 @@ const Events = props => {
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
-                      {item.title}
+                      <h3>{item.title}</h3>
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
@@ -106,7 +106,6 @@ const Events__Wrapper = styled.div`
   .description {
     overflow-wrap: break-word;
     div {
-      padding: .5em 0 .25em 1.125em;
       ${SuperQuery().minWidth.md.css`
         padding: 0 0 .5em .4em;
       `}

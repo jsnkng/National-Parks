@@ -190,16 +190,8 @@ const NewsReleases__Wrapper = styled.div`
 `
 const Events__Wrapper = styled.div`
   background-color: #1e1d1e;
-  margin: 0;
-  padding: 20px 0;
+  padding: 1em 0;
   color: #ffffff;
-  
-  h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
-  }
   a {
     color: #3db7e3;
     text-decoration: none;
@@ -222,13 +214,11 @@ const VisitorInfo__Wrapper = styled.div`
 `
 const VisitorCenters__Wrapper = styled.div`
   background-color: #1e1d1e;
+  padding: 1em 0;
   color: #ffffff;
   a {
     color: #3db7e3;
     text-decoration: none;
-  }
-  > div {
-    padding: 0 .375em;
   }
 `
 const Campgrounds__Wrapper = styled.div`
@@ -236,12 +226,6 @@ const Campgrounds__Wrapper = styled.div`
   padding: 1em 0;
   color: #ffffff;
   
-  h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
-  }
   a {
     color: #3db7e3;
     text-decoration: none;
