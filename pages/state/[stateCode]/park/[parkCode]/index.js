@@ -54,17 +54,17 @@ const Park = props => {
        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
     </Head>
     <Container>
-      <Masthead__Component 
+      {/* <Masthead__Component 
         pageTitle={park.name}
         pageStateCode={stateCode}
         pageSubTitle={park.designation}
         pageSubSubTitle={states[stateCode][0]}
         pageSubSubSubTitle="" 
-      />
+      /> */}
 
-      { park.images !== undefined && park.images.length !== 0 &&
+      {/* { park.images !== undefined && park.images.length !== 0 &&
         <SlideShow__Component park={park} />
-      }
+      } */}
 
 
       <Description__Wrapper>
@@ -130,13 +130,13 @@ const Park = props => {
           <People__Component park={park} people={people} />
         </People__Wrapper>
       }
-      <Footer__Component
+      {/* <Footer__Component
         pageTitle={park.name}
         pageStateCode={stateCode}
         pageSubTitle={park.designation}
         pageSubSubTitle={states[stateCode][0]}
         pageSubSubSubTitle=""
-       />
+       /> */}
     </Container>
     </>
   )
