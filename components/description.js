@@ -22,7 +22,6 @@ const Description = props => {
           <MapDiagramWrapper>
             <MapDiagram highlighted={null} onHighlight={(terr) => setHighlight(terr)} states={park.states} />
           </MapDiagramWrapper>
-          {/* <a href="{park.url}">National Park Service’s {park.name} Resource.</a> */}
         </Col__Container>
       </Row__Container>
     </Grid__Container>
@@ -39,8 +38,6 @@ const MapDiagramWrapper = styled.div`
     margin: 0;
   `}
 `
-
-
 const Grid__Container = styled(Grid)`
   padding: .5em 1em;
   h2 {
@@ -58,7 +55,6 @@ const Grid__Container = styled(Grid)`
   ${SuperQuery().minWidth.md.css`
   padding: 1em 1em 0 1em;
   `}
-  
 `
 const Row__Container = styled(Row)`
   padding: 0;

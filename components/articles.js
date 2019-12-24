@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-
 import LazyLoad from 'react-lazyload'
-
-
 
 const Articles = props => {
   const [articles, setArticles] = useState(props.articles)
@@ -30,20 +27,19 @@ const Articles = props => {
       <Row__Container>
       { articles.slice(0,limit).map((item) => {
         return(
-          <LazyLoad height={560} offset={100} key={item.id} once>
-            <Col__Container xs={12} sm={12} md={4} lg={4} className="content">
-              <a href={item.url} target="_blank">
-                <Image 
-                  backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} 
-                  className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" } />
-              </a>
-
-              {item.listingimage.url === undefined || item.listingimage.url.length === 0 
-              ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-              :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-              }
-            </Col__Container>
-          </LazyLoad>
+        <LazyLoad height={560} offset={100} key={item.id} once>
+          <Col__Container xs={12} sm={12} md={4} lg={4} className="content">
+            <a href={item.url} target="_blank">
+              <Image 
+                backgroundURL={item.listingimage.url === undefined || item.listingimage.url.length == 0 ? "" : item.listingimage.url} 
+                className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" } />
+            </a>
+            {item.listingimage.url === undefined || item.listingimage.url.length === 0 
+            ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+            :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+            }
+          </Col__Container>
+        </LazyLoad>
         )
         })
       }
@@ -55,14 +51,11 @@ const Articles = props => {
   )
 }
   
-  
 export default Articles
 
-
 const Grid__Container = styled(Grid)`
-padding: 0 .5em;
-  
-h3 {
+  padding: 0 .5em;
+  h3 {
     overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
@@ -85,7 +78,6 @@ h3 {
       font-size: 1.5em;
     `}
   }
-  
   p {
     font-size: 1em;
     padding: 0 .75em;

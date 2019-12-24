@@ -79,7 +79,6 @@ h3 {
       padding: 1em 0 0 0;
     `}
   }
-  }
   p {
     font-size: 1em;
     padding: 0 .75em;

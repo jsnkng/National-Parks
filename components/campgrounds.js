@@ -256,7 +256,6 @@ const Grid__Container = styled(Grid)`
       padding: 0 0 2em 0;
     }
   }
-  
   h5 {
     font-size: 1.125em;
     margin:0;
@@ -289,7 +288,6 @@ const Grid__Container = styled(Grid)`
     padding: .3125em 0;
     font-weight: 300;
   }
-
   .section {
     padding: .75em 0;
     margin: 0 .625em;
@@ -312,10 +310,7 @@ const Col__Container = styled(Col)`
       `}
     }
   }
- 
 `
-
-
 const MapLive__Wrapper = styled.div`
   position:relative;
   width: 100%;
@@ -327,7 +322,6 @@ const MapLive__Wrapper = styled.div`
   `}
 `
 const CampgroundWrapper = styled.div`
-
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

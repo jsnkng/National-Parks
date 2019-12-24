@@ -32,24 +32,20 @@ const Masthead = props => {
         <h3>{props.pageSubSubTitle}</h3>
       </Link>
     }
-    
-      {/* <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
-        <h4  onClick={handleBannerClick} >{props.pageSubSubSubTitle}</h4>
-      </Link> */}
-        <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-          <div className="sk-cube-grid">
-            <div className="sk-cube sk-cube1"></div>
-            <div className="sk-cube sk-cube2"></div>
-            <div className="sk-cube sk-cube3"></div>
-            <div className="sk-cube sk-cube4"></div>
-            <div className="sk-cube sk-cube5"></div>
-            <div className="sk-cube sk-cube6"></div>
-            <div className="sk-cube sk-cube7"></div>
-            <div className="sk-cube sk-cube8"></div>
-            <div className="sk-cube sk-cube9"></div>
-          Loading
-          </div>
-        </Spinner>
+      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+        <div className="sk-cube-grid">
+          <div className="sk-cube sk-cube1"></div>
+          <div className="sk-cube sk-cube2"></div>
+          <div className="sk-cube sk-cube3"></div>
+          <div className="sk-cube sk-cube4"></div>
+          <div className="sk-cube sk-cube5"></div>
+          <div className="sk-cube sk-cube6"></div>
+          <div className="sk-cube sk-cube7"></div>
+          <div className="sk-cube sk-cube8"></div>
+          <div className="sk-cube sk-cube9"></div>
+        Loading
+        </div>
+      </Spinner>
     </HeaderMenu>
   )
 }
@@ -131,24 +127,7 @@ const HeaderMenu = styled.header`
       font-size: 2.25em;
     `}
   }
-  ${'' /* h4 { 
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 55px;
-    font-weight: 500;
-    letter-spacing: -1px;
-    line-height: 1;
-    font-size: .875em;
-    ${SuperQuery().minWidth.sm.css`
-      top: 35px;
-      right: 95px;
-      font-size: 1em;
-    `}
-  } */}
 `
-
-
 const Spinner = styled.div`
   width: 100%;
   height: 100%;

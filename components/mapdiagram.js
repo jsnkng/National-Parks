@@ -51,7 +51,6 @@ const MapDiagram = props => {
     </MapWrapper>
   )
 }
-
   
 export default MapDiagram
 

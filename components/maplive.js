@@ -58,11 +58,6 @@ const MapLive = props => {
   
 }
 
-// onClick={ ()=> { 
-//                 console.log(`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}`) 
-//                 Router.push(`/state/${selectedPlace.stateCode}/park/${selectedPlace.parkCode}`)
-//               } 
-//             }
 export default GoogleApiWrapper({
   apiKey: process.env.GOO_KEY
 })(MapLive);

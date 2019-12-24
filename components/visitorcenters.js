@@ -48,7 +48,6 @@ const VisitorCenters = props => {
   
 export default VisitorCenters
 
-
 const Grid__Container = styled(Grid)`
   padding: 0 .5em;
   vertical-align: text-top;
@@ -75,7 +74,6 @@ const Grid__Container = styled(Grid)`
       padding: 0 0 2em 0;
     }
   }
-  
 `
 const Row__Container = styled(Row)`
   padding: 0;
@@ -83,5 +81,4 @@ const Row__Container = styled(Row)`
 const Col__Container = styled(Col)`
   padding: 0;
   margin: 0;
- 
 `

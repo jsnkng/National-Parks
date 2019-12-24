@@ -77,7 +77,6 @@ const Grid__Container = styled(Grid)`
     font-weight: 300;
     overflow-wrap: break-word;
   }
-  
 `
 const Row__Container = styled(Row)`
   margin: 0;
