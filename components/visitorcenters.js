@@ -28,7 +28,7 @@ const VisitorCenters = props => {
             <AccordionItem key={item.id}>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  <h4>{item.name}</h4>
+                  {item.name}
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>

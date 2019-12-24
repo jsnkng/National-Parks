@@ -30,7 +30,7 @@ const Campgrounds = props => {
                 <AccordionItem>
                   <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                     <AccordionItemButton>
-                      <h4>{item.name}</h4>
+                      {item.name}
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>

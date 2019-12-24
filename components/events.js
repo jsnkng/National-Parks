@@ -36,7 +36,7 @@ const Events = props => {
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
-                      <h4>{item.title}</h4>
+                      {item.title}
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
