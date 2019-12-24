@@ -75,9 +75,9 @@ const Park = props => {
           {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
       </Description__Wrapper>
       
-      <VisitorInfo__Wrapper>
+      {/* <VisitorInfo__Wrapper>
         <VisitorInfo__Component park={park} markers={markers} />
-      </VisitorInfo__Wrapper>
+      </VisitorInfo__Wrapper> */}
       
       { events !== undefined && events.length != 0 &&
         <Events__Wrapper>
@@ -119,7 +119,11 @@ const Park = props => {
         </Places__Wrapper>
       }
       
-     
+      { articles !== undefined && articles.length != 0 &&
+        <Articles__Wrapper>
+          <Articles__Component park={park} articles={articles} />
+        </Articles__Wrapper>
+      }
       
       { people !== undefined && people.length != 0 &&
         <People__Wrapper>
