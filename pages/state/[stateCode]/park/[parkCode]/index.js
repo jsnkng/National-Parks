@@ -74,12 +74,12 @@ const Park = props => {
           }
           {/* <a href="{park.url}">National Park Service’s {park.name} Website.</a> */}
       </Description__Wrapper>
-{/*       
+      
       <VisitorInfo__Wrapper>
         <VisitorInfo__Component park={park} markers={markers} />
       </VisitorInfo__Wrapper>
       
-      { events !== undefined && events.length != 0 &&
+      {/* { events !== undefined && events.length != 0 &&
         <Events__Wrapper>
           <Events__Component park={park} events={events} />
         </Events__Wrapper>
