@@ -278,11 +278,11 @@ const Grid__Container = styled(Grid)`
   }
 
   .section {
-    padding: 1.25em;
+    padding: .75em;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
-    padding: 1.25em;
+    padding: .75em;
     border: none;
   }
 `

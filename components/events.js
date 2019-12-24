@@ -97,7 +97,6 @@ export default Events
 
 const Grid__Container = styled(Grid)`
   padding: 0;
-
   vertical-align: text-top;
   h3 {
     overflow-wrap: break-word;
@@ -114,7 +113,7 @@ const Grid__Container = styled(Grid)`
   }
   .description {
     p {
-    margin: 1.5em .825em 1.5em 1.125em;
+    margin: 1em .825em 1em 1.125em;
     ${SuperQuery().minWidth.lg.css`
       width: 85%;
     `}
