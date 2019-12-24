@@ -16,17 +16,16 @@ const Footer = props => {
         <h4>A State-by-State Guide</h4>
       </Link>
       <p><a href="https://jsnkng.com">Jason King</a> | 2019</p>
-     
     </FooterMenu>
   )
-
 }
+
 export default Footer
 
 const FooterMenu = styled.footer`
   position: relative;
   display: grid;
-  grid-template-columns: 6fr 3fr ;
+  grid-template-columns: 1fr 1fr;
   top: 0;
   left: 0;
   right: 0;
@@ -34,53 +33,33 @@ const FooterMenu = styled.footer`
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   z-index: 120;
-  ${SuperQuery().minWidth.sm.css`
-    grid-template-columns: 4fr 4fr;
-    height: 90px;
-  `}
  
   .logo {
     position: absolute;
     top: 12px;
-    right: 12px;
-    width: 30px;
+    right: 8px;
+    width: 26px;
     cursor: pointer;
-    ${SuperQuery().minWidth.sm.css`
-      top: 16px;
-      right: 12px;
-      width: 45px;
-    `}
-    
   }
   h3 {
     position: absolute;
-    top: 6px;
-    right: 50px;
+    top: 13px;
+    right: 42px;
     font-weight: 700;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: 1em;
+    font-size: .6em;
     cursor: pointer;
-    ${SuperQuery().minWidth.sm.css`
-      letter-spacing: -1.5px;
-      top: 5px;
-      right: 65px;
-    `}
   }
   h4 {
     position: absolute;
-    top: 24px;
-    right: 50px;
+    top: 23px;
+    right: 42px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .75em;
+    font-size: .5em;
     cursor: pointer;
-    ${SuperQuery().minWidth.sm.css`
-      letter-spacing: -1.5px;
-      top: 29px;
-      right: 65px;
-    `}
   }
   p {
     font-size: .5em;
@@ -89,10 +68,9 @@ const FooterMenu = styled.footer`
       color: #fff;
       text-decoration:none;
       font-weight: 700;
-    &:hover {
-      text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
     }
-    }
-    
   }
 `

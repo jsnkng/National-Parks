@@ -70,7 +70,7 @@ const Grid__Container = styled(Grid)`
     font-size: 1.375em;
     line-height: 1.125;
     letter-spacing: -1px;
-    margin: 0;
+    margin: 1em 0 0 0;
   }
   p {
     font-size: 1em;
@@ -85,9 +85,7 @@ const Col__Container = styled(Col)`
   padding:  0;
   &.content {
     padding: 0 1.25em 0 1.25em;
-    &:first-child {
-      padding: 0 1.25em 1em 1.25em;
-    }
+   
     ${SuperQuery().minWidth.md.css`
       &:first-child {
         padding: 0 1.5em 0 0;
@@ -97,9 +95,9 @@ const Col__Container = styled(Col)`
 `
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 22em;
+  height: 12.5em;
   z-index: 10;
-  margin: 0 0 1.5em 0;
+  margin: .125em .54em;
   padding:  0;
   ${SuperQuery().minWidth.md.css`
     margin: .5em 0 1.5em 0;

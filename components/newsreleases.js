@@ -134,7 +134,8 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 11em;
+  height: 12.5em;
+  margin: .125em;
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`

@@ -68,21 +68,11 @@ const Grid__Container = styled(Grid)`
   h4 {
     font-size: 1.75em;
     line-height: 1;
-    padding: 0 .75em 0 .375em;
+    padding: .75em .75em 0 .375em;
     margin: 0;
     ${SuperQuery().minWidth.md.css`
       padding: .5em 0 0 0;
       font-size: 1.5em;
-    `}
-  }
-  span {
-    display: block;
-    font-size: 1em;
-    padding: .5em 1.25em 0em .75em;
-    margin: 0;
-    ${SuperQuery().minWidth.md.css`
-      font-size: .825em;
-      padding: 1em 0 0 0;
     `}
   }
   p {
@@ -90,7 +80,7 @@ const Grid__Container = styled(Grid)`
     padding: 0 .75em;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
-      padding: 0;
+      padding: .5em 0;
     `}
   }
 `
@@ -133,7 +123,8 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 11em;
+  height: 12.5em;
+  margin: .125em;
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`
