@@ -32,7 +32,6 @@ export default class MyApp extends App {
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    padding: 0;
     font-family: Helvetica, "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -96,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   float: right;
   border: 1px solid #ddd;
   padding: .25em 1.25em;
-  margin: 0 2em 4em 0;
+  margin: 1em 2em 4em 0;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase; 
@@ -192,31 +191,36 @@ const GlobalStyle = createGlobalStyle`
 
 
 .accordion {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
   padding: 0 7px;
 }
 
 .accordion__item + .accordion__item {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .accordion__button {
   color: #3db7e3;
   font-size: 1em;
+  line-height:1.2;
   font-weight: 600;
-  text-indent: 1em;
-  padding:  .75em 0 .75em .75em;
+  padding:  1em 0 1em .5em;
   border-bottom: 1px solid #3c3a3c;
   outline: 0;
   cursor: pointer;
   ${SuperQuery().minWidth.sm.css`
     font-size: 1.125em;
+    padding:  1em 0 .75em .7em;
   `}
   ${SuperQuery().minWidth.md.css`
-    padding:  .75em 0 .75em .5em;
-    text-indent: .75em;
+    font-size: 1.125em;
+    padding:  1em 0 .75em 1em;
   `}
+  h4 {
+
+    vertical-align: middle;
+    font-size: 1.125em;
+    display: inline;
+    width: 85%;
+  }
 }
 .accordion__button:hover {
   color: #a1dde9;
@@ -225,16 +229,16 @@ const GlobalStyle = createGlobalStyle`
 .accordion__button:before {
   display: inline-block;
   content: '';
-  height: .5em;
-  width: .5em;
-  margin-left: -22px;
-  margin-right: 10px;
+  height: 6px;
+  width: 6px;
+  margin-left: 2px;
+  margin-right: 8px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
   transform: rotate(-45deg);
   ${SuperQuery().minWidth.md.css`
-  margin-left: -18px;
-  margin-right: 10px;
+    margin-left: -4px;
+    margin-right: 8px;
   `}
 
 }
@@ -253,10 +257,10 @@ const GlobalStyle = createGlobalStyle`
   background-color: #252425;
   ${'' /* border-top: 1px solid #000000; */}
   
-  padding: .875em;
+  padding: 0 .5em;
   animation: fadein 0.35s ease-in;
   ${SuperQuery().minWidth.md.css`
-    padding: 1.5em;
+    padding: 0 .5em;
   `}
 }
 @keyframes fadein {
