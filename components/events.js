@@ -50,10 +50,13 @@ const Events = props => {
                     </Row__Container>
                     }
                     <Row__Container>
-                      <Col__Container xs={12} md={8} className="description">
+                      <Col__Container xs={12} md={8}>
+                      <div  className="description">
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                      </Col__Container>
-                      <Col__Container xs={12} md={4} className="details">
+                        </div>
+                        </Col__Container>
+                      <Col__Container xs={12} md={4}>
+                      <div  className="details">
                         { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                         }
@@ -78,6 +81,7 @@ const Events = props => {
                         {item.infourl !== "" &&
                           <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
                         }
+                        </div>
                       </Col__Container>
                     </Row__Container>
                   </AccordionItemPanel>
@@ -96,14 +100,14 @@ const Events = props => {
 export default Events
 
 const Grid__Container = styled(Grid)`
-  padding: 0;
+  padding: 0 .5em;
   vertical-align: text-top;
   h3 {
     overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
     margin: .05em;
-    padding: .425em .575em;
+    padding: .425em .575em .425em .25em;
     border: 0;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
@@ -111,31 +115,42 @@ const Grid__Container = styled(Grid)`
       padding: .425em .25em .425em 0;
     `}
   }
-  .description {
-    p {
-    margin: 1em .825em 1em 1.125em;
-    ${SuperQuery().minWidth.lg.css`
-      width: 85%;
-    `}
-    }
-  }
-  .details {
-    overflow-wrap: break-word;
-    background-color: #323132;
-    font-size: .875em;
-    padding: 1em 1.25em;
-    margin: 0;
-    ${SuperQuery().minWidth.md.css`
-      padding: .5em 1.25em 0 1.25em;
-      margin: 1em 0;
-    `}
-  }
+  
 `
 const Row__Container = styled(Row)`
   padding: 0;
 `
 const Col__Container = styled(Col)`
   padding: 0;
+  margin: 0;
+  .description {
+    overflow-wrap: break-word;
+    padding: .5em 1.125em;
+    p {
+      padding: 0 0 .5em 0;
+    }
+   ul {
+     margin:0;
+     padding:0 0 0 1em;
+   }
+   li {
+     padding: .5em 0 0 .25em;
+   }
+ }
+
+ .details {
+    font-size: .875em;
+    background-color: #323132;
+    padding: 1em 1.5em;
+    margin: 1em;
+    p {
+      margin: 0;
+      padding:0;
+    }
+    ${SuperQuery().minWidth.md.css`
+      margin: 1em 0;
+    `}
+  }
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

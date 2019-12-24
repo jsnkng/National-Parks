@@ -98,13 +98,12 @@ const Col__Container = styled(Col)`
 `
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 30em;
+  height: 22em;
   z-index: 10;
   margin: 0 0 1.5em 0;
   padding:  0;
   ${SuperQuery().minWidth.md.css`
     margin: .5em 0 1.5em 0;
     padding:  0;
-    height: 22em;
   `}
 `

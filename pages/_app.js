@@ -190,7 +190,7 @@ const GlobalStyle = createGlobalStyle`
 
 
 .accordion {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: none;
   border-radius: 2px;
   padding: 0 7px;
 }
@@ -201,15 +201,16 @@ const GlobalStyle = createGlobalStyle`
 
 .accordion__button {
   color: #3db7e3;
-  font-size: 1em;
+  font-size: 1.5em;
+  line-height: 1.2;
   font-weight: 600;
-  text-indent: 1em;
-  padding:  .75em 0 .75em .75em;
+  text-indent: .5em;
+  padding:  .75em 0 .75em 1em;
   border-bottom: 1px solid #3c3a3c;
   outline: 0;
   cursor: pointer;
   ${SuperQuery().minWidth.sm.css`
-    font-size: 1.125em;
+    font-size: 1.5em;
   `}
   ${SuperQuery().minWidth.md.css`
     padding:  .75em 0 .75em .5em;
@@ -225,7 +226,7 @@ const GlobalStyle = createGlobalStyle`
   content: '';
   height: .5em;
   width: .5em;
-  margin-left: -22px;
+  margin-left: -1.5em;
   margin-right: 10px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
@@ -238,7 +239,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .accordion__button[aria-expanded='true'],
 .accordion__button[aria-selected='true'] {
-  background-color: #0b0b0b;
+  ${'' /* background-color: #0b0b0b; */}
   color: #a1dde9;
 }
 .accordion__button[aria-expanded='true']::before,
@@ -248,10 +249,10 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .accordion__panel {
-  background-color: #252425;
+  position: relative;
   ${'' /* border-top: 1px solid #000000; */}
   
-  padding: .875em;
+  padding: .19em;
   animation: fadein 0.35s ease-in;
   ${SuperQuery().minWidth.md.css`
     padding: 1.5em;

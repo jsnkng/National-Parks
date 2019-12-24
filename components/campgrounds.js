@@ -38,7 +38,7 @@ const Campgrounds = props => {
                     <Row__Container>
                       <Col__Container xs={12}>
                         {item.images !== undefined && item.images != 0 && 
-                        <LazyLoad height={440} offset={600}>
+                        <LazyLoad height={320} offset={600}>
                           <Image backgroundURL={item.images[0].url} />
                         </LazyLoad>
                         }
@@ -231,27 +231,39 @@ const Campgrounds = props => {
 export default Campgrounds
 
 const Grid__Container = styled(Grid)`
-  padding: 0;
-  
+  padding: 0 .5em;
+  vertical-align: text-top;
   h3 {
     overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
-    margin: 0;
-    padding: .425em .575em;
+    margin: .05em;
+    padding: .425em .575em .425em .25em;
+    border: 0;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
       border-bottom: 4px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
+  p {
+    padding: 1em 0;
+    margin: 0 .25em 0 .5em;
+    ${SuperQuery().minWidth.lg.css`
+      width: 85%;
+    `}
+    &:last-child {
+      padding: 0 0 2em 0;
+    }
+  }
+  
   h5 {
     font-size: 1.125em;
     margin:0;
     padding: 0;
   }
   p {
-    font-size: .875em;
+    font-size: 1em;
     padding: 0 0 1em 0;
     margin: 0;
     word-wrap:break-word;
@@ -259,9 +271,10 @@ const Grid__Container = styled(Grid)`
   p.introduction {
     font-size: 1.125em;
     line-height: 1.625;
+    margin: .75em 1em;
   }
   ul {
-    font-size: .875em;
+    font-size: 1em;
     column-count: 1;
     list-style-type: none;
     padding: .25em 0 .25em 0;
@@ -278,16 +291,16 @@ const Grid__Container = styled(Grid)`
   }
 
   .section {
-    padding: .75em;
+    padding: .75em 0;
+    margin: 0 .625em;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
-    padding: .75em;
     border: none;
   }
 `
 const Row__Container = styled(Row)`
- 
+  padding: 0;
 `
 const Col__Container = styled(Col)`
   padding: 0;
@@ -299,7 +312,9 @@ const Col__Container = styled(Col)`
       `}
     }
   }
+ 
 `
+
 
 const MapLive__Wrapper = styled.div`
   position:relative;
@@ -314,16 +329,13 @@ const MapLive__Wrapper = styled.div`
 const CampgroundWrapper = styled.div`
 
 `
-
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
   height: 15em;
-  margin: 0;
-  padding: 0;
+  margin: .75em 1em;
   
   &.hidden {
     display: none;
