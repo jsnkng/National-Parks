@@ -32,6 +32,7 @@ export default class MyApp extends App {
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
+    padding: 0;
     font-family: Helvetica, "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -191,12 +192,10 @@ const GlobalStyle = createGlobalStyle`
 
 
 .accordion {
-  border-radius: 2px;
   padding: 0 7px;
 }
 
 .accordion__item + .accordion__item {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .accordion__button {
@@ -235,7 +234,7 @@ const GlobalStyle = createGlobalStyle`
   content: '';
   height: 6px;
   width: 6px;
-  margin-left: 0px;
+  margin-left: 2px;
   margin-right: 8px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;

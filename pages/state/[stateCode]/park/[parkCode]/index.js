@@ -119,11 +119,7 @@ const Park = props => {
         </Places__Wrapper>
       }
       
-      { articles !== undefined && articles.length != 0 &&
-        <Articles__Wrapper>
-          <Articles__Component park={park} articles={articles} />
-        </Articles__Wrapper>
-      }
+     
       
       { people !== undefined && people.length != 0 &&
         <People__Wrapper>

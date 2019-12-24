@@ -103,8 +103,9 @@ const Grid__Container = styled(Grid)`
     overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
-    margin: 0;
+    margin: .05em;
     padding: .425em .575em;
+    border: 0;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
       border-bottom: 4px solid #ffffff;
