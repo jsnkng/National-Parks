@@ -43,6 +43,8 @@ const FooterMenu = styled.footer`
   }
   h3 {
     position: absolute;
+    margin: 0;
+    padding: 0;
     top: 13px;
     right: 42px;
     font-weight: 700;
@@ -50,9 +52,13 @@ const FooterMenu = styled.footer`
     line-height: 1;
     font-size: .6em;
     cursor: pointer;
+    text-decoration: none;
+    border: none;
   }
   h4 {
     position: absolute;
+    margin: 0;
+    padding: 0;
     top: 23px;
     right: 42px;
     font-weight: 500;
@@ -60,6 +66,8 @@ const FooterMenu = styled.footer`
     line-height: 1;
     font-size: .5em;
     cursor: pointer;
+    text-decoration: none;
+    border: none;
   }
   p {
     font-size: .5em;

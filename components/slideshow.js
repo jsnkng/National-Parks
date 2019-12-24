@@ -7,23 +7,29 @@ const SlideShow = props => {
   const [park, setPark] = useState(props.park)
 
   return (
-    <SlideShow__Container showArrows={true} showThumbs={false} infiniteLoop={true} emulateTouch={true} showStatus={false}>
+    <Carousel__Styled 
+      showArrows={true} 
+      showThumbs={false} 
+      infiniteLoop={true} 
+      emulateTouch={true} 
+      showStatus={false}>
       { park.images.slice(0).map((item) => {
-        const url = "http://national-park-images.s3-website-us-east-1.amazonaws.com/" + item.url.replace(/[/:-]/g, '_')
-          return(
-            <ResponsiveImage key={item.id} backgroundURL={url}>
-              <h4>{item.title}</h4>
-            </ResponsiveImage>
-          )
+        return(
+          <Image 
+            key={item.id} 
+            backgroundURL={`${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`}>
+            <h4>{item.title}</h4>
+          </Image>
+        )
         })
       }
-    </SlideShow__Container>
+    </Carousel__Styled>
   )
 }
 
 export default SlideShow
 
-const ResponsiveImage = styled.div`
+const Image = styled.div`
   position: relative;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
@@ -43,6 +49,7 @@ const ResponsiveImage = styled.div`
     height: 75vw;
     max-height: 82vh;
   `}
+
   h4 {
     position: absolute;
     bottom: 35px;
@@ -51,16 +58,8 @@ const ResponsiveImage = styled.div`
     margin: 0;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
   }
-  h5 {
-    position: absolute;
-    bottom: 15px;
-    right: 20px;
-    color: #ffffff;
-    margin: 0;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
-  }
 `
-const SlideShow__Container = styled(Carousel)`
+const Carousel__Styled = styled(Carousel)`
   margin-top: -80px;
   ${SuperQuery().minWidth.md.css`
     margin-top: -90px;

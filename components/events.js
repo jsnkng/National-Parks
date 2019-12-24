@@ -21,15 +21,16 @@ const Events = props => {
   }
 
   return (
-    <Grid__Container>
+    <Events__Wrapper>
+    <Grid>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row__Container>
-          <Col__Container xs={12}>
+        <Row>
+          <Col xs={12}>
             <h3>Events</h3>
-          </Col__Container>
-        </Row__Container>
-        <Row__Container>
-          <Col__Container xs={12}>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
           { events.slice(0,10).map((item) => {
             return (
               <LazyLoad height={70} offset={600} key={item.id}>
@@ -41,21 +42,21 @@ const Events = props => {
                   </AccordionItemHeading>
                   <AccordionItemPanel>
                     { item.images.length !== 0 &&
-                    <Row__Container>
-                      <Col__Container xs={12}>
+                    <Row>
+                      <Col xs={12}>
                         <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 
                           ? "/US-National-Parks-logo-sml-bw.png" 
                           : "https://www.nps.gov"+item.images[0].url } />
-                      </Col__Container>
-                    </Row__Container>
+                      </Col>
+                    </Row>
                     }
-                    <Row__Container>
-                      <Col__Container xs={12} md={8}>
+                    <Row>
+                      <Col xs={12} md={8}>
                       <div  className="description">
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                         </div>
-                        </Col__Container>
-                      <Col__Container xs={12} md={4}>
+                        </Col>
+                      <Col xs={12} md={4}>
                       <div  className="details">
                         { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
@@ -82,50 +83,30 @@ const Events = props => {
                           <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
                         }
                         </div>
-                      </Col__Container>
-                    </Row__Container>
+                      </Col>
+                    </Row>
                   </AccordionItemPanel>
                 </AccordionItem>
               </LazyLoad>
               )
             })
           }
-          </Col__Container>
-        </Row__Container> 
+          </Col>
+        </Row> 
       </Accordion>     
-    </Grid__Container>
+    </Grid>
+    </Events__Wrapper>
   )
 }
   
 export default Events
 
-const Grid__Container = styled(Grid)`
-  padding: 0 .5em;
-  vertical-align: text-top;
-  h3 {
-    font-size: 2.5em;
-    line-height: 1;
-    margin: .05em;
-    padding: .425em .575em .425em .25em;
-    border: 0;
-    border-bottom: 1px solid #ffffff;
-    ${SuperQuery().minWidth.md.css`
-      padding: .425em .25em .425em 0;
-    `}
-  }
-`
-const Row__Container = styled(Row)`
-  padding: 0;
-`
-const Col__Container = styled(Col)`
-  padding: 0;
-  margin: 0;
+const Events__Wrapper = styled.div`
 
   .description {
     overflow-wrap: break-word;
     div {
       padding: .5em 0 .25em 1.125em;
-
       ${SuperQuery().minWidth.md.css`
         padding: 0 0 .5em .4em;
       `}
@@ -138,7 +119,6 @@ const Col__Container = styled(Col)`
       padding: .5em 0 0 .25em;
     }
   }
-
  .details {
     font-size: .875em;
     background-color: #323132;

@@ -8,59 +8,33 @@ const Description = props => {
   const [park, setPark] = useState(props.park)
 
   return (
-    <Grid__Container>
-      <Row__Container>
-        <Col__Container xs={12}>
-          <h2>{park.name} {park.designation}</h2>
-        </Col__Container>
-      </Row__Container>
-      <Row__Container>
-        <Col__Container xs={12} sm={12} md={8} lg={8} xl={8}>
+    <Grid>
+      <Row>
+        <Col xs={12}>
+          <h1>{park.name} {park.designation}</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} sm={12} md={8} lg={8} xl={8}>
           <p>{park.description}</p>
-        </Col__Container>
-        <Col__Container xs={12} sm={12} md={4} lg={4} xl={4}>
-          <MapDiagramWrapper>
+        </Col>
+        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+          <MapDiagram__Wrapper>
             <MapDiagram highlighted={null} onHighlight={(terr) => setHighlight(terr)} states={park.states} />
-          </MapDiagramWrapper>
-        </Col__Container>
-      </Row__Container>
-    </Grid__Container>
+          </MapDiagram__Wrapper>
+        </Col>
+      </Row>
+    </Grid>
   )
 }
   
 export default Description
 
-const MapDiagramWrapper = styled.div`
+const MapDiagram__Wrapper = styled.div`
   margin: 1.75em auto 2.5em auto;
   width: 60%;
   ${SuperQuery().minWidth.md.css`
     width: 100%;
-    margin: 0;
+    margin: .75em auto;
   `}
-`
-const Grid__Container = styled(Grid)`
-  padding: .5em 1em;
-  h2 {
-    font-size: 2em;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    letter-spacing: -1.5px;
-  }
-  p {
-  ${SuperQuery().minWidth.md.css`
-    padding: 0 1em 0 0;
-  `}
-  }
-  ${SuperQuery().minWidth.md.css`
-  padding: 1em 1em 0 1em;
-  `}
-`
-const Row__Container = styled(Row)`
-  padding: 0;
-  margin: 0;
-`
-const Col__Container = styled(Col)`
-  margin: 0;
-  padding: 0;
 `

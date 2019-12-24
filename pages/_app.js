@@ -4,6 +4,30 @@ import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
+const theme = {
+  flexboxgrid: {
+    // Defaults
+    gridSize: 12, // columns
+    gutterWidth: 1, // rem
+    outerMargin: 1, // rem
+    mediaQuery: 'only screen',
+    container: {
+      xs: 0,  // em
+      sm: 36, // em
+      md: 48, // em
+      lg: 62,  // em
+      xl: 75
+    },
+    breakpoints: {
+      xs: 0,  // em
+      sm: 36, // em
+      md: 48, // em
+      lg: 62,  // em
+      xl: 75
+    }
+  }
+}
+
 export default class MyApp extends App {
 
   render() {
@@ -44,20 +68,113 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
   h1,h2,h3,h4,h5,h6,p {
-    margin: .4em 0;
+    margin: 0;
     padding: 0;
   }
-
   h1,h2,h3,h4,h5,h6 {
     word-break: normal;
-    letter-spacing:-1px;
   }
 
+  h1 {
+    font-size: 2em;
+    margin: 0;
+    padding: .25em .25em 0 .25em;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+  h2 {
+    font-size: 2em;
+    line-height: 1;
+    margin: .05em;
+    padding: .425em .575em .425em .25em;
+    border: 0;
+    border-bottom: 1px solid #ffffff;
+    ${SuperQuery().minWidth.md.css`
+      padding: .25em .25em .25em 0;
+    `}
+  }
+  h3 {
+    font-size: 1.25em;
+    line-height: 1.125;
+    letter-spacing: -1px;
+    margin: .5em 0 0 .5em;
+  }
 
+  h4 {
+    font-size: 1.125em;
+    margin:0;
+    padding: 0;
+  }
+  h5 {
+  }
+  h6 {
+    font-size: 2em;
+  }
+ 
+  p {
+    padding: .5em;
+    margin: 0 0 .5em 0;
+    font-size: 1em;
+    font-weight: 300;
+    overflow-wrap: break-word;
+  }
+  ul {
+    font-size: 1em;
+    column-count: 1;
+    list-style-type: none;
+    padding: .25em 0 .25em 0;
+    margin: 0;
+    ${SuperQuery().minWidth.sm.css`
+    column-count: 2;
+    `}
+  }
+  li {
+    font-size: .9em;
+    list-style-type: none;
+    padding: .3125em 0;
+    font-weight: 300;
+  }
+  .articles__date {
+    display: block;
+    font-size: 1em;
+    padding: .5em 1.25em 0em .75em;
+    margin: 0;
+    ${SuperQuery().minWidth.md.css`
+      font-size: .825em;
+      padding: 1em 0 0 0;
+    `}
+  }
+  ${'' /* .content {
+    ${SuperQuery().minWidth.md.css`
+      margin: 0;
+      border: none;
+      &:nth-child(3n+1) {
+        padding: .5em .5em .5em .125em;
+      } 
+      &:nth-child(3n+2) {
+        padding: .5em .25em 0 .25em;
+      } 
+      &:nth-child(3n+3) {
+        padding: .5em .125em .5em .5em;
+      } 
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      margin: 0;
+      border: 0px solid;
+      &:nth-child(3n+1) {
+        padding: .5em .5em .5em 0;
+      } 
+      &:nth-child(3n+2) {
+        padding: .5em .5em 0 .5em;
+      } 
+      &:nth-child(3n+3) {
+        padding: .5em 0 .5em .5em;
+      } 
+    `}
+  } */}
   summary {
     outline: none;
   }
-
   #spinner {
   width: 100%;
   height: 100%;
@@ -67,7 +184,6 @@ const GlobalStyle = createGlobalStyle`
   color: #ffffff;
   font-size: .7em;
 }
-
 .btn__load-more {
   clear: both;
   display:none;
@@ -211,9 +327,36 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.5em;
   `}
   ${SuperQuery().minWidth.md.css`
-    padding:  .75em 0 .75em .5em;
+    ${'' /* padding:  .75em 0 .75em .5em; */}
     text-indent: .75em;
   `}
+  color: #3db7e3;
+  font-size: 1.25em;
+  line-height: 1.2;
+  font-weight: 600;
+  text-indent: .5em;
+  ${'' /* padding:  .75em 0 .75em 1.5em; */}
+  border-bottom: 1px solid #3c3a3c;
+  outline: 0;
+  cursor: pointer;
+  ${SuperQuery().minWidth.sm.css`
+    font-size: 1.5em;
+  `}
+  ${SuperQuery().minWidth.md.css`
+    ${'' /* padding:  .75em 0 .75em .5em; */}
+    text-indent: .75em;
+  `}
+h3 {
+    color:rgb(255,255,255);
+letter-spacing:-1px;
+margin-block-end:0px;
+margin-block-start:0px;
+margin-bottom:0px;
+margin-inline-end:0px;
+margin-inline-start:0px;
+margin-left:0px;
+margin-right:0px;
+margin-top:0px;}
 }
 .accordion__button:hover {
   color: #a1dde9;
@@ -221,11 +364,13 @@ const GlobalStyle = createGlobalStyle`
 
 .accordion__button:before {
   display: inline-block;
+  float: left;
   content: '';
   height: .5em;
   width: .5em;
   margin-left: -1.5em;
   margin-right: 10px;
+  margin-top:10px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
   transform: rotate(-45deg);
@@ -265,30 +410,3 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 `
-
-
-
-
-const theme = {
-  flexboxgrid: {
-    // Defaults
-    gridSize: 12, // columns
-    gutterWidth: 1, // rem
-    outerMargin: 1, // rem
-    mediaQuery: 'only screen',
-    container: {
-      xs: 0,  // em
-      sm: 36, // em
-      md: 48, // em
-      lg: 62,  // em
-      xl: 75
-    },
-    breakpoints: {
-      xs: 0,  // em
-      sm: 36, // em
-      md: 48, // em
-      lg: 62,  // em
-      xl: 75
-    }
-  }
-}

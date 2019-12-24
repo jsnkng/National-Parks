@@ -222,21 +222,13 @@ const VisitorInfo__Wrapper = styled.div`
 `
 const VisitorCenters__Wrapper = styled.div`
   background-color: #1e1d1e;
-  padding: 1em 0;
   color: #ffffff;
-  
-  h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
-  }
   a {
     color: #3db7e3;
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+  }
+  > div {
+    padding: 0 .375em;
   }
 `
 const Campgrounds__Wrapper = styled.div`

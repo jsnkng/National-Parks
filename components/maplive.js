@@ -7,12 +7,11 @@ const mapStyles = {
 }
 
 const MapLive = props => {
-  let markers = []
-
   const [showingInfoWindow, setShowingInfoWindow] = useState()
   const [activeMarker, setActiveMarker] = useState()
   const [selectedPlace, setSelectedPlace] = useState()
 
+  let markers = []
   const onMarkerClick = (props, marker, e) => {
     setShowingInfoWindow(true)
     setActiveMarker(marker)
@@ -28,7 +27,7 @@ const MapLive = props => {
   }
 
   return (
-    <MapStyled
+    <Map
       google={google}
       zoom={props.zoom}
       style={mapStyles}
@@ -45,26 +44,19 @@ const MapLive = props => {
           )
         })
       }
-      <InfoWindowStyled
+      <InfoWindow
         marker={activeMarker}
         visible={showingInfoWindow}>
-          <div>
-            <h3  style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
-            <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
-          </div>
-      </InfoWindowStyled>
-    </MapStyled>
+        <div>
+          <h3 style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.name : "Not Known" }</h3>
+          <p style={{color: '#444444'}}>{ selectedPlace !== undefined ? selectedPlace.description : "Not Known" }</p>
+        </div>
+      </InfoWindow>
+    </Map>
   )
-  
 }
 
 export default GoogleApiWrapper({
   apiKey: process.env.GOO_KEY
 })(MapLive);
 
-const MapStyled = styled(Map)`
-`
-const InfoWindowStyled = styled(InfoWindow)`
-  color: #333333;
-  h1 {color: #333333;}
-`

@@ -9,48 +9,41 @@ const TerritoryList = props => {
     props.onHighlight(territory)
   }
   return (
-    <TerritoryListWrapper>
+    <TerritoryList__Wrapper>
       { Object.entries(states).map(([key, value]) => {
-        const as = "/state/" + key
         return ( 
-          <Link 
-            key={key} 
-            href="/state/[stateCode]" 
-            as={as} passHref>
-            <div className={props.highlighted === value[0] ? 'highlight' : ''}  
+          <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
+            <a className={props.highlighted === value[0] ? 'highlight' : ''}  
               onMouseOver={() => handleHover(value[0])}
               onMouseOut={() => handleHover(null)}
               onClick={props.handleBannerClick}>
               {value[0]}
-            </div>
+            </a>
           </Link>
         )
-      })
+      })  
       }
-    </TerritoryListWrapper>
+    </TerritoryList__Wrapper>
   )
 }
 
 export default TerritoryList
 
-const TerritoryListWrapper = styled.div`
+const TerritoryList__Wrapper = styled.div`
   columns: 2;
-  
-  div {
-    a {
-      font-weight: 500;
-      letter-spacing: -.5px;
-      text-decoration: none;
-      color: #333333;
-    }
-    &.highlight a, a:hover  {
-      color: green;
-      font-weight: 700;
-      text-decoration: underline;
-    }
-  }
   ${SuperQuery().minWidth.sm.css`
     columns: 3;
-  `
+  `}
+  a {
+    display: block;
+    font-weight: 500;
+    letter-spacing: -.5px;
+    text-decoration: none;
+    color: #333333;
+  }
+  a.highlight , a:hover  {
+    color: green;
+    font-weight: 700;
+    text-decoration: underline;
   }
 `
