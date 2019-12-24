@@ -56,10 +56,10 @@ const Grid__Container = styled(Grid)`
     font-size: 2em;
     line-height: 1;
     margin: 0;
-    padding: .425em .3em;
+    padding: .425em .575em;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
-    border-bottom: 4px solid #ffffff;
+      border-bottom: 4px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
