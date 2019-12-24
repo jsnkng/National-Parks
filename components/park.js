@@ -58,7 +58,7 @@ const ParkWrapper = styled.div`
 `
 const Banner = styled.div`
   background-color: rgba(0,0,0,.70);
-  height: 40px;
+  height: 30px;
   padding: 15px;
   color: #ffffff;
   z-index: 230;
