@@ -62,7 +62,7 @@ h3 {
   h4 {
     font-size: 1.75em;
     line-height: 1;
-    padding: 0 .75em 0 .75em;
+    padding: 0 .75em 0 .375em;
     margin: 0;
     ${SuperQuery().minWidth.md.css`
       padding: .5em 0 0 0;
@@ -70,14 +70,19 @@ h3 {
     `}
   }
   span {
-    font-size: .75em;
-    font-weight: 600;
-    margin: 0 2em 0 0;
-    float: right;
+    display: block;
+    font-size: 1em;
+    padding: .5em 1.25em 0em .75em;
+    margin: 0;
+    ${SuperQuery().minWidth.md.css`
+      font-size: .825em;
+      padding: 1em 0 0 0;
+    `}
+  }
   }
   p {
     font-size: 1em;
-    padding: 0 1.25em 0em 1.25em;
+    padding: 0 .75em;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
       padding: 0;
@@ -89,11 +94,10 @@ const Row__Container = styled(Row)`
 `
 const Col__Container = styled(Col)`
   padding: 0;
-  
   &.content {
     ${SuperQuery().minWidth.md.css`
       margin: 0;
-      border: 0px solid;
+      border: none;
       &:nth-child(3n+1) {
         padding: .5em .5em .5em ;
       } 
@@ -120,18 +124,16 @@ const Col__Container = styled(Col)`
   }
 `
 const Image = styled.div`
-  float: left;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
   height: 15em;
-  margin: 0 0 2em 0;
+  margin: .75em;
   &.hidden {
     display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
   }
-  ${SuperQuery().minWidth.md.css`
-    height: 12em;
-  `}
 `
