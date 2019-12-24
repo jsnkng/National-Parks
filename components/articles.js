@@ -35,7 +35,7 @@ const Articles = props => {
                 className={item.listingimage.url === undefined || item.listingimage.url.length === 0 ? "hidden" : "" } />
             </a>
             {item.listingimage.url === undefined || item.listingimage.url.length === 0 
-            ?  <><h4 style={{fontSize: '1.9em',lineHeight:'.9'}}><a href={item.url} target="_blank">{item.title}</a></h4><p style={{fontSize: '1em'}}>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+            ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
             :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
             }
           </Col__Container>
@@ -57,7 +57,7 @@ const Grid__Container = styled(Grid)`
   padding: 0 .5em;
   h3 {
     overflow-wrap: break-word;
-    font-size: 2.5em;
+    font-size: 2.5em;r
     line-height: 1;
     margin: .05em;
     padding: .425em .575em .425em .25em;
@@ -130,8 +130,5 @@ const Image = styled.div`
   margin: .125em;
   &.hidden {
     display: none;
-    ${SuperQuery().minWidth.md.css`
-      display: block;
-    `}
   }
 `

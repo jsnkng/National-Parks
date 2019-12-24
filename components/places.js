@@ -127,8 +127,5 @@ const Image = styled.div`
   margin: .125em;
   &.hidden {
     display: none;
-    ${SuperQuery().minWidth.md.css`
-      display: block;
-    `}
   }
 `
