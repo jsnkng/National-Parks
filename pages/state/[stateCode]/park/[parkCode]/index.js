@@ -79,7 +79,7 @@ const Park = props => {
         <VisitorInfo__Component park={park} markers={markers} />
       </VisitorInfo__Wrapper>
       
-      { events !== undefined && events.length != 0 &&
+      {/* { events !== undefined && events.length != 0 &&
         <Events__Wrapper>
           <Events__Component park={park} events={events} />
         </Events__Wrapper>
@@ -103,7 +103,7 @@ const Park = props => {
         </Campgrounds__Wrapper>
       }
 
-{/* 
+*/}
       { newsReleases !== undefined && newsReleases.length != 0 &&
         <NewsReleases__Wrapper>
           <NewsReleases__Component park={park} newsReleases={newsReleases} />
@@ -129,7 +129,7 @@ const Park = props => {
         <People__Wrapper>
           <People__Component park={park} people={people} />
         </People__Wrapper>
-      } */}
+      } 
       <Footer__Component
         pageTitle={park.name}
         pageStateCode={stateCode}
