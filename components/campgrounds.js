@@ -49,24 +49,23 @@ const Campgrounds = props => {
                       <Row className="section">
                         <Col xs={12} sm={6}>
                             <>
-                              { item.directionsoverview !== undefined && item.directionsoverview !== 0 && 
-                                <>
+                            { item.directionsoverview !== undefined && item.directionsoverview !== 0 && 
+                              <>
                                 <h5>Directions</h5>
                                 <p>{item.directionsoverview}<br />
                                   <a href={item.directionsUrl} target="_blank">Click for Directions</a>
                                 </p>
-                            </>
-                              }
-                              { item.campsites !== undefined && item.campsites !== 0 && 
-                                <>
+                              </>
+                            }
+                            { item.campsites !== undefined && item.campsites !== 0 && 
+                              <>
                                 <h5>Campsites</h5>
                                 <ul> 
                                   { Object.entries(item.campsites).map((item) => item[1] !== '0' ? <li key={item[0]}><strong>{item[0]}:</strong> {item[1]} </li> : '') }
                                 </ul>
+                              </>
+                            }
                             </>
-                              }
-                            </>
-                          
                         </Col>
                         <Col xs={12} sm={6}>
                           <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>

@@ -9,7 +9,7 @@ const theme = {
     // Defaults
     gridSize: 12, // columns
     gutterWidth: 1, // rem
-    outerMargin: 1.25, // rem
+    outerMargin: 1, // rem
     mediaQuery: 'only screen',
     container: {
       xs: 0,  // em
@@ -25,6 +25,22 @@ const theme = {
       lg: 62,  // em
       xl: 75
     }
+  },
+  // colors:{
+  //   background: "#f1f1f1",
+  //   text: "#1e1d1e",
+  //   color_one: "#00ac47",
+  //   color_two: "#69bb37",
+  //   color_three: "#1e1d1e",
+  //   spinner: "rgba(255,255,255,0.8)"
+  // },
+  colors:{
+    background: "#1e1d1e",
+    text: "#ffffff",
+    color_one: "#3db7e3",
+    color_two: "#a1dde9",
+    color_three: "#1e1d1e",
+    spinner: "rgba(0,0,0,0.8)"
   }
 }
 
@@ -61,7 +77,8 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     font-size: 16px;
-    background-color: #3c3a3c;
+    
+    background-color: ${props => props.theme.colors.background};
     ${SuperQuery().minWidth.sm.css`
       font-size: 20px;
       letter-spacing: -.5px;
@@ -87,7 +104,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: .425em .575em .425em 0;
     border: 0;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid ${props => props.theme.colors.text};
     ${SuperQuery().minWidth.md.css`
       padding: .25em .25em .25em 0;
     `}
@@ -111,7 +128,13 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     font-size: 2em;
   }
- 
+  a {
+    color: #3db7e3;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   p {
     padding: .5em 0 0 0;
     margin: 0 0 .5em 0;
@@ -152,8 +175,8 @@ const GlobalStyle = createGlobalStyle`
   height: 100%;
   position: absolute;
   z-index: 100;
-  background-color: rgba(0,0,0,0.8);
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.spinner};
+  color: ${props => props.theme.colors.text};
   font-size: .7em;
 }
 .btn__load-more {
@@ -166,8 +189,8 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 500;
   text-transform: uppercase;
   color: #a1dde9;
-  border:1px solid #3db7e3;
-  background-color: rgba(0,0,0,.9);
+  border: 1px solid #3db7e3;
+  background-color: ${props => props.theme.colors.spinner};
   cursor: pointer;
   &:hover {
     background-color: rgba(255,255,255,.015);
@@ -181,15 +204,14 @@ const GlobalStyle = createGlobalStyle`
 }
 .btn__read-more {
   float: right;
-  border: 1px solid #ddd;
+  border: 1px solid ${props => props.theme.colors.color_two};
   padding: .25em 1.25em;
   margin: .5em 2em 2em 0;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase; 
-  color: #a1dde9;
-  border:1px solid #a1dde9;
-  background-color: rgba(0,0,0,.9);
+  color: ${props => props.theme.colors.color_one};
+  background-color: ${props => props.theme.colors.spinner};
   cursor: pointer;
   &:hover {
     background-color: rgba(255,255,255,.015);
@@ -223,7 +245,7 @@ const GlobalStyle = createGlobalStyle`
   .sk-cube-grid .sk-cube {
     width: 33%;
     height: 33%;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.colors.text};
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
             animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
@@ -285,18 +307,16 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .accordion__button {
-  color: #3db7e3;
+  color: ${props => props.theme.colors.color_two};
   line-height: 1.2;
   font-weight: 600;
   text-indent: .5em;
   padding:  1em 0 1em .5em;
-  border-bottom: 1px solid #3c3a3c;
+  border-bottom: 1px solid ${props => props.theme.colors.text};
   outline: 0;
   cursor: pointer;
   text-indent: 0;
  
-
-
   h3 {
     letter-spacing:-1px;
     margin-block-end:0px;
@@ -310,7 +330,7 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 .accordion__button:hover {
-  color: #a1dde9;
+  color: ${props => props.theme.colors.color_one};
 }
 
 .accordion__button:before {
@@ -327,8 +347,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .accordion__button[aria-expanded='true'],
 .accordion__button[aria-selected='true'] {
-  ${'' /* background-color: #0b0b0b; */}
-  color: #a1dde9;
+  color: ${props => props.theme.colors.color_one};
 }
 .accordion__button[aria-expanded='true']::before,
 .accordion__button[aria-selected='true']::before {
@@ -338,7 +357,7 @@ const GlobalStyle = createGlobalStyle`
 
 .accordion__panel {
   animation: fadein 0.35s ease-in;
-  border-bottom: 1px solid #3c3a3c;
+  border-bottom: 1px solid ${props => props.theme.colors.text};
 }
 @keyframes fadein {
   0% {

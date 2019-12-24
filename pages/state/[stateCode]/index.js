@@ -136,8 +136,8 @@ const Spinner = styled.div`
   position: fixed;
   top:0;
   z-index: 2000;
-  background-color: rgba(0,0,0,0.8);
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.spinner};
+  color: ${props => props.theme.colors.text};
   font-size: .7em;
   &.show {
     display: block;

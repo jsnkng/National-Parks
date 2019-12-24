@@ -165,23 +165,20 @@ const Container = styled.div`
 const Description__Wrapper = styled.div`
   padding: 1em 0;
   margin: 0;
-  background-color: #1e1d1e;
-  color: #ffffff; 
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   margin: 0;
 `
 const NewsReleases__Wrapper = styled.div`
-  background-color: #1e1d1e;
-  color: #ffffff; 
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   margin: 0;
   padding: 20px 0;
   h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
+    color: ${props => props.theme.colors.color_two};
   }
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -189,11 +186,11 @@ const NewsReleases__Wrapper = styled.div`
   }
 `
 const Events__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -201,11 +198,11 @@ const Events__Wrapper = styled.div`
   }
 `
 const VisitorInfo__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -213,39 +210,34 @@ const VisitorInfo__Wrapper = styled.div`
   }
 `
 const VisitorCenters__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
   }
 `
 const Campgrounds__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+  }
   }
 `
 const Articles__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
+    color: ${props => props.theme.colors.color_two};
   }
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -253,17 +245,14 @@ const Articles__Wrapper = styled.div`
   }
 `
 const Places__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
+    color: ${props => props.theme.colors.color_two};
   }
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -271,17 +260,14 @@ const Places__Wrapper = styled.div`
   }
 `
 const People__Wrapper = styled.div`
-  background-color: #1e1d1e;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   padding: 1em 0;
-  color: #ffffff;
   h4 a {
-    color: #a1dde9;
-  }
-  h3 {
-    color: #ffffff;
+    color: ${props => props.theme.colors.color_two};
   }
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
