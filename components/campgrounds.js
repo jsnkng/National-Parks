@@ -236,7 +236,7 @@ const Grid__Container = styled(Grid)`
   
   h3 {
     overflow-wrap: break-word;
-    font-size: 3em;
+    font-size: 2.5em;
     line-height: 1;
     margin: .05em;
     padding: .425em .575em .425em .25em;

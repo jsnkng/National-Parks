@@ -66,6 +66,10 @@ const Grid__Container = styled(Grid)`
   p {
     padding: 1em 0;
     margin: 0 .25em 0 .5em;
+    ${SuperQuery().minWidth.md.css`
+      padding: 0;
+      margin: 0;
+    `}
     ${SuperQuery().minWidth.lg.css`
       width: 85%;
     `}

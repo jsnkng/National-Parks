@@ -113,7 +113,6 @@ const Grid__Container = styled(Grid)`
       padding: .425em .25em .425em 0;
     `}
   }
-  
 `
 const Row__Container = styled(Row)`
   padding: 0;
@@ -121,20 +120,24 @@ const Row__Container = styled(Row)`
 const Col__Container = styled(Col)`
   padding: 0;
   margin: 0;
+
   .description {
     overflow-wrap: break-word;
-    padding: .5em 1.125em;
-    p {
-      padding: 0 0 .5em 0;
+    div {
+      padding: .5em 0 .25em 1.125em;
+
+      ${SuperQuery().minWidth.md.css`
+        padding: 0 0 .5em .4em;
+      `}
     }
-   ul {
-     margin:0;
-     padding:0 0 0 1em;
-   }
-   li {
-     padding: .5em 0 0 .25em;
-   }
- }
+    ul {
+      margin: 0;
+      padding: 0 0 0 1em;
+    }
+    li {
+      padding: .5em 0 0 .25em;
+    }
+  }
 
  .details {
     font-size: .875em;

@@ -43,10 +43,11 @@ const People = props => {
   
 export default People
 
+
 const Grid__Container = styled(Grid)`
-padding: 0 .5em;
+  padding: 0 .5em;
   
-h3 {
+  h3 {
     overflow-wrap: break-word;
     font-size: 2.5em;
     line-height: 1;
@@ -55,7 +56,7 @@ h3 {
     border: 0;
     border-bottom: 1px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
-      border-bottom: 4px solid #ffffff;
+      border-bottom:  1px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
@@ -98,13 +99,13 @@ const Col__Container = styled(Col)`
       margin: 0;
       border: none;
       &:nth-child(3n+1) {
-        padding: .5em .5em .5em ;
+        padding: .5em .5em .5em .125em;
       } 
       &:nth-child(3n+2) {
         padding: .5em .25em 0 .25em;
       } 
       &:nth-child(3n+3) {
-        padding: .5em .625em .5em .5em;
+        padding: .5em .125em .5em .5em;
       } 
     `}
     ${SuperQuery().minWidth.lg.css`
@@ -127,8 +128,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 15em;
-  margin: .75em;
+  height: 11em;
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`
