@@ -51,16 +51,15 @@ export default VisitorCenters
 const Grid__Container = styled(Grid)`
   padding: 0 .5em;
   vertical-align: text-top;
+  
   h3 {
-    overflow-wrap: break-word;
-    font-size: 2em;
+    font-size: 2.5em;
     line-height: 1;
     margin: .05em;
     padding: .425em .575em .425em .25em;
     border: 0;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
-      border-bottom: 4px solid #ffffff;
       padding: .425em .25em .425em 0;
     `}
   }
