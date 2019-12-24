@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   float: right;
   border: 1px solid #ddd;
   padding: .25em 1.25em;
-  margin: 1em 2em 4em 0;
+  margin: .5em 2em 2em 0;
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase; 
@@ -103,8 +103,6 @@ const GlobalStyle = createGlobalStyle`
   border:1px solid #a1dde9;
   background-color: rgba(0,0,0,.9);
   cursor: pointer;
-
-  
   &:hover {
     background-color: rgba(255,255,255,.015);
   }
@@ -201,11 +199,11 @@ const GlobalStyle = createGlobalStyle`
 
 .accordion__button {
   color: #3db7e3;
-  font-size: 1.5em;
+  font-size: 1.25em;
   line-height: 1.2;
   font-weight: 600;
   text-indent: .5em;
-  padding:  .75em 0 .75em 1em;
+  padding:  .75em 0 .75em 1.5em;
   border-bottom: 1px solid #3c3a3c;
   outline: 0;
   cursor: pointer;

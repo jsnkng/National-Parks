@@ -72,7 +72,7 @@ const HeaderMenu = styled.header`
     position: absolute;
     top: 12px;
     left: 7px;
-    width: 40px;
+    width: 30px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 14px;
@@ -83,7 +83,7 @@ const HeaderMenu = styled.header`
   h1 {
     float: right;
     clear: right;
-    margin: 10px 7px 0 0;
+    margin: 12px 7px 0 0;
     text-align:right;
     font-weight: 700;
     letter-spacing: -.5px;
@@ -117,7 +117,7 @@ const HeaderMenu = styled.header`
   h3{
     position: absolute;
     top: 12px;
-    left: 52px;
+    left: 47px;
     text-align: right;
     font-weight: 600;
     letter-spacing: -1.5px;

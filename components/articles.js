@@ -60,14 +60,15 @@ export default Articles
 
 
 const Grid__Container = styled(Grid)`
-  padding: 0;
+padding: 0 .5em;
   
-  
-  h3 {
+h3 {
+    overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
-    margin: 0;
-    padding: .425em .575em;
+    margin: .05em;
+    padding: .425em .575em .425em .25em;
+    border: 0;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
       border-bottom: 4px solid #ffffff;

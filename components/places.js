@@ -23,7 +23,7 @@ const Places = props => {
         }
         {item.listingimage.url === "" || item.listingimage.url.length === 0 
         ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-        :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+        :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 300)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
         }
       
       
@@ -63,14 +63,15 @@ const Places = props => {
 export default Places
 
 const Grid__Container = styled(Grid)`
-  padding: 0;
+padding: 0 .5em;
   
- 
-  h3 {
+h3 {
+    overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
-    margin: 0;
-    padding: .425em .575em;
+    margin: .05em;
+    padding: .425em .575em .425em .25em;
+    border: 0;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
       border-bottom: 4px solid #ffffff;
@@ -138,18 +139,16 @@ const Col__Container = styled(Col)`
   }
 `
 const Image = styled.div`
-  float: left;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
   height: 15em;
-  margin: 0 0 2em 0;
+  margin: .75em;
   &.hidden {
     display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
   }
-  ${SuperQuery().minWidth.md.css`
-    height: 12em;
-  `}
 `

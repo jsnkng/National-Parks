@@ -43,7 +43,7 @@ const FooterMenu = styled.footer`
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 32px;
+    width: 30px;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       top: 16px;
@@ -54,12 +54,12 @@ const FooterMenu = styled.footer`
   }
   h3 {
     position: absolute;
-    top: 2px;
+    top: 6px;
     right: 50px;
     font-weight: 700;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: 1.25em;
+    font-size: 1em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       letter-spacing: -1.5px;
@@ -69,12 +69,12 @@ const FooterMenu = styled.footer`
   }
   h4 {
     position: absolute;
-    top: 21px;
+    top: 24px;
     right: 50px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .95em;
+    font-size: .75em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
       letter-spacing: -1.5px;

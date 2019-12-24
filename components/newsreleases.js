@@ -32,8 +32,8 @@ const NewsReleases = props => {
             <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length === 0 ? "https://fakeimg.pl/600x300/1e1d1e/?text=%20" : item.image.url } className={item.image.url === undefined || item.image.url.length === 0 ? "hidden" : "" }/></a>
               <span>{toDateFormat(item.releasedate)}</span>
               { item.image.url === undefined || item.image.url.length === 0 
-                ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.abstract.substring(0, 350)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-                :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.abstract.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+                ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.abstract.substring(0, 450)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+                :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.abstract.substring(0, 300)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
               }
             </Col__Container>
           </LazyLoad>
@@ -51,12 +51,15 @@ const NewsReleases = props => {
 export default NewsReleases
 
 const Grid__Container = styled(Grid)`
-  padding: 0;
-  h3 {
+padding: 0 .5em;
+  
+h3 {
+    overflow-wrap: break-word;
     font-size: 2em;
     line-height: 1;
-    margin: 0;
-    padding: .425em .575em;
+    margin: .05em;
+    padding: .425em .575em .425em .25em;
+    border: 0;
     border-bottom: 2px solid #ffffff;
     ${SuperQuery().minWidth.md.css`
       border-bottom: 4px solid #ffffff;
@@ -66,7 +69,7 @@ const Grid__Container = styled(Grid)`
   h4 {
     font-size: 1.75em;
     line-height: 1;
-    padding: 0 .75em 0 .75em;
+    padding: 0 .75em 0 .375em;
     margin: 0;
     ${SuperQuery().minWidth.md.css`
       padding: .5em 0 0 0;
@@ -76,7 +79,7 @@ const Grid__Container = styled(Grid)`
   span {
     display: block;
     font-size: 1em;
-    padding: 1em 1.25em 0em 1.25em;
+    padding: .5em 1.25em 0em .75em;
     margin: 0;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
@@ -86,7 +89,7 @@ const Grid__Container = styled(Grid)`
   }
   p {
     font-size: 1em;
-    padding: 0 1.25em 0em 1.25em;
+    padding: 0 .75em;
     ${SuperQuery().minWidth.md.css`
       font-size: .825em;
       padding: 0;
@@ -128,18 +131,16 @@ const Col__Container = styled(Col)`
   }
 `
 const Image = styled.div`
-  float: left;
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
   height: 15em;
-  margin: 0 0 2em 0;
+  margin: .75em;
   &.hidden {
     display: none;
+    ${SuperQuery().minWidth.md.css`
+      display: block;
+    `}
   }
-  ${SuperQuery().minWidth.md.css`
-    height: 12em;
-  `}
 `
