@@ -240,7 +240,7 @@ const Campground__Wrapper = styled.div`
   }
   .section {
     font-size: 1.25em;
-    padding: .75em 0 0 0;
+    padding: .75em .25em 1em .25em;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
@@ -271,7 +271,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 20em;
-  
+
   &.hidden {
     display: none;
     ${SuperQuery().minWidth.md.css`

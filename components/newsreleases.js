@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const NewsReleases = props => {
@@ -29,10 +30,11 @@ const NewsReleases = props => {
           <LazyLoad height={560} offset={600} key={item.id} once>
             <Col xs={12} sm={12} md={4} lg={4} className="content">
             <a href={item.url} target="_blank"><Image backgroundURL={item.image.url === undefined || item.image.url.length === 0 ? "https://fakeimg.pl/600x300/1e1d1e/?text=%20" : item.image.url } className={item.image.url === undefined || item.image.url.length === 0 ? "hidden" : "" }/></a>
-              <span className="articles__date">{toDateFormat(item.releasedate)}</span>
-              { item.image.url === undefined || item.image.url.length === 0 
-                ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.abstract.substring(0, 450)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-                :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.abstract.substring(0, 300)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+               { item.image.url === undefined || item.image.url.length === 0 
+                ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><span className="articles__date">{toDateFormat(item.releasedate)}</span>
+             <p>{item.abstract.substring(0, 450)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
+                :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><span className="articles__date">{toDateFormat(item.releasedate)}</span>
+             <p>{item.abstract.substring(0, 300)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
               }
             </Col>
           </LazyLoad>
@@ -55,7 +57,13 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 20em;
-  margin: .5em 0 0 0;
+  margin: 1em 0 0 0;
+  ${SuperQuery().minWidth.md.css`
+    height: 9em;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 12.5em;
+  `}
   &.hidden {
     display: none;
   }

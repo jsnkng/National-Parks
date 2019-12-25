@@ -124,6 +124,12 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -1.5px;
     margin: 0;
     padding: .5em 0 0 0;
+    ${SuperQuery().minWidth.md.css`
+    font-size: 1.5em;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+    font-size: 1.75em;
+    `}
   }
   h5 {
   }
@@ -172,7 +178,7 @@ const GlobalStyle = createGlobalStyle`
   .description {
     font-size: 1.125em;
     overflow-wrap: break-word;
-    padding: 0 0 1em 0;
+    padding: 0 .25em 1em .25em;
     ul {
       margin: 0;
       padding: 0 0 0 1em;
@@ -332,7 +338,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .accordion__item + .accordion__item {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  ${'' /* border-bottom: 1px solid ${props => props.theme.colors.offbackground}; */}
 }
 
 .accordion__button {
@@ -386,7 +392,6 @@ const GlobalStyle = createGlobalStyle`
 
 .accordion__panel {
   animation: fadein 0.35s ease-in;
-  border-bottom: 1px solid ${props => props.theme.colors.text};
 }
 @keyframes fadein {
   0% {

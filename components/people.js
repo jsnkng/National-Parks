@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const People = props => {
@@ -48,7 +49,10 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 20em;
-  margin: .5em 0 0 0;
+  margin: 1em 0 0 0;
+  ${SuperQuery().minWidth.md.css`
+    height: 12.5em;
+  `}
   &.hidden {
     display: none;
   }

@@ -59,7 +59,10 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 20em;
-  margin: .5em 0 0 0;
+  margin: 1em 0 0 0;
+  ${SuperQuery().minWidth.md.css`
+    height: 12.5em;
+  `}
   &.hidden {
     display: none;
   }
