@@ -47,7 +47,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 12.5em;
+  height: 20em;
   margin: .5em 0 0 0;
   &.hidden {
     display: none;

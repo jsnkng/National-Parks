@@ -29,7 +29,7 @@ const VisitorCenters = props => {
                   <h3>{item.name}</h3>
                 </AccordionItemButton>
               </AccordionItemHeading>
-              <AccordionItemPanel>
+              <AccordionItemPanel className="description">
                 <p>{item.description}</p>
                 <p>{item.directionsInfo}</p>
               </AccordionItemPanel>

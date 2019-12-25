@@ -112,16 +112,16 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
   h3 {
-    font-size: 1.25em;
+    font-size: 1.5em;
     line-height: 1.1;
     letter-spacing: -1px;
     margin: .5em 0 0 0;
   }
 
   h4 {
-    font-size: 1.5em;
+    font-size: 1.75em;
     line-height: 1.1;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
     margin: 0;
     padding: .5em 0 0 0;
   }
@@ -163,12 +163,39 @@ const GlobalStyle = createGlobalStyle`
   }
   .articles__date {
     display: block;
-    font-size: .825em;
+    font-size: 1em;
     padding: 1em 0 0 0;
     margin: 0;
-    
+    font-weight: 700;
   }
   
+  .description {
+    font-size: 1.125em;
+    overflow-wrap: break-word;
+    padding: 0 1em 1em 1em;
+    ul {
+      margin: 0;
+      padding: 0 0 0 1em;
+    }
+    li {
+      padding: .5em 0 0 .25em;
+    }
+  }
+ .details {
+    font-size: .875em;
+    background-color: #323132;
+    padding: 1em 1em;
+    margin: 1em .25em;
+    p {
+      margin: 0;
+      padding:0;
+    }
+    ${SuperQuery().minWidth.md.css`
+      margin: 1em 0;
+    `}
+  }
+
+
   summary {
     outline: none;
   }

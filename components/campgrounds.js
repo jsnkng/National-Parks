@@ -42,7 +42,7 @@ const Campgrounds = props => {
                             <Image backgroundURL={item.images[0].url} />
                           </LazyLoad>
                           }
-                          <p className="section introduction">{item.description}</p>
+                          <p className="section introduction description">{item.description}</p>
                         </Col>
                       </Row>
                       
@@ -232,10 +232,12 @@ export default Campgrounds
 const Campground__Wrapper = styled.div`
 
   p.introduction {
-    font-size: 1.125em;
-    line-height: 1.625;
+    font-size: 1.5em;
+    font-weight: 400;
+    letter-spacing: -1px;
   }
   .section {
+    font-size: 1.25em;
     padding: .75em 0;
     border-bottom: 4px solid #333333;
   }

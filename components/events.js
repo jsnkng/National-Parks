@@ -21,7 +21,6 @@ const Events = props => {
   }
 
   return (
-    <Events__Wrapper>
     <Grid>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row>
@@ -52,7 +51,7 @@ const Events = props => {
                     }
                     <Row>
                       <Col xs={12} md={8}>
-                      <div  className="description">
+                      <div className="description">
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                         </div>
                         </Col>
@@ -95,43 +94,11 @@ const Events = props => {
         </Row> 
       </Accordion>     
     </Grid>
-    </Events__Wrapper>
   )
 }
   
 export default Events
 
-const Events__Wrapper = styled.div`
-
-  .description {
-    overflow-wrap: break-word;
-    div {
-      ${SuperQuery().minWidth.md.css`
-        padding: 0 0 .5em .4em;
-      `}
-    }
-    ul {
-      margin: 0;
-      padding: 0 0 0 1em;
-    }
-    li {
-      padding: .5em 0 0 .25em;
-    }
-  }
- .details {
-    font-size: .875em;
-    background-color: #323132;
-    padding: 1em 1.5em;
-    margin: 1em;
-    p {
-      margin: 0;
-      padding:0;
-    }
-    ${SuperQuery().minWidth.md.css`
-      margin: 1em 0;
-    `}
-  }
-`
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
