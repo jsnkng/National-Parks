@@ -31,18 +31,19 @@ const FooterMenu = styled.footer`
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0,0,0,.8);
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.trans_back};
+  color: ${props => props.theme.colors.text};
   z-index: 120;
   
   p {
     font-size: .625em;
     padding: 2em;
     a {
-      color: #fff;
+      color: ${props => props.theme.colors.text};
       text-decoration:none;
       font-weight: 700;
       &:hover {
+        color: ${props => props.theme.colors.color_two};
         text-decoration: underline;
       }
     }

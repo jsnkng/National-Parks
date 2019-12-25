@@ -52,9 +52,8 @@ const Home = props => {
 export default Home
 
 const Content__Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.background};;
+  background-color: ${props => props.theme.colors.background};
   width: 100%;
-  padding: 52px 0 52px 0;
   color: ${props => props.theme.colors.text};
 ${SuperQuery().minWidth.sm.css`
   padding: 90px 0 80px 0;

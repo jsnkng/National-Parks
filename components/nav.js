@@ -37,8 +37,8 @@ const Header = styled.header`
   left: 0;
   right: 0;
   height: 70px;
-  background-color: rgba(0,0,0,.8);
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.trans_back};
+  color: ${props => props.theme.colors.text};
   z-index: 120;
   ${SuperQuery().minWidth.sm.css`
     grid-template-columns: 4fr 4fr;

@@ -18,16 +18,18 @@ export default class MyApp extends App {
           color_two: "#a1dde9",
           color_three: "#90d223",
           color_four: "#e2e1d5",
+          trans_back: "rgba(0,0,0,.8)",
           spinner: "rgba(0,0,0,0.8)"
         },
         dayTheme: {
-            background: "#f1f1f1",
+            background: "#ffffff",
             offbackground: "#d1d1d1",
             text: "#32120d",
             color_one: "#5c2217",
             color_two: "#ba471e",
             color_three: "#ec8217",
             color_four: "#b1b0a7",
+            trans_back: "rgba(245,245,245,.8)",
             spinner: "rgba(255,255,255,0.8)"
         }
       }

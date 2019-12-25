@@ -57,17 +57,18 @@ const ParkWrapper = styled.div`
   }
 `
 const Banner = styled.div`
-  background-color: rgba(0,0,0,.70);
+  background-color: ${props => props.theme.colors.trans_back};
+  color: ${props => props.theme.colors.text};
   height: 30px;
   padding: 15px;
-  color: #ffffff;
   z-index: 230;
 `
 const ResponsiveImage = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,.70);
+  
+  background-color: ${props => props.theme.colors.trans_back};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center bottom;
