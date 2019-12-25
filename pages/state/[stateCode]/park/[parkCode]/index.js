@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../../../../../components/datastates'
-import Masthead__Component from '../../../../../components/masthead';
+import Header__Component from '../../../../../components/header';
 import Footer__Component from '../../../../../components/footer'
 
 import Alerts__Component from '../../../../../components/alerts'
@@ -44,7 +44,7 @@ const Park = props => {
       <title>This Doesn't Work</title>
     </Head>
     <Container>
-      <Masthead__Component 
+      <Header__Component 
         pageTitle={park.name}
         pageStateCode={stateCode}
         pageSubTitle={park.designation}

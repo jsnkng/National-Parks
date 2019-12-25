@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Masthead = props => {
+const Header = props => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
 
   const handleBannerClick = () => {
@@ -84,7 +84,7 @@ const Masthead = props => {
     </>
   )
 }
-export default Masthead
+export default Header
 
 const HeaderMenu = styled.header`
   position: fixed;

@@ -15,8 +15,7 @@ const TerritoryList = props => {
           <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
             <a className={props.highlighted === value[0] ? 'highlight' : ''}  
               onMouseOver={() => handleHover(value[0])}
-              onMouseOut={() => handleHover(null)}
-              onClick={props.handleBannerClick}>
+              onMouseOut={() => handleHover(null)}>
               {value[0]}
             </a>
           </Link>

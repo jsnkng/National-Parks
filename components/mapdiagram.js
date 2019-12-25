@@ -31,8 +31,7 @@ const MapDiagram = props => {
                   className={props.highlighted === value[0] ? 'highlight' : ''} 
                   onMouseOver={() => handleHover(value[0])} 
                   onMouseOut={() => handleHover(null)} 
-                  d={value[1]} 
-                  onClick={props.handleBannerClick} />
+                  d={value[1]}  />
             </Link>
           )
         } else {

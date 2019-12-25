@@ -4,18 +4,10 @@ import Head from 'next/head'
 import SuperQuery from '@themgoncalves/super-query'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
-import Masthead__Component from '../components/masthead';
+import Header__Component from '../components/header';
 import Footer__Component from '../components/footer'
 
 const Home = props => {
-
-  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
-
-  const handleBannerClick = () => {
-    setIsSpinnerVisible(true)
-  }
-
-  
   const [highlighted, setHighlight] = useState(null)
   return (
   <>
@@ -23,7 +15,7 @@ const Home = props => {
       <title>This Doesn't Work</title>
     </Head>
     
-    <Masthead__Component 
+    <Header__Component 
       pageTitle={"National Park Service"} 
       pageStateCode={''}
       pageSubTitle={"A State-by-State Guide"}
@@ -31,27 +23,13 @@ const Home = props => {
       pageSubSubSubTitle={''} 
       pageLinkState={false}
       />
-     <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <div className="sk-cube-grid">
-          <div className="sk-cube sk-cube1"></div>
-          <div className="sk-cube sk-cube2"></div>
-          <div className="sk-cube sk-cube3"></div>
-          <div className="sk-cube sk-cube4"></div>
-          <div className="sk-cube sk-cube5"></div>
-          <div className="sk-cube sk-cube6"></div>
-          <div className="sk-cube sk-cube7"></div>
-          <div className="sk-cube sk-cube8"></div>
-          <div className="sk-cube sk-cube9"></div>
-        Loading
-        </div>
-      </Spinner>
       <Content__Wrapper>
         <MapDiagram__Wrapper>
-          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} handleBannerClick={handleBannerClick} />
+          <MapDiagram highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} states={'none'} />
         </MapDiagram__Wrapper>
 
         <TerritoryList__Wrapper >
-          <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} handleBannerClick={handleBannerClick} />
+          <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
         </TerritoryList__Wrapper>
       </Content__Wrapper>
     <Footer__Component
@@ -92,20 +70,4 @@ const TerritoryList__Wrapper = styled.div`
   ${SuperQuery().minWidth.md.css`
     max-width: 800px;
   `}
-`
-
-const Spinner = styled.div`
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 400;
-  background-color: ${props => props.theme.colors.spinner};
-  color: ${props => props.theme.colors.text};
-  font-size: .7em;
-  &.show {
-    display: block;
-  }
-  &.hide {
-    display: none;
-  }
 `
