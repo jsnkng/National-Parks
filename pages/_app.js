@@ -20,7 +20,7 @@ export default class MyApp extends App {
           color_three: "#90d223",
           color_four: "#e2e1d5",
           trans_back: "rgba(0,0,0,.8)",
-          spinner: "rgba(0,0,0,0.8)"
+          spinner: "rgba(0,0,0,0.8)",
         },
         dayTheme: {
             background: "#f1f1f1",
@@ -32,7 +32,19 @@ export default class MyApp extends App {
             color_three: "#ec8217",
             color_four: "#b1b0a7",
             trans_back: "rgba(245,245,245,.8)",
-            spinner: "rgba(255,255,255,0.8)"
+            spinner: "rgba(255,255,255,0.8)",
+        },
+        rainbowTheme: {
+          background: "#ffd000",
+          box_background: "#ffffff",
+          offbackground: "#d1d1d1",
+          text: "#0049ab",
+          color_one: "#d50674",
+          color_two: "#fa443f",
+          color_three: "#4c93d9",
+          color_four: "#00ac47",
+          trans_back: "rgba(250,68,63,.8)",
+          spinner: "rgba(255,255,255,0.8)",
         }
       }
 
@@ -65,14 +77,14 @@ export default class MyApp extends App {
   
   render() {
     const { Component, pageProps } = this.props
-    console.log(this.state.theme.colors)
     pageProps.setTheme = (themeName) => {
       this.setState({
         theme: {
+          flexboxgrid: this.state.theme.flexboxgrid,
+          breakpoints: this.state.theme.breakpoints,
           colors: this.themes[themeName]
         } 
       })
-      console.log(this.state.theme.colors)
     }
 
     return (
