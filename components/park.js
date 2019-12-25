@@ -5,9 +5,10 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const Park = props => {
- 
-  const url =   props.data.images === undefined || props.data.images.length == 0 
-    ? "/us-nps.png" : process.env.AWS_URI + props.data.images[0].url.replace(/[/:-\s]/g, '_')
+  const url = props.data.images === undefined || props.data.images.length == 0 
+    ? "/us-nps.png" 
+    : process.env.AWS_URI + props.data.images[0].url.replace(/[/:-\s]/g, '_')
+  
   return (
     <LazyLoad height={'100%'} offset={0}>
       <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${props.stateCode}/park/${props.data.parkCode}`} passHref>
@@ -18,8 +19,7 @@ const Park = props => {
             <h3>{props.data.designation}</h3>
           </Name>
         </Banner> 
-          <ResponsiveImage 
-            backgroundURL={url} />
+          <ResponsiveImage backgroundURL={url} />
         </ParkWrapper>
       </Link>
     </LazyLoad>

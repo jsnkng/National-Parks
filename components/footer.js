@@ -4,7 +4,6 @@ import Link from 'next/link'
 import SuperQuery from '@themgoncalves/super-query'
 
 const Footer = props => {
-  console.log(props)
   return (
     <FooterMenu>
       <Link href="/" passHref>
@@ -16,7 +15,7 @@ const Footer = props => {
       <Link href="/" passHref>
         <Title__Sub>A State-by-State Guide</Title__Sub>
       </Link>
-      <p><a href="https://jsnkng.com">Jason King</a> | 2019</p>
+      <p><a href="https://jsnkng.com">jsnkng</a> | 2019</p>
       {/* <p><a onClick={() => props.setTheme()}>Toggle Theme</a></p> */}
     </FooterMenu>
   )
