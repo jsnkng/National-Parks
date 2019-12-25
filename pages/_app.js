@@ -36,7 +36,7 @@ export default class MyApp extends App {
       theme: {
         flexboxgrid: {
           gridSize: 12, // columns
-          gutterWidth: 1.5, // rem
+          gutterWidth: 1, // rem
           outerMargin: 1, // rem
           mediaQuery: 'only screen',
           container: {

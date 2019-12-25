@@ -16,8 +16,8 @@ const Footer = props => {
       <Link href="/" passHref>
         <Title__Sub>A State-by-State Guide</Title__Sub>
       </Link>
-      <p><a href="https://jsnkng.com">jsnkng</a> | 2019<br />
-      Theme: <a onClick={() => props.setTheme('dayTheme')}>Light</a> | <a onClick={() => props.setTheme('nightTheme')}>Dark</a></p>
+      <p><a href="https://jsnkng.com">jsnkng</a> | 2019</p>
+      <p><a onClick={() => props.setTheme('dayTheme')}>Light</a> | <a onClick={() => props.setTheme('nightTheme')}>Dark</a></p>
     </FooterMenu>
   )
 }
@@ -50,8 +50,8 @@ const FooterMenu = styled.footer`
 `
 const Logo = styled.img.attrs()`
   position: absolute;
-  top: 12px;
-  right: 8px;
+  top: 15px;
+  right: 15px;
   width: 35px;
   cursor: pointer;
 `
@@ -59,8 +59,8 @@ const Title = styled.span.attrs()`
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 15px;
-  right: 50px;
+  top: 18px;
+  right: 57px;
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 1;
@@ -73,8 +73,8 @@ const Title__Sub = styled.div.attrs()`
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 26px;
-  right: 50px;
+  top: 32px;
+  right: 57px;
   font-weight: 500;
   letter-spacing: -1px;
   line-height: 1;
