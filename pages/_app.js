@@ -4,6 +4,25 @@ import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
+
+const nightTheme = {
+    background: "#1e1d1e",
+    offbackground: "#474547",
+    text: "#ffffff",
+    color_one: "#3db7e3",
+    color_two: "#a1dde9",
+    color_three: "#1e1d1e",
+    spinner: "rgba(0,0,0,0.8)"
+}
+const dayTheme = {
+    background: "#f1f1f1",
+    offbackground: "#d1d1d1",
+    text: "#2c2b2c",
+    color_one: "#69bb37",
+    color_two: "#00ac47",
+    color_three: "#2c2b2c",
+    spinner: "rgba(255,255,255,0.8)"
+}
 const theme = {
   flexboxgrid: {
     // Defaults
@@ -26,24 +45,7 @@ const theme = {
       xl: 75
     }
   },
-  // colors: {
-  //   background: "#f1f1f1",
-  //   offbackground: "#d1d1d1",
-  //   text: "#1e1d1e",
-  //   color_one: "#00ac47",
-  //   color_two: "#69bb37",
-  //   color_three: "#1e1d1e",
-  //   spinner: "rgba(255,255,255,0.8)"
-  // },
-  colors:{
-    background: "#1e1d1e",
-    offbackground: "#474547",
-    text: "#ffffff",
-    color_one: "#3db7e3",
-    color_two: "#a1dde9",
-    color_three: "#1e1d1e",
-    spinner: "rgba(0,0,0,0.8)"
-  },
+  colors: dayTheme,
 }
 
 export default class MyApp extends App {
