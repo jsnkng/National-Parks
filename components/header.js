@@ -19,10 +19,10 @@ class Header extends Component {
       this.setState({ loading: false })
     }
   }
-
   render() {
-    return (
-      <div className="header">
+      console.log(this.props)
+      return (
+      <>
         <Head>
           <title>National Park Service: A State-by-State Guide</title>
           <meta charSet="UTF-8" />
@@ -55,6 +55,7 @@ class Header extends Component {
 
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
         </Head>
+        
         <Loader loading={this.state.loading} />
         
         <Nav 
@@ -63,7 +64,7 @@ class Header extends Component {
           pageSubTitle={this.props.pageSubTitle}
           pageSubSubTitle={this.props.pageSubSubTitle}
           pageSubSubSubTitle={this.props.pageSubSubSubTitle} />
-      </div>
+      </>
     )
   }
 }

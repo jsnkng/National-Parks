@@ -62,6 +62,7 @@ const Parks = props => {
         pageSubTitle={'A State-by-State Guide'}
         pageSubSubTitle={states[stateCode][0]}
         pageSubSubSubTitle={''}
+        setTheme={props.setTheme}
        />
     </ParksWrapper>
     </>

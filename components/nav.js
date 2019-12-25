@@ -45,7 +45,6 @@ const Header = styled.header`
     height: 90px;
   `}
 `
-
 const Logo = styled.img.attrs()`
   position: absolute;
   top: 12px;

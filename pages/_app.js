@@ -5,58 +5,77 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
 
-const nightTheme = {
-    background: "#1e1d1e",
-    offbackground: "#474547",
-    text: "#ffffff",
-    color_one: "#3db7e3",
-    color_two: "#a1dde9",
-    color_three: "#1e1d1e",
-    spinner: "rgba(0,0,0,0.8)"
-}
-const dayTheme = {
-    background: "#f1f1f1",
-    offbackground: "#d1d1d1",
-    text: "#2c2b2c",
-    color_one: "#69bb37",
-    color_two: "#00ac47",
-    color_three: "#2c2b2c",
-    spinner: "rgba(255,255,255,0.8)"
-}
-const theme = {
-  flexboxgrid: {
-    // Defaults
-    gridSize: 12, // columns
-    gutterWidth: 1.5, // rem
-    outerMargin: 1, // rem
-    mediaQuery: 'only screen',
-    container: {
-      xs: 0,  // em
-      sm: 36, // em
-      md: 48, // em
-      lg: 62,  // em
-      xl: 75
-    },
-    breakpoints: {
-      xs: 0,  // em
-      sm: 36, // em
-      md: 48, // em
-      lg: 62,  // em
-      xl: 75
-    }
-  },
-  colors: nightTheme,
-}
 
 export default class MyApp extends App {
+  constructor(props) {
+    super(props);
+    this.themes = {
+        nightTheme: {
+          background: "#1e1d1e",
+          offbackground: "#474547",
+          text: "#ffffff",
+          color_one: "#3db7e3",
+          color_two: "#a1dde9",
+          color_three: "#90d223",
+          color_four: "#e2e1d5",
+          spinner: "rgba(0,0,0,0.8)"
+        },
+        dayTheme: {
+            background: "#f1f1f1",
+            offbackground: "#d1d1d1",
+            text: "#32120d",
+            color_one: "#5c2217",
+            color_two: "#ba471e",
+            color_three: "#ec8217",
+            color_four: "#b1b0a7",
+            spinner: "rgba(255,255,255,0.8)"
+        }
+      }
 
+    this.state = {
+      theme: {
+        flexboxgrid: {
+          gridSize: 12, // columns
+          gutterWidth: 1.5, // rem
+          outerMargin: 1, // rem
+          mediaQuery: 'only screen',
+          container: {
+            xs: 0,  // em
+            sm: 36, // em
+            md: 48, // em
+            lg: 62, // em
+            xl: 75
+          },
+          breakpoints: {
+            xs: 0,  // em
+            sm: 36, // em
+            md: 48, // em
+            lg: 62, // em
+            xl: 75
+          }
+        },
+        colors: this.themes.dayTheme,
+      }
+    }
+  }
+  
   render() {
     const { Component, pageProps } = this.props
+    console.log(this.state.theme.colors)
+    pageProps.setTheme = (themeName) => {
+      this.setState({
+        theme: {
+          colors: this.themes[themeName]
+        } 
+      })
+      console.log(this.state.theme.colors)
+    }
+
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
-          <Component 
-            {...pageProps} />
+        <Component 
+          {...pageProps} />
       </ThemeProvider>
     )
   }
@@ -81,8 +100,8 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     font-size: 16px;
-    
     background-color: ${props => props.theme.colors.background};
+    
     ${SuperQuery().minWidth.sm.css`
       font-size: 20px;
       letter-spacing: -.5px;
@@ -96,14 +115,12 @@ const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6 {
     word-break: normal;
   }
-
   h1 {
     font-size: 2.5em;
     margin: 0;
     padding: 0;
     line-height: .79;
     letter-spacing: -1.5px;
-
     span {
       display: inline-block;
       font-weight: 400;
@@ -149,9 +166,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 2em;
   }
   a {
-    color: #3db7e3;
+    color: ${props => props.theme.colors.color_one};
     text-decoration: none;
     &:hover {
+      color: ${props => props.theme.colors.color_two};
       text-decoration: underline;
     }
   }
@@ -179,6 +197,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 300;
     overflow-wrap: break-word;
   }
+
   .articles__date {
     display: block;
     font-size: 1em;
@@ -199,6 +218,7 @@ const GlobalStyle = createGlobalStyle`
       padding: .5em 0 0 .25em;
     }
   }
+  
  .details {
     font-size: .875em;
     background-color: #323132;
@@ -217,15 +237,7 @@ const GlobalStyle = createGlobalStyle`
   summary {
     outline: none;
   }
-  #spinner {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 100;
-  background-color: ${props => props.theme.colors.spinner};
-  color: ${props => props.theme.colors.text};
-  font-size: .7em;
-}
+
 .btn__load-more {
   clear: both;
   display:none;
@@ -261,6 +273,7 @@ const GlobalStyle = createGlobalStyle`
   background-color: ${props => props.theme.colors.spinner};
   cursor: pointer;
   &:hover {
+    border: 1px solid ${props => props.theme.colors.color_two};
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
@@ -271,7 +284,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     text-decoration: underline !important;
     &:hover {
-      border:1px solid #a1dde9;
       background-color: rgba(255,255,255,0);
       text-decoration: none !important; 
       margin:0;

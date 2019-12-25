@@ -38,10 +38,8 @@ const TerritoryList__Wrapper = styled.div`
     font-weight: 500;
     letter-spacing: -.5px;
     text-decoration: none;
-    color: #333333;
   }
   a.highlight , a:hover  {
-    color: green;
     font-weight: 700;
     text-decoration: underline;
   }
