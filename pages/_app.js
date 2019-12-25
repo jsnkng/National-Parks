@@ -45,7 +45,7 @@ const theme = {
       xl: 75
     }
   },
-  colors: dayTheme,
+  colors: nightTheme,
 }
 
 export default class MyApp extends App {
