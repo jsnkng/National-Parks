@@ -56,7 +56,7 @@ const Events = props => {
                         </div>
                         </Col>
                       <Col xs={12} md={4}>
-                      <div  className="details">
+                      <div className="details">
                         { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                         }

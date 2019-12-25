@@ -174,7 +174,8 @@ const Campgrounds = props => {
                       </Row>
                       
                       <Row className="section">
-                        <Col xs={12} className="details">
+                        <Col xs={12}>
+                          <div className="details">
                           {item.regulationsoverview !== undefined && item.regulationsoverview != 0 && 
                             <span>
                               <h5>Regulations</h5>
@@ -212,6 +213,7 @@ const Campgrounds = props => {
                               <p>{item.weatheroverview}</p>
                             </span>
                           }
+                          </div>
                           </Col>
                         </Row>
                     </AccordionItemPanel>
@@ -238,7 +240,7 @@ const Campground__Wrapper = styled.div`
   }
   .section {
     font-size: 1.25em;
-    padding: .75em 0;
+    padding: .75em 0 0 0;
     border-bottom: 4px solid #333333;
   }
   .section:last-child {
@@ -268,7 +270,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 15em;
+  height: 20em;
   
   &.hidden {
     display: none;

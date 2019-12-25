@@ -172,7 +172,7 @@ const GlobalStyle = createGlobalStyle`
   .description {
     font-size: 1.125em;
     overflow-wrap: break-word;
-    padding: 0 1em 1em 1em;
+    padding: 0 0 1em 0;
     ul {
       margin: 0;
       padding: 0 0 0 1em;
