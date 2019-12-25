@@ -90,8 +90,7 @@ export default class MyApp extends App {
     return (
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
-        <Component 
-          {...pageProps} />
+        <Component {...pageProps} />
       </ThemeProvider>
     )
   }

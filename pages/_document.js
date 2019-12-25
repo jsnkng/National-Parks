@@ -25,6 +25,18 @@ class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  } 
+
+  render() {
+    return (
+      <html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
   }
 }
 
