@@ -1,5 +1,6 @@
 {
- "name": "App",
+ "name": "National Parks Guide",
+ "short_name": "National Parks",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
