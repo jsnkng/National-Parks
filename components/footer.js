@@ -8,13 +8,13 @@ const Footer = props => {
   return (
     <FooterMenu>
       <Link href="/" passHref>
-        <img className="logo" src="/us-nps.png" width="90" />
+        <Logo className="logo" src="/us-nps.png" width="90"  />
       </Link>
       <Link href="/" passHref>
-        <h3>National Park Service</h3>
+        <Title>National Park Service</Title>
       </Link>
       <Link href="/" passHref>
-        <h4>A State-by-State Guide</h4>
+        <Title__Sub>A State-by-State Guide</Title__Sub>
       </Link>
       <p><a href="https://jsnkng.com">Jason King</a> | 2019</p>
       {/* <p><a onClick={() => props.setTheme()}>Toggle Theme</a></p> */}
@@ -34,42 +34,7 @@ const FooterMenu = styled.footer`
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   z-index: 120;
- 
-  .logo {
-    position: absolute;
-    top: 12px;
-    right: 8px;
-    width: 35px;
-    cursor: pointer;
-  }
-  h3 {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 15px;
-    right: 50px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 1;
-    font-size: .75em;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-  }
-  h4 {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 26px;
-    right: 50px;
-    font-weight: 500;
-    letter-spacing: -1px;
-    line-height: 1;
-    font-size: .625em;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-  }
+  
   p {
     font-size: .625em;
     padding: 2em;
@@ -82,4 +47,39 @@ const FooterMenu = styled.footer`
       }
     }
   }
+`
+const Logo = styled.img.attrs()`
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  width: 35px;
+  cursor: pointer;
+`
+const Title = styled.span.attrs()`
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 15px;
+  right: 50px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  font-size: .75em;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+`
+const Title__Sub = styled.div.attrs()`
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 26px;
+  right: 50px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1;
+  font-size: .625em;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
 `

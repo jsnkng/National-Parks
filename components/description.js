@@ -11,7 +11,7 @@ const Description = props => {
     <Grid>
       <Row>
         <Col xs={12}>
-          <h1>{park.name} {park.designation}</h1>
+          <h1>{park.name} <span>{park.designation}</span></h1>
         </Col>
       </Row>
       <Row>

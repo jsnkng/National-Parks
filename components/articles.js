@@ -61,6 +61,9 @@ const Image = styled.div`
   height: 20em;
   margin: 1em 0 0 0;
   ${SuperQuery().minWidth.md.css`
+    height: 9em;
+  `}
+  ${SuperQuery().minWidth.lg.css`
     height: 12.5em;
   `}
   &.hidden {

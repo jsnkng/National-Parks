@@ -8,7 +8,7 @@ const theme = {
   flexboxgrid: {
     // Defaults
     gridSize: 12, // columns
-    gutterWidth: 1, // rem
+    gutterWidth: 1.5, // rem
     outerMargin: 1, // rem
     mediaQuery: 'only screen',
     container: {
@@ -97,8 +97,17 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: 2.5em;
     margin: 0;
-    line-height: 1;
+    padding: 0;
+    line-height: .79;
     letter-spacing: -1.5px;
+
+    span {
+      display: inline-block;
+      font-weight: 400;
+      font-size: .725em;
+      letter-spacing: -1px;
+      line-height: .5;
+    }
   }
   h2 {
     font-size: 2em;
@@ -374,7 +383,7 @@ const GlobalStyle = createGlobalStyle`
   content: '';
   height: .5em;
   width: .5em;
-  margin: .25em .5em 0 -.5em;
+  margin: .5em .5em 0 -.5em;
   
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;

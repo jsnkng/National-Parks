@@ -74,7 +74,7 @@ const Logo = styled.img.attrs()`
   cursor: pointer;
 
   ${SuperQuery().minWidth.sm.css`
-    top: 13px;
+    top: 17px;
     left: 12px;
     width: 52px;
   `}
@@ -82,19 +82,19 @@ const Logo = styled.img.attrs()`
 const Title = styled.span.attrs()`
   float: left;
   clear: left;
-  margin: 17px 0 0 60px;
+  margin: 12px 0 0 60px;
   padding: 0;
   text-align:left;
   font-weight: 700;
   letter-spacing: -.5px;
   line-height: 1;
-  font-size: 1.25em;
-  max-width: 60%;
+  font-size: 1em;
+  max-width: 52%;
   cursor: pointer;
   text-decoration: none;
   border: none;
   ${SuperQuery().minWidth.sm.css`
-    margin: 13px 0 0 75px;
+    margin: 17px 0 0 75px;
     font-size: 1.5em;
     letter-spacing: -1.5px;
   `}
@@ -108,7 +108,7 @@ const Title__Sub = styled.div.attrs()`
   font-weight: 500;
   letter-spacing: -.5px;
   line-height: 1;
-  font-size: 1em;
+  font-size: .875em;
   max-width: 45%;
   cursor: pointer;
   text-decoration: none;
@@ -129,14 +129,14 @@ const Title__Secondary = styled.div.attrs()`
   font-weight: 600;
   letter-spacing: -1.5px;
   line-height: 1;
-  font-size: 1.75em;
+  font-size: 1.375em;
   max-width: 50%;
   cursor: pointer;
   text-decoration: none;
   border: none;
   ${SuperQuery().minWidth.sm.css`
-    margin: 23px 10px 0 0;
-    font-size: 2.25em;
+    margin: 27px 10px 0 0;
+    font-size: 2em;
   `}
 `
 const Spinner = styled.div`

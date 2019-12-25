@@ -18,7 +18,7 @@ const SlideShow = props => {
           <Image 
             key={item.id} 
             backgroundURL={`${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`}>
-            <h4>{item.title}</h4>
+            <span className="caption">{item.title}</span>
           </Image>
         )
         })
@@ -50,8 +50,11 @@ const Image = styled.div`
     max-height: 82vh;
   `}
 
-  h4 {
+  .caption {
     position: absolute;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: -.5px;
     bottom: 35px;
     right: 20px;
     color: #ffffff;
