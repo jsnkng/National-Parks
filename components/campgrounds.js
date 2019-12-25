@@ -233,6 +233,24 @@ export default Campgrounds
 
 const Campground__Wrapper = styled.div`
 
+ul {
+    font-size: 1em;
+    column-count: 1;
+    list-style-type: none;
+    padding: .25em 0 .25em 0;
+    margin: 0;
+    ${SuperQuery().minWidth.sm.css`
+    column-count: 2;
+    `}
+  }
+  li {
+    font-size: .9em;
+    list-style-type: none;
+    padding: .3125em 0;
+    font-weight: 300;
+    overflow-wrap: break-word;
+  }
+
   p.introduction {
     font-size: 1.5em;
     font-weight: 400;
