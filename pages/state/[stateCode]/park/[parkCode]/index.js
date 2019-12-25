@@ -135,6 +135,7 @@ const Park = props => {
         pageSubTitle={park.designation}
         pageSubSubTitle={states[stateCode][0]}
         pageSubSubSubTitle=""
+        setTheme={props.setTheme}
        />
     </Container>
     </>

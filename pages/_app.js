@@ -26,8 +26,9 @@ const theme = {
       xl: 75
     }
   },
-  // colors:{
+  // colors: {
   //   background: "#f1f1f1",
+  //   offbackground: "#d1d1d1",
   //   text: "#1e1d1e",
   //   color_one: "#00ac47",
   //   color_two: "#69bb37",
@@ -42,7 +43,7 @@ const theme = {
     color_two: "#a1dde9",
     color_three: "#1e1d1e",
     spinner: "rgba(0,0,0,0.8)"
-  }
+  },
 }
 
 export default class MyApp extends App {
@@ -189,8 +190,8 @@ const GlobalStyle = createGlobalStyle`
   font-size: .875em;
   font-weight: 500;
   text-transform: uppercase;
-  color: #a1dde9;
-  border: 1px solid #3db7e3;
+  color: ${props => props.theme.colors.color_one};
+  border: 1px solid ${props => props.theme.colors.color_two};
   background-color: ${props => props.theme.colors.spinner};
   cursor: pointer;
   &:hover {

@@ -27,6 +27,11 @@ const Masthead = props => {
         <Title__Secondary onClick={handleBannerClick}>{props.pageSubSubTitle}</Title__Secondary>
       </Link>
       }
+      { props.pageLinkState === false &&
+        <Link href="/state/[stateCode]/" as={`/state/${props.pageStateCode}`} passHref>
+          <Title__Secondary>{props.pageSubSubTitle}</Title__Secondary>
+        </Link>
+      }
       <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
         <div className="sk-cube-grid">
           <div className="sk-cube sk-cube1"></div>

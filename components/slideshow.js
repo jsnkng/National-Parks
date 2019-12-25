@@ -61,7 +61,7 @@ const Image = styled.div`
 `
 const Carousel__Styled = styled(Carousel)`
   margin-top: -80px;
-  ${SuperQuery().minWidth.md.css`
+  ${SuperQuery().minWidth.sm.css`
     margin-top: -90px;
   `}
   ${SuperQuery().minWidth.lg.css`
