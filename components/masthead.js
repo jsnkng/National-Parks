@@ -56,13 +56,13 @@ const HeaderMenu = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 70px;
   background-color: rgba(0,0,0,.8);
   color: #ffffff;
   z-index: 120;
   ${SuperQuery().minWidth.sm.css`
     grid-template-columns: 4fr 4fr;
-    height: 80px;
+    height: 90px;
   `}
 `
 
@@ -70,7 +70,7 @@ const Logo = styled.img.attrs()`
   position: absolute;
   top: 12px;
   left: 8px;
-  width: 30px;
+  width: 45px;
   cursor: pointer;
 
   ${SuperQuery().minWidth.sm.css`
@@ -82,13 +82,13 @@ const Logo = styled.img.attrs()`
 const Title = styled.span.attrs()`
   float: left;
   clear: left;
-  margin: 13px 0 0 45px;
+  margin: 17px 0 0 60px;
   padding: 0;
   text-align:left;
   font-weight: 700;
   letter-spacing: -.5px;
   line-height: 1;
-  font-size: .875em;
+  font-size: 1.25em;
   max-width: 60%;
   cursor: pointer;
   text-decoration: none;
@@ -102,13 +102,13 @@ const Title = styled.span.attrs()`
 const Title__Sub = styled.div.attrs()`
   float: left;
   clear: left;
-  margin: 0 0 0 45px;
+  margin: 0 0 0 60px;
   padding: 0;
   text-align:left;
   font-weight: 500;
   letter-spacing: -.5px;
   line-height: 1;
-  font-size: .75em;
+  font-size: 1em;
   max-width: 45%;
   cursor: pointer;
   text-decoration: none;
@@ -121,7 +121,7 @@ const Title__Sub = styled.div.attrs()`
 `
 const Title__Secondary = styled.div.attrs()`
   position: absolute;
-  margin: 17px 10px 0 0;
+  margin: 14px 10px 0 0;
   padding: 0;
   top: 0;
   right: 0;
@@ -129,7 +129,7 @@ const Title__Secondary = styled.div.attrs()`
   font-weight: 600;
   letter-spacing: -1.5px;
   line-height: 1;
-  font-size: 1.5em;
+  font-size: 1.75em;
   max-width: 50%;
   cursor: pointer;
   text-decoration: none;

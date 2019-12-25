@@ -39,19 +39,19 @@ const FooterMenu = styled.footer`
     position: absolute;
     top: 12px;
     right: 8px;
-    width: 26px;
+    width: 35px;
     cursor: pointer;
   }
   h3 {
     position: absolute;
     margin: 0;
     padding: 0;
-    top: 13px;
-    right: 42px;
+    top: 15px;
+    right: 50px;
     font-weight: 700;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .6em;
+    font-size: .75em;
     cursor: pointer;
     text-decoration: none;
     border: none;
@@ -60,18 +60,18 @@ const FooterMenu = styled.footer`
     position: absolute;
     margin: 0;
     padding: 0;
-    top: 23px;
-    right: 42px;
+    top: 26px;
+    right: 50px;
     font-weight: 500;
     letter-spacing: -1px;
     line-height: 1;
-    font-size: .5em;
+    font-size: .625em;
     cursor: pointer;
     text-decoration: none;
     border: none;
   }
   p {
-    font-size: .5em;
+    font-size: .625em;
     padding: 2em;
     a {
       color: #fff;
