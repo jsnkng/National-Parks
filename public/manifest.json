@@ -37,5 +37,10 @@
    "type": "image\/png",
    "density": "4.0"
   }
- ]
+ ],
+ "background_color": "#FFFFFF",
+ "description": "National Park Service A State-by-State Guide",
+ "display": "fullscreen",
+ "start_url": "/",
+ "theme_color": "#000"
 }

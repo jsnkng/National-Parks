@@ -32,9 +32,6 @@ const Home = props => {
         <TerritoryList__Wrapper >
           <TerritoryList highlighted={highlighted} onHighlight={(terr) => setHighlight(terr)} />
         </TerritoryList__Wrapper>
-
-
-
       </Content__Wrapper>
     <Footer__Component
       pageTitle={'National Park Service'} 
@@ -42,7 +39,7 @@ const Home = props => {
       pageSubTitle={'A State-by-State Guide'}
       pageSubSubTitle={''}
       pageSubSubSubTitle={''}
-        setTheme={props.setTheme}
+      setTheme={props.setTheme}
       />
   </>
   )
@@ -52,7 +49,7 @@ const Home = props => {
 export default Home
 
 const Content__Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.background};;
+  background-color: ${props => props.theme.colors.background};
   width: 100%;
   padding: 60px 0;
   color: ${props => props.theme.colors.text};

@@ -1,18 +1,35 @@
 {
-    "build": {
+  "version": 2,
+  "routes": [
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    }
+  ],
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "build": {
     "env": {
-        "NPS_URI": "https://developer.nps.gov/api/v1",
-        "NPS_KEY": "@nps-key",
-        "GOO_KEY": "@goo-key",
-        "MONGODB_URI": "mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongodb.net/NationalParkService_Cache?retryWrites=true&w=majority",
-        "DB_NAME": "NationalParkService_Cache",
-        "DB_PASSWORD": "@db-password",
-        "WEB_URI": "https://national-parks.now.sh/api",
-        "AWS_URI": "http://national-park-images.s3-website-us-east-1.amazonaws.com/",
-        "AWS_ACCESS_KEY": "@aws-key",
-        "AWS_SECRET_ACCESS_KEY": "@aws-secret-key",
-        "REGION": "us-east-1",
-        "Bucket": "national-park-images"
+      "NPS_URI": "https://developer.nps.gov/api/v1",
+      "NPS_KEY": "@nps-key",
+      "GOO_KEY": "@goo-key",
+      "MONGODB_URI": "mongodb+srv://national_parks:1Y5QMu6632vZ3QtF@cluster0-pexqw.mongodb.net/NationalParkService_Cache?retryWrites=true&w=majority",
+      "DB_NAME": "NationalParkService_Cache",
+      "DB_PASSWORD": "@db-password",
+      "WEB_URI": "https://national-parks.now.sh/api",
+      "AWS_URI": "http://national-park-images.s3-website-us-east-1.amazonaws.com/",
+      "AWS_ACCESS_KEY": "@aws-key",
+      "AWS_SECRET_ACCESS_KEY": "@aws-secret-key",
+      "REGION": "us-east-1",
+      "Bucket": "national-park-images"
     }
-    }
+  }
 }

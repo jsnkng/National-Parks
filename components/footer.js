@@ -23,7 +23,8 @@ const Footer = props => {
         </Col>
         <Col xs={12} md={12}>
           <ThemeSwitcher>
-            <a onClick={() => props.setTheme('dayTheme')}>Light</a> | <a onClick={() => props.setTheme('nightTheme')}>Dark</a> | <a onClick={() => props.setTheme('rainbowTheme')}>Rainbow</a>
+            <a onClick={() => props.setTheme('dayTheme')}>Light</a> | <a onClick={() => props.setTheme('nightTheme')}>Dark</a>
+             {/* | <a onClick={() => props.setTheme('rainbowTheme')}>Rainbow</a> */}
           </ThemeSwitcher>
         </Col>
       </Row>
