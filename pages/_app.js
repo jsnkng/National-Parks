@@ -3,6 +3,7 @@ import App from 'next/app'
 import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
+import OfflineSupport from '../components/offlinesupport'
 
 
 
@@ -90,6 +91,7 @@ export default class MyApp extends App {
     return (
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
+        <OfflineSupport />
         <Component 
           {...pageProps} />
       </ThemeProvider>
