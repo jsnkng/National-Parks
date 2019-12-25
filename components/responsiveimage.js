@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ResponsiveImage = props => {
-    console.log(props)
   return (
     <Image url={props.url} 
         height={props.height} 

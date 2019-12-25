@@ -8,7 +8,6 @@ import Header__Component from '../components/header';
 import Footer__Component from '../components/footer'
 
 const Home = props => {
-  console.log(props)
   const [highlighted, setHighlight] = useState(null)
   return (
   <>

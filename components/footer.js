@@ -15,7 +15,7 @@ const Footer = props => {
         <Col xs={6} md={6}>
           <Link href="/" passHref>
             <div>
-              <Logo className="logo" src="/us-nps.png" width="90"  />
+              <Logo className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
               <Title>National Park Service</Title>
               <Title__Sub>A State-by-State Guide</Title__Sub>
             </div>

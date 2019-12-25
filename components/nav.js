@@ -8,7 +8,7 @@ const Nav = props => {
   return (
     <Header>
       <Link href="/" passHref>
-        <Logo className="logo" src="/us-nps.png" width="90" />
+        <Logo className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
       </Link>
       <Link href="#" passHref>
         <Title>{props.pageTitle}</Title>
