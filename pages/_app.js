@@ -12,6 +12,7 @@ export default class MyApp extends App {
     this.themes = {
         nightTheme: {
           background: "#1e1d1e",
+          box_background: "#111111",
           offbackground: "#474547",
           text: "#ffffff",
           color_one: "#3db7e3",
@@ -22,7 +23,8 @@ export default class MyApp extends App {
           spinner: "rgba(0,0,0,0.8)"
         },
         dayTheme: {
-            background: "#ffffff",
+            background: "#f1f1f1",
+            box_background: "#ffffff",
             offbackground: "#d1d1d1",
             text: "#32120d",
             color_one: "#5c2217",
@@ -223,7 +225,7 @@ const GlobalStyle = createGlobalStyle`
   
  .details {
     font-size: .875em;
-    background-color: #323132;
+    background-color: ${props => props.theme.colors.box_background};
     padding: 1em 1em;
     margin: 1em .25em;
     p {

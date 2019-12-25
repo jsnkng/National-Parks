@@ -24,11 +24,13 @@ class Header extends Component {
       return (
       <>
         <Head>
-          <title>National Park Service: A State-by-State Guide</title>
           <meta charSet="UTF-8" />
           <meta name="description" content="An example PWA" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="theme-color" content="#ff6600" />
+          <title>National Park Service: A State-by-State Guide</title>
+          <link rel='icon' href='/favicon.ico' />
+          <link rel="manifest" href="/manifest.json" />
           <meta name="apple-mobile-web-app-title" content="National Park Service State Guide" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,7 +39,6 @@ class Header extends Component {
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
 
-          <link rel='icon' href='/favicon.ico' />
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
           <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -51,11 +52,10 @@ class Header extends Component {
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="manifest" href="/manifest.json" />
 
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
         </Head>
-        
+
         <Loader loading={this.state.loading} />
         
         <Nav 
