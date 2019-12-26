@@ -54,8 +54,11 @@ export default VisitorInfo
 
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 15em;
+  height: 50vh;
   z-index: 10;
   margin: .5em .125em .5em .125em;
   padding:  0;
+  ${SuperQuery().minWidth.md.css`
+    height: 33vh;
+  `}
 `

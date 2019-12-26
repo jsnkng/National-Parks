@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
+import styled from 'styled-components'
 
 import Nav from './nav'
-import Loader from './loader'
-
+const ProgressBar = require('react-progress-bar-plus')
+// require('react-progress-bar-plus/lib/progress-bar.css')
 class Header extends Component {
-  state = { loading: false }
+  state = { autoIncrement: true,
+            intervalTime: 25
+          }
 
   componentDidMount() {
     Router.onRouteChangeStart = () => {
-      this.setState({ loading: true })
+      this.setState({ percent: 20 })
     }
     Router.onRouteChangeComplete = () => {
-      this.setState({ loading: false })
+      this.setState({ percent: 100 })
     }
     Router.onRouteChangeError = () => {
-      this.setState({ loading: false })
+      this.setState({ percent: -1 })
     }
   }
+  
   render() {
       return (
       <>
@@ -55,12 +59,18 @@ href="/image.png" /> */}
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
+          <link rel="stylesheet" type="text/css" href="/progress-bar.css" />
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
         </Head>
 
-        <Loader loading={this.state.loading} />
-        
+     
+        <Loading__Wrapper>
+        <ProgressBar percent={this.state.percent}
+              autoIncrement={this.state.autoIncrement}
+              intervalTime={this.state.intervalTime} 
+                spinner={false}
+              />
+        </Loading__Wrapper>
         <Nav 
           pageTitle={this.props.pageTitle}
           pageStateCode={this.props.pageStateCode}
@@ -73,3 +83,18 @@ href="/image.png" /> */}
 }
 
 export default Header
+
+const Loading__Wrapper = styled.div`
+
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  width: 100%;
+  .react-progress-bar-percent {
+    height: 4px;
+    background: ${props => props.theme.colors.color_three};
+    box-shadow: none;
+    transition: all 200ms ease;
+  }
+`

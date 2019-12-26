@@ -14,110 +14,77 @@ const Alerts = props => {
   const [alerts, setAlerts] = useState(props.alerts)
 
   return (
-    <Grid__Container>
-      <Row__Container>
-        <Col__Container xs={12} sm={4} md={4} lg={4}>
-          <h3>Alerts & Conditions</h3>
-        </Col__Container>
-        { alerts === undefined || alerts.length === 0 &&
-          <Col__Container xs={12} sm={8} md={8} lg={6}>
-            <h4>No Active Alerts</h4>
-          </Col__Container>
-        }
-        { alerts.slice(0).map((item) => {
-          return (
-            <Col__Container xs={12} sm={4} md={4} lg={4} key={item.id}>
-              <span>{item.category}</span>
-              
-              <details>
-                <summary>{item.title}</summary>
-                {item.description}
-              </details>
-            </Col__Container>
-          )
-        })}
-      </Row__Container>
-    </Grid__Container>
+    <Grid>
+      <Alerts__Container>
+        <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
+          <Row>
+            <Col xs={12} sm={4} md={4} lg={4}>
+              <h2>Alerts & Conditions</h2>
+            </Col>
+            { alerts === undefined || alerts.length === 0 &&
+              <Col xs={12} sm={8} md={8} lg={6}>
+                <h4>No Active Alerts</h4>
+              </Col>
+            }
+            { alerts.slice(0).map((item) => {
+              return (
+                <Col xs={12} sm={4} md={4} lg={4} key={item.id}>
+                  <AccordionItem key={item.id}>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                      <span>{item.category}</span>
+                        <h3>{item.title}</h3>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel className="description">
+                      <p>{item.description}</p>
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                </Col>
+              )
+            })}
+          </Row>
+        </Accordion>
+      </Alerts__Container>
+    </Grid>
   )
 }
   
 export default Alerts
 
-const Grid__Container = styled(Grid)`
+const Alerts__Container = styled.div`
   background-color: #ffca13;
   color: #333333; 
-  padding: 0 0 .5em 0;
-
-  margin: 0 1em;
-  ${SuperQuery().minWidth.md.css`
-    margin: 1em auto 0 auto;
-  `}
-  h3 {
+  .accordion__button {
+    margin: 0 0 0 .5em;
+    padding: .5em;
+    border: none;
+  }
+  h2 {
     background-color: #333333;
     color: #ffca13;
-    padding: .85em 0 .85em .85em;
     line-height: 1;
-    width: 97%;
+    padding: .375em;
+
     ${SuperQuery().minWidth.md.css`
-      margin: 0 1em 0  0;
-      width: 90%;
     `}
   }
-  h4 {
-    font-size: .75em;
+  h3 {
+    font-size: 1.125em;
   }
-  details {
+  p {
     font-size: .75em;
-      margin: 0 1em 0 1em;
-    ${SuperQuery().minWidth.md.css`
-      margin: 0;
-      padding: 0 1em 0 1em;
-    `}
-  }
-  summary {
-    margin: .25em 0;
-    font-weight: 600;
-    cursor: pointer;
-    line-height: 1;
+    font-weight: 400;
+    margin: 0 .5em .5em 1.5em;
+    padding: 0;
   }
   span {
-    font-size: .75em;
+    font-size: .875em;
+    font-weight: 400;
     display: block;
+    margin: .25em 0  0  0;
     text-transform: uppercase;
-    margin: .675em 0 0 1em;
-    ${SuperQuery().minWidth.md.css`
-      margin: .675em 0 0 1em;
-    `}
   }
-  details
-{
-    transition: height .5s ease;
-    overflow: hidden;
-}
-
-details:not([open])
-{
-    height: 2.5em;
-}
-
-details[open]
-{
-    height: 13.50em;
-}
   
-  
-  @keyframes sweep {
-    0%    {opacity: 0; margin-left: -10px}
-    100%  {opacity: 1; margin-left: 0px}
-  }
 `
-const Row__Container = styled(Row)`
-  margin: 0;
-  padding: 0;
-`
-const Col__Container = styled(Col)`
-  margin: 0;
-  padding: 0;
-`
-const Item = styled.div`
-`
+

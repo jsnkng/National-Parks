@@ -14,7 +14,7 @@ const SlideShow = props => {
       emulateTouch={true} 
       showStatus={false}
       showIndicators={true}
-      swipeScrollTolerance={0}
+      swipeScrollTolerance={3}
       swipeable={true}>
       { park.images.slice(0).map((item) => {
         return(
@@ -40,8 +40,8 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 80vh;
-  min-height:80px;
+  height: 75vh;
+  min-height:400px;
   max-width: 100%;
 
   ${SuperQuery().minWidth.md.css`

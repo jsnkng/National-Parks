@@ -61,7 +61,7 @@ const Logo = styled.img.attrs()`
 const Title = styled.span.attrs()`
   float: left;
   clear: left;
-  margin: 12px 0 0 60px;
+  margin: 20px 0 0 60px;
   padding: 0;
   text-align:left;
   font-weight: 700;
