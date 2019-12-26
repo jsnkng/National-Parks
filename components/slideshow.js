@@ -10,11 +10,11 @@ const SlideShow = props => {
     <Carousel__Styled 
       showArrows={true} 
       showThumbs={false} 
-      infiniteLoop={false} 
+      infiniteLoop={true} 
       emulateTouch={true} 
       showStatus={false}
       showIndicators={true}
-      swipeScrollTolerance={3}
+      swipeScrollTolerance={5}
       swipeable={true}>
       { park.images.slice(0).map((item) => {
         return(
