@@ -10,7 +10,10 @@ const Footer = props => {
     <Grid>
       <Row>
         <Col xs={6} md={6}>
-          <Copyright><a href="https://jsnkng.com">jsnkng</a> | 2019</Copyright>
+          <ThemeSwitcher>
+            <a onClick={() => props.setTheme('dayTheme')}>Light</a> | <a onClick={() => props.setTheme('nightTheme')}>Dark</a>
+             {/* | <a onClick={() => props.setTheme('rainbowTheme')}>Rainbow</a> */}
+          </ThemeSwitcher>
         </Col>
         <Col xs={6} md={6}>
           <Link href="/" passHref>
@@ -22,10 +25,7 @@ const Footer = props => {
           </Link>
         </Col>
         <Col xs={12} md={12}>
-          <ThemeSwitcher>
-            <a onClick={() => props.setTheme('dayTheme')}>Light</a> | <a onClick={() => props.setTheme('nightTheme')}>Dark</a>
-             {/* | <a onClick={() => props.setTheme('rainbowTheme')}>Rainbow</a> */}
-          </ThemeSwitcher>
+          <Copyright><a href="https://jsnkng.com">jsnkng</a> | 2019</Copyright>
         </Col>
       </Row>
     </Grid>
@@ -53,13 +53,17 @@ const FooterMenu = styled.footer`
 
 
 const Copyright = styled.div`
-  margin: 1.875em 0 0 0;
-  font-size: .625em;
+  margin: 1.875em 0 ;
+  font-size: .75em;
+  text-align: center;
 `
 const ThemeSwitcher = styled.div`
   margin: 1.875em 0;
-  font-size: .625em;
-  text-align: center;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  font-size: 1em;
+  text-align: left;
 `
 const Logo = styled.img.attrs()`
   position: absolute;
@@ -72,12 +76,12 @@ const Title = styled.span.attrs()`
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 1.75em;
-  right: 4.8em;
+  top: 1em;
+  right: 3.5em;
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 1;
-  font-size: .75em;
+  font-size: 1em;
   cursor: pointer;
   text-decoration: none;
   border: none;
@@ -86,12 +90,12 @@ const Title__Sub = styled.div.attrs()`
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 3.125em;
-  right: 5.75em;
+  top: 2.125em;
+  right: 4em;
   font-weight: 500;
   letter-spacing: -1px;
   line-height: 1;
-  font-size: .625em;
+  font-size: .875em;
   cursor: pointer;
   text-decoration: none;
   border: none;

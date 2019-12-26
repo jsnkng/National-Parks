@@ -14,7 +14,7 @@ const SlideShow = props => {
       emulateTouch={true} 
       showStatus={false}
       showIndicators={false}
-      swipeScrollTolerance={2}
+      swipeScrollTolerance={-5}
       swipeable={true}>
       { park.images.slice(0).map((item) => {
         return(
