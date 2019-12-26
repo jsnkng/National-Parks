@@ -53,12 +53,12 @@ const FooterMenu = styled.footer`
 
 
 const Copyright = styled.div`
-  margin: 1.875em 0 ;
-  font-size: .75em;
-  text-align: center;
+  margin: 0 0 1em;
+  font-size: .625em;
+  text-align: left;
 `
 const ThemeSwitcher = styled.div`
-  margin: 1.875em 0;
+  margin: 1em 0 .5em 0;
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 1;
