@@ -37,7 +37,10 @@ class Header extends Component {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
-
+{/* <link rel="apple-touch-startup-image" 
+media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+href="/image.png" /> */}
+          <link rel="apple-touch-startup-image" sizes="512x512" href="/splash-icon-512x512.png" />
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
           <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
