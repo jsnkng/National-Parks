@@ -12,16 +12,35 @@ const nextConfig = {
     swDest: 'static/service-worker.js',
     runtimeCaching: [
       {
-        urlPattern: /^https?.*/,
-        handler: 'StaleWhileRevalidate',
+        urlPattern: '/',
+        handler: 'networkFirst',
         options: {
-          cacheName: 'https-calls',
-          expiration: {
-            maxEntries: 350,
-            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
-          },
+          cacheName: 'html-cache',
+        },
+      },
+
+      {
+        urlPattern: /\/state\//,
+        handler: 'networkFirst',
+        options: {
+          cacheName: 'html-cache',
+        },
+      },
+      {
+        urlPattern: /\/state\/.*\/park\//,
+        handler: 'networkFirst',
+        options: {
+          cacheName: 'html-cache',
+        },
+      },
+
+      {
+        urlPattern: new RegExp('^https://national-parks.now.sh/api/'),
+        handler: 'staleWhileRevalidate',
+        options: {
+          cacheName: 'api-cache',
           cacheableResponse: {
-            statuses: [0, 200],
+            statuses: [200],
           },
         },
       },
