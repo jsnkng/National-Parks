@@ -13,7 +13,7 @@ const nextConfig = {
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
+        handler: 'CacheFirst',
         options: {
           cacheName: 'https-calls',
           networkTimeoutSeconds: 15,
@@ -25,6 +25,19 @@ const nextConfig = {
             statuses: [0, 200],
           },
         },
+      },
+      {
+        urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+        handler: 'CacheFirst',
+        options: {
+          // Use a custom cache name.
+          cacheName: 'images',
+
+          // Only cache 10 images.
+          expiration: {
+            maxEntries: 150,
+          },
+        }
       },
     ],
   },
