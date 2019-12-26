@@ -55,6 +55,7 @@ export default Alerts
 const Alerts__Container = styled.div`
   background-color: #ffca13;
   color: #333333; 
+  padding: 0 0 .5em 0;
   .accordion__button {
     margin: 0 0 0 .5em;
     color: #333333;
