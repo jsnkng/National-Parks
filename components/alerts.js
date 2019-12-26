@@ -62,10 +62,10 @@ const Alerts__Container = styled.div`
     color: #333333;
     border: none;
     padding:0;
-    margin: .5em 0;
+    margin: .75em 0 .25em 0;
     ${SuperQuery().minWidth.md.css`
-      padding:0;
-      margin: 0 0 .5em 0;
+      padding: 0;
+      margin: .5em 0 .5em 0;
     `}
 
   }
@@ -91,7 +91,7 @@ const Alerts__Container = styled.div`
     `}
   }
   h3 {
-    font-size: 1.125em;
+    font-size: 1em;
     color: #333333;
   }
   p {
@@ -102,7 +102,7 @@ const Alerts__Container = styled.div`
     color: #333333;
   }
   span {
-    font-size: .875em;
+    font-size: .75em;
     font-weight: 400;
     display: block;
     margin: .25em 0  0  0;
