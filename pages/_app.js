@@ -176,6 +176,11 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
   h5 {
+    font-size: 1.25em;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    margin: 0;
+    padding: .5em 0 0 0;
   }
   h6 {
     font-size: 2em;
