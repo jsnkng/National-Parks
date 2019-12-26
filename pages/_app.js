@@ -135,9 +135,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     line-height: .79;
     letter-spacing: -1.5px;
-    ${SuperQuery().minWidth.md.css`
-      margin: .25em 0 0 0;
-    `}
+    margin: .25em 0 .125em 0;
     span {
       display: inline-block;
       font-weight: 400;

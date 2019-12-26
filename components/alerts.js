@@ -28,15 +28,15 @@ const Alerts = props => {
             }
             { alerts.slice(0).map((item) => {
               return (
-                <Col xs={12} sm={4} md={4} lg={4} key={item.id}>
-                  <AccordionItem key={item.id}>
+                <Col xs={12} sm={4} md={4} lg={4} key={item.id} className="summary">
+                  <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                      <span>{item.category}</span>
+                        <span>{item.category}</span>
                         <h3>{item.title}</h3>
                       </AccordionItemButton>
                     </AccordionItemHeading>
-                    <AccordionItemPanel className="description">
+                    <AccordionItemPanel>
                       <p>{item.description}</p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -55,21 +55,36 @@ export default Alerts
 const Alerts__Container = styled.div`
   background-color: #ffca13;
   color: #333333; 
-  padding: 0 0 .5em 0;
-  .accordion__button {
-    margin: 0 0 0 .5em;
+  padding: .5em;
+  div {
+  }
+  .accordion__item {
     color: #333333;
-    padding: .5em;
     border: none;
+    padding:0;
+    margin: .5em 0;
+    ${SuperQuery().minWidth.md.css`
+      padding:0;
+      margin:0;
+    `}
+
+  }
+  .accordion__button {
+    color: #333333;
+    border: none;
+    padding: 0;
+    margin: 0;
+    padding: 0 0 0 .5em;
   }
   h2 {
     background-color: #333333;
     color: #ffca13;
     line-height: 1;
-    padding: .375em;
+    padding: 0;
     border: none;
-
+    padding: .25em;
     ${SuperQuery().minWidth.md.css`
+    ${'' /* padding: .375em 0 .375em .5em; */}
     `}
   }
   h3 {
@@ -79,8 +94,8 @@ const Alerts__Container = styled.div`
   p {
     font-size: .75em;
     font-weight: 400;
-    margin: 0 .5em .5em 1.5em;
     padding: 0;
+    margin: .5em .5em 0 1.5em;
     color: #333333;
   }
   span {
