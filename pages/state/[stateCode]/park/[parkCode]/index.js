@@ -148,9 +148,9 @@ export default Park
 
 
 const Container = styled.div`
-  padding: 60px 0 0 0;
+  padding: 70px 0 0 0;
   ${SuperQuery().minWidth.sm.css`
-    padding: 80px 0 0 0;
+    padding: 90px 0 0 0;
   `}
 `
 const Description__Wrapper = styled.div`

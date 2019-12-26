@@ -81,7 +81,7 @@ export default Parks
 
 const ParksWrapper = styled.div`
 position:relative;
-  padding: 60px 0 0 0;
+  padding: 70px 0 0 0;
   ${SuperQuery().minWidth.sm.css`
     padding: 90px 0 0 0;
   `}
