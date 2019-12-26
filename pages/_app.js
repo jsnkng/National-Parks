@@ -212,6 +212,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.125em;
     overflow-wrap: break-word;
     padding: 0 .25em 1em .25em;
+    margin: .5em 0 0 0;
     ul {
       margin: 0;
       padding: 0 0 0 1em;
