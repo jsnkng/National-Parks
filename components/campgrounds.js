@@ -45,7 +45,9 @@ const Campgrounds = props => {
                           <p className="section introduction description">{item.description}</p>
                         </Col>
                       </Row>
-                      
+                      { ((item.directionsoverview !== undefined && item.directionsoverview !=="") ||
+                        (item.directionsoverview !== undefined && item.directionsoverview !=="") ||
+                        (item.latLong !== undefined && item.latLong !=="")) && 
                       <Row className="section">
                         <Col xs={12} sm={6}>
                             <>
@@ -57,7 +59,8 @@ const Campgrounds = props => {
                                 </p>
                               </>
                             }
-                            { item.campsites !== undefined && item.campsites !== "" && 
+                            { ((item.campsites !== undefined && item.campsites !== "") && 
+                              (item.campsites.totalsites > 0)) &&
                               <>
                                 <h5>Campsites</h5>
                                 <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
@@ -88,6 +91,19 @@ const Campgrounds = props => {
                           </MapLive__Wrapper> 
                         </Col>
                       </Row>
+                      }
+                      { ((item.accessibility.accessroads !== undefined && item.accessibility.accessroads != "") ||  
+                        (item.accessibility.classifications !== undefined && item.accessibility.classifications != "") || 
+                        (item.accessibility.adainfo !== undefined && item.accessibility.adainfo != "") ||  
+                        (item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != "") ||  
+                        (item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != "") ||  
+                        (item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != "") ||  
+                        (item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != "") ||  
+                        (item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != "0") ||  
+                        (item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != "0") ||  
+                        (item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != "0") ||  
+                        (item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != "0") ||  
+                        (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != "")) && 
                       <Row className="section">
                         <Col xs={12}>
                           <h5>Accessibility</h5>
@@ -113,16 +129,16 @@ const Campgrounds = props => {
                             {item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != "" && 
                               <li><strong>Internet Info:</strong> {item.accessibility.internetinfo}</li>
                             }
-                            {item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != "" && 
+                            {item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != "0" && 
                               <li><strong>RV Allowed:</strong> {item.accessibility.rvallowed}</li>
                             }
-                            {item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != "" && 
+                            {item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != "0" && 
                               <li><strong>RV Maxlength:</strong> {item.accessibility.rvmaxlength}</li>
                             }
-                            {item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != "" && 
+                            {item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != "0" && 
                               <li><strong>Trailer Allowed:</strong> {item.accessibility.trailerallowed}</li>
                             }
-                            {item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != "" && 
+                            {item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != "0" && 
                               <li><strong>Trailer Max Length:</strong> {item.accessibility.trailermaxlength}</li>
                             }
                             {item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != "" && 
@@ -131,7 +147,7 @@ const Campgrounds = props => {
                           </ul>
                         </Col>
                       </Row>
-                      
+                      }
                       <Row className="section">
                         <Col xs={12}  className="amenities">
                           <h5>Amenities</h5>
@@ -280,15 +296,16 @@ ul {
   }
   .section {
     font-size: 1.25em;
-    padding: .75em .25em 1em .25em;
+    margin: 1em .25em 1em .25em;
     border-top: 4px solid #333333;
+    &:first-of-type {
+      border:none;
+      margin-bottom: 0;
+    }
   }
   .amenities {
     ul {
       column-count: 2;
-      ${SuperQuery().minWidth.sm.css`
-        column-count: 4;
-      `}
     }
   }
   .boxes {
