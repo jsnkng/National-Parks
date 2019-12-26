@@ -57,6 +57,7 @@ const Alerts__Container = styled.div`
   color: #333333; 
   .accordion__button {
     margin: 0 0 0 .5em;
+    color: #333333;
     padding: .5em;
     border: none;
   }
@@ -65,18 +66,21 @@ const Alerts__Container = styled.div`
     color: #ffca13;
     line-height: 1;
     padding: .375em;
+    border: none;
 
     ${SuperQuery().minWidth.md.css`
     `}
   }
   h3 {
     font-size: 1.125em;
+    color: #333333;
   }
   p {
     font-size: .75em;
     font-weight: 400;
     margin: 0 .5em .5em 1.5em;
     padding: 0;
+    color: #333333;
   }
   span {
     font-size: .875em;
@@ -84,6 +88,7 @@ const Alerts__Container = styled.div`
     display: block;
     margin: .25em 0  0  0;
     text-transform: uppercase;
+    color: #333333;
   }
   
 `

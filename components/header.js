@@ -8,7 +8,7 @@ const ProgressBar = require('react-progress-bar-plus')
 // require('react-progress-bar-plus/lib/progress-bar.css')
 class Header extends Component {
   state = { autoIncrement: true,
-            intervalTime: 25
+            intervalTime: 600
           }
 
   componentDidMount() {
@@ -19,7 +19,7 @@ class Header extends Component {
       this.setState({ percent: 100 })
     }
     Router.onRouteChangeError = () => {
-      this.setState({ percent: -1 })
+      this.setState({ percent: 100 })
     }
   }
   

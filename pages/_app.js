@@ -19,7 +19,7 @@ export default class MyApp extends App {
           color_two: "#a1dde9",
           color_three: "#90d223",
           color_four: "#e2e1d5",
-          trans_back: "rgba(0,0,0,.8)",
+          trans_back: "rgba(0,0,0,0.8)",
           spinner: "rgba(0,0,0,0.2)",
         },
         dayTheme: {
@@ -31,7 +31,7 @@ export default class MyApp extends App {
             color_two: "#ba471e",
             color_three: "#ec8217",
             color_four: "#b1b0a7",
-            trans_back: "rgba(245,245,245,.8)",
+            trans_back: "rgba(245,245,245,0.8)",
             spinner: "rgba(255,255,255,0.2)",
         },
         rainbowTheme: {
@@ -43,7 +43,7 @@ export default class MyApp extends App {
           color_two: "#fa443f",
           color_three: "#4c93d9",
           color_four: "#00ac47",
-          trans_back: "rgba(250,68,63,.8)",
+          trans_back: "rgba(250,68,63,0.8)",
           spinner: "rgba(255,255,255,0.2)",
         }
       }
