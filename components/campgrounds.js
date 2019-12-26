@@ -49,7 +49,7 @@ const Campgrounds = props => {
                       <Row className="section">
                         <Col xs={12} sm={6}>
                             <>
-                            { item.directionsoverview !== undefined && item.directionsoverview !== 0 && 
+                            { item.directionsoverview !== undefined && item.directionsoverview !=="" && 
                               <>
                                 <h5>Directions</h5>
                                 <p>{item.directionsoverview}<br />
@@ -57,11 +57,18 @@ const Campgrounds = props => {
                                 </p>
                               </>
                             }
-                            { item.campsites !== undefined && item.campsites !== 0 && 
+                            { item.campsites !== undefined && item.campsites !== "" && 
                               <>
                                 <h5>Campsites</h5>
-                                <ul> 
-                                  { Object.entries(item.campsites).map((item) => item[1] !== '0' ? <li key={item[0]}><strong>{item[0]}:</strong> {item[1]} </li> : '') }
+                                <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
+                                <ul>
+                                  <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
+                                  <li><strong>Group: </strong> { item.campsites.group }</li>
+                                  <li><strong>Walk/Boat To: </strong> { item.campsites.walkboatto }</li>
+                                  <li><strong>Horse: </strong> { item.campsites.horse }</li>
+                                  <li><strong>Other: </strong> { item.campsites.other }</li>
+                                  <li><strong>RV Only: </strong> { item.campsites.rvonly }</li>
+                                  <li><strong>Electrical Hookup: </strong> { item.campsites.electricalhookups }</li>
                                 </ul>
                               </>
                             }
@@ -81,45 +88,44 @@ const Campgrounds = props => {
                           </MapLive__Wrapper> 
                         </Col>
                       </Row>
-
                       <Row className="section">
                         <Col xs={12}>
                           <h5>Accessibility</h5>
                           <ul>
-                            {item.accessibility.accessroads !== undefined && item.accessibility.accessroads != 0 && 
+                            {item.accessibility.accessroads !== undefined && item.accessibility.accessroads != "" && 
                               <li><strong>Access Roads:</strong> {item.accessibility.accessroads}</li>
                             }
-                            {item.accessibility.classifications !== undefined && item.accessibility.classifications != 0 && 
+                            {item.accessibility.classifications !== undefined && item.accessibility.classifications != "" && 
                               <li><strong>Classifications:</strong> {item.accessibility.classifications}</li>
                             }
-                            {item.accessibility.adainfo !== undefined && item.accessibility.adainfo != 0 && 
+                            {item.accessibility.adainfo !== undefined && item.accessibility.adainfo != "" && 
                               <li><strong>ADA Info:</strong> {item.accessibility.adainfo}</li>
                             }
-                            {item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != 0 && 
+                            {item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != "" && 
                               <li><strong>Additional Info:</strong> {item.accessibility.additionalinfo}</li>
                             }
-                            {item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != 0 && 
+                            {item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != "" && 
                               <li><strong>Cellphone Info:</strong> {item.accessibility.cellphoneinfo}</li>
                             }
-                            {item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != 0 && 
+                            {item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != "" && 
                               <li><strong>Fire/Stove Policy:</strong> {item.accessibility.firestovepolicy}</li>
                             }
-                            {item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != 0 && 
+                            {item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != "" && 
                               <li><strong>Internet Info:</strong> {item.accessibility.internetinfo}</li>
                             }
-                            {item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != 0 && 
+                            {item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != "" && 
                               <li><strong>RV Allowed:</strong> {item.accessibility.rvallowed}</li>
                             }
-                            {item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != 0 && 
+                            {item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != "" && 
                               <li><strong>RV Maxlength:</strong> {item.accessibility.rvmaxlength}</li>
                             }
-                            {item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != 0 && 
+                            {item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != "" && 
                               <li><strong>Trailer Allowed:</strong> {item.accessibility.trailerallowed}</li>
                             }
-                            {item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != 0 && 
+                            {item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != "" && 
                               <li><strong>Trailer Max Length:</strong> {item.accessibility.trailermaxlength}</li>
                             }
-                            {item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != 0 && 
+                            {item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != "" && 
                               <li><strong>Wheelchair Access:</strong> {item.accessibility.wheelchairaccess}</li>
                             }
                           </ul>
@@ -173,49 +179,66 @@ const Campgrounds = props => {
                         </Col>
                       </Row>
                       
-                      <Row className="section">
+                      {item.regulationsoverview !== undefined && item.regulationsoverview != "" && 
+                      <Row>
                         <Col xs={12}>
-                          <div className="details">
-                          {item.regulationsoverview !== undefined && item.regulationsoverview != 0 && 
+                          <div className="boxes">
                             <span>
                               <h5>Regulations</h5>
-                              <p>{item.regulationsoverview}</p>
-                              <p><a href={item.regulationsurl} target="_blank">{item.regulationsurl}</a></p>
+                              <div dangerouslySetInnerHTML={{__html: item.regulationsoverview.replace(/\n/gi, "<br />")}}></div>
+                              <p><a href={item.regulationsurl} target="_blank" style={{ wordBreak: "break-all"}}>{item.regulationsurl}</a></p>
                             </span>
-                          }
-                          {item.reservationsdescription !== undefined && item.reservationsdescription != 0 && 
+                          </div>
+                        </Col>
+                      </Row>
+                      }
+
+                             
+                    {item.reservationsdescription !== undefined && item.reservationsdescription != "" && 
+                      <Row>
+                        <Col xs={12}>
+                          <div className="boxes">   
+                          {item.reservationsdescription !== undefined && item.reservationsdescription != "" && 
                             <span>
                               <h5>Reservations</h5>
-                              <p>{item.reservationsdescription}</p>
+                              <div dangerouslySetInnerHTML={{__html: item.reservationsdescription.replace(/\n/gi, "<br />")}}></div>
                             </span>
                           }
-                          {item.reservationssitesfirstcome !== undefined && item.reservationssitesfirstcome != 0 && 
+                          {item.reservationssitesfirstcome !== undefined && item.reservationssitesfirstcome != "" && 
                             <span>
                               <h5>Reservations Sites First Come</h5>
                               <p>{item.reservationssitesfirstcome}</p>
                             </span>
                           }
-                          {item.reservationssitesreservable !== undefined && item.reservationssitesreservable != 0 && 
+                          {item.reservationssitesreservable !== undefined && item.reservationssitesreservable != "" && 
                             <span>
                               <h5>Reservations Reservable</h5>
                               <p>{item.reservationssitesreservable}</p>
                             </span>
                           }
-                          {item.reservationsurl !== undefined && item.reservationsurl != 0 && 
+                          {item.reservationsurl !== undefined && item.reservationsurl != "" && 
                             <span>
                               <h5>Reservations URL</h5>
                               <p><a href={item.reservationsurl} target="_blank">{item.reservationsurl}</a></p>
                             </span>
                           }
-                          {item.weatheroverview !== undefined && item.weatheroverview != 0 && 
+                      </div>
+                      </Col>
+                    </Row>
+                    }
+                             
+                    {item.weatheroverview !== undefined && item.weatheroverview != "" && 
+                      <Row className="boxes">
+                        <Col xs={12}>
+                          <div>                   
                             <span>
                               <h5>Weather Overview</h5>
-                              <p>{item.weatheroverview}</p>
+                              <div dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, "<br />")}}></div>
                             </span>
-                          }
                           </div>
-                          </Col>
-                        </Row>
+                        </Col>
+                      </Row>
+                    }
                     </AccordionItemPanel>
                   </AccordionItem>
                 </Col>
@@ -232,7 +255,7 @@ const Campgrounds = props => {
 export default Campgrounds
 
 const Campground__Wrapper = styled.div`
-
+padding: 0 0 1.5em 0;
 ul {
     font-size: 1em;
     column-count: 1;
@@ -250,7 +273,6 @@ ul {
     font-weight: 300;
     overflow-wrap: break-word;
   }
-
   p.introduction {
     font-size: 1.5em;
     font-weight: 400;
@@ -259,10 +281,7 @@ ul {
   .section {
     font-size: 1.25em;
     padding: .75em .25em 1em .25em;
-    border-bottom: 4px solid #333333;
-  }
-  .section:last-child {
-    border: none;
+    border-top: 4px solid #333333;
   }
   .amenities {
     ul {
@@ -271,6 +290,26 @@ ul {
         column-count: 4;
       `}
     }
+  }
+  .boxes {
+    font-size:1em;
+    background-color: ${props => props.theme.colors.box_background};
+    padding: 3.5em 1.5em 1em 1.5em;
+    margin: .5em .25em .5em .25em;
+    column-count: 1;
+    h5 {
+
+      font-size:1.5em;
+      margin: -2em 0 0 0;
+    }
+    p {
+      margin: 0;
+      padding:0;
+    }
+    ${SuperQuery().minWidth.md.css`
+      margin: .5em .25em .5em .25em;
+      column-count: 2;
+    `}
   }
 `
 const MapLive__Wrapper = styled.div`

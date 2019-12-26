@@ -39,6 +39,7 @@ export default Footer
 const FooterMenu = styled.footer`
   position: relative;
   background-color: ${props => props.theme.colors.trans_back};
+  min-height: 6em;
   color: ${props => props.theme.colors.text};
   a {
     color: ${props => props.theme.colors.text};
@@ -53,12 +54,16 @@ const FooterMenu = styled.footer`
 
 
 const Copyright = styled.div`
-  margin: 0 0 1em;
+  position: absolute;
+  top: 5.75em;
+  left: 1.75em;
   font-size: .625em;
   text-align: left;
 `
 const ThemeSwitcher = styled.div`
-  margin: 1em 0 .5em 0;
+  position: absolute;
+  top: 1em;
+  left: 1em;
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 1;

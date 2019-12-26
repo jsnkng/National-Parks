@@ -299,7 +299,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .accordion__item + .accordion__item {
-  ${'' /* border-bottom: 1px solid ${props => props.theme.colors.offbackground}; */}
+  border-bottom: 1px solid ${props => props.theme.colors.offbackground};
 }
 
 .accordion__button {
@@ -307,7 +307,7 @@ const GlobalStyle = createGlobalStyle`
   line-height: 1.2;
   font-weight: 600;
   text-indent: .5em;
-  padding:  1em 0 1em .5em;
+  padding:  1.25em 0 1.25em .5em;
   border-bottom: 1px solid ${props => props.theme.colors.offbackground};
   outline: 0;
   cursor: pointer;
@@ -353,6 +353,10 @@ const GlobalStyle = createGlobalStyle`
 
 .accordion__panel {
   animation: fadein 0.35s ease-in;
+  padding: 0 0 1em 0;
+  border-bottom: 1px solid ${props => props.theme.colors.offbackground};
+}
+.accordion__panel[attr=hidden] {
 }
 @keyframes fadein {
   0% {
@@ -362,4 +366,5 @@ const GlobalStyle = createGlobalStyle`
     opacity: 1;
   }
 }
+
 `
