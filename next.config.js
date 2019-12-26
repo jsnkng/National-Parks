@@ -16,14 +16,26 @@ const nextConfig = {
         handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',
+          cacheableResponse: {
+            statuses: [200],
+          },
+          expiration: {
+            maxAgeSeconds: 24 * 60 * 60,
+          },
         },
       },
 
       {
-        urlPattern: /\/state\//,
+        urlPattern: /\/state\/.*\//,
         handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',
+          cacheableResponse: {
+            statuses: [200],
+          },
+          expiration: {
+            maxAgeSeconds: 24 * 60 * 60,
+          },
         },
       },
       {
@@ -31,6 +43,12 @@ const nextConfig = {
         handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',
+          cacheableResponse: {
+            statuses: [200],
+          },
+          expiration: {
+            maxAgeSeconds: 24 * 60 * 60,
+          },
         },
       },
 
@@ -48,10 +66,7 @@ const nextConfig = {
         urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
         handler: 'StaleWhileRevalidate',
         options: {
-          // Use a custom cache name.
           cacheName: 'images',
-
-          // Only cache 10 images.
           expiration: {
             maxEntries: 150,
           },
