@@ -13,7 +13,7 @@ const nextConfig = {
     runtimeCaching: [
       {
         urlPattern: '/',
-        handler: 'networkFirst',
+        handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',
         },
@@ -21,14 +21,14 @@ const nextConfig = {
 
       {
         urlPattern: /\/state\//,
-        handler: 'networkFirst',
+        handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',
         },
       },
       {
         urlPattern: /\/state\/.*\/park\//,
-        handler: 'networkFirst',
+        handler: 'NetworkFirst',
         options: {
           cacheName: 'html-cache',
         },
@@ -36,7 +36,7 @@ const nextConfig = {
 
       {
         urlPattern: new RegExp('^https://national-parks.now.sh/api/'),
-        handler: 'staleWhileRevalidate',
+        handler: 'StaleWhileRevalidate',
         options: {
           cacheName: 'api-cache',
           cacheableResponse: {
