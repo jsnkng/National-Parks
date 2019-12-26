@@ -65,7 +65,7 @@ const Alerts__Container = styled.div`
     margin: .5em 0;
     ${SuperQuery().minWidth.md.css`
       padding:0;
-      margin:0;
+      margin: 0 0 .5em 0;
     `}
 
   }
@@ -75,6 +75,9 @@ const Alerts__Container = styled.div`
     padding: 0;
     margin: 0;
     padding: 0 0 0 .5em;
+  }
+  .accordion__panel {
+    border: none;
   }
   h2 {
     background-color: #333333;
