@@ -305,7 +305,9 @@ ul {
   }
   .amenities {
     ul {
+    ${SuperQuery().minWidth.md.css`
       column-count: 2;
+    `}
     }
   }
   .boxes {
