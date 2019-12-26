@@ -13,11 +13,11 @@ const nextConfig = {
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,
-        handler: 'CacheFirst',
+        handler: 'StaleWhileRevalidate',
         options: {
           cacheName: 'https-calls',
           expiration: {
-            maxEntries: 150,
+            maxEntries: 350,
             maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
           },
           cacheableResponse: {
@@ -27,7 +27,7 @@ const nextConfig = {
       },
       {
         urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-        handler: 'CacheFirst',
+        handler: 'StaleWhileRevalidate',
         options: {
           // Use a custom cache name.
           cacheName: 'images',
