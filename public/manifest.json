@@ -49,5 +49,8 @@
  "description": "National Park Service: A State-by-State Guide",
  "display": "fullscreen",
  "start_url": "/",
- "theme_color": "#000"
+ "theme_color": "#000",
+ "lang" : "English",
+ "screenshots" : [],
+ "orientation" : "portrait",
 }
