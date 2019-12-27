@@ -148,6 +148,19 @@ const Campgrounds = props => {
                         </Col>
                       </Row>
                       }
+                      { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
+                      (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
+                      (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
+                      (item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0) || 
+                       (item.amenities.campstore !== undefined && item.amenities.campstore != 0) || 
+                      (item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0) || 
+                      (item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0) || 
+                       (item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0) || 
+                      (item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0) || 
+                       (item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0) || 
+                       (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
+                      (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
+                        (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
                       <Row className="section">
                         <Col xs={12}  className="amenities">
                           <h5>Amenities</h5>
@@ -194,7 +207,7 @@ const Campgrounds = props => {
                           </ul>
                         </Col>
                       </Row>
-                      
+                      }
                       {item.regulationsoverview !== undefined && item.regulationsoverview != "" && 
                       <Row>
                         <Col xs={12}>
