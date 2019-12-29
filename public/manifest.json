@@ -45,11 +45,11 @@
    "density": "4.0"
   }
  ],
- "background_color": "#FFFFFF",
+ "background_color": "#00ac47",
  "description": "National Park Service: A State-by-State Guide",
  "display": "fullscreen",
  "start_url": "/",
- "theme_color": "#000",
+ "theme_color": "#fff",
  "lang" : "English",
  "screenshots" : [],
  "orientation" : "portrait"
