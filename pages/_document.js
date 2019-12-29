@@ -1,7 +1,8 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import {GA_TRACKING_ID} from '../config/gtag'
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
 
   static async getInitialProps (ctx) {
     const sheet = new ServerStyleSheet()
@@ -30,7 +31,55 @@ class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head />
+        <Head>
+          <meta charSet="UTF-8" />
+          <meta name="description" content="National Park Service: A State-by-State Guide" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="theme-color" content="#ff6600" />
+          <link rel='icon' href='/favicon.ico' />
+          <link rel="manifest" href="/manifest.json" />
+          <meta name="apple-mobile-web-app-title" content="National Parks" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+          <meta name="theme-color" content="#ffffff" />
+            {/* <link rel="apple-touch-startup-image" 
+            media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+            href="/image.png" /> */}
+          <link rel="apple-touch-startup-image" sizes="512x512" href="/splash-icon-512x512.png" />
+          <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+          <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+          <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+          <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+          <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
+          <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
+          <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
+          <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+          <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}');
+              `,
+            }}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
@@ -39,5 +88,3 @@ class MyDocument extends Document {
     )
   }
 }
-
-export default MyDocument

@@ -21,7 +21,7 @@ const SlideShow = props => {
           <Image 
             key={item.id} 
             backgroundURL={`${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`}>
-            <span className="caption">{item.title}</span>
+            <span className="caption">{item.title.replace(/\$#257;|&#257;/gi, "ā").replace(/&#299;/gi, "ī")}</span>
           </Image>
         )
         })
@@ -50,8 +50,8 @@ const Image = styled.div`
     min-height:600px;
   `}
   ${SuperQuery().minWidth.lg.css`
-    height: 75vw;
-    max-height: 82vh;
+    height: 80vw;
+    max-height: 91vh;
   `}
 
   .caption {
@@ -67,12 +67,9 @@ const Image = styled.div`
   }
 `
 const Carousel__Styled = styled(Carousel)`
-  margin-top: -80px;
+  margin-top: -70px;
   ${SuperQuery().minWidth.sm.css`
     margin-top: -90px;
-  `}
-  ${SuperQuery().minWidth.lg.css`
-    margin-top: -100px;
   `}
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;

@@ -37,7 +37,7 @@ handler.get(async (req, res) => {
 
     parks.parks_id = parkCode
 
-    // Insert one JSON object 
+    // Insert one JSON object
     await req.db.collection('parks').insertOne(parks)
 
     // Separate function to handle checking if image exists on s3 and uploading if not

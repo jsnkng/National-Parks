@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import states from './datastates'
+import SuperQuery from '@themgoncalves/super-query'
+import states from '../config/datastates'
 
-const MapDiagram = props => {
-  const handleHover = (territory) => {
-    props.onHighlight(territory)
-  }
+const Component = ({ territories, highlighted, onHighlight }) => {
+ 
 
   return (
     <Map
@@ -19,7 +18,7 @@ const MapDiagram = props => {
     > 
     <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
       { Object.entries(states).map(([key, value]) => {
-        if(props.states === "none") {
+        if(territories === "none") {
           return ( 
             <Link  
               key={key}
@@ -28,9 +27,9 @@ const MapDiagram = props => {
               passHref>
                 <path 
                   id={key} 
-                  className={props.highlighted === value[0] ? 'highlight' : ''} 
-                  onMouseOver={() => handleHover(value[0])} 
-                  onMouseOut={() => handleHover(null)} 
+                  className={highlighted === value[0] ? 'highlight' : ''} 
+                  onMouseOver={() => onHighlight(value[0])} 
+                  onMouseOut={() => onHighlight(null)} 
                   d={value[1]}  />
             </Link>
           )
@@ -39,7 +38,7 @@ const MapDiagram = props => {
             <path 
               key={key}
               id={key} 
-              className={props.states.split(',').includes(key.toUpperCase())  ? 'highlight' : 'nohighlight'} 
+              className={territories.split(',').includes(key.toUpperCase())  ? 'highlight' : 'nohighlight'} 
               d={value[1]} />
           )
         }
@@ -49,12 +48,13 @@ const MapDiagram = props => {
   )
 }
   
-export default MapDiagram
+export default Component
 
 
 const Map = styled.svg.attrs(props => ({
   margin: "20px auto",
 }))`
+
   * {
       pointer-events: fill;
   }

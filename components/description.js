@@ -1,40 +1,48 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import MapDiagram from './mapdiagram'
 
-const Description = props => {
+const Component = props => {
   const [park, setPark] = useState(props.park)
 
   return (
-    <Grid>
+    <Description>
       <Row>
         <Col xs={12}>
-          <h1>{park.name} <span>{park.designation}</span></h1>
+          <h1>{park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} <span>{park.designation}</span></h1>
         </Col>
       </Row>
       <Row>
-        <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+        <Col xs={12} sm={7} md={8}>
           <p>{park.description}</p>
         </Col>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4}>
+        <Col xs={12} sm={5} md={4}>
           <MapDiagram__Wrapper>
-            <MapDiagram highlighted={null} onHighlight={(terr) => setHighlight(terr)} states={park.states} />
+            <MapDiagram territories={park.states} highlighted={null} onHighlight={(terr) => setHighlight(terr)} />
           </MapDiagram__Wrapper>
         </Col>
       </Row>
-    </Grid>
+    </Description>
   )
 }
   
-export default Description
+export default Component
 
+const Description = styled(Grid)`
+  padding-top: 1em;
+  padding-bottom: 1em;
+`
 const MapDiagram__Wrapper = styled.div`
-  margin: 1.75em auto 2.5em auto;
-  width: 60%;
-  ${SuperQuery().minWidth.md.css`
+  margin: 1em auto 0 auto;
+  width: 70%;
+  ${SuperQuery().minWidth.sm.css`
     width: 100%;
-    margin: .75em auto;
+    margin: .75em auto 0 auto;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    width: 100%;
+    margin: 0 auto;
   `}
 `

@@ -13,35 +13,40 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Campgrounds = props => {
+const Component = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
+  console.log()
   return (
-    <Campground__Wrapper>
-      <Grid>
+    <Campgrounds>
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
           <Row>
             <Col xs={12}>
               <h2>Campgrounds</h2>
             </Col>
           </Row>
+          <Row>
+            <Col xs={12}>
           { campgrounds.slice(0).map((item) => {
             return(
-              <Row key={item.id}>
-                <Col xs={12}>
-                  <AccordionItem>
+                  <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
                     <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                       <AccordionItemButton>
                         <h3>{item.name}</h3>
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
+                    { item.images !== undefined &&  
+                    <Row>
+                      <Col xs={12}>
+                        <LazyLoad offset={0}>
+                          <Image backgroundURL={`${item.images[0].url}` } className="lazyload__image--height" />
+                        </LazyLoad>
+                      </Col>
+                    </Row>
+                    }
+
                       <Row>
                         <Col xs={12}>
-                          {item.images !== undefined && item.images != 0 && 
-                          <LazyLoad height={320} offset={600}>
-                            <Image backgroundURL={item.images[0].url} />
-                          </LazyLoad>
-                          }
                           <p className="section introduction description">{item.description}</p>
                         </Col>
                       </Row>
@@ -79,7 +84,6 @@ const Campgrounds = props => {
                         </Col>
                         <Col xs={12} sm={6}>
                           <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
-                            <LazyLoad height={440} offset={600} key={item.id}>
                               <MapLive__Component
                                 latLong={item.latLong}
                                 name={item.name}
@@ -87,7 +91,6 @@ const Campgrounds = props => {
                                 zoom={13}
                                 markers={[{id: item.id, latLong: item.latLong, name: item.name, description: item.description}]}
                               />
-                            </LazyLoad>
                           </MapLive__Wrapper> 
                         </Col>
                       </Row>
@@ -149,17 +152,17 @@ const Campgrounds = props => {
                       </Row>
                       }
                       { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
-                      (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
-                      (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
-                      (item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0) || 
-                       (item.amenities.campstore !== undefined && item.amenities.campstore != 0) || 
-                      (item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0) || 
-                      (item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0) || 
-                       (item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0) || 
-                      (item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0) || 
-                       (item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0) || 
-                       (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
-                      (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
+                        (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
+                        (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
+                        (item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0) || 
+                        (item.amenities.campstore !== undefined && item.amenities.campstore != 0) || 
+                        (item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0) || 
+                        (item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0) || 
+                        (item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0) || 
+                        (item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0) || 
+                        (item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0) || 
+                        (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
+                        (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
                         (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
                       <Row className="section">
                         <Col xs={12}  className="amenities">
@@ -270,21 +273,27 @@ const Campgrounds = props => {
                     }
                     </AccordionItemPanel>
                   </AccordionItem>
-                </Col>
-              </Row> 
+              
             )}
           )
         }
+            </Col>
+          </Row> 
         </Accordion>
-      </Grid>
-    </Campground__Wrapper>
+    </Campgrounds>
   )
 }
   
-export default Campgrounds
+export default Component
 
-const Campground__Wrapper = styled.div`
-padding: 0 0 1.5em 0;
+const Campgrounds = styled(Grid)`
+  padding-top: 1em;
+  padding-bottom: 1em;
+  .lazyload-placeholder,
+  .lazyload__image--height {
+    height: 12em;
+  }
+
 ul {
     font-size: 1em;
     column-count: 1;

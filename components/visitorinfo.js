@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad from 'react-lazyload'
 
 import MapLive__Component from './maplive'
 
-const VisitorInfo = props => {
+const Component = props => {
   const [park, setPark] = useState(props.park)
   const [markers, setMarkers] = useState(props.markers)
    
   return (
-    <Grid>
+    <VisitorInfo>
       <Row>
         <Col xs={12}>
           <h2>Visitor Information</h2>
@@ -19,7 +18,6 @@ const VisitorInfo = props => {
       </Row>
       <Row>
         <Col xs={12}>
-          <LazyLoad height={400} offset={400}>
             <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
               <MapLive__Component
                 latLong={park.latLong}
@@ -29,7 +27,6 @@ const VisitorInfo = props => {
                 markers={markers}
               />
             </MapLive__Wrapper>
-          </LazyLoad>
         </Col>
       </Row>
       <Row>
@@ -46,11 +43,15 @@ const VisitorInfo = props => {
         </Col>
       }
       </Row>
-    </Grid>
+    </VisitorInfo>
   )
 }
-  
-export default VisitorInfo
+export default Component
+
+const VisitorInfo = styled(Grid)`
+  padding-top: 1em;
+  padding-bottom: 1em;
+`
 
 const MapLive__Wrapper = styled.div`
   position:relative;
@@ -60,5 +61,8 @@ const MapLive__Wrapper = styled.div`
   padding:  0;
   ${SuperQuery().minWidth.md.css`
     height: 33vh;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 50vh;
   `}
 `

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad from 'react-lazyload'
+import LazyLoad, { forceCheck } from 'react-lazyload'
 import {
   Accordion,
   AccordionItem,
@@ -11,17 +11,16 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Events = props => {
+const Component = props => {
   const [events, setEvents] = useState(props.events)
   const toDateFormat = (date) => {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])
     const nd = new Date(d1)
-    return Intl.DateTimeFormat('en-US').format(nd)
+    return nd.toLocaleDateString()
   }
-
   return (
-    <Grid>
+    <Events>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row>
           <Col xs={12}>
@@ -32,87 +31,86 @@ const Events = props => {
           <Col xs={12}>
           { events.slice(0,10).map((item) => {
             return (
-              <LazyLoad height={70} offset={600} key={item.id}>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <h3>{item.title}</h3>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    { item.images.length !== 0 &&
-                    <Row>
-                      <Col xs={12}>
-                        <Image backgroundURL={item.images[0] === undefined || item.images.length[0] == 0 
-                          ? "/US-National-Parks-logo-sml-bw.png" 
-                          : "https://www.nps.gov"+item.images[0].url } />
+              <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <h3>{item.title}</h3>
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  { item.images.length !== 0 && item.images[0].url !== undefined && 
+                  <Row>
+                    <Col xs={12}>
+                      <LazyLoad offset={0} className="lazyload__image--height">
+                        <Image backgroundURL={`https://www.nps.gov${item.images[0].url}` } className="lazyload__image--height" />
+                      </LazyLoad>
+                    </Col>
+                  </Row>
+                  }
+                  <Row>
+                    <Col xs={12} md={8}>
+                    <div className="description">
+                      <div dangerouslySetInnerHTML={{__html:item.description}}></div>
+                      </div>
                       </Col>
-                    </Row>
-                    }
-                    <Row>
-                      <Col xs={12} md={8}>
-                      <div className="description">
-                        <div dangerouslySetInnerHTML={{__html:item.description}}></div>
-                        </div>
-                        </Col>
-                      <Col xs={12} md={4}>
-                      <div className="details">
-                        { item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                          <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
+                    <Col xs={12} md={4}>
+                    <div className="details">
+                      { item.times[0] !== undefined && item.times.length[0] !== 0 &&
+                        <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
+                      }
+                      <p><strong>Location: </strong>{item.location}</p>
+                      <p><strong>Cost: </strong> 
+                        { item.isfree === "false" 
+                        ? item.feeinfo 
+                        : item.feeinfo.length !== 0 && item.isfree === true 
+                          ? "FREE (" + item.feeinfo + ")" 
+                          : "FREE" 
                         }
-                        <p><strong>Location: </strong>{item.location}</p>
-                        <p><strong>Cost: </strong> 
-                          { item.isfree === "false" 
-                          ? item.feeinfo 
-                          : item.feeinfo.length !== 0 && item.isfree === true 
-                            ? "FREE (" + item.feeinfo + ")" 
-                            : "FREE" 
-                          }
-                        </p> 
-                        { item.regresinfo !== "" &&
-                          <p><strong>Reservations: </strong>{item.regresinfo}
-                          { item.regresurl !== "" &&
-                            <strong> <a href={item.regresurl} target="_blank">Click here for reservations.</a></strong>
-                          }
-                        </p> 
+                      </p> 
+                      { item.regresinfo !== "" &&
+                        <p><strong>Reservations: </strong>{item.regresinfo}
+                        { item.regresurl !== "" &&
+                          <strong> <a href={item.regresurl} target="_blank">Click here for reservations.</a></strong>
                         }
-                        <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                      </p> 
+                      }
+                      <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
 
-                        {item.infourl !== "" &&
-                          <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
-                        }
-                        </div>
-                      </Col>
-                    </Row>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              </LazyLoad>
+                      {item.infourl !== "" &&
+                        <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
+                      }
+                      </div>
+                    </Col>
+                  </Row>
+                </AccordionItemPanel>
+              </AccordionItem>
               )
             })
           }
           </Col>
         </Row> 
       </Accordion>     
-    </Grid>
+    </Events>
   )
 }
   
-export default Events
+export default Component
 
+const Events = styled(Grid)`
+  padding-top: 1em;
+  padding-bottom: 1em;
+  .lazyload-placeholder,
+  .lazyload__image--height {
+    height: 12em;
+  }
+`
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 15em;
   margin: 0;
   padding: 0;
   
-  &.hidden {
-    display: none;
-    ${SuperQuery().minWidth.md.css`
-      display: block;
-    `}
-  }
 `

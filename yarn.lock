@@ -1018,6 +1018,11 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@steveeeie/react-page-transition@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@steveeeie/react-page-transition/-/react-page-transition-1.0.1.tgz#3a8086e06ea1139b419caeeec94364358a48c57d"
+  integrity sha512-VLaHuCCborIg0zvqwD/9EVRRQCrSV0Y42KdyfCBfhn6gC+tvx17yS8s7tfxQef3NRN6gODpzyNr8Gp5yC65NvQ==
+
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-1.1.1.tgz#f30bd28de9c5ec614ab9d5143eb1bd809a15520c"
@@ -5684,6 +5689,11 @@ react-error-overlay@5.1.6:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
+
+react-ga@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.7.0.tgz#24328f157f31e8cffbf4de74a3396536679d8d7c"
+  integrity sha512-AjC7UOZMvygrWTc2hKxTDvlMXEtbmA0IgJjmkhgmQQ3RkXrWR11xEagLGFGaNyaPnmg24oaIiaNPnEoftUhfXA==
 
 react-hammerjs@^1.0.1:
   version "1.0.1"
