@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-    font-size: 16px;
+    font-size: 14px;
     background-color: ${props => props.theme.colors.background};
     height: 100vh;
     margin: 0;

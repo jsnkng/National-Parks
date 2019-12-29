@@ -19,7 +19,7 @@ const Component = props => {
       <Row>
       { people.slice(0,limit).map((item) => {
         return( 
-          <Col xs={12} sm={12} md={4} lg={4} key={item.id}>
+          <Col xs={12} lg={4} key={item.id}>
           { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
             <LazyLoad offset={100}>
               <a href={item.url} target="_blank">
@@ -56,9 +56,6 @@ const People = styled(Grid)`
   .lazyload__image--height {
     height: 20em;
     ${SuperQuery().minWidth.md.css`
-      height: 9em;
-    `}
-    ${SuperQuery().minWidth.lg.css`
       height: 12.5em;
     `}
   }
