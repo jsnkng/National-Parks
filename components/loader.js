@@ -8,15 +8,15 @@ const Loader = () => (
 export default Loader
 
 const Loader__Container = styled.div`
-  border: 18px solid ${props => props.theme.colors.color_two};
-  border-top: 18px solid ${props => props.theme.colors.color_one};
+  border: 1em solid ${props => props.theme.colors.color_two};
+  border-top: 1em solid ${props => props.theme.colors.color_one};
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 6em;
+  height: 6em;
   animation: spin 2s linear infinite;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 120px;
+  margin-top: 12em;
   @keyframes spin {
     0% {
       transform: rotate(0deg);

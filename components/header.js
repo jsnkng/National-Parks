@@ -83,7 +83,6 @@ const Header = styled.header`
     border: none;
       color: inherit;
     ${SuperQuery().minWidth.sm.css`
-      max-width: 60%;
       margin: 22px 0 0 73px;
       font-size: 1.25em;
       letter-spacing: -1.5px;
@@ -110,7 +109,6 @@ const Header = styled.header`
     border: none;
       color: inherit;
     ${SuperQuery().minWidth.sm.css`
-      max-width:  60%;
       margin: 3px 0 0 73px;
       line-height: .75;
       font-size: 1.125em;
@@ -132,13 +130,12 @@ const Header = styled.header`
     letter-spacing: -1.5px;
     line-height: 1;
     font-size: 1.375em;
-    max-width: 42%;
+    max-width: 46%;
     cursor: pointer;
     text-decoration: none;
     border: none;
       color: inherit;
     ${SuperQuery().minWidth.sm.css`
-      max-width: 38%;
       margin: 16px 10px 0 0;
       line-height: .85;
       font-size: 1.75em;

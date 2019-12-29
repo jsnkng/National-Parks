@@ -51,10 +51,12 @@ const TerritoryList__Wrapper = styled.div`
     font-weight: 500;
     letter-spacing: -.5px;
     text-decoration: none;
+    border: 1px solid transparent;
+    padding: .25em;
+    text-align: center;
   }
   a.highlight , a:hover  {
-    font-weight: 700;
-    text-decoration: underline;
+    border: 1px solid ${props => props.theme.colors.color_one};
     color:  ${props => props.theme.colors.color_three};
   }
 `

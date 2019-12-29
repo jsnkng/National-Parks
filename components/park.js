@@ -3,6 +3,20 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
+import Loader from '../components/loader'
+// const Component = ({ backgroundURL, title, subtitle }) => {
+//   return (
+//     <Park>
+//       <div className="banner__header">
+//         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
+//         <h3>{subtitle}</h3>
+//       </div>
+//       <LazyLoad height={'100%'} offset={600}>
+//         <ResponsiveImage backgroundURL={backgroundURL} />
+//       </LazyLoad>
+//     </Park>
+//   )
+// }
 const Component = ({ backgroundURL, title, subtitle }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
   const handleBannerClick = () => {
@@ -12,7 +26,8 @@ const Component = ({ backgroundURL, title, subtitle }) => {
   return (
     <Park onClick={handleBannerClick}>
       <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <div className="sk-cube-grid">
+      <Loader />
+        {/* <div className="sk-cube-grid">
           <div className="sk-cube sk-cube1"></div>
           <div className="sk-cube sk-cube2"></div>
           <div className="sk-cube sk-cube3"></div>
@@ -23,7 +38,7 @@ const Component = ({ backgroundURL, title, subtitle }) => {
           <div className="sk-cube sk-cube8"></div>
           <div className="sk-cube sk-cube9"></div>
         Loading
-        </div>
+        </div> */}
       </Spinner>
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
@@ -35,7 +50,6 @@ const Component = ({ backgroundURL, title, subtitle }) => {
     </Park>
   )
 }
-  
 export default Component
 
 const Park = styled.div`

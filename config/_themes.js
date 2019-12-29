@@ -42,15 +42,15 @@ const themes = {
       spinner: 'rgba(255,255,255,.2)',
     },
     rainbowTheme: {
-      background: '#ffd000',
-      box_background: '#00ac47',
-      offbackground: '#d1d1d1',
-      text: '#0049ab',
-      color_one: '#fa443f',
-      color_two: '#d50674',
+      background: '#0049ab',
+      box_background: '#3db7e3',
+      offbackground: '#004eb6',
+      text: '#ffffff',
+      color_one: '#ffca13',
+      color_two: '#a1dde9',
       color_three: '#4c93d9',
-      color_four: '#00ac47',
-      trans_back: 'rgba(250,68,63,0.8)',
+      color_four: '#90d223',
+      trans_back: 'rgba(213,6,116,0.8)',
       spinner: 'rgba(255,255,255,0.2)',
     }
   }

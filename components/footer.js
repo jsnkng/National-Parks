@@ -9,7 +9,7 @@ const Component = ({setTheme }) => {
       <div className="themeswitcher">
         <button onClick={() => setTheme('dayTheme')}>Light</button>  
         <button onClick={() => setTheme('nightTheme')}>Dark</button>
-      <button onClick={() => setTheme('rainbowTheme')}>Rainbow</button>
+        <button onClick={() => setTheme('rainbowTheme')}>Rainbow</button>
       </div>
       <Link href="/" passHref>
         <div>
