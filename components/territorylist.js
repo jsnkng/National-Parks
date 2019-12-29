@@ -29,7 +29,8 @@ const TerritoryList = props => {
 export default TerritoryList
 
 const TerritoryList__Wrapper = styled.div`
-  padding: 1em 0 1em 1em; 
+  padding: 1em .5em 1em 0; 
+  margin: 0;
   letter-spacing: -1px;
   font-weight: 700;
   font-size: 1.5em;
