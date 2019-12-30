@@ -65,6 +65,7 @@ class Park extends React.Component {
   static pageTransitionDelayEnter = true
 
   static async getInitialProps({ req, query }) {
+    console.log("Client Side Park Page")
     const { stateCode } = query
     const { parkCode } = query
     const { origin } = absoluteUrl(req)

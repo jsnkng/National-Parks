@@ -4,19 +4,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 import Loader from '../components/loader'
-// const Component = ({ backgroundURL, title, subtitle }) => {
-//   return (
-//     <Park>
-//       <div className="banner__header">
-//         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
-//         <h3>{subtitle}</h3>
-//       </div>
-//       <LazyLoad height={'100%'} offset={600}>
-//         <ResponsiveImage backgroundURL={backgroundURL} />
-//       </LazyLoad>
-//     </Park>
-//   )
-// }
+
 const Component = ({ backgroundURL, title, subtitle }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
   const handleBannerClick = () => {
@@ -26,7 +14,7 @@ const Component = ({ backgroundURL, title, subtitle }) => {
   return (
     <Park onClick={handleBannerClick}>
       <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-      <Loader />
+        <Loader />
       </Spinner>
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
@@ -48,12 +36,10 @@ const Park = styled.div`
   padding: 0;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
   background-color: ${props => props.theme.colors.trans_back};
-  background-image: url(${props => props.backgroundURL});
+  background-image: ${props => props.backgroundURL};
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
-
-  
 
   ${SuperQuery().minWidth.lg.css`
     width: 50vw;

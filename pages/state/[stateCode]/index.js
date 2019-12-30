@@ -32,8 +32,10 @@ class Parks extends React.Component {
     })
   }
 
+  static pageTransitionDelayEnter = true
+
   static async getInitialProps({ req, query }) {
-    console.log("whatawhata")
+    console.log("Client Side State Page")
     const { stateCode } = query
     const { origin }  = absoluteUrl(req)
     const stateResult = await fetch(`${origin}/api/state/${stateCode}`)
@@ -42,7 +44,6 @@ class Parks extends React.Component {
     return result
   }
   
-  static pageTransitionDelayEnter = true
 
   componentDidMount() {
     this.props.pageTransitionReadyToEnter()
@@ -73,7 +74,6 @@ class Parks extends React.Component {
                 <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${this.state.state_id}/park/${item.parkCode}`} passHref key={item.id}>
                   <a>
                     <Park__Component 
-                      key={item.id} 
                       backgroundURL={item.images === undefined || item.images.length == 0 
                         ? "/noimage.jpg" 
                         : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
