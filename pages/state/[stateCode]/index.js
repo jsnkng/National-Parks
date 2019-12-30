@@ -16,6 +16,7 @@ import PropTypes from 'prop-types'
 class Parks extends React.Component {
   constructor(props) {
     super(props)
+    console.log(this.props.data)
     this.stateName = states[props.state_id] !== undefined && states[props.state_id] !== "" ? states[props.state_id][0] : ""
     this.state = {
       loaded: false,
