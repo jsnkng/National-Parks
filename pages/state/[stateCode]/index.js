@@ -72,8 +72,7 @@ class Parks extends React.Component {
           <Content>
             { this.props.data.slice(0).map((item) => {
               return(
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${this.state.state_id}/park/${item.parkCode}`} passHref key={item.id}>
-                  <a>
+                  <a href={`/state/${this.state.state_id}/park/${item.parkCode}`}>
                     <Park__Component 
                       backgroundURL={item.images === undefined || item.images.length == 0 
                         ? "/noimage.jpg" 
@@ -82,7 +81,6 @@ class Parks extends React.Component {
                       subtitle={item.designation}
                     />
                   </a>
-                </Link>
               )
             })
             }
