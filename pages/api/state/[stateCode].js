@@ -22,11 +22,12 @@ export default (req, res) => {
     if (result === undefined || result.length === 0) {
       console.log(`Getting State (${stateCode}) Failed`)
       console.log(`Fetching State (${stateCode}) from API`)
-      result = fetchWithErrorHandling(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       if (result !== undefined || result.length !== 0) {
         result.state_id = stateCode
         console.log(`Inserting State (${stateCode}) into MongoDB`)
-        await db.collection('states').insertOne(result)
+        console.log(result)
+        // await db.collection('states').insertOne(result)
       }
     } else {
       console.log(`Fetched State (${stateCode}) from MongoDB`)
