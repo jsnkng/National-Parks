@@ -1,4 +1,3 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
@@ -16,7 +15,6 @@ import PropTypes from 'prop-types'
 class Parks extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props.data)
     this.stateName = states[props.state_id] !== undefined && states[props.state_id] !== "" ? states[props.state_id][0] : ""
     this.state = {
       loaded: false,
@@ -25,8 +23,6 @@ class Parks extends React.Component {
       subsubtitle: this.stateName,
       state_id: props.state_id,
     }
-
-
 
     this.markers = []
     props.data.slice(0).map((item) => {
@@ -58,6 +54,23 @@ class Parks extends React.Component {
   render() {
     const { loaded } = this.state
     if (!loaded) return null
+
+    const parks = this.props.data.slice(0).map((item) => {
+      return(
+        <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${this.state.state_id}/park/${item.parkCode}`} passHref key={item.id}>
+          <a>
+            <Park__Component 
+              backgroundURL={item.images === undefined || item.images.length == 0 
+                ? "/noimage.jpg" 
+                : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
+              title={item.name}
+              subtitle={item.designation}
+            />
+          </a>
+        </Link>
+      )
+    })
+
     return (
       <>
         <Head>
@@ -68,28 +81,13 @@ class Parks extends React.Component {
             subtitle={this.state.subtitle}
             subsubtitle={this.state.subsubtitle}
             stateCode={""}
-          />
-          <Content>
-            { this.props.data.slice(0).map((item) => {
-              return(
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${this.state.state_id}/park/${item.parkCode}`} passHref key={item.id}>
-                  <a>
-                    <Park__Component 
-                      backgroundURL={item.images === undefined || item.images.length == 0 
-                        ? "/noimage.jpg" 
-                        : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
-                      title={item.name}
-                      subtitle={item.designation}
-                    />
-                  </a>
-                </Link>
-              )
-            })
-            }
-          </Content>
-          <Footer
-              setTheme={this.props.setTheme}
-          />
+        />
+        <Content>
+          {parks}
+        </Content>
+        <Footer
+            setTheme={this.props.setTheme}
+        />
       </>
     )
   }
@@ -115,5 +113,4 @@ const Content = styled.main`
   ${SuperQuery().minWidth.sm.css`
     margin-top: 90px;
   `}
-
 `

@@ -95,10 +95,10 @@ class Park extends React.Component {
         <title>{this.stateName} | {this.park.name} {this.park.designation}</title>
       </Head>
       <Header 
-          title={this.state.title.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
-          subtitle={this.state.subtitle}
-          subsubtitle={this.state.subsubtitle}
-          stateCode={this.state.state_id}
+        title={this.state.title.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
+        subtitle={this.state.subtitle}
+        subsubtitle={this.state.subsubtitle}
+        stateCode={this.state.state_id}
       />
       <Content>
         { this.park.images !== undefined && this.park.images.length !== 0 &&

@@ -1,5 +1,4 @@
 import App, { Container } from 'next/app'
-import React from 'react'
 import Router from 'next/router'
 import styled, { ThemeProvider } from 'styled-components'
 import  themes  from '../config/_themes'
