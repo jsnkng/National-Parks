@@ -19,11 +19,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     transition: all .25s ease-in-out;
     opacity: 1.0;
--webkit-transition: background 1.5s linear;
--moz-transition: background 1.5s linear;
--o-transition: background 1.5s linear;
--ms-transition: background 1.5s linear;
-transition: background 1.5s linear;
+    -webkit-transition: background 1.5s linear;
+    -moz-transition: background 1.5s linear;
+    -o-transition: background 1.5s linear;
+    -ms-transition: background 1.5s linear;
+    transition: background 1.5s linear;
     ${SuperQuery().maxWidth.of('320px').css`
       font-size: 14px;
     `}
@@ -354,27 +354,28 @@ transition: background 1.5s linear;
   }
   
   /* Remove these to get rid of the spinner */
-  #nprogress .spinner {
+  ${'' /* #nprogress .spinner {
     display: block;
     position: fixed;
     z-index: 1031;
-    top: 15px;
-    right: 15px;
+    top: .875em;
+    left: .625em;
   }
   
   #nprogress .spinner-icon {
-    width: 18px;
-    height: 18px;
+    width: 2.5em;
+    height: 2.5em;
     box-sizing: border-box;
   
-    border: solid 2px transparent;
-    border-top-color: #29d;
-    border-left-color: #29d;
+    border: solid 8px transparent;
+    border-top-color:  ${props => props.theme.colors.color_two};
+    border-left-color:  ${props => props.theme.colors.color_three};
     border-radius: 50%;
   
     -webkit-animation: nprogress-spinner 400ms linear infinite;
     animation: nprogress-spinner 400ms linear infinite;
-  }
+
+  } */}
   
   .nprogress-custom-parent {
     overflow: hidden;

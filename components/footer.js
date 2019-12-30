@@ -34,12 +34,14 @@ export default Component
 const Footer = styled.footer`
   position: relative;
   width: 100%;
+  min-height: 8em;
   background-color: ${props => props.theme.colors.trans_back};
   color: ${props => props.theme.colors.text};
   z-index: 120;
   
   ${SuperQuery().minWidth.sm.css`
     grid-template-columns: 4fr 4fr;
+    height: 90px;
   `}
 
   a {
@@ -244,20 +246,18 @@ const Footer = styled.footer`
     line-height: 1;
   }
   .copyright {
-    top: 8.75em;
-    font-size: .625em;
-    text-align: center;
     position: absolute;
+    top: 8.75em;
+    right: 1.75em;
+    font-size: .625em;
+    text-align: left;
     cursor: pointer;
     text-decoration: none;
     border: none;
     margin: 0;
-    padding: .875em;
+    padding: 0;
     letter-spacing: -1px;
     line-height: 1;
-    width: 100%;
-    color: ${props => props.theme.colors.color_two};
-    background: ${props => props.theme.colors.offbackground};
   }
   .title {
     top: 1em;

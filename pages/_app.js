@@ -30,9 +30,9 @@ export default class MyApp extends App {
     super(props)
     this.state = {
       theme: {
-        name: "nightTheme",
+        name: "dayTheme",
         flexboxgrid: themes.flexboxgrid,
-        colors: themes.colors.nightTheme,
+        colors: themes.colors.dayTheme,
       }, 
       percent: 20,
       autoIncrement: true,
