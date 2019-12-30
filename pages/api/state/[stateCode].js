@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 
 const fetchWithErrorHandling = async url => {
   try {
-    return await (await fetch(url))
+    return await (await fetch(url)).json()
   } catch (err) {
     return { error: true }
   }
@@ -22,7 +22,7 @@ export default (req, res) => {
     if (result === undefined || result.length === 0) {
       console.log(`Getting State (${stateCode}) Failed`)
       console.log(`Fetching State (${stateCode}) from API`)
-      result = await (fetch(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)).json()
+      result = fetchWithErrorHandling(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       if (result !== undefined || result.length !== 0) {
         result.state_id = stateCode
         console.log(`Inserting State (${stateCode}) into MongoDB`)

@@ -15,7 +15,6 @@ import PropTypes from 'prop-types'
 
 class Parks extends React.Component {
   constructor(props) {
-    console.log(props)
     super(props)
     this.stateName = states[props.state_id] !== undefined && states[props.state_id] !== "" ? states[props.state_id][0] : ""
     this.state = {
@@ -37,7 +36,6 @@ class Parks extends React.Component {
   static pageTransitionDelayEnter = true
 
   static async getInitialProps({ req, query }) {
-    console.log("Client Side State Page")
     const { stateCode } = query
     const { origin }  = absoluteUrl(req)
     const stateResult = await fetch(`${origin}/api/state/${stateCode}`)
