@@ -10,7 +10,6 @@ import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
-
 class Home extends React.Component {
   static pageTransitionDelayEnter = true
 

@@ -30,8 +30,9 @@ export default class MyApp extends App {
     super(props)
     this.state = {
       theme: {
+        name: "nightTheme",
         flexboxgrid: themes.flexboxgrid,
-        colors: themes.colors.dayTheme,
+        colors: themes.colors.nightTheme,
       }, 
       percent: 20,
       autoIncrement: true,
@@ -39,9 +40,19 @@ export default class MyApp extends App {
     }
   }
 
-  setTheme = (themeName) => {
+  // setTheme = (themeName) => {
+  //   this.setState({
+  //     theme: {
+  //       flexboxgrid: themes.flexboxgrid,
+  //       colors: themes.colors[themeName]
+  //     } 
+  //   })
+  // }
+  toggleTheme = () => {
+    const themeName = this.state.theme.name === 'nightTheme' ? 'dayTheme' : 'nightTheme'
     this.setState({
       theme: {
+        name: themeName,
         flexboxgrid: themes.flexboxgrid,
         colors: themes.colors[themeName]
       } 
@@ -79,7 +90,7 @@ export default class MyApp extends App {
           loadingClassNames="loading-indicator"
           // monkeyPatchScrolling={true}
         >
-          <Component {...pageProps} setTheme={this.setTheme} key={router.asPath} />
+          <Component {...pageProps} setTheme={this.toggleTheme} key={router.asPath} />
         </PageTransition>
       </ThemeProvider>
       </>
