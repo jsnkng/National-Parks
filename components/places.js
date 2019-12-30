@@ -71,4 +71,6 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   margin: 1em 0 0 0;
+  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  animation: myfirst 1s;
 `

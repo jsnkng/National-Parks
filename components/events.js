@@ -112,5 +112,7 @@ const Image = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
+  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  animation: myfirst 1s;
   
 `

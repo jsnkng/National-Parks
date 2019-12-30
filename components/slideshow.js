@@ -43,6 +43,8 @@ const Image = styled.div`
   height: 75vh;
   min-height:400px;
   max-width: 100%;
+  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  animation: myfirst 1s;
 
   ${SuperQuery().minWidth.md.css`
     height: 80vw;

@@ -90,6 +90,8 @@ const ResponsiveImage = styled.div`
   height: 100%;
   margin: 0;
   z-index: 10;
+  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  animation: myfirst 1s;
 `
 
 // const Spinner = styled.div`

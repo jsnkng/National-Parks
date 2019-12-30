@@ -18,6 +18,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     transition: all .25s ease-in-out;
+    opacity: 1.0;
+-webkit-transition: background 1.5s linear;
+-moz-transition: background 1.5s linear;
+-o-transition: background 1.5s linear;
+-ms-transition: background 1.5s linear;
+transition: background 1.5s linear;
     ${SuperQuery().maxWidth.of('320px').css`
       font-size: 14px;
     `}
@@ -28,6 +34,19 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
 
+
+
+ /* Chrome, Safari, Opera */
+ @-webkit-keyframes myfirst {
+    from {opacity: 0.2;}
+    to {opacity: 1;}
+  }
+
+  /* Standard syntax */
+  @keyframes myfirst {
+    from {opacity: 0.2;}
+    to {opacity: 1;}
+  }
   h1,h2,h3,h4,h5,h6,p {
     margin: 0;
     padding: 0;
