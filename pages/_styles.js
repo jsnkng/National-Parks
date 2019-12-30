@@ -12,12 +12,16 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-    font-size: 14px;
+    font-size: 16px;
     background-color: ${props => props.theme.colors.background};
     height: 100vh;
     margin: 0;
     padding: 0;
     transition: all .25s ease-in-out;
+    ${SuperQuery().maxWidth.of('320px').css`
+      font-size: 14px;
+    `}
+
     ${SuperQuery().minWidth.sm.css`
       font-size: 20px;
       letter-spacing: -.5px;

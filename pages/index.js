@@ -51,14 +51,14 @@ class Home extends React.Component {
           />
         <Content>
           <Row>
-            <Col xs={12} lg={7}>
+            <Col xs={12} lg={6}>
               <MapDiagram 
                 className="mapdiagram" 
                 territories={'none'} 
                 highlighted={this.state.highlighted} 
                 onHighlight={(terr) => this.setState({ highlighted: terr })} />
             </Col>
-            <Col xs={12} lg={5}>
+            <Col xs={12} lg={6}>
               <TerritoryList 
                 className="territorylist" 
                 highlighted={this.state.highlighted} 
@@ -85,11 +85,6 @@ Home.defaultProps = {
 export default Home
 
 const Content = styled.main`
-  padding: 2em;
-  margin-top: 70px;
-  padding-top: 4em;
+  padding: 8em 2em 2em 2em;
   min-height: 85vh;
-  ${SuperQuery().minWidth.sm.css`
-    margin-top: 90px;
-  `}
 `

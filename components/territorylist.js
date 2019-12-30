@@ -4,12 +4,12 @@ import Link from 'next/link'
 import states from '../config/datastates'
 import SuperQuery from '@themgoncalves/super-query'
 
-const TerritoryList = props => {
+const Component = props => {
   const handleHover = (territory) => {
     props.onHighlight(territory)
   }
   return (
-    <TerritoryList__Wrapper>
+    <TerritoryList>
       { Object.entries(states).map(([key, value]) => {
         return ( 
           <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
@@ -22,42 +22,36 @@ const TerritoryList = props => {
         )
       })  
       }
-    </TerritoryList__Wrapper>
+    </TerritoryList>
   )
 }
 
-export default TerritoryList
+export default Component
 
-const TerritoryList__Wrapper = styled.div`
-  padding: 1em .5em 1em 0; 
-  margin: 0;
-  letter-spacing: -1px;
-  font-weight: 700;
-  font-size: 1.5em;
+const TerritoryList = styled.div`
+  padding: 2em 0; 
   columns: 2;
   ${SuperQuery().minWidth.sm.css`
-    padding: 0;
-    font-size: 1em;
-    columns: 3;
-  `}
-  ${SuperQuery().minWidth.lg.css`
     columns: 2;
   `}
-  ${SuperQuery().minWidth.xl.css`
+  ${SuperQuery().minWidth.md.css`
     columns: 3;
+    font-size: .75em;
   `}
   a {
     color:  ${props => props.theme.colors.color_one};
     display: block;
-    font-weight: 500;
+    letter-spacing: -1px;
+    font-weight: 700;
+    font-size: 1.125em;
+    line-height: 1.2;
     letter-spacing: -.5px;
     text-decoration: none;
-    border: 1px solid transparent;
-    padding: .25em;
-    text-align: center;
+    margin: .375em 0;
+    padding: .125em;
   }
   a.highlight , a:hover  {
-    border: 1px solid ${props => props.theme.colors.color_one};
     color:  ${props => props.theme.colors.color_three};
+    text-decoration: underline;
   }
 `

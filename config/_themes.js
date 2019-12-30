@@ -7,15 +7,13 @@ const themes = {
     container: {
       sm: 36, // rem
       md: 46, // rem
-      lg: 64, // rem
-      xl: 76
+      lg: 64 // rem
     },
     breakpoints: {
       xs: 0, // em
       sm: 36, // em
       md: 48, // em
-      lg: 64, // em
-      xl: 76
+      lg: 64 // em
     }
   },
   colors: {
