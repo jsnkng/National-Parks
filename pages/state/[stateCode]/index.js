@@ -15,12 +15,14 @@ import PropTypes from 'prop-types'
 
 class Parks extends React.Component {
   constructor(props) {
+    console.log(props)
     super(props)
+    this.stateName = states[props.state_id] !== undefined && states[props.state_id] !== "" ? states[props.state_id][0] : ""
     this.state = {
       loaded: false,
       title: 'National Park Service', 
       subtitle: 'A State-by-State Guide', 
-      subsubtitle:states[props.state_id] !== undefined && states[props.state_id] !== "" ? states[props.state_id][0] : "",
+      subsubtitle: this.stateName,
       state_id: props.state_id,
     }
 

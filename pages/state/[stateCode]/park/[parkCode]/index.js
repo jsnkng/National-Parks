@@ -35,14 +35,14 @@ class Park extends React.Component {
     this.people = props.people.data
     this.places = props.places.data
     this.articles = props.articles.data
-    this.parkCode = props.parkCode
+    this.parkCode = props.parks_id
     this.stateCode = props.stateCode
     this.stateName = states[props.stateCode] !== undefined && states[props.stateCode] !== "" ? states[props.stateCode][0] : ""
     this.state = {
       loaded: false,
       title: this.park.name, 
       subtitle: this.park.designation, 
-      subsubtitle: states[props.stateCode] !== undefined && states[props.stateCode] !== "" ? states[props.stateCode][0] : "",
+      subsubtitle: this.stateName,
       state_id: props.stateCode,
     }
 
