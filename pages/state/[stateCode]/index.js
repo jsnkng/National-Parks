@@ -33,6 +33,7 @@ class Parks extends React.Component {
   }
 
   static async getInitialProps({ req, query }) {
+    console.log("whatawhata")
     const { stateCode } = query
     const { origin }  = absoluteUrl(req)
     const stateResult = await fetch(`${origin}/api/state/${stateCode}`)
