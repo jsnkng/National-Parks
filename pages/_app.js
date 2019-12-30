@@ -1,15 +1,29 @@
+import React from 'react'
 import App, { Container } from 'next/app'
+import Link from 'next/link'
+import NProgress from 'nprogress'
 import Router from 'next/router'
+import Head from 'next/head'
+
 import styled, { ThemeProvider } from 'styled-components'
 import  themes  from '../config/_themes'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
 
-import Loader from '../components/loader'
+// import Loader from '../components/loader'
 import { PageTransition } from 'next-page-transitions'
 
-Router.events.on('routeChangeComplete', url => gtag.pageview(url))
+// Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
+Router.events.on('routeChangeStart', url => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', url => { 
+  gtag.pageview(url)
+  NProgress.done()
+})
+Router.events.on('routeChangeError', () => NProgress.done())
 
 export default class MyApp extends App {
   constructor(props) {
@@ -46,6 +60,7 @@ export default class MyApp extends App {
     const { Component, router, pageProps } = this.props
    
     return (
+      <>
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
         <PageTransition
@@ -67,6 +82,7 @@ export default class MyApp extends App {
           <Component {...pageProps} setTheme={this.setTheme} key={router.asPath} />
         </PageTransition>
       </ThemeProvider>
+      </>
     )
   }
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
-import Loader from '../components/loader'
+// import Loader from '../components/loader'
 
 const Component = ({ backgroundURL, title, subtitle }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
@@ -13,9 +13,9 @@ const Component = ({ backgroundURL, title, subtitle }) => {
   
   return (
     <Park onClick={handleBannerClick}>
-      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+      {/* <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
         <Loader />
-      </Spinner>
+      </Spinner> */}
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
         <h3>{subtitle}</h3>
@@ -92,19 +92,19 @@ const ResponsiveImage = styled.div`
   z-index: 10;
 `
 
-const Spinner = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 100;
-  background-color: ${props => props.theme.colors.trans_back};
-  color: ${props => props.theme.colors.text};
-  font-size: .7em;
-  &.show {
-    display: block;
-  }
-  &.hide {
-    display: none;
-  }
+// const Spinner = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   z-index: 100;
+//   background-color: ${props => props.theme.colors.trans_back};
+//   color: ${props => props.theme.colors.text};
+//   font-size: .7em;
+//   &.show {
+//     display: block;
+//   }
+//   &.hide {
+//     display: none;
+//   }
 
-`
+// `
