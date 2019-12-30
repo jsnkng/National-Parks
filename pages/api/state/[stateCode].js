@@ -26,8 +26,7 @@ export default (req, res) => {
       if (result !== undefined || result.length !== 0) {
         result.state_id = stateCode
         console.log(`Inserting State (${stateCode}) into MongoDB`)
-        console.log(result)
-        // await db.collection('states').insertOne(result)
+        await db.collection('states').insertOne(result)
       }
     } else {
       console.log(`Fetched State (${stateCode}) from MongoDB`)
