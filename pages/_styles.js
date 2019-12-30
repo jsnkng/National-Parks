@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
       font-weight: 400;
       font-size: .725em;
       letter-spacing: -1px;
-      line-height: .5;
+      line-height: .875;
     }
   }
   h2 {
