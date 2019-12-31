@@ -1,20 +1,18 @@
-import styled from 'styled-components'
 import Link from 'next/link'
-import states from '../config/datastates'
+import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
+import states from '../config/datastates'
 
-const Component = props => {
-  const handleHover = (territory) => {
-    props.onHighlight(territory)
-  }
+const Component = ({ highlighted, setHighlighted }) => {
+
   return (
     <TerritoryList>
       { Object.entries(states).map(([key, value]) => {
         return ( 
           <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
-            <a className={props.highlighted === value[0] ? 'highlight' : ''}  
-              onMouseOver={() => handleHover(value[0])}
-              onMouseOut={() => handleHover(null)}>
+            <a className={highlighted === value[0] ? 'highlight' : ''}  
+              onMouseOver={() => setHighlighted(value[0])}
+              onMouseOut={() => setHighlighted(null)}>
               {value[0]}
             </a>
           </Link>

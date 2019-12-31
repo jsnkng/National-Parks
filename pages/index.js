@@ -1,81 +1,65 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
-class Home extends React.Component {
-  static pageTransitionDelayEnter = true
 
-  constructor(props) {
-    super(props)
+// const onHighlight = territory => setHighlighted(territory)
 
-    this.state = {
-      loaded: false,
-      highlighted: null
-    }
-  }
+const Home = props => {
+  const [loaded, setLoaded] = useState(false)
+  const [highlighted, setHighlighted] = useState(null)
 
-  componentDidMount() {
-    this.props.pageTransitionReadyToEnter()
-    this.setState({ loaded: true })
-  }
+  useEffect(() => {
+    setLoaded(true)
+    console.log('useEffect')
+  //   props.pageTransitionReadyToEnter()
+  }, [])
 
-  componentWillUnmount() {
-  }
-
-  render() {
-    const { loaded } = this.state
-    if (!loaded) return null
+  if (!loaded) {
+    return null
+  } else {
     return (
       <>
         <Head>
           <title>National Park Service</title>
         </Head>
         <Header 
-            park='National Park Service'
-            designation='A State-By-State Guide'
-            state='United States'
-            stateCode={''}
-          />
+          park='National Park Service'
+          designation='A State-By-State Guide'
+          state='United States'
+          stateCode={''}
+        />
         <Content>
           <Row>
             <Col xs={12} lg={6}>
               <MapDiagram 
                 className="mapdiagram" 
                 territories={'none'} 
-                highlighted={this.state.highlighted} 
-                onHighlight={(terr) => this.setState({ highlighted: terr })} />
+                highlighted={highlighted} 
+                setHighlighted={setHighlighted} />
             </Col>
             <Col xs={12} lg={6}>
               <TerritoryList 
                 className="territorylist" 
-                highlighted={this.state.highlighted} 
-                onHighlight={(terr) => this.setState({ highlighted: terr })} />
+                highlighted={highlighted} 
+                setHighlighted={setHighlighted} />
             </Col> 
           </Row>
         </Content>
-          <Footer
-              setTheme={this.props.setTheme}
-          />
+        <Footer
+          setTheme={props.setTheme}
+        />
       </>
     )
   }
 }
 
-Home.propTypes = {
-  pageTransitionReadyToEnter: PropTypes.func,
-}
-
-Home.defaultProps = {
-  pageTransitionReadyToEnter: () => {},
-}
 
 export default Home
 

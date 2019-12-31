@@ -1,13 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../../../../../config/datastates'
-import PropTypes from 'prop-types'
 import Header from '../../../../../components/header'
 import Footer from '../../../../../components/footer'
+
 import Alerts__Component from '../../../../../components/alerts'
 import Articles__Component from '../../../../../components/articles'
 import Campgrounds__Component from '../../../../../components/campgrounds'
@@ -23,132 +23,116 @@ import VisitorCenters__Component from '../../../../../components/visitorcenters'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
-class Park extends React.Component {
-  constructor(props) {
-    super(props)
-    this.park = props.data[0]
-    this.alerts = props.alerts.data
-    this.events = props.events.data
-    this.visitorCenters = props.visitorcenters.data
-    this.campgrounds = props.campgrounds.data
-    this.newsReleases = props.newsreleases.data
-    this.people = props.people.data
-    this.places = props.places.data
-    this.articles = props.articles.data
-    this.parkCode = props.parks_id
-    this.stateCode = props.stateCode
-    this.stateName = states[props.stateCode] !== undefined && states[props.stateCode] !== "" ? states[props.stateCode][0] : ""
-    this.state = {
-      loaded: false,
-      title: this.park.name, 
-      subtitle: this.park.designation, 
-      subsubtitle: this.stateName,
-      state_id: props.stateCode,
-    }
+const Park = props => {
+  const [loaded, setLoaded] = useState(false)
+  const [park, setPark] = useState(props.data[0])
+  const [alerts, setAlerts] = useState(props.alerts.data)
+  const [articles, setArticles] = useState(props.articles.data)
+  const [campgrounds, setCampgrounds] = useState(props.campgrounds.data)
+  const [events, setEvents] = useState(props.events.data)
+  const [newsReleases, setNewsReleases] = useState(props.newsreleases.data)
+  const [people, setPeople] = useState(props.people.data)
+  const [places, setPlaces] = useState(props.places.data)
+  const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
 
-    this.markers = [{id: this.park.id, latLong: this.park.latLong, name: this.park.name, description: this.park.description}]
+
+  const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
     
-    this.visitorCenters !== undefined && this.visitorCenters.length != 0 &&
-    this.visitorCenters.slice(0).map((item) => {
-      this.markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
-    })
-    this.campgrounds !== undefined && this.campgrounds.length != 0 &&
-    this.campgrounds.slice(0).map((item) => {
-      this.markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
-    })
-    this.places !== undefined && this.places.length != 0 &&
-    this.places.slice(0).map((item) => {
-      this.markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
-    })
-  } 
+  visitorCenters !== undefined && visitorCenters.length != 0 &&
+  visitorCenters.slice(0).map((item) => {
+    markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
+  })
 
-  static pageTransitionDelayEnter = true
+  campgrounds !== undefined && campgrounds.length != 0 &&
+  campgrounds.slice(0).map((item) => {
+    markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
+  })
 
-  static async getInitialProps({ req, query }) {
-    const { stateCode } = query
-    const { parkCode } = query
-    const { origin } = absoluteUrl(req)
-    const parkResult = await fetch(`${origin}/api/parks/${parkCode}`)
-    const result = await parkResult.json()
-    result.stateCode = stateCode
-    result.parkCode = parkCode
-    return result
-  }
-  
-  componentDidMount() {
-    // this.timeoutId = setTimeout(() => {
-      this.props.pageTransitionReadyToEnter()
-      this.setState({ loaded: true })
-      forceCheck()
-  // },2500)
-  }
+  places !== undefined && places.length != 0 &&
+  places.slice(0).map((item) => {
+    markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
+  })
 
-  componentWillUnmount() {
-  }
 
-  render() {
-    const { loaded } = this.state
-    if (!loaded) return null
+
+  useEffect(() => {
+    loaded === false && setLoaded(true)
+    console.log('useEffect')
+  //   props.pageTransitionReadyToEnter()
+  }, [])
+
+
+  useEffect(() => {
+    forceCheck()
+    console.log('forceCheck')
+  })
+
+  if (!loaded) {
+    return null
+  } else {
     return (
-    <>
-      <Head>
-        <title>{this.stateName} | {this.park.name} {this.park.designation}</title>
-      </Head>
-      <Header 
-        park={this.state.title.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
-        designation={this.state.subtitle}
-        state={this.state.subsubtitle}
-        stateCode={this.state.state_id}
-      />
-      <Content>
-        { this.park.images !== undefined && this.park.images.length !== 0 &&
-        <SlideShow__Component park={this.park} />
-        }
+      <>
+        <Head>
+          <title>{states[props.stateCode][0]} | {park.name} {park.designation}</title>
+        </Head>
+        <Header 
+          park={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
+          designation={park.designation}
+          state={states[props.stateCode][0]}
+          stateCode={props.stateCode}
+        />
+        <Content>
+          { park.images !== undefined && park.images.length !== 0 &&
+          <SlideShow__Component park={park} />
+          }
 
-        <Description__Component park={this.park} />
+          <Description__Component park={park} />
 
-        { this.alerts !== undefined && this.alerts.length != 0 &&
-        <Alerts__Component alerts={this.alerts} />
-        }
+          { alerts !== undefined && alerts.length != 0 &&
+          <Alerts__Component alerts={alerts} />
+          }
 
-        <VisitorInfo__Component park={this.park} markers={this.markers} />
-        
-        { this.events !== undefined && this.events.length != 0 &&
-        <Events__Component park={this.park} events={this.events} />
-        }
-        { this.visitorCenters !== undefined && this.visitorCenters.length != 0 &&
-        <VisitorCenters__Component park={this.park} visitorCenters={this.visitorCenters} />
-        }
-        { this.campgrounds !== undefined && this.campgrounds.length != 0 &&
-        <Campgrounds__Component park={this.park} campgrounds={this.campgrounds} />
-        }
-        { this.newsReleases !== undefined && this.newsReleases.length != 0 &&
-        <NewsReleases__Component park={this.park} newsReleases={this.newsReleases} />
-        }
-        { this.places !== undefined && this.places.length != 0 &&
-        <Places__Component park={this.park} places={this.places} />
-        }
-        { this.articles !== undefined && this.articles.length != 0 &&
-        <Articles__Component park={this.park} articles={this.articles} />
-        }
-        { this.people !== undefined && this.people.length != 0 &&
-        <People__Component park={this.park} people={this.people} />
-        } 
-      </Content>
-      <Footer
-          setTheme={this.props.setTheme}
-      />
-    </>
+          <VisitorInfo__Component park={park} markers={markers} />
+          
+          { events !== undefined && events.length != 0 &&
+          <Events__Component park={park} events={events} />
+          }
+          { visitorCenters !== undefined && visitorCenters.length != 0 &&
+          <VisitorCenters__Component park={park} visitorCenters={visitorCenters} />
+          }
+          { campgrounds !== undefined && campgrounds.length != 0 &&
+          <Campgrounds__Component park={park} campgrounds={campgrounds} />
+          }
+          { newsReleases !== undefined && newsReleases.length != 0 &&
+          <NewsReleases__Component park={park} newsReleases={newsReleases} />
+          }
+          { places !== undefined && places.length != 0 &&
+          <Places__Component park={park} places={places} />
+          }
+          { articles !== undefined && articles.length != 0 &&
+          <Articles__Component park={park} articles={articles} />
+          }
+          { people !== undefined && people.length != 0 &&
+          <People__Component park={park} people={people} />
+          } 
+        </Content>
+        <Footer
+            setTheme={props.setTheme}
+        />
+      </>
     )
   }
 }
 
-Park.propTypes = {
-  pageTransitionReadyToEnter: PropTypes.func,
-}
-
-Park.defaultProps = {
-  pageTransitionReadyToEnter: () => {},
+Park.getInitialProps = async ({ req, query }) => {
+  const { stateCode } = query
+  const { parkCode } = query
+  const { origin } = absoluteUrl(req)
+  const parkResult = await fetch(`${origin}/api/parks/${parkCode}`)
+  const result = await parkResult.json()
+  result.stateCode = stateCode
+  result.parkCode = parkCode
+  return result
 }
 
 export default Park

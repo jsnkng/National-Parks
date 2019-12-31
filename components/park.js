@@ -13,9 +13,6 @@ const Component = ({ backgroundURL, title, subtitle }) => {
   
   return (
     <Park onClick={handleBannerClick}>
-      {/* <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <Loader />
-      </Spinner> */}
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
         <h3>{subtitle}</h3>

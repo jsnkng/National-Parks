@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import Toggle from 'react-toggle'
 import React from 'react'
-import Moon from '../svgs/moon.svg'
-import Sun from '../svgs/sun.svg'
+// import Moon from '../svgs/moon.svg'
+// import Sun from '../svgs/sun.svg'
 
 const Component = ({ setTheme }) => {
   return (

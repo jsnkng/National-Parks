@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../config/datastates'
 
-const Component = ({ territories, highlighted, onHighlight }) => {
+const Component = ({ territories, highlighted, setHighlighted }) => {
  
 
   return (
@@ -28,8 +28,8 @@ const Component = ({ territories, highlighted, onHighlight }) => {
                 <path 
                   id={key} 
                   className={highlighted === value[0] ? 'highlight' : ''} 
-                  onMouseOver={() => onHighlight(value[0])} 
-                  onMouseOut={() => onHighlight(null)} 
+                  onMouseOver={() => setHighlighted(value[0])} 
+                  onMouseOut={() => setHighlighted(null)} 
                   d={value[1]}  />
             </Link>
           )
