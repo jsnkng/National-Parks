@@ -25,6 +25,8 @@ Router.events.on('routeChangeComplete', url => {
 })
 Router.events.on('routeChangeError', () => NProgress.done())
 
+
+
 export default class MyApp extends App {
   constructor(props) {
     super(props)
@@ -59,6 +61,32 @@ export default class MyApp extends App {
     })
   }
   
+componentDidMount() {
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+    const cachedScrollPositions = [];
+    let shouldScrollRestore;
+
+    Router.events.on('routeChangeStart', () => {
+      cachedScrollPositions.push([window.scrollX, window.scrollY]);
+    });
+
+    Router.events.on('routeChangeComplete', () => {
+      if (shouldScrollRestore) {
+        const { x, y } = shouldScrollRestore;
+        window.scrollTo(x, y);
+        shouldScrollRestore = false;
+      }
+    });
+
+    Router.beforePopState(() => {
+      const [x, y] = cachedScrollPositions.pop();
+      shouldScrollRestore = { x, y };
+
+      return true;
+    });
+  }
+}
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
     if (Component.getInitialProps) {
