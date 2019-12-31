@@ -18,11 +18,7 @@ class Home extends React.Component {
 
     this.state = {
       loaded: false,
-      highlighted: null,
-      title: 'National Park Service', 
-      subtitle: 'A State-by-State Guide', 
-      subsubtitle: 'United States',
-      state_id: ""
+      highlighted: null
     }
   }
 
@@ -43,10 +39,10 @@ class Home extends React.Component {
           <title>National Park Service</title>
         </Head>
         <Header 
-            title={this.state.title} 
-            subtitle={this.state.subtitle}
-            subsubtitle={this.state.subsubtitle}
-            stateCode={""}
+            park='National Park Service'
+            designation='A State-By-State Guide'
+            state='United States'
+            stateCode={''}
           />
         <Content>
           <Row>

@@ -78,10 +78,10 @@ class Parks extends React.Component {
           <title>National Park Service Guide to {this.stateName}</title>
         </Head>
         <Header 
-            title={this.state.title} 
-            subtitle={this.state.subtitle}
-            subsubtitle={this.state.subsubtitle}
-            stateCode={""}
+            park='National Park Service'
+            designation='A State-By-State Guide'
+            state={this.state.subsubtitle}
+            stateCode={this.state.state_id}
         />
         <Content>
           {parks}
