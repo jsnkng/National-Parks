@@ -30,7 +30,7 @@ const Component = ({ setTheme }) => {
               <div className="title__tagline"></div>
             </div>
           </Link>
-          <a href=""><div className="title__copyright"><span>jsnkng |</span> 2019</div></a>
+          <div className="title__copyright"><span>jsnkng |</span> 2019</div>
         </Col>
       </Row>
     </Footer>
