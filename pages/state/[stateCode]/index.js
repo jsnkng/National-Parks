@@ -34,7 +34,7 @@ const State = props => {
   } else {
     return (
       <>
-       <Head>
+        <Head>
           <title>National Park Service Guide to {states[props.stateCode][0]}</title>
         </Head>
         <Header 
@@ -69,6 +69,7 @@ const State = props => {
     )
   }
 }
+
 
 State.getInitialProps = async ({ req, query }) => {
   const {stateCode} = query
