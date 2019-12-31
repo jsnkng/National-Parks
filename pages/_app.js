@@ -1,19 +1,12 @@
 import React from 'react'
-import App, { Container } from 'next/app'
-import Link from 'next/link'
+import App from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import Head from 'next/head'
-
-import styled, { ThemeProvider } from 'styled-components'
-import  themes  from '../config/_themes'
+import { ThemeProvider } from 'styled-components'
+import themes from '../config/_themes'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
-
-// import Loader from '../components/loader'
 import { PageTransition } from 'next-page-transitions'
-
-// Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
 Router.events.on('routeChangeStart', url => {
   console.log(`Loading: ${url}`)
@@ -24,8 +17,6 @@ Router.events.on('routeChangeComplete', url => {
   NProgress.done()
 })
 Router.events.on('routeChangeError', () => NProgress.done())
-
-
 
 export default class MyApp extends App {
   constructor(props) {
@@ -42,14 +33,6 @@ export default class MyApp extends App {
     }
   }
 
-  // setTheme = (themeName) => {
-  //   this.setState({
-  //     theme: {
-  //       flexboxgrid: themes.flexboxgrid,
-  //       colors: themes.colors[themeName]
-  //     } 
-  //   })
-  // }
   toggleTheme = () => {
     const themeName = this.state.theme.name === 'nightTheme' ? 'dayTheme' : 'nightTheme'
     this.setState({
@@ -60,33 +43,7 @@ export default class MyApp extends App {
       } 
     })
   }
-  
-componentDidMount() {
-  if ('scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-    const cachedScrollPositions = [];
-    let shouldScrollRestore;
 
-    Router.events.on('routeChangeStart', () => {
-      cachedScrollPositions.push([window.scrollX, window.scrollY]);
-    });
-
-    Router.events.on('routeChangeComplete', () => {
-      if (shouldScrollRestore) {
-        const { x, y } = shouldScrollRestore;
-        window.scrollTo(x, y);
-        shouldScrollRestore = false;
-      }
-    });
-
-    Router.beforePopState(() => {
-      const [x, y] = cachedScrollPositions.pop();
-      shouldScrollRestore = { x, y };
-
-      return true;
-    });
-  }
-}
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
     if (Component.getInitialProps) {
@@ -105,18 +62,12 @@ componentDidMount() {
         <PageTransition
           timeout={400}
           classNames="page-transition"
-          // loadingComponent={<ProgressBar percent={this.state.percent}
-          //     autoIncrement={this.state.autoIncrement}
-          //     intervalTime={this.state.intervalTime} 
-          //       spinner={false} />}
-          // loadingComponent={<Loader />}
           loadingDelay={1000}
           loadingTimeout={{
             enter: 400,
             exit: 400,
           }}
           loadingClassNames="loading-indicator"
-          // monkeyPatchScrolling={true}
         >
           <Component {...pageProps} setTheme={this.toggleTheme} key={router.asPath} />
         </PageTransition>

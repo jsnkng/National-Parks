@@ -80,6 +80,6 @@ Home.defaultProps = {
 export default Home
 
 const Content = styled.main`
-  padding: 8em 2em 2em 2em;
+  padding: 6em 1em 2em 2em;
   min-height: 85vh;
 `
