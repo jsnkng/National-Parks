@@ -110,8 +110,8 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin-top: 3.5em;
-  ${SuperQuery().minWidth.sm.css`
-    margin-top: 4.5em;
+  margin-top: 70px;
+  ${SuperQuery().minWidth.md.css`
+    margin-top: 88px;
   `}
 `

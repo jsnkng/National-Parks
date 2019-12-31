@@ -57,8 +57,8 @@ const Park = styled.div`
       margin: 0;
       font-weight: 700;
       letter-spacing: -1.5px;
-      line-height: .85;
-      font-size: 1.5em;
+      line-height: 1;
+      font-size: 1.25em;
       font-weight: 600;
       border: none;
     }
@@ -67,9 +67,10 @@ const Park = styled.div`
       top: 2.25em;
       right: .5em;
       text-align: right;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 1em;
       line-height: .85;
+      letter-spacing: -1px;
       margin: 0;
       padding: 0;
     }

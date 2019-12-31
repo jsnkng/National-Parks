@@ -20,8 +20,8 @@ const Component = ({ setTheme }) => {
           <Link href="/" passHref>
             <div>
               <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-              <div className="title__site">National Park Service</div>
-              <div className="title__tagline">A State-by-State Guide</div>
+              <div className="title__site">National Parks Guide</div>
+              <div className="title__tagline"></div>
             </div>
           </Link>
           <a href=""><div className="title__copyright"><span>jsnkng |</span> 2019</div></a>
@@ -52,20 +52,28 @@ const Footer = styled.footer`
 
   img.logo {
     float: right;
-    width: 36px;
     cursor: pointer;
     border: none;
-    margin: 0 0 0 -.25em;
+    margin: 0 -5px 0 0;
     padding: 0;
+      width: 48px;
+    ${SuperQuery().minWidth.md.css`
+      width: 60px;
+    `}
   }
+ 
   .title__site {
     font-size: .875em;
     text-align: right;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0 37px 0 0;
+    margin: 0 48px 0 0;
     padding: .25em .25em 0 0;
+    ${SuperQuery().minWidth.md.css`
+    margin: 0 56px 0 0;
+    padding: .5em .25em 0 0;
+    `}
   }
   .title__tagline {
     font-size: .75em;
@@ -73,20 +81,26 @@ const Footer = styled.footer`
     line-height: .75;
     letter-spacing: -1px;
     font-weight: 500;
-    margin: 0 37px 0 0;
-    padding: .25em .25em 0 0;
+    margin: 0 48px 0 0;
+    padding: 0;
+    ${SuperQuery().minWidth.md.css`
+    margin: 0 56px 0 0;
+    `}
   }
   .title__copyright {
     font-size: .75em;
     text-align: right;
-    line-height: .875;
+    line-height: .75;
     letter-spacing: -1px;
     font-weight: 500;
-    margin: 4em -1em 0 0;
-    padding: 1em;
+    margin: 0 48px 0 0;
+    padding: .25em .25em 0 0;
     span {
       font-weight: 700;
     }
+    ${SuperQuery().minWidth.md.css`
+    margin: 0 56px 0 0;
+    `}
   }
 
   .react-toggle {

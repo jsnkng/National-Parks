@@ -50,28 +50,22 @@ const Header = styled.header`
 
   img.logo {
     float: left;
-    width: 38px;
     cursor: pointer;
     border: none;
     margin: 0 0 0 -5px;
     padding: 0;
-    ${SuperQuery().minWidth.sm.css`
       width: 48px;
-    `}
     ${SuperQuery().minWidth.md.css`
       width: 60px;
     `}
   }
   .title__park {
     display: block;
-    font-size: 1em;
+    font-size: 1.125em;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 5px 0 0 38px;
-    ${SuperQuery().minWidth.sm.css`
-      margin: 5px 0 0 54px;
-    `}
+      margin: 5px 0 0 48px;
     ${SuperQuery().minWidth.md.css`
       margin: 5px 0 0 66px;
       font-size: 1.375em;
@@ -83,13 +77,10 @@ const Header = styled.header`
   .title__designation {
     display: block;
     font-size: .875em;
-    line-height: 1.4;
+    line-height: 1.5;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 38px;
-    ${SuperQuery().minWidth.sm.css`
-      margin: 0 0 0 54px;
-    `}
+      margin: 0 0 0 48px;
     ${SuperQuery().minWidth.md.css`
       margin: 0 0 0 66px;
     line-height: 1.1;
@@ -104,7 +95,7 @@ const Header = styled.header`
     line-height: .8;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 2px 0 0 0 ;
+    margin: 5px 0 0 0 ;
     ${SuperQuery().minWidth.md.css`
       margin: 2px 0 0 66px;
       font-size: 1.75em;
