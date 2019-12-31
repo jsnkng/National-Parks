@@ -25,10 +25,7 @@ export default class MyApp extends App {
         name: "dayTheme",
         flexboxgrid: themes.flexboxgrid,
         colors: themes.colors.dayTheme,
-      }, 
-      percent: 20,
-      autoIncrement: true,
-      intervalTime: 50
+      }
     }
   }
 
