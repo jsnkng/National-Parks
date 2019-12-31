@@ -154,22 +154,22 @@ const Footer = styled.footer`
   height: 24px;
   padding: 0;
   border-radius: 30px;
-  background-color: ${props => props.theme.colors.offbackground};
+  background-color: #4D4D4D;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
 .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: ${props => props.theme.colors.text};
+  background-color: #000000;
 }
 
 .react-toggle--checked .react-toggle-track {
-  background-color: ${props => props.theme.colors.text};
+  background-color: #b1b0a7;
 }
 
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: ${props => props.theme.colors.text};
+  background-color: #b1b0a7;
 }
 
 .react-toggle-track-check {
@@ -222,10 +222,10 @@ const Footer = styled.footer`
   left: 1px;
   width: 22px;
   height: 22px;
-  border: 1px solid ${props => props.theme.colors.text};
+  border: 1px solid #4D4D4D;
   border-radius: 50%;
-  background-color: ${props => props.theme.colors.color_two};
- outline: 0;
+  background-color: #FAFAFA;
+
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -237,19 +237,19 @@ const Footer = styled.footer`
 
 .react-toggle--checked .react-toggle-thumb {
   left: 27px;
-  border-color: ${props => props.theme.colors.text};
+  border-color: #b1b0a7;
 }
 
 .react-toggle--focus .react-toggle-thumb {
-  -webkit-box-shadow: 0px 0px 3px 2px ${props => props.theme.colors.color_two};
-  -moz-box-shadow: 0px 0px 3px 2px ${props => props.theme.colors.color_two};
-  box-shadow: 0px 0px 2px 3px ${props => props.theme.colors.color_two};
+  -webkit-box-shadow: 0px 0px 3px 2px #0099E0;
+  -moz-box-shadow: 0px 0px 3px 2px #0099E0;
+  box-shadow: 0px 0px 2px 3px #0099E0;
 }
 
 .react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
-  -webkit-box-shadow: 0px 0px 5px 5px ${props => props.theme.colors.color_two};
-  -moz-box-shadow: 0px 0px 5px 5px${props => props.theme.colors.color_two};
-  box-shadow: 0px 0px 5px 5px ${props => props.theme.colors.color_two};
+  -webkit-box-shadow: 0px 0px 5px 5px #0099E0;
+  -moz-box-shadow: 0px 0px 5px 5px #0099E0;
+  box-shadow: 0px 0px 5px 5px #0099E0;
 }
 
 `
