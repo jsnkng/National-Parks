@@ -15,7 +15,6 @@ import {
 
 const Component = props => {
   const [campgrounds, setCampgrounds] = useState(props.campgrounds)
-  console.log()
   return (
     <Campgrounds>
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>

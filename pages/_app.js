@@ -9,7 +9,6 @@ import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
 
 Router.events.on('routeChangeStart', url => {
-  console.log(`Loading: ${url}`)
   NProgress.start()
 })
 Router.events.on('routeChangeComplete', url => { 
@@ -59,7 +58,7 @@ export default class MyApp extends App {
       <>
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
-        <PageTransition
+        {/* <PageTransition
           timeout={400}
           classNames="page-transition"
           loadingDelay={1000}
@@ -68,9 +67,9 @@ export default class MyApp extends App {
             exit: 400,
           }}
           loadingClassNames="loading-indicator"
-        >
+        > */}
           <Component {...pageProps} setTheme={this.toggleTheme} key={router.asPath} />
-        </PageTransition>
+        {/* </PageTransition> */}
       </ThemeProvider>
       </>
     )

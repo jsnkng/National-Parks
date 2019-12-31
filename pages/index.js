@@ -14,11 +14,11 @@ import TerritoryList from '../components/territorylist'
 const Home = props => {
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
+  const pageTransitionDelayEnter = true
 
   useEffect(() => {
     setLoaded(true)
-    console.log('useEffect')
-  //   props.pageTransitionReadyToEnter()
+    // props.pageTransitionReadyToEnter()
   }, [])
 
   if (!loaded) {

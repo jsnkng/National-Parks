@@ -19,16 +19,15 @@ const State = props => {
   props.data.slice(0).map((item) => {
     markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:props.state_id, parkCode:item.parkCode})
   })
+  const pageTransitionDelayEnter = true
 
   useEffect(() => {
     setLoaded(true)
-    console.log('useEffect')
-  //   props.pageTransitionReadyToEnter()
+    // props.pageTransitionReadyToEnter()
   }, [])
-  useEffect(() => {
-    forceCheck()
-    console.log('forceCheck')
-  })
+  // useEffect(() => {
+  //   forceCheck()
+  // })
 
   if (!loaded) {
     return null

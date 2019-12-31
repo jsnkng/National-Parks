@@ -35,6 +35,7 @@ const Park = props => {
   const [places, setPlaces] = useState(props.places.data)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
 
+  const pageTransitionDelayEnter = true
 
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
     
@@ -57,14 +58,12 @@ const Park = props => {
 
   useEffect(() => {
     loaded === false && setLoaded(true)
-    console.log('useEffect')
-  //   props.pageTransitionReadyToEnter()
+    // props.pageTransitionReadyToEnter()
   }, [])
 
 
   useEffect(() => {
     forceCheck()
-    console.log('forceCheck')
   })
 
   if (!loaded) {
