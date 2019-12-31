@@ -23,11 +23,11 @@ const State = props => {
 
   useEffect(() => {
     setLoaded(true)
-    // props.pageTransitionReadyToEnter()
+    props.pageTransitionReadyToEnter()
   }, [])
-  // useEffect(() => {
-  //   forceCheck()
-  // })
+  useEffect(() => {
+    forceCheck()
+  })
 
   if (!loaded) {
     return null

@@ -58,7 +58,7 @@ export default class MyApp extends App {
       <>
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
-        {/* <PageTransition
+        <PageTransition
           timeout={400}
           classNames="page-transition"
           loadingDelay={1000}
@@ -67,9 +67,9 @@ export default class MyApp extends App {
             exit: 400,
           }}
           loadingClassNames="loading-indicator"
-        > */}
+        >
           <Component {...pageProps} setTheme={this.toggleTheme} key={router.asPath} />
-        {/* </PageTransition> */}
+        </PageTransition>
       </ThemeProvider>
       </>
     )

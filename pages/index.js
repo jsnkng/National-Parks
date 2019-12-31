@@ -8,9 +8,6 @@ import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
-
-// const onHighlight = territory => setHighlighted(territory)
-
 const Home = props => {
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
@@ -18,7 +15,7 @@ const Home = props => {
 
   useEffect(() => {
     setLoaded(true)
-    // props.pageTransitionReadyToEnter()
+    props.pageTransitionReadyToEnter()
   }, [])
 
   if (!loaded) {

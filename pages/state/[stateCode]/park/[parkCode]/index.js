@@ -58,7 +58,7 @@ const Park = props => {
 
   useEffect(() => {
     loaded === false && setLoaded(true)
-    // props.pageTransitionReadyToEnter()
+    props.pageTransitionReadyToEnter()
   }, [])
 
 
