@@ -7,7 +7,7 @@ const Component = props => {
   return (
     <Header>
       <Row>
-        <Col xs={7} sm={6} lg={8}>
+        <Col xs={8} sm={6} lg={8}>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link>
@@ -16,7 +16,7 @@ const Component = props => {
             <a className="title__designation">{props.designation}</a>
           </div>
         </Col>
-        <Col xs={5} sm={6} lg={4}>
+        <Col xs={4} sm={6} lg={4}>
           { props.stateCode !== undefined &&
           <Link href="/state/[stateCode]/" as={`/state/${props.stateCode}`}>
             <a className="title__state">{props.state}</a>
@@ -50,10 +50,10 @@ const Header = styled.header`
 
   img.logo {
     float: left;
-    width: 36px;
+    width: 38px;
     cursor: pointer;
     border: none;
-    margin: 0 -.25em 0 0;
+    margin: 0 0 0 -5px;
     padding: 0;
     ${SuperQuery().minWidth.sm.css`
       width: 48px;
@@ -62,34 +62,20 @@ const Header = styled.header`
       width: 60px;
     `}
   }
-  .title__state {
-    display: block;
-    text-align: right;
-    font-size: 1.125em;
-    line-height: 1.125;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 0 0 0 36px;
-    ${SuperQuery().minWidth.md.css`
-      margin: 0 0 0 66px;
-      font-size: 1.75em;
-      letter-spacing: -1.5px;
-    `}
-  }
   .title__park {
     display: block;
     font-size: 1em;
-    line-height: 1;
+    line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 4px 0 0 40px;
+    margin: 5px 0 0 38px;
     ${SuperQuery().minWidth.sm.css`
-      margin: 6px 0 0 54px;
+      margin: 5px 0 0 54px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 8px 0 0 66px;
+      margin: 5px 0 0 66px;
       font-size: 1.375em;
-      line-height: 1.125;
+      line-height: 1;
       letter-spacing: -1.5px;
     `}
   }
@@ -97,17 +83,32 @@ const Header = styled.header`
   .title__designation {
     display: block;
     font-size: .875em;
-    line-height: .875;
+    line-height: 1.4;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 40px;
+    margin: 0 0 0 38px;
     ${SuperQuery().minWidth.sm.css`
       margin: 0 0 0 54px;
     `}
     ${SuperQuery().minWidth.md.css`
       margin: 0 0 0 66px;
+    line-height: 1.1;
       font-size: 1em;
       letter-spacing: -1px;
+    `}
+  }
+  .title__state {
+    display: block;
+    text-align: right;
+    font-size: 1.25em;
+    line-height: .8;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 2px 0 0 0 ;
+    ${SuperQuery().minWidth.md.css`
+      margin: 2px 0 0 66px;
+      font-size: 1.75em;
+      letter-spacing: -1.5px;
     `}
   }
 
