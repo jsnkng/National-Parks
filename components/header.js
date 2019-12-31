@@ -17,17 +17,14 @@ const Component = props => {
           </div>
         </Col>
         <Col xs={5} sm={6} lg={4}>
-          { props.stateCode !== "" &&
+          { props.stateCode !== undefined &&
           <Link href="/state/[stateCode]/" as={`/state/${props.stateCode}`}>
             <a className="title__state">{props.state}</a>
           </Link>
           }
-          {/* <Link href="/" passHref>
-            <div>
-              <div className="title__site">{props.site}</div>
-              <div className="title__tagline">{props.tagline}</div>
-            </div>
-          </Link> */}
+          { props.stateCode === undefined &&
+            <a className="title__state">{props.state}</a>
+          }
         </Col>
       </Row>
     </Header>
@@ -50,6 +47,21 @@ const Header = styled.header`
     border: none;
     color: inherit;
   }
+
+  img.logo {
+    float: left;
+    width: 36px;
+    cursor: pointer;
+    border: none;
+    margin: 0 -.25em 0 0;
+    padding: 0;
+    ${SuperQuery().minWidth.sm.css`
+      width: 48px;
+    `}
+    ${SuperQuery().minWidth.md.css`
+      width: 60px;
+    `}
+  }
   .title__state {
     display: block;
     text-align: right;
@@ -67,17 +79,17 @@ const Header = styled.header`
   .title__park {
     display: block;
     font-size: 1em;
-    line-height: .75;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 6px 0 0 40px;
+    margin: 4px 0 0 40px;
     ${SuperQuery().minWidth.sm.css`
       margin: 6px 0 0 54px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 6px 0 0 66px;
-      line-height: 1;
+      margin: 8px 0 0 66px;
       font-size: 1.375em;
+      line-height: 1.125;
       letter-spacing: -1.5px;
     `}
   }
@@ -90,7 +102,7 @@ const Header = styled.header`
     letter-spacing: -.5px;
     margin: 0 0 0 40px;
     ${SuperQuery().minWidth.sm.css`
-      margin: 6px 0 0 54px;
+      margin: 0 0 0 54px;
     `}
     ${SuperQuery().minWidth.md.css`
       margin: 0 0 0 66px;
@@ -99,21 +111,7 @@ const Header = styled.header`
     `}
   }
 
-  img.logo {
-    float: left;
-    width: 36px;
-    cursor: pointer;
-    border: none;
-    margin: 0 -.25em 0 0;
-    padding: 0;
-    ${SuperQuery().minWidth.sm.css`
-      width: 48px;
-    `}
-    ${SuperQuery().minWidth.md.css`
-      width: 60px;
-    `}
-  }
-  .title__site {
+  ${'' /* .title__site {
     font-size: .875em;
     text-align: right;
     line-height: .875;
@@ -139,5 +137,5 @@ const Header = styled.header`
       font-size: 1.125em;
       margin: 0;
     `}
-  }
+  } */}
 `

@@ -15,7 +15,6 @@ const Component = ({ setTheme }) => {
               icons={false}
               aria-label='Set Day|Night Mode'
               onChange={setTheme} />
-          <div className="title__theme">Mode</div>
         </Col>
         <Col xs={8}>
           <Link href="/" passHref>
@@ -62,7 +61,7 @@ const Footer = styled.footer`
   .title__site {
     font-size: .875em;
     text-align: right;
-    line-height: .75;
+    line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
     margin: 0 37px 0 0;
@@ -71,17 +70,12 @@ const Footer = styled.footer`
   .title__tagline {
     font-size: .75em;
     text-align: right;
-    line-height: .875;
+    line-height: .75;
     letter-spacing: -1px;
     font-weight: 500;
     margin: 0 37px 0 0;
     padding: .25em .25em 0 0;
   }
-  .title__theme {
-    margin: 2.25em 0 0 .625em;
-    font-size: .625em;
-  }
-
   .title__copyright {
     font-size: .75em;
     text-align: right;
