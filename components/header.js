@@ -77,7 +77,7 @@ const Header = styled.header`
   .title__designation {
     display: block;
     font-size: .875em;
-    line-height: 1.5;
+    line-height: 1.2;
     font-weight: 200;
     letter-spacing: -.5px;
       margin: 0 0 0 48px;

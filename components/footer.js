@@ -30,7 +30,7 @@ const Component = ({ setTheme }) => {
               <div className="title__tagline"></div>
             </div>
           </Link>
-          <div className="title__copyright"><span>jsnkng |</span> 2019</div>
+          {/* <div className="title__copyright"><span>jsnkng |</span> 2019</div> */}
         </Col>
       </Row>
     </Footer>
@@ -62,7 +62,10 @@ const Footer = styled.footer`
     border: none;
     margin: 0 -5px 0 0;
     padding: 0;
+    width: 36px;
+    ${SuperQuery().minWidth.sm.css`
       width: 48px;
+    `}
     ${SuperQuery().minWidth.md.css`
       width: 60px;
     `}
@@ -74,7 +77,7 @@ const Footer = styled.footer`
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0 48px 0 0;
+    margin: 0 32px 0 0;
     padding: .25em .25em 0 0;
     ${SuperQuery().minWidth.md.css`
     margin: 0 56px 0 0;
