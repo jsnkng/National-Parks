@@ -34,7 +34,7 @@ const Component = props => {
 export default Component
 
 const Header = styled.header`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
