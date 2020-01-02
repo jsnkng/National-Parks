@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import Toggle from 'react-toggle'
 import React from 'react'
-// import Moon from '../svgs/moon.svg'
-// import Sun from '../svgs/sun.svg'
 
 const Component = ({ setTheme }) => {
   return (
@@ -15,10 +13,6 @@ const Component = ({ setTheme }) => {
           <Toggle
               defaultChecked={true}
               icons={false}
-              // icons={{
-              //   checked: <Moon />,
-              //   unchecked: <Sun />,
-              // }}
               aria-label='Set Day|Night Mode'
               onChange={setTheme} />
         </Col>
@@ -254,70 +248,4 @@ const Footer = styled.footer`
   -moz-box-shadow: 0px 0px 5px 5px #0099E0;
   box-shadow: 0px 0px 5px 5px #0099E0;
 }
-
 `
-
-// const Footer = styled.footer`
-//   position: relative; 
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   width: 100%;
-//   min-height: 8em;
-//   background-color: ${props => props.theme.colors.trans_back};
-//   color: ${props => props.theme.colors.text};
-//   z-index: 120;
-  
-
-//   a {
-//     color: ${props => props.theme.colors.text};
-//     text-decoration:none;
-//     font-size: 1.5em;
-//     font-weight: 700;
-//     &:hover {
-//       color: ${props => props.theme.colors.color_two};
-//       text-decoration: underline;
-//     }
-//   }
-  
-//   img.logo {
-//     float: left;
-//     width: 24px;
-//     cursor: pointer;
-//     border: none;
-//     margin: .5em .5em 0 0;
-//     padding: 0;
-//     ${SuperQuery().minWidth.sm.css`
-//       width: 32px;
-//     `}
-//     ${SuperQuery().minWidth.md.css`
-//       width: 48px;
-//     `}
-//   }
-//   .title__site {
-//     float: left;
-//     font-size: .625em;
-//     line-height: 1;
-//     font-weight: 700;
-//     letter-spacing: -1px;
-//     margin: .5em 0 0 0;
-//     ${SuperQuery().minWidth.md.css`
-//       font-size: 1.25em;
-//     `}
-//   }
-//   .title__tagline {
-//     float: left;
-//     font-size: .5em;
-//     line-height: 1;
-//     letter-spacing: -1px;
-//     font-weight: 500;
-//     margin: 0;
-//     ${SuperQuery().minWidth.md.css`
-//       font-size: 1.125em;
-//     `}
-//   }
-
-
-
-// `
-

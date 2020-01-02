@@ -15,7 +15,6 @@ export default (req, res) => {
     query: { parkCode }
   } = req
 
-
   const getPark = async (db, callback) => {
     console.log(`Getting Park (${parkCode})`)
 
@@ -38,7 +37,6 @@ export default (req, res) => {
     } else {
       console.log(`Fetched Park (${parkCode}) from MongoDB`)
     }
-
 
     const [alerts] = await db.collection('alerts').find({ parks_id: parkCode }).toArray()
     if (alerts === undefined || alerts.length === 0) {

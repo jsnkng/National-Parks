@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
@@ -10,9 +10,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Component = props => {
-  const [visitorCenters, setVisitorCenters] = useState(props.visitorCenters)
-
+const Component = ({ visitorCenters }) => {
   return (  
     <VisitorCenters>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>

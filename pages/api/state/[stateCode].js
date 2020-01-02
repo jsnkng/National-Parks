@@ -14,11 +14,11 @@ export default (req, res) => {
     query: { stateCode }
   } = req
 
-
   const getState = async (db, callback) => {
     console.log(`Getting State (${stateCode})`)
 
     let [result] = await db.collection('states').find({ state_id: stateCode }).toArray()
+    console.log(result)
     if (result === undefined || result.length === 0) {
       console.log(`Getting State (${stateCode}) Failed`)
       console.log(`Fetching State (${stateCode}) from API`)

@@ -13,13 +13,13 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
 const State = props => {
+  const pageTransitionDelayEnter = true
   const [loaded, setLoaded] = useState(false)
   const markers = []
   
   props.data.slice(0).map((item) => {
     markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:props.state_id, parkCode:item.parkCode})
   })
-  const pageTransitionDelayEnter = true
 
   useEffect(() => {
     setLoaded(true)

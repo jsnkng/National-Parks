@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
 import MapLive__Component from './maplive'
 
-const Component = props => {
-  const [park, setPark] = useState(props.park)
-  const [markers, setMarkers] = useState(props.markers)
-   
+const Component = ({ park, markers }) => {
   return (
     <VisitorInfo>
       <Row>

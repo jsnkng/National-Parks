@@ -30,6 +30,7 @@ const Component = props => {
     </Header>
   )
 }
+
 export default Component
 
 const Header = styled.header`
@@ -47,7 +48,6 @@ const Header = styled.header`
     border: none;
     color: inherit;
   }
-
   img.logo {
     float: left;
     cursor: pointer;
@@ -65,7 +65,7 @@ const Header = styled.header`
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-      margin: 5px 0 0 48px;
+    margin: 5px 0 0 48px;
     ${SuperQuery().minWidth.md.css`
       margin: 5px 0 0 66px;
       font-size: 1.375em;
@@ -73,17 +73,16 @@ const Header = styled.header`
       letter-spacing: -1.5px;
     `}
   }
-
   .title__designation {
     display: block;
     font-size: .875em;
     line-height: 1.2;
     font-weight: 200;
     letter-spacing: -.5px;
-      margin: 0 0 0 48px;
+    margin: 0 0 0 48px;
     ${SuperQuery().minWidth.md.css`
       margin: 0 0 0 66px;
-    line-height: 1.1;
+      line-height: 1.1;
       font-size: 1em;
       letter-spacing: -1px;
     `}
@@ -102,32 +101,4 @@ const Header = styled.header`
       letter-spacing: -1.5px;
     `}
   }
-
-  ${'' /* .title__site {
-    font-size: .875em;
-    text-align: right;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 0;
-    padding: .25em .25em 0 0;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.25em;
-      line-height: 1.1;
-      margin: 0;
-    `}
-  }
-  .title__tagline {
-    font-size: .75em;
-    text-align: right;
-    line-height: .875;
-    letter-spacing: -1px;
-    font-weight: 500;
-    margin: 0;
-    padding: 0 .25em 0 0;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.125em;
-      margin: 0;
-    `}
-  } */}
 `

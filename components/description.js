@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import MapDiagram from './mapdiagram'
 
-const Component = props => {
-  const [park, setPark] = useState(props.park)
-
+const Component = ({ park }) => {
   return (
     <Description>
       <Row>

@@ -9,9 +9,9 @@ import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
 const Home = props => {
+  const pageTransitionDelayEnter = true
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
-  const pageTransitionDelayEnter = true
 
   useEffect(() => {
     setLoaded(true)

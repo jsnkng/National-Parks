@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
 import styled from 'styled-components';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import MapLive__Component from './maplive'
@@ -13,8 +13,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Component = props => {
-  const [campgrounds, setCampgrounds] = useState(props.campgrounds)
+const Component = ({ campgrounds }) => {
   return (
     <Campgrounds>
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>

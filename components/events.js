@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad, { forceCheck } from 'react-lazyload'
@@ -11,8 +11,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Component = props => {
-  const [events, setEvents] = useState(props.events)
+const Component = ({ events }) => {
   const toDateFormat = (date) => {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])

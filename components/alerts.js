@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
@@ -11,8 +11,6 @@ import {
 } from 'react-accessible-accordion'
 
 const Component = ({ alerts }) => {
-const [alert, setAlert] = useState(alerts)
-
   return (
     <Alerts>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
@@ -21,7 +19,7 @@ const [alert, setAlert] = useState(alerts)
             <h2>Alerts & Conditions</h2>
           </Col>
           
-          { alert.slice(0).map((item) => {
+          { alerts.slice(0).map((item) => {
             return (
               <Col xs={12} sm={6} md={6} lg={4} key={item.id} className="summary">
                 <AccordionItem>

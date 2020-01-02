@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
-const SlideShow = props => {
-  const [park, setPark] = useState(props.park)
-
+const SlideShow = ({ park }) => {
   return (
     <Carousel__Styled 
       showArrows={true} 

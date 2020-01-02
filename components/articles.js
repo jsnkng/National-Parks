@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
-const Component = props => {
-  const [articles, setArticles] = useState(props.articles)
-    
+const Component = ({ articles }) => {
   const [limit, setLimit] = useState(3)
   const readMore = () =>  setLimit(limit + 3)
 
@@ -38,7 +36,7 @@ const Component = props => {
       }
       </Row>
       <Row>
-        <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More Articles</button>
+        <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More Articles</button>
       </Row>
     </Articles>
   )

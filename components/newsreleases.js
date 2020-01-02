@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
-const Component = props => {
-  const [newsReleases, setNewsReleases] = useState(props.newsReleases)
-  const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+const Component = ({ newsReleases }) => {
   const toDateFormat = (date) => {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])
@@ -15,7 +13,6 @@ const Component = props => {
   }
   
   const [limit, setLimit] = useState(3)
-  const readMore = () => setLimit(limit + 3)
 
   return (
     <NewsReleases>
@@ -50,7 +47,7 @@ const Component = props => {
       }
       </Row>
       <Row>
-        <button className={limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } onClick={readMore}>Load More News</button>
+        <button className={limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More News</button>
       </Row>
     </NewsReleases>
   )

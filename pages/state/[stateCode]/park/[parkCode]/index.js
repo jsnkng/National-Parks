@@ -20,10 +20,10 @@ import SlideShow__Component from '../../../../../components/slideshow'
 import VisitorInfo__Component from '../../../../../components/visitorinfo'
 import VisitorCenters__Component from '../../../../../components/visitorcenters'
 
-
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = props => {
+  const pageTransitionDelayEnter = true
   const [loaded, setLoaded] = useState(false)
   const [park, setPark] = useState(props.data[0])
   const [alerts, setAlerts] = useState(props.alerts.data)
@@ -34,9 +34,6 @@ const Park = props => {
   const [people, setPeople] = useState(props.people.data)
   const [places, setPlaces] = useState(props.places.data)
   const [visitorCenters, setVisitorCenters] = useState(props.visitorcenters.data)
-
-  const pageTransitionDelayEnter = true
-
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
     
   visitorCenters !== undefined && visitorCenters.length != 0 &&
@@ -54,13 +51,10 @@ const Park = props => {
     markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
   })
 
-
-
   useEffect(() => {
     loaded === false && setLoaded(true)
     props.pageTransitionReadyToEnter()
   }, [])
-
 
   useEffect(() => {
     forceCheck()

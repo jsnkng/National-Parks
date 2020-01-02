@@ -1,12 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../config/datastates'
 
 const Component = ({ territories, highlighted, setHighlighted }) => {
- 
-
   return (
     <Map
       width="100%"
