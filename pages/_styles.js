@@ -2,21 +2,9 @@ import { createGlobalStyle } from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
 const GlobalStyle = createGlobalStyle`
-  *,
-  *::after,
-  *::before {
-    box-sizing: border-box;
-  }
+ 
   body {
-    font-family: Helvetica, "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
-    font-size: 16px;
-    background-color: ${props => props.theme.colors.background};
     height: 100vh;
-    margin: 0;
-    padding: 0;
     transition: all .25s ease-in-out;
     opacity: 1.0;
     -webkit-transition: background 1.5s linear;
@@ -24,20 +12,10 @@ const GlobalStyle = createGlobalStyle`
     -o-transition: background 1.5s linear;
     -ms-transition: background 1.5s linear;
     transition: background 1.5s linear;
-    ${SuperQuery().maxWidth.of('320px').css`
-      font-size: 14px;
-    `}
-
-    ${SuperQuery().minWidth.sm.css`
-      font-size: 20px;
-      letter-spacing: -.5px;
-    `}
+    
   }
-
-
-
- /* Chrome, Safari, Opera */
- @-webkit-keyframes myfirst {
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes myfirst {
     from {opacity: 0.2;}
     to {opacity: 1;}
   }
@@ -47,7 +25,8 @@ const GlobalStyle = createGlobalStyle`
     from {opacity: 0.2;}
     to {opacity: 1;}
   }
-  h1,h2,h3,h4,h5,h6,p {
+  
+  ${'' /* h1,h2,h3,h4,h5,h6,p {
     margin: 0;
     padding: 0;
   }
@@ -123,8 +102,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1em;
     font-weight: 300;
     overflow-wrap: break-word;
-  }
-  .articles__date {
+  } */}
+  ${'' /* .articles__date {
     display: block;
     font-size: 1em;
     padding: 1em 0 0 0;
@@ -217,12 +196,12 @@ const GlobalStyle = createGlobalStyle`
     }
   `}
   }
-
+*/}
   .accordion {
     border: none;
     padding: 0;
   }
-
+${'' /* 
   .accordion__item + .accordion__item {
   border-bottom: 1px solid ${props => props.theme.colors.offbackground};
   }
@@ -290,7 +269,7 @@ const GlobalStyle = createGlobalStyle`
     100% {
       opacity: 1;
     }
-  }
+  } */}
 
 
 
@@ -316,7 +295,7 @@ const GlobalStyle = createGlobalStyle`
   .loading-indicator-enter-active {
     opacity: 1;
     transition: opacity 300ms;
-  }
+  } 
 
 
 
@@ -327,7 +306,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   #nprogress .bar {
-    background: ${props => props.theme.colors.color_three};
+    ${'' /* background: ${props => props.theme.colors.color_three}; */}
   
     position: fixed;
     z-index: 1031;

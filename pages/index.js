@@ -1,7 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
-import styled from 'styled-components'
-import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import { makeStyles } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Toolbar from '@material-ui/core/Toolbar'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Hidden from '@material-ui/core/Hidden'
+import Link from '@material-ui/core/Link'
+import Container from '@material-ui/core/Container'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -22,7 +33,7 @@ const Home = props => {
     return null
   } else {
     return (
-      <>
+      <Container>
         <Head>
           <title>National Park Service</title>
         </Head>
@@ -33,26 +44,26 @@ const Home = props => {
           stateCode={''}
         />
         <Content>
-          <Row>
-            <Col xs={12} lg={6}>
+          <Box>
+            <Box xs={12} lg={6}>
               <MapDiagram 
                 className="mapdiagram" 
                 territories={'none'} 
                 highlighted={highlighted} 
                 setHighlighted={setHighlighted} />
-            </Col>
-            <Col xs={12} lg={6}>
+            </Box>
+            <Box xs={12} lg={6}>
               <TerritoryList 
                 className="territorylist" 
                 highlighted={highlighted} 
                 setHighlighted={setHighlighted} />
-            </Col> 
-          </Row>
+            </Box> 
+          </Box>
         </Content>
         <Footer
           setTheme={props.setTheme}
         />
-      </>
+      </Container>
     )
   }
 }

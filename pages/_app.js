@@ -2,12 +2,14 @@ import React from 'react'
 import App from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import { ThemeProvider } from 'styled-components'
+// import { ThemeProvider } from 'styled-components'
 import themes from '../config/_themes'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
+import { CssBaseline } from '@material-ui/core'
 
+theme = responsiveFontSizes(theme);
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
 })
@@ -53,7 +55,8 @@ export default class MyApp extends App {
    
     return (
       <>
-      <ThemeProvider theme={this.state.theme}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <GlobalStyle />
         <PageTransition
           timeout={400}
@@ -65,7 +68,7 @@ export default class MyApp extends App {
           }}
           loadingClassNames="loading-indicator"
         >
-          <Component {...pageProps} setTheme={this.toggleTheme} key={router.asPath} />
+          <Component {...pageProps} setTheme={theme} />
         </PageTransition>
       </ThemeProvider>
       </>

@@ -83,7 +83,7 @@ State.getInitialProps = async ({ req, query }) => {
 export default State
 
 
-const Content = styled.main`
+const Content = styled(main)`
   display: flex;
   flex-wrap: wrap;
   align-items: top;

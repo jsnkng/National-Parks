@@ -32,7 +32,7 @@ const Park = styled.div`
   margin: 0;
   padding: 0;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
-  background-color: ${props => props.theme.colors.trans_back};
+  ${'' /* background-color: ${props => props.theme.colors.trans_back}; */}
   background-image: ${props => props.backgroundURL};
   background-size: cover;
   background-position: center bottom;
@@ -43,8 +43,8 @@ const Park = styled.div`
   `}
   .banner__header {
     position: relative;
-    background-color: ${props => props.theme.colors.trans_back};
-    color: ${props => props.theme.colors.text};
+    ${'' /* background-color: ${props => props.theme.colors.trans_back}; */}
+    ${'' /* color: ${props => props.theme.colors.text}; */}
     height: 4em;
     padding: .125em .5em;
     z-index: 20;
@@ -79,7 +79,7 @@ const ResponsiveImage = styled.div`
   top: 0;
   left: 0;
   
-  background-color: ${props => props.theme.colors.trans_back};
+  ${'' /* background-color: ${props => props.theme.colors.trans_back}; */}
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center bottom;

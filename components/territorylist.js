@@ -36,7 +36,7 @@ const TerritoryList = styled.div`
     font-size: .75em;
   `}
   a {
-    color:  ${props => props.theme.colors.color_one};
+    ${'' /* color:  ${props => props.theme.colors.color_one}; */}
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
@@ -48,7 +48,7 @@ const TerritoryList = styled.div`
     padding: .125em;
   }
   a.highlight , a:hover  {
-    color:  ${props => props.theme.colors.color_three};
+    ${'' /* color:  ${props => props.theme.colors.color_three}; */}
     text-decoration: underline;
   }
 `

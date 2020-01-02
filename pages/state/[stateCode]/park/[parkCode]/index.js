@@ -131,18 +131,18 @@ Park.getInitialProps = async ({ req, query }) => {
 export default Park
 
 const Content = styled.main`
-  background-color: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.text};
+  ${'' /* background-color: ${props => props.theme.colors.background}; */}
+  ${'' /* color: ${props => props.theme.colors.text}; */}
   margin-top: 70px;
   ${SuperQuery().minWidth.sm.css`
     margin-top: 90px;
   `}
 
   h4 a {
-    color: ${props => props.theme.colors.color_two};
+    ${'' /* color: ${props => props.theme.colors.color_two}; */}
   }
   a {
-    color: ${props => props.theme.colors.color_one};
+    ${'' /* color: ${props => props.theme.colors.color_one}; */}
     text-decoration: none;
     &:hover {
       text-decoration: underline;
