@@ -56,7 +56,7 @@ const Component = ({ campgrounds }) => {
                             <>
                             { item.directionsoverview !== undefined && item.directionsoverview !=="" && 
                               <>
-                                <h5>Directions</h5>
+                                <h4>Directions</h4>
                                 <p>{item.directionsoverview}<br />
                                   <a href={item.directionsUrl} target="_blank">Click for Directions</a>
                                 </p>
@@ -65,7 +65,7 @@ const Component = ({ campgrounds }) => {
                             { ((item.campsites !== undefined && item.campsites !== "") && 
                               (item.campsites.totalsites > 0)) &&
                               <>
-                                <h5>Campsites</h5>
+                                <h4>Campsites</h4>
                                 <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
                                 <ul>
                                   <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
@@ -107,7 +107,7 @@ const Component = ({ campgrounds }) => {
                         (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != "")) && 
                       <Row className="section">
                         <Col xs={12}>
-                          <h5>Accessibility</h5>
+                          <h4>Accessibility</h4>
                           <ul>
                             {item.accessibility.accessroads !== undefined && item.accessibility.accessroads != "" && 
                               <li><strong>Access Roads:</strong> {item.accessibility.accessroads}</li>
@@ -164,7 +164,7 @@ const Component = ({ campgrounds }) => {
                         (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
                       <Row className="section">
                         <Col xs={12}  className="amenities">
-                          <h5>Amenities</h5>
+                          <h4>Amenities</h4>
                           <ul>
                             {item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0 && 
                               <li><strong>Trash/Recycling:</strong> {item.amenities.trashrecyclingcollection}</li>
@@ -214,7 +214,7 @@ const Component = ({ campgrounds }) => {
                         <Col xs={12}>
                           <div className="boxes">
                             <span>
-                              <h5>Regulations</h5>
+                              <h4>Regulations</h4>
                               <div dangerouslySetInnerHTML={{__html: item.regulationsoverview.replace(/\n/gi, "<br />")}}></div>
                               <p><a href={item.regulationsurl} target="_blank" style={{ wordBreak: "break-all"}}>{item.regulationsurl}</a></p>
                             </span>
@@ -230,25 +230,25 @@ const Component = ({ campgrounds }) => {
                           <div className="boxes">   
                           {item.reservationsdescription !== undefined && item.reservationsdescription != "" && 
                             <span>
-                              <h5>Reservations</h5>
+                              <h4>Reservations</h4>
                               <div dangerouslySetInnerHTML={{__html: item.reservationsdescription.replace(/\n/gi, "<br />")}}></div>
                             </span>
                           }
                           {item.reservationssitesfirstcome !== undefined && item.reservationssitesfirstcome != "" && 
                             <span>
-                              <h5>Reservations Sites First Come</h5>
+                              <h4>Reservations Sites First Come</h4>
                               <p>{item.reservationssitesfirstcome}</p>
                             </span>
                           }
                           {item.reservationssitesreservable !== undefined && item.reservationssitesreservable != "" && 
                             <span>
-                              <h5>Reservations Reservable</h5>
+                              <h4>Reservations Reservable</h4>
                               <p>{item.reservationssitesreservable}</p>
                             </span>
                           }
                           {item.reservationsurl !== undefined && item.reservationsurl != "" && 
                             <span>
-                              <h5>Reservations URL</h5>
+                              <h4>Reservations URL</h4>
                               <p><a href={item.reservationsurl} target="_blank">{item.reservationsurl}</a></p>
                             </span>
                           }
@@ -262,7 +262,7 @@ const Component = ({ campgrounds }) => {
                         <Col xs={12}>
                           <div>                   
                             <span>
-                              <h5>Weather Overview</h5>
+                              <h4>Weather Overview</h4>
                               <div dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, "<br />")}}></div>
                             </span>
                           </div>
@@ -336,7 +336,7 @@ ul {
     padding: 3.5em 1.5em 1em 1.5em;
     margin: .5em .25em .5em .25em;
     column-count: 1;
-    h5 {
+    h4 {
 
       font-size:1.5em;
       margin: -2em 0 0 0;
