@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-import states from '../../../config/datastates'
+import states from '../../../config/states'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'

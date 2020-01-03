@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import states from '../config/datastates'
+import states from '../config/states'
 
 const Component = ({ territories, highlighted, setHighlighted }) => {
   return (
