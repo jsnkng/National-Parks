@@ -23,6 +23,7 @@ const Component = ({ highlighted, setHighlighted }) => {
   )
 }
 
+
 export default Component
 
 const TerritoryList = styled.div`
