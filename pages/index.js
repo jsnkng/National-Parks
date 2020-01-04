@@ -7,7 +7,6 @@ import SuperQuery from '@themgoncalves/super-query'
 import absoluteUrl from 'next-absolute-url'
 
 import ParkBanner from '../components/park'
-import FeaturedGrid from '../components/featuredgrid'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
