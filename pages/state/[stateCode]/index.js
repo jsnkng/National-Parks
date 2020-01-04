@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-import states from '../../../config/states'
+import territories from '../../../config/states'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'
@@ -36,12 +36,12 @@ const State = ({ data, state_id, ToggleTheme, pageTransitionReadyToEnter, stateC
     return (
       <>
         <Head>
-          <title>National Park Service Guide to {states[stateCode][0]}</title>
+          <title>National Park Service Guide to {territories[stateCode][0]}</title>
         </Head>
         <Header 
-            park='National Park Service'
-            designation='A State-By-State Guide'
-            state={states[stateCode][0]}
+            park={territories[stateCode][0]}
+            designation=''
+            state=''
             stateCode={stateCode}
         />
         <Content>
@@ -58,6 +58,7 @@ const State = ({ data, state_id, ToggleTheme, pageTransitionReadyToEnter, stateC
                         : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
                       title={item.name}
                       subtitle={item.designation}
+                      states={item.states}
                     />
                   </a>
                 </Link>

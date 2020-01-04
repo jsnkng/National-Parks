@@ -100,7 +100,7 @@ const Events = styled(Grid)`
   padding-bottom: 1em;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 12em;
+    height: 22em;
   }
 `
 const Image = styled.div`

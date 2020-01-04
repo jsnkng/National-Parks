@@ -32,9 +32,9 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
           <title>National Park Service</title>
         </Head>
         <Header 
-          park='National Park Service'
-          designation='A State-By-State Guide'
-          state='United States'
+          park='United States'
+          designation=''
+          state=''
           stateCode={''}
         />
         <Content>
@@ -62,6 +62,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             }
             title={parks[0].name}
             subtitle={parks[0].designation}
+            states={parks[0].states}
           />
         </a>
       </Link>
@@ -76,6 +77,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             }
             title={parks[1].name}
             subtitle={parks[1].designation}
+            states={parks[1].states}
           />
         </a>
       </Link>
@@ -90,6 +92,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             }
             title={parks[2].name}
             subtitle={parks[2].designation}
+            states={parks[2].states}
           />
         </a>
       </Link>
@@ -104,6 +107,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             }
             title={parks[3].name}
             subtitle={parks[3].designation}
+            states={parks[3].states}
           />
         </a>
       </Link>
@@ -118,6 +122,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             }
             title={parks[4].name}
             subtitle={parks[4].designation}
+            states={parks[4].states}
           />
         </a>
       </Link>
@@ -132,6 +137,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             }
             title={parks[5].name}
             subtitle={parks[5].designation}
+            states={parks[0].states}
           />
         </a>
       </Link>
@@ -139,15 +145,18 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
     </Row>
           
           <Row>
-            <Col xs={12} sm={6}><br /><br />
+            <Col xs={12} sm={7}><br /><br />
               <h2>Find A National Park By State</h2>
+              
+              <MapDiagram__Wrapper>
               <MapDiagram
                 className="mapdiagram" 
                 territories={'none'} 
                 highlighted={highlighted} 
                 setHighlighted={setHighlighted} />
+                </MapDiagram__Wrapper>
             </Col>
-            <Col xs={12} sm={6}>
+            <Col xs={12} sm={5}>
               <TerritoryList 
                 className="territorylist" 
                 highlighted={highlighted} 
@@ -173,8 +182,8 @@ Home.pageTransitionDelayEnter = true
 export default Home
 
 const Content = styled.main`
-  color: ${({ theme }) => theme.text};
- background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.colors.text};
+ background-color: ${({ theme }) => theme.colors.background};
   margin: 30px 0;
   ${SuperQuery().minWidth.md.css`
   margin: 84px 0;
@@ -200,10 +209,10 @@ const Content = styled.main`
   h2 {
     display: block;
     font-size: 1.875em;
-    line-height: 1.2;
+    line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 48px;
+    margin: -20px 0 0 48px;
     border: none;
     ${'' /* ${SuperQuery().minWidth.md.css`
       margin: 0 0 0 66px;
@@ -217,5 +226,5 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
-  padding:2em 0 1em 2em;
+  padding: 2em 0 1em 1em;
 `

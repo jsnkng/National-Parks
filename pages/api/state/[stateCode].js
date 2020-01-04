@@ -22,7 +22,7 @@ export default (req, res) => {
       console.log(`Fetching State (${stateCode}) from API`)
       state = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       if (state !== undefined || state.length !== 0) {
-        state.stateCode = stateCode 
+        state.stateCode = stateCode
         console.log(`Inserting State (${stateCode}) into MongoDB`)
         await db.collection('states').insertOne(state)
       }

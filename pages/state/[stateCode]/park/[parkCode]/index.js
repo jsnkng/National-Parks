@@ -130,18 +130,18 @@ Park.pageTransitionDelayEnter = true
 export default Park
 
 const Content = styled.main`
-  background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
   margin: 70px 0;
   ${SuperQuery().minWidth.md.css`
     margin: 88px 0;
   `}
 
   h4 a {
-    color: ${({ theme }) => theme.color_two};
+    color: ${({ theme }) => theme.colors.color_two};
   }
   a {
-    color: ${({ theme }) => theme.color_one};
+    color: ${({ theme }) => theme.colors.color_one};
     text-decoration: none;
     &:hover {
       text-decoration: underline;

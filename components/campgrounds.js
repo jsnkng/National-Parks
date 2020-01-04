@@ -289,7 +289,7 @@ const Campgrounds = styled(Grid)`
   padding-bottom: 1em;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 12em;
+    height: 22em;
   }
 
 ul {
@@ -332,7 +332,7 @@ ul {
   }
   .boxes {
     font-size:1em;
-    background-color: ${({ theme }) => theme.box_background};
+    background-color: ${({ theme }) => theme.colors.box_background};
     padding: 3.5em 1.5em 1em 1.5em;
     margin: .5em .25em .5em .25em;
     column-count: 1;
@@ -366,7 +366,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 20em;
+  height: 22em;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 

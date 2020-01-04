@@ -7,8 +7,8 @@ const Loader = () => (
 export default Loader
 
 const Loader__Container = styled.div`
-  border: 1em solid ${({ theme }) => theme.color_two};
-  border-top: 1em solid ${({ theme }) => theme.color_one};
+  border: 1em solid ${({ theme }) => theme.colors.color_two};
+  border-top: 1em solid ${({ theme }) => theme.colors.color_one};
   border-radius: 50%;
   width: 6em;
   height: 6em;

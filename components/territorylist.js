@@ -37,7 +37,7 @@ const TerritoryList = styled.div`
     columns: 3;
   `}
   a {
-    color:  ${({ theme }) => theme.color_one};
+    color:  ${({ theme }) => theme.colors.color_one};
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
@@ -49,7 +49,7 @@ const TerritoryList = styled.div`
     padding: .125em;
   }
   a.highlight , a:hover  {
-    color:  ${({ theme }) => theme.color_three};
+    color:  ${({ theme }) => theme.colors.color_three};
     text-decoration: underline;
   }
 `

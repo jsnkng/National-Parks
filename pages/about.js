@@ -81,10 +81,10 @@ export default Home
 
 
 const Content__Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.colors.background};
   width: 100%;
   padding: 60px 0;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 ${SuperQuery().minWidth.sm.css`
   padding: 90px 0 80px 0;
 `}

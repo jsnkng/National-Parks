@@ -22,22 +22,21 @@ Router.events.on('routeChangeError', () => {
 
 const MyApp = ({ router, Component, pageProps }) => {
   
-  const [theme, setTheme] = useState('dayTheme')
+  const [themeName, setThemeName] = useState('dayTheme')
 
   const ToggleTheme = () => {
-    const themename = theme === 'dayTheme' ? 'nightTheme' : 'dayTheme'
     return (
       <Toggle
-        defaultChecked={true}
+        defaultChecked={themeName === 'dayTheme' ? true : false}
         icons={false}
         aria-label='Set Day|Night Mode'
-        onChange={() => setTheme(themename)}
+        onChange={() => setThemeName(themeName === 'dayTheme' ? 'nightTheme' : 'dayTheme')}
         />
     )
   }
   return (
     <>
-    <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={ { colors: themes[themeName], flexboxgrid: themes.flexboxgrid }}>
       <GlobalStyle />
       <PageTransition
         timeout={400}

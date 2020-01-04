@@ -1,23 +1,23 @@
-const flexboxgrid = {
-  gridSize: 12, // columns
-  gutterWidth: 1, // rem
-  outerMargin: 1, // rem
-  mediaQuery: 'only screen',
-  container: {
-    sm: 36, // rem
-    md: 46, // rem
-    lg: 64 // rem
-  },
-  breakpoints: {
-    xs: 0, // em
-    sm: 36, // em
-    md: 48, // em
-    lg: 64 // em
-  }
-}
 
 
 const themes = {
+  flexboxgrid: {
+    gridSize: 12, // columns
+    gutterWidth: 1, // rem
+    outerMargin: 1, // rem
+    mediaQuery: 'only screen',
+    container: {
+      sm: 36, // rem
+      md: 46, // rem
+      lg: 64 // rem
+    },
+    breakpoints: {
+      xs: 0, // em
+      sm: 36, // em
+      md: 48, // em
+      lg: 64 // em
+    }
+  },
   nightTheme: {
     background: '#1e1d1e',
     box_background: '#111111',

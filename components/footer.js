@@ -2,25 +2,22 @@ import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import Toggle from 'react-toggle'
 import React from 'react'
-
+import Router from 'next/router'
 const Component = ({ToggleTheme}) => {
   return (
     <Footer>
       <Row>
+        <Col xs={8}>
+        <button onClick={() => Router.back()}>{`< Back`}</button>
+          
+        </Col>
         <Col xs={4}>
           <ToggleTheme />
-        </Col>
-        <Col xs={8}>
           <Link href="/" passHref>
-            <div>
-              <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-              <div className="title__site">National Parks Guide</div>
-              <div className="title__tagline"></div>
-            </div>
+            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link>
-          {/* <div className="title__copyright"><span>jsnkng |</span> 2019</div> */}
+              
         </Col>
       </Row>
     </Footer>
@@ -34,8 +31,8 @@ const Footer = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.trans_back};
-  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.colors.trans_back};
+  color: ${({ theme }) => theme.colors.text};
   z-index: 120;
   padding: .5em .75em .75em .75em;
   a {
@@ -45,6 +42,31 @@ const Footer = styled.footer`
     color: inherit;
   }
  
+  button {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+button:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
 
   img.logo {
     float: right;
@@ -98,7 +120,7 @@ const Footer = styled.footer`
   display: inline-block;
   position: absolute;
   top: .75em;
-  left: .75em;
+  right: 53px;
   cursor: pointer;
   background-color: transparent;
   border: 0;
@@ -113,6 +135,9 @@ const Footer = styled.footer`
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+  ${SuperQuery().minWidth.md.css`
+  right: 58px;
+  `}
 }
 
 .react-toggle-screenreader-only {
@@ -235,4 +260,6 @@ const Footer = styled.footer`
   -moz-box-shadow: 0px 0px 5px 5px #0099E0;
   box-shadow: 0px 0px 5px 5px #0099E0;
 }
+
+
 `
