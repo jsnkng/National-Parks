@@ -30,7 +30,11 @@ const Component = ({ alerts }) => {
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    <p>{item.description}</p>
+                    <p>{item.description}{` `}
+                    { item.url !== undefined && item.url !== "" &&
+                    <a href={item.url} target="_blank">[More]</a>
+                    }</p>
+                    
                   </AccordionItemPanel>
                 </AccordionItem>
               </Col>

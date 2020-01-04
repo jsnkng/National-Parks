@@ -50,27 +50,27 @@ export default Component
 
 
 const Map = styled.svg.attrs(props => ({
-  margin: "20px auto",
+  margin: "0 auto",
 }))`
 
   * {
       pointer-events: fill;
   }
   path {
-    stroke: ${props => props.theme.colors.background};
+    stroke: ${({ theme }) => theme.background};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${props => props.theme.colors.color_four};
+    fill: ${({ theme }) => theme.color_four};
     -webkit-transition: fill .4s ease;
     -moz-transition: fill .4s ease;
     -o-transition: fill .4s ease;
     transition: fill .4s ease;	 
   }
   path:hover, circle:hover {
-    stroke: ${props => props.theme.colors.color_three};
+    stroke: ${({ theme }) => theme.color_three};
     stroke-width:2px;
     stroke-linejoin: round;
-    fill: ${props => props.theme.colors.color_three};
+    fill: ${({ theme }) => theme.color_three};
     cursor: pointer;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -79,9 +79,9 @@ const Map = styled.svg.attrs(props => ({
   }
   path.highlight {
     cursor: default;
-    stroke: ${props => props.theme.colors.color_three};
+    stroke: ${({ theme }) => theme.color_three};
     stroke-linejoin: round;
-    fill: ${props => props.theme.colors.color_three};
+    fill: ${({ theme }) => theme.color_three};
     stroke-width:0px;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -90,10 +90,10 @@ const Map = styled.svg.attrs(props => ({
     cursor: pointer;
   }
   path.nohighlight{
-    stroke: ${props => props.theme.colors.background};
+    stroke: ${({ theme }) => theme.background};
     stroke-width:0px;
     stroke-linejoin: round;
-    fill: ${props => props.theme.colors.color_four};
+    fill: ${({ theme }) => theme.color_four};
     cursor: default;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -102,7 +102,7 @@ const Map = styled.svg.attrs(props => ({
   }
   #path67 {
     fill: none !important;
-    stroke: ${props => props.theme.colors.color_four} !important;
+    stroke: ${({ theme }) => theme.color_four} !important;
     cursor: default;
   }
   path#path67:hover {

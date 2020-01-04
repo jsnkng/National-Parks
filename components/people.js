@@ -6,7 +6,6 @@ import LazyLoad from 'react-lazyload'
 
 const Component = ({ people }) => {
   const [limit, setLimit] = useState(3)
-
   return (
     <People>
       <Row>

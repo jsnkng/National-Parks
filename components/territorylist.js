@@ -27,17 +27,17 @@ const Component = ({ highlighted, setHighlighted }) => {
 export default Component
 
 const TerritoryList = styled.div`
-  padding: 2em 0; 
+  padding: 2em 0 1.125em 1.125em; 
   columns: 2;
   ${SuperQuery().minWidth.sm.css`
     columns: 2;
+    font-size: .75em;
   `}
   ${SuperQuery().minWidth.md.css`
     columns: 3;
-    font-size: .75em;
   `}
   a {
-    color:  ${props => props.theme.colors.color_one};
+    color:  ${({ theme }) => theme.color_one};
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
@@ -49,7 +49,7 @@ const TerritoryList = styled.div`
     padding: .125em;
   }
   a.highlight , a:hover  {
-    color:  ${props => props.theme.colors.color_three};
+    color:  ${({ theme }) => theme.color_three};
     text-decoration: underline;
   }
 `

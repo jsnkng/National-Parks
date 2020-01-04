@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     font-size: 16px;
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${({ theme }) => theme.background};
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: .425em .575em .425em 0;
     border: 0;
-    border-bottom: 1px solid ${props => props.theme.colors.text};
+    border-bottom: 1px solid ${({ theme }) => theme.text};
     ${SuperQuery().minWidth.md.css`
       padding: .25em .25em .25em 0;
     `}
@@ -110,10 +110,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 2em;
   }
   a {
-    color: ${props => props.theme.colors.color_one};
+    color: ${({ theme }) => theme.color_one};
     text-decoration: none;
     &:hover {
-      color: ${props => props.theme.colors.color_two};
+      color: ${({ theme }) => theme.color_two};
       text-decoration: underline;
     }
   }
@@ -148,7 +148,7 @@ const GlobalStyle = createGlobalStyle`
 
   .details {
     font-size: .875em;
-    background-color: ${props => props.theme.colors.box_background};
+    background-color: ${({ theme }) => theme.box_background};
     padding: 1em 1em;
     margin: 1em .25em;
     p {
@@ -174,9 +174,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: .875em;
     font-weight: 500;
     text-transform: uppercase;
-    color: ${props => props.theme.colors.color_one};
-    border: 1px solid ${props => props.theme.colors.color_two};
-    background-color: ${props => props.theme.colors.spinner};
+    color: ${({ theme }) => theme.color_one};
+    border: 1px solid ${({ theme }) => theme.color_two};
+    background-color: ${({ theme }) => theme.spinner};
     cursor: pointer;
   &:hover {
     background-color: rgba(255,255,255,.015);
@@ -190,17 +190,17 @@ const GlobalStyle = createGlobalStyle`
   }
   .btn__read-more {
     float: right;
-    border: 1px solid ${props => props.theme.colors.color_two};
+    border: 1px solid ${({ theme }) => theme.color_two};
     padding: .25em 1.25em;
     margin: .5em 2em 2em 0;
     font-size: .875em;
     font-weight: 500;
     text-transform: uppercase; 
-    color: ${props => props.theme.colors.color_one};
-    background-color: ${props => props.theme.colors.spinner};
+    color: ${({ theme }) => theme.color_one};
+    background-color: ${({ theme }) => theme.spinner};
     cursor: pointer;
   &:hover {
-    border: 1px solid ${props => props.theme.colors.color_two};
+    border: 1px solid ${({ theme }) => theme.color_two};
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
@@ -224,16 +224,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .accordion__item + .accordion__item {
-  border-bottom: 1px solid ${props => props.theme.colors.offbackground};
+  border-bottom: 1px solid ${({ theme }) => theme.offbackground};
   }
 
   .accordion__button {
-    color: ${props => props.theme.colors.color_one};
+    color: ${({ theme }) => theme.color_one};
     line-height: 1.2;
     font-weight: 600;
     text-indent: .5em;
     padding:  1.25em 0 1.25em .5em;
-    border-bottom: 1px solid ${props => props.theme.colors.offbackground};
+    border-bottom: 1px solid ${({ theme }) => theme.offbackground};
     outline: 0;
     cursor: pointer;
     text-indent: 0;
@@ -251,7 +251,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .accordion__button:hover {
-    color: ${props => props.theme.colors.color_two};
+    color: ${({ theme }) => theme.color_two};
   }
 
   .accordion__button:before {
@@ -268,7 +268,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .accordion__button[aria-expanded='true'],
   .accordion__button[aria-selected='true'] {
-    color: ${props => props.theme.colors.color_two};
+    color: ${({ theme }) => theme.color_two};
   }
   .accordion__button[aria-expanded='true']::before,
   .accordion__button[aria-selected='true']::before {
@@ -279,7 +279,7 @@ const GlobalStyle = createGlobalStyle`
   .accordion__panel {
   animation: fadein 0.35s ease-in;
   padding: 0 0 1em 0;
-  border-bottom: 1px solid ${props => props.theme.colors.offbackground};
+  border-bottom: 1px solid ${({ theme }) => theme.offbackground};
   }
   .accordion__panel[attr=hidden] {
   }
@@ -327,7 +327,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   #nprogress .bar {
-    background: ${props => props.theme.colors.color_three};
+    background: ${({ theme }) => theme.color_three};
   
     position: fixed;
     z-index: 1031;
@@ -345,7 +345,7 @@ const GlobalStyle = createGlobalStyle`
     right: 0px;
     width: 100px;
     height: 100%;
-    ${'' /* box-shadow: 0 0 10px ${props => props.theme.colors.color_two}, 0 0 5px ${props => props.theme.colors.color_two}; */}
+    ${'' /* box-shadow: 0 0 10px ${({ theme }) => theme.color_two}, 0 0 5px ${({ theme }) => theme.color_two}; */}
     opacity: 1;
   
     -webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -368,8 +368,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   
     border: solid 8px transparent;
-    border-top-color:  ${props => props.theme.colors.color_two};
-    border-left-color:  ${props => props.theme.colors.color_three};
+    border-top-color:  ${({ theme }) => theme.color_two};
+    border-left-color:  ${({ theme }) => theme.color_three};
     border-radius: 50%;
   
     -webkit-animation: nprogress-spinner 400ms linear infinite;

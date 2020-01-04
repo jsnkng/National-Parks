@@ -5,16 +5,12 @@ import SuperQuery from '@themgoncalves/super-query'
 import Toggle from 'react-toggle'
 import React from 'react'
 
-const Component = ({ setTheme }) => {
+const Component = ({ToggleTheme}) => {
   return (
     <Footer>
       <Row>
         <Col xs={4}>
-          <Toggle
-              defaultChecked={true}
-              icons={false}
-              aria-label='Set Day|Night Mode'
-              onChange={setTheme} />
+          <ToggleTheme />
         </Col>
         <Col xs={8}>
           <Link href="/" passHref>
@@ -34,12 +30,12 @@ const Component = ({ setTheme }) => {
 export default Component
 
 const Footer = styled.footer`
-  position: relative;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   left: 0;
   right: 0;
-  background-color: ${props => props.theme.colors.trans_back};
-  color: ${props => props.theme.colors.text};
+  background-color: ${({ theme }) => theme.trans_back};
+  color: ${({ theme }) => theme.text};
   z-index: 120;
   padding: .5em .75em .75em .75em;
   a {
@@ -57,12 +53,7 @@ const Footer = styled.footer`
     margin: 0 -5px 0 0;
     padding: 0;
     width: 36px;
-    ${SuperQuery().minWidth.sm.css`
-      width: 48px;
-    `}
-    ${SuperQuery().minWidth.md.css`
-      width: 60px;
-    `}
+    
   }
  
   .title__site {
@@ -72,11 +63,7 @@ const Footer = styled.footer`
     font-weight: 700;
     letter-spacing: -1px;
     margin: 0 32px 0 0;
-    padding: .25em .25em 0 0;
-    ${SuperQuery().minWidth.md.css`
-    margin: 0 56px 0 0;
     padding: .5em .25em 0 0;
-    `}
   }
   .title__tagline {
     font-size: .75em;

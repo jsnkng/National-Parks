@@ -17,21 +17,20 @@ export default (req, res) => {
   const getState = async (db, callback) => {
     console.log(`Getting State (${stateCode})`)
 
-    let [result] = await db.collection('states').find({ state_id: stateCode }).toArray()
-    if (result === undefined || result.length === 0) {
-      console.log(`Getting State (${stateCode}) Failed`)
+    let [state] = await db.collection('states').find({ stateCode }).toArray()
+    if (state === undefined || state.length === 0) {
       console.log(`Fetching State (${stateCode}) from API`)
-      result = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      if (result !== undefined || result.length !== 0) {
-        result.state_id = stateCode
+      state = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?stateCode=${stateCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      if (state !== undefined || state.length !== 0) {
+        state.stateCode = stateCode 
         console.log(`Inserting State (${stateCode}) into MongoDB`)
-        await db.collection('states').insertOne(result)
+        await db.collection('states').insertOne(state)
       }
     } else {
       console.log(`Fetched State (${stateCode}) from MongoDB`)
     }
 
-    callback(result)
+    callback(state)
   }
 
   MongoClient.connect(process.env.MONGODB_URI, {
@@ -51,3 +50,4 @@ export default (req, res) => {
     })
   })
 }
+

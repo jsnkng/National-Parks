@@ -27,31 +27,36 @@ export default Component
 
 const Park = styled.div`
   position: relative;
-  width: 100vw;
-  height: 22em;
+  width: 100%;
+  height: 100%;
+  min-height: 22em;
+  min-width: 300px;
   margin: 0;
   padding: 0;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
-  background-color: ${props => props.theme.colors.trans_back};
+  background-color: ${({ theme }) => theme.trans_back};
   background-image: ${props => props.backgroundURL};
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
 
-  ${SuperQuery().minWidth.lg.css`
+  ${'' /* ${SuperQuery().minWidth.lg.css`
     width: 50vw;
-  `}
+  `} */}
   .banner__header {
-    position: relative;
-    background-color: ${props => props.theme.colors.trans_back};
-    color: ${props => props.theme.colors.text};
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: ${({ theme }) => theme.trans_back};
+    color: ${({ theme }) => theme.text};
     height: 4em;
     padding: .125em .5em;
     z-index: 20;
 
     h2 {
       float: left;
-      margin: 0;
+      margin: 0 0 0 .25em;
       font-weight: 700;
       letter-spacing: -1.5px;
       line-height: 1;
@@ -79,7 +84,7 @@ const ResponsiveImage = styled.div`
   top: 0;
   left: 0;
   
-  background-color: ${props => props.theme.colors.trans_back};
+  background-color: ${({ theme }) => theme.trans_back};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center bottom;
@@ -97,8 +102,8 @@ const ResponsiveImage = styled.div`
 //   height: 100%;
 //   position: absolute;
 //   z-index: 100;
-//   background-color: ${props => props.theme.colors.trans_back};
-//   color: ${props => props.theme.colors.text};
+//   background-color: ${({ theme }) => theme.trans_back};
+//   color: ${({ theme }) => theme.text};
 //   font-size: .7em;
 //   &.show {
 //     display: block;

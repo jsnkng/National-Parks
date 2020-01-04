@@ -332,7 +332,7 @@ ul {
   }
   .boxes {
     font-size:1em;
-    background-color: ${props => props.theme.colors.box_background};
+    background-color: ${({ theme }) => theme.box_background};
     padding: 3.5em 1.5em 1em 1.5em;
     margin: .5em .25em .5em .25em;
     column-count: 1;

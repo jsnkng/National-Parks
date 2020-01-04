@@ -38,8 +38,8 @@ const Header = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  background-color: ${props => props.theme.colors.trans_back};
-  color: ${props => props.theme.colors.text};
+  background-color: ${({ theme }) => theme.trans_back};
+  color: ${({ theme }) => theme.text};
   z-index: 120;
   padding: .5em .75em .75em .75em;
   a {
