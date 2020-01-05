@@ -11,7 +11,7 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
     <Footer>
       <Row>
         <Col xs={6}>
-          <button onClick={() => manageHistory()}>{`<`}</button>
+          {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
           {/* <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link>

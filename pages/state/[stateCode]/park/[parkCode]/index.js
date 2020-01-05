@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
@@ -64,19 +65,26 @@ const Park = ({
   if (!loaded) {
     return null
   } else {
+    const territories = park.states.split(',').map( state => {
+      return (
+        <Link href='/state/[stateCode]' as={`/state/${state.toLowerCase()}/`} key={state}><a> {states[state.toLowerCase()][0]} </a></Link>
+      )
+    })
+    
     return (
       <>
         <Head>
           <title>{states[stateCode][0]} | {park.name} {park.designation}</title>
         </Head>
         <Header 
-          park={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
-          designation={park.designation}
+          park={territories}
+          designation=''
           state={states[stateCode][0]}
           stateCode={stateCode}
+          states={park.states}
           manageHistory={manageHistory} 
-          title='National Park Service'
-          title__sub='A State-by-State Guide'
+          title={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
+          title__sub={park.designation}
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&
@@ -89,9 +97,6 @@ const Park = ({
           <Alerts alerts={alerts} />
           }
 
-          { newsreleases !== undefined && newsreleases.length != 0 &&
-          <NewsReleases park={park} newsReleases={newsreleases} />
-          }
           { events !== undefined && events.length != 0 &&
           <Events park={park} events={events} />
           }
@@ -100,11 +105,14 @@ const Park = ({
           { visitorcenters !== undefined && visitorcenters.length != 0 &&
           <VisitorCenters park={park} visitorCenters={visitorcenters} />
           }
-          { places !== undefined && places.length != 0 &&
-          <Places park={park} places={places} />
-          }
           { campgrounds !== undefined && campgrounds.length != 0 &&
           <Campgrounds park={park} campgrounds={campgrounds} />
+          }
+          { newsreleases !== undefined && newsreleases.length != 0 &&
+          <NewsReleases park={park} newsReleases={newsreleases} />
+          }
+          { places !== undefined && places.length != 0 &&
+          <Places park={park} places={places} />
           }
           { articles !== undefined && articles.length != 0 &&
           <Articles park={park} articles={articles} />
@@ -136,10 +144,7 @@ export default Park
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
-  margin: 70px 0;
-  ${SuperQuery().minWidth.md.css`
-    margin: 88px 0;
-  `}
+
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};

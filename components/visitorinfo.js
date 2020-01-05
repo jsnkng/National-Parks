@@ -52,14 +52,8 @@ const VisitorInfo = styled(Grid)`
 
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 50vh;
-  z-index: 10;
+  height: 42vh;
   margin: .5em .125em .5em .125em;
   padding:  0;
-  ${SuperQuery().minWidth.md.css`
-    height: 33vh;
-  `}
-  ${SuperQuery().minWidth.lg.css`
-    height: 50vh;
-  `}
+  z-index: 10;
 `

@@ -32,8 +32,8 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
           <title>National Park Service</title>
         </Head>
         <Header 
-          park='Explore America’s'
-          designation='National Parks'
+          park='Explore America'
+          designation='US National Parks Guide'
           state=''
           stateCode={''}
           title='National Park Service'
@@ -185,14 +185,15 @@ export default Home
 
 const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
- background-color: ${({ theme }) => theme.colors.background};
-  margin: 60px 0;
+  background-color: ${({ theme }) => theme.colors.background};
+    margin: 3.5em 0 0 0;
   ${SuperQuery().minWidth.sm.css`
-  margin: 64px 0;
+    margin: 3.75em 0 0 0;
   `}
   ${SuperQuery().minWidth.md.css`
-  margin: 88px 0;
+    margin: 4em 0 0 0;
   `}
+  
   p {
     font-size: 1.25em;
     margin: 1em 3.75em 1em 2.4em;

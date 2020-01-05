@@ -61,9 +61,7 @@ const Image = styled.div`
   }
 `
 const Carousel__Styled = styled(Carousel)`
-  margin-top: -70px;
   ${SuperQuery().minWidth.sm.css`
-    margin-top: -90px;
   `}
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;

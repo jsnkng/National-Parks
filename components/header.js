@@ -22,13 +22,25 @@ const Component = props => {
           <Link href="/" passHref>
               <a className="title__sub" href="#">{props.title__sub}</a>
           </Link> 
+
+        {/* { props.states !== undefined &&
+        <div>
+          <a className="territories" href="#">{props.states.split(',').join(' / ')}</a>
+          </div>
+        } */}
           </>
         }
         </Col>
+        {/* { props.states !== undefined &&
+          <Col xs={2}>
+          <a className="designation" href="#">{props.states.split(',').join(' ')}</a>
+          </Col>
+        } */}
         <Col xs={5}>
           <div>
             <a className="park" href="#">{props.park}</a>
             <a className="designation" href="#">{props.designation}</a>
+            
           </div>
         </Col>
       </Row>
@@ -39,19 +51,16 @@ const Component = props => {
 export default Component
 
 const Header = styled.header`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
-  z-index: 120;
-  padding: .75em .375em;
-    ${SuperQuery().minWidth.md.css`
   padding: 1em .375em;
-    `}
-
-
+  z-index: 120;
+  min-height: 3.5em;
+ 
 
   a {
     cursor: pointer;
@@ -65,49 +74,49 @@ const Header = styled.header`
     left: 5px;
     cursor: pointer;
     border: none;
-    margin: -2px 0;
+    margin: .125em;
     padding: 0;
-    width: 42px;
+    width: 40px;
     ${SuperQuery().minWidth.sm.css`
-      width: 48px;
-      margin: 2px 0;
+      width: 50px;
+      margin: .25em;
     `}
     ${SuperQuery().minWidth.md.css`
       width: 60px;
-      margin: 8px 4px;
     `}
   }
   .title {
-    float: left;
     display: block;
+    float: left;
     font-size: 1em;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -2px 0 0 47px;
+      margin: -.125em 0 0 47px;
     ${SuperQuery().minWidth.sm.css`
-      margin: 0 0 0 52px;
+      margin: -.125em 0 0 60px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 3px 0 0 72px;
+      margin: -.125em 0 0 70px;
       font-size: 1.25em;
       letter-spacing: -1.5px;
     `}
   }
   .title__sub {
+    display: block;
     float: left;
     clear: left;
-    display: block;
     font-size: .75em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 47px;
+    margin: -.125em 0 0 47px;
     ${SuperQuery().minWidth.sm.css`
-      margin: 0 0 0 52px;
+      line-height: 1.2;
+      margin: -.125em 0 0 60px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 0 0 0 72px;
+      margin: -.125em 0 0 70px;
       font-size: .875em;
       letter-spacing: -1px;
     `}
@@ -120,11 +129,11 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0 5px 0 0;
+    margin: -.125em 5px 0 0;
     ${SuperQuery().minWidth.md.css`
-      margin: 6px 15px 0 0;
-      font-size: 1.25em;
-      letter-spacing: -1.5px;
+      margin: -.125em 10px 0 0;
+      font-size: 1em;
+      letter-spacing: -1px;
     `}
   }
   .designation {
@@ -141,18 +150,21 @@ const Header = styled.header`
       letter-spacing: -1px;
     `}
   }
-  ${'' /*.title__state {
+  .territories {
     display: block;
-    text-align: right;
-    font-size: 1.25em;
-    line-height: .8;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 5px 0 0 0 ;
-    ${SuperQuery().minWidth.md.css`
-      margin: 2px 0 0 66px;
-      font-size: 1.75em;
-      letter-spacing: -1.5px;
+    float: left;
+    clear: left;
+    text-align:left;
+    font-size: .75em;
+    line-height: 1;
+    font-weight: 200;
+  
+    margin: -.125em 0 0 47px;
+    ${SuperQuery().minWidth.sm.css`
+      margin: -.125em 0 0 60px;
     `}
-  } */}
+    ${SuperQuery().minWidth.md.css`
+      margin: -.125em 0 0 70px;
+    `}
+  }
 `

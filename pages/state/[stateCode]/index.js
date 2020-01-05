@@ -97,9 +97,12 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin: 70px 0;
+  margin: 3.5em 0 0 0;
+  ${SuperQuery().minWidth.sm.css`
+    margin: 3.75em 0 0 0;
+  `}
   ${SuperQuery().minWidth.md.css`
-    margin: 88px 0;
+    margin: 4em 0 0 0;
   `}
 `
 const Col__Decorated = styled(Col)`
