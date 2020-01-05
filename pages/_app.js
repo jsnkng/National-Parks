@@ -22,12 +22,6 @@ Router.events.on('routeChangeError', () => {
 
 const stack = []
 
-const manageHistory = () => { 
-  const back = stack.pop()
-  back !== undefined && Router.push('/state/nj/')
-  console.log(back)
-  // Router.replace(stack.pop())
-}
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
 
@@ -36,9 +30,24 @@ const MyApp = ({ router, Component, pageProps }) => {
 
 
   fwdStack(router.asPath)
-
-
   console.log('fwdStack stack', stack)
+
+  const manageHistory = () => { 
+    const back = stack.pop()
+    const as = stack.pop()
+    const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
+
+    href !== undefined && router.push(href, as)
+    console.log(href, as)
+    // Router.replace(stack.pop())
+  }
+
+  // const manageHistory = {}
+  // manageHistory.href = '/state/[stateCode]/'
+  // const [back] = stack.slice(-2)
+  // manageHistory.as = back
+  // console.log(manageHistory)
+
   // const manageHistory = (path) => {
   //   console.log('manageHistory stack', stack)
   //   if (path !== -1) {

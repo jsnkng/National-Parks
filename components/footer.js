@@ -4,17 +4,31 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import React from 'react'
 import Router from 'next/router'
+import states from '../config/states'
 const Component = ({ ToggleTheme, manageHistory }) => {
+  // console.log(`href="${manageHistory.href}" as="${manageHistory.as}"`)
   return (
     <Footer>
       <Row>
         <Col xs={8}>
-        <button onClick={manageHistory }>{`<`}</button>
+        <button onClick={() => manageHistory()}>{`<`}</button>
         </Col>
         <Col xs={4}>
           <ToggleTheme />
         </Col>
       </Row>
+      {/* <Row>
+        <Col xs={12} style={{columns: 3}}>
+        { Object.entries(states).map(([key, value]) => {
+        return ( 
+          <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
+            <a>{value[0]}<br /></a>
+          </Link>
+        )
+      })  
+      }
+        </Col>
+      </Row> */}
     </Footer>
   )
 }
