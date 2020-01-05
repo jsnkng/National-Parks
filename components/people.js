@@ -13,10 +13,10 @@ const Component = ({ people }) => {
           <h2>Related People</h2>
         </Col>
       </Row>
-      <Row>
       { people.slice(0,limit).map((item) => {
         return( 
-          <Col xs={12} lg={4} key={item.id}>
+        <Row key={item.id}>
+          <Col xs={12} lg={4}>
           { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
             <LazyLoad offset={100}>
               <a href={item.url} target="_blank">
@@ -24,6 +24,8 @@ const Component = ({ people }) => {
               </a>
             </LazyLoad>
           }
+          </Col>
+          <Col xs={12} lg={6}>
             <h4><a href={item.url} target="_blank">{item.title}</a></h4>
             { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
               <p>{item.listingdescription}</p>
@@ -33,10 +35,10 @@ const Component = ({ people }) => {
             }
             <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
           </Col>
+        </Row>
           )
         })
       }
-      </Row>
       <Row>
         <button className={limit >= people.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit +3 )}>Load More People</button>
       </Row>
@@ -52,9 +54,6 @@ const People = styled(Grid)`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20em;
-    ${SuperQuery().minWidth.md.css`
-      height: 12.5em;
-    `}
   }
 `
 const Image = styled.div`

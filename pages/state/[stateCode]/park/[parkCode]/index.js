@@ -85,25 +85,25 @@ const Park = ({
           <Alerts alerts={alerts} />
           }
 
-          <VisitorInfo park={park} markers={markers} />
-            
+          { newsreleases !== undefined && newsreleases.length != 0 &&
+          <NewsReleases park={park} newsReleases={newsreleases} />
+          }
           { events !== undefined && events.length != 0 &&
           <Events park={park} events={events} />
           }
+          <VisitorInfo park={park} markers={markers} />
+            
           { visitorcenters !== undefined && visitorcenters.length != 0 &&
           <VisitorCenters park={park} visitorCenters={visitorcenters} />
+          }
+          { places !== undefined && places.length != 0 &&
+          <Places park={park} places={places} />
           }
           { campgrounds !== undefined && campgrounds.length != 0 &&
           <Campgrounds park={park} campgrounds={campgrounds} />
           }
-          { newsreleases !== undefined && newsreleases.length != 0 &&
-          <NewsReleases park={park} newsReleases={newsreleases} />
-          }
           { articles !== undefined && articles.length != 0 &&
           <Articles park={park} articles={articles} />
-          }
-          { places !== undefined && places.length != 0 &&
-          <Places park={park} places={places} />
           }
           { people !== undefined && people.length != 0 &&
           <People park={park} people={people} />

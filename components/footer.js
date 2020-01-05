@@ -9,15 +9,10 @@ const Component = ({ToggleTheme}) => {
     <Footer>
       <Row>
         <Col xs={8}>
-        <button onClick={() => Router.back()}>{`< Back`}</button>
-          
+        <button onClick={() => Router.back()}>{`<`}</button>
         </Col>
         <Col xs={4}>
           <ToggleTheme />
-          <Link href="/" passHref>
-            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          </Link>
-              
         </Col>
       </Row>
     </Footer>
@@ -120,7 +115,7 @@ button:active {
   display: inline-block;
   position: absolute;
   top: .75em;
-  right: 53px;
+  right: 13px;
   cursor: pointer;
   background-color: transparent;
   border: 0;
@@ -136,7 +131,7 @@ button:active {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
   ${SuperQuery().minWidth.md.css`
-  right: 58px;
+  right: 23px;
   `}
 }
 

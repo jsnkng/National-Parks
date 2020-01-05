@@ -25,6 +25,8 @@ const Component = ({ newsReleases }) => {
       { newsReleases.slice(0,limit).map((item) => {
         return (
           <Col xs={12} lg={4} key={item.id}>
+            <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+            <span className="articles__date">{toDateFormat(item.releasedate)}</span>
             { item.image.url !== undefined && item.image.url.length !== 0 &&
               <LazyLoad offset={100}>
                 <a href={item.url} target="_blank">
@@ -32,15 +34,13 @@ const Component = ({ newsReleases }) => {
                 </a>
               </LazyLoad>
             }
-            <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-            <span className="articles__date">{toDateFormat(item.releasedate)}</span>
-            { item.image.url !== undefined && item.image.url.length !== 0 &&
+            {/* { item.image.url !== undefined && item.image.url.length !== 0 &&
               <p>{item.abstract.substring(0, 300)}</p>
+            } */}
+            { item.image.url === undefined || item.image.url.length === 0 &&
+              <a href={item.url} target="_blank"> <p>{item.abstract.substring(0, 450)}</p></a>
             }
-            { item.image.url === undefined && item.image.url.length === 0 &&
-              <p>{item.abstract.substring(0, 450)}</p>
-            }
-            <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+            {/* <a href={item.url} className="btn__read-more" target="_blank">Read More</a> */}
           </Col>
         )
         })

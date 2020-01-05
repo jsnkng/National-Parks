@@ -6,7 +6,6 @@ import LazyLoad from 'react-lazyload'
 
 const Component = ({ articles }) => {
   const [limit, setLimit] = useState(3)
-  const readMore = () =>  setLimit(limit + 3)
 
   return (
     <Articles>
@@ -18,19 +17,36 @@ const Component = ({ articles }) => {
       <Row>
       { articles.slice(0,limit).map((item) => {
         return (
-          <Col xs={12} lg={4} key={item.id}>
-            { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
-              <LazyLoad offset={100}>
-                <a href={item.url} target="_blank">
-                  <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-                </a>
-              </LazyLoad>
-            }
-            {item.listingimage.url === undefined || item.listingimage.url.length === 0 
-            ?  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 400)}</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-            :  <><h4><a href={item.url} target="_blank">{item.title}</a></h4><p>{item.listingdescription.substring(0, 190)}...</p><a href={item.url} className="btn__read-more" target="_blank">Read More</a></>
-            }
-          </Col>
+          <Col xs={12} key={item.id}>
+              { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+              <Row>
+                <Col xs={12} md={4}>
+                  <LazyLoad offset={100}>
+                    <a href={item.url} target="_blank">
+                      <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
+                    </a>
+                  </LazyLoad>
+                </Col>
+                <Col xs={12} md={8}>
+                  <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+                  <p>{item.listingdescription.substring(0, 270)}...</p>
+                  <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+                
+                </Col>
+              </Row>
+              }
+              { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
+              <Row>
+                <Col xs={12} md={4}>
+                  <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+                </Col>
+                <Col xs={12} md={8}>
+                  <p>{item.listingdescription.substring(0, 400)}</p>
+                  <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+                </Col>
+              </Row>
+              }
+              </Col>
           )
         })
       }

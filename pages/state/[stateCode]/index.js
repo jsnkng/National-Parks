@@ -47,9 +47,11 @@ const State = ({ data, state_id, ToggleTheme, pageTransitionReadyToEnter, stateC
         <Content>
         <Row>
           {
-          data.slice(0).map((item) => {
+          data.slice(0).map((item, i=0) => {
+            i++
+            console.log(i, i%4)
             return(
-              <Col__Decorated xs={12} sm={6} lg={4}>
+              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 || i % 4 === 0 ? 7 : 5}>
                 <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${stateCode}/park/${item.parkCode}`} passHref key={item.id}>
                   <a>
                     <ParkBanner 

@@ -14,10 +14,17 @@ const Component = ({ places }) => {
           <h2>Places of Interest</h2>
         </Col>
       </Row>
-      <Row>
      { places.slice(0,limit).map((item) => {
       return ( 
-        <Col xs={12}  lg={4} key={item.id}>
+      <Row key={item.id}>
+        <Col xs={12} lg={4}>
+        <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+          { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
+            <a href={item.url} target="_blank"><p>{item.listingdescription}</p></a>
+          }
+          <a href={item.url} className="btn__read-more" target="_blank">Plan Your Visit</a>
+        </Col>
+        <Col xs={12} lg={8}>
         { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
           <LazyLoad offset={100}>
             <a href={item.url} target="_blank">
@@ -25,19 +32,16 @@ const Component = ({ places }) => {
             </a>
           </LazyLoad>
         }
-          <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-          { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-            <p>{item.listingdescription}</p>
-          }
-          { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
+          
+          {/* { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
             <p>{item.listingdescription.substring(0, 300)}...</p>
-          }
-          <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+          } */}
         </Col>
+
+        </Row>
         )
       })
       }
-      </Row>
       <Row>
         <button 
           className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" } 
@@ -57,9 +61,6 @@ const Places = styled(Grid)`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20em;
-    ${SuperQuery().minWidth.md.css`
-      height: 12.5em;
-    `}
   }
 `
 

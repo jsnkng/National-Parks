@@ -38,20 +38,14 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 75vh;
+  height: 70vh;
   min-height:400px;
   max-width: 100%;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 
   ${SuperQuery().minWidth.md.css`
-    height: 80vw;
-    max-height: 82vh;
     min-height:600px;
-  `}
-  ${SuperQuery().minWidth.lg.css`
-    height: 80vw;
-    max-height: 91vh;
   `}
 
   .caption {
