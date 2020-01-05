@@ -32,8 +32,8 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
           <title>National Park Service</title>
         </Head>
         <Header 
-          park='National Park Service'
-          designation='A State-By-State Guide'
+          park='Explore America’s'
+          designation='National Parks'
           state=''
           stateCode={''}
           title='National Park Service'
@@ -43,8 +43,8 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
         <Row>
     <Col__Decorated xs={12} sm={6} md={5}>
       
-      <h1>Explore America’s National Parks</h1>
-      <p>From sea to shining-sea, city to natural wonder, across purple mountains, and amber waves of grain</p>
+      {/* <h1>Explore America’s National Parks</h1> */}
+      <h2>From sea to shining-sea, city to natural wonder, across purple mountains, and amber waves of grain</h2>
       {/* <h2>A State-By-State Guide</h2> */}
       {/* <MapDiagram__Wrapper>
       <MapDiagram 
@@ -186,9 +186,12 @@ export default Home
 const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
  background-color: ${({ theme }) => theme.colors.background};
-  margin: 30px 0;
+  margin: 60px 0;
+  ${SuperQuery().minWidth.sm.css`
+  margin: 64px 0;
+  `}
   ${SuperQuery().minWidth.md.css`
-  margin: 84px 0;
+  margin: 88px 0;
   `}
   p {
     font-size: 1.25em;
@@ -214,14 +217,14 @@ const Content = styled.main`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: -20px 0 0 48px;
+    margin: .75em .25EM 1em 1.5em;
     border: none;
-    ${'' /* ${SuperQuery().minWidth.md.css`
-      margin: 0 0 0 66px;
-      line-height: 1.1;
-      font-size: 1em;
-      letter-spacing: -1px;
-    `} */}
+    ${SuperQuery().minWidth.sm.css`
+      margin: 1.5em 0 1.5em 1.5em;
+    `}
+    ${SuperQuery().minWidth.md.css`
+      margin: 2.5em 0 0 1.5em;
+    `}
   }
 `
 const Col__Decorated = styled(Col)`

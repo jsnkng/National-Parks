@@ -75,6 +75,8 @@ const Park = ({
           state={states[stateCode][0]}
           stateCode={stateCode}
           manageHistory={manageHistory} 
+          title='National Park Service'
+          title__sub='A State-by-State Guide'
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&

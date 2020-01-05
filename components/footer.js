@@ -10,16 +10,16 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
   return (
     <Footer>
       <Row>
-        <Col xs={8}>
-          {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
-          <Link href="/" passHref>
+        <Col xs={6}>
+          <button onClick={() => manageHistory()}>{`<`}</button>
+          {/* <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link>
             <a className="title" href="#">{title}</a>
-            <a className="title__sub" href="#">{subtitle}</a>
+            <a className="title__sub" href="#">{subtitle}</a> */}
         </Col>
-        <Col xs={4}>
-          <ToggleTheme />
+        <Col xs={6}>
+          <span>Toggle Theme</span><ToggleTheme />
         </Col>
       </Row>
       {/* <Row>
@@ -66,7 +66,12 @@ const Footer = styled.footer`
     width: 42px;
     
   }
- 
+  span {
+    font-size: .5em;
+    float: right;
+    margin: 1em 6.5em;
+
+  }
   .title {
     float:left;
     font-size: .875em;
@@ -101,6 +106,32 @@ const Footer = styled.footer`
     margin: 0 56px 0 0;
     `}
   }
+
+  button {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+button:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
 
   .react-toggle {
   touch-action: pan-x;

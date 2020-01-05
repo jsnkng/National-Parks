@@ -44,6 +44,8 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
             state=''
             stateCode={stateCode}
             manageHistory={manageHistory} 
+          title='National Park Service'
+          title__sub='A State-by-State Guide'
         />
         <Content>
         <Row>

@@ -8,31 +8,28 @@ const Component = props => {
     <Header>
       <Row>
         <Col xs={7}>
-        { props.manageHistory &&
+        {/* { props.manageHistory &&
         <button onClick={() => props.manageHistory()}>{`<`}</button>
-      }
-          
-        </Col>
-        <Col xs={5}>
-          {/* <div>
-            <a className="park" href="#">{props.park}</a>
-            <a className="designation" href="#">{props.designation}</a>
-          </div> */}
-          
-          { props.park && 
+      } */}
+          { props.title && 
           <>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link> 
           <Link href="/" passHref>
-              <a className="title" href="#">{props.park}</a>
+              <a className="title" href="#">{props.title}</a>
           </Link> 
           <Link href="/" passHref>
-              <a className="title__sub" href="#">{props.designation}</a>
+              <a className="title__sub" href="#">{props.title__sub}</a>
           </Link> 
           </>
         }
-          
+        </Col>
+        <Col xs={5}>
+          <div>
+            <a className="park" href="#">{props.park}</a>
+            <a className="designation" href="#">{props.designation}</a>
+          </div>
         </Col>
       </Row>
     </Header>
@@ -49,32 +46,11 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: .375em;
+  padding: .75em .375em;
+    ${SuperQuery().minWidth.md.css`
+  padding: 1em .375em;
+    `}
 
-  button {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-button:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
-}
-button:active {
-	position:relative;
-	top:1px;
-}
 
 
   a {
@@ -86,40 +62,53 @@ button:active {
   img.logo {
     position: absolute;
     top: 5px;
-    right: 13px;
+    left: 5px;
     cursor: pointer;
     border: none;
-    margin: -2px;
+    margin: -2px 0;
     padding: 0;
     width: 42px;
+    ${SuperQuery().minWidth.sm.css`
+      width: 48px;
+      margin: 2px 0;
+    `}
     ${SuperQuery().minWidth.md.css`
       width: 60px;
+      margin: 8px 4px;
     `}
   }
   .title {
-    float: right;
+    float: left;
     display: block;
-    font-size: 1.125em;
+    font-size: 1em;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0 70px 0 0 ;
+    margin: -2px 0 0 47px;
+    ${SuperQuery().minWidth.sm.css`
+      margin: 0 0 0 52px;
+    `}
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.375em;
+      margin: 3px 0 0 72px;
+      font-size: 1.25em;
       letter-spacing: -1.5px;
     `}
   }
   .title__sub {
-    float: right;
-    clear: right;
+    float: left;
+    clear: left;
     display: block;
-    font-size: .875em;
+    font-size: .75em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 70px 0 0;
+    margin: 0 0 0 47px;
+    ${SuperQuery().minWidth.sm.css`
+      margin: 0 0 0 52px;
+    `}
     ${SuperQuery().minWidth.md.css`
-      font-size: 1em;
+      margin: 0 0 0 72px;
+      font-size: .875em;
       letter-spacing: -1px;
     `}
   }
@@ -127,30 +116,28 @@ button:active {
   .park {
     display: block;
     text-align:right;
-    font-size: 1.125em;
-    line-height: .875;
+    font-size: 1em;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 5px 5px 0 0;
+    margin: 0 5px 0 0;
     ${SuperQuery().minWidth.md.css`
-      margin: 5px 15px 0 0;
-      font-size: 1.375em;
-      line-height: 1;
+      margin: 6px 15px 0 0;
+      font-size: 1.25em;
       letter-spacing: -1.5px;
     `}
   }
   .designation {
     display: block;
     text-align:right;
-    font-size: .875em;
-    line-height: 1.2;
+    font-size: .75em;
+    line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
     margin: 0 5px 0 0;
     ${SuperQuery().minWidth.md.css`
       margin: 0 15px 0 0;
-      line-height: 1.1;
-      font-size: 1em;
+      font-size: .875em;
       letter-spacing: -1px;
     `}
   }
