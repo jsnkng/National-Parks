@@ -6,7 +6,7 @@ import SuperQuery from '@themgoncalves/super-query'
 const Component = props => {
   return (
     <Header>
-      <Row>
+      <Row__Decorated>
         <Col xs={7}>
         {/* { props.manageHistory &&
         <button onClick={() => props.manageHistory()}>{`<`}</button>
@@ -43,7 +43,7 @@ const Component = props => {
             
           </div>
         </Col>
-      </Row>
+      </Row__Decorated>
     </Header>
   )
 }
@@ -92,7 +92,7 @@ position: fixed;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-      margin: -.125em 0 0 47px;
+      margin: -.125em 0 0 40px;
     ${SuperQuery().minWidth.sm.css`
       margin: -.125em 0 0 60px;
     `}
@@ -110,7 +110,7 @@ position: fixed;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: -.125em 0 0 47px;
+    margin: -.125em 0 0 40px;
     ${SuperQuery().minWidth.sm.css`
       line-height: 1.2;
       margin: -.125em 0 0 60px;
@@ -125,8 +125,8 @@ position: fixed;
   .park {
     display: block;
     text-align:right;
-    font-size: 1em;
-    line-height: 1;
+    font-size: .75em;
+    line-height: 1.2;
     font-weight: 700;
     letter-spacing: -1px;
     margin: -.125em 5px 0 0;
@@ -167,4 +167,9 @@ position: fixed;
       margin: -.125em 0 0 70px;
     `}
   }
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

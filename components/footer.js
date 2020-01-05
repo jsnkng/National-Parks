@@ -16,7 +16,9 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link>
             <a className="title" href="#">{title}</a>
-            <a className="title__sub" href="#">{subtitle}</a> */}
+             */}
+            <a className="title__sub" href="#">Information provided by the US Park Service</a>
+            <a className="title__copyright" href="#">JSNKNG / 2020</a>
         </Col>
         <Col xs={6}>
           <span>Toggle Theme</span><ToggleTheme />
@@ -41,14 +43,14 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
 export default Component
 
 const Footer = styled.footer`
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: .5em .75em .75em .75em;
+  padding: 1.5em .75em 1.75em .75em;
   a {
     cursor: pointer;
     text-decoration: none;
@@ -83,28 +85,24 @@ const Footer = styled.footer`
   }
   .title__sub {
     float:left;
-    clear: left;
     font-size: .75em;
-    line-height: .875;
+    line-height: 1;
     letter-spacing: -1px;
     font-weight: 500;
-    margin: 0 0 0 44px;
     padding: 0;
   }
   .title__copyright {
+    float:left;
+    clear: left;
     font-size: .75em;
     text-align: right;
     line-height: .75;
     letter-spacing: -1px;
     font-weight: 500;
-    margin: 0 48px 0 0;
     padding: .25em .25em 0 0;
     span {
       font-weight: 700;
     }
-    ${SuperQuery().minWidth.md.css`
-    margin: 0 56px 0 0;
-    `}
   }
 
   button {
@@ -137,7 +135,7 @@ button:active {
   touch-action: pan-x;
   display: inline-block;
   position: absolute;
-  top: .75em;
+  top: 1.75em;
   right: 13px;
   cursor: pointer;
   background-color: transparent;
