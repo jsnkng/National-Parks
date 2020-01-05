@@ -14,7 +14,7 @@ const Component = ({ alerts }) => {
   return (
     <Alerts>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row>
+        <Row__Decorated>
           <Col xs={12} sm={6} md={6} lg={4}>
             <h2>Alerts & Conditions</h2>
           </Col>
@@ -40,7 +40,7 @@ const Component = ({ alerts }) => {
               </Col>
             )
           })}
-        </Row>
+        </Row__Decorated>
       </Accordion>
     </Alerts>
   )
@@ -112,4 +112,9 @@ const Alerts = styled(Grid)`
   }
   
 `
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
+`
+
 

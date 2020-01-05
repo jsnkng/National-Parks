@@ -17,12 +17,12 @@ const Component = ({ campgrounds }) => {
   return (
     <Campgrounds>
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-          <Row>
+          <Row__Decorated>
             <Col xs={12}>
               <h2>Campgrounds</h2>
             </Col>
-          </Row>
-          <Row>
+          </Row__Decorated>
+          <Row__Decorated>
             <Col xs={12}>
           { campgrounds.slice(0).map((item) => {
             return(
@@ -34,24 +34,24 @@ const Component = ({ campgrounds }) => {
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                     { item.images !== undefined &&  
-                    <Row>
+                    <Row__Decorated>
                       <Col xs={12}>
                         <LazyLoad offset={0}>
                           <Image backgroundURL={`${item.images[0].url}` } className="lazyload__image--height" />
                         </LazyLoad>
                       </Col>
-                    </Row>
+                    </Row__Decorated>
                     }
 
-                      <Row>
+                      <Row__Decorated>
                         <Col xs={12}>
                           <p className="section introduction description">{item.description}</p>
                         </Col>
-                      </Row>
+                      </Row__Decorated>
                       { ((item.directionsoverview !== undefined && item.directionsoverview !=="") ||
                         (item.directionsoverview !== undefined && item.directionsoverview !=="") ||
                         (item.latLong !== undefined && item.latLong !=="")) && 
-                      <Row className="section">
+                      <Row__Decorated className="section">
                         <Col xs={12} sm={6}>
                             <>
                             { item.directionsoverview !== undefined && item.directionsoverview !=="" && 
@@ -91,7 +91,7 @@ const Component = ({ campgrounds }) => {
                               />
                           </MapLive__Wrapper> 
                         </Col>
-                      </Row>
+                      </Row__Decorated>
                       }
                       { ((item.accessibility.accessroads !== undefined && item.accessibility.accessroads != "") ||  
                         (item.accessibility.classifications !== undefined && item.accessibility.classifications != "") || 
@@ -105,7 +105,7 @@ const Component = ({ campgrounds }) => {
                         (item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != "0") ||  
                         (item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != "0") ||  
                         (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != "")) && 
-                      <Row className="section">
+                      <Row__Decorated className="section">
                         <Col xs={12}>
                           <h4>Accessibility</h4>
                           <ul>
@@ -147,7 +147,7 @@ const Component = ({ campgrounds }) => {
                             }
                           </ul>
                         </Col>
-                      </Row>
+                      </Row__Decorated>
                       }
                       { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
                         (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
@@ -162,7 +162,7 @@ const Component = ({ campgrounds }) => {
                         (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
                         (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
                         (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
-                      <Row className="section">
+                      <Row__Decorated className="section">
                         <Col xs={12}  className="amenities">
                           <h4>Amenities</h4>
                           <ul>
@@ -207,10 +207,10 @@ const Component = ({ campgrounds }) => {
                             }
                           </ul>
                         </Col>
-                      </Row>
+                      </Row__Decorated>
                       }
                       {item.regulationsoverview !== undefined && item.regulationsoverview != "" && 
-                      <Row>
+                      <Row__Decorated>
                         <Col xs={12}>
                           <div className="boxes">
                             <span>
@@ -220,12 +220,12 @@ const Component = ({ campgrounds }) => {
                             </span>
                           </div>
                         </Col>
-                      </Row>
+                      </Row__Decorated>
                       }
 
                              
                     {item.reservationsdescription !== undefined && item.reservationsdescription != "" && 
-                      <Row>
+                      <Row__Decorated>
                         <Col xs={12}>
                           <div className="boxes">   
                           {item.reservationsdescription !== undefined && item.reservationsdescription != "" && 
@@ -254,11 +254,11 @@ const Component = ({ campgrounds }) => {
                           }
                       </div>
                       </Col>
-                    </Row>
+                    </Row__Decorated>
                     }
                              
                     {item.weatheroverview !== undefined && item.weatheroverview != "" && 
-                      <Row className="boxes">
+                      <Row__Decorated className="boxes">
                         <Col xs={12}>
                           <div>                   
                             <span>
@@ -267,7 +267,7 @@ const Component = ({ campgrounds }) => {
                             </span>
                           </div>
                         </Col>
-                      </Row>
+                      </Row__Decorated>
                     }
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -276,7 +276,7 @@ const Component = ({ campgrounds }) => {
           )
         }
             </Col>
-          </Row> 
+          </Row__Decorated> 
         </Accordion>
     </Campgrounds>
   )
@@ -376,4 +376,9 @@ const Image = styled.div`
       display: block;
     `}
   }
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

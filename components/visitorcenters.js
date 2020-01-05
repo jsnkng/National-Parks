@@ -14,12 +14,12 @@ const Component = ({ visitorCenters }) => {
   return (  
     <VisitorCenters>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row>
+        <Row__Decorated>
           <Col xs={12}>
             <h2>Visitor Centers</h2>
           </Col>
-        </Row>
-        <Row>
+        </Row__Decorated>
+        <Row__Decorated>
           <Col xs={12}>
           { visitorCenters.slice(0).map((item) => {
             return (
@@ -40,7 +40,7 @@ const Component = ({ visitorCenters }) => {
             })
           }
           </Col>
-        </Row>
+        </Row__Decorated>
       </Accordion>
     </VisitorCenters>
   )
@@ -51,4 +51,8 @@ export default Component
 const VisitorCenters = styled(Grid)`
   padding-top: 1em;
   padding-bottom: 1em;
+`
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

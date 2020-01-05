@@ -9,7 +9,7 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
   // console.log(`href="${manageHistory.href}" as="${manageHistory.as}"`)
   return (
     <Footer>
-      <Row>
+      <Row__Decorated>
         <Col xs={6}>
           {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
           {/* <Link href="/" passHref>
@@ -21,8 +21,8 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
         <Col xs={6}>
           <span>Toggle Theme</span><ToggleTheme />
         </Col>
-      </Row>
-      {/* <Row>
+      </Row__Decorated>
+      {/* <Row__Decorated>
         <Col xs={12} style={{columns: 3}}>
         { Object.entries(states).map(([key, value]) => {
         return ( 
@@ -33,7 +33,7 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
       })  
       }
         </Col>
-      </Row> */}
+      </Row__Decorated> */}
     </Footer>
   )
 }
@@ -280,4 +280,9 @@ button:active {
 }
 
 
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

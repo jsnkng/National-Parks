@@ -8,14 +8,14 @@ const Component = ({ people }) => {
   const [limit, setLimit] = useState(3)
   return (
     <People>
-      <Row>
+      <Row__Decorated>
         <Col xs={12}>
           <h2>Related People</h2>
         </Col>
-      </Row>
+      </Row__Decorated>
       { people.slice(0,limit).map((item) => {
         return( 
-        <Row key={item.id}>
+        <Row__Decorated key={item.id}>
           <Col xs={12} lg={4}>
           { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
             <LazyLoad offset={100}>
@@ -35,13 +35,13 @@ const Component = ({ people }) => {
             }
             <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
           </Col>
-        </Row>
+        </Row__Decorated>
           )
         })
       }
-      <Row>
+      <Row__Decorated>
         <button className={limit >= people.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit +3 )}>Load More People</button>
-      </Row>
+      </Row__Decorated>
     </People>
   )
 }
@@ -64,4 +64,9 @@ const Image = styled.div`
   margin: 1em 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

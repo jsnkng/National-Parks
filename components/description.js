@@ -7,12 +7,12 @@ import MapDiagram from './mapdiagram'
 const Component = ({ park }) => {
   return (
     <Description>
-      <Row>
+      <Row__Decorated>
         <Col xs={12}>
           <h1>{park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} <span>{park.designation}</span></h1>
         </Col>
-      </Row>
-      <Row>
+      </Row__Decorated>
+      <Row__Decorated>
         <Col xs={12} sm={7} md={8}>
           <p>{park.description}</p>
         </Col>
@@ -21,7 +21,7 @@ const Component = ({ park }) => {
             <MapDiagram territories={park.states} highlighted={null} onHighlight={(terr) => setHighlight(terr)} />
           </MapDiagram__Wrapper>
         </Col>
-      </Row>
+      </Row__Decorated>
     </Description>
   )
 }
@@ -43,4 +43,8 @@ const MapDiagram__Wrapper = styled.div`
     width: 100%;
     margin: 0 auto;
   `}
+`
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

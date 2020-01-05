@@ -9,15 +9,15 @@ const Component = ({ places }) => {
 
   return (
     <Places>
-      <Row>
+      <Row__Decorated>
         <Col xs={12}>
           <h2>Places of Interest</h2>
         </Col>
-      </Row>
+      </Row__Decorated>
      { places.slice(0,limit).map((item) => {
       return ( 
         <a href={item.url} target="_blank" key={item.id}>
-      <Row>
+      <Row__Decorated>
         <Col xs={12} lg={5}>
         <h4>{item.title}</h4>
           { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
@@ -38,18 +38,18 @@ const Component = ({ places }) => {
           } */}
         </Col>
 
-        </Row>
+        </Row__Decorated>
         </a>
         )
       })
       }
-      <Row>
+      <Row__Decorated>
         <button 
           className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" } 
           onClick={() => setLimit(limit + 3)}>Load More Places</button>
-      </Row>
-      <Row>
-    </Row>
+      </Row__Decorated>
+      <Row__Decorated>
+    </Row__Decorated>
   </Places>
   )
 }
@@ -73,4 +73,8 @@ const Image = styled.div`
   margin: 1em 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
+`
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

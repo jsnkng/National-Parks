@@ -16,15 +16,15 @@ const Component = ({ newsReleases }) => {
 
   return (
     <NewsReleases>
-      <Row>
+      <Row__Decorated>
         <Col xs={12}>
           <h2>Park News</h2>
         </Col>
-      </Row>
+      </Row__Decorated>
       { newsReleases.slice(0,limit).map((item) => {
         return (
           <a href={item.url} target="_blank" key={item.id}>
-        <Row>
+        <Row__Decorated>
           <Col xs={12} lg={7}>
             <h4>{item.title}</h4>
             <span className="articles__date">{toDateFormat(item.releasedate)}</span>
@@ -42,14 +42,14 @@ const Component = ({ newsReleases }) => {
               </LazyLoad>
             }
           </Col>
-        </Row>
+        </Row__Decorated>
         </a>
         )
         })
       }
-      <Row>
+      <Row__Decorated>
         <button className={limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More News</button>
-      </Row>
+      </Row__Decorated>
     </NewsReleases>
   )
 }
@@ -72,4 +72,9 @@ const Image = styled.div`
   margin: 1em 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

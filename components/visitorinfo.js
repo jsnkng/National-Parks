@@ -8,12 +8,12 @@ import MapLive__Component from './maplive'
 const Component = ({ park, markers }) => {
   return (
     <VisitorInfo>
-      <Row>
+      <Row__Decorated>
         <Col xs={12}>
           <h2>Visitor Information</h2>
         </Col>
-      </Row>
-      <Row>
+      </Row__Decorated>
+      <Row__Decorated>
         <Col xs={12}>
             <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
               <MapLive__Component
@@ -25,8 +25,8 @@ const Component = ({ park, markers }) => {
               />
             </MapLive__Wrapper>
         </Col>
-      </Row>
-      <Row>
+      </Row__Decorated>
+      <Row__Decorated>
       {park.directionsInfo !== "" && 
         <Col xs={12} md={6}>
           <h3>Directions</h3>
@@ -39,7 +39,7 @@ const Component = ({ park, markers }) => {
           <p>{park.weatherInfo}</p>
         </Col>
       }
-      </Row>
+      </Row__Decorated>
     </VisitorInfo>
   )
 }
@@ -56,4 +56,9 @@ const MapLive__Wrapper = styled.div`
   margin: .5em .125em .5em .125em;
   padding:  0;
   z-index: 10;
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

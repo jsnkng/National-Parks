@@ -21,12 +21,12 @@ const Component = ({ events }) => {
   return (
     <Events>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row>
+        <Row__Decorated>
           <Col xs={12}>
             <h2>Events</h2>
           </Col>
-        </Row>
-        <Row>
+        </Row__Decorated>
+        <Row__Decorated>
           <Col xs={12}>
           { events.slice(0,10).map((item) => {
             return (
@@ -38,15 +38,15 @@ const Component = ({ events }) => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   { item.images.length !== 0 && item.images[0].url !== undefined && 
-                  <Row>
+                  <Row__Decorated>
                     <Col xs={12}>
                       <LazyLoad offset={0} className="lazyload__image--height">
                         <Image backgroundURL={`https://www.nps.gov${item.images[0].url}` } className="lazyload__image--height" />
                       </LazyLoad>
                     </Col>
-                  </Row>
+                  </Row__Decorated>
                   }
-                  <Row>
+                  <Row__Decorated>
                     <Col xs={12} md={8}>
                     <div className="description">
                       <div dangerouslySetInnerHTML={{__html:item.description}}></div>
@@ -80,14 +80,14 @@ const Component = ({ events }) => {
                       }
                       </div>
                     </Col>
-                  </Row>
+                  </Row__Decorated>
                 </AccordionItemPanel>
               </AccordionItem>
               )
             })
           }
           </Col>
-        </Row> 
+        </Row__Decorated> 
       </Accordion>     
     </Events>
   )
@@ -114,4 +114,8 @@ const Image = styled.div`
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
   
+`
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

@@ -9,17 +9,17 @@ const Component = ({ articles }) => {
 
   return (
     <Articles>
-      <Row>
+      <Row__Decorated>
         <Col xs={12}>
           <h2>Learn More</h2>
         </Col>
-      </Row>
-      <Row>
+      </Row__Decorated>
+      <Row__Decorated>
       { articles.slice(0,limit).map((item) => {
         return (
           <Col xs={12} key={item.id}>
               { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
-              <Row>
+              <Row__Decorated>
                 <Col xs={12} md={5}>
                   <LazyLoad offset={100}>
                     <a href={item.url} target="_blank">
@@ -33,10 +33,10 @@ const Component = ({ articles }) => {
                   <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
                 
                 </Col>
-              </Row>
+              </Row__Decorated>
               }
               { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
-              <Row>
+              <Row__Decorated>
                 <Col xs={12} md={5}>
                   <h4><a href={item.url} target="_blank">{item.title}</a></h4>
                 </Col>
@@ -44,16 +44,16 @@ const Component = ({ articles }) => {
                   <p>{item.listingdescription.substring(0, 400)}</p>
                   <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
                 </Col>
-              </Row>
+              </Row__Decorated>
               }
               </Col>
           )
         })
       }
-      </Row>
-      <Row>
+      </Row__Decorated>
+      <Row__Decorated>
         <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More Articles</button>
-      </Row>
+      </Row__Decorated>
     </Articles>
   )
 }
@@ -80,4 +80,9 @@ const Image = styled.div`
   margin: 1em 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
+`
+
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `

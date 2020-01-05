@@ -49,11 +49,14 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
         />
         <Content>
         <Row__Decorated>
+          <Col__Decorated xs={12} sm={6} md={5}>
+            <h1>{territories[stateCode][0]}</h1>
+          </Col__Decorated>
           {
           data.slice(0).map((item, i=0) => {
             i++
             return(
-              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 || i % 4 === 0 ? 7 : 5} key={item.id}>
+              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 7 : i % 4 === 3 ? 5 : 5 } key={item.id}>
                 <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${stateCode}/park/${item.parkCode}`} passHref>
                   <a>
                     <ParkBanner 
@@ -93,6 +96,7 @@ export default State
 
 
 const Content = styled.main`
+  position:relative;
   display: flex;
   flex-wrap: wrap;
   align-items: top;
@@ -104,6 +108,24 @@ const Content = styled.main`
   ${SuperQuery().minWidth.md.css`
     margin: 4em 0 0 0;
   `}
+  h1 {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    line-height: 1;
+    font-weight: 200;
+    letter-spacing: -.5px;
+    margin: .75em .25em 1em 1.5em;
+    border: none;
+    ${SuperQuery().minWidth.sm.css`
+      margin: 1em 0 1.25em 1.5em;
+    `}
+    ${SuperQuery().minWidth.md.css`
+      margin: 1em 0 0 1.5em;
+    `}
+  }
 `
 const Row__Decorated = styled(Row)`
   padding: 0;
