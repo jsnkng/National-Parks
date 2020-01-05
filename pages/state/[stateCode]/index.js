@@ -48,7 +48,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           title__sub='A State-by-State Guide'
         />
         <Content>
-        <Row>
+        <Row__Decorated>
           {
           data.slice(0).map((item, i=0) => {
             i++
@@ -71,7 +71,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
             )
           })
           }
-        </Row>
+        </Row__Decorated>
         </Content>
         <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
@@ -104,6 +104,10 @@ const Content = styled.main`
   ${SuperQuery().minWidth.md.css`
     margin: 4em 0 0 0;
   `}
+`
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `
 const Col__Decorated = styled(Col)`
   width: 100%;

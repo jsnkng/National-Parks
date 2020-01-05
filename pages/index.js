@@ -40,7 +40,7 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
           title__sub='A State-by-State Guide'
         />
         <Content>
-        <Row>
+        <Row__Decorated>
     <Col__Decorated xs={12} sm={6} md={5}>
       
       {/* <h1>Explore America’s National Parks</h1> */}
@@ -144,9 +144,9 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
         </a>
       </Link>
         </Col__Decorated>*/}
-    </Row>
+    </Row__Decorated>
           
-          <Row>
+          <Row__Decorated>
             <Col xs={12} sm={7}><br /><br />
               
               <MapDiagram__Wrapper>
@@ -164,7 +164,7 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
                 highlighted={highlighted} 
                 setHighlighted={setHighlighted} />
             </Col> 
-          </Row>
+          </Row__Decorated>
         </Content>
         <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
@@ -227,6 +227,10 @@ const Content = styled.main`
       margin: 1em 0 0 1.5em;
     `}
   }
+`
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
 `
 const Col__Decorated = styled(Col)`
   padding: 0;
