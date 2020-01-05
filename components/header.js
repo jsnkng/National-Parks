@@ -7,18 +7,16 @@ const Component = props => {
   return (
     <Header>
       <Row>
-        <Col xs={8} sm={6} lg={8}>
+        <Col xs={10}>
+          <div>
+            <a className="title" href="#">{props.park}</a>
+            <a className="title__sub" href="#">{props.designation}</a>
+          </div>
+        </Col>
+        <Col xs={2}>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link>
-          <div>
-            <a className="title">National Park Service</a>
-            <a className="title__sub">A State-By-State Guide</a>
-          </div>
-        </Col>
-        <Col xs={4} sm={6} lg={4}>
-            <a className="title__park">{props.park}</a>
-            <a className="title__designation">{props.designation}</a>
         </Col>
       </Row>
     </Header>
@@ -35,7 +33,7 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: .5em .75em .75em .75em;
+  padding: .75em;
   a {
     cursor: pointer;
     text-decoration: none;
@@ -43,12 +41,12 @@ const Header = styled.header`
     color: inherit;
   }
   img.logo {
-    float: left;
+    float: right;
     cursor: pointer;
     border: none;
-    margin: 0 0 0 -5px;
+    margin: -2px;
     padding: 0;
-      width: 48px;
+    width: 42px;
     ${SuperQuery().minWidth.md.css`
       width: 60px;
     `}
@@ -56,33 +54,29 @@ const Header = styled.header`
   .title {
     display: block;
     font-size: 1.125em;
-    line-height: .875;
+    line-height: 1.1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 5px 0 0 48px;
+    margin: 0;
     ${SuperQuery().minWidth.md.css`
-      margin: 5px 0 0 66px;
-      font-size: 1.375em;
-      line-height: 1;
+      font-size: 1.5em;
       letter-spacing: -1.5px;
     `}
   }
   .title__sub {
     display: block;
     font-size: .875em;
-    line-height: 1.2;
+    line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 48px;
+    margin: 0;
     ${SuperQuery().minWidth.md.css`
-      margin: 0 0 0 66px;
-      line-height: 1.1;
-      font-size: 1em;
+      font-size: 1.125em;
       letter-spacing: -1px;
     `}
   }
 
-  .title__park {
+  ${'' /* .title__park {
     display: block;
     text-align:right;
     font-size: 1.125em;
@@ -125,5 +119,5 @@ const Header = styled.header`
       font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
-  }
+  } */}
 `

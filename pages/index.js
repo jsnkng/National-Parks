@@ -13,7 +13,7 @@ import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
-const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
+const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter }) => {
 
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
@@ -32,8 +32,8 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
           <title>National Park Service</title>
         </Head>
         <Header 
-          park='United States'
-          designation=''
+          park='National Park Service'
+          designation='A State-By-State Guide'
           state=''
           stateCode={''}
         />
@@ -164,7 +164,7 @@ const Home = ({ parks, ToggleTheme, pageTransitionReadyToEnter }) => {
             </Col> 
           </Row>
         </Content>
-        <Footer ToggleTheme={ToggleTheme} />
+        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
     )
   }

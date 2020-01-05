@@ -24,6 +24,7 @@ import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = ({ 
   ToggleTheme, 
+  manageHistory,
   pageTransitionReadyToEnter, 
   stateCode, 
   park, 
@@ -109,7 +110,7 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
-        <Footer ToggleTheme={ToggleTheme} />
+        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
     )
   }

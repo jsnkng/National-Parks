@@ -20,10 +20,41 @@ Router.events.on('routeChangeError', () => {
   NProgress.done()
 })
 
+const stack = []
+
+const manageHistory = () => { 
+  const back = stack.pop()
+  back !== undefined && Router.push('/state/nj/')
+  console.log(back)
+  // Router.replace(stack.pop())
+}
 const MyApp = ({ router, Component, pageProps }) => {
-  
   const [themeName, setThemeName] = useState('dayTheme')
 
+  console.log('pageload stack', stack)
+  const fwdStack = path => stack.push(path)
+
+
+  fwdStack(router.asPath)
+
+
+  console.log('fwdStack stack', stack)
+  // const manageHistory = (path) => {
+  //   console.log('manageHistory stack', stack)
+  //   if (path !== -1) {
+  //     // stack.push(path)
+  //   } else {
+  //     console.log('go back page', stack.slice(-2, -1))
+  //     const backstack = stack.slice(0, -1)
+  //     console.log('go back stack', backstack)
+  //     // const back = stack.slice(-2, -1)
+  //     // setStack(stack.slice(0,-1))
+  //     // setStack(stack.slice(0))
+  //     // console.log(stack)
+  //     // console.log(stack.slice(stack.length))
+  //     // Router.push('/state/ca/')
+  //   }
+  // }
   const ToggleTheme = () => {
     return (
       <Toggle
@@ -48,7 +79,7 @@ const MyApp = ({ router, Component, pageProps }) => {
         }}
         loadingClassNames="loading-indicator"
       >
-        <Component {...pageProps} ToggleTheme={ToggleTheme} key={router.asPath} />
+        <Component {...pageProps} ToggleTheme={ToggleTheme} manageHistory={manageHistory} key={router.asPath} />
       </PageTransition>
     </ThemeProvider>
     </>

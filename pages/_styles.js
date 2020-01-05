@@ -80,14 +80,14 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
   h3 {
-    font-size: 1.5em;
+    font-size: 1.375em;
     line-height: 1.1;
     letter-spacing: -1px;
     margin: .5em 0 0 0;
   }
 
   h4 {
-    font-size: 1.75em;
+    font-size: 1.5em;
     line-height: 1.1;
     letter-spacing: -1.5px;
     margin: 0;
@@ -96,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.5em;
     `}
     ${SuperQuery().minWidth.lg.css`
-    font-size: 1.75em;
+    font-size: 1.5em;
     `}
   }
   h5 {
@@ -111,10 +111,11 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     color: ${({ theme }) => theme.colors.color_one};
-    text-decoration: none;
+    cursor: pointer !important;
     &:hover {
+    text-decoration: none !important;
       color: ${({ theme }) => theme.colors.color_two};
-      text-decoration: underline;
+    cursor: pointer !important;
     }
   }
   p {
@@ -133,7 +134,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .description {
-    font-size: 1.125em;
+    font-size: 1em;
     overflow-wrap: break-word;
     padding: 0 .25em 1em .25em;
     margin: .5em 0 0 0;
@@ -209,7 +210,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 1px;
     border: 0;
     background-color: transparent;
-    text-decoration: underline !important;
     &:hover {
       background-color: rgba(255,255,255,0);
       text-decoration: none !important; 
@@ -232,7 +232,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.2;
     font-weight: 600;
     text-indent: .5em;
-    padding:  1.25em 0 1.25em .5em;
+    padding:  1em 0 1em .5em;
     border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
     outline: 0;
     cursor: pointer;

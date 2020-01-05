@@ -16,20 +16,20 @@ const Component = ({ places }) => {
       </Row>
      { places.slice(0,limit).map((item) => {
       return ( 
-      <Row key={item.id}>
-        <Col xs={12} lg={4}>
-        <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+        <a href={item.url} target="_blank" key={item.id}>
+      <Row>
+        <Col xs={12} lg={5}>
+        <h4>{item.title}</h4>
           { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-            <a href={item.url} target="_blank"><p>{item.listingdescription}</p></a>
+            <p>{item.listingdescription}</p>
           }
-          <a href={item.url} className="btn__read-more" target="_blank">Plan Your Visit</a>
+          Plan Your Visit
         </Col>
-        <Col xs={12} lg={8}>
+        <Col xs={12} lg={7}>
         { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
           <LazyLoad offset={100}>
-            <a href={item.url} target="_blank">
+            
               <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-            </a>
           </LazyLoad>
         }
           
@@ -39,6 +39,7 @@ const Component = ({ places }) => {
         </Col>
 
         </Row>
+        </a>
         )
       })
       }

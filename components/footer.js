@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import React from 'react'
 import Router from 'next/router'
-const Component = ({ToggleTheme}) => {
+const Component = ({ ToggleTheme, manageHistory }) => {
   return (
     <Footer>
       <Row>
         <Col xs={8}>
-        <button onClick={() => Router.back()}>{`<`}</button>
+        <button onClick={manageHistory }>{`<`}</button>
         </Col>
         <Col xs={4}>
           <ToggleTheme />

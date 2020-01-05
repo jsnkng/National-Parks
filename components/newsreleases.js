@@ -21,31 +21,32 @@ const Component = ({ newsReleases }) => {
           <h2>Park News</h2>
         </Col>
       </Row>
-      <Row>
       { newsReleases.slice(0,limit).map((item) => {
         return (
-          <Col xs={12} lg={4} key={item.id}>
-            <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+          <a href={item.url} target="_blank" key={item.id}>
+        <Row>
+          <Col xs={12} lg={7}>
+            <h4>{item.title}</h4>
             <span className="articles__date">{toDateFormat(item.releasedate)}</span>
             { item.image.url !== undefined && item.image.url.length !== 0 &&
+              <p>{item.abstract.substring(0, 450)}</p>
+            }
+          </Col>
+          <Col xs={12} lg={5}>
+            { item.image.url === undefined || item.image.url.length === 0 &&
+              <p>{item.abstract.substring(0, 450)}</p>
+            }
+            { item.image.url !== undefined && item.image.url.length !== 0 &&
               <LazyLoad offset={100}>
-                <a href={item.url} target="_blank">
-                  <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
-                </a>
+                <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
               </LazyLoad>
             }
-            {/* { item.image.url !== undefined && item.image.url.length !== 0 &&
-              <p>{item.abstract.substring(0, 300)}</p>
-            } */}
-            { item.image.url === undefined || item.image.url.length === 0 &&
-              <a href={item.url} target="_blank"> <p>{item.abstract.substring(0, 450)}</p></a>
-            }
-            {/* <a href={item.url} className="btn__read-more" target="_blank">Read More</a> */}
           </Col>
+        </Row>
+        </a>
         )
         })
       }
-      </Row>
       <Row>
         <button className={limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More News</button>
       </Row>
@@ -60,10 +61,7 @@ const NewsReleases = styled(Grid)`
   padding-bottom: 1em;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 20em;
-    ${SuperQuery().minWidth.md.css`
-      height: 12.5em;
-    `}
+    height: 15em;
   }
 `
 const Image = styled.div`

@@ -13,7 +13,7 @@ import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
-const State = ({ data, state_id, ToggleTheme, pageTransitionReadyToEnter, stateCode }) => {
+const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReadyToEnter, stateCode }) => {
   const pageTransitionDelayEnter = true
   const [loaded, setLoaded] = useState(false)
   // const markers = []
@@ -49,10 +49,9 @@ const State = ({ data, state_id, ToggleTheme, pageTransitionReadyToEnter, stateC
           {
           data.slice(0).map((item, i=0) => {
             i++
-            console.log(i, i%4)
             return(
-              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 || i % 4 === 0 ? 7 : 5}>
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${stateCode}/park/${item.parkCode}`} passHref key={item.id}>
+              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 || i % 4 === 0 ? 7 : 5} key={item.id}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${stateCode}/park/${item.parkCode}`} passHref>
                   <a>
                     <ParkBanner 
                       backgroundURL={item.images === undefined || item.images.length == 0 
@@ -71,7 +70,7 @@ const State = ({ data, state_id, ToggleTheme, pageTransitionReadyToEnter, stateC
           }
         </Row>
         </Content>
-        <Footer ToggleTheme={ToggleTheme} />
+        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
     )
   }
