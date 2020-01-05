@@ -27,11 +27,11 @@ const Component = ({ highlighted, setHighlighted }) => {
 export default Component
 
 const TerritoryList = styled.div`
-  padding: 2em 0 1.125em 1.125em; 
+  padding: 2em 0 1.125em .5em; 
   columns: 2;
   ${SuperQuery().minWidth.sm.css`
     columns: 2;
-    font-size: .75em;
+    font-size: .625em;
   `}
   ${SuperQuery().minWidth.md.css`
     columns: 3;

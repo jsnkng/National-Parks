@@ -148,9 +148,9 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
           
           <Row>
             <Col xs={12} sm={7}><br /><br />
-              <h2>Find A National Park By State</h2>
               
               <MapDiagram__Wrapper>
+              <h2>Find A National Park By State</h2>
               <MapDiagram
                 className="mapdiagram" 
                 territories={'none'} 
@@ -217,13 +217,13 @@ const Content = styled.main`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: .75em .25EM 1em 1.5em;
+    margin: .75em .25em 1em 1.5em;
     border: none;
     ${SuperQuery().minWidth.sm.css`
-      margin: 1.5em 0 1.5em 1.5em;
+      margin: 1em 0 1.25em 1.5em;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 2.5em 0 0 1.5em;
+      margin: 1em 0 0 1.5em;
     `}
   }
 `
@@ -231,5 +231,5 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
-  padding: 2em 0 1em 1em;
+  padding: 0 0 1em 1em;
 `
