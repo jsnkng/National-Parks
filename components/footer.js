@@ -41,7 +41,7 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
 export default Component
 
 const Footer = styled.footer`
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
