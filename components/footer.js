@@ -5,13 +5,18 @@ import SuperQuery from '@themgoncalves/super-query'
 import React from 'react'
 import Router from 'next/router'
 import states from '../config/states'
-const Component = ({ ToggleTheme, manageHistory }) => {
+const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
   // console.log(`href="${manageHistory.href}" as="${manageHistory.as}"`)
   return (
     <Footer>
       <Row>
         <Col xs={8}>
-        <button onClick={() => manageHistory()}>{`<`}</button>
+          {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
+          <Link href="/" passHref>
+            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
+          </Link>
+            <a className="title" href="#">{title}</a>
+            <a className="title__sub" href="#">{subtitle}</a>
         </Col>
         <Col xs={4}>
           <ToggleTheme />
@@ -51,62 +56,35 @@ const Footer = styled.footer`
     color: inherit;
   }
  
-  button {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-button:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
-}
-button:active {
-	position:relative;
-	top:1px;
-}
-
 
   img.logo {
-    float: right;
+    position: absolute;
+    top: 5px;
+    left: 10px;
     cursor: pointer;
     border: none;
-    margin: 0 -5px 0 0;
-    padding: 0;
-    width: 36px;
+    width: 42px;
     
   }
  
-  .title__site {
+  .title {
+    float:left;
     font-size: .875em;
-    text-align: right;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0 32px 0 0;
-    padding: .5em .25em 0 0;
+    margin: 0 0 0 44px;
+    padding: 0;
   }
-  .title__tagline {
+  .title__sub {
+    float:left;
+    clear: left;
     font-size: .75em;
-    text-align: right;
-    line-height: .75;
+    line-height: .875;
     letter-spacing: -1px;
     font-weight: 500;
-    margin: 0 48px 0 0;
+    margin: 0 0 0 44px;
     padding: 0;
-    ${SuperQuery().minWidth.md.css`
-    margin: 0 56px 0 0;
-    `}
   }
   .title__copyright {
     font-size: .75em;

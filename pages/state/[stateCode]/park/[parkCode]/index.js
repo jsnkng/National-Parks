@@ -74,6 +74,7 @@ const Park = ({
           designation={park.designation}
           state={states[stateCode][0]}
           stateCode={stateCode}
+          manageHistory={manageHistory} 
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&
@@ -110,7 +111,7 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
-        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
+        <Footer title="National Park Service" subtitle="A State-By-State Guide"  ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
     )
   }

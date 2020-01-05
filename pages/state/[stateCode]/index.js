@@ -43,6 +43,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
             designation=''
             state=''
             stateCode={stateCode}
+            manageHistory={manageHistory} 
         />
         <Content>
         <Row>
@@ -70,7 +71,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           }
         </Row>
         </Content>
-        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
+        <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
       </>
     )
   }

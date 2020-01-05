@@ -7,16 +7,32 @@ const Component = props => {
   return (
     <Header>
       <Row>
-        <Col xs={10}>
-          <div>
-            <a className="title" href="#">{props.park}</a>
-            <a className="title__sub" href="#">{props.designation}</a>
-          </div>
+        <Col xs={7}>
+        { props.manageHistory &&
+        <button onClick={() => props.manageHistory()}>{`<`}</button>
+      }
+          
         </Col>
-        <Col xs={2}>
+        <Col xs={5}>
+          {/* <div>
+            <a className="park" href="#">{props.park}</a>
+            <a className="designation" href="#">{props.designation}</a>
+          </div> */}
+          
+          { props.park && 
+          <>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          </Link>
+          </Link> 
+          <Link href="/" passHref>
+              <a className="title" href="#">{props.park}</a>
+          </Link> 
+          <Link href="/" passHref>
+              <a className="title__sub" href="#">{props.designation}</a>
+          </Link> 
+          </>
+        }
+          
         </Col>
       </Row>
     </Header>
@@ -33,7 +49,34 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: .75em;
+  padding: .375em;
+
+  button {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+button:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
   a {
     cursor: pointer;
     text-decoration: none;
@@ -41,7 +84,9 @@ const Header = styled.header`
     color: inherit;
   }
   img.logo {
-    float: right;
+    position: absolute;
+    top: 5px;
+    right: 13px;
     cursor: pointer;
     border: none;
     margin: -2px;
@@ -52,31 +97,34 @@ const Header = styled.header`
     `}
   }
   .title {
+    float: right;
     display: block;
     font-size: 1.125em;
-    line-height: 1.1;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0;
+    margin: 0 70px 0 0 ;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.5em;
+      font-size: 1.375em;
       letter-spacing: -1.5px;
     `}
   }
   .title__sub {
+    float: right;
+    clear: right;
     display: block;
     font-size: .875em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0;
+    margin: 0 70px 0 0;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.125em;
+      font-size: 1em;
       letter-spacing: -1px;
     `}
   }
 
-  ${'' /* .title__park {
+  .park {
     display: block;
     text-align:right;
     font-size: 1.125em;
@@ -91,7 +139,7 @@ const Header = styled.header`
       letter-spacing: -1.5px;
     `}
   }
-  .title__designation {
+  .designation {
     display: block;
     text-align:right;
     font-size: .875em;
@@ -106,7 +154,7 @@ const Header = styled.header`
       letter-spacing: -1px;
     `}
   }
-  .title__state {
+  ${'' /*.title__state {
     display: block;
     text-align: right;
     font-size: 1.25em;

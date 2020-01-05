@@ -34,7 +34,8 @@ const MyApp = ({ router, Component, pageProps }) => {
 
   const manageHistory = () => { 
     const back = stack.pop()
-    const as = stack.pop()
+    const back2 = stack.pop()
+    const as = back2 !== undefined ? back2 : '/'
     const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
 
     href !== undefined && router.push(href, as)

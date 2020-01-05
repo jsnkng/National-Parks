@@ -36,6 +36,8 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
           designation='A State-By-State Guide'
           state=''
           stateCode={''}
+          title='National Park Service'
+          title__sub='A State-by-State Guide'
         />
         <Content>
         <Row>
