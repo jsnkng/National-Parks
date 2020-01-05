@@ -44,7 +44,11 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
     <Col__Decorated xs={12} sm={6} md={5}>
       
       {/* <h1>Explore America’s National Parks</h1> */}
-      <h2>From sea to shining-sea, city to natural wonder, across purple mountains, and amber waves of grain</h2>
+      <h2>O beautiful for spacious skies,
+          For amber waves of grain,
+          For purple mountain majesties
+          Above the fruited plain!
+          America! America!</h2>
       {/* <h2>A State-By-State Guide</h2> */}
       {/* <MapDiagram__Wrapper>
       <MapDiagram 
@@ -221,10 +225,12 @@ const Content = styled.main`
     margin: .75em .25em 1em 1.5em;
     border: none;
     ${SuperQuery().minWidth.sm.css`
-      margin: 1em 0 1.25em 1.5em;
+      margin: 2em 0 1.25em 1.5em;
+      font-size: 1.625em;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 1em 0 0 1.5em;
+      font-size: 1.875em;
+      margin: 2em 1em 0 1.25em;
     `}
   }
 `

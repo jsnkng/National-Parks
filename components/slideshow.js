@@ -38,7 +38,7 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   min-height:400px;
   max-width: 100%;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */

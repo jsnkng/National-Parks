@@ -25,23 +25,24 @@ const stack = []
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
 
-  console.log('pageload stack', stack)
-  const fwdStack = path => stack.push(path)
+  // console.log('pageload stack', stack)
+  // const fwdStack = path => stack.push(path)
 
 
-  fwdStack(router.asPath)
-  console.log('fwdStack stack', stack)
+  // fwdStack(router.asPath)
+  // console.log('fwdStack stack', stack)
 
-  const manageHistory = () => { 
-    const back = stack.pop()
-    const back2 = stack.pop()
-    const as = back2 !== undefined ? back2 : '/'
-    const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
+  const manageHistory = () => {}
+  // const manageHistory = () => { 
+  //   const back = stack.pop()
+  //   const back2 = stack.pop()
+  //   const as = back2 !== undefined ? back2 : '/'
+  //   const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
 
-    href !== undefined && router.push(href, as)
-    console.log(href, as)
-    // Router.replace(stack.pop())
-  }
+  //   href !== undefined && router.push(href, as)
+  //   console.log(href, as)
+  //   // Router.replace(stack.pop())
+  // }
 
   // const manageHistory = {}
   // manageHistory.href = '/state/[stateCode]/'

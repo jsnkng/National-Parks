@@ -17,7 +17,6 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
           </Link>
             <a className="title" href="#">{title}</a>
              */}
-            <a className="title__sub" href="#">Information provided by the US Park Service</a>
             <a className="title__copyright" href="#">JSNKNG / 2020</a>
         </Col>
         <Col xs={6}>
@@ -98,8 +97,8 @@ const Footer = styled.footer`
     text-align: right;
     line-height: .75;
     letter-spacing: -1px;
-    font-weight: 500;
-    padding: .25em .25em 0 0;
+    font-weight: 400;
+    padding: .75em .25em 0 0;
     span {
       font-weight: 700;
     }

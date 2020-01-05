@@ -38,7 +38,7 @@ const Component = props => {
         } */}
         <Col xs={5}>
           <div>
-            <a className="park" href="#">{props.park}</a>
+            <div className="park">{props.park}</div>
             <a className="designation" href="#">{props.designation}</a>
             
           </div>
@@ -76,13 +76,13 @@ position: fixed;
     border: none;
     margin: .125em;
     padding: 0;
-    width: 40px;
+    width: 37px;
     ${SuperQuery().minWidth.sm.css`
-      width: 50px;
+      width: 47px;
       margin: .25em;
     `}
     ${SuperQuery().minWidth.md.css`
-      width: 60px;
+      width: 57px;
     `}
   }
   .title {
@@ -92,12 +92,12 @@ position: fixed;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-      margin: -.125em 0 0 40px;
+      margin: -.25em 0 0 35px;
     ${SuperQuery().minWidth.sm.css`
-      margin: -.125em 0 0 60px;
+      margin: -.125em 0 0 50px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 70px;
+      margin: -.125em 0 0 60px;
       font-size: 1.25em;
       letter-spacing: -1.5px;
     `}
@@ -110,13 +110,13 @@ position: fixed;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: -.125em 0 0 40px;
+    margin: -.125em 0 0 35px;
     ${SuperQuery().minWidth.sm.css`
       line-height: 1.2;
-      margin: -.125em 0 0 60px;
+      margin: -.125em 0 0 50px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 70px;
+      margin: -.125em 0 0 60px;
       font-size: .875em;
       letter-spacing: -1px;
     `}
@@ -125,15 +125,14 @@ position: fixed;
   .park {
     display: block;
     text-align:right;
-    font-size: .75em;
+    font-size: 1em;
     line-height: 1.2;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.125em 5px 0 0;
+    margin: -.125em 0 0 0;
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 10px 0 0;
-      font-size: 1em;
-      letter-spacing: -1px;
+      font-size: 1.25em;
+      letter-spacing: -1.5px;
     `}
   }
   .designation {
@@ -143,9 +142,8 @@ position: fixed;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 5px 0 0;
+    margin: -.125em 0 0 0;
     ${SuperQuery().minWidth.md.css`
-      margin: 0 15px 0 0;
       font-size: .875em;
       letter-spacing: -1px;
     `}

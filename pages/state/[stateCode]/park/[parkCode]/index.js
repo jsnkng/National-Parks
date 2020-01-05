@@ -70,6 +70,8 @@ const Park = ({
         <Link href='/state/[stateCode]' as={`/state/${state.toLowerCase()}/`} key={state}><a> {states[state.toLowerCase()][0]} </a></Link>
       )
     })
+
+    const territory = <Link href='/state/[stateCode]' as={`/state/${stateCode}/`} key={stateCode}><a> {states[stateCode][0]} </a></Link>
     
     return (
       <>
@@ -77,7 +79,7 @@ const Park = ({
           <title>{states[stateCode][0]} | {park.name} {park.designation}</title>
         </Head>
         <Header 
-          park={territories}
+          park={territory}
           designation=''
           state={states[stateCode][0]}
           stateCode={stateCode}
