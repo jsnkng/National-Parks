@@ -3,25 +3,24 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import React from 'react'
+import DesignationList from './designationlist'
 import Router from 'next/router'
 import states from '../config/states'
 const Component = ({ title, subtitle, ToggleTheme, manageHistory, highlighted, setHighlighted }) => {
   // console.log(`href="${manageHistory.href}" as="${manageHistory.as}"`)
   return (
     <Footer>
-     
-      <Row__Decorated>
-        <Col xs={6}>
-          {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
-          {/* <Link href="/" passHref>
-            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          </Link>
-            <a className="title" href="#">{title}</a>
-             */}
-            <a className="title__copyright" href="#">JSNKNG / 2020</a>
-        </Col>
-        <Col xs={6}>
-          <span>Toggle Theme</span><ToggleTheme />
+     <Row__Decorated>
+        <Col xs={12}>
+          <DesignationList />
+        </Col> 
+      </Row__Decorated>
+       
+     <Row__Decorated>
+        <Col xs={12}>
+        {/* <span className="toggleTheme">Theme</span> */}
+          <ToggleTheme />
+          <a className="title__copyright" href="#">JSNKNG / 2020</a>
         </Col>
       </Row__Decorated>
       {/* <Row__Decorated>
@@ -50,7 +49,7 @@ const Footer = styled.footer`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: 1.5em .75em 1.75em .75em;
+  padding: 1.5em .75em .75em .75em;
   a {
     cursor: pointer;
     text-decoration: none;
@@ -58,95 +57,34 @@ const Footer = styled.footer`
     color: inherit;
   }
  
-
-  h3 {
-    text-align: center;
-    width: 100%;
-    font-size: 2em;
-    line-height: .875;
-    font-weight: 200;
-    letter-spacing: -1px;
-    margin: .75em auto;
-    
-  }
-  img.logo {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    cursor: pointer;
-    border: none;
-    width: 42px;
-    
-  }
-  span {
+  span.toggleTheme {
     font-size: .5em;
     float: right;
-    margin: 1em 6.5em;
+    margin: 0 64px 0 0;
 
   }
-  .title {
-    float:left;
-    font-size: .875em;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 0 0 0 44px;
-    padding: 0;
-  }
-  .title__sub {
-    float:left;
-    font-size: .75em;
-    line-height: 1;
-    letter-spacing: -1px;
-    font-weight: 500;
-    padding: 0;
-  }
+ 
   .title__copyright {
-    float:left;
-    clear: left;
-    font-size: .75em;
+    position: absolute;
+    bottom: 30px;
+    left: 24px;
+    font-size: .625em;
     text-align: right;
     line-height: .75;
     letter-spacing: -1px;
     font-weight: 400;
-    padding: .75em .25em 0 0;
+    padding: 2.5em .25em 0 0;
     span {
       font-weight: 700;
     }
   }
 
-  button {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-button:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
-}
-button:active {
-	position:relative;
-	top:1px;
-}
-
-
   .react-toggle {
   touch-action: pan-x;
   display: inline-block;
   position: absolute;
-  bottom: 2em;
-  right: 13px;
+  bottom: 25px;
+  right: 20px;
   cursor: pointer;
   background-color: transparent;
   border: 0;

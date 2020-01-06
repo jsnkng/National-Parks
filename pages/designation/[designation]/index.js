@@ -77,12 +77,7 @@ const State = ({ parks, designation, ToggleTheme, manageHistory, pageTransitionR
           })
           }
         </Row__Decorated>
-    <Row__Decorated>
-        <Col xs={12}>
-          <h3>Browse By Type</h3>
-        <DesignationList />
-        </Col> 
-      </Row__Decorated>  
+   
         </Content>
         <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
       </>

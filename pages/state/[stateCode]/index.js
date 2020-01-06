@@ -51,6 +51,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           title__sub='A State-by-State Guide'
         />
         <Content>
+        
         <Row__Decorated>
           {/* <Col__Decorated xs={12} sm={6} md={5}>
             <h1>{territories[stateCode][0]}</h1>

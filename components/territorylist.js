@@ -30,13 +30,13 @@ const TerritoryList = styled.div`
   padding: 2em 0 1.125em .5em; 
   columns: 2;
   ${SuperQuery().minWidth.sm.css`
-    columns: 3;
+    columns: 4;
   `}
   ${SuperQuery().minWidth.md.css`
-    columns: 5;
+    columns: 6;
   `}
   ${SuperQuery().minWidth.lg.css`
-    columns: 3;
+    columns: 6;
   `}
   a {
     color:  ${({ theme }) => theme.colors.color_one};
