@@ -403,24 +403,23 @@ const GlobalStyle = createGlobalStyle`
       transform: rotate(360deg);
     }
   }
-
-  /* Position and sizing of burger button */
-  .bm-burger-button {
+/* Position and sizing of burger button */
+.bm-burger-button {
   position: fixed;
   width: 36px;
   height: 30px;
-  right: 26px;
-  top: 26px;
+  right: 36px;
+  top: 36px;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: ${({ theme }) => theme.colors.text};
 }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #a90000;
+  background: ${({ theme }) => theme.colors.color_three};
 }
 
 /* Position and sizing of clickable cross button */
@@ -445,7 +444,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: ${({ theme }) => theme.colors.background};
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -457,7 +456,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: ${({ theme }) => theme.colors.color_two};
   padding: 0.8em;
 }
 
@@ -470,7 +469,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
-
 
 
 `
