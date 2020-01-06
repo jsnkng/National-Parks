@@ -1,79 +1,22 @@
-
-import React from 'react'
 import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import MapDiagram from '../components/mapdiagram'
-import TerritoryList from '../components/territorylist'
-import DesignationList from '../components/designationlist'
+import React from 'react'
+import DesignationList from './designationlist'
 import Router from 'next/router'
 import states from '../config/states'
 const Component = ({ title, subtitle, ToggleTheme, manageHistory, highlighted, setHighlighted }) => {
   // console.log(`href="${manageHistory.href}" as="${manageHistory.as}"`)
   return (
     <Footer>
-     
-     <Tabs>
-        <TabList>
-          <Tab>Browse By State</Tab>
-          <Tab>Browse By Type</Tab>
-        </TabList>
-
-        <TabPanel>
-    <Row__Decorated>
-          <Col xs={12} md={6} lg={6}>
-            <MapDiagram__Wrapper>
-              <MapDiagram
-                className="mapdiagram" 
-                territories={'none'} 
-                highlighted={highlighted} 
-                setHighlighted={setHighlighted} />
-            </MapDiagram__Wrapper>
-          </Col>
-          <Col xs={12} md={6} lg={6}>
-            <TerritoryList 
-              className="territorylist" 
-              highlighted={highlighted} 
-              setHighlighted={setHighlighted} />
-          </Col>
-    </Row__Decorated>
-        </TabPanel>
-        <TabPanel>
-    <Row__Decorated>
-          <Col xs={12}>
-            <DesignationList />
-          </Col> 
-    </Row__Decorated>
-        </TabPanel>
-      </Tabs>
-      <Row__Decorated>
-        <Col xs={6}>
-          {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
-          {/* <Link href="/" passHref>
-            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          </Link>
-            <a className="title" href="#">{title}</a>
-             */}
-            {/* <a className="title__copyright" href="#">JSNKNG / 2020</a> */}
-        </Col>
-        <Col xs={6}>
-          {/* <span>Toggle Theme</span><ToggleTheme /> */}
+     <Row__Decorated>
+        <Col xs={12}>
+        {/* <span className="toggleTheme">Theme</span> */}
+          <ToggleTheme />
+          <a className="title__copyright" href="#">JSNKNG / 2020</a>
         </Col>
       </Row__Decorated>
-      {/* <Row__Decorated>
-        <Col xs={12} style={{columns: 3}}>
-        { Object.entries(states).map(([key, value]) => {
-        return ( 
-          <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
-            <a>{value[0]}<br /></a>
-          </Link>
-        )
-      })  
-      }
-        </Col>
-      </Row__Decorated> */}
     </Footer>
   )
 }
@@ -88,7 +31,7 @@ const Footer = styled.footer`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: 1.5em .75em 1.75em .75em;
+  padding: 1.5em .75em .75em .75em;
   a {
     cursor: pointer;
     text-decoration: none;
@@ -96,141 +39,173 @@ const Footer = styled.footer`
     color: inherit;
   }
  
+  span.toggleTheme {
+    font-size: .5em;
+    float: right;
+    margin: 0 64px 0 0;
 
-  h3 {
-    text-align: center;
-    width: 100%;
-    font-size: 2em;
-    line-height: .875;
-    font-weight: 200;
-    letter-spacing: -1px;
-    margin: .75em auto;
-    
   }
-  img.logo {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    cursor: pointer;
-    border: none;
-    width: 42px;
-    
-  }
-  .title {
-    float:left;
-    font-size: .875em;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 0 0 0 44px;
-    padding: 0;
-  }
-  .title__sub {
-    float:left;
-    font-size: .75em;
-    line-height: 1;
-    letter-spacing: -1px;
-    font-weight: 500;
-    padding: 0;
-  }
+ 
   .title__copyright {
-    float:left;
-    clear: left;
-    font-size: .75em;
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+    font-size: .625em;
     text-align: right;
     line-height: .75;
     letter-spacing: -1px;
     font-weight: 400;
-    padding: .75em .25em 0 0;
+    padding: 2.5em .25em 0 0;
     span {
       font-weight: 700;
     }
   }
 
-  button {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-button:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
-}
-button:active {
-	position:relative;
-	top:1px;
-}
-
-
-.react-tabs {
-    width: 100%;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-.react-tabs__tab-list {
-  border-bottom: 1px solid #aaa;
-  margin: 0 0 10px;
-  padding: 0;
-}
-
-.react-tabs__tab {
+  .react-toggle {
+  touch-action: pan-x;
   display: inline-block;
-  border: 1px solid transparent;
-  border-bottom: none;
-  bottom: -1px;
-  position: relative;
-  list-style: none;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.react-tabs__tab--selected {
-  background: #fff;
-  border-color: #aaa;
-  color: black;
-  border-radius: 5px 5px 0 0;
-}
-
-.react-tabs__tab--disabled {
-  color: GrayText;
-  cursor: default;
-}
-
-.react-tabs__tab:focus {
-  box-shadow: 0 0 5px hsl(208, 99%, 50%);
-  border-color: hsl(208, 99%, 50%);
-  outline: none;
-}
-
-.react-tabs__tab:focus:after {
-  content: "";
   position: absolute;
-  height: 5px;
-  left: -4px;
-  right: -4px;
-  bottom: -5px;
-  background: #fff;
+  bottom: 10px;
+  right: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  ${SuperQuery().minWidth.md.css`
+  right: 23px;
+  `}
 }
 
-.react-tabs__tab-panel {
-  display: none;
+.react-toggle-screenreader-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
-.react-tabs__tab-panel--selected {
-  display: block;
+.react-toggle--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
 }
 
+.react-toggle-track {
+  width: 50px;
+  height: 24px;
+  padding: 0;
+  border-radius: 30px;
+  background-color: #4D4D4D;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #000000;
+}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #b1b0a7;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #b1b0a7;
+}
+
+.react-toggle-track-check {
+  position: absolute;
+  width: 14px;
+  height: 10px;
+  top: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  left: 8px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-track-check {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.react-toggle-track-x {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  right: 10px;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-track-x {
+  opacity: 0;
+}
+
+.react-toggle-thumb {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #4D4D4D;
+  border-radius: 50%;
+  background-color: #FAFAFA;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-thumb {
+  left: 27px;
+  border-color: #b1b0a7;
+}
+
+.react-toggle--focus .react-toggle-thumb {
+  -webkit-box-shadow: 0px 0px 3px 2px #0099E0;
+  -moz-box-shadow: 0px 0px 3px 2px #0099E0;
+  box-shadow: 0px 0px 2px 3px #0099E0;
+}
+
+.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
+  -webkit-box-shadow: 0px 0px 5px 5px #0099E0;
+  -moz-box-shadow: 0px 0px 5px 5px #0099E0;
+  box-shadow: 0px 0px 5px 5px #0099E0;
+}
 
 
 `

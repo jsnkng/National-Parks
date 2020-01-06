@@ -7,6 +7,8 @@ import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import territories from '../../../config/states'
+import MapDiagram from '../../../components/mapdiagram'
+import TerritoryList from '../../../components/territorylist'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'
@@ -49,6 +51,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           title__sub='A State-by-State Guide'
         />
         <Content>
+        
         <Row__Decorated>
           {/* <Col__Decorated xs={12} sm={6} md={5}>
             <h1>{territories[stateCode][0]}</h1>
@@ -76,7 +79,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           })
           }
         </Row__Decorated>
-      
+        
         </Content>
         <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
@@ -125,7 +128,7 @@ const Content = styled.main`
   
 `
 const Row__Decorated = styled(Row)`
-  width: 100%;
+width: 100%;
   padding: 0;
   margin:0;
 `

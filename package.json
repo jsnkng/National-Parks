@@ -1,5 +1,8 @@
 {
   "name": "National-Parks",
+  "engines": {
+    "node": ">=12.14" 
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
