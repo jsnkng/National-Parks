@@ -10,6 +10,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import ParkBanner from '../components/park'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { push as Menu } from 'react-burger-menu'
 
 const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter }) => {
 
@@ -29,128 +30,117 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
         <Head>
           <title>National Park Service</title>
         </Head>
-        <Header 
-          park='Explore America'
-          designation='US National Parks Guide'
-          state=''
-          stateCode={''}
-          title='National Park Service'
-          title__sub='A State-by-State Guide'
-        />
-        <Content>
-        <Row__Decorated>
-    <Col__Decorated xs={12} sm={6} md={5}>
-      
-      {/* <h1>Explore America’s National Parks</h1> */}
-      <h2>O beautiful for spacious skies,
-          For amber waves of grain,
-          For purple mountain majesties
-          Above the fruited plain!
-          America! America!</h2>
-      {/* <h2>A State-By-State Guide</h2> */}
-      {/* <MapDiagram__Wrapper>
-      <MapDiagram 
-        className="mapdiagram" 
-        territories={'none'} 
-        highlighted={highlighted} 
-        setHighlighted={setHighlighted} />
-        </MapDiagram__Wrapper> */}
-    </Col__Decorated>
-    <Col__Decorated xs={12} sm={6} md={7}>
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`} passHref>
-        <a>
-          <ParkBanner 
-            backgroundURL={
-              parks[0].images.length !== 0 ? `${process.env.AWS_URI}${parks[0].images[0].url.replace(/[/:-]/g, '_')}` : 
-              '/noimage.jpg'
-            }
-            title={parks[0].name}
-            subtitle={parks[0].designation}
-            states={parks[0].states}
+        <div id="outer-container">
+          <Menu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } >
+            <a id="home" className="menu-item" href="/">Home</a>
+            <a id="about" className="menu-item" href="/about">About</a>
+            <a id="contact" className="menu-item" href="/contact">Contact</a>
+          </Menu>
+          <Content id="page-wrap">
+          <Header 
+            park=''
+            designation=''
+            state=''
+            stateCode={''}
+            title='National Park Service'
+            title__sub='A State-by-State Guide'
           />
-        </a>
-      </Link>
-      </Col__Decorated>
-      <Col__Decorated xs={12} sm={6} md={7}>
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[1].states.split(',')[0].toLowerCase()}/park/${parks[1].parkCode}`} passHref>
-        <a>
-          <ParkBanner 
-            backgroundURL={
-              parks[1].images.length !== 0 ? `${process.env.AWS_URI}${parks[1].images[0].url.replace(/[/:-]/g, '_')}` : 
-              '/noimage.jpg'
-            }
-            title={parks[1].name}
-            subtitle={parks[1].designation}
-            states={parks[1].states}
-          />
-        </a>
-      </Link>
-        </Col__Decorated>
-      <Col__Decorated xs={12} sm={6} md={5}>
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[2].states.split(',')[0].toLowerCase()}/park/${parks[2].parkCode}`} passHref>
-        <a>
-          <ParkBanner 
-            backgroundURL={
-              parks[2].images.length !== 0 ? `${process.env.AWS_URI}${parks[2].images[0].url.replace(/[/:-]/g, '_')}` : 
-              '/noimage.jpg'
-            }
-            title={parks[2].name}
-            subtitle={parks[2].designation}
-            states={parks[2].states}
-          />
-        </a>
-      </Link>
-        </Col__Decorated>
-       <Col__Decorated xs={12} sm={6} md={5}>
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[3].states.split(',')[0].toLowerCase()}/park/${parks[3].parkCode}`} passHref>
-        <a>
-          <ParkBanner 
-            backgroundURL={
-              parks[3].images.length !== 0 ? `${process.env.AWS_URI}${parks[3].images[0].url.replace(/[/:-]/g, '_')}` : 
-              '/noimage.jpg'
-            }
-            title={parks[3].name}
-            subtitle={parks[3].designation}
-            states={parks[3].states}
-          />
-        </a>
-      </Link>
-        </Col__Decorated>
-      <Col__Decorated xs={12} sm={6} md={7}>
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[4].states.split(',')[0].toLowerCase()}/park/${parks[4].parkCode}`} passHref>
-        <a>
-          <ParkBanner 
-            backgroundURL={
-              parks[4].images.length !== 0 ? `${process.env.AWS_URI}${parks[4].images[0].url.replace(/[/:-]/g, '_')}` : 
-              '/noimage.jpg'
-            }
-            title={parks[4].name}
-            subtitle={parks[4].designation}
-            states={parks[4].states}
-          />
-        </a>
-      </Link>
-        </Col__Decorated>
-      {/*<Col__Decorated xs={12} sm={6} md={6}>
-      <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[5].states.split(',')[0].toLowerCase()}/park/${parks[5].parkCode}`} passHref>
-        <a>
-          <ParkBanner 
-            backgroundURL={
-              parks[5].images.length !== 0 ? `${process.env.AWS_URI}${parks[5].images[0].url.replace(/[/:-]/g, '_')}` : 
-              '/noimage.jpg'
-            }
-            title={parks[5].name}
-            subtitle={parks[5].designation}
-            states={parks[0].states}
-          />
-        </a>
-      </Link>
-        </Col__Decorated>*/}
-    </Row__Decorated>
-    
-   
+            <Row__Decorated>
+              <Col__Decorated xs={12} sm={6} md={5}>
+              {/* <h1>Explore America’s National Parks</h1> */}
+              <h2>O beautiful for spacious skies,
+                  For amber waves of grain,
+                  For purple mountain majesties
+                  Above the fruited plain!
+                  America! America!</h2>
+              {/* <h2>A State-By-State Guide</h2> */}
+              {/* <MapDiagram__Wrapper>
+              <MapDiagram 
+                className="mapdiagram" 
+                territories={'none'} 
+                highlighted={highlighted} 
+                setHighlighted={setHighlighted} />
+                </MapDiagram__Wrapper> */}
+              </Col__Decorated>
+              <Col__Decorated xs={12} sm={6} md={7}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`} passHref>
+                  <a>
+                    <ParkBanner 
+                      backgroundURL={
+                        parks[0].images.length !== 0 ? `${process.env.AWS_URI}${parks[0].images[0].url.replace(/[/:-]/g, '_')}` : 
+                        '/noimage.jpg'
+                      }
+                      title={parks[0].name}
+                      subtitle={parks[0].designation}
+                      states={parks[0].states}
+                    />
+                  </a>
+                </Link>
+                </Col__Decorated>
+                <Col__Decorated xs={12} sm={6} md={7}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[1].states.split(',')[0].toLowerCase()}/park/${parks[1].parkCode}`} passHref>
+                  <a>
+                    <ParkBanner 
+                      backgroundURL={
+                        parks[1].images.length !== 0 ? `${process.env.AWS_URI}${parks[1].images[0].url.replace(/[/:-]/g, '_')}` : 
+                        '/noimage.jpg'
+                      }
+                      title={parks[1].name}
+                      subtitle={parks[1].designation}
+                      states={parks[1].states}
+                    />
+                  </a>
+                </Link>
+                  </Col__Decorated>
+                <Col__Decorated xs={12} sm={6} md={5}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[2].states.split(',')[0].toLowerCase()}/park/${parks[2].parkCode}`} passHref>
+                  <a>
+                    <ParkBanner 
+                      backgroundURL={
+                        parks[2].images.length !== 0 ? `${process.env.AWS_URI}${parks[2].images[0].url.replace(/[/:-]/g, '_')}` : 
+                        '/noimage.jpg'
+                      }
+                      title={parks[2].name}
+                      subtitle={parks[2].designation}
+                      states={parks[2].states}
+                    />
+                  </a>
+                </Link>
+                  </Col__Decorated>
+                <Col__Decorated xs={12} sm={6} md={5}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[3].states.split(',')[0].toLowerCase()}/park/${parks[3].parkCode}`} passHref>
+                  <a>
+                    <ParkBanner 
+                      backgroundURL={
+                        parks[3].images.length !== 0 ? `${process.env.AWS_URI}${parks[3].images[0].url.replace(/[/:-]/g, '_')}` : 
+                        '/noimage.jpg'
+                      }
+                      title={parks[3].name}
+                      subtitle={parks[3].designation}
+                      states={parks[3].states}
+                    />
+                  </a>
+                </Link>
+                  </Col__Decorated>
+                <Col__Decorated xs={12} sm={6} md={7}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${parks[4].states.split(',')[0].toLowerCase()}/park/${parks[4].parkCode}`} passHref>
+                  <a>
+                    <ParkBanner 
+                      backgroundURL={
+                        parks[4].images.length !== 0 ? `${process.env.AWS_URI}${parks[4].images[0].url.replace(/[/:-]/g, '_')}` : 
+                        '/noimage.jpg'
+                      }
+                      title={parks[4].name}
+                      subtitle={parks[4].designation}
+                      states={parks[4].states}
+                    />
+                  </a>
+                </Link>
+              </Col__Decorated>
+            </Row__Decorated>
+          <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} highlighted={highlighted} setHighlighted={setHighlighted} />
         </Content>
-        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} highlighted={highlighted} setHighlighted={setHighlighted} />
+      </div>
       </>
     )
   }

@@ -54,6 +54,54 @@ const Component = ({ highlighted, setHighlighted }) => {
       <Link href='/designation/[designation]' as='/designation/National%20Recreation%20Area/'>
         <a>National Recreation Area</a>
       </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Monument%20%26%20Preserve/'>
+        <a>National Monument & Preserve</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Scenic%20Riverways/'>
+        <a>National Scenic Riverways</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Battlefield/'>
+        <a>National Battlefield</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20River/'>
+        <a>National River</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Seashore/'>
+        <a>National Seashore</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/Cultural%20Heritage%20Corridor/'>
+        <a>Cultural Heritage Corridor</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/Ecological%20%26%20Historic%20Preserve/'>
+        <a>Ecological & Historic Preserve</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Historic%20Trail/'>
+        <a>National Historic Trail</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/International%20Historic%20Site/'>
+        <a>International Historic Site</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/International%20Park/'>
+        <a>International Park</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20River%20%26%20Recreation%20Area/'>
+        <a>National River & Recreation Area</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Scenic%20Trail/'>
+        <a>National Scenic Trail</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Recreational%20River/'>
+        <a>National Recreational River</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Scenic%20Riverway/'>
+        <a>National Scenic Riverway</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/National%20Lakeshore/'>
+        <a>National Lakeshore</a>
+      </Link>
+      <Link href='/designation/[designation]' as='/designation/Wild%20%26%20Scenic%20River/'>
+        <a>Wild & Scenic River</a>
+      </Link>
     </DesignationList>
   )
 }

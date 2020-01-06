@@ -8,6 +8,7 @@ import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
 import Toggle from 'react-toggle'
+import { slide as Menu } from 'react-burger-menu'
 
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
