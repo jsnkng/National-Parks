@@ -12,29 +12,11 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory, highlighted, s
     <Footer>
      <Row__Decorated>
         <Col xs={12}>
-          <DesignationList />
-        </Col> 
-      </Row__Decorated>
-       
-     <Row__Decorated>
-        <Col xs={12}>
         {/* <span className="toggleTheme">Theme</span> */}
           <ToggleTheme />
           <a className="title__copyright" href="#">JSNKNG / 2020</a>
         </Col>
       </Row__Decorated>
-      {/* <Row__Decorated>
-        <Col xs={12} style={{columns: 3}}>
-        { Object.entries(states).map(([key, value]) => {
-        return ( 
-          <Link href="/state/[stateCode]" as={`/state/${key}`} key={key}>
-            <a>{value[0]}<br /></a>
-          </Link>
-        )
-      })  
-      }
-        </Col>
-      </Row__Decorated> */}
     </Footer>
   )
 }
@@ -66,7 +48,7 @@ const Footer = styled.footer`
  
   .title__copyright {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 24px;
     font-size: .625em;
     text-align: right;
@@ -83,7 +65,7 @@ const Footer = styled.footer`
   touch-action: pan-x;
   display: inline-block;
   position: absolute;
-  bottom: 25px;
+  bottom: 10px;
   right: 20px;
   cursor: pointer;
   background-color: transparent;

@@ -21,7 +21,7 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
 
-  const handleStateChange = e => {
+  const handleChange = e => {
     console.log("e", e.target.value)
     router.push(e.target.value)
   }
@@ -57,8 +57,11 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
             For purple mountain majesties<br />
             Above the fruited plain!<br />
             America! America!</h2>
-        <h3>Find a Park By State</h3>
-        <select onChange={(e) => handleStateChange(e)}>
+            <h3>Find a Park</h3>
+        <select onChange={(e) => handleChange(e)}>
+        <option>By State</option>
+        <option>–––––––––––––––––</option>
+        
         { Object.entries(states).map(([key, value]) => {
           return ( 
             <option 
@@ -69,6 +72,134 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
             </option>
           )
         })}
+      </select>
+        <select onChange={(e) => handleChange(e)}>
+        <option>By Designation</option>
+        <option>–––––––––––––––––</option>
+        <option 
+      value='/designation/National%20Monument/'>
+          National Monument
+      </option>
+      <option 
+      value='/designation/National%20Park/'>
+        National Park
+      </option>
+      <option 
+      value='/designation/National%20Historic%20Park/'>
+        National Historic Park
+      </option>
+      <option 
+      value='/designation/National%20Historical%20Park/'>
+        National Historical Park
+      </option>
+      <option 
+      value='/designation/National%20Historic%20Site/'>
+        National Historic Site
+      </option>
+      <option 
+      value='/designation/Park/'>
+        Park
+      </option>
+      <option 
+      value='/designation/National%20Military%20Park/'>
+        National Military Park
+      </option>
+      <option 
+      value='/designation/National%20Battlefield/'>
+        National Battlefield
+      </option>
+      <option 
+      value='/designation/National%20Memorial/'>
+        National Memorial
+      </option>
+      <option 
+      value='/designation/National%20Heritage%20Corridor/'>
+        National Heritage Corridor
+      </option>
+      <option 
+      value='/designation/National%20Historical%20Reserve/'>
+        National Historical Reserve
+      </option>
+      <option 
+      value='/designation/National%20Recreation%20Area/'>
+        National Recreation Area
+      </option>
+      <option 
+      value='/designation/National%20Heritage%20Area/'>
+        National Heritage Area
+      </option>
+      <option 
+      value='/designation/Part%20of%20Statue%20of%20Liberty%20National%20Monument/'>
+        Part of Statue of Liberty National Monument
+      </option>
+      <option 
+      value='/designation/National%20Monument%20%26%20Preserve/'>
+        National Monument & Preserve
+      </option>
+      <option 
+      value='/designation/National%20Preserve/'>
+        National Preserve
+      </option>
+      <option 
+      value='/designation/Cultural%20Heritage%20Corridor/'>
+        Cultural Heritage Corridor
+      </option>
+      <option 
+      value='/designation/National%20Historic%20Trail/'>
+        National Historic Trail
+      </option>
+      <option 
+      value='/designation/National%20Scenic%20Trail/'>
+        National Scenic Trail
+      </option>
+      <option 
+      value='/designation/National%20Geologic%20Trail/'>
+        National Geologic Trail
+      </option>
+      <option 
+      value='/designation/Ecological%20%26%20Historic%20Preserve/'>
+        Ecological & Historic Preserve
+      </option>
+      <option 
+      value='/designation/National%20Seashore/'>
+        National Seashore
+      </option>
+      <option 
+      value='/designation/National%20Recreational%20River/'>
+        National Recreational River
+      </option>
+      <option 
+      value='/designation/National%20River%20%26%20Recreation%20Area/'>
+        National River & Recreation Area
+      </option>
+      <option 
+      value='/designation/National%20Scenic%20Riverways/'>
+        National Scenic Riverways
+      </option>
+      <option 
+      value='/designation/National%20Scenic%20Riverway/'>
+        National Scenic Riverway
+      </option>
+      <option 
+      value='/designation/Wild%20%26%20Scenic%20River/'>
+        Wild & Scenic River
+      </option>
+      <option 
+      value='/designation/National%20River/'>
+        National River
+      </option>
+      <option 
+      value='/designation/National%20Lakeshore/'>
+        National Lakeshore
+      </option>
+      <option 
+      value='/designation/International%20Historic%20Site/'>
+        International Historic Site
+      </option>
+      <option 
+      value='/designation/International%20Park/'>
+        International Park
+      </option>
       </select>
     </Col__Decorated>
     <Col__Decorated xs={12} sm={12} md={7}>

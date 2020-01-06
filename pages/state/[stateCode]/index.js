@@ -79,25 +79,7 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           })
           }
         </Row__Decorated>
-        <Row__Decorated>
-          <Col xs={12} md={12} lg={7}>
-            
-            <MapDiagram__Wrapper>
-            <h3>Browse By State</h3>
-            <MapDiagram
-              className="mapdiagram" 
-              territories={'none'} 
-              highlighted={highlighted} 
-              setHighlighted={setHighlighted} />
-              </MapDiagram__Wrapper>
-          </Col>
-          <Col xs={12} md={12} lg={5}>
-            <TerritoryList 
-              className="territorylist" 
-              highlighted={highlighted} 
-              setHighlighted={setHighlighted} />
-          </Col> 
-        </Row__Decorated>  
+        
         </Content>
         <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
