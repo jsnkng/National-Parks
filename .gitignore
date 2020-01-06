@@ -29,4 +29,3 @@ test/**/next-env.d.ts
 examples/**/out
 /data
 /.env
-index_old.js

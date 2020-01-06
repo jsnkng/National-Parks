@@ -25,9 +25,9 @@ const Component = ({ territories, highlighted, setHighlighted }) => {
               passHref>
                 <path 
                   id={key} 
-                  className={highlighted === value[0] ? 'highlight' : ''} 
-                  onMouseOver={() => setHighlighted(value[0])} 
-                  onMouseOut={() => setHighlighted(null)} 
+                  className={highlighted === key ? 'highlight' : ''} 
+                  onMouseOver={() => setHighlighted(key)} 
+                  onMouseOut={() => setHighlighted('')} 
                   d={value[1]}  />
             </Link>
           )

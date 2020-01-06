@@ -31,7 +31,7 @@ const Footer = styled.footer`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 120;
-  padding: 1.5em .75em .75em .75em;
+  padding: 1.5em .75em ;
   a {
     cursor: pointer;
     text-decoration: none;
