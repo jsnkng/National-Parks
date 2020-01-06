@@ -68,10 +68,10 @@ const DesignationList = styled.div`
     columns: 3;
   `}
   ${SuperQuery().minWidth.md.css`
-    columns: 5;
+    columns: 3;
   `}
   ${SuperQuery().minWidth.lg.css`
-    columns: 3;
+    columns: 4;
   `}
   a {
     color:  ${({ theme }) => theme.colors.color_one};
@@ -87,10 +87,6 @@ const DesignationList = styled.div`
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
     font-size: .875em;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: .75em;
-      padding: .25em;
     `}
   }
   a.highlight , a:hover  {

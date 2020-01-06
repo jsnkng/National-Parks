@@ -77,12 +77,7 @@ const State = ({ parks, designation, ToggleTheme, manageHistory, pageTransitionR
           })
           }
         </Row__Decorated>
-    <Row__Decorated>
-        <Col xs={12}>
-          <h3>Browse By Type</h3>
-        <DesignationList />
-        </Col> 
-      </Row__Decorated>  
+   
         </Content>
         <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
@@ -117,11 +112,11 @@ const Content = styled.main`
   ${SuperQuery().minWidth.md.css`
     margin: 4em 0 0 0;
   `}
-  h1 {
+  h3 {
     display: block;
     color: ${({ theme }) => theme.colors.text};
-    padding: 2em .5em 0 0;
-    text-align: right;
+    padding: 2em .5em ;
+    text-align: left;
     font-size: 3em;
     line-height: 1;
     font-weight: 200;

@@ -33,10 +33,10 @@ const TerritoryList = styled.div`
     columns: 3;
   `}
   ${SuperQuery().minWidth.md.css`
-    columns: 5;
+    columns: 4;
   `}
   ${SuperQuery().minWidth.lg.css`
-    columns: 3;
+    columns: 4;
   `}
   a {
     color:  ${({ theme }) => theme.colors.color_one};
@@ -51,9 +51,9 @@ const TerritoryList = styled.div`
     padding: .5em;
     cursor: pointer;
     ${SuperQuery().minWidth.sm.css`
-    font-size: .875em;
+      font-size: .875em;
     `}
-    ${SuperQuery().minWidth.lg.css`
+    ${SuperQuery().minWidth.md.css`
       font-size: .75em;
       padding: .25em;
     `}

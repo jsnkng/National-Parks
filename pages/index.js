@@ -6,13 +6,10 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import absoluteUrl from 'next-absolute-url'
 import fetch from 'isomorphic-unfetch'
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import ParkBanner from '../components/park'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import MapDiagram from '../components/mapdiagram'
-import TerritoryList from '../components/territorylist'
-import DesignationList from '../components/designationlist'
 
 const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter }) => {
 
@@ -150,31 +147,8 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
       </Link>
         </Col__Decorated>*/}
     </Row__Decorated>
-    <Row__Decorated>
-        <Col xs={12}>
-          <h3>Browse By Type</h3>
-        <DesignationList />
-        </Col> 
-      </Row__Decorated>  
-    <Row__Decorated>
-        <Col xs={12} md={12} lg={7}>
-          
-          <MapDiagram__Wrapper>
-          <h3>Browse By State</h3>
-          <MapDiagram
-            className="mapdiagram" 
-            territories={'none'} 
-            highlighted={highlighted} 
-            setHighlighted={setHighlighted} />
-            </MapDiagram__Wrapper>
-        </Col>
-        <Col xs={12} md={12} lg={5}>
-          <TerritoryList 
-            className="territorylist" 
-            highlighted={highlighted} 
-            setHighlighted={setHighlighted} />
-        </Col> 
-      </Row__Decorated>  
+    
+   
         </Content>
         <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
@@ -218,11 +192,15 @@ const Content = styled.main`
     margin: .75em .25em 1em 1.5em;
     border: none;
     ${SuperQuery().minWidth.sm.css`
-      margin: 2em 0 1.25em 1.5em;
-      font-size: 1.625em;
+      margin: 1.75em 0 1.25em 1em;
+      font-size: 1.5em;
     `}
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.875em;
+      font-size: 1.5em;
+      margin: 2em 1em 0 1em;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      font-size: 1.75em;
       margin: 2em 1em 0 1.25em;
     `}
   }
@@ -237,12 +215,17 @@ const Content = styled.main`
     margin: .75em auto;
     
   }
+
+
+
 `
 const Row__Decorated = styled(Row)`
+  width: 100%;
   padding: 0;
   margin:0;
 `
 const Col__Decorated = styled(Col)`
+  width: 100%;
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`

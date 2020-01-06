@@ -1,8 +1,13 @@
+
+import React from 'react'
 import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import React from 'react'
+import MapDiagram from '../components/mapdiagram'
+import TerritoryList from '../components/territorylist'
+import DesignationList from '../components/designationlist'
 import Router from 'next/router'
 import states from '../config/states'
 const Component = ({ title, subtitle, ToggleTheme, manageHistory, highlighted, setHighlighted }) => {
@@ -10,6 +15,39 @@ const Component = ({ title, subtitle, ToggleTheme, manageHistory, highlighted, s
   return (
     <Footer>
      
+     <Tabs>
+        <TabList>
+          <Tab>Browse By State</Tab>
+          <Tab>Browse By Type</Tab>
+        </TabList>
+
+        <TabPanel>
+    <Row__Decorated>
+          <Col xs={12} md={6} lg={6}>
+            <MapDiagram__Wrapper>
+              <MapDiagram
+                className="mapdiagram" 
+                territories={'none'} 
+                highlighted={highlighted} 
+                setHighlighted={setHighlighted} />
+            </MapDiagram__Wrapper>
+          </Col>
+          <Col xs={12} md={6} lg={6}>
+            <TerritoryList 
+              className="territorylist" 
+              highlighted={highlighted} 
+              setHighlighted={setHighlighted} />
+          </Col>
+    </Row__Decorated>
+        </TabPanel>
+        <TabPanel>
+    <Row__Decorated>
+          <Col xs={12}>
+            <DesignationList />
+          </Col> 
+    </Row__Decorated>
+        </TabPanel>
+      </Tabs>
       <Row__Decorated>
         <Col xs={6}>
           {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
@@ -139,6 +177,66 @@ button:active {
 	position:relative;
 	top:1px;
 }
+
+
+.react-tabs {
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #aaa;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #aaa;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
 
 
   .react-toggle {
