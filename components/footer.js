@@ -5,10 +5,11 @@ import SuperQuery from '@themgoncalves/super-query'
 import React from 'react'
 import Router from 'next/router'
 import states from '../config/states'
-const Component = ({ title, subtitle, ToggleTheme, manageHistory }) => {
+const Component = ({ title, subtitle, ToggleTheme, manageHistory, highlighted, setHighlighted }) => {
   // console.log(`href="${manageHistory.href}" as="${manageHistory.as}"`)
   return (
     <Footer>
+     
       <Row__Decorated>
         <Col xs={6}>
           {/* <button onClick={() => manageHistory()}>{`<`}</button> */}
@@ -58,6 +59,16 @@ const Footer = styled.footer`
   }
  
 
+  h3 {
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+    line-height: .875;
+    font-weight: 200;
+    letter-spacing: -1px;
+    margin: .75em auto;
+    
+  }
   img.logo {
     position: absolute;
     top: 5px;
@@ -134,7 +145,7 @@ button:active {
   touch-action: pan-x;
   display: inline-block;
   position: absolute;
-  top: 1.75em;
+  bottom: 2em;
   right: 13px;
   cursor: pointer;
   background-color: transparent;
@@ -282,4 +293,7 @@ button:active {
 const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;
+`
+
+const MapDiagram__Wrapper = styled.div`
 `

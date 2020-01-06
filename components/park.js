@@ -4,7 +4,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import territories from '../config/states'
 import MapDiagram from './mapdiagram'
-console.log(territories)
+// console.log(territories)
 // import Loader from '../components/loader'
 
 const Component = ({ backgroundURL, title, subtitle, states }) => {

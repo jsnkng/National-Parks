@@ -7,15 +7,14 @@ import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import territories from '../../../config/states'
-import MapDiagram from '../../../components/mapdiagram'
-import TerritoryList from '../../../components/territorylist'
+import DesignationList from '../../../components/designationlist'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
-const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReadyToEnter, stateCode }) => {
+const State = ({ parks, designation, ToggleTheme, manageHistory, pageTransitionReadyToEnter }) => {
   const pageTransitionDelayEnter = true
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
@@ -39,13 +38,13 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
     return (
       <>
         <Head>
-          <title>National Park Service Guide to {territories[stateCode][0]}</title>
+          <title>National Park Service Guide to {designation}</title>
         </Head>
         <Header 
-            park={territories[stateCode][0]}
+            park={designation}
             designation=''
             state=''
-            stateCode={stateCode}
+            stateCode=''
             manageHistory={manageHistory} 
           title='National Park Service'
           title__sub='A State-by-State Guide'
@@ -56,11 +55,11 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
             <h1>{territories[stateCode][0]}</h1>
           </Col__Decorated> */}
           {
-          data.slice(0).map((item, i=0) => {
+          parks.slice(0).map((item, i=0) => {
             i++
             return(
-              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 5 : i % 4 === 2 ? 7 : i % 4 === 3 ? 7 : 5 } key={item.id}>
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${stateCode}/park/${item.parkCode}`} passHref>
+              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.id}>
+                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`} passHref>
                   <a>
                     <ParkBanner 
                       backgroundURL={item.images === undefined || item.images.length == 0 
@@ -78,25 +77,12 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
           })
           }
         </Row__Decorated>
-        <Row__Decorated>
-          <Col xs={12} md={12} lg={7}>
-            
-            <MapDiagram__Wrapper>
-            <h3>Browse By State</h3>
-            <MapDiagram
-              className="mapdiagram" 
-              territories={'none'} 
-              highlighted={highlighted} 
-              setHighlighted={setHighlighted} />
-              </MapDiagram__Wrapper>
-          </Col>
-          <Col xs={12} md={12} lg={5}>
-            <TerritoryList 
-              className="territorylist" 
-              highlighted={highlighted} 
-              setHighlighted={setHighlighted} />
-          </Col> 
-        </Row__Decorated>  
+    <Row__Decorated>
+        <Col xs={12}>
+          <h3>Browse By Type</h3>
+        <DesignationList />
+        </Col> 
+      </Row__Decorated>  
         </Content>
         <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
@@ -106,11 +92,12 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
 
 
 State.getInitialProps = async ({ req, query }) => {
-  const {stateCode} = query
+  const {designation} = query
   const {origin}  = absoluteUrl(req)
-  const stateResult = await fetch(`${origin}/api/state/${stateCode}`)
+  const stateResult = await fetch(`${origin}/api/designation/${designation}`)
   const result = await stateResult.json()
-  result.stateCode = stateCode
+  result.designation = designation
+  console.log(result)
   return result
 }
 
@@ -145,7 +132,7 @@ const Content = styled.main`
   
 `
 const Row__Decorated = styled(Row)`
-width: 100%;
+  width: 100%;
   padding: 0;
   margin:0;
 `
@@ -153,6 +140,4 @@ const Col__Decorated = styled(Col)`
   position:relative;
   width: 100%;
   padding: 0;
-`
-const MapDiagram__Wrapper = styled.div`
 `

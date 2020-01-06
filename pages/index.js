@@ -12,6 +12,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
+import DesignationList from '../components/designationlist'
 
 const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter }) => {
 
@@ -149,28 +150,33 @@ const Home = ({ parks, ToggleTheme, manageHistory, pageTransitionReadyToEnter })
       </Link>
         </Col__Decorated>*/}
     </Row__Decorated>
+    <Row__Decorated>
+        <Col xs={12}>
+          <h3>Browse By Type</h3>
+        <DesignationList />
+        </Col> 
+      </Row__Decorated>  
+    <Row__Decorated>
+        <Col xs={12} md={12} lg={7}>
           
-          <Row__Decorated>
-            <Col xs={12} sm={7}><br /><br />
-              
-              <MapDiagram__Wrapper>
-              <h2>Find A National Park By State</h2>
-              <MapDiagram
-                className="mapdiagram" 
-                territories={'none'} 
-                highlighted={highlighted} 
-                setHighlighted={setHighlighted} />
-                </MapDiagram__Wrapper>
-            </Col>
-            <Col xs={12} sm={5}>
-              <TerritoryList 
-                className="territorylist" 
-                highlighted={highlighted} 
-                setHighlighted={setHighlighted} />
-            </Col> 
-          </Row__Decorated>
+          <MapDiagram__Wrapper>
+          <h3>Browse By State</h3>
+          <MapDiagram
+            className="mapdiagram" 
+            territories={'none'} 
+            highlighted={highlighted} 
+            setHighlighted={setHighlighted} />
+            </MapDiagram__Wrapper>
+        </Col>
+        <Col xs={12} md={12} lg={5}>
+          <TerritoryList 
+            className="territorylist" 
+            highlighted={highlighted} 
+            setHighlighted={setHighlighted} />
+        </Col> 
+      </Row__Decorated>  
         </Content>
-        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
+        <Footer ToggleTheme={ToggleTheme} manageHistory={manageHistory} highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
     )
   }
@@ -202,20 +208,7 @@ const Content = styled.main`
     font-size: 1.25em;
     margin: 1em 3.75em 1em 2.4em;
   }
-  h1 {
-    display: block;
-    font-size: 2em;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 2.25em 0 0 1.5em;
-    ${'' /* ${SuperQuery().minWidth.md.css`
-      margin: 5px 0 0 66px;
-      font-size: 1.375em;
-      line-height: 1;
-      letter-spacing: -1.5px;
-    `} */}
-  }
+  
   h2 {
     display: block;
     font-size: 1.875em;
@@ -233,6 +226,17 @@ const Content = styled.main`
       margin: 2em 1em 0 1.25em;
     `}
   }
+  
+  h3 {
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+    line-height: .875;
+    font-weight: 200;
+    letter-spacing: -1px;
+    margin: .75em auto;
+    
+  }
 `
 const Row__Decorated = styled(Row)`
   padding: 0;
@@ -242,5 +246,4 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
-  padding: 0 0 1em 1em;
 `

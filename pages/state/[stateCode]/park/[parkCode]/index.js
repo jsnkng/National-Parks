@@ -39,6 +39,7 @@ const Park = ({
   campgrounds }) => {
   
   const [loaded, setLoaded] = useState(false)
+  const [highlighted, setHighlighted] = useState(null)
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
   visitorcenters !== undefined && visitorcenters.length != 0 &&
   visitorcenters.slice(0).map((item) => {
@@ -123,7 +124,7 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
-        <Footer title="National Park Service" subtitle="A State-By-State Guide"  ToggleTheme={ToggleTheme} manageHistory={manageHistory} />
+        <Footer title="National Park Service" subtitle="A State-By-State Guide"  ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
       </>
     )
   }
@@ -146,7 +147,7 @@ export default Park
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
-
+  margin: 0 0 3em 0;
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};
