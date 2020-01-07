@@ -128,10 +128,6 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
-{/*     
-    <FindAPark__Container>
-      <FindAPark router={router} />
-    </FindAPark__Container> */}
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
@@ -156,7 +152,7 @@ export default Park
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
-  margin: 0 0 60px 0; 
+  margin: 0 0 80px 0; 
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};
@@ -168,15 +164,4 @@ const Content = styled.main`
       text-decoration: underline;
     }
   }
-`
-
-const FindAPark__Container = styled.div`
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: ${({ theme }) => theme.colors.gradient_one};
-  color: ${({ theme }) => theme.colors.text};
-  z-index: 1000;
-  height: 87vh;
 `
