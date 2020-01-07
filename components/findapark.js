@@ -27,14 +27,14 @@ const Component = () => {
   <FindAPark>
     <Row__Decorated>
       <Col__Decorated xs={12} sm={12} md={4}>
-        {/* <h1>Explore America’s National Parks</h1> */}
-        {/* <h2>O beautiful for spacious skies,<br />
+        {/* <h2>Explore America’s National Parks</h2> */}
+        <h3>O beautiful for spacious skies,<br />
             For amber waves of grain,<br />
             For purple mountain majesties<br />
             Above the fruited plain!<br />
-            America! America!</h2> */}
+            America! America!</h3>
        
-        <h3>Find a Park</h3>
+        <h4>Find a Park</h4>
         <select value={`/state/${highlighted}/`} onChange={handleStateChange}>
           <option>By State</option>
           <option>–––––––––––––––––</option>
@@ -172,18 +172,30 @@ const FindAPark = styled.div`
   padding: 1.5em .75em;
  
   h3 {
+    font-size: 2em;
+    line-height: 1;
+    font-weight: 200;
+    letter-spacing: -1px;
+    margin: 1.5em 0 1em 1em;
+    width: 95%
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.25em;
+    `} 
+  }
+
+  h4 {
     text-align: center;
     font-size: 2.5em;
     line-height: 1;
     font-weight: 400;
     letter-spacing: -1px;
-    margin: .5em auto 0 auto;
-    width: 60%;
+    margin: 1.5em 0 0 1.5em;
+    width: 78%
     
     ${SuperQuery().minWidth.md.css`
       text-align: left;
       font-size: 1.75em;
-      margin: 2.5em auto 0 auto;
+      margin: 1.5em 0 0 1.5em;
     `} 
   }
 
@@ -193,7 +205,7 @@ const FindAPark = styled.div`
     outline: none;
     border: none;
     margin: 1em auto;
-    width: 60%;
+    width: 75%
     
   }
 `

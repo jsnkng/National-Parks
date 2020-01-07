@@ -21,14 +21,17 @@ const themes = {
   nightTheme: {
     background: '#1e1d1e',
     box_background: '#111111',
-    offbackground: '#474547',
+    offbackground: '#222222',
     text: '#ffffff',
-    color_one: '#3db7e3',
-    color_two: '#a1dde9',
-    color_three: '#90d223',
-    color_four: '#e2e1d5',
+    color_one: '#0DA7CC',
+    color_two: '#5CDFFF',
+    color_three: '#256F8A',
+    color_four: 'rgba(8,104,127,0.25)',
+    color_five: '#308EB0',
     trans_back: 'rgba(0,0,0,0.8)',
     spinner: 'rgba(0,0,0,0.2)',
+    gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
+ 
   },
   dayTheme: {
     background: '#ededed',
@@ -39,8 +42,10 @@ const themes = {
     color_two: '#ba471e',
     color_three: '#ec8217',
     color_four: '#b1b0a7',
+    color_five: '#b1b0a7',
     trans_back: 'rgba(245,245,245,0.8)',
     spinner: 'rgba(255,255,255,.2)',
+    gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'
   },
   rainbowTheme: {
     background: '#0049ab',

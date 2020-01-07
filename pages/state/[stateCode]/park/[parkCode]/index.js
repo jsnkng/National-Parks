@@ -168,12 +168,10 @@ const Content = styled.main`
 
 const FindAPark__Container = styled.div`
   position: relative;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.offbackground};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
-  padding: 3.5em 0 0 0;
-  margin: 0 0 -4em 0;
 `
