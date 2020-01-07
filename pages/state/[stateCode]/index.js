@@ -49,6 +49,8 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
             stateCode={stateCode}
           title={territories[stateCode][0]}
           title__sub=''
+          title_as={`/state/${stateCode}/`}
+          title_href='/state/[stateCode]'
         />
         <Content>
         
@@ -111,10 +113,7 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin: 0;
-  ${SuperQuery().minWidth.sm.css`
-    margin: 3.5em 0 0 0;
-  `}
+    margin: 3.5em 0 60px 0;
   h1 {
     display: block;
     color: ${({ theme }) => theme.colors.text};

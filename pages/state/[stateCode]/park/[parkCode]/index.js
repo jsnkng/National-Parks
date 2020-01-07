@@ -27,7 +27,8 @@ import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = ({ 
   themeName, setThemeName, pageTransitionReadyToEnter, 
-  stateCode, 
+  stateCode,
+  parkCode, 
   park, 
   alerts, 
   newsreleases, 
@@ -87,6 +88,8 @@ const Park = ({
           states={park.states}
           title={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
           title__sub={park.designation}
+          title_as={`/state/${stateCode}/park/${parkCode}`}
+          title_href='/state/[stateCode]/park/[parkCode]'
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&
@@ -142,6 +145,7 @@ Park.getInitialProps = async ({ req, query }) => {
   const parkResult = await fetch(`${origin}/api/parks/${parkCode}`)
   const result = await parkResult.json()
   result.stateCode = stateCode
+  result.parkCode = parkCode
   return result
 }
 
@@ -152,7 +156,7 @@ export default Park
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
-  margin: 0 0 3em 0;
+  margin: 0 0 60px 0; 
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};

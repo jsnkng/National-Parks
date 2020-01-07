@@ -4,15 +4,15 @@ import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Component = ({ router, title, title__sub, park, designation }) => {
+const Component = ({ router, title, title_href, title_as, title__sub, park, designation }) => {
   return (
     <Header>
       <Row__Decorated>
         <Col xs={10}>
-          <Link href="/" passHref>
-            <a className="title" href="#">{title}</a>
+          <Link href={title_href} as={title_as}>
+            <a className={title__sub === '' ? 'title--large' : 'title'} href="#">{title}</a>
           </Link> 
-          <Link href="/" passHref>
+          <Link href={title_href} as={title_as}>
             <a className="title__sub" href="#">{title__sub}</a>
           </Link> 
           {/* <div>
@@ -91,6 +91,22 @@ const Header = styled.header`
     ${SuperQuery().minWidth.md.css`
       margin: -.125em 0 0 0;
       font-size: 1.25em;
+      letter-spacing: -1.5px;
+    `}
+  }
+  .title--large {
+    display: block;
+    float: left;
+    font-size: 1.5em;
+    line-height: .925;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 0;
+    ${SuperQuery().minWidth.sm.css`
+    font-size: 2em;
+    `}
+    ${SuperQuery().minWidth.md.css`
+      font-size: 2.25em;
       letter-spacing: -1.5px;
     `}
   }

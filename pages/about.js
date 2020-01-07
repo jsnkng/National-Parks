@@ -38,6 +38,8 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
             stateCode=''
           title='About'
           title__sub=''
+          title_as='about'
+          title_href='about'
         />
         <Content>
           <Col__Decorated xs={12}>
