@@ -152,7 +152,7 @@ export default Park
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
-  margin: 0 0 80px 0; 
+  margin: 0 0 4em 0; 
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};

@@ -110,10 +110,8 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin: 60px 0;
-  ${SuperQuery().minWidth.lg.css`
-    margin: 90px 0;
-  `}
+  margin: 4em 0;
+  
   h3 {
     display: block;
     color: ${({ theme }) => theme.colors.text};

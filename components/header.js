@@ -57,10 +57,7 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 100;
-  height: 60px;
-  ${SuperQuery().minWidth.lg.css`
-    height: 90px;
-  `}
+  height: 4em;
  
 
   a {
@@ -71,13 +68,13 @@ const Header = styled.header`
   }
   img.logo {
     position: absolute;
-    top: 8px;
-    right: 2px;
+    top: .625em;
+    right: .125em;
     cursor: pointer;
     border: none;
+    width: 36px;
     margin: .125em;
     padding: 0;
-    width: 36px;
     ${SuperQuery().minWidth.sm.css`
       width: 47px;
       margin: .25em;
@@ -92,13 +89,13 @@ const Header = styled.header`
   .title {
     display: block;
     float: left;
-    font-size: 1.25em;
+    font-size: 1.125em;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: .5em 0 0 30px;
+    margin: .625em 0 0 1.5em;
     ${SuperQuery().minWidth.md.css`
-    margin: 0 0 0 40px;
+    margin: 0 0 0 1.5em;
       font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
@@ -106,13 +103,13 @@ const Header = styled.header`
   .title--large {
     display: block;
     float: left;
-    font-size: 1.25em;
+    font-size: 1.125em;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
     margin: .925em 0 0 1.5em;
     ${SuperQuery().minWidth.md.css`
-    margin: 0 0 0 40px;
+    margin: 0 0 0 1.5em;
       font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
@@ -125,13 +122,12 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: .125em 0 0 30px;
+    margin: 0 0 0 1.925em;
     ${SuperQuery().minWidth.sm.css`
       line-height: 1.2;
-      margin: 0 0 0 40px;
+      margin: 0 0 0 1.5em;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: 0 0 0 40px;
       font-size: .875em;
       letter-spacing: -1px;
     `}
@@ -144,7 +140,7 @@ const Header = styled.header`
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 1em 3em 0 0;
+    margin: 1.125em 3em 0 0;
     ${SuperQuery().minWidth.sm.css`
       font-size: .9em;
     
