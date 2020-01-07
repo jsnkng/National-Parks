@@ -8,26 +8,33 @@ const Component = ({ router, title, title__sub, park, designation }) => {
   return (
     <Header>
       <Row__Decorated>
-        <Col xs={7}>
+        <Col xs={10}>
+          <Link href="/" passHref>
+            <a className="title" href="#">{title}</a>
+          </Link> 
+          <Link href="/" passHref>
+            <a className="title__sub" href="#">{title__sub}</a>
+          </Link> 
+          {/* <div>
+            <div className="park">{park}</div>
+            <a className="designation" href="#">{designation}</a>
+          </div> */}
+        </Col>
+        <Col xs={2}>
           { title && 
           <>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link> 
-          <Link href="/" passHref>
+          {/* <Link href="/" passHref>
               <a className="title" href="#">{title}</a>
           </Link> 
           <Link href="/" passHref>
               <a className="title__sub" href="#">{title__sub}</a>
-          </Link> 
+          </Link>  */}
           </> }
         </Col>
-        <Col xs={5}>
-          <div>
-            <div className="park">{park}</div>
-            <a className="designation" href="#">{designation}</a>
-          </div>
-        </Col>
+       
       </Row__Decorated> 
     </Header>
   )
@@ -43,7 +50,7 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   padding: 1em .375em;
-  z-index: 2220;
+  z-index: 100;
   min-height: 3.5em;
  
 
@@ -56,12 +63,12 @@ const Header = styled.header`
   img.logo {
     position: absolute;
     top: 5px;
-    left: 5px;
+    right: 5px;
     cursor: pointer;
     border: none;
     margin: .125em;
     padding: 0;
-    width: 37px;
+    width: 45px;
     ${SuperQuery().minWidth.sm.css`
       width: 47px;
       margin: .25em;
@@ -73,16 +80,16 @@ const Header = styled.header`
   .title {
     display: block;
     float: left;
-    font-size: 1em;
-    line-height: 1;
+    font-size: 1.375em;
+    line-height: .925;
     font-weight: 700;
     letter-spacing: -1px;
-      margin: -.25em 0 0 35px;
+      margin: -.25em 0 0 0;
     ${SuperQuery().minWidth.sm.css`
-      margin: -.125em 0 0 50px;
+      margin: -.125em 0 0 0;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 60px;
+      margin: -.125em 0 0 0;
       font-size: 1.25em;
       letter-spacing: -1.5px;
     `}
@@ -91,17 +98,17 @@ const Header = styled.header`
     display: block;
     float: left;
     clear: left;
-    font-size: .75em;
+    font-size: 1em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: -.125em 0 0 35px;
+    margin: .125em 0 0 0;
     ${SuperQuery().minWidth.sm.css`
       line-height: 1.2;
-      margin: -.125em 0 0 50px;
+      margin: -.125em 0 0 0;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 60px;
+      margin: -.125em 0 0 0;
       font-size: .875em;
       letter-spacing: -1px;
     `}

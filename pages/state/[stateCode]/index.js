@@ -43,12 +43,12 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
           <title>National Park Service Guide to {territories[stateCode][0]}</title>
         </Head>
         <Header 
-            park={territories[stateCode][0]}
+            park=''
             designation=''
             state=''
             stateCode={stateCode}
-          title='National Park Service'
-          title__sub='A State-by-State Guide'
+          title={territories[stateCode][0]}
+          title__sub=''
         />
         <Content>
         
@@ -81,10 +81,10 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
         </Row__Decorated>
         
         </Content>
-    
+{/*     
         <FindAPark__Container>
           <FindAPark router={router} />
-        </FindAPark__Container>
+        </FindAPark__Container> */}
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
@@ -111,7 +111,7 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin: 3.5em 0 0 0;
+  margin: 0;
   ${SuperQuery().minWidth.sm.css`
     margin: 3.75em 0 0 0;
   `}

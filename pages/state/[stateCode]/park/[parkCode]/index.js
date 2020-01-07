@@ -125,10 +125,10 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
-    
+{/*     
     <FindAPark__Container>
       <FindAPark router={router} />
-    </FindAPark__Container>
+    </FindAPark__Container> */}
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )

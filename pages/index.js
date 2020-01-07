@@ -33,16 +33,19 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
       <Head>
         <title>National Park Service</title>
       </Head>
-      <Header 
+      {/* <Header 
         park='Explore America'
         designation='US National Parks Guide'
         state=''
         stateCode={''}
         title='National Park Service'
         title__sub='A State-by-State Guide'
-      />
+      /> */}
     
       <FindAPark__Container>
+          <Link href="/" passHref>
+            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
+          </Link> 
         <FindAPark router={router} />
       </FindAPark__Container>
       <Content>
@@ -153,7 +156,18 @@ const FindAPark__Container = styled.div`
   background: ${({ theme }) => theme.colors.gradient_one};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
-  padding: 3.5em 0 0 0;
+  padding: .5em 0 0 0;
   margin: 0 0 -4em 0;
   height: 100vh;
+  img.logo {
+    position: absolute;
+    top: 1.125em;
+    right: 1.125em;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    
+  }
 `

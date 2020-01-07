@@ -37,7 +37,6 @@ const Component = () => {
         <h3>Find a Park</h3>
         <select value={`/state/${highlighted}/`} onChange={handleStateChange}>
           <option>By State</option>
-          <option>–––––––––––––––––</option>
           { Object.entries(states).map(([key, value]) => {
             return ( 
               <option     value={`/state/${key}/`} 
@@ -50,7 +49,6 @@ const Component = () => {
 
         <select value='' onChange={handleDesignationChange}>
           <option>By Designation</option>
-          <option>–––––––––––––––––</option>
           <option value='/designation/National%20Monument/'>
             National Monument
           </option>
