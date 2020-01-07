@@ -54,7 +54,6 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
         <Copyright />
       </Copyright__Container>
         </Content>
-      <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }
