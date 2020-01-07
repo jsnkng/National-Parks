@@ -60,7 +60,7 @@ const Map = styled.svg.attrs(props => ({
     stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.offbackground};
+    fill: ${({ theme }) => theme.colors.color_four};
     -webkit-transition: fill .4s ease;
     -moz-transition: fill .4s ease;
     -o-transition: fill .4s ease;

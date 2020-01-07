@@ -110,6 +110,12 @@ const Content = styled.main`
     ${SuperQuery().minWidth.sm.css`
     width: 90px;
     `}
+    ${SuperQuery().minWidth.md.css`
+    width: 100px;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+    width: 120px;
+    `}
   }
   h2 {
     margin: 0 1em 0 .5em;
