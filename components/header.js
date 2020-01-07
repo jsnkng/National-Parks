@@ -8,7 +8,7 @@ const Component = ({ router, title, title_href, title_as, title__sub, park, desi
   return (
     <Header>
       <Row__Decorated>
-        <Col xs={8}>
+        <Col xs={9}>
           <Link href={title_href} as={title_as}>
             <a className={title__sub === '' ? 'title--large' : 'title'} href="#">{title}</a>
           </Link> 
@@ -20,7 +20,7 @@ const Component = ({ router, title, title_href, title_as, title__sub, park, desi
             <a className="designation" href="#">{designation}</a>
           </div> */}
         </Col>
-        <Col xs={4}>
+        <Col xs={3}>
           { title && 
           <>
           <Link href="/" passHref>
@@ -51,7 +51,15 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.text};
   padding: 1em .375em;
   z-index: 100;
-  min-height: 3.5em;
+  height: 60px;
+    ${SuperQuery().minWidth.sm.css`
+  height: 70px;
+    `}
+    ${SuperQuery().minWidth.md.css`
+    `}
+    ${SuperQuery().minWidth.lg.css`
+  height: 90px;
+    `}
  
 
   a {
@@ -68,13 +76,16 @@ const Header = styled.header`
     border: none;
     margin: .125em;
     padding: 0;
-    width: 45px;
+    width: 40px;
     ${SuperQuery().minWidth.sm.css`
       width: 47px;
       margin: .25em;
     `}
     ${SuperQuery().minWidth.md.css`
       width: 52px;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      width: 70px;
     `}
   }
   .title {
@@ -101,12 +112,10 @@ const Header = styled.header`
     line-height: .925;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.125em 0 0 0;
-    ${SuperQuery().minWidth.sm.css`
-    font-size: 2em;
-    `}
+    margin: -.325em 0 0 0;
     ${SuperQuery().minWidth.md.css`
-      font-size: 2.25em;
+    margin: -.125em 0 0 0;
+      font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
   }
@@ -133,25 +142,38 @@ const Header = styled.header`
   .park {
     display: block;
     text-align:right;
-    font-size: 1em;
-    line-height: 1;
+    font-size: .875em;
+    line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.25em 2em 0 0;
+    margin: -.5em 2.75em 0 0;
+    ${SuperQuery().minWidth.sm.css`
+      font-size: .9em;
+    
+    `}
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.25em;
+      margin: -.25em 2.5em 0 0;
+      font-size: 1em;
+      letter-spacing: -1.5px;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      margin: -.25em 2.125em 0 0;
+      font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
   }
   .designation {
-    display: block;
+    display: none;
     text-align:right;
     font-size: .75em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
     margin: -.125em 3em 0 0;
+    ${SuperQuery().minWidth.sm.css`
+    `}
     ${SuperQuery().minWidth.md.css`
+      display: none;
       font-size: .875em;
       letter-spacing: -1px;
     `}

@@ -11,7 +11,7 @@ const Component = ({ themeName, setThemeName }) => {
       {/* <Copyright__Container>
         <Copyright />
       </Copyright__Container> */}
-
+      <Buttons>
       <Button__Container>
         <Link href='/'>Home</Link>
       </Button__Container>
@@ -27,7 +27,7 @@ const Component = ({ themeName, setThemeName }) => {
       <Button__Container>
         <Link href='/about'>About</Link>
       </Button__Container>
-
+</Buttons>
       {/* <ThemeSwitcher__Container>
         <ThemeSwitcher id='themeSwitcher' themeName={themeName} setThemeName={setThemeName} />
       </ThemeSwitcher__Container> */}
@@ -47,8 +47,24 @@ const Footer = styled.footer`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
+  ${SuperQuery().minWidth.sm.css`
+  height: 70px;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+  height: 80px;
+  `}
 `
 
+const Buttons = styled.div`
+  text-align:center;
+  width: 86%;
+  margin: 0 auto;
+  ${SuperQuery().minWidth.sm.css`
+  `}
+  ${SuperQuery().minWidth.lg.css`
+  `}
+
+`
 const Button__Container = styled.div`
   display:block;
   float: left;
@@ -57,11 +73,10 @@ const Button__Container = styled.div`
   padding:  .5em 0 3em 0;
   margin: 1em;
   ${SuperQuery().minWidth.sm.css`
-    padding:  2em 2em 3em 2em;
+    padding: .5em .5em 2em .5em;
   `}
   ${SuperQuery().minWidth.lg.css`
-    font-size: .75em;
-    padding: .25em;
+    font-size: 1em;
   `}
 
   a {
