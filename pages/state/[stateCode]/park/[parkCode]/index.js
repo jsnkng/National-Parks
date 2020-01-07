@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
@@ -20,6 +21,7 @@ import Places from '../../../../../components/places'
 import SlideShow from '../../../../../components/slideshow'
 import VisitorInfo from '../../../../../components/visitorinfo'
 import VisitorCenters from '../../../../../components/visitorcenters'
+import FindAPark from '../../../../../components/findapark'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
@@ -37,7 +39,7 @@ const Park = ({
   campgrounds }) => {
   
   const [loaded, setLoaded] = useState(false)
-  const [highlighted, setHighlighted] = useState(null)
+  const router = useRouter()
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
   visitorcenters !== undefined && visitorcenters.length != 0 &&
   visitorcenters.slice(0).map((item) => {
@@ -123,6 +125,10 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
+    
+    <FindAPark__Container>
+      <FindAPark router={router} />
+    </FindAPark__Container>
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
@@ -158,4 +164,16 @@ const Content = styled.main`
       text-decoration: underline;
     }
   }
+`
+
+const FindAPark__Container = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.offbackground};
+  color: ${({ theme }) => theme.colors.text};
+  z-index: 1000;
+  padding: 3.5em 0 0 0;
+  margin: 0 0 -4em 0;
 `

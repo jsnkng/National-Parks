@@ -1,48 +1,34 @@
+import React from 'react'
+import styled from 'styled-components'
 import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Component = props => {
+const Component = ({ router, title, title__sub, park, designation }) => {
   return (
     <Header>
       <Row__Decorated>
         <Col xs={7}>
-        {/* { props.manageHistory &&
-        <button onClick={() => props.manageHistory()}>{`<`}</button>
-      } */}
-          { props.title && 
+          { title && 
           <>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link> 
           <Link href="/" passHref>
-              <a className="title" href="#">{props.title}</a>
+              <a className="title" href="#">{title}</a>
           </Link> 
           <Link href="/" passHref>
-              <a className="title__sub" href="#">{props.title__sub}</a>
+              <a className="title__sub" href="#">{title__sub}</a>
           </Link> 
-
-        {/* { props.states !== undefined &&
-        <div>
-          <a className="territories" href="#">{props.states.split(',').join(' / ')}</a>
-          </div>
-        } */}
-          </>
-        }
+          </> }
         </Col>
-        {/* { props.states !== undefined &&
-          <Col xs={2}>
-          <a className="designation" href="#">{props.states.split(',').join(' ')}</a>
-          </Col>
-        } */}
         <Col xs={5}>
           <div>
-            <div className="park">{props.park}</div>
-            <a className="designation" href="#">{props.designation}</a>
+            <div className="park">{park}</div>
+            <a className="designation" href="#">{designation}</a>
           </div>
         </Col>
-      </Row__Decorated>
+      </Row__Decorated> 
     </Header>
   )
 }
@@ -50,14 +36,14 @@ const Component = props => {
 export default Component
 
 const Header = styled.header`
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   padding: 1em .375em;
-  z-index: 120;
+  z-index: 2220;
   min-height: 3.5em;
  
 

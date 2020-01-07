@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
@@ -11,9 +12,11 @@ import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
+import FindAPark from '../../../components/findapark'
 
 const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
   const [loaded, setLoaded] = useState(false)
+  const router = useRouter()
   // const markers = []
   
   // data.slice(0).map((item) => {
@@ -74,6 +77,10 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
         </Row__Decorated>
    
         </Content>
+    
+    <FindAPark__Container>
+      <FindAPark router={router} />
+    </FindAPark__Container>
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
@@ -131,4 +138,16 @@ const Col__Decorated = styled(Col)`
   position:relative;
   width: 100%;
   padding: 0;
+`
+
+const FindAPark__Container = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.offbackground};
+  color: ${({ theme }) => theme.colors.text};
+  z-index: 1000;
+  padding: 3.5em 0 0 0;
+  margin: 0 0 -4em 0;
 `

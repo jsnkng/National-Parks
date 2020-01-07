@@ -15,10 +15,11 @@ import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 import DesignationList from '../components/designationlist'
+import FindAPark from '../components/findapark'
 
-const Home = ({ router, parks, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) => {
   const [loaded, setLoaded] = useState(false)
-
+  const router = useRouter()
   useEffect(() => {
     setLoaded(true)
     pageTransitionReadyToEnter()
@@ -40,6 +41,10 @@ const Home = ({ router, parks, themeName, setThemeName, pageTransitionReadyToEnt
         title='National Park Service'
         title__sub='A State-by-State Guide'
       />
+    
+      <FindAPark__Container>
+        <FindAPark router={router} />
+      </FindAPark__Container>
       <Content>
     
         <Row__Decorated>
@@ -138,4 +143,16 @@ const MapDiagram__Wrapper = styled.div`
     padding: 2em;
   `}
 
+`
+
+const FindAPark__Container = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.offbackground};
+  color: ${({ theme }) => theme.colors.text};
+  z-index: 1000;
+  padding: 3.5em 0 0 0;
+  margin: 0 0 -4em 0;
 `

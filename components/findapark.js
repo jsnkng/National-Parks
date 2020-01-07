@@ -173,39 +173,28 @@ const FindAPark = styled.div`
  
   h3 {
     text-align: center;
-    width: 100%;
-    font-size: 2em;
+    font-size: 2.5em;
     line-height: 1;
     font-weight: 400;
     letter-spacing: -1px;
+    margin: .5em auto 0 auto;
+    width: 60%;
     
     ${SuperQuery().minWidth.md.css`
       text-align: left;
-      font-size: 1.25em;
-      margin: .75em 1.25em;
-    `} 
-    ${SuperQuery().minWidth.lg.css`
-      text-align: left;
-      font-size: 1.5em;
-      margin: 1.25em 1.75em .75em 1.75em;
+      font-size: 1.75em;
+      margin: 2.5em auto 0 auto;
     `} 
   }
 
   select {
     display: block;
-    font-size: 1.75em;
+    font-size: 1.5em;
     outline: none;
     border: none;
-    margin: .75em auto .25em auto;
+    margin: 1em auto;
     width: 60%;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.25em;
-      margin: .75em 1.25em;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 1.5em;
-      margin: .25em 1.75em .75em 1.75em;
-    `}
+    
   }
 `
 

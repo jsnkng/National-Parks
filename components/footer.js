@@ -1,15 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import FindAPark from '../components/findapark'
 import Copyright from '../components/copyright'
 import ThemeSwitcher from '../components/themeswitcher'
 
-const Component = ({ router, themeName, setThemeName }) => {
+const Component = ({ themeName, setThemeName }) => {
   return (
     <Footer>
-      <FindAPark__Container>
-        <FindAPark router={router} />
-      </FindAPark__Container>
       <Copyright__Container>
         <Copyright />
       </Copyright__Container>
@@ -30,15 +26,6 @@ const Footer = styled.footer`
   margin: 60px 0 0 0;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
-`
-const FindAPark__Container = styled.div`
-  position: relative;
-  bottom: 60px;
-  left: 0;
-  right: 0;
-  background-color: ${({ theme }) => theme.colors.offbackground};
-  color: ${({ theme }) => theme.colors.text};
-  z-index: 1000;
 `
 const Copyright__Container = styled.div`
   position: absolute;
