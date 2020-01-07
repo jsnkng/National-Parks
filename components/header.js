@@ -74,7 +74,7 @@ const Header = styled.header`
       margin: .25em;
     `}
     ${SuperQuery().minWidth.md.css`
-      width: 57px;
+      width: 52px;
     `}
   }
   .title {

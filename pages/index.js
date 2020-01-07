@@ -42,14 +42,14 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
         title__sub='A State-by-State Guide'
       /> */}
     
+      <Content>
+    
       <FindAPark__Container>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link> 
         <FindAPark router={router} />
       </FindAPark__Container>
-      <Content>
-    
         {/* <Row__Decorated>
         {
           parks.slice(0).map((item, i=0) => {
@@ -97,55 +97,27 @@ export default Home
 const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
-    margin: 3.5em 0 0 0;
-  ${SuperQuery().minWidth.sm.css`
-    margin: 3.75em 0 0 0;
-  `}
-  ${SuperQuery().minWidth.md.css`
-    margin: 4em 0 0 0;
-  `}
-  
-  p {
-    font-size: 1.25em;
-    margin: 1em 3.75em 1em 2.4em;
-  }
-  
-  h2 {
-    display: block;
-    font-size: 1.5em;
-    line-height: 1.4;
-    font-weight: 200;
-    letter-spacing: -.5px;
-    margin: 1em .25em 1.5em 1em;
+  margin: 0;
+  img.logo {
+    position: absolute;
+    top: 1.125em;
+    right: 1.125em;
+    cursor: pointer;
     border: none;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1em;
-      margin: 1em .25em 1em 1.5em;
-    `} 
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 1.375em;
-      margin: 1em .25em 1em 2em;
-    `} 
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    ${SuperQuery().minWidth.sm.css`
+    width: 90px;
+    `}
+  }
+  h2 {
+    margin: 0 1em 0 .5em;
+    ${SuperQuery().minWidth.sm.css`
+      margin: .5em 0 0 .25em;
+    `}
   }
   
-
-
-`
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-  
-`
-const Col__Decorated = styled(Col)`
-  position: relative;
-  padding: 0;
-`
-const MapDiagram__Wrapper = styled.div`
-  padding: 1em 1em 2em 2em;
-  ${SuperQuery().minWidth.md.css`
-    padding: 2em;
-  `}
-
 `
 
 const FindAPark__Container = styled.div`
@@ -159,15 +131,9 @@ const FindAPark__Container = styled.div`
   padding: .5em 0 0 0;
   margin: 0 0 -4em 0;
   height: 100vh;
-  img.logo {
-    position: absolute;
-    top: 1.125em;
-    right: 1.125em;
-    cursor: pointer;
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: 80px;
-    
-  }
+  
+  ${SuperQuery().minWidth.sm.css`
+    padding: 4.75em 0 0 0;
+  `}
 `
+
