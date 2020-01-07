@@ -57,20 +57,20 @@ const Map = styled.svg.attrs(props => ({
       pointer-events: fill;
   }
   path {
-    stroke: ${({ theme }) => theme.colors.color_two};
+    stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.spinner};
+    fill: ${({ theme }) => theme.colors.offbackground};
     -webkit-transition: fill .4s ease;
     -moz-transition: fill .4s ease;
     -o-transition: fill .4s ease;
     transition: fill .4s ease;	 
   }
   path:hover, circle:hover {
-    stroke: ${({ theme }) => theme.colors.color_one};
+    stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.color_one};
+    fill: ${({ theme }) => theme.colors.color_two};
     cursor: pointer;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -79,9 +79,9 @@ const Map = styled.svg.attrs(props => ({
   }
   path.highlight {
     cursor: default;
-    stroke: ${({ theme }) => theme.colors.color_one};
+    stroke: ${({ theme }) => theme.colors.color_five};
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.color_one};
+    fill: ${({ theme }) => theme.colors.color_two};
     stroke-width:1px;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
@@ -90,7 +90,7 @@ const Map = styled.svg.attrs(props => ({
     cursor: pointer;
   }
   path.nohighlight{
-    stroke: ${({ theme }) => theme.colors.color_one};
+    stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
     fill: ${({ theme }) => theme.colors.color_four};
@@ -102,7 +102,7 @@ const Map = styled.svg.attrs(props => ({
   }
   #path67 {
     fill: none !important;
-    stroke: ${({ theme }) => theme.colors.color_three} !important;
+    stroke: ${({ theme }) => theme.colors.color_five} !important;
     cursor: default;
   }
   path#path67:hover {

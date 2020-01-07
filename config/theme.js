@@ -36,13 +36,13 @@ const themes = {
   dayTheme: {
     background: '#ededed',
     box_background: '#ffffff',
-    offbackground: '#d1d1d1',
+    offbackground: '#d2d1c7',
     text: '#32120d',
     color_one: '#5c2217',
     color_two: '#ba471e',
     color_three: '#ec8217',
     color_four: '#b1b0a7',
-    color_five: '#b1b0a7',
+    color_five: '#FCF8F1',
     trans_back: 'rgba(245,245,245,0.8)',
     spinner: 'rgba(255,255,255,.2)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'

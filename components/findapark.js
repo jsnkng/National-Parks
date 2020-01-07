@@ -27,14 +27,14 @@ const Component = () => {
   <FindAPark>
     <Row__Decorated>
       <Col__Decorated xs={12} sm={12} md={4}>
-        {/* <h2>Explore America’s National Parks</h2> */}
-        <h3>O beautiful for spacious skies,<br />
+        <h2>Explore America’s National Parks</h2>
+        {/* <h3>O beautiful for spacious skies,<br />
             For amber waves of grain,<br />
             For purple mountain majesties<br />
             Above the fruited plain!<br />
-            America! America!</h3>
+            America! America!</h3> */}
        
-        <h4>Find a Park</h4>
+        <h3>Find a Park</h3>
         <select value={`/state/${highlighted}/`} onChange={handleStateChange}>
           <option>By State</option>
           <option>–––––––––––––––––</option>
@@ -171,31 +171,46 @@ const FindAPark = styled.div`
   z-index: 120;
   padding: 1.5em .75em;
  
-  h3 {
-    font-size: 2em;
+  ${'' /* h3 {
+    font-size: 1.5em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -1px;
-    margin: 1.5em 0 1em 1em;
+    margin: .25em auto;
     width: 95%
     ${SuperQuery().minWidth.md.css`
+      margin: 1.5em 0 1em 1em;
       font-size: 1.25em;
     `} 
+  } */}
+  h2 {
+      letter-spacing: -1px;
+      font-size: 2.625em;
+      margin: .25em 0 0 .5em;
+      padding: 0 0 .75em 0;
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.625em;
+      margin: .75em 0 0 .25em;
+    `} 
+    ${SuperQuery().minWidth.lg.css`
+      font-size: 2.25em;
+      margin: .25em 0 0 .5em;
+    `} 
   }
-
-  h4 {
-    text-align: center;
-    font-size: 2.5em;
+  h3 {
+    text-align: left;
+    font-size: 2.25em;
     line-height: 1;
     font-weight: 400;
     letter-spacing: -1px;
-    margin: 1.5em 0 0 1.5em;
-    width: 78%
-    
+    margin: 1.5em 0 .5em .5em;
     ${SuperQuery().minWidth.md.css`
-      text-align: left;
+      font-size: 1.625em;
+      margin: .75em 0 0 .25em;
+    `} 
+    ${SuperQuery().minWidth.lg.css`
       font-size: 1.75em;
-      margin: 1.5em 0 0 1.5em;
+      margin: 1em 0 0 .5em;
     `} 
   }
 
@@ -204,9 +219,18 @@ const FindAPark = styled.div`
     font-size: 1.5em;
     outline: none;
     border: none;
-    margin: 1em auto;
-    width: 75%
-    
+    margin: .5em 0 .75em .625em;
+    padding: .125em;
+    width: 90%;
+    ${SuperQuery().minWidth.md.css`
+    font-size: 1.25em;
+      margin: .5em 0 .75em .25em;
+    `} 
+    ${SuperQuery().minWidth.lg.css`
+      padding: .25em;
+      font-size: 1.75em;
+      margin: .5em 0 0 .5em;
+    `} 
   }
 `
 
@@ -220,5 +244,8 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
-  margin: 2em 0 1em 0;
+  padding: 1em .25em 1em 1em;  
+${SuperQuery().minWidth.md.css`
+  padding: 1em 0 0 1em;    
+`} 
 `
