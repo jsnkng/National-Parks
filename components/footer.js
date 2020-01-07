@@ -15,25 +15,39 @@ const Component = ({ themeName, setThemeName }) => {
         <Copyright />
       </Copyright__Container> */}
       <Buttons>
-      <Button__Container>
-        <MyHome /><br />
-        <Link href='/'>Home</Link>
-      </Button__Container>
 
-      <Button__Container>
-        <MyCompass /><br />
-        <Link href='/states'>States</Link>
-      </Button__Container>
-
-      <Button__Container>
-        <MyArch /><br />
-        <Link href='/designations'>Designations</Link>
-      </Button__Container>
-
-      <Button__Container>
-        <MyLab /><br />
-        <Link href='/about'>About</Link>
-      </Button__Container>
+      <Link href='/' passHref>
+        <a>
+          <Button__Container>
+            <MyHome /><br />
+            Home
+          </Button__Container>
+        </a>
+      </Link>
+      <Link href='/states' passhref>
+        <a>
+          <Button__Container>
+            <MyCompass /><br />
+            States
+          </Button__Container>
+        </a>
+      </Link>
+      <Link href='/designations' passhref>
+        <a>
+          <Button__Container>
+            <MyArch /><br />
+            Designations
+          </Button__Container>
+        </a>
+      </Link>
+      <Link href='/about' passhref>
+        <a>
+          <Button__Container>
+            <MyLab /><br />
+            About
+          </Button__Container>
+        </a>
+      </Link>
 </Buttons>
       {/* <ThemeSwitcher__Container>
         <ThemeSwitcher id='themeSwitcher' themeName={themeName} setThemeName={setThemeName} />
@@ -46,21 +60,25 @@ export default Component
 const MyHome = styled(Home)`
   color: black;
   width: 25px;
+  height: 25px;
   text-align:center;
 `
 const MyArch = styled(Arch)`
   color: black;
   width: 25px;
+  height: 25px;
   text-align:center;
 `
 const MyCompass = styled(Compass)`
   color: black;
   width: 20px;
+  height: 25px;
   text-align:center;
 `
 const MyLab = styled(Lab)`
   color: black;
   width: 23px;
+  height: 25px;
   text-align:center;
 `
 const Footer = styled.footer`
