@@ -21,12 +21,12 @@ const Component = ({ themeName, setThemeName }) => {
 export default Component
 
 const Footer = styled.footer`
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 0;
-  background-color: ${({ theme }) => theme.colors.trans_back};
+  margin: -55px 0 0 0;
+  ${'' /* background-color: ${({ theme }) => theme.colors.trans_back}; */}
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
   height: 55px;

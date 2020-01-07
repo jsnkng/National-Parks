@@ -67,7 +67,7 @@ const Footer = styled.footer`
   right: 0;
   margin: 0;
   height: 70px;
-  background-color: ${({ theme }) => theme.colors.trans_back};
+  ${'' /* background-color: ${({ theme }) => theme.colors.trans_back}; */}
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
   ${SuperQuery().minWidth.sm.css`

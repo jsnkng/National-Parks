@@ -56,17 +56,11 @@ const Header = styled.header`
   right: 0;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
-  padding: 1em .375em;
   z-index: 100;
   height: 60px;
-    ${SuperQuery().minWidth.sm.css`
-  height: 70px;
-    `}
-    ${SuperQuery().minWidth.md.css`
-    `}
-    ${SuperQuery().minWidth.lg.css`
-  height: 90px;
-    `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 90px;
+  `}
  
 
   a {
@@ -77,13 +71,13 @@ const Header = styled.header`
   }
   img.logo {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 2px;
     cursor: pointer;
     border: none;
     margin: .125em;
     padding: 0;
-    width: 40px;
+    width: 36px;
     ${SuperQuery().minWidth.sm.css`
       width: 47px;
       margin: .25em;
@@ -98,30 +92,27 @@ const Header = styled.header`
   .title {
     display: block;
     float: left;
-    font-size: 1.375em;
-    line-height: .925;
+    font-size: 1.25em;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-      margin: -.25em 0 0 40px;
-    ${SuperQuery().minWidth.sm.css`
-      margin: -.125em 0 0 40px;
-    `}
+    margin: .5em 0 0 30px;
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 40px;
-      font-size: 1.25em;
+    margin: 0 0 0 40px;
+      font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
   }
   .title--large {
     display: block;
     float: left;
-    font-size: 1.5em;
+    font-size: 1.25em;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.325em 0 0 40px;
+    margin: .925em 0 0 1.5em;
     ${SuperQuery().minWidth.md.css`
-    margin: -.125em 0 0 40px;
+    margin: 0 0 0 40px;
       font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
@@ -130,11 +121,11 @@ const Header = styled.header`
     display: block;
     float: left;
     clear: left;
-    font-size: 1em;
+    font-size: .875em;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: .125em 0 0 0;
+    margin: .125em 0 0 30px;
     ${SuperQuery().minWidth.sm.css`
       line-height: 1.2;
       margin: 0 0 0 40px;
@@ -149,11 +140,11 @@ const Header = styled.header`
   .park {
     display: block;
     text-align:right;
-    font-size: .875em;
+    font-size: .75em;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.5em 2.75em 0 0;
+    margin: 1em 3em 0 0;
     ${SuperQuery().minWidth.sm.css`
       font-size: .9em;
     
@@ -208,8 +199,8 @@ const Header = styled.header`
 
 const Back__Container = styled.div`
   position: absolute;
-  top: 12px; 
-  left: 10px;
+  top: 0; 
+  left: 0;
   
 `
 
