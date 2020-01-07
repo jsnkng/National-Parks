@@ -45,9 +45,9 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
       <Content>
     
       <FindAPark__Container>
-          <Link href="/" passHref>
-            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          </Link> 
+        <Link href="/" passHref>
+          <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
+        </Link> 
         <FindAPark router={router} />
       </FindAPark__Container>
         {/* <Row__Decorated>
@@ -77,7 +77,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
 
         </Row__Decorated> */}
       </Content>
-      <Footer router={router} themeName={themeName} setThemeName={setThemeName} />
+      <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }
@@ -98,6 +98,7 @@ const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
   margin: 0;
+  height: 100vh;
   img.logo {
     position: absolute;
     top: 1.125em;

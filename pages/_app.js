@@ -9,7 +9,6 @@ import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
 import { slide as Menu } from 'react-burger-menu'
 import ThemeSwitcher from '../components/themeswitcher'
-import Footer from '../components/footer'
 
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
@@ -86,8 +85,6 @@ const MyApp = ({ router, Component, pageProps }) => {
       >
         <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} key={router.asPath} />
       </PageTransition>
-
-      <Footer themeName={themeName} setThemeName={setThemeName} />
     </ThemeProvider>
     </>
   )
