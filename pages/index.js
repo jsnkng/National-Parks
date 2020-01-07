@@ -95,7 +95,7 @@ Home.pageTransitionDelayEnter = true
 export default Home
 
 const Content = styled.main`
-  position:static;
+  position:fixed;
   top: 0;
   left: 0;
   color: ${({ theme }) => theme.colors.text};
