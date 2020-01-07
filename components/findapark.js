@@ -182,8 +182,9 @@ const FindAPark = styled.div`
   h2 {
       letter-spacing: -1px;
       font-size: 2.625em;
+      letter-spacing: -1.5px;
       margin: .25em 0 0 .5em;
-      padding: 0 0 .75em 0;
+      padding: 0 0 .5em 0;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.625em;
       margin: .75em 0 0 .25em;
@@ -199,7 +200,7 @@ const FindAPark = styled.div`
     line-height: 1;
     font-weight: 400;
     letter-spacing: -1px;
-    margin: 1.5em 0 .5em .5em;
+    margin: .5em 0 .5em .5em;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.625em;
       margin: .75em 0 0 .25em;
@@ -236,7 +237,7 @@ const Row__Decorated = styled(Row)`
 `
 
 const Col__Decorated = styled(Col)`
-  position: relative;
+  padding: 0;
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`

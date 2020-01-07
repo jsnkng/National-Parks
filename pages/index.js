@@ -83,13 +83,16 @@ export default Home
 
 const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.gradient_one};
   height: 100vh;
+
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   img.logo {
     position: absolute;
     top: 1.125em;
     right: 1.125em;
-    width: 80px;
+    width: 70px;
     ${SuperQuery().minWidth.sm.css`
     width: 90px;
     `}
@@ -114,10 +117,8 @@ const FindAPark__Container = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background: ${({ theme }) => theme.colors.gradient_one};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
-  padding: .5em 0 0 0;
   height: 100vh;
   
   ${SuperQuery().minWidth.sm.css`
