@@ -82,9 +82,9 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
         
         </Content>
     
-    <FindAPark__Container>
-      <FindAPark router={router} />
-    </FindAPark__Container>
+        <FindAPark__Container>
+          <FindAPark router={router} />
+        </FindAPark__Container>
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )

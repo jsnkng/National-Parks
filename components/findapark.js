@@ -220,5 +220,5 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
-  margin: 2em 0 1em .5em;
+  margin: 2em 0 1em 0;
 `
