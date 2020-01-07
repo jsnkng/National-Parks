@@ -47,7 +47,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
       </FindAPark__Container>
       <Content>
     
-        <Row__Decorated>
+        {/* <Row__Decorated>
         {
           parks.slice(0).map((item, i=0) => {
             i++
@@ -72,7 +72,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
           }
 
 
-        </Row__Decorated>
+        </Row__Decorated> */}
       </Content>
       <Footer router={router} themeName={themeName} setThemeName={setThemeName} />
       </>
@@ -155,4 +155,5 @@ const FindAPark__Container = styled.div`
   z-index: 1000;
   padding: 3.5em 0 0 0;
   margin: 0 0 -4em 0;
+  height: 100vh;
 `

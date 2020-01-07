@@ -154,4 +154,5 @@ const FindAPark__Container = styled.div`
   background: ${({ theme }) => theme.colors.gradient_one};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
+  height: 87vh;
 `
