@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
 import Copyright from '../components/copyright'
 import ThemeSwitcher from '../components/themeswitcher'
@@ -6,12 +7,29 @@ import ThemeSwitcher from '../components/themeswitcher'
 const Component = ({ themeName, setThemeName }) => {
   return (
     <Footer>
-      <Copyright__Container>
+      {/* <Copyright__Container>
         <Copyright />
-      </Copyright__Container>
-      <ThemeSwitcher__Container>
+      </Copyright__Container> */}
+
+      <Button__Container>
+        <Link href='/'>Home</Link>
+      </Button__Container>
+
+      <Button__Container>
+        <Link href='/states'>States</Link>
+      </Button__Container>
+
+      <Button__Container>
+        <Link href='/designations'>Designations</Link>
+      </Button__Container>
+
+      <Button__Container>
+        <Link href='/about'>About</Link>
+      </Button__Container>
+
+      {/* <ThemeSwitcher__Container>
         <ThemeSwitcher id='themeSwitcher' themeName={themeName} setThemeName={setThemeName} />
-      </ThemeSwitcher__Container>
+      </ThemeSwitcher__Container> */}
     </Footer>
   )
 }
@@ -19,13 +37,14 @@ const Component = ({ themeName, setThemeName }) => {
 export default Component
 
 const Footer = styled.footer`
-  position: relative;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 60px 0 0 0;
+  margin: 0;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
+  z-index: 1000;
 `
 const Copyright__Container = styled.div`
   position: absolute;
@@ -40,4 +59,11 @@ const ThemeSwitcher__Container = styled.div`
   width: 52px;
   height: 28px;
   z-index: 1000;
+`
+const Button__Container = styled.div`
+  display:block;
+  float: left;
+  height:2em;
+  height: 28px;
+  padding:  2em 2em 3em 2em;
 `
