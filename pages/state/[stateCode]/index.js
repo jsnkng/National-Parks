@@ -43,8 +43,8 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
           <title>National Park Service Guide to {territories[stateCode][0]}</title>
         </Head>
         <Header 
-            park=''
-            designation=''
+            park='National Park Service'
+            designation='A State-by-State Guide'
             state=''
             stateCode={stateCode}
           title={territories[stateCode][0]}

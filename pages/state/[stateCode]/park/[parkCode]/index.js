@@ -81,8 +81,8 @@ const Park = ({
           <title>{states[stateCode][0]} | {park.name} {park.designation}</title>
         </Head>
         <Header 
-          park={territory}
-          designation=''
+            park='National Park Service'
+            designation='A State-by-State Guide'
           state={states[stateCode][0]}
           stateCode={stateCode}
           states={park.states}

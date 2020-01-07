@@ -8,7 +8,7 @@ const Component = ({ router, title, title_href, title_as, title__sub, park, desi
   return (
     <Header>
       <Row__Decorated>
-        <Col xs={10}>
+        <Col xs={8}>
           <Link href={title_href} as={title_as}>
             <a className={title__sub === '' ? 'title--large' : 'title'} href="#">{title}</a>
           </Link> 
@@ -20,18 +20,18 @@ const Component = ({ router, title, title_href, title_as, title__sub, park, desi
             <a className="designation" href="#">{designation}</a>
           </div> */}
         </Col>
-        <Col xs={2}>
+        <Col xs={4}>
           { title && 
           <>
           <Link href="/" passHref>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           </Link> 
-          {/* <Link href="/" passHref>
-              <a className="title" href="#">{title}</a>
+          <Link href="/" passHref>
+              <a className="park" href="#">{park}</a>
           </Link> 
           <Link href="/" passHref>
-              <a className="title__sub" href="#">{title__sub}</a>
-          </Link>  */}
+              <a className="designation" href="#">{designation}</a>
+          </Link> 
           </> }
         </Col>
        
@@ -101,7 +101,7 @@ const Header = styled.header`
     line-height: .925;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0;
+    margin: -.125em 0 0 0;
     ${SuperQuery().minWidth.sm.css`
     font-size: 2em;
     `}
@@ -137,7 +137,7 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.25em 0 0 0;
+    margin: -.25em 2em 0 0;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.25em;
       letter-spacing: -1.5px;
@@ -150,7 +150,7 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: -.125em 0 0 0;
+    margin: -.125em 3em 0 0;
     ${SuperQuery().minWidth.md.css`
       font-size: .875em;
       letter-spacing: -1px;
