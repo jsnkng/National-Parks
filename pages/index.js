@@ -24,7 +24,6 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
     setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
-
   if (!loaded) {
     return null
   } else {
@@ -95,6 +94,9 @@ Home.pageTransitionDelayEnter = true
 export default Home
 
 const Content = styled.main`
+
+-ms-touch-action: none;
+touch-action: none;
   position:fixed;
   top: 0;
   left: 0;
