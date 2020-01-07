@@ -18,8 +18,6 @@ function handleDesignationChange(e) {
 
 const Component = () => {
   const router = useRouter()
-  console.log('router', router)
-  console.log('Router', Router)
   const [highlighted, setHighlighted] = useState('')
 
 

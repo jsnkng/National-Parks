@@ -46,6 +46,8 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
             stateCode=''
           title={designation}
           title__sub=''
+          title_as={`/designation/${designation}/`}
+          title_href='/designation/[designation]'
         />
         <Content>
         <Row__Decorated>

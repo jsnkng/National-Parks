@@ -30,48 +30,36 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =>
     return (
       <>
       <Head>
-        <title>National Park Service</title>
+        <title>Explore America’s National Parks</title>
       </Head>
-      {/* <Header 
-        park='Explore America'
-        designation='US National Parks Guide'
-        state=''
-        stateCode={''}
-        title='National Park Service'
-        title__sub='A State-by-State Guide'
-      /> */}
-    
       <Content>
-    
-      <FindAPark__Container>
-        <Link href="/" passHref>
+        <FindAPark__Container>
           <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-        </Link> 
-        <FindAPark router={router} />
-      </FindAPark__Container>
-        {/* <Row__Decorated>
-        {
-          parks.slice(0).map((item, i=0) => {
-            i++
-            return(
-              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.id}>
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${item.states.split(',')[0].toLowerCase()}/park/${item.parkCode}`} passHref>
-                  <a>
-                    <ParkBanner 
-                      backgroundURL={item.images === undefined || item.images.length == 0 
-                        ? "/noimage.jpg" 
-                        : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
-                      title={item.name}
-                      subtitle={item.designation}
-                      states={item.states}
-                    />
-                  </a>
-                </Link>
-              </Col__Decorated>
-              
-            )
-          })
-          }
+          <FindAPark router={router} />
+        </FindAPark__Container>
+          {/* <Row__Decorated>
+          {
+            parks.slice(0).map((item, i=0) => {
+              i++
+              return(
+                <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.id}>
+                  <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${item.states.split(',')[0].toLowerCase()}/park/${item.parkCode}`} passHref>
+                    <a>
+                      <ParkBanner 
+                        backgroundURL={item.images === undefined || item.images.length == 0 
+                          ? "/noimage.jpg" 
+                          : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
+                        title={item.name}
+                        subtitle={item.designation}
+                        states={item.states}
+                      />
+                    </a>
+                  </Link>
+                </Col__Decorated>
+                
+              )
+            })
+            }
 
 
         </Row__Decorated> */}
@@ -94,24 +82,13 @@ Home.pageTransitionDelayEnter = true
 export default Home
 
 const Content = styled.main`
-
--ms-touch-action: none;
-touch-action: none;
-  position:fixed;
-  top: 0;
-  left: 0;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
-  margin: 0;
   height: 100vh;
   img.logo {
     position: absolute;
     top: 1.125em;
     right: 1.125em;
-    cursor: pointer;
-    border: none;
-    margin: 0;
-    padding: 0;
     width: 80px;
     ${SuperQuery().minWidth.sm.css`
     width: 90px;
@@ -141,11 +118,10 @@ const FindAPark__Container = styled.div`
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
   padding: .5em 0 0 0;
-  margin: 0 0 -4em 0;
   height: 100vh;
   
   ${SuperQuery().minWidth.sm.css`
-    padding: 4.75em 0 0 0;
+    padding: 5em 0 0 0;
   `}
 `
 

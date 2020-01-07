@@ -3,12 +3,19 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import Back from '../components/back'
+import { useRouter } from 'next/router'
+const Component = ({ title, title_href, title_as, title__sub, park, designation }) => {
+  const router = useRouter()
 
-const Component = ({ router, title, title_href, title_as, title__sub, park, designation }) => {
+  const goBack = () => router.back()
   return (
     <Header>
       <Row__Decorated>
         <Col xs={9}>
+          <Back__Container>
+          <Back />
+          </Back__Container>
           <Link href={title_href} as={title_as}>
             <a className={title__sub === '' ? 'title--large' : 'title'} href="#">{title}</a>
           </Link> 
@@ -70,8 +77,8 @@ const Header = styled.header`
   }
   img.logo {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
     cursor: pointer;
     border: none;
     margin: .125em;
@@ -95,12 +102,12 @@ const Header = styled.header`
     line-height: .925;
     font-weight: 700;
     letter-spacing: -1px;
-      margin: -.25em 0 0 0;
+      margin: -.25em 0 0 40px;
     ${SuperQuery().minWidth.sm.css`
-      margin: -.125em 0 0 0;
+      margin: -.125em 0 0 40px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 0;
+      margin: -.125em 0 0 40px;
       font-size: 1.25em;
       letter-spacing: -1.5px;
     `}
@@ -109,12 +116,12 @@ const Header = styled.header`
     display: block;
     float: left;
     font-size: 1.5em;
-    line-height: .925;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.325em 0 0 0;
+    margin: -.325em 0 0 40px;
     ${SuperQuery().minWidth.md.css`
-    margin: -.125em 0 0 0;
+    margin: -.125em 0 0 40px;
       font-size: 1.75em;
       letter-spacing: -1.5px;
     `}
@@ -130,10 +137,10 @@ const Header = styled.header`
     margin: .125em 0 0 0;
     ${SuperQuery().minWidth.sm.css`
       line-height: 1.2;
-      margin: -.125em 0 0 0;
+      margin: 0 0 0 40px;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: -.125em 0 0 0;
+      margin: 0 0 0 40px;
       font-size: .875em;
       letter-spacing: -1px;
     `}
@@ -197,6 +204,13 @@ const Header = styled.header`
   }
 
  
+`
+
+const Back__Container = styled.div`
+  position: absolute;
+  top: 12px; 
+  left: 10px;
+  
 `
 
 const Row__Decorated = styled(Row)`
