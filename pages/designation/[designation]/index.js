@@ -6,18 +6,14 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-import territories from '../../../config/states'
-import DesignationList from '../../../components/designationlist'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
-const State = ({ parks, designation, ToggleTheme, manageHistory, pageTransitionReadyToEnter }) => {
-  const pageTransitionDelayEnter = true
+const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
   const [loaded, setLoaded] = useState(false)
-  const [highlighted, setHighlighted] = useState(null)
   // const markers = []
   
   // data.slice(0).map((item) => {
@@ -45,7 +41,6 @@ const State = ({ parks, designation, ToggleTheme, manageHistory, pageTransitionR
             designation=''
             state=''
             stateCode=''
-            manageHistory={manageHistory} 
           title='National Park Service'
           title__sub='A State-by-State Guide'
         />
@@ -79,12 +74,13 @@ const State = ({ parks, designation, ToggleTheme, manageHistory, pageTransitionR
         </Row__Decorated>
    
         </Content>
-        <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
+      <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }
 }
 
+State.pageTransitionDelayEnter = true
 
 State.getInitialProps = async ({ req, query }) => {
   const {designation} = query

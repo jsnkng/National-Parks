@@ -125,10 +125,10 @@ position: fixed;
     display: block;
     text-align:right;
     font-size: 1em;
-    line-height: 1.2;
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: -.125em 0 0 0;
+    margin: -.25em 0 0 0;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.25em;
       letter-spacing: -1.5px;

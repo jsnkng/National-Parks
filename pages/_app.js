@@ -7,8 +7,8 @@ import themes from '../config/theme'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
-import Toggle from 'react-toggle'
 import { slide as Menu } from 'react-burger-menu'
+import ThemeSwitcher from '../components/themeswitcher'
 
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
@@ -26,6 +26,7 @@ const stack = []
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
 
+  const manageHistory = () => {}
   // console.log('pageload stack', stack)
   // const fwdStack = path => stack.push(path)
 
@@ -33,7 +34,6 @@ const MyApp = ({ router, Component, pageProps }) => {
   // fwdStack(router.asPath)
   // console.log('fwdStack stack', stack)
 
-  const manageHistory = () => {}
   // const manageHistory = () => { 
   //   const back = stack.pop()
   //   const back2 = stack.pop()
@@ -67,16 +67,8 @@ const MyApp = ({ router, Component, pageProps }) => {
   //     // Router.push('/state/ca/')
   //   }
   // }
-  const ToggleTheme = () => {
-    return (
-      <Toggle
-        defaultChecked={themeName === 'dayTheme' ? true : false}
-        icons={false}
-        aria-label='Set Day|Night Mode'
-        onChange={() => setThemeName(themeName === 'dayTheme' ? 'nightTheme' : 'dayTheme')}
-        />
-    )
-  }
+  
+
   return (
     <>
     <ThemeProvider theme={ { colors: themes[themeName], flexboxgrid: themes.flexboxgrid }}>
@@ -91,14 +83,14 @@ const MyApp = ({ router, Component, pageProps }) => {
         }}
         loadingClassNames="loading-indicator"
       >
-        <Component {...pageProps} ToggleTheme={ToggleTheme} manageHistory={manageHistory} key={router.asPath} />
+        <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} key={router.asPath} />
       </PageTransition>
     </ThemeProvider>
     </>
   )
 }
 
-// Only uncomment this method if you have blocking data requirements for
+// Only uncomment this method if you have blocking data requirements for 
 // every single page in your application. This disables the ability to
 // perform automatic static optimization, causing every page in your app to
 // be server-side rendered.
@@ -109,3 +101,6 @@ MyApp.getInitialProps = async (appContext) => {
 }
 
 export default MyApp
+
+
+

@@ -24,9 +24,7 @@ import VisitorCenters from '../../../../../components/visitorcenters'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = ({ 
-  ToggleTheme, 
-  manageHistory,
-  pageTransitionReadyToEnter, 
+  themeName, setThemeName, pageTransitionReadyToEnter, 
   stateCode, 
   park, 
   alerts, 
@@ -85,7 +83,6 @@ const Park = ({
           state={states[stateCode][0]}
           stateCode={stateCode}
           states={park.states}
-          manageHistory={manageHistory} 
           title={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
           title__sub={park.designation}
         />
@@ -93,7 +90,9 @@ const Park = ({
           { park.images !== undefined && park.images.length !== 0 &&
           <SlideShow park={park} />
           }
-
+          { park.images === undefined || park.images.length === 0 &&
+          <div style={{height: '90px'}}></div>
+          }
           <Description park={park} />
 
           { alerts !== undefined && alerts.length != 0 &&
@@ -124,7 +123,7 @@ const Park = ({
           <People park={park} people={people} />
           } 
         </Content> 
-        <Footer title="National Park Service" subtitle="A State-By-State Guide"  ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
+      <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }

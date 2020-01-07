@@ -15,8 +15,7 @@ import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
-const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReadyToEnter, stateCode }) => {
-  const pageTransitionDelayEnter = true
+const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter }) => {
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState(null)
   // const markers = []
@@ -46,7 +45,6 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
             designation=''
             state=''
             stateCode={stateCode}
-            manageHistory={manageHistory} 
           title='National Park Service'
           title__sub='A State-by-State Guide'
         />
@@ -81,12 +79,13 @@ const State = ({ data, state_id, ToggleTheme, manageHistory, pageTransitionReady
         </Row__Decorated>
         
         </Content>
-        <Footer title="National Park Service" subtitle="A State-By-State Guide" ToggleTheme={ToggleTheme} manageHistory={manageHistory}  highlighted={highlighted} setHighlighted={setHighlighted} />
+      <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }
 }
 
+State.pageTransitionDelayEnter = true
 
 State.getInitialProps = async ({ req, query }) => {
   const {stateCode} = query
