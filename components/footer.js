@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Copyright from '../components/copyright'
 import ThemeSwitcher from '../components/themeswitcher'
+import SuperQuery from '@themgoncalves/super-query'
 
 const Component = ({ themeName, setThemeName }) => {
   return (
@@ -42,28 +43,24 @@ const Footer = styled.footer`
   left: 0;
   right: 0;
   margin: 0;
+  height: 60px;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
 `
-const Copyright__Container = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-`
-const ThemeSwitcher__Container = styled.div`
-  position: absolute;
-  bottom: 12px;
-  right: 20px;
-  width: 52px;
-  height: 28px;
-  z-index: 1000;
-`
+
 const Button__Container = styled.div`
   display:block;
   float: left;
   height:2em;
   height: 28px;
+  padding:  1em 1em 3em 1em;
+  margin: 1em;
+  ${SuperQuery().minWidth.sm.css`
   padding:  2em 2em 3em 2em;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    font-size: .75em;
+    padding: .25em;
+  `}
 `

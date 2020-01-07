@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Component = ({ highlighted, setHighlighted }) => {
+const Component = () => {
 
   return (
     <DesignationList>
@@ -155,32 +155,30 @@ const Component = ({ highlighted, setHighlighted }) => {
 export default Component
 
 const DesignationList = styled.div`
-  padding: 0 0 3em 0; 
+  padding: 2em 0 1.125em .5em; 
   columns: 1;
   ${SuperQuery().minWidth.sm.css`
     columns: 2;
   `}
   ${SuperQuery().minWidth.md.css`
-    columns: 3;
+    columns: 2;
   `}
   ${SuperQuery().minWidth.lg.css`
-    columns: 4;
+    columns: 3;
   `}
   a {
     color:  ${({ theme }) => theme.colors.color_one};
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
-    font-size: 1em;
-    line-height: 1.2;
+    font-size: 1.25em;
+    line-height: 1;
     letter-spacing: -.5px;
     text-decoration: none;
     margin: 0;
-    padding: .25em;
+    padding: .5em;
     cursor: pointer;
-    ${SuperQuery().minWidth.sm.css`
-    font-size: .875em;
-    `}
+    
   }
   a.highlight , a:hover  {
     color:  ${({ theme }) => theme.colors.color_three};

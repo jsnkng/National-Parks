@@ -30,33 +30,26 @@ const TerritoryList = styled.div`
   padding: 2em 0 1.125em .5em; 
   columns: 2;
   ${SuperQuery().minWidth.sm.css`
-    columns: 4;
+    columns: 3;
   `}
   ${SuperQuery().minWidth.md.css`
-    columns: 6;
+    columns: 3;
   `}
   ${SuperQuery().minWidth.lg.css`
-    columns: 6;
+    columns: 4;
   `}
   a {
     color:  ${({ theme }) => theme.colors.color_one};
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
-    font-size: 1em;
-    line-height: 1.2;
+    font-size: 1.25em;
+    line-height: 1;
     letter-spacing: -.5px;
     text-decoration: none;
     margin: 0;
     padding: .5em;
     cursor: pointer;
-    ${SuperQuery().minWidth.sm.css`
-    font-size: .875em;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: .75em;
-      padding: .25em;
-    `}
   }
   a.highlight , a:hover  {
     color:  ${({ theme }) => theme.colors.color_three};

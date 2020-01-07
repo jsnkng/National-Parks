@@ -1,16 +1,23 @@
-import React, {useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
+import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
+import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 
+import Header from '../components/header'
 import Footer from '../components/footer'
-import FindAPark from '../components/findapark'
+import Copyright from '../components/copyright'
+import ThemeSwitcher from '../components/themeswitcher'
 
-const About = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
+
+
   useEffect(() => {
     setLoaded(true)
     pageTransitionReadyToEnter()
@@ -21,84 +28,100 @@ const About = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) =
   } else {
     return (
       <>
-      <Head>
-        <title>National Park Service</title>
-      </Head>
-      
-    
-      <Content>
-    
-        <FindAPark__Container>
-          <Link href="/" passHref>
-            <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          </Link> 
-        <FindAPark router={router} />
-      </FindAPark__Container>
-       
-      </Content>
-      <Footer router={router} themeName={themeName} setThemeName={setThemeName} />
+        <Head>
+          <title>National Park Service Guide to {designation}</title>
+        </Head>
+        <Header 
+            park=''
+            designation=''
+            state=''
+            stateCode=''
+          title='About'
+          title__sub=''
+        />
+        <Content>
+          <Col__Decorated xs={12}>
+
+
+      <ThemeSwitcher__Container>
+        <ThemeSwitcher id='themeSwitcher' themeName={themeName} setThemeName={setThemeName} />
+      </ThemeSwitcher__Container>
+          </Col__Decorated> 
+   
+      <Copyright__Container>
+        <Copyright />
+      </Copyright__Container>
+        </Content>
+      <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }
 }
 
-// About.getInitialProps = async ({ req, query }) => {
-//   const { origin } = absoluteUrl(req)
-//   const parkResult = await fetch(`${origin}/api/parks/aggregate`)
-//   const result = await parkResult.json()
-//   return result
-// }
+State.pageTransitionDelayEnter = true
 
-About.pageTransitionDelayEnter = true
+State.getInitialProps = async ({ req, query }) => {
+  const {designation} = query
+  const {origin}  = absoluteUrl(req)
+  const stateResult = await fetch(`${origin}/api/designation/${designation}`)
+  const result = await stateResult.json()
+  result.designation = designation
+  console.log(result)
+  return result
+}
 
-export default About
+export default State
+
 
 const Content = styled.main`
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.background};
-  margin: 0;
-  img.logo {
-    position: absolute;
-    top: 1.125em;
-    right: 1.125em;
-    cursor: pointer;
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: 80px;
-    ${SuperQuery().minWidth.sm.css`
-    width: 90px;
-    `}
-    ${SuperQuery().minWidth.md.css`
-    width: 100px;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-    width: 120px;
-    `}
-  }
-  h2 {
-    margin: 0 1em 0 .5em;
-    ${SuperQuery().minWidth.sm.css`
-      margin: .5em 0 0 .25em;
-    `}
-  }
-  
-`
-
-const FindAPark__Container = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: ${({ theme }) => theme.colors.gradient_one};
-  color: ${({ theme }) => theme.colors.text};
-  z-index: 1000;
-  padding: .5em 0 0 0;
-  margin: 0 0 -4em 0;
-  height: 100vh;
-  
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: top;
+  justify-content: left;
+  padding: 3.5em 0 3.5em 0;
   ${SuperQuery().minWidth.sm.css`
-    padding: 4.75em 0 0 0;
+    margin: 3.75em 0 0 0;
   `}
+  ${SuperQuery().minWidth.md.css`
+    margin: 4em 0 0 0;
+  `}
+  h3 {
+    display: block;
+    color: ${({ theme }) => theme.colors.text};
+    padding: 2em .5em ;
+    text-align: left;
+    font-size: 3em;
+    line-height: 1;
+    font-weight: 200;
+    letter-spacing: -1.5px;
+    margin: 0;
+    border: none;
+  }
+  
+`
+const Row__Decorated = styled(Row)`
+  width: 100%;
+  padding: 0;
+  margin:0;
+`
+const Col__Decorated = styled(Col)`
+  position:relative;
+  width: 100%;
+  padding: 0;
 `
 
+const Copyright__Container = styled.div`
+  position: relative;
+  top: 120px;
+  left: 120px;
+  z-index: 1000;
+`
+const ThemeSwitcher__Container = styled.div`
+  position: relative;
+  top: 200px;
+  left: 120px;
+  width: 52px;
+  height: 28px;
+  z-index: 1000;
+`

@@ -10,9 +10,12 @@ import SuperQuery from '@themgoncalves/super-query'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
+import MapDiagram from '../components/mapdiagram'
+import TerritoryList from '../components/territorylist'
 
 const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
   const [loaded, setLoaded] = useState(false)
+  const [highlighted, setHighlighted] = useState('')
   const router = useRouter()
 
 
@@ -34,12 +37,16 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
             designation=''
             state=''
             stateCode=''
-          title={designation}
+          title='States'
           title__sub=''
         />
         <Content>
-       
-   
+          <Col__Decorated xs={12}>
+            <TerritoryList 
+              className="territorylist" 
+              highlighted={highlighted} 
+              setHighlighted={setHighlighted} />
+          </Col__Decorated> 
         </Content>
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
@@ -68,12 +75,9 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin: 0;
-  ${SuperQuery().minWidth.sm.css`
-    margin: 3.75em 0 0 0;
-  `}
+  padding: 5em 0;
   ${SuperQuery().minWidth.md.css`
-    margin: 4em 0 0 0;
+    margin: 1em;
   `}
   h3 {
     display: block;
