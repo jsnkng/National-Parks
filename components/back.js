@@ -22,15 +22,7 @@ const Component = () => {
 export default Component
 
 const Back = styled.div`
-  width: 45px;
-  height: 60px;
-  padding: 8px 0 0 5px;
-  ${SuperQuery().minWidth.sm.css`
-  width: 50px;
-  padding: .25em;
-  `}
-  ${SuperQuery().minWidth.md.css`
-  width: 42px;
-  padding: .25em;
-  `}
+  width: 3em;
+  height: 4em;
+  padding: .625em 0 0 .375em;
 `
