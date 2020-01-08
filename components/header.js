@@ -56,7 +56,9 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.text};
   z-index: 100;
   height: 4em;
-
+  ${SuperQuery().maxWidth.md.and.landscape.css`
+  position: relative;
+  `}
   a {
     cursor: pointer;
     text-decoration: none;
