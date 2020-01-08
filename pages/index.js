@@ -38,7 +38,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           <FindAPark router={router} />
         </FindAPark__Container>
-          <Row__Decorated>
+          {/* <Row__Decorated>
           {
             parks.slice(0,limit).map((item, i=0) => {
               i++
@@ -63,11 +63,11 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
             }
 
 
-        </Row__Decorated>
+        </Row__Decorated> 
 
       <Row__Decorated>
         <button className={limit >= parks.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 2)}>Load More</button>
-      </Row__Decorated>
+      </Row__Decorated>*/}
       </Content>
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
@@ -75,12 +75,12 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
   }
 }
 
-Home.getInitialProps = async ({ req, query }) => {
-  const { origin } = absoluteUrl(req)
-  const parkResult = await fetch(`${origin}/api/parks/aggregate`)
-  const result = await parkResult.json()
-  return result
-}
+// Home.getInitialProps = async ({ req, query }) => {
+//   const { origin } = absoluteUrl(req)
+//   const parkResult = await fetch(`${origin}/api/parks/aggregate`)
+//   const result = await parkResult.json()
+//   return result
+// }
 
 Home.pageTransitionDelayEnter = true
 
