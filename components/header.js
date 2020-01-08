@@ -60,7 +60,7 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.text};
   z-index: 100;
   height: 4em;
-  ${SuperQuery().landscape.css`
+  ${SuperQuery().maxWidth.md.and.landscape.css`
     position: relative;
   `}
   a {
@@ -122,9 +122,9 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 2.125em;
+    margin: 0 0 0 2em;
     ${SuperQuery().minWidth.sm.css`
-      margin: 0 0 0 1.5em;
+      margin: 0 0 0 2em;
     `}
     ${SuperQuery().minWidth.md.css`
       font-size:1em !important;

@@ -154,6 +154,12 @@ const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
   margin: 0 0 4em 0; 
 
+  ${SuperQuery().maxWidth.md.and.landscape.css`
+    margin: -4em 0 4em 0;
+  `}  
+
+
+
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};
   }

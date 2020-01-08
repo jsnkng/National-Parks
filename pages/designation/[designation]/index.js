@@ -111,7 +111,10 @@ const Content = styled.main`
   align-items: top;
   justify-content: left;
   margin: 4em 0;
-  
+
+  ${SuperQuery().maxWidth.md.and.landscape.css`
+    margin: 0 0 4em 0;
+  `}  
   h3 {
     display: block;
     color: ${({ theme }) => theme.colors.text};

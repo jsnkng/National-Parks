@@ -18,7 +18,6 @@ const Component = ({ alerts }) => {
           <Col xs={12} sm={6} md={6} lg={4}>
             <h2>Alerts & Conditions</h2>
           </Col>
-          
           { alerts.slice(0).map((item) => {
             return (
               <Col xs={12} sm={6} md={6} lg={4} key={item.id} className="summary">
@@ -34,7 +33,6 @@ const Component = ({ alerts }) => {
                     { item.url !== undefined && item.url !== "" &&
                     <a href={item.url} target="_blank">[More]</a>
                     }</p>
-                    
                   </AccordionItemPanel>
                 </AccordionItem>
               </Col>

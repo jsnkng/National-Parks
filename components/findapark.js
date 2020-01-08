@@ -253,7 +253,7 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
-  padding: 1em .25em 1em 1em;  
+  padding: 1em 0 1em .25em;  
 ${SuperQuery().minWidth.md.css`
   padding: 1em 0 0 1em;    
 `} 

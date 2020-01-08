@@ -16,6 +16,8 @@ const Component = ({ people }) => {
         return( 
         <Row__Decorated key={item.id}>
           <a href={item.url} target="_blank">
+          <Col xs={12}>
+            <Row__Decorated>
             <Col xs={12} lg={4}>
             { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
               <LazyLoad offset={100}>
@@ -32,6 +34,8 @@ const Component = ({ people }) => {
                 <p>{item.listingdescription.substring(0, 200)}...</p>
               }
               <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+            </Col>
+            </Row__Decorated>
             </Col>
           </a>
           </Row__Decorated>

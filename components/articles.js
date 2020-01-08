@@ -19,8 +19,6 @@ const Component = ({ articles }) => {
         <Row__Decorated key={item.id}>
           <a href={item.url} target="_blank">
           <Col xs={12}>
-
-              
               <Row__Decorated>
                 <Col xs={12} md={5}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
@@ -40,9 +38,8 @@ const Component = ({ articles }) => {
                   <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
                 </Col>
               </Row__Decorated>
-
               </Col>
-              </a>
+            </a>
           </Row__Decorated>
           )
         })

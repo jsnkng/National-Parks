@@ -17,21 +17,25 @@ const Component = ({ places }) => {
       return ( 
         <Row__Decorated key={item.id}>
           <a href={item.url} target="_blank">
-          <Col xs={12} lg={5}>
-          <h4>{item.title}</h4>
-            { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-              <p>{item.listingdescription}</p>
-            }
-            Plan Your Visit
-          </Col>
-          <Col xs={12} lg={7}>
-          { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
-            <LazyLoad offset={100}>
-              
-                <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-            </LazyLoad>
-          }
-          </Col>
+          <Col xs={12}>
+              <Row__Decorated>
+                <Col xs={12} lg={5}>
+                <h4>{item.title}</h4>
+                  { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
+                    <p>{item.listingdescription}</p>
+                  }
+                  Plan Your Visit
+                </Col>
+                <Col xs={12} lg={7}>
+                { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+                  <LazyLoad offset={100}>
+                    
+                      <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
+                  </LazyLoad>
+                }
+                </Col>
+              </Row__Decorated>
+            </Col>
           </a>
         </Row__Decorated>
         )
