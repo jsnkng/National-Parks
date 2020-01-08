@@ -171,7 +171,7 @@ const GlobalStyle = createGlobalStyle`
 
   .btn__load-more {
     clear: both;
-    display:none;
+    display:block;
     height: 45px;
     margin: 2em auto 0;
     padding: 0 1em;

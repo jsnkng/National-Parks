@@ -65,6 +65,7 @@ const NewsReleases = styled(Grid)`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 15em;
+    min-width: 18.5em;
   }
 `
 const Image = styled.div`

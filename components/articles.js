@@ -60,8 +60,10 @@ const Articles = styled(Grid)`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20em;
+    min-width: 18.5em;
     ${SuperQuery().minWidth.md.css`
       height: 12.5em;
+      min-width: 18.5em;
     `}
   }
 `
@@ -73,6 +75,7 @@ const Image = styled.div`
   margin: 1em 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
+  width: 100%;
 `
 
 const Row__Decorated = styled(Row)`
