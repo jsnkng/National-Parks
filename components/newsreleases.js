@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const Component = ({ newsReleases }) => {
@@ -23,27 +22,31 @@ const Component = ({ newsReleases }) => {
       </Row__Decorated>
       { newsReleases.slice(0,limit).map((item) => {
         return (
-          <a href={item.url} target="_blank" key={item.id}>
-        <Row__Decorated>
-          <Col xs={12} lg={7}>
-            <h4>{item.title}</h4>
-            <span className="articles__date">{toDateFormat(item.releasedate)}</span>
-            { item.image.url !== undefined && item.image.url.length !== 0 &&
-              <p>{item.abstract.substring(0, 450)}</p>
-            }
-          </Col>
-          <Col xs={12} lg={5}>
-            { item.image.url === undefined || item.image.url.length === 0 &&
-              <p>{item.abstract.substring(0, 450)}</p>
-            }
-            { item.image.url !== undefined && item.image.url.length !== 0 &&
-              <LazyLoad offset={100}>
-                <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
-              </LazyLoad>
-            }
-          </Col>
+        <Row__Decorated key={item.id}>
+          <a href={item.url} target="_blank">
+            <Col xs={12}>
+              <Row__Decorated>
+                <Col xs={12} lg={7}>
+                  <h4>{item.title}</h4>
+                  <span className="articles__date">{toDateFormat(item.releasedate)}</span>
+                  { item.image.url !== undefined && item.image.url.length !== 0 &&
+                    <p>{item.abstract.substring(0, 450)}</p>
+                  }
+                </Col>
+                <Col xs={12} lg={5}>
+                  { item.image.url === undefined || item.image.url.length === 0 &&
+                    <p>{item.abstract.substring(0, 450)}</p>
+                  }
+                  { item.image.url !== undefined && item.image.url.length !== 0 &&
+                    <LazyLoad offset={100}>
+                      <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
+                    </LazyLoad>
+                  }
+                </Col>
+              </Row__Decorated>
+            </Col>
+          </a>
         </Row__Decorated>
-        </a>
         )
         })
       }
@@ -73,7 +76,6 @@ const Image = styled.div`
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 `
-
 const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;

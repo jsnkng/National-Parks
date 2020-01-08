@@ -112,6 +112,9 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.colors.color_one};
     cursor: pointer !important;
+    p {
+      color:  ${({ theme }) => theme.colors.text};
+    }
     &:hover {
     text-decoration: none !important;
       color: ${({ theme }) => theme.colors.color_two};

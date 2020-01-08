@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const Component = ({ people }) => {
@@ -16,26 +15,26 @@ const Component = ({ people }) => {
       { people.slice(0,limit).map((item) => {
         return( 
         <Row__Decorated key={item.id}>
-          <Col xs={12} lg={4}>
-          { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
-            <LazyLoad offset={100}>
-              <a href={item.url} target="_blank">
+          <a href={item.url} target="_blank">
+            <Col xs={12} lg={4}>
+            { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+              <LazyLoad offset={100}>
                 <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-              </a>
-            </LazyLoad>
-          }
-          </Col>
-          <Col xs={12} lg={6}>
-            <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-            { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-              <p>{item.listingdescription}</p>
+              </LazyLoad>
             }
-            { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
-              <p>{item.listingdescription.substring(0, 200)}...</p>
-            }
-            <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
-          </Col>
-        </Row__Decorated>
+            </Col>
+            <Col xs={12} lg={6}>
+              <h4>{item.title}</h4>
+              { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
+                <p>{item.listingdescription}</p>
+              }
+              { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
+                <p>{item.listingdescription.substring(0, 200)}...</p>
+              }
+              <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+            </Col>
+          </a>
+          </Row__Decorated>
           )
         })
       }

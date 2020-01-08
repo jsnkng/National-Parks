@@ -85,28 +85,28 @@ const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.gradient_one};
   height: 100vh;
+  margin: 0;
+  padding: 0;
 
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
   img.logo {
     position: absolute;
     top: 1.125em;
     right: 1.125em;
     width: 70px;
     ${SuperQuery().minWidth.sm.css`
-    width: 90px;
+      width: 90px;
     `}
     ${SuperQuery().minWidth.md.css`
-    width: 100px;
+      width: 100px;
     `}
     ${SuperQuery().minWidth.lg.css`
-    width: 120px;
+      width: 120px;
     `}
   }
   h2 {
-    margin: 0 1em 0 .5em;
+    margin: 0 1.25em 0 .5em;
     ${SuperQuery().minWidth.sm.css`
-      margin: .5em 0 0 .25em;
+      margin: 1em 0 0 .25em;
     `}
   }
   

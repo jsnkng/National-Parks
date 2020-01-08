@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const Component = ({ places }) => {
@@ -16,30 +15,25 @@ const Component = ({ places }) => {
       </Row__Decorated>
      { places.slice(0,limit).map((item) => {
       return ( 
-        <a href={item.url} target="_blank" key={item.id}>
-      <Row__Decorated>
-        <Col xs={12} lg={5}>
-        <h4>{item.title}</h4>
-          { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-            <p>{item.listingdescription}</p>
+        <Row__Decorated key={item.id}>
+          <a href={item.url} target="_blank">
+          <Col xs={12} lg={5}>
+          <h4>{item.title}</h4>
+            { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
+              <p>{item.listingdescription}</p>
+            }
+            Plan Your Visit
+          </Col>
+          <Col xs={12} lg={7}>
+          { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+            <LazyLoad offset={100}>
+              
+                <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
+            </LazyLoad>
           }
-          Plan Your Visit
-        </Col>
-        <Col xs={12} lg={7}>
-        { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
-          <LazyLoad offset={100}>
-            
-              <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-          </LazyLoad>
-        }
-          
-          {/* { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
-            <p>{item.listingdescription.substring(0, 300)}...</p>
-          } */}
-        </Col>
-
+          </Col>
+          </a>
         </Row__Decorated>
-        </a>
         )
       })
       }
@@ -48,8 +42,6 @@ const Component = ({ places }) => {
           className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" } 
           onClick={() => setLimit(limit + 3)}>Load More Places</button>
       </Row__Decorated>
-      <Row__Decorated>
-    </Row__Decorated>
   </Places>
   )
 }

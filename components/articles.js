@@ -14,43 +14,39 @@ const Component = ({ articles }) => {
           <h2>Learn More</h2>
         </Col>
       </Row__Decorated>
-      <Row__Decorated>
       { articles.slice(0,limit).map((item) => {
         return (
-          <Col xs={12} key={item.id}>
-              { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+        <Row__Decorated key={item.id}>
+          <a href={item.url} target="_blank">
+          <Col xs={12}>
+
+              
               <Row__Decorated>
                 <Col xs={12} md={5}>
+                { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <LazyLoad offset={100}>
-                    <a href={item.url} target="_blank">
-                      <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-                    </a>
+                    <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
                   </LazyLoad>
+                }
+                { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
+                  <h4>{item.title}</h4>
+                }
                 </Col>
                 <Col xs={12} md={7}>
-                  <h4><a href={item.url} target="_blank">{item.title}</a></h4>
+                { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+                  <h4>{item.title}</h4>
+                }
                   <p>{item.listingdescription.substring(0, 270)}...</p>
                   <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
-                
                 </Col>
               </Row__Decorated>
-              }
-              { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
-              <Row__Decorated>
-                <Col xs={12} md={5}>
-                  <h4><a href={item.url} target="_blank">{item.title}</a></h4>
-                </Col>
-                <Col xs={12} md={7}>
-                  <p>{item.listingdescription.substring(0, 400)}</p>
-                  <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
-                </Col>
-              </Row__Decorated>
-              }
+
               </Col>
+              </a>
+          </Row__Decorated>
           )
         })
       }
-      </Row__Decorated>
       <Row__Decorated>
         <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More Articles</button>
       </Row__Decorated>

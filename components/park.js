@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import territories from '../config/states'
-import MapDiagram from './mapdiagram'
-// console.log(territories)
-// import Loader from '../components/loader'
 
 const Component = ({ backgroundURL, title, subtitle, states }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
@@ -13,16 +9,11 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
     setIsSpinnerVisible(true)
   }
   const name = states.toLowerCase().split(',').map(item => territories[item][0]).join(', ')
-  // console.log('name', name)
   return (
     <Park onClick={handleBannerClick}>
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
-        {/* <span>{name}</span> */}
         <h3>{subtitle}</h3>
-        {/* <MapDiagram__Wrapper>
-            <MapDiagram territories={states} highlighted={null} onHighlight={(terr) => setHighlight(terr)} />
-          </MapDiagram__Wrapper> */}
       </div>
       <LazyLoad height={'100%'} offset={600}>
         <ResponsiveImage backgroundURL={backgroundURL} />
@@ -47,9 +38,6 @@ const Park = styled.div`
   background-position: center bottom;
   background-repeat: no-repeat;
 
-  ${'' /* ${SuperQuery().minWidth.lg.css`
-    width: 50vw;
-  `} */}
   .banner__header {
     position: absolute;
     top: 0;
@@ -114,26 +102,3 @@ const ResponsiveImage = styled.div`
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 `
-
-// const MapDiagram__Wrapper = styled.div`
-//   position: absolute;
-//   top: 5px;
-//   right: 13px;
-//   width: 100px;
-// `
-// const Spinner = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   z-index: 100;
-//   background-color: ${({ theme }) => theme.colors.trans_back};
-//   color: ${({ theme }) => theme.colors.text};
-//   font-size: .7em;
-//   &.show {
-//     display: block;
-//   }
-//   &.hide {
-//     display: none;
-//   }
-
-// `
