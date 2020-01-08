@@ -5,6 +5,10 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import Back from '../components/back'
 const Component = ({ title, title_href, title_as, title__sub, park, designation }) => {
+
+  const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.125em', margin: '.575em .5em 0 1.625em' } : 
+                     (title.length > 24 && title__sub === '') ? { fontSize: '1.125em', margin: '.75em .5em 0 1.625em' } : {}
+
   return (
     <Header>
       <Row__Decorated>
@@ -13,7 +17,7 @@ const Component = ({ title, title_href, title_as, title__sub, park, designation 
             <Back />
           </Back__Container>
           <Link href={title_href} as={title_as}>
-            <a className={title__sub === '' ? 'title--large' : 'title'} href="#">{title}</a>
+            <a className={title__sub === '' ? 'title large' : 'title'} style={titleStyle} href="#">{title}</a>
           </Link> 
           { title__sub !== '' &&
           <Link href={title_href} as={title_as}>
@@ -88,21 +92,7 @@ const Header = styled.header`
 
 
 
-
-  .title--large {
-    display: block;
-    float: left;
-    font-size: 1.375em;
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: .925em 0 0 1.375em;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.75em;
-      letter-spacing: -1.5px;
-      margin: .625em 0 0 1.5em;
-    `}
-  }
+  
   .title {
     display: block;
     float: left;
@@ -110,12 +100,19 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: .575em 0 0 1.375em;
+    margin: .575em 0 0 1.25em;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.75em;
+      font-size: 1.5em !important;
       letter-spacing: -1.5px;
-      margin: .375em 0 0 1.25em;
+      margin: .5em 0 0 1.25em !important;
     `}
+
+    &.large {
+      margin: .925em 0 0 1.25em;
+      ${SuperQuery().minWidth.md.css`
+        margin: .625em 0 0 1.5em !important;
+      `}
+    }
   }
   .title__sub {
     display: block;
@@ -125,14 +122,14 @@ const Header = styled.header`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 2.25em;
+    margin: 0 0 0 2.125em;
     ${SuperQuery().minWidth.sm.css`
       margin: 0 0 0 1.5em;
     `}
     ${SuperQuery().minWidth.md.css`
-      font-size: .875em;
+      font-size:1em !important;
       letter-spacing: -1px;
-      margin: 0 0 0 2.625em;
+      margin: 0 0 0 2em;
     `}
   }
 
