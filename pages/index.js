@@ -18,6 +18,7 @@ import DesignationList from '../components/designationlist'
 import FindAPark from '../components/findapark'
 
 const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
+  const [limit, setLimit] = useState(6)
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
   useEffect(() => {
@@ -37,9 +38,9 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
           <FindAPark router={router} />
         </FindAPark__Container>
-          {/* <Row__Decorated>
+          <Row__Decorated>
           {
-            parks.slice(0).map((item, i=0) => {
+            parks.slice(0,limit).map((item, i=0) => {
               i++
               return(
                 <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.id}>
@@ -62,7 +63,11 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
             }
 
 
-        </Row__Decorated> */}
+        </Row__Decorated>
+
+      <Row__Decorated>
+        <button className={limit >= parks.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 2)}>Load More</button>
+      </Row__Decorated>
       </Content>
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
@@ -112,6 +117,15 @@ const Content = styled.main`
   
 `
 
+const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
+`
+
+const Col__Decorated = styled(Col)`
+  padding: 0;
+  padding: 0;
+`
 const FindAPark__Container = styled.div`
   position: relative;
   top: 0;

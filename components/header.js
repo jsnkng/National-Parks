@@ -59,6 +59,11 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.text};
   z-index: 100;
   height: 4em;
+    -webkit-transition: background .5s linear;
+    -moz-transition: background .5s linear;
+    -o-transition: background .5s linear;
+    -ms-transition: background .5s linear;
+    transition: background .5s linear;
   ${SuperQuery().maxWidth.md.and.landscape.css`
     position: relative;
   `}

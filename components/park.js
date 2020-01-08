@@ -48,6 +48,11 @@ const Park = styled.div`
     height: 4em;
     padding: .125em .5em;
     z-index: 20;
+    -webkit-transition: background .5s linear;
+    -moz-transition: background .5s linear;
+    -o-transition: background .5s linear;
+    -ms-transition: background .5s linear;
+    transition: background .5s linear;
 
     h2 {
       float: left;

@@ -4,7 +4,7 @@ export default (req, res) => {
 
   const getAggregatePark = async (db, callback) => {
     console.log(`Getting Aggregated Parks`)
-    const parks = await db.collection('parks').aggregate([{ $sample: { size: 6 } }]).toArray()
+    const parks = await db.collection('parks').aggregate([{ $sample: { size: 64} }]).toArray()
     const result = { parks }
     callback(result)
   }

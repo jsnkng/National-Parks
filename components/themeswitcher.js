@@ -2,21 +2,48 @@ import React from 'react'
 import Toggle from 'react-toggle'
 import styled from 'styled-components'
 
+import { MoonClear } from 'styled-icons/remix-fill/MoonClear'
+import { Sun } from 'styled-icons/remix-fill/Sun'
+
+
+
+
 const Component = ({ themeName, setThemeName }) => {
   return (
-    <ThemeSwitcher>
-      <Toggle
-        defaultChecked={themeName === 'dayTheme' ? true : false}
-        icons={false}
-        aria-label='Set Day|Night Mode'
-        onChange={() => setThemeName(themeName === 'dayTheme' ? 'nightTheme' : 'dayTheme')}
-      />
-    </ThemeSwitcher>
+    <>
+    { themeName !== 'dayTheme' &&
+      <SunSVG__Decorated aria-label='Set Day Mode' onClick={() => setThemeName('dayTheme')} />
+    }
+    { themeName === 'dayTheme' &&
+      <MoonSVG__Decorated aria-label='Set Night Mode' onClick={() => setThemeName('nightTheme')} />
+    }
+
+  </>
   )
 }
 
 export default Component
 
+const SunSVG__Decorated = styled(Sun)`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  heigt: 30px;
+  color: gold;
+  cursor: pointer;
+  outline: none;
+`
+const MoonSVG__Decorated = styled(MoonClear)`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  heigt: 30px;
+  color: silver;
+  cursor: pointer;
+  outline: none;
+`
 const ThemeSwitcher = styled.div`
   position: relative;
 
@@ -28,7 +55,6 @@ const ThemeSwitcher = styled.div`
     background-color: transparent;
     border: 0;
     padding: 0;
-
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;

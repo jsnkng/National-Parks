@@ -19,11 +19,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     transition: all .25s ease-in-out;
     opacity: 1.0;
-    -webkit-transition: background 1.5s linear;
-    -moz-transition: background 1.5s linear;
-    -o-transition: background 1.5s linear;
-    -ms-transition: background 1.5s linear;
-    transition: background 1.5s linear;
+    -webkit-transition: background .5s linear;
+    -moz-transition: background .5s linear;
+    -o-transition: background .5s linear;
+    -ms-transition: background .5s linear;
+    transition: background .5s linear;
     ${SuperQuery().maxWidth.of('320px').css`
       font-size: 14px;
     `}
@@ -406,73 +406,6 @@ const GlobalStyle = createGlobalStyle`
       transform: rotate(360deg);
     }
   }
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 36px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: ${({ theme }) => theme.colors.text};
-}
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: ${({ theme }) => theme.colors.color_three};
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
-}
-
-/*
-Sidebar wrapper styles
-Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
-*/
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-}
-
-/* General sidebar styles */
-.bm-menu {
-  background: ${({ theme }) => theme.colors.background};
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-}
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: ${({ theme }) => theme.colors.color_two};
-  padding: 0.8em;
-}
-
-/* Individual item */
-.bm-item {
-  display: inline-block;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
 
 `
 export default GlobalStyle
