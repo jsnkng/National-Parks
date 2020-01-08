@@ -17,7 +17,7 @@ import TerritoryList from '../components/territorylist'
 import DesignationList from '../components/designationlist'
 import FindAPark from '../components/findapark'
 
-const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
   useEffect(() => {

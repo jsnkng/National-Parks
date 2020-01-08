@@ -14,7 +14,7 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import FindAPark from '../../../components/findapark'
 
-const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
   // const markers = []
@@ -48,6 +48,7 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
           title__sub=''
           title_as={`/designation/${designation}/`}
           title_href='/designation/[designation]'
+          manageHistory={manageHistory}
         />
         <Content>
         <Row__Decorated>

@@ -7,7 +7,7 @@ export default (req, res) => {
 
   const getParksByType = async (db, callback) => {
     console.log(`Getting Parks By Type (${designation})`)
-    const parks = await db.collection('parks').find({ designation }).toArray()
+    const parks = await db.collection('parks').aggregate([{ $match: { designation } }, { $sample: { size: 60 } }]).toArray()
     const result = { parks }
     callback(result)
   }

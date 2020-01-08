@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import {ArrowBackIos} from 'styled-icons/material/ArrowBackIos'
 import { useRouter } from 'next/router'
 
-const Component = () => {
+const Component = ({ manageHistory }) => {
   const router = useRouter()
 
   const goBack = () => {
     router.back()
   }
   return (
-    <Back onClick={goBack}>
+    <Back onClick={() => manageHistory()}>
       <ArrowBackIos />
     </Back>
   )

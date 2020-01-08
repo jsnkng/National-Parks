@@ -17,7 +17,7 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import FindAPark from '../../../components/findapark'
 
-const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
   // const markers = []
@@ -51,6 +51,7 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
           title__sub=''
           title_as={`/state/${stateCode}/`}
           title_href='/state/[stateCode]'
+          manageHistory={manageHistory}
         />
         <Content>
         

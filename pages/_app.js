@@ -26,48 +26,24 @@ const stack = []
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
 
-  const manageHistory = () => {}
+  // const manageHistory = () => {}
   // console.log('pageload stack', stack)
-  // const fwdStack = path => stack.push(path)
+  const fwdStack = path => stack.push(path)
 
 
-  // fwdStack(router.asPath)
+  fwdStack(router.asPath)
   // console.log('fwdStack stack', stack)
 
-  // const manageHistory = () => { 
-  //   const back = stack.pop()
-  //   const back2 = stack.pop()
-  //   const as = back2 !== undefined ? back2 : '/'
-  //   const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
+  const manageHistory = () => { 
+    const back = stack.pop()
+    const back2 = stack.pop()
+    const as = back2 !== undefined ? back2 : '/'
+    const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
 
-  //   href !== undefined && router.push(href, as)
-  //   console.log(href, as)
-  //   // Router.replace(stack.pop())
-  // }
-
-  // const manageHistory = {}
-  // manageHistory.href = '/state/[stateCode]/'
-  // const [back] = stack.slice(-2)
-  // manageHistory.as = back
-  // console.log(manageHistory)
-
-  // const manageHistory = (path) => {
-  //   console.log('manageHistory stack', stack)
-  //   if (path !== -1) {
-  //     // stack.push(path)
-  //   } else {
-  //     console.log('go back page', stack.slice(-2, -1))
-  //     const backstack = stack.slice(0, -1)
-  //     console.log('go back stack', backstack)
-  //     // const back = stack.slice(-2, -1)
-  //     // setStack(stack.slice(0,-1))
-  //     // setStack(stack.slice(0))
-  //     // console.log(stack)
-  //     // console.log(stack.slice(stack.length))
-  //     // Router.push('/state/ca/')
-  //   }
-  // }
-  
+    href !== undefined && router.push(href, as)
+    // console.log(href, as)
+    // Router.replace(stack.pop())
+  }
 
   return (
     <>
@@ -83,7 +59,7 @@ const MyApp = ({ router, Component, pageProps }) => {
         }}
         loadingClassNames="loading-indicator"
       >
-        <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} key={router.asPath} />
+        <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} key={router.asPath} />
       </PageTransition>
     </ThemeProvider>
     </>

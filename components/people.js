@@ -33,7 +33,7 @@ const Component = ({ people }) => {
               { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
                 <p>{item.listingdescription.substring(0, 200)}...</p>
               }
-              <a href={item.url} className="btn__read-more" target="_blank">Read More</a>
+              <span href={item.url} className="btn__read-more" target="_blank">Read More</span>
             </Col>
             </Row__Decorated>
             </Col>

@@ -17,6 +17,7 @@ export default (req, res) => {
   const getState = async (db, callback) => {
     console.log(`Getting State (${stateCode})`)
 
+    const parks = await db.collection('parks')
     let [state] = await db.collection('states').find({ stateCode }).toArray()
     if (state === undefined || state.length === 0) {
       console.log(`Fetching State (${stateCode}) from API`)

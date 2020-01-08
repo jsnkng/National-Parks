@@ -26,7 +26,7 @@ import FindAPark from '../../../../../components/findapark'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = ({ 
-  themeName, setThemeName, pageTransitionReadyToEnter, 
+  themeName, setThemeName, pageTransitionReadyToEnter, manageHistory,
   stateCode,
   parkCode, 
   park, 
@@ -90,6 +90,7 @@ const Park = ({
           title__sub={park.designation}
           title_as={`/state/${stateCode}/park/${parkCode}`}
           title_href='/state/[stateCode]/park/[parkCode]'
+          manageHistory={manageHistory}
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&
