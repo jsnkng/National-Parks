@@ -15,7 +15,7 @@ import Footer from '../../../components/footer'
 
 const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
   const [loaded, setLoaded] = useState(false)
-  
+
   useEffect(() => {
     setLoaded(true)
     pageTransitionReadyToEnter()
@@ -44,8 +44,6 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
             i++
             return(
               <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 5 : i % 4 === 2 ? 7 : i % 4 === 3 ? 7 : 5 } key={item.id}>
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${stateCode}/park/${item.parkCode}`} passHref>
-                  <a>
                     <ParkBanner 
                       backgroundURL={item.images === undefined || item.images.length == 0 
                         ? "/noimage.jpg" 
@@ -53,9 +51,9 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
                       title={item.name}
                       subtitle={item.designation}
                       states={item.states}
+                      href="/state/[stateCode]/park/[parkCode]"
+                      as={`/state/${stateCode}/park/${item.parkCode}`}
                     />
-                  </a>
-                </Link>
               </Col__Decorated>
             )
           })

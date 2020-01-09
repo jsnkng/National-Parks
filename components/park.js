@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import territories from '../config/states'
 
-const Component = ({ backgroundURL, title, subtitle, states }) => {
+const Component = ({ backgroundURL, title, subtitle, states, href, as }) => {
+  const router = useRouter()
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
   const handleBannerClick = () => {
     setIsSpinnerVisible(true)
   }
   const name = states.toLowerCase().split(',').map(item => territories[item][0]).join(', ')
+
+  const goToState = (href, as) => {
+    router.push(href, as)
+    console.log(href, as)
+  }
   return (
-    <Park onClick={handleBannerClick}>
+    <Park 
+    onClick={() => goToState(href, as)}>
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
         <h3>{subtitle}</h3>

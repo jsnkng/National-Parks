@@ -24,8 +24,7 @@ const stack = []
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
   
-  const fwdStack = path => stack.push(path)
-  fwdStack(router.asPath)
+  stack.push(router.asPath)
 
   const manageHistory = () => { 
     const back = stack.pop()
