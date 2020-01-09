@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
@@ -8,24 +7,15 @@ import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import territories from '../../../config/states'
-import MapDiagram from '../../../components/mapdiagram'
-import TerritoryList from '../../../components/territorylist'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import FindAPark from '../../../components/findapark'
 
 const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
   const [loaded, setLoaded] = useState(false)
-  const router = useRouter()
-  // const markers = []
   
-  // data.slice(0).map((item) => {
-  //   markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description, stateCode:state_id, parkCode:item.parkCode})
-  // })
-
   useEffect(() => {
     setLoaded(true)
     pageTransitionReadyToEnter()
@@ -43,22 +33,12 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
           <title>National Park Service Guide to {territories[stateCode][0]}</title>
         </Head>
         <Header 
-            park='National Park Service'
-            designation='A State-by-State Guide'
-            state=''
-            stateCode={stateCode}
           title={territories[stateCode][0]}
           title__sub=''
-          title_as={`/state/${stateCode}/`}
-          title_href='/state/[stateCode]'
           manageHistory={manageHistory}
         />
         <Content>
-        
         <Row__Decorated>
-          {/* <Col__Decorated xs={12} sm={6} md={5}>
-            <h1>{territories[stateCode][0]}</h1>
-          </Col__Decorated> */}
           {
           data.slice(0).map((item, i=0) => {
             i++
@@ -77,17 +57,11 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
                   </a>
                 </Link>
               </Col__Decorated>
-              
             )
           })
           }
         </Row__Decorated>
-        
         </Content>
-{/*     
-        <FindAPark__Container>
-          <FindAPark router={router} />
-        </FindAPark__Container> */}
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
@@ -107,7 +81,6 @@ State.getInitialProps = async ({ req, query }) => {
 
 export default State
 
-
 const Content = styled.main`
   position:relative;
   display: flex;
@@ -115,27 +88,15 @@ const Content = styled.main`
   align-items: top;
   justify-content: left;
   margin: 4rem 0;
-
+  ${SuperQuery().minWidth.md.css`
+    margin: 5rem 0;
+  `}
   ${SuperQuery().maxWidth.md.and.landscape.css`
     margin: 0 0 4rem 0;
   `}
-
-  h1 {
-    display: block;
-    color: ${({ theme }) => theme.colors.text};
-    padding: 2rem .5rem 0 0;
-    text-align: right;
-    font-size: 3rem;
-    line-height: 1;
-    font-weight: 200;
-    letter-spacing: -1.5px;
-    margin: 0;
-    border: none;
-  }
-  
 `
 const Row__Decorated = styled(Row)`
-width: 100%;
+  width: 100%;
   padding: 0;
   margin:0;
 `
@@ -143,18 +104,4 @@ const Col__Decorated = styled(Col)`
   position:relative;
   width: 100%;
   padding: 0;
-`
-const MapDiagram__Wrapper = styled.div`
-`
-
-
-const FindAPark__Container = styled.div`
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: ${({ theme }) => theme.colors.gradient_one};
-  color: ${({ theme }) => theme.colors.text};
-  z-index: 1000;
-  height: 87vh;
 `

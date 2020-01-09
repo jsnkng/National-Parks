@@ -19,13 +19,19 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     transition: all .25s ease-in-out;
     opacity: 1.0;
-    -webkit-transition: background .5s linear;
-    -moz-transition: background .5s linear;
-    -o-transition: background .5s linear;
-    -ms-transition: background .5s linear;
-    transition: background .5s linear;
+    -webkit-transition: background .25s  ease-in-out;
+    -moz-transition: background .25s  ease-in-out;
+    -o-transition: background .25s  ease-in-out;
+    -ms-transition: background .25s  ease-in-out;
+    transition: background .25s  ease-in-out;
   }
-
+  div, header, footer, main {
+    -webkit-transition: background .25s  ease-in-out;
+    -moz-transition: background .25s  ease-in-out;
+    -o-transition: background .25s  ease-in-out;
+    -ms-transition: background .25s  ease-in-out;
+    transition: background .25s  ease-in-out;
+  }
   @-webkit-keyframes myfirst {
     from {opacity: 0.2;}
     to {opacity: 1;}
@@ -51,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
     span {
       display: inline-block;
       font-weight: 400;
-      font-size: .725rem;
+      font-size: 1.75rem;
       letter-spacing: -1px;
       line-height: .875;
     }
