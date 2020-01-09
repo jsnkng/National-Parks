@@ -15,7 +15,6 @@ import Footer from '../../../components/footer'
 
 const Designations = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
-  const router = useRouter()
 
   useEffect(() => {
     setLoaded(true)
@@ -46,18 +45,16 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
             i++
             return(
               <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.id}>
-                <Link href="/state/[stateCode]/park/[parkCode]" as={`/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`} passHref>
-                  <a>
-                    <ParkBanner 
-                      backgroundURL={item.images === undefined || item.images.length == 0 
-                        ? "/noimage.jpg" 
-                        : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
-                      title={item.name}
-                      subtitle={item.designation}
-                      states={item.states}
-                    />
-                  </a>
-                </Link>
+                <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
+                  <ParkBanner 
+                    backgroundURL={item.images === undefined || item.images.length == 0 
+                      ? "/noimage.jpg" 
+                      : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
+                    title={item.name}
+                    subtitle={item.designation}
+                    states={item.states}
+                  />
+                </div>
               </Col__Decorated>
             )
           })

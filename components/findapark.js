@@ -9,7 +9,15 @@ import MapDiagram from '../components/mapdiagram'
 const Component = ({manageFuture}) => {
   const [highlighted, setHighlighted] = useState('')
 
- 
+  const handleStateChange = (e) => {
+    e.preventDefault()
+    manageFuture('/state/[stateCode]', e.target.value)
+  }
+  const handleDesignationChange = (e) => {
+    e.preventDefault()
+    manageFuture('/designation/[designation]', e.target.value)
+  }
+
   return (
   <FindAPark>
     <Row__Decorated>
@@ -22,7 +30,7 @@ const Component = ({manageFuture}) => {
             America! America!</h3> */}
        
         <h3>Find a Park</h3>
-        <select value={`/state/${highlighted}/`} onChange={()=>manageFuture('/state/[stateCode]', this.target.value)}>
+        <select value={`/state/${highlighted}/`} onChange={handleStateChange.bind(this)}>
           <option>By State</option>
           { Object.entries(states).map(([key, value]) => {
             return ( 
@@ -34,7 +42,7 @@ const Component = ({manageFuture}) => {
           })}
         </select>
 
-        <select value='' onChange={()=>manageFuture('/designation/[designation]', this.target.value)}>
+        <select value='' onChange={handleDesignationChange.bind(this)}>
           <option>By Designation</option>
           <option value='/designation/National%20Monument/'>
             National Monument

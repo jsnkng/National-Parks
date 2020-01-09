@@ -29,7 +29,7 @@ const MyApp = ({ router, Component, pageProps }) => {
     stack.push([router.route, router.asPath])
     // Get arguments href/as and push router to new routex
     router.push(href, as)
-    // console.log(stack)
+    console.log(stack)
   }
   const manageHistory = () => { 
     // const back = stack.pop()
@@ -40,7 +40,7 @@ const MyApp = ({ router, Component, pageProps }) => {
     // const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
     router.push(href, as)
     // href !== undefined && router.push(href, as)
-    // console.log(stack)
+    console.log(stack)
   }
 
   return (
