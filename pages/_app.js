@@ -25,17 +25,20 @@ const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
   
   const manageFuture = (href, as) => {
+    if(stack.length === 0) { stack.push('/') } 
     stack.push(as)
-    console.log(stack)
     router.push(href, as)
+    console.log(stack)
   }
   const manageHistory = () => { 
     const back = stack.pop()
     const back2 = stack.pop()
+    console.log(back2)
     const as = back2 !== undefined ? back2 : '/'
     const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
 
     href !== undefined && router.push(href, as)
+    console.log(stack)
   }
 
   return (

@@ -17,7 +17,6 @@ const Component = ({ territories, highlighted, setHighlighted, manageFuture }) =
     <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
       { Object.entries(states).map(([key, value]) => {
         if(territories === "none") {
-          console.log(key)
           return ( 
             <path 
               key={key}

@@ -7,7 +7,6 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
   const handleBannerClick = () => {
     setIsSpinnerVisible(true)
-    console.log('setIsSpinnerVisible')
   }
   // const name = states.toLowerCase().split(',').map(item => territories[item][0]).join(', ')
   

@@ -19,7 +19,6 @@ export default (req, res) => {
     console.log(`Getting Park (${parkCode})`)
 
     const result = { parkCode }
-
     let [park] = await db.collection('parks').find({ parkCode }).toArray()
     if (park === undefined || park.length === 0) {
       console.log(`Fetching Park (${parkCode}) From API`)
@@ -32,6 +31,7 @@ export default (req, res) => {
       result.park = park.data[0]
     } else {
       result.park = park
+      console.log(`Found (${parkCode}) `)
     }
     result.park.parkCode = parkCode
 

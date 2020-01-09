@@ -81,7 +81,6 @@ const Content = styled.main`
   height: 100vh;
   margin: 0;
   padding: 0;
-  ${({ theme }) => console.log('lo', theme)};
   img.logo {
     position: absolute;
     top: 1.125rem;

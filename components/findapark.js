@@ -26,7 +26,7 @@ const Component = ({manageFuture}) => {
           <option>By State</option>
           { Object.entries(states).map(([key, value]) => {
             return ( 
-              <option     value={`/state/${key}/`} 
+              <option value={`/state/${key}/`} 
                 key={key} >
                   {value[0]}
               </option>

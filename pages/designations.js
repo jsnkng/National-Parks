@@ -60,7 +60,6 @@ State.getInitialProps = async ({ req, query }) => {
   const stateResult = await fetch(`${origin}/api/designation/${designation}`)
   const result = await stateResult.json()
   result.designation = designation
-  console.log(result)
   return result
 }
 
