@@ -1,26 +1,15 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
-import Router from 'next/router'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../config/states'
 import MapDiagram from '../components/mapdiagram'
 
-function handleStateChange(e) {
-  e.preventDefault()
-  Router.push('/state/[stateCode]', e.target.value)
-}
-function handleDesignationChange(e) {
-  e.preventDefault()
-  Router.push('/designation/[designation]', e.target.value)
-}
 
-const Component = () => {
-  const router = useRouter()
+const Component = ({manageFuture}) => {
   const [highlighted, setHighlighted] = useState('')
 
-
+ 
   return (
   <FindAPark>
     <Row__Decorated>
@@ -33,7 +22,7 @@ const Component = () => {
             America! America!</h3> */}
        
         <h3>Find a Park</h3>
-        <select value={`/state/${highlighted}/`} onChange={handleStateChange}>
+        <select value={`/state/${highlighted}/`} onChange={()=>manageFuture('/state/[stateCode]', this.target.value)}>
           <option>By State</option>
           { Object.entries(states).map(([key, value]) => {
             return ( 
@@ -45,7 +34,7 @@ const Component = () => {
           })}
         </select>
 
-        <select value='' onChange={handleDesignationChange}>
+        <select value='' onChange={()=>manageFuture('/designation/[designation]', this.target.value)}>
           <option>By Designation</option>
           <option value='/designation/National%20Monument/'>
             National Monument
@@ -149,7 +138,9 @@ const Component = () => {
           className="mapdiagram" 
           territories={'none'} 
           highlighted={highlighted} 
-          setHighlighted={setHighlighted} />
+          setHighlighted={setHighlighted} 
+          manageFuture={manageFuture}
+          />
         </MapDiagram__Wrapper>
       </Col__Decorated>
     </Row__Decorated> 

@@ -8,7 +8,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import Footer from '../components/footer'
 import FindAPark from '../components/findapark'
 
-const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
+const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [limit, setLimit] = useState(6)
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
@@ -27,7 +27,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
       <Content>
         <FindAPark__Container>
           <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
-          <FindAPark router={router} />
+          <FindAPark manageFuture={manageFuture} />
         </FindAPark__Container>
           {/* <Row__Decorated>
           {

@@ -1,21 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-import { useRouter } from 'next/router'
 
 import { Arrow } from '../svgs/l-arrow.svg'
 
-const Component = ({ title, title__sub, manageHistory }) => {
-  const router = useRouter()
+const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
 
   const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.375rem 0 0 1.75rem' } : 
                      (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
-
-  const goHome = () => {
-    router.push('/')
-  }
 
 
   return (
@@ -32,7 +25,7 @@ const Component = ({ title, title__sub, manageHistory }) => {
           
         </Col>
         <Col xs={3} md={2}>
-          <div onClick={goHome}>
+          <div onClick={() => manageFuture('/', '/')}>
             <img className="logo" src="/us-nps.png" width="90" alt="National Parks Guide" />
             <a className="logo__text" href="#">National<br />Park<br />Service</a>
           </div>

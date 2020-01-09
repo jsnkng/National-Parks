@@ -24,8 +24,11 @@ const stack = []
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
   
-  stack.push(router.asPath)
-
+  const manageFuture = (href, as) => {
+    stack.push(as)
+    console.log(stack)
+    router.push(href, as)
+  }
   const manageHistory = () => { 
     const back = stack.pop()
     const back2 = stack.pop()
@@ -47,7 +50,7 @@ const MyApp = ({ router, Component, pageProps }) => {
           exit: 400,
         }}
         loadingClassNames="loading-indicator">
-          <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} key={router.asPath} />
+          <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} manageFuture={manageFuture} key={router.asPath} />
       </PageTransition>
     </ThemeProvider>
   )

@@ -26,7 +26,7 @@ import FindAPark from '../../../../../components/findapark'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = ({ 
-  themeName, setThemeName, pageTransitionReadyToEnter, manageHistory,
+  themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture,
   stateCode,
   parkCode, 
   park, 
@@ -84,6 +84,7 @@ const Park = ({
           title={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
           title__sub={park.designation}
           manageHistory={manageHistory}
+          manageFuture={manageFuture}
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&

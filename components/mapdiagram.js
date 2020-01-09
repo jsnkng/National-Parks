@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import states from '../config/states'
 
-const Component = ({ territories, highlighted, setHighlighted }) => {
+const Component = ({ territories, highlighted, setHighlighted, manageFuture }) => {
   return (
     <Map
       width="100%"
@@ -17,19 +17,16 @@ const Component = ({ territories, highlighted, setHighlighted }) => {
     <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
       { Object.entries(states).map(([key, value]) => {
         if(territories === "none") {
+          console.log(key)
           return ( 
-            <Link  
+            <path 
               key={key}
-              href="/state/[stateCode]" 
-              as={"/state/" + key}
-              passHref>
-                <path 
-                  id={key} 
-                  className={highlighted === key ? 'highlight' : ''} 
-                  onMouseOver={() => setHighlighted(key)} 
-                  onMouseOut={() => setHighlighted('')} 
-                  d={value[1]}  />
-            </Link>
+              id={key} 
+              className={highlighted === key ? 'highlight' : ''} 
+              onMouseOver={() => setHighlighted(key)} 
+              onMouseOut={() => setHighlighted('')} 
+              d={value[1]}
+              onClick={()=>manageFuture('/state/[stateCode]', `/state/${key}/`)}  />
           )
         } else {
           return ( 

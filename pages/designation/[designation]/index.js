@@ -13,7 +13,7 @@ import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
-const Designations = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
+const Designations = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
 
@@ -37,6 +37,7 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
           title={`${designation}s`}
           title__sub=''
           manageHistory={manageHistory}
+          manageFuture={manageFuture}
         />
         <Content>
         <Row__Decorated>

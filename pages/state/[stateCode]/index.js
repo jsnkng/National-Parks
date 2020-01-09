@@ -13,7 +13,7 @@ import ParkBanner from '../../../components/park'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 
-const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
+const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
           title={territories[stateCode][0]}
           title__sub=''
           manageHistory={manageHistory}
+          manageFuture={manageFuture}
         />
         <Content>
         <Row__Decorated>
@@ -44,16 +45,18 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
             i++
             return(
               <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 5 : i % 4 === 2 ? 7 : i % 4 === 3 ? 7 : 5 } key={item.id}>
-                    <ParkBanner 
-                      backgroundURL={item.images === undefined || item.images.length == 0 
-                        ? "/noimage.jpg" 
-                        : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
-                      title={item.name}
-                      subtitle={item.designation}
-                      states={item.states}
-                      href="/state/[stateCode]/park/[parkCode]"
-                      as={`/state/${stateCode}/park/${item.parkCode}`}
-                    />
+              <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${item.parkCode}`)}>
+              <ParkBanner
+                  backgroundURL={item.images === undefined || item.images.length == 0 
+                    ? "/noimage.jpg" 
+                    : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
+                  title={item.name}
+                  subtitle={item.designation}
+                  states={item.states}
+                  href="/state/[stateCode]/park/[parkCode]"
+                  as={`/state/${stateCode}/park/${item.parkCode}`}
+
+                /></div>
               </Col__Decorated>
             )
           })
