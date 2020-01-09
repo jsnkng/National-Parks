@@ -14,62 +14,58 @@ const Component = ({ places }) => {
           <h2>Places of Interest</h2>
         </Col>
       </Row__Decorated>
+      <Row__Decorated>
      { places.slice(0,limit).map((item) => {
       return ( 
-        <Row__Decorated key={item.id}>
-          <a href={item.url} target="_blank">
-          <Col xs={12}>
-              <Row__Decorated>
-                <Col xs={12} md={6}>
-                { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
-                  <LazyLoad offset={100}>
-                    
-                      <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
-                  </LazyLoad>
-                }
-                </Col>
-                <Col xs={12} md={6}>
-                <h4>{item.title}</h4>
-                  { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-                    <p>{item.listingdescription}</p>
-                  }
-                  Plan Your Visit
-                </Col>
-              </Row__Decorated>
-            </Col>
-          </a>
-        </Row__Decorated>
+        <Col xs={12} md={4} key={item.id}>
+            <a href={item.url} target="_blank">
+            { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+              <LazyLoad offset={100}>
+                <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
+              </LazyLoad>
+            }
+            { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
+              <h4>{item.title}</h4>
+            }
+            { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+              <h4>{item.title}</h4>
+            }
+              <p>{item.listingdescription}</p>
+              <span className="btn__read-more" target="_blank">Read More</span>
+            </a>
+          </Col>
         )
       })
       }
+      </Row__Decorated>
       <Row__Decorated>
         <button 
           className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" } 
           onClick={() => setLimit(limit + 3)}>Load More Places</button>
       </Row__Decorated>
-  </Places>
+    </Places>
   )
 }
   
 export default Component
 
 const Places = styled(Grid)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  
-
-  .lazyload-placeholder,
+ padding: 1rem;
+ .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
     min-width: 15rem;
     ${SuperQuery().minWidth.md.css`
-      height: 14rem;
-      min-width: 15rem;
+      height: 11rem;
+      min-width: 14rem;
     `}
     ${SuperQuery().minWidth.lg.css`
       height: 16rem;
       min-width: 15rem;
     `}
+  }
+  h4 {
+    margin: .5rem 0 0 0;
   }
 `
 
@@ -79,7 +75,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   margin: 1rem 0 0 0;
-  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  -webkit-animation: myfirst 1s; 
   animation: myfirst 1s;
 `
 const Row__Decorated = styled(Row)`

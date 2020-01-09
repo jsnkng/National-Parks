@@ -81,15 +81,8 @@ const Park = ({
           <title>{states[stateCode][0]} | {park.name} {park.designation}</title>
         </Head>
         <Header 
-            park='National Park Service'
-            designation='A State-by-State Guide'
-          state={states[stateCode][0]}
-          stateCode={stateCode}
-          states={park.states}
           title={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
           title__sub={park.designation}
-          title_as={`/state/${stateCode}/park/${parkCode}`}
-          title_href='/state/[stateCode]/park/[parkCode]'
           manageHistory={manageHistory}
         />
         <Content>
@@ -156,7 +149,7 @@ const Content = styled.main`
   margin: 0 0 4rem 0; 
 
   ${SuperQuery().maxWidth.md.and.landscape.css`
-    margin: -4rem 0 4rem 0;
+    margin: -5rem 0 4rem 0;
   `}  
 
 

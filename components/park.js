@@ -61,7 +61,7 @@ const Park = styled.div`
       line-height: 1;
       letter-spacing: -1.5px;
       border: none;
-      margin: .5rem 0 0 .25rem;
+      margin: .5rem 0 0 .375rem;
       padding: 0; 
     }
     h3 {

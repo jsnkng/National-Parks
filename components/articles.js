@@ -19,8 +19,8 @@ const Component = ({ articles }) => {
         <Row__Decorated key={item.id}>
           <a href={item.url} target="_blank">
           <Col xs={12}>
-              <Row__Decorated>
-                <Col xs={12} md={5}>
+            <Row__Decorated>
+              <Col xs={12} md={5}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <LazyLoad offset={100}>
                     <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
@@ -29,19 +29,19 @@ const Component = ({ articles }) => {
                 { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
                   <h4>{item.title}</h4>
                 }
-                </Col>
-                <Col xs={12} md={7}>
+              </Col>
+              <Col xs={12} md={7}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <h4>{item.title}</h4>
                 }
-                  <p>{item.listingdescription.substring(0, 270)}...</p>
+                  <p>{item.listingdescription}</p>
                   <span className="btn__read-more" target="_blank">Read More</span>
-                </Col>
-              </Row__Decorated>
               </Col>
-            </a>
-          </Row__Decorated>
-          )
+            </Row__Decorated>
+          </Col>
+          </a>
+        </Row__Decorated>
+        )
         })
       }
       <Row__Decorated>
@@ -54,20 +54,22 @@ const Component = ({ articles }) => {
 export default Component
 
 const Articles = styled(Grid)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
+  padding: 1rem;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
     min-width: 15rem;
     ${SuperQuery().minWidth.md.css`
-      height: 10rem;
-      min-width: 13rem;
+      height: 11rem;
+      min-width: 14rem;
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 12.5rem;
+      height: 16rem;
+      min-width: 15rem;
     `}
+  }
+  h4 {
+    margin: .5rem 0 0 0;
   }
 `
 const Image = styled.div`
@@ -76,7 +78,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   margin: 1rem 0 0 0;
-  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 `
 

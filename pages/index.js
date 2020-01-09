@@ -76,10 +76,8 @@ Home.pageTransitionDelayEnter = true
 
 export default Home
 const Content = styled.main`
-  color: ${({ theme }) => {
-    console.log(theme) 
-    return theme.colors.text }};
-  background: ${({ theme }) => theme.mybreakpoints};
+  color: ${({ theme }) => theme.colors.text };
+  background: ${({ theme }) => theme.colors.background};
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -128,11 +126,11 @@ const FindAPark__Container = styled.div`
     padding: 2rem 0 0 0;
   
   ${SuperQuery().minWidth.sm.css`
-    padding: 12rem 0 0 0;
+    padding: 6rem 0 0 0;
   `}
 
   ${SuperQuery().minWidth.lg.css`
-    padding: 22rem 0 0 0;
+    padding: 10rem 0 0 0;
   `}
 
   ${'' /* ${ ({ theme }) => SuperQuery(theme.flexboxgrid.mybreakpoints).minWidth.sml.css`

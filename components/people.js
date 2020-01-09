@@ -13,36 +13,30 @@ const Component = ({ people }) => {
           <h2>Related People</h2>
         </Col>
       </Row__Decorated>
+      <Row__Decorated>
       { people.slice(0,limit).map((item) => {
         return( 
-        <Row__Decorated key={item.id}>
-          <a href={item.url} target="_blank">
-          <Col xs={12}>
-            <Row__Decorated>
-            <Col xs={12} lg={4}>
+          <Col xs={12} md={4} key={item.id}>
+            <a href={item.url} target="_blank">
             { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
               <LazyLoad offset={100}>
                 <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
               </LazyLoad>
             }
-            </Col>
-            <Col xs={12} lg={6}>
+            { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
               <h4>{item.title}</h4>
-              { item.listingimage.url !== undefined && item.listingimage.length !== 0 &&
-                <p>{item.listingdescription}</p>
-              }
-              { item.listingimage.url === undefined && item.listingimage.url.length === 0 &&
-                <p>{item.listingdescription.substring(0, 200)}...</p>
-              }
-              <span href={item.url} className="btn__read-more" target="_blank">Read More</span>
-            </Col>
-            </Row__Decorated>
-            </Col>
-          </a>
-          </Row__Decorated>
+            }
+            { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
+              <h4>{item.title}</h4>
+            }
+              <p>{item.listingdescription}</p>
+              <span className="btn__read-more" target="_blank">Read More</span>
+            </a>
+          </Col>
           )
-        })
-      }
+          })
+        }
+      </Row__Decorated>
       <Row__Decorated>
         <button className={limit >= people.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit +3 )}>Load More People</button>
       </Row__Decorated>
@@ -53,11 +47,19 @@ const Component = ({ people }) => {
 export default Component
 
 const People = styled(Grid)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
+    min-width: 15rem;
+    ${SuperQuery().minWidth.md.css`
+      height: 11rem;
+      min-width: 14rem;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      height: 24rem;
+      min-width: 15rem;
+    `}
   }
 `
 const Image = styled.div`

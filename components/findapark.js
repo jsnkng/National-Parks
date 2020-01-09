@@ -183,14 +183,14 @@ const FindAPark = styled.div`
       letter-spacing: -1px;
       font-size: 2.625rem;
       letter-spacing: -1.5px;
-      margin: .25rem 0 0 .5rem;
-      padding: 0 0 .5rem 0;
+      margin: 1.25rem 0 0 .5rem;
+      padding: 1.875rem 0 .5rem 0;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.625rem;
+      font-size: 2.5rem;
       margin: .75rem 0 0 .25rem;
     `} 
     ${SuperQuery().minWidth.lg.css`
-      font-size: 2.25rem;
+      font-size: 3.375rem;
       margin: .25rem 0 0 .5rem;
     `} 
   }

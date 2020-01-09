@@ -8,8 +8,8 @@ import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory }) => {
 
-  const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.125rem', margin: '.575rem .5rem 0 1.625rem' } : 
-                     (title.length > 24 && title__sub === '') ? { fontSize: '1.125rem', margin: '.75rem .5rem 0 1.625rem' } : {}
+  const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.375rem 0 0 1.75rem' } : 
+                     (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
 
   return (
     <Header>
@@ -82,7 +82,7 @@ const Header = styled.header`
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0.8rem 3.25rem 0 -3rem;
+    margin: 0.8rem 2.875rem 0 -3rem;
     ${SuperQuery().minWidth.md.css`
       margin: .875rem 4.125rem 0 -3rem;
       font-size: 1.25rem;
@@ -106,17 +106,17 @@ const Back = styled.div`
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1.5px;
-    margin: 0.8rem 0 0 2.5rem;
+    margin: 0.8rem 0 0 1.75rem;
     ${SuperQuery().minWidth.md.css`
       font-size: 2.125rem;
-      margin: 0.8rem 0 0 3rem;
+      margin: 0.8rem 0 0 2.5rem;
     `}
 
     &.large {
-      margin: 0.925rem 0 0 2.5rem;
-      font-size: 2.25rem;
+      margin: 1.25rem 0 0 1.75rem;
+      font-size: 1.375rem;
     ${SuperQuery().minWidth.md.css`
-      margin: 0.925rem 0 0 3rem;
+      margin: 1.25rem 0 0 2.5rem;
     `}
     }
   }
@@ -128,10 +128,10 @@ const Back = styled.div`
     line-height: 1;
     font-weight: 200;
     letter-spacing: -0.5px;
-    margin: 0 0 0 2.5rem;
+    margin: 0 0 0 1.75rem;
     
     ${SuperQuery().minWidth.md.css`
-      margin: 0 0 0 3rem;
+      margin: 0 0 0 2.5rem;
       font-size:1.25rem;
       letter-spacing: -1px;
     `}
@@ -142,7 +142,7 @@ const Back = styled.div`
 const Arrow__Decorated = styled(Arrow)`
   position: absolute;
   top: .875rem;
-  left: 0.25rem;
+  left: 0;
   width: 2.25rem;
   height: 2.25rem;
   fill: ${({ theme }) => theme.colors.text};
