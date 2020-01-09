@@ -27,7 +27,7 @@ const Park = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 22em;
+  min-height: 22rem;
   min-width: 300px;
   margin: 0;
   padding: 0;
@@ -45,8 +45,8 @@ const Park = styled.div`
     right: 0;
     background-color: ${({ theme }) => theme.colors.trans_back};
     color: ${({ theme }) => theme.colors.text};
-    height: 4em;
-    padding: .125em .5em;
+    height: 4rem;
+    padding: .125rem .5rem;
     z-index: 20;
     -webkit-transition: background .5s linear;
     -moz-transition: background .5s linear;
@@ -57,11 +57,11 @@ const Park = styled.div`
     h2 {
       float: left;
       font-weight: 700;
-      font-size: 1.25em;
+      font-size: 1.25rem;
       line-height: 1;
       letter-spacing: -1.5px;
       border: none;
-      margin: .5em 0 0 .25em;
+      margin: .5rem 0 0 .25rem;
       padding: 0; 
     }
     h3 {
@@ -69,18 +69,18 @@ const Park = styled.div`
       clear: left;
       text-align: left;
       font-weight: 400;
-      font-size: 1em;
+      font-size: 1rem;
       line-height: 1;
       letter-spacing: -1px;
-      margin: 0 0 0 .375em;
+      margin: 0 0 0 .375rem;
       padding: 0; 
     }
     span {position: absolute;
-      top: .875em;
-      right: .5em;
+      top: .875rem;
+      right: .5rem;
       text-align: right;
       font-weight: 400;
-      font-size: .75em;
+      font-size: .75rem;
       line-height: .85;
       letter-spacing: -1px;
       margin: 0;

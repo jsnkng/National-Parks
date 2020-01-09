@@ -46,14 +46,14 @@ const Component = ({ park, markers }) => {
 export default Component
 
 const VisitorInfo = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `
 
 const MapLive__Wrapper = styled.div`
   position:relative;
   height: 42vh;
-  margin: .5em .125em .5em .125em;
+  margin: .5rem .125rem .5rem .125rem;
   padding:  0;
   z-index: 10;
 `

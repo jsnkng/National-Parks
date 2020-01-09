@@ -49,8 +49,21 @@ const Component = ({ visitorCenters }) => {
 export default Component
 
 const VisitorCenters = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  .description {
+    font-size: 1rem;
+    overflow-wrap: break-word;
+    padding: 0 .25rem 1rem .25rem;
+    margin: .5rem 0 0 0;
+    ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+    }
+    li {
+      padding: .5rem 0 0 .25rem;
+    }
+  }
 `
 const Row__Decorated = styled(Row)`
   padding: 0;

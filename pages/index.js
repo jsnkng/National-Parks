@@ -65,7 +65,6 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
     )
   }
 }
-
 // Home.getInitialProps = async ({ req, query }) => {
 //   const { origin } = absoluteUrl(req)
 //   const parkResult = await fetch(`${origin}/api/parks/aggregate`)
@@ -76,18 +75,19 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
 Home.pageTransitionDelayEnter = true
 
 export default Home
-
 const Content = styled.main`
-  color: ${({ theme }) => theme.colors.text};
-  background: ${({ theme }) => theme.colors.gradient_one};
+  color: ${({ theme }) => {
+    console.log(theme) 
+    return theme.colors.text }};
+  background: ${({ theme }) => theme.mybreakpoints};
   height: 100vh;
   margin: 0;
   padding: 0;
-
+  ${({ theme }) => console.log('lo', theme)};
   img.logo {
     position: absolute;
-    top: 1.125em;
-    right: 1.125em;
+    top: 1.125rem;
+    right: 1.125rem;
     width: 70px;
     ${SuperQuery().minWidth.sm.css`
       width: 90px;
@@ -100,9 +100,9 @@ const Content = styled.main`
     `}
   }
   h2 {
-    margin: 0 1.25em 0 .5em;
+    margin: 0 1.25rem 0 .5rem;
     ${SuperQuery().minWidth.sm.css`
-      margin: 1em 0 0 .25em;
+      margin: 1rem 0 0 .25rem;
     `}
   }
   
@@ -122,12 +122,21 @@ const FindAPark__Container = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${ ({ theme }) => theme.colors.text };
   z-index: 1000;
   height: 100vh;
+    padding: 2rem 0 0 0;
   
   ${SuperQuery().minWidth.sm.css`
-    padding: 5em 0 0 0;
+    padding: 12rem 0 0 0;
   `}
+
+  ${SuperQuery().minWidth.lg.css`
+    padding: 22rem 0 0 0;
+  `}
+
+  ${'' /* ${ ({ theme }) => SuperQuery(theme.flexboxgrid.mybreakpoints).minWidth.sml.css`
+    padding: 12rem 0 0 0;
+  `} */}
 `
 

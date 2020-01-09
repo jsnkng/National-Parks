@@ -96,11 +96,37 @@ const Component = ({ events }) => {
 export default Component
 
 const Events = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 22em;
+    height: 22rem;
+  }
+  .description {
+    font-size: 1rem;
+    overflow-wrap: break-word;
+    padding: 0 .25rem 1rem .25rem;
+    margin: .5rem 0 0 0;
+    ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+    }
+    li {
+      padding: .5rem 0 0 .25rem;
+    }
+  }
+  .details {
+    font-size: .875rem;
+    background-color: ${({ theme }) => theme.colors.box_background};
+    padding: 1rem 1rem;
+    margin: 1rem .25rem;
+    p {
+      margin: 0;
+      padding:0;
+    }
+    ${SuperQuery().minWidth.md.css`
+      margin: 1rem 0;
+    `}
   }
 `
 const Image = styled.div`

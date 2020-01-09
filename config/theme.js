@@ -1,21 +1,19 @@
-
-
 const themes = {
   flexboxgrid: {
     gridSize: 12, // columns
-    gutterWidth: 1, // rem
-    outerMargin: 0.5, // rem
+    gutterWidth: 0, // rem
+    outerMargin: 1, // rem
     mediaQuery: 'only screen',
     container: {
       sm: 36, // rem
-      md: 46, // rem
-      lg: 64 // rem
+      md: 48, // rem
+      lg: 62 // rem
     },
     breakpoints: {
-      xs: 0, // em
-      sm: 38.4, // em
-      md: 49.6, // em
-      lg: 60 // em
+      xs: 0, // em 576 @16px font
+      sm: 36, // em 768 @16px font
+      md: 48, // em 992 @16px font
+      lg: 62 // em 1200 @16px font
     }
   },
   nightTheme: {
@@ -45,18 +43,6 @@ const themes = {
     trans_back: 'rgba(245,245,245,0.8)',
     spinner: 'rgba(255,255,255,.2)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'
-  },
-  rainbowTheme: {
-    background: '#0049ab',
-    box_background: '#3db7e3',
-    offbackground: '#004eb6',
-    text: '#ffffff',
-    color_one: '#ffca13',
-    color_two: '#a1dde9',
-    color_three: '#4c93d9',
-    color_four: '#90d223',
-    trans_back: 'rgba(213,6,116,0.8)',
-    spinner: 'rgba(255,255,255,0.2)',
   }
 }
 

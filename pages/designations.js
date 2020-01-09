@@ -12,10 +12,9 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import DesignationList from '../components/designationlist'
 
-const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
-
 
   useEffect(() => {
     setLoaded(true)
@@ -31,14 +30,15 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
           <title>National Park Service Guide to {designation}</title>
         </Head>
         <Header 
-            park='National Park Service'
-            designation='A State-by-State Guide'
-            state=''
-            stateCode=''
+          park='National Park Service'
+          designation='A State-by-State Guide'
+          state=''
+          stateCode=''
           title='Designations'
           title__sub=''
           title_as='designations'
           title_href='designations'
+          manageHistory={manageHistory}
         />
         <Content>
           <Col__Decorated xs={12}>

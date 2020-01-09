@@ -61,28 +61,36 @@ const Component = ({ newsReleases }) => {
 export default Component
 
 const NewsReleases = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 20em;
-    min-width: 15em;
+    height: 20rem;
+    min-width: 15rem;
     ${SuperQuery().minWidth.md.css`
-      height: 11em;
-      min-width: 14em;
+      height: 11rem;
+      min-width: 14rem;
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 16em;
-      min-width: 15em;
+      height: 16rem;
+      min-width: 15rem;
     `}
   }
+  .articles__date {
+    display: block;
+    font-size: 1rem;
+    padding: 1rem 0 0 0;
+    margin: 0;
+    font-weight: 700;
+  }
+ 
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin: 1em 0 0 0;
+  margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 `

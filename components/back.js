@@ -19,16 +19,16 @@ const Component = ({ manageHistory }) => {
 export default Component
 
 const Back = styled.div`
-  width: 3em;
-  height: 4em;
+  width: 3rem;
+  height: 4rem;
 `
 
 const Arrow__Decorated = styled(Arrow)`
   position: absolute;
-  top: 1em;
-  left: .125em;
-  width: 2em;
-  heigt: 2em;
+  top: 1rem;
+  left: .125rem;
+  width: 2rem;
+  heigt: 2rem;
   fill: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   outline: none;

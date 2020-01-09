@@ -46,27 +46,27 @@ const Content = styled.div`
  .title__copyright {
     float:left;
     clear: left;
-    font-size: .75em;
+    font-size: .75rem;
     text-align: right;
     line-height: .75;
     letter-spacing: -1px;
     font-weight: 400;
-    padding: .75em .25em 0 0;
+    padding: .75rem .25rem 0 0;
     span {
       font-weight: 700;
     }
   }
  span {
-    font-size: .5em;
+    font-size: .5rem;
     float: right;
-    margin: 1em 6.5em;
+    margin: 1rem 6.5rem;
 
   }
  .react-toggle {
   touch-action: pan-x;
   display: inline-block;
   position: absolute;
-  bottom: 2em;
+  bottom: 2rem;
   right: 13px;
   cursor: pointer;
   background-color: transparent;

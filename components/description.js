@@ -29,15 +29,15 @@ const Component = ({ park }) => {
 export default Component
 
 const Description = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `
 const MapDiagram__Wrapper = styled.div`
-  margin: 1em auto 0 auto;
+  margin: 1rem auto 0 auto;
   width: 70%;
   ${SuperQuery().minWidth.sm.css`
     width: 100%;
-    margin: .75em auto 0 auto;
+    margin: .75rem auto 0 auto;
   `}
   ${SuperQuery().minWidth.lg.css`
     width: 100%;

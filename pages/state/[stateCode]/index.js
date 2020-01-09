@@ -114,18 +114,18 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: top;
   justify-content: left;
-  margin: 4em 0;
+  margin: 4rem 0;
 
   ${SuperQuery().maxWidth.md.and.landscape.css`
-    margin: 0 0 4em 0;
+    margin: 0 0 4rem 0;
   `}
 
   h1 {
     display: block;
     color: ${({ theme }) => theme.colors.text};
-    padding: 2em .5em 0 0;
+    padding: 2rem .5rem 0 0;
     text-align: right;
-    font-size: 3em;
+    font-size: 3rem;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -1.5px;

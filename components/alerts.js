@@ -47,22 +47,22 @@ const Component = ({ alerts }) => {
 export default Component
 
 const Alerts = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   .accordion {
     background-color: #ffca13;
     color: #333333; 
-    padding: .5em;
+    padding: .5rem;
   }
   .accordion__item {
     color: #333333;
     border: none;
     padding:0;
-    margin: .75em 0 .25em 0;
+    margin: .75rem 0 .25rem 0;
     ${SuperQuery().minWidth.md.css`
       padding: 0;
-      margin: .5em 0 .5em 0;
+      margin: .5rem 0 .5rem 0;
     `}
   }
   .accordion__button {
@@ -70,7 +70,7 @@ const Alerts = styled(Grid)`
     border: none;
     padding: 0;
     margin: 0;
-    padding: .25em .75em 0 .75em;
+    padding: .25rem .75rem 0 .75rem;
   }
   .accordion__panel {
     border: none;
@@ -81,32 +81,32 @@ const Alerts = styled(Grid)`
     line-height: 1;
     padding: 0;
     border: none;
-    padding: .25em;
+    padding: .25rem;
     ${SuperQuery().minWidth.md.css`
-    padding: .375em 0 .375em .5em;
-    margin: 0 0 .125em 0;
+    padding: .375rem 0 .375rem .5rem;
+    margin: 0 0 .125rem 0;
     `}
   }
   h3 {
-    font-size: .875em;
+    font-size: .875rem;
     color: #333333;
-    text-indent: 0em;
+    text-indent: 0rem;
   }
   p {
-    font-size: .75em;
+    font-size: .75rem;
     font-weight: 400;
     padding: 0;
-    margin: .5em 1em 0 1.625em;
+    margin: .5rem 1rem 0 1.625rem;
     color: #333333;
   }
   span {
-    font-size: .75em;
+    font-size: .75rem;
     font-weight: 400;
     display: block;
-    margin: .25em 0  .25em  0;
+    margin: .25rem 0  .25rem  0;
     text-transform: uppercase;
     color: #333333;
-    text-indent: 0em;
+    text-indent: 0rem;
   }
   
 `

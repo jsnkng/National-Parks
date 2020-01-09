@@ -6,8 +6,8 @@ import SuperQuery from '@themgoncalves/super-query'
 import Back from '../components/back'
 const Component = ({ title, title_href, title_as, title__sub, park, designation, manageHistory }) => {
 
-  const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.125em', margin: '.575em .5em 0 1.625em' } : 
-                     (title.length > 24 && title__sub === '') ? { fontSize: '1.125em', margin: '.75em .5em 0 1.625em' } : {}
+  const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.125rem', margin: '.575rem .5rem 0 1.625rem' } : 
+                     (title.length > 24 && title__sub === '') ? { fontSize: '1.125rem', margin: '.75rem .5rem 0 1.625rem' } : {}
 
   return (
     <Header>
@@ -58,7 +58,7 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 100;
-  height: 4em;
+  height: 4rem;
     -webkit-transition: background .5s linear;
     -moz-transition: background .5s linear;
     -o-transition: background .5s linear;
@@ -75,19 +75,19 @@ const Header = styled.header`
   }
   img.logo {
     position: absolute;
-    top: .625em;
-    right: .125em;
+    top: .625rem;
+    right: .125rem;
     cursor: pointer;
     border: none;
     width: 42px;
-    margin: .125em;
+    margin: .125rem;
     padding: 0;
     ${SuperQuery().minWidth.sm.css`
       width: 50px;
     `}
     ${SuperQuery().minWidth.md.css`
       width: 57px;
-      margin: 0 .125em;
+      margin: 0 .125rem;
     `}
   }
 
@@ -124,21 +124,21 @@ button:active {
   .title {
     display: block;
     float: left;
-    font-size: 1.375em;
+    font-size: 1.375rem;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: .575em 0 0 1.25em;
+    margin: .575rem 0 0 1.25rem;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.5em !important;
+      font-size: 1.5rem !important;
       letter-spacing: -1.5px;
-      margin: .5em 0 0 1.25em !important;
+      margin: .5rem 0 0 1.25rem !important;
     `}
 
     &.large {
-      margin: .925em 0 0 1.25em;
+      margin: .925rem 0 0 1.25rem;
       ${SuperQuery().minWidth.md.css`
-        margin: .625em 0 0 1.5em !important;
+        margin: .625rem 0 0 1.5rem !important;
       `}
     }
   }
@@ -146,58 +146,58 @@ button:active {
     display: block;
     float: left;
     clear: left;
-    font-size: .875em;
+    font-size: .875rem;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: 0 0 0 2em;
+    margin: 0 0 0 2rem;
     ${SuperQuery().minWidth.sm.css`
-      margin: 0 0 0 2em;
+      margin: 0 0 0 2rem;
     `}
     ${SuperQuery().minWidth.md.css`
-      font-size:1em !important;
+      font-size:1rem !important;
       letter-spacing: -1px;
-      margin: 0 0 0 2em;
+      margin: 0 0 0 2rem;
     `}
   }
 
   .park {
     display: block;
     text-align:right;
-    font-size: .875em;
+    font-size: .875rem;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 1.125em 3.125em 0 -2em;
+    margin: 1.125rem 3.125rem 0 -2rem;
     ${SuperQuery().minWidth.xs.css`
-      margin: 1em 3.125em 0 -2em;
+      margin: 1rem 3.125rem 0 -2rem;
     `}
     ${SuperQuery().minWidth.sm.css`
-      margin: 1em 3.125em 0 -2em;
+      margin: 1rem 3.125rem 0 -2rem;
     `}
     ${SuperQuery().minWidth.md.css`
-      margin: .75em 3em 0 -1.5em;
-      font-size: 1em;
+      margin: .75rem 3rem 0 -1.5rem;
+      font-size: 1rem;
       letter-spacing: -1.5px;
     `}
     ${SuperQuery().minWidth.lg.css`
-      margin: .75em 3em 0 1.5em;
+      margin: .75rem 3rem 0 1.5rem;
     `}
 
   }
   .designation {
     display: none;
     text-align:right;
-    font-size: .75em;
+    font-size: .75rem;
     line-height: 1;
     font-weight: 200;
     letter-spacing: -.5px;
-    margin: -.125em 3em 0 0;
+    margin: -.125rem 3rem 0 0;
     ${SuperQuery().minWidth.sm.css`
     `}
     ${SuperQuery().minWidth.md.css`
       display: none;
-      font-size: .875em;
+      font-size: .875rem;
       letter-spacing: -1px;
     `}
   }
@@ -213,5 +213,5 @@ const Back__Container = styled.div`
 const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;
-  height: 4em;
+  height: 4rem;
 `

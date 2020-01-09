@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const Component = ({ people }) => {
@@ -52,11 +53,11 @@ const Component = ({ people }) => {
 export default Component
 
 const People = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 20em;
+    height: 20rem;
   }
 `
 const Image = styled.div`
@@ -64,7 +65,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin: 1em 0 0 0;
+  margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 `

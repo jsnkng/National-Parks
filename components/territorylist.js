@@ -27,7 +27,7 @@ const Component = ({ highlighted, setHighlighted }) => {
 export default Component
 
 const TerritoryList = styled.div`
-  padding: 2em 0 1.125em .5em; 
+  padding: 2rem 0 1.125rem .5rem; 
   columns: 2;
   ${SuperQuery().minWidth.sm.css`
     columns: 3;
@@ -43,12 +43,12 @@ const TerritoryList = styled.div`
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     line-height: 1;
     letter-spacing: -.5px;
     text-decoration: none;
     margin: 0;
-    padding: .5em;
+    padding: .5rem;
     cursor: pointer;
   }
   a.highlight , a:hover  {

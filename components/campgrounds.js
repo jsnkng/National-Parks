@@ -285,38 +285,38 @@ const Component = ({ campgrounds }) => {
 export default Component
 
 const Campgrounds = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 22em;
+    height: 22rem;
   }
 
 ul {
-    font-size: 1em;
+    font-size: 1rem;
     column-count: 1;
     list-style-type: none;
-    padding: .25em 0 .25em 0;
+    padding: .25rem 0 .25rem 0;
     margin: 0;
     ${SuperQuery().minWidth.sm.css`
     column-count: 2;
     `}
   }
   li {
-    font-size: .9em;
+    font-size: .9rem;
     list-style-type: none;
-    padding: .3125em 0;
+    padding: .3125rem 0;
     font-weight: 300;
     overflow-wrap: break-word;
   }
   p.introduction {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: -1px;
   }
   .section {
-    font-size: 1.25em;
-    margin: 1em .25em 1em .25em;
+    font-size: 1.25rem;
+    margin: 1rem .25rem 1rem .25rem;
     border-top: 4px solid #333333;
     &:first-of-type {
       border:none;
@@ -331,22 +331,22 @@ ul {
     }
   }
   .boxes {
-    font-size:1em;
+    font-size:1rem;
     background-color: ${({ theme }) => theme.colors.box_background};
-    padding: 3.5em 1.5em 1em 1.5em;
-    margin: .5em .25em .5em .25em;
+    padding: 3.5rem 1.5rem 1rem 1.5rem;
+    margin: .5rem .25rem .5rem .25rem;
     column-count: 1;
     h4 {
 
-      font-size:1.5em;
-      margin: -2em 0 0 0;
+      font-size:1.5rem;
+      margin: -2rem 0 0 0;
     }
     p {
       margin: 0;
       padding:0;
     }
     ${SuperQuery().minWidth.md.css`
-      margin: .5em .25em .5em .25em;
+      margin: .5rem .25rem .5rem .25rem;
       column-count: 2;
     `}
   }
@@ -354,11 +354,11 @@ ul {
 const MapLive__Wrapper = styled.div`
   position:relative;
   width: 100%;
-  height: 22em;
+  height: 22rem;
   max-width: 100%;
   z-index: 10;
   ${SuperQuery().minWidth.md.css`
-    margin: 1em 0 0 0;
+    margin: 1rem 0 0 0;
   `}
 `
 const Image = styled.div`
@@ -366,7 +366,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 22em;
+  height: 22rem;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 

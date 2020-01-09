@@ -7,8 +7,6 @@ import themes from '../config/theme'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
-import { slide as Menu } from 'react-burger-menu'
-import ThemeSwitcher from '../components/themeswitcher'
 
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
@@ -25,14 +23,9 @@ const stack = []
 
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
-
-  // const manageHistory = () => {}
-  // console.log('pageload stack', stack)
+  
   const fwdStack = path => stack.push(path)
-
-
   fwdStack(router.asPath)
-  // console.log('fwdStack stack', stack)
 
   const manageHistory = () => { 
     const back = stack.pop()
@@ -41,12 +34,9 @@ const MyApp = ({ router, Component, pageProps }) => {
     const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
 
     href !== undefined && router.push(href, as)
-    // console.log(href, as)
-    // Router.replace(stack.pop())
   }
 
   return (
-    <>
     <ThemeProvider theme={ { colors: themes[themeName], flexboxgrid: themes.flexboxgrid }}>
       <GlobalStyle />
       <PageTransition
@@ -57,26 +47,16 @@ const MyApp = ({ router, Component, pageProps }) => {
           enter: 400,
           exit: 400,
         }}
-        loadingClassNames="loading-indicator"
-      >
-        <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} key={router.asPath} />
+        loadingClassNames="loading-indicator">
+          <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} key={router.asPath} />
       </PageTransition>
     </ThemeProvider>
-    </>
   )
 }
 
-// Only uncomment this method if you have blocking data requirements for 
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
 MyApp.getInitialProps = async (appContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
   return { ...appProps }
 }
 
 export default MyApp
-
-
-

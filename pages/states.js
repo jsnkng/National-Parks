@@ -13,11 +13,9 @@ import Footer from '../components/footer'
 import MapDiagram from '../components/mapdiagram'
 import TerritoryList from '../components/territorylist'
 
-const State = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter }) => {
+const States = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory  }) => {
   const [loaded, setLoaded] = useState(false)
-  const [highlighted, setHighlighted] = useState('')
   const router = useRouter()
-
 
   useEffect(() => {
     setLoaded(true)
@@ -33,42 +31,40 @@ const State = ({ parks, designation, themeName, setThemeName, pageTransitionRead
           <title>National Park Service Guide to {designation}</title>
         </Head>
         <Header 
-            park='National Park Service'
-            designation='A State-by-State Guide'
-            state=''
-            stateCode=''
+          park='National Park Service'
+          designation='A State-by-State Guide'
+          state=''
+          stateCode=''
           title='States'
           title__sub=''
           title_as='states'
           title_href='states'
+          manageHistory={manageHistory}
         />
         <Content>
           <Col__Decorated xs={12}>
             <TerritoryList 
-              className="territorylist" 
-              highlighted={highlighted} 
-              setHighlighted={setHighlighted} />
+              className="territorylist" />
           </Col__Decorated> 
         </Content>
-      <Footer themeName={themeName} setThemeName={setThemeName} />
+        <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
   }
 }
 
-State.pageTransitionDelayEnter = true
+States.pageTransitionDelayEnter = true
 
-State.getInitialProps = async ({ req, query }) => {
+States.getInitialProps = async ({ req, query }) => {
   const {designation} = query
   const {origin}  = absoluteUrl(req)
   const stateResult = await fetch(`${origin}/api/designation/${designation}`)
   const result = await stateResult.json()
   result.designation = designation
-  console.log(result)
   return result
 }
 
-export default State
+export default States
 
 
 const Content = styled.main`

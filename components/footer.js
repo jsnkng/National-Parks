@@ -25,11 +25,11 @@ const Footer = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
-  margin: -4em 0 0 0;
+  margin: -4rem 0 0 0;
   ${'' /* background-color: ${({ theme }) => theme.colors.trans_back}; */}
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
-  height: 4em;
+  height: 4rem;
 `
 const Copyright__Container = styled.div`
   position: absolute;

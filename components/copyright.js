@@ -13,7 +13,7 @@ export default Component
 
 
 const Copyright = styled.div`
-  font-size: .625em;
+  font-size: .625rem;
   letter-spacing: -1px;
   font-weight: 400;
   span {

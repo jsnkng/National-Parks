@@ -155,7 +155,7 @@ const Component = () => {
 export default Component
 
 const DesignationList = styled.div`
-  padding: 2em 0 1.125em .5em; 
+  padding: 2rem 0 1.125rem .5rem; 
   columns: 1;
   ${SuperQuery().minWidth.sm.css`
     columns: 2;
@@ -171,12 +171,12 @@ const DesignationList = styled.div`
     display: block;
     letter-spacing: -1px;
     font-weight: 700;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     line-height: 1;
     letter-spacing: -.5px;
     text-decoration: none;
     margin: 0;
-    padding: .5em;
+    padding: .5rem;
     cursor: pointer;
     
   }

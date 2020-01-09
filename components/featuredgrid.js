@@ -132,13 +132,13 @@ ${'' /*
     background-color: ${({ theme }) => theme.colors.trans_back};
     color: ${({ theme }) => theme.colors.text};
     position: absolute;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -1.5px;
     bottom: 0;
     right: 0;
     margin: 0;
-    padding: .5em;
+    padding: .5rem;
     width: 100%;
     z-index: 20;
 
@@ -148,17 +148,17 @@ ${'' /*
       font-weight: 700;
       letter-spacing: -1.5px;
       line-height: 1;
-      font-size: 1.25em;
+      font-size: 1.25rem;
       font-weight: 600;
       border: none;
     }
     h3 {
       position: absolute;
-      top: 2.25em;
-      right: .5em;
+      top: 2.25rem;
+      right: .5rem;
       text-align: right;
       font-weight: 400;
-      font-size: 1em;
+      font-size: 1rem;
       line-height: .85;
       letter-spacing: -1px;
       margin: 0;

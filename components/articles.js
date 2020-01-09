@@ -54,19 +54,19 @@ const Component = ({ articles }) => {
 export default Component
 
 const Articles = styled(Grid)`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 20em;
-    min-width: 15em;
+    height: 20rem;
+    min-width: 15rem;
     ${SuperQuery().minWidth.md.css`
-      height: 10em;
-      min-width: 13em;
+      height: 10rem;
+      min-width: 13rem;
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 12.5em;
+      height: 12.5rem;
     `}
   }
 `
@@ -75,7 +75,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin: 1em 0 0 0;
+  margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
   animation: myfirst 1s;
 `

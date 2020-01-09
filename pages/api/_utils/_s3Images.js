@@ -1,6 +1,6 @@
 import request from 'request'
 import sharp from 'sharp'
-import s3 from '../../../config/s3.config'
+import s3 from '../../../config/s3'
 
 const s3Images = async images => {
   const { s3Client } = s3
