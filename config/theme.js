@@ -4,7 +4,7 @@ const themes = {
   flexboxgrid: {
     gridSize: 12, // columns
     gutterWidth: 1, // rem
-    outerMargin: .5, // rem
+    outerMargin: 0.5, // rem
     mediaQuery: 'only screen',
     container: {
       sm: 36, // rem
@@ -13,9 +13,9 @@ const themes = {
     },
     breakpoints: {
       xs: 0, // em
-      sm: 36, // em
-      md: 48, // em
-      lg: 64 // em
+      sm: 38.4, // em
+      md: 49.6, // em
+      lg: 60 // em
     }
   },
   nightTheme: {
@@ -31,7 +31,6 @@ const themes = {
     trans_back: 'rgba(0,0,0,0.8)',
     spinner: 'rgba(0,0,0,0.2)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
- 
   },
   dayTheme: {
     background: '#ededed',

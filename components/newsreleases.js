@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 
 const Component = ({ newsReleases }) => {
@@ -26,14 +27,14 @@ const Component = ({ newsReleases }) => {
           <a href={item.url} target="_blank">
             <Col xs={12}>
               <Row__Decorated>
-                <Col xs={12} lg={7}>
+                <Col xs={12} md={7}>
                   <h4>{item.title}</h4>
                   <span className="articles__date">{toDateFormat(item.releasedate)}</span>
                   { item.image.url !== undefined && item.image.url.length !== 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
                   }
                 </Col>
-                <Col xs={12} lg={5}>
+                <Col xs={12} md={5}>
                   { item.image.url === undefined || item.image.url.length === 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
                   }
@@ -64,8 +65,16 @@ const NewsReleases = styled(Grid)`
   padding-bottom: 1em;
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 15em;
-    min-width: 18.5em;
+    height: 20em;
+    min-width: 15em;
+    ${SuperQuery().minWidth.md.css`
+      height: 11em;
+      min-width: 14em;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      height: 16em;
+      min-width: 15em;
+    `}
   }
 `
 const Image = styled.div`

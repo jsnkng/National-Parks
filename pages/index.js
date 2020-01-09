@@ -1,20 +1,11 @@
 import React, {useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Link from 'next/link'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-import absoluteUrl from 'next-absolute-url'
-import fetch from 'isomorphic-unfetch'
 
-import states from '../config/states'
-import ParkBanner from '../components/park'
-import Header from '../components/header'
 import Footer from '../components/footer'
-import MapDiagram from '../components/mapdiagram'
-import TerritoryList from '../components/territorylist'
-import DesignationList from '../components/designationlist'
 import FindAPark from '../components/findapark'
 
 const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory }) => {

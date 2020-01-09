@@ -60,10 +60,13 @@ const Articles = styled(Grid)`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20em;
-    min-width: 19.5em;
+    min-width: 15em;
     ${SuperQuery().minWidth.md.css`
+      height: 10em;
+      min-width: 13em;
+    `}
+    ${SuperQuery().minWidth.lg.css`
       height: 12.5em;
-      min-width: 19.5em;
     `}
   }
 `

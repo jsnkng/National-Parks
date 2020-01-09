@@ -24,7 +24,7 @@ Router.events.on('routeChangeError', () => {
 const stack = []
 
 const MyApp = ({ router, Component, pageProps }) => {
-  const [themeName, setThemeName] = useState('nightTheme')
+  const [themeName, setThemeName] = useState('dayTheme')
 
   // const manageHistory = () => {}
   // console.log('pageload stack', stack)
