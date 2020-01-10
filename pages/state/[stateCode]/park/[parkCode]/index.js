@@ -21,7 +21,6 @@ import Places from '../../../../../components/places'
 import SlideShow from '../../../../../components/slideshow'
 import VisitorInfo from '../../../../../components/visitorinfo'
 import VisitorCenters from '../../../../../components/visitorcenters'
-import FindAPark from '../../../../../components/findapark'
 
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
@@ -67,14 +66,6 @@ const Park = ({
   if (!loaded) {
     return null
   } else {
-    const territories = park.states.split(',').map( state => {
-      return (
-        <Link href='/state/[stateCode]' as={`/state/${state.toLowerCase()}/`} key={state}><a> {states[state.toLowerCase()][0]} </a></Link>
-      )
-    })
-
-    const territory = <Link href='/state/[stateCode]' as={`/state/${stateCode}/`} key={stateCode}><a> {states[stateCode][0]} </a></Link>
-    
     return (
       <>
         <Head>

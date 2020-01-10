@@ -37,8 +37,8 @@ const MyApp = ({ router, Component, pageProps }) => {
     // const back = stack.pop()
     const back = stack.pop()
     // console.log(back)
-    const href = back.length !== undefined && back.length !== 0 ? back[0] : '/'
-    const as = back.length !== undefined && back.length !== 0 ? back[1] : '/'
+    const href = back !== undefined && back.length !== 0 ? back[0] : '/'
+    const as = back !== undefined && back.length !== 0 ? back[1] : '/'
     // const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
     router.push(href, as)
     // href !== undefined && router.push(href, as)

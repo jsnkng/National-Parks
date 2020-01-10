@@ -44,15 +44,15 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
           parks.slice(0).map((item, i=0) => {
             i++
             return(
-              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.id}>
-                <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
+              <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={item.park.id}>
+                <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.park.states.toLowerCase().split(',')[0]}/park/${item.park.parkCode}`)}>
                   <ParkBanner 
-                    backgroundURL={item.images === undefined || item.images.length == 0 
+                    backgroundURL={item.park.images === undefined || item.park.images.length == 0 
                       ? "/noimage.jpg" 
-                      : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
-                    title={item.name}
-                    subtitle={item.designation}
-                    states={item.states}
+                      : process.env.AWS_URI + item.park.images[0].url.replace(/[/:-\s]/g, '_')}
+                    title={item.park.name}
+                    subtitle={item.park.designation}
+                    states={item.park.states}
                   />
                 </div>
               </Col__Decorated>
@@ -89,7 +89,7 @@ const Content = styled.main`
   justify-content: left;
   margin: 4rem 0;
   ${SuperQuery().minWidth.md.css`
-    margin: 4.5rem 0;
+    margin: 5rem 0;
   `}
   ${SuperQuery().maxWidth.md.and.landscape.css`
     margin: 0 0 4rem 0;
