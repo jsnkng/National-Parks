@@ -54,7 +54,7 @@ const Component = ({ articles }) => {
 export default Component
 
 const Articles = styled(Grid)`
-  padding: 1rem;
+  padding: 1rem .25rem;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;

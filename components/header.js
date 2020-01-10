@@ -7,8 +7,10 @@ import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
 
-  const titleStyle = (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.375rem 0 0 1.75rem' } : 
-                     (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
+  const titleStyle = (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
+  (title.length >= 27 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
+  (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.875rem 0 0 1.75rem' } : 
+  (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
 
 
   return (
@@ -96,7 +98,7 @@ const Row__Decorated = styled(Row)`
 const Back = styled.div`
   max-width: 100%;
   height: 5rem;
-
+  overflow: hidden;
   .title {
     display: block;
     float: left;

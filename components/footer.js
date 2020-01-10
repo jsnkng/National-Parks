@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import SuperQuery from '@themgoncalves/super-query'
 
 import { Moon } from '../svgs/moon.svg'
 import { Sun } from '../svgs/sun.svg'
@@ -37,13 +38,18 @@ const Footer = styled.footer`
   margin: -4rem 0 0 0;
   color: ${({ theme }) => theme.colors.text};
   z-index: 1000;
-  height: 3.5rem;
+  height: 4rem;
 `
 const Copyright__Container = styled.div`
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 2rem;
+  left: 1.5rem;
   z-index: 1000;
+
+  ${SuperQuery().maxWidth.of('325px').css`
+    bottom: .5rem;
+    left: 1rem;
+  `}
 `
 const Copyright = styled.div`
   font-size: .75rem;
@@ -61,11 +67,16 @@ const Copyright = styled.div`
 `
 const ThemeSwitcher__Container = styled.div`
   position: absolute;
-  bottom: 12px;
-  right: 20px;
+  bottom: 1.25rem;
+  right: 1.5rem;
   width: 52px;
   height: 28px;
   z-index: 1000;
+
+  ${SuperQuery().maxWidth.of('325px').css`
+    bottom: .25rem;
+    right: 1rem;
+  `}
 `
 const ThemeSwitcher = styled.div`
   svg {

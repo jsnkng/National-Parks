@@ -77,7 +77,7 @@ Home.pageTransitionDelayEnter = true
 export default Home
 const Content = styled.main`
   color: ${({ theme }) => theme.colors.text };
-  background: ${({ theme }) => theme.colors.background};
+  ${'' /* background: ${({ theme }) => theme.colors.background}; */}
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -85,7 +85,7 @@ const Content = styled.main`
     position: absolute;
     top: 1.125rem;
     right: 1.125rem;
-    width: 70px;
+    width: 50px;
     ${SuperQuery().minWidth.sm.css`
       width: 90px;
     `}
@@ -97,7 +97,11 @@ const Content = styled.main`
     `}
   }
   h2 {
-    margin: 0 1.25rem 0 .5rem;
+    margin: 0 2.25rem 2rem .5rem;
+
+    ${SuperQuery().maxWidth.of('325px').css`
+      margin: 0 .25rem 0 .5rem;
+    `}
     ${SuperQuery().minWidth.sm.css`
       margin: 1rem 0 0 .25rem;
     `}
@@ -122,8 +126,11 @@ const FindAPark__Container = styled.div`
   color: ${ ({ theme }) => theme.colors.text };
   z-index: 1000;
   height: 100vh;
-    padding: 2rem 0 0 0;
+  padding: 4rem 0 0 0;
   
+  ${SuperQuery().maxWidth.of('325px').css`
+    padding: 0 0 0 0;
+  `}
   ${SuperQuery().minWidth.sm.css`
     padding: 6rem 0 0 0;
   `}

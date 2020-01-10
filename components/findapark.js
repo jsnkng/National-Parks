@@ -164,7 +164,7 @@ const FindAPark = styled.div`
   left: 0;
   right: 0;
   z-index: 120;
-  padding: 1.5rem .75rem;
+  padding: 0 .75rem;
  
   ${'' /* h3 {
     font-size: 1.5rem;
@@ -179,11 +179,16 @@ const FindAPark = styled.div`
     `} 
   } */}
   h2 {
-      letter-spacing: -1px;
-      font-size: 2.625rem;
       letter-spacing: -1.5px;
-      margin: 1.25rem 0 0 .5rem;
+      font-size: 2.75rem;
+      letter-spacing: -1.5px;
+      margin: 0 0 0 .5rem;
+      padding: 0 0 .5rem 0;
+
+    ${SuperQuery().maxWidth.of('325px').css`
+      font-size: 2.375rem;
       padding: 1.875rem 0 .5rem 0;
+    `}
     ${SuperQuery().minWidth.md.css`
       font-size: 2.5rem;
       margin: .75rem 0 0 .25rem;
@@ -215,7 +220,7 @@ const FindAPark = styled.div`
     background: transparent;
     font-size: 1.5rem;
     outline: none;
-    margin: .5rem 0 .75rem .625rem;
+    margin: .75rem 0 .75rem .5rem;
     padding: .125rem;
     width: 90%;
     color: ${({ theme }) => theme.colors.text};
@@ -230,6 +235,10 @@ const FindAPark = styled.div`
    ${'' /* background-color: ${({ theme }) => theme.colors.offbackground}; */}
    border:none;
 
+   ${SuperQuery().maxWidth.of('325px').css`
+      margin: .5rem 0 .75rem .625rem;
+      padding: .125rem;
+    `}
 
     ${SuperQuery().minWidth.md.css`
     font-size: 1.25rem;
@@ -253,7 +262,11 @@ const Col__Decorated = styled(Col)`
   padding: 0;
 `
 const MapDiagram__Wrapper = styled.div`
+  padding: 2.5rem 0 1rem .25rem;  
+
+${SuperQuery().maxWidth.of('325px').css`
   padding: 1rem 0 1rem .25rem;  
+`}
 ${SuperQuery().minWidth.md.css`
   padding: 1rem 0 0 1rem;    
 `} 

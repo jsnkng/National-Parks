@@ -47,7 +47,7 @@ const Component = ({ people }) => {
 export default Component
 
 const People = styled(Grid)`
-  padding: 1rem;
+  padding: 1rem .25rem;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
