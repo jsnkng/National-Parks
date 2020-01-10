@@ -17,13 +17,13 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
   useEffect(() => {
     forceCheck()
   })
-
   if (!loaded) {
     return null
   } else {

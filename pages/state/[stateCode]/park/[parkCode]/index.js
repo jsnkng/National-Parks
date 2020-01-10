@@ -38,7 +38,6 @@ const Park = ({
   places, 
   visitorcenters, 
   campgrounds }) => {
-  
   const [loaded, setLoaded] = useState(false)
   const router = useRouter()
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
@@ -56,6 +55,7 @@ const Park = ({
   })
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     loaded === false && setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
