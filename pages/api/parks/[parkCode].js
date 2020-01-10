@@ -18,23 +18,31 @@ export default (req, res) => {
   const getPark = async (db, callback) => {
     console.log(`Getting Park (${parkCode})`)
 
-    const result = { parkCode }
-    let [park] = await db.collection('parks').find({ parkCode }).toArray()
-    if (park === undefined || park.length === 0) {
+    let [result] = await db.collection('parksCombined').find({ parkCode }).toArray()
+    if (result === undefined || result.length === 0) {
+      result = {}
       console.log(`Fetching Park (${parkCode}) From API`)
-      park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      park.parkCode = parkCode
-      await db.collection('parks').insertOne(park.data[0])
+      const park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result.park = park.data[0]
+      result.parkCode = parkCode
+
+      const people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result.people = people.data
+      const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result.places = places.data
+      const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result.visitorcenters = visitorcenters.data
+      const articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result.articles = articles.data
+      const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      result.campgrounds = campgrounds.data
+      console.log(result)
+      // Insert one JSON object
+      await db.collection('parksCombined').insertOne(result)
       // Run park images
       console.log(`Processing Park (${parkCode}) Images`)
-      await s3Images(park.data[0].images)
-      result.park = park.data[0]
-    } else {
-      result.park = park
-      console.log(`Found (${parkCode}) `)
+      await s3Images(result.park.images)
     }
-    result.park.parkCode = parkCode
-
 
     let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
     if (alerts === undefined || alerts.length === 0) {
@@ -44,7 +52,6 @@ export default (req, res) => {
       await db.collection('alerts').insertOne(alerts)
     }
     result.alerts = alerts.data
-    result.alerts.parkCode = parkCode
 
     let [newsreleases] = await db.collection('newsreleases').find({ parkCode }).toArray()
     if (newsreleases === undefined || newsreleases.length === 0) {
@@ -54,7 +61,6 @@ export default (req, res) => {
       await db.collection('newsreleases').insertOne(newsreleases)
     }
     result.newsreleases = newsreleases.data
-    result.newsreleases.parkCode = parkCode
 
     let [events] = await db.collection('events').find({ parkCode }).toArray()
     if (events === undefined || events.length === 0) {
@@ -64,60 +70,6 @@ export default (req, res) => {
       await db.collection('events').insertOne(events)
     }
     result.events = events.data
-    result.events.parkCode = parkCode
-
-
-    let [articles] = await db.collection('articles').find({ parkCode }).toArray()
-    if (articles === undefined || articles.length === 0) {
-      console.log(`Fetching Articles (${parkCode}) From API`)
-      articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      articles.parkCode = parkCode
-      await db.collection('articles').insertOne(articles)
-    }
-    result.articles = articles.data
-    result.articles.parkCode = parkCode
-
-
-    let [people] = await db.collection('people').find({ parkCode }).toArray()
-    if (people === undefined || people.length === 0) {
-      console.log(`Fetching People (${parkCode}) From API`)
-      people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      people.parkCode = parkCode
-      await db.collection('people').insertOne(people)
-    }
-    result.people = people.data
-    result.people.parkCode = parkCode
-
-    let [places] = await db.collection('places').find({ parkCode }).toArray()
-    if (places === undefined || places.length === 0) {
-      console.log(`Fetching Places (${parkCode}) From API`)
-      places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      places.parkCode = parkCode
-      await db.collection('places').insertOne(places)
-    }
-    result.places = places.data
-    result.places.parkCode = parkCode
-
-    let [visitorcenters] = await db.collection('visitorcenters').find({ parkCode }).toArray()
-    if (visitorcenters === undefined || visitorcenters.length === 0) {
-      console.log(`Fetching Visitor Centers (${parkCode}) From API`)
-      visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      visitorcenters.parkCode = parkCode
-      await db.collection('visitorcenters').insertOne(visitorcenters)
-    }
-    result.visitorcenters = visitorcenters.data
-    result.visitorcenters.parkCode = parkCode
-
-
-    let [campgrounds] = await db.collection('campgrounds').find({ parkCode }).toArray()
-    if (campgrounds === undefined || campgrounds.length === 0) {
-      console.log(`Fetching Campgrounds (${parkCode}) From API`)
-      campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      campgrounds.parkCode = parkCode
-      await db.collection('campgrounds').insertOne(campgrounds)
-    }
-    result.campgrounds = campgrounds.data
-    result.campgrounds.parkCode = parkCode
 
     callback(result)
   }
