@@ -7,7 +7,9 @@ import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
 
-  const titleStyle = (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
+  const titleStyle = (title.length >= 29 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.625rem 0 0 1.75rem' } :
+  (title.length >= 29 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
+  (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
   (title.length >= 27 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
   (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.875rem 0 0 1.75rem' } : 
   (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
@@ -108,15 +110,16 @@ const Back = styled.div`
     letter-spacing: -1.5px;
     margin: 0.8rem 0 0 1.75rem;
     ${SuperQuery().minWidth.md.css`
-      font-size: 2.125rem;
-      margin: 0.8rem 0 0 2.5rem;
+      font-size: 1.875rem !important;
+      margin: 0.8rem 0 0 2.5rem !important;
     `}
 
     &.large {
       margin: 1.25rem 0 0 1.75rem;
       font-size: 1.375rem;
     ${SuperQuery().minWidth.md.css`
-      margin: 1.25rem 0 0 2.5rem;
+      font-size: 1.875rem !important;
+      margin: 1.5rem 0 0 2.5rem !important;
     `}
     }
   }

@@ -99,8 +99,8 @@ const Content = styled.main`
   h2 {
     margin: 0 2.25rem 2rem .5rem;
 
-    ${SuperQuery().maxWidth.of('325px').css`
-      margin: 0 .25rem 0 .5rem;
+    ${SuperQuery().maxWidth.of('360px').css`
+      margin: 1rem .25rem 0 .5rem;
     `}
     ${SuperQuery().minWidth.sm.css`
       margin: 1rem 0 0 .25rem;
@@ -128,7 +128,7 @@ const FindAPark__Container = styled.div`
   height: 100vh;
   padding: 4rem 0 0 0;
   
-  ${SuperQuery().maxWidth.of('325px').css`
+  ${SuperQuery().maxWidth.of('360px').css`
     padding: 0 0 0 0;
   `}
   ${SuperQuery().minWidth.sm.css`

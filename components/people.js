@@ -76,3 +76,8 @@ const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;
 `
+
+const Col__Decorated = styled(Col)`
+  padding: 0;
+  margin:0;
+`

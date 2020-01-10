@@ -20,7 +20,7 @@ const Component = ({ articles }) => {
           <a href={item.url} target="_blank">
           <Col xs={12}>
             <Row__Decorated>
-              <Col xs={12} md={5}>
+              <Col__Decorated xs={12} md={5}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <LazyLoad offset={100}>
                     <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
@@ -29,14 +29,14 @@ const Component = ({ articles }) => {
                 { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
                   <h4>{item.title}</h4>
                 }
-              </Col>
-              <Col xs={12} md={7}>
+              </Col__Decorated>
+              <Col__Decorated xs={12} md={7}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <h4>{item.title}</h4>
                 }
                   <p>{item.listingdescription}</p>
                   <span className="btn__read-more" target="_blank">Read More</span>
-              </Col>
+              </Col__Decorated>
             </Row__Decorated>
           </Col>
           </a>
@@ -83,6 +83,10 @@ const Image = styled.div`
 `
 
 const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
+`
+const Col__Decorated = styled(Col)`
   padding: 0;
   margin:0;
 `

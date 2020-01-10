@@ -27,14 +27,14 @@ const Component = ({ newsReleases }) => {
           <a href={item.url} target="_blank">
             <Col xs={12}>
               <Row__Decorated>
-                <Col xs={12} md={7}>
+                <Col__Decorated xs={12} md={7}>
                   <h4>{item.title}</h4>
                   <span className="articles__date">{toDateFormat(item.releasedate)}</span>
                   { item.image.url !== undefined && item.image.url.length !== 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
                   }
-                </Col>
-                <Col xs={12} md={5}>
+                </Col__Decorated>
+                <Col__Decorated xs={12} md={5}>
                   { item.image.url === undefined || item.image.url.length === 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
                   }
@@ -43,7 +43,7 @@ const Component = ({ newsReleases }) => {
                       <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
                     </LazyLoad>
                   }
-                </Col>
+                </Col__Decorated>
               </Row__Decorated>
             </Col>
           </a>
@@ -94,6 +94,11 @@ const Image = styled.div`
   animation: myfirst 1s;
 `
 const Row__Decorated = styled(Row)`
+  padding: 0;
+  margin:0;
+`
+
+const Col__Decorated = styled(Col)`
   padding: 0;
   margin:0;
 `

@@ -285,8 +285,7 @@ const Component = ({ campgrounds }) => {
 export default Component
 
 const Campgrounds = styled(Grid)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem .25rem;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 22rem;
