@@ -90,7 +90,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   margin: 1rem 0 0 0;
-  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 `
 const Row__Decorated = styled(Row)`

@@ -119,7 +119,7 @@ const ResponsiveImage = styled.div`
   height: 100%;
   margin: 0;
   z-index: 10;
-  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 `
 

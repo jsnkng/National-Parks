@@ -55,6 +55,10 @@ const MapLive__Wrapper = styled.div`
   margin: .5rem .125rem .5rem .125rem;
   padding:  0;
   z-index: 10;
+
+  ${SuperQuery().maxWidth.of('896px').and.maxHeight.of('414px').and.landscape.css`
+    height: 100vh;
+  `}  
 `
 
 const Row__Decorated = styled(Row)`

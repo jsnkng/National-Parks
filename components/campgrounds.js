@@ -366,7 +366,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 22rem;
-  -webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+  -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
   &.hidden {

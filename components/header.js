@@ -51,7 +51,7 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.text};
   z-index: 100;
   height: 4rem;
-  ${SuperQuery().maxWidth.md.and.landscape.css`
+  ${SuperQuery().maxWidth.of('896px').and.landscape.css`
     position: relative;
   `}
   ${SuperQuery().minWidth.md.css`
