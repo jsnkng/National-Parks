@@ -36,7 +36,6 @@ export default (req, res) => {
       result.articles = articles.data
       const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       result.campgrounds = campgrounds.data
-      console.log(result)
       // Insert one JSON object
       await db.collection('parksCombined').insertOne(result)
       // Run park images

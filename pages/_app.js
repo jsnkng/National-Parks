@@ -26,23 +26,16 @@ const MyApp = ({ router, Component, pageProps }) => {
     })
   }, [])
   const manageFuture = (href, as) => {
-    // if(stack.length === 0) { stack.push('/') } 
     // Get current route and push to stack
     stack.push([router.route, router.asPath])
     // Get arguments href/as and push router to new routex
     router.push(href, as)
-    console.log(stack)
   }
   const manageHistory = () => { 
-    // const back = stack.pop()
     const back = stack.pop()
-    // console.log(back)
     const href = back !== undefined && back.length !== 0 ? back[0] : '/'
     const as = back !== undefined && back.length !== 0 ? back[1] : '/'
-    // const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
     router.push(href, as)
-    // href !== undefined && router.push(href, as)
-    console.log(stack)
   }
 
   return (
