@@ -61,8 +61,7 @@ const Component = ({ newsReleases }) => {
 export default Component
 
 const NewsReleases = styled(Grid)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+padding: 1rem .25rem;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
