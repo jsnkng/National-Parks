@@ -10,12 +10,12 @@ import states from '../../../../../config/states'
 import Header from '../../../../../components/header'
 import Footer from '../../../../../components/footer'
 
-import Alerts from '../../../../../components/alerts'
+import Alerts from '../../../../../components/alerts2'
 import Articles from '../../../../../components/articles'
 import Campgrounds from '../../../../../components/campgrounds'
 import Description from '../../../../../components/description'
-import Events from '../../../../../components/events'
-import NewsReleases from '../../../../../components/newsreleases'
+import Events from '../../../../../components/events2'
+import NewsReleases from '../../../../../components/newsreleases2'
 import People from '../../../../../components/people'
 import Places from '../../../../../components/places'
 import SlideShow from '../../../../../components/slideshow'
@@ -95,24 +95,24 @@ const Park = ({
           }
           <Description park={park} />
 
-          { alerts !== undefined && alerts.length != 0 &&
-          <Alerts alerts={alerts} />
-          }
+          {/* { alerts !== undefined && alerts.length != 0 && */}
+          <Alerts origin={origin} parkCode={parkCode} />
+          {/* } */}
 
-          { events !== undefined && events.length != 0 &&
-          <Events park={park} events={events} />
-          }
           <VisitorInfo park={park} markers={markers} />
             
           { visitorcenters !== undefined && visitorcenters.length != 0 &&
           <VisitorCenters park={park} visitorCenters={visitorcenters} />
           }
+          {/* { events !== undefined && events.length != 0 && */}
+          <Events  origin={origin} parkCode={parkCode} />
+          {/* } */}
           { campgrounds !== undefined && campgrounds.length != 0 &&
           <Campgrounds park={park} campgrounds={campgrounds} />
           }
-          { newsreleases !== undefined && newsreleases.length != 0 &&
-          <NewsReleases park={park} newsReleases={newsreleases} />
-          }
+          {/* { newsreleases !== undefined && newsreleases.length != 0 && */}
+          <NewsReleases  origin={origin} parkCode={parkCode} />
+          {/* } */}
           { places !== undefined && places.length != 0 &&
           <Places park={park} places={places} />
           }
@@ -135,6 +135,7 @@ Park.getInitialProps = async ({ req, query }) => {
   const { origin } = absoluteUrl(req)
   const parkResult = await fetch(`${origin}/api/parks/${parkCode}`)
   const result = await parkResult.json()
+
   result.stateCode = stateCode
   result.parkCode = parkCode
   return result
@@ -149,7 +150,7 @@ const Content = styled.main`
   color: ${({ theme }) => theme.colors.text};
   margin: 0 0 4rem 0; 
 
-  ${SuperQuery().maxWidth.md.and.landscape.css`
+  ${SuperQuery().maxWidth.of('896px').and.landscape.css`
     margin: -5rem 0 4rem 0;
   `}  
 

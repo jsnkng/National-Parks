@@ -92,7 +92,7 @@ const Content = styled.main`
   ${SuperQuery().minWidth.md.css`
     margin: 5rem 0;
   `}
-  ${SuperQuery().maxWidth.md.and.landscape.css`
+  ${SuperQuery().maxWidth.of('896px').and.landscape.css`
     margin: 0 0 4rem 0;
   `}
 `

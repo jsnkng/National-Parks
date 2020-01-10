@@ -36,35 +36,35 @@ export default (req, res) => {
     result.park.parkCode = parkCode
 
 
-    let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
-    if (alerts === undefined || alerts.length === 0) {
-      console.log(`Fetching Alerts (${parkCode}) From API`)
-      alerts = await fetchWithErrorHandling(`${process.env.NPS_URI}/alerts?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      alerts.parkCode = parkCode
-      await db.collection('alerts').insertOne(alerts)
-    }
-    result.alerts = alerts.data
-    result.alerts.parkCode = parkCode
+    // let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
+    // if (alerts === undefined || alerts.length === 0) {
+    //   console.log(`Fetching Alerts (${parkCode}) From API`)
+    //   alerts = await fetchWithErrorHandling(`${process.env.NPS_URI}/alerts?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+    //   alerts.parkCode = parkCode
+    //   await db.collection('alerts').insertOne(alerts)
+    // }
+    // result.alerts = alerts.data
+    // result.alerts.parkCode = parkCode
 
-    let [newsreleases] = await db.collection('newsreleases').find({ parkCode }).toArray()
-    if (newsreleases === undefined || newsreleases.length === 0) {
-      console.log(`Fetching News Releases (${parkCode}) From API`)
-      newsreleases = await fetchWithErrorHandling(`${process.env.NPS_URI}/newsreleases?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      newsreleases.parkCode = parkCode
-      await db.collection('newsreleases').insertOne(newsreleases)
-    }
-    result.newsreleases = newsreleases.data
-    result.newsreleases.parkCode = parkCode
+    // let [newsreleases] = await db.collection('newsreleases').find({ parkCode }).toArray()
+    // if (newsreleases === undefined || newsreleases.length === 0) {
+    //   console.log(`Fetching News Releases (${parkCode}) From API`)
+    //   newsreleases = await fetchWithErrorHandling(`${process.env.NPS_URI}/newsreleases?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+    //   newsreleases.parkCode = parkCode
+    //   await db.collection('newsreleases').insertOne(newsreleases)
+    // }
+    // result.newsreleases = newsreleases.data
+    // result.newsreleases.parkCode = parkCode
 
-    let [events] = await db.collection('events').find({ parkCode }).toArray()
-    if (events === undefined || events.length === 0) {
-      console.log(`Fetching Events (${parkCode}) From API`)
-      events = await fetchWithErrorHandling(`${process.env.NPS_URI}/events?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      events.parkCode = parkCode
-      await db.collection('events').insertOne(events)
-    }
-    result.events = events.data
-    result.events.parkCode = parkCode
+    // let [events] = await db.collection('events').find({ parkCode }).toArray()
+    // if (events === undefined || events.length === 0) {
+    //   console.log(`Fetching Events (${parkCode}) From API`)
+    //   events = await fetchWithErrorHandling(`${process.env.NPS_URI}/events?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+    //   events.parkCode = parkCode
+    //   await db.collection('events').insertOne(events)
+    // }
+    // result.events = events.data
+    // result.events.parkCode = parkCode
 
 
     let [articles] = await db.collection('articles').find({ parkCode }).toArray()
