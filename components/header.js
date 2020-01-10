@@ -6,7 +6,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
-
+  /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
   const titleStyle = (title.length >= 29 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.625rem 0 0 1.75rem' } :
   (title.length >= 29 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
   (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
@@ -139,9 +139,7 @@ const Back = styled.div`
       letter-spacing: -1px;
     `}
   }
-
 `
-
 const Arrow__Decorated = styled(Arrow)`
   position: absolute;
   top: .875rem;

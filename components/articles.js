@@ -18,9 +18,9 @@ const Component = ({ articles }) => {
         return (
         <Row__Decorated key={item.id}>
           <a href={item.url} target="_blank">
-          <Col xs={12}>
+          <Col__Decorated xs={12}>
             <Row__Decorated>
-              <Col__Decorated xs={12} md={5}>
+              <Col xs={12} md={5}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <LazyLoad offset={100}>
                     <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
@@ -29,16 +29,16 @@ const Component = ({ articles }) => {
                 { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
                   <h4>{item.title}</h4>
                 }
-              </Col__Decorated>
-              <Col__Decorated xs={12} md={7}>
+              </Col>
+              <Col xs={12} md={7}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <h4>{item.title}</h4>
                 }
                   <p>{item.listingdescription}</p>
                   <span className="btn__read-more" target="_blank">Read More</span>
-              </Col__Decorated>
+              </Col>
             </Row__Decorated>
-          </Col>
+          </Col__Decorated>
           </a>
         </Row__Decorated>
         )

@@ -89,7 +89,6 @@ const Park = ({
           { alerts !== undefined && alerts.length != 0 &&
           <Alerts alerts={alerts} />
           }
-
           { events !== undefined && events.length != 0 &&
           <Events park={park} events={events} />
           }
@@ -143,8 +142,6 @@ const Content = styled.main`
   ${SuperQuery().maxWidth.md.and.landscape.css`
     margin: -5rem 0 4rem 0;
   `}  
-
-
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};

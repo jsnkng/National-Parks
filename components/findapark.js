@@ -165,25 +165,12 @@ const FindAPark = styled.div`
   right: 0;
   z-index: 120;
   padding: 0 .75rem;
- 
-  ${'' /* h3 {
-    font-size: 1.5rem;
-    line-height: 1;
-    font-weight: 200;
-    letter-spacing: -1px;
-    margin: .25rem auto;
-    width: 95%
-    ${SuperQuery().minWidth.md.css`
-      margin: 1.5rem 0 1rem 1rem;
-      font-size: 1.25rem;
-    `} 
-  } */}
   h2 {
-      letter-spacing: -1.5px;
-      font-size: 2.75rem;
-      letter-spacing: -1.5px;
-      margin: 0 0 0 .5rem;
-      padding: 0 0 .5rem 0;
+    letter-spacing: -1.5px;
+    font-size: 2.75rem;
+    letter-spacing: -1.5px;
+    margin: 0 0 0 .5rem;
+    padding: 0 0 .5rem 0;
 
     ${SuperQuery().maxWidth.of('325px').css`
       font-size: 2.375rem;
@@ -251,7 +238,6 @@ const FindAPark = styled.div`
     `} 
   }
 `
-
 const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;
