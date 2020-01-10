@@ -8,6 +8,14 @@ import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
 import { PageTransition } from 'next-page-transitions'
 
+const stack = []
+const MyApp = ({ router, Component, pageProps }) => {
+  const [themeName, setThemeName] = useState('dayTheme')
+  
+useEffect(() => {
+  // window is accessible here.
+
+
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
 })
@@ -18,11 +26,10 @@ Router.events.on('routeChangeComplete', url => {
 Router.events.on('routeChangeError', () => {
   NProgress.done()
 })
-const stack = []
 
-const MyApp = ({ router, Component, pageProps }) => {
-  const [themeName, setThemeName] = useState('dayTheme')
-  
+  console.log("window.innerHeight", window.innerHeight)
+  console.log(window)
+})
   const manageFuture = (href, as) => {
     // if(stack.length === 0) { stack.push('/') } 
     // Get current route and push to stack
@@ -35,8 +42,8 @@ const MyApp = ({ router, Component, pageProps }) => {
     // const back = stack.pop()
     const back = stack.pop()
     // console.log(back)
-    const href = back.length !== 0 ? back[0] : '/'
-    const as = back.length !== 0 ? back[1] : '/'
+    const href = back !== undefined && back.length !== 0 ? back[0] : '/'
+    const as = back !== undefined && back.length !== 0 ? back[1] : '/'
     // const href = as.includes('park') ? '/state/[stateCode]/park/[parkCode]/' : as.includes('state') ? '/state/[stateCode]/' :  '/'
     router.push(href, as)
     // href !== undefined && router.push(href, as)
