@@ -20,6 +20,7 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
     setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
+  
   useEffect(() => {
     forceCheck()
   })

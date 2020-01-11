@@ -86,8 +86,8 @@ const Header = styled.header`
     letter-spacing: -1px;
     margin: 0.8rem 2.875rem 0 -3rem;
     ${SuperQuery().minWidth.md.css`
-      margin: .875rem 4.125rem 0 -3rem;
-      font-size: 1.25rem;
+      margin: 1rem 4.125rem 0 -3rem;
+      font-size: 1.125rem;
       letter-spacing: -1.5px;
     `}
   }
@@ -111,7 +111,7 @@ const Back = styled.div`
     margin: 0.8rem 0 0 1.75rem;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.875rem !important;
-      margin: 0.8rem 0 0 2.5rem !important;
+      margin: 1rem 0 0 2.5rem !important;
     `}
 
     &.large {

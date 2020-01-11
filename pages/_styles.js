@@ -128,7 +128,7 @@ const GlobalStyle = createGlobalStyle`
     clear: both;
     display:block;
     height: 45px;
-    margin: 2rem auto 0;
+    margin: 1rem auto ;
     padding: 0 1rem;
     font-size: .875rem;
     font-weight: 500;
