@@ -96,7 +96,7 @@ const Alerts = styled(Grid)`
     font-size: .75rem;
     font-weight: 400;
     padding: 0;
-    margin: .5rem 1rem 0 1.625rem;
+    margin: .5rem 1rem 0 1.25rem;
     color: #333333;
   }
   span {
@@ -108,11 +108,8 @@ const Alerts = styled(Grid)`
     color: #333333;
     text-indent: 0rem;
   }
-  
 `
 const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;
 `
-
-

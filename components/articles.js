@@ -81,7 +81,6 @@ const Image = styled.div`
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 `
-
 const Row__Decorated = styled(Row)`
   padding: 0;
   margin:0;
