@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-import territories from '../../../config/states'
-
 import LazyLoad, { forceCheck } from 'react-lazyload'
-import ParkBanner from '../../../components/park'
+
+import states from '../../../config/states'
+
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
+import ParkBanner from '../../../components/park'
 
 const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
@@ -32,10 +32,10 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
     return (
       <>
         <Head>
-          <title>National Park Service Guide to {territories[stateCode][0]}</title>
+          <title>National Park Service Guide to {states[stateCode][0]}</title>
         </Head>
         <Header 
-          title={territories[stateCode][0]}
+          title={states[stateCode][0]}
           title__sub=''
           manageHistory={manageHistory}
           manageFuture={manageFuture}

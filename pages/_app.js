@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import App from 'next/app'
-import NProgress from 'nprogress'
 import Router from 'next/router'
+import App from 'next/app'
+import { PageTransition } from 'next-page-transitions'
+import NProgress from 'nprogress'
 import { ThemeProvider } from 'styled-components'
 import themes from '../config/theme'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
-import { PageTransition } from 'next-page-transitions'
-
 
 const stack = []
 
 const MyApp = ({ router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('dayTheme')
+
   useEffect(() => {
     Router.events.on('routeChangeStart', url => {
       NProgress.start()
@@ -25,6 +25,7 @@ const MyApp = ({ router, Component, pageProps }) => {
       NProgress.done()
     })
   }, [])
+  
   const manageFuture = (href, as) => {
     // Get current route and push to stack
     stack.push([router.route, router.asPath])

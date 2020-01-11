@@ -1,3 +1,14 @@
+/*
+API endpoint returns parks by their parkCode i.e. dewa
+Arguments:
+  parkCode (required) This is the parkCode assigned by NPS
+  example:
+  http://localhost:3000/parks/[parkCode]
+Returns:
+  Nested JSON object containing park, people, places, visitorcenters, articles, and campgrounds for the specified parkCode.
+  Upon init checks MongoDB for existing park record, if not found fetches all data from NPS apis and then inserts into MongoDB
+*/
+
 import { MongoClient } from 'mongodb'
 import fetch from 'isomorphic-unfetch'
 import s3Images from '../_utils/_s3Images'
@@ -17,8 +28,9 @@ export default (req, res) => {
 
   const getPark = async (db, callback) => {
     console.log(`Getting Park (${parkCode})`)
-
+    // Check MongoDB for existing park
     let [result] = await db.collection('parksCombined').find({ parkCode }).toArray()
+    // If no park found in MongoDB then fetch from NPS apis
     if (result === undefined || result.length === 0) {
       result = {}
       console.log(`Fetching Park (${parkCode}) From API`)
@@ -26,6 +38,7 @@ export default (req, res) => {
       result.park = park.data[0]
       result.parkCode = parkCode
 
+      // Fetch additional data from apis
       const people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       result.people = people.data
       const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
@@ -36,13 +49,17 @@ export default (req, res) => {
       result.articles = articles.data
       const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       result.campgrounds = campgrounds.data
+
       // Insert one JSON object
       await db.collection('parksCombined').insertOne(result)
-      // Run park images
+      // Run park images through S3
       console.log(`Processing Park (${parkCode}) Images`)
       await s3Images(result.park.images)
     }
 
+    // Since alerts, newsreleases, and events should be updated more frequently these
+    // are stored in separate collections and fetched from db or api individually before
+    // being passed to the result object
     let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
     if (alerts === undefined || alerts.length === 0) {
       console.log(`Fetching Alerts (${parkCode}) From API`)

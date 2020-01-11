@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad, { forceCheck } from 'react-lazyload'
+
 import states from '../../../../../config/states'
+
 import Header from '../../../../../components/header'
 import Footer from '../../../../../components/footer'
-
 import Alerts from '../../../../../components/alerts'
 import Articles from '../../../../../components/articles'
 import Campgrounds from '../../../../../components/campgrounds'
@@ -21,8 +21,6 @@ import Places from '../../../../../components/places'
 import SlideShow from '../../../../../components/slideshow'
 import VisitorInfo from '../../../../../components/visitorinfo'
 import VisitorCenters from '../../../../../components/visitorcenters'
-
-import LazyLoad, { forceCheck } from 'react-lazyload'
 
 const Park = ({ 
   themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture,
@@ -37,9 +35,9 @@ const Park = ({
   places, 
   visitorcenters, 
   campgrounds }) => {
-    
+
   const [loaded, setLoaded] = useState(false)
-  const router = useRouter()
+
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
   visitorcenters !== undefined && visitorcenters.length != 0 &&
   visitorcenters.slice(0).map((item) => {
