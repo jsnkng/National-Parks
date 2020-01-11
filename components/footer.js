@@ -37,7 +37,7 @@ const Footer = styled.footer`
   right: 0;
   margin: -4rem 0 0 0;
   color: ${({ theme }) => theme.colors.text};
-  z-index: 1000;
+  z-index: 900;
   height: 4rem;
 `
 const Copyright__Container = styled.div`
