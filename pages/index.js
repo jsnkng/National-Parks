@@ -40,7 +40,6 @@ Home.pageTransitionDelayEnter = true
 export default Home
 const Content = styled.main`
   color: ${({ theme }) => theme.colors.text };
-  height: 100vh;
   margin: 0;
   padding: 0;
   img.logo {
@@ -74,10 +73,8 @@ const FindAPark__Container = styled.div`
   left: 0;
   right: 0;
   color: ${ ({ theme }) => theme.colors.text };
-  z-index: 1000;
   height: 100vh;
   padding: 4rem 0 0 0;
-  z-index: 900;
   ${SuperQuery().maxWidth.of('360px').css`
     padding: 0 0 0 0;
   `}

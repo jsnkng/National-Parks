@@ -12,9 +12,7 @@ import cookies from 'next-cookies'
 const stack = []
 
 const MyApp = ({ appCookies, router, Component, pageProps }) => {
-  console.log(appCookies)
   const [themeName, setThemeName] = useState('lightMode')
-  const [themeSaved, setThemeSaved] = useState(false)
 
   useEffect(() => {
     if (appCookies.themeName) {
@@ -75,7 +73,6 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
 MyApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext);
   const appCookies = cookies(appContext.ctx);
-  // themeName && setThemeSaved(themeName)
   return { ...appProps, appCookies}
 }
 
