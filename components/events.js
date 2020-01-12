@@ -115,7 +115,7 @@ const Events = styled(Grid)`
   .description {
     font-size: 1rem;
     overflow-wrap: break-word;
-    padding: 0 .25rem 1rem .25rem;
+    padding: 0 .25rem 1rem .5rem;
     margin: .5rem 0 0 0;
     ul {
       margin: 0;
@@ -145,7 +145,7 @@ const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
-  margin: 0;
+  margin: 1rem 0 0 0;
   padding: 0;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;

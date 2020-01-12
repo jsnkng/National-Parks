@@ -27,45 +27,65 @@ const Component = ({ park, markers }) => {
             </MapLive__Wrapper>
         </Col>
       </Row__Decorated>
-      <Row__Decorated>
-      {park.directionsInfo !== "" && 
-        <Col xs={12} md={6}>
-          <h3>Directions</h3>
-          <p>{park.directionsInfo}</p>
+      <Row__Decorated className='content'>
+       
+        <Col xs={12} md={4}>
+        <h3>Contact Information</h3>
+          { (park.contacts !== undefined && park.contacts.length !== 0) &&
+            (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
+            park.contacts.phoneNumbers.slice(0).map(item => {
+              return (
+                <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+              )
+            })
+          }
+          { (park.contacts !== undefined && park.contacts.length !== 0) &&
+            (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
+            park.contacts.emailAddresses.slice(0).map(item => {
+              return (
+                <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+              )
+            })
+          }
+          { (park.addresses !== undefined && park.addresses.length !== 0) &&
+            (park.addresses !== undefined && park.addresses.length !== 0) &&
+            park.addresses.slice(0).map(item => {
+            if (item.type.toLowerCase() === 'mailing') 
+              { 
+                return (
+                  <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                )
+              }
+            })
+          }
+        </Col> 
+        <Col xs={12} md={4}>
+          { park.directionsInfo !== undefined && 
+            <>
+              <h3>Location & Directions</h3>
+              <p>{park.directionsInfo}</p>
+            </>
+          }
+          { (park.addresses !== undefined && park.addresses.length !== 0) &&
+            (park.addresses !== undefined && park.addresses.length !== 0) &&
+            park.addresses.slice(0).map(item => {
+              if (item.type.toLowerCase() === 'physical') 
+                { 
+                  return (
+                    <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                  )
+                }
+            })
+          }</Col>
+        <Col xs={12} md={4}>
+          {park.weatherInfo !== "" && 
+            <>
+              <h3>Weather</h3>
+              <p>{park.weatherInfo}</p>
+            </>
+          }
         </Col>
-      }
-      {park.weatherInfo !== "" && 
-        <Col xs={12} md={6}>
-          <h3>Weather</h3>
-          <p>{park.weatherInfo}</p>
-        </Col>
-      }
-      <Col>
-      { (park.contacts !== undefined && park.contacts.length !== 0) &&
-        (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
-        park.contacts.phoneNumbers.slice(0).map(item => {
-          return (
-            <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
-          )
-        })
-      }
-      { (park.contacts !== undefined && park.contacts.length !== 0) &&
-        (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
-        park.contacts.emailAddresses.slice(0).map(item => {
-          return (
-            <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
-          )
-        })
-      }
-      { (park.addresses !== undefined && park.addresses.length !== 0) &&
-        (park.addresses !== undefined && park.addresses.length !== 0) &&
-        park.addresses.slice(0).map(item => {
-          return (
-            <p key={item.line1}><strong>{item.type}:</strong> {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode} </p>
-          )
-        })
-      }
-      </Col>
+      
       </Row__Decorated>
     </VisitorInfo>
   )
@@ -74,6 +94,9 @@ export default Component
 
 const VisitorInfo = styled(Grid)`
   padding: 1rem .25rem;
+  .content {
+    padding: 1rem;
+  }
 `
 
 const MapLive__Wrapper = styled.div`

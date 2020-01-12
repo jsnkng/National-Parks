@@ -34,7 +34,7 @@ export default (req, res) => {
     if (result === undefined || result.length === 0) {
       result = {}
       console.log(`Fetching Park (${parkCode}) From API`)
-      const park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images,addreses,entraceFees,operatinngHours,contacts,entrancePasses&api_key=${process.env.NPS_KEY}`)
+      const park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images,addresses,entranceFees,operatinngHours,contacts,entrancePasses&api_key=${process.env.NPS_KEY}`)
       result.park = park.data[0]
       result.parkCode = parkCode
 

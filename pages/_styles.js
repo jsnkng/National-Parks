@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     `}
   }
   h3 {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     line-height: 1.1;
     letter-spacing: -1px;
     margin: .5rem 0 0 0;

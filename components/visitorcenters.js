@@ -33,9 +33,11 @@ const Component = ({ visitorCenters }) => {
                 </AccordionItemHeading>
                 <AccordionItemPanel className="description">
                  <Row__Decorated>
-                  <Col xs={12} sm={7} lg={8}>
-                    <p>{item.description}</p>
-                    <p>{item.directionsInfo}</p>
+                  
+                  <Col xs={12} md={4}>
+                    <Row>
+                      <Col xs={6} md={12}>
+                    <h4>Contact Information</h4>
                     { (item.contacts !== undefined && item.contacts.length !== 0) &&
                       (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                       item.contacts.phoneNumbers.slice(0).map(item => {
@@ -55,20 +57,22 @@ const Component = ({ visitorCenters }) => {
                     { (item.addresses !== undefined && item.addresses.length !== 0) &&
                       (item.addresses !== undefined && item.addresses.length !== 0) &&
                       item.addresses.slice(0).map(item => {
-                        return (
-                          <p key={item.line1}><strong>{item.type}:</strong> {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode} </p>
-                        )
+                      if (item.type.toLowerCase() === 'mailing') 
+                        { 
+                          return (
+                            <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                          )
+                        }
                       })
-                    }
-                  </Col>
-                  <Col xs={12} sm={5} lg={4}>
-
+                    }</Col>
+                      <Col xs={6} md={12}>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                       (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
                       item.operatingHours.slice(0).map(item => {
                         return (
+                          <>
+                          <h4>Hours of Operation</h4>
                           <p key={item.name}>
-                            <strong>{item.name}</strong><br />{item.description}<br />
                             <table>
                               <tbody>
                                 <tr>
@@ -101,9 +105,30 @@ const Component = ({ visitorCenters }) => {
                                 </tr>
                               </tbody>
                             </table>
-
+                            <em>{item.description}</em>
                           </p>
+                          </>
                         )
+                      })
+                    }
+                    </Col>
+                    </Row>
+                  </Col>
+                  <Col xs={12} md={8}>
+                    <h4>General Information</h4>
+                    <p>{item.description}</p>
+                    <h4>Directions</h4>
+                    <p>{item.directionsInfo}</p>
+                    
+                    { (item.addresses !== undefined && item.addresses.length !== 0) &&
+                      (item.addresses !== undefined && item.addresses.length !== 0) &&
+                      item.addresses.slice(0).map(item => {
+                        if (item.type.toLowerCase() === 'physical') 
+                          { 
+                            return (
+                              <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                            )
+                          }
                       })
                     }
                     
@@ -129,8 +154,8 @@ const VisitorCenters = styled(Grid)`
   .description {
     font-size: 1rem;
     overflow-wrap: break-word;
-    padding: 0 .25rem 1rem .25rem;
-    margin: .5rem 0 0 0;
+    padding: .5rem .5rem 1rem .5rem;
+    margin: 0;
     ul {
       margin: 0;
       padding: 0 0 0 1rem;
@@ -138,15 +163,28 @@ const VisitorCenters = styled(Grid)`
     li {
       padding: .5rem 0 0 .25rem;
     }
-
+    em {
+      font-size: .875rem;
+    }
     table {
-      width: 16rem;
+      width: 13rem;
+      border-spacing: 0;
     }
     th {
       text-align: left;
+      font-size: .875rem;
     }
     td {
       text-align: right;
+      font-size: .875rem;
+    }
+    .location__address {
+      position: relative;
+      strong {
+      }
+      span {
+        line-height: 1.2;
+      }
     }
   }
 `
