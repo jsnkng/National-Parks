@@ -12,7 +12,14 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion'
-
+function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+  }
+  return null
+}
 const Component = ({ campgrounds }) => {
   return (
     <Campgrounds>
@@ -44,9 +51,80 @@ const Component = ({ campgrounds }) => {
                     }
 
                       <Row__Decorated>
-                        <Col xs={12}>
+                        <Col xs={12} sm={7} lg={8}>
                           <p className="section introduction description">{item.description}</p>
+                          { (item.contacts !== undefined && item.contacts.length !== 0) &&
+                            (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
+                            item.contacts.phoneNumbers.slice(0).map(item => {
+                              return (
+                                <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                              )
+                            })
+                          }
+                          { (item.contacts !== undefined && item.contacts.length !== 0) &&
+                            (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
+                            item.contacts.emailAddresses.slice(0).map(item => {
+                              return (
+                                <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                              )
+                            })
+                          }
+                          { (item.addresses !== undefined && item.addresses.length !== 0) &&
+                            (item.addresses !== undefined && item.addresses.length !== 0) &&
+                            item.addresses.slice(0).map(item => {
+                              return (
+                                <p key={item.line1}><strong>{item.type}:</strong> {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode} </p>
+                              )
+                            })
+                          }
                         </Col>
+                        <Col xs={12} sm={5} lg={4}>
+
+                          { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
+                            (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
+                            item.operatingHours.slice(0).map(item => {
+                              return (
+                                <p key={item.name}>
+                                  <strong>{item.name}</strong><br />{item.description}<br />
+                                  <table>
+                                    <tbody>
+                                      <tr>
+                                        <th>Sunday</th>
+                                        <td>{item.standardHours.sunday}</td>
+                                      </tr>
+                                      <tr>
+                                        <th>Monday</th>
+                                        <td>{item.standardHours.monday}</td>
+                                      </tr>
+                                      <tr>
+                                        <th>Tuesday</th>
+                                        <td>{item.standardHours.tuesday}</td>
+                                      </tr>
+                                      <tr>
+                                        <th>Wednesday</th>
+                                        <td>{item.standardHours.wednesday}</td>
+                                      </tr>
+                                      <tr>
+                                        <th>Thursday</th>
+                                        <td>{item.standardHours.thursday}</td>
+                                      </tr>
+                                      <tr>
+                                        <th>Friday</th>
+                                        <td>{item.standardHours.friday}</td>
+                                      </tr>
+                                      <tr>
+                                        <th>Saturday</th>
+                                        <td>{item.standardHours.saturday}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                </p>
+                              )
+                            })
+                          }
+                          
+                          </Col>
                       </Row__Decorated>
                       { ((item.directionsoverview !== undefined && item.directionsoverview !=="") ||
                         (item.directionsoverview !== undefined && item.directionsoverview !=="") ||
@@ -290,8 +368,16 @@ const Campgrounds = styled(Grid)`
   .lazyload__image--height {
     height: 22rem;
   }
-
-ul {
+  table {
+    width: 14rem;
+  }
+  th {
+    text-align: left;
+  }
+  td {
+    text-align: right;
+  }
+  ul {
     font-size: 1rem;
     column-count: 1;
     list-style-type: none;

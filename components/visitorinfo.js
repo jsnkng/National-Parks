@@ -4,7 +4,14 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
 import MapLive__Component from './maplive'
-
+function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+  }
+  return null
+}
 const Component = ({ park, markers }) => {
   return (
     <VisitorInfo>
@@ -39,6 +46,32 @@ const Component = ({ park, markers }) => {
           <p>{park.weatherInfo}</p>
         </Col>
       }
+      <Col>
+      { (park.contacts !== undefined && park.contacts.length !== 0) &&
+        (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
+        park.contacts.phoneNumbers.slice(0).map(item => {
+          return (
+            <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+          )
+        })
+      }
+      { (park.contacts !== undefined && park.contacts.length !== 0) &&
+        (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
+        park.contacts.emailAddresses.slice(0).map(item => {
+          return (
+            <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+          )
+        })
+      }
+      { (park.addresses !== undefined && park.addresses.length !== 0) &&
+        (park.addresses !== undefined && park.addresses.length !== 0) &&
+        park.addresses.slice(0).map(item => {
+          return (
+            <p key={item.line1}><strong>{item.type}:</strong> {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode} </p>
+          )
+        })
+      }
+      </Col>
       </Row__Decorated>
     </VisitorInfo>
   )

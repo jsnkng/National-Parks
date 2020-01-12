@@ -34,7 +34,7 @@ export default (req, res) => {
     if (result === undefined || result.length === 0) {
       result = {}
       console.log(`Fetching Park (${parkCode}) From API`)
-      const park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      const park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images,addreses,entraceFees,operatinngHours,contacts,entrancePasses&api_key=${process.env.NPS_KEY}`)
       result.park = park.data[0]
       result.parkCode = parkCode
 
@@ -43,11 +43,11 @@ export default (req, res) => {
       result.people = people.data
       const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       result.places = places.data
-      const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=addresses,operatingHours,contacts&api_key=${process.env.NPS_KEY}`)
       result.visitorcenters = visitorcenters.data
-      const articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      const articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&fields=listingImage,relatedParks&api_key=${process.env.NPS_KEY}`)
       result.articles = articles.data
-      const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=accessibility,addresses,amenities,campsites,contacts,fees,images,operatingHours&api_key=${process.env.NPS_KEY}`)
       result.campgrounds = campgrounds.data
 
       // Insert one JSON object
@@ -81,7 +81,7 @@ export default (req, res) => {
     let [events] = await db.collection('events').find({ parkCode }).toArray()
     if (events === undefined || events.length === 0) {
       console.log(`Fetching Events (${parkCode}) From API`)
-      events = await fetchWithErrorHandling(`${process.env.NPS_URI}/events?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      events = await fetchWithErrorHandling(`${process.env.NPS_URI}/events?parkCode=${parkCode}&fields=images,dates,tags,times,types&api_key=${process.env.NPS_KEY}`)
       events.parkCode = parkCode
       await db.collection('events').insertOne(events)
     }
