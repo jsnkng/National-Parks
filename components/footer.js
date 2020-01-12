@@ -16,11 +16,17 @@ const Component = ({ themeName, setThemeName }) => {
 
       <ThemeSwitcher__Container>
         <ThemeSwitcher>
-        { themeName !== 'dayTheme' &&
-          <SunSVG aria-label='Set Day Mode' onClick={() => setThemeName('dayTheme')} />
+        { themeName !== 'lightMode' &&
+          <SunSVG aria-label='Set Day Mode' onClick={() => { 
+            setThemeName('lightMode')
+            document.cookie = `themeName=lightMode; path=/`
+          } } />
         }
-        { themeName === 'dayTheme' &&
-          <MoonSVG aria-label='Set Night Mode' onClick={() => setThemeName('nightTheme')} />
+        { themeName === 'lightMode' &&
+          <MoonSVG aria-label='Set Night Mode'  onClick={() => { 
+            setThemeName('darkMode')
+            document.cookie = `themeName=darkMode; path=/`
+          } } />
         }
         </ThemeSwitcher>
       </ThemeSwitcher__Container>

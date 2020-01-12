@@ -47,6 +47,10 @@ const Image = styled.div`
   ${SuperQuery().minWidth.md.css`
     min-height:600px;
   `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 98vh;
+    min-height:600px;
+  `}
 
   .caption {
     position: absolute;

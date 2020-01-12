@@ -77,7 +77,7 @@ const FindAPark__Container = styled.div`
   z-index: 1000;
   height: 100vh;
   padding: 4rem 0 0 0;
-  z-index: 1000;
+  z-index: 900;
   ${SuperQuery().maxWidth.of('360px').css`
     padding: 0 0 0 0;
   `}

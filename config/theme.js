@@ -16,7 +16,7 @@ const themes = {
       lg: 62 // em 1200 @16px font
     }
   },
-  nightTheme: {
+  darkMode: {
     background: '#1e1d1e',
     box_background: '#111111',
     offbackground: '#222222',
@@ -30,11 +30,11 @@ const themes = {
     spinner: 'rgba(0,0,0,0.2)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
   },
-  dayTheme: {
+  lightMode: {
     background: '#ededed',
     box_background: '#ffffff',
     offbackground: '#d2d1c7',
-    text: '#32120d',
+    text: '#111111',
     color_one: '#5c2217',
     color_two: '#ba471e',
     color_three: '#ec8217',

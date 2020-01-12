@@ -7,11 +7,24 @@ import { ThemeProvider } from 'styled-components'
 import themes from '../config/theme'
 import GlobalStyle from './_styles'
 import * as gtag from '../config/gtag'
+import cookies from 'next-cookies'
 
 const stack = []
 
-const MyApp = ({ router, Component, pageProps }) => {
-  const [themeName, setThemeName] = useState('dayTheme')
+const MyApp = ({ appCookies, router, Component, pageProps }) => {
+  console.log(appCookies)
+  const [themeName, setThemeName] = useState('lightMode')
+  const [themeSaved, setThemeSaved] = useState(false)
+
+  useEffect(() => {
+    if (appCookies.themeName) {
+      setThemeName(appCookies.themeName)
+    } else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setThemeName('darkMode')
+      }
+    }
+  }, [])
 
   useEffect(() => {
     Router.events.on('routeChangeStart', url => {
@@ -25,7 +38,9 @@ const MyApp = ({ router, Component, pageProps }) => {
       NProgress.done()
     })
   }, [])
+
   
+
   const manageFuture = (href, as) => {
     // Get current route and push to stack
     stack.push([router.route, router.asPath])
@@ -59,7 +74,9 @@ const MyApp = ({ router, Component, pageProps }) => {
 
 MyApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext);
-  return { ...appProps }
+  const appCookies = cookies(appContext.ctx);
+  // themeName && setThemeSaved(themeName)
+  return { ...appProps, appCookies}
 }
 
 export default MyApp
