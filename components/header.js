@@ -66,8 +66,8 @@ const Header = styled.header`
   }
   .top__logo--image {
     position: absolute;
-    top: .75rem;
-    right: .75rem;
+    top: .625rem;
+    right: .25rem;
     cursor: pointer;
     border: none;
     width: 2.75em;
@@ -83,7 +83,7 @@ const Header = styled.header`
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0.8rem 2.5rem 0 -3rem;
+    margin: 0.8rem 2rem 0 -2rem;
     ${SuperQuery().minWidth.md.css`
       margin: 1rem 3.375rem 0 -3rem;
       font-size: 1.125rem;
@@ -102,7 +102,7 @@ const Header = styled.header`
       line-height: 1;
       font-weight: 700;
       letter-spacing: -1.5px;
-      margin: 0.8rem 0 0 1.375rem;
+      margin: 0.8rem 0 0 .75rem;
       ${SuperQuery().minWidth.md.css`
         font-size: 1.875rem !important;
         margin: 1rem 0 0 1.5rem !important;
@@ -125,7 +125,7 @@ const Header = styled.header`
       line-height: 1;
       font-weight: 200;
       letter-spacing: -0.5px;
-      margin: 0 0 0 1.375rem;
+      margin: 0 0 0 .75rem;
       ${SuperQuery().minWidth.md.css`
         margin: 0 0 0 1.5rem;
         font-size: 1.25rem;

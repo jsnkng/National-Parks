@@ -35,7 +35,7 @@ const Component = ({ park, markers }) => {
             (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
             park.contacts.phoneNumbers.slice(0).map(item => {
               return (
-                <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
               )
             })
           }
@@ -43,7 +43,7 @@ const Component = ({ park, markers }) => {
             (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
             park.contacts.emailAddresses.slice(0).map(item => {
               return (
-                <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
               )
             })
           }
@@ -97,6 +97,13 @@ const VisitorInfo = styled(Grid)`
   .content {
     padding: 1rem;
   }
+
+  p {
+      font-size: 1.25rem;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 1rem;
+      `}
+    }
 `
 
 const MapLive__Wrapper = styled.div`

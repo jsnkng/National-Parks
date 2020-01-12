@@ -1,5 +1,6 @@
 import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
+import SuperQuery from '@themgoncalves/super-query'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import formatPhoneNumber from './_utils/formatPhoneNumber'
@@ -32,17 +33,31 @@ const Component = ({ visitorCenters }) => {
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel className="description">
-                 <Row__Decorated>
-                  
-                  <Col xs={12} md={4}>
-                    <Row>
-                      <Col xs={6} md={12}>
+
+                <Row__Decorated>
+                  <Col xs={12}>
+                  <p className="introduction">{item.description}</p>
+                    { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
+                      (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
+                      item.operatingHours.slice(0).map(item => {
+                        return (
+                          <p className="introduction">
+                            <em>{item.description}</em>
+                          </p>
+                        )
+                      })
+                    }
+                    </Col>
+                </Row__Decorated>
+                <Row__Decorated>
+
+                  <Col xs={12} sm={6} md={4}>
                     <h4>Contact Information</h4>
                     { (item.contacts !== undefined && item.contacts.length !== 0) &&
                       (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                       item.contacts.phoneNumbers.slice(0).map(item => {
                         return (
-                          <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                          <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
                         )
                       })
                     }
@@ -50,7 +65,7 @@ const Component = ({ visitorCenters }) => {
                       (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                       item.contacts.emailAddresses.slice(0).map(item => {
                         return (
-                          <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                          <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
                         )
                       })
                     }
@@ -65,58 +80,50 @@ const Component = ({ visitorCenters }) => {
                         }
                       })
                     }</Col>
-                      <Col xs={6} md={12}>
+                      <Col xs={12} sm={6} md={4}>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                       (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
-                      item.operatingHours.slice(0).map(item => {
-                        return (
+
                           <>
                           <h4>Hours of Operation</h4>
-                          <p key={item.name}>
+                          <p key={item.operatingHours[0].name}>
                             <table>
                               <tbody>
                                 <tr>
                                   <th>Sunday</th>
-                                  <td>{item.standardHours.sunday}</td>
+                                  <td>{item.operatingHours[0].standardHours.sunday}</td>
                                 </tr>
                                 <tr>
                                   <th>Monday</th>
-                                  <td>{item.standardHours.monday}</td>
+                                  <td>{item.operatingHours[0].standardHours.monday}</td>
                                 </tr>
                                 <tr>
                                   <th>Tuesday</th>
-                                  <td>{item.standardHours.tuesday}</td>
+                                  <td>{item.operatingHours[0].standardHours.tuesday}</td>
                                 </tr>
                                 <tr>
                                   <th>Wednesday</th>
-                                  <td>{item.standardHours.wednesday}</td>
+                                  <td>{item.operatingHours[0].standardHours.wednesday}</td>
                                 </tr>
                                 <tr>
                                   <th>Thursday</th>
-                                  <td>{item.standardHours.thursday}</td>
+                                  <td>{item.operatingHours[0].standardHours.thursday}</td>
                                 </tr>
                                 <tr>
                                   <th>Friday</th>
-                                  <td>{item.standardHours.friday}</td>
+                                  <td>{item.operatingHours[0].standardHours.friday}</td>
                                 </tr>
                                 <tr>
                                   <th>Saturday</th>
-                                  <td>{item.standardHours.saturday}</td>
+                                  <td>{item.operatingHours[0].standardHours.saturday}</td>
                                 </tr>
                               </tbody>
                             </table>
-                            <em>{item.description}</em>
                           </p>
                           </>
-                        )
-                      })
-                    }
+                      }
                     </Col>
-                    </Row>
-                  </Col>
-                  <Col xs={12} md={8}>
-                    <h4>General Information</h4>
-                    <p>{item.description}</p>
+                  <Col xs={12} md={4}>
                     <h4>Directions</h4>
                     <p>{item.directionsInfo}</p>
                     
@@ -156,15 +163,18 @@ const VisitorCenters = styled(Grid)`
     overflow-wrap: break-word;
     padding: .5rem .5rem 1rem .5rem;
     margin: 0;
+    p {
+      font-size: 1.25rem;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 1rem;
+      `}
+    }
     ul {
       margin: 0;
       padding: 0 0 0 1rem;
     }
     li {
       padding: .5rem 0 0 .25rem;
-    }
-    em {
-      font-size: .875rem;
     }
     table {
       width: 13rem;
@@ -186,6 +196,16 @@ const VisitorCenters = styled(Grid)`
         line-height: 1.2;
       }
     }
+    p.introduction {
+      font-size: 1.375rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      padding: 0 0 1rem 0;
+      em {
+        font-size: 1.375rem;
+      }
+    }
+    
   }
 `
 const Row__Decorated = styled(Row)`

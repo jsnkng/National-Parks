@@ -43,31 +43,35 @@ const Component = ({ campgrounds }) => {
                       </Col>
                     </Row__Decorated>
                     }
-
+                    <Row__Decorated>
+                      <Col xs={12}>
+                        <p className="section introduction description">{item.description}</p>
+                      </Col>
+                    </Row__Decorated>
                       <Row__Decorated>
                         <Col xs={12} sm={7} lg={8}>
-                          <p className="section introduction description">{item.description}</p>
+                          <h3>Contact Information</h3>
                           { (item.contacts !== undefined && item.contacts.length !== 0) &&
                             (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
-                            item.contacts.phoneNumbers.slice(0).map(item => {
+                            item.contacts.phoneNumbers.slice(0,2).map(item => {
                               return (
-                                <p key={item.phoneNumber}><strong>{item.type}:</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                                <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
                               )
                             })
                           }
                           { (item.contacts !== undefined && item.contacts.length !== 0) &&
                             (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
-                            item.contacts.emailAddresses.slice(0).map(item => {
+                            item.contacts.emailAddresses.slice(0,1).map(item => {
                               return (
-                                <p key={item.emailAddress}><strong>Email:</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                                <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
                               )
                             })
                           }
                           { (item.addresses !== undefined && item.addresses.length !== 0) &&
                             (item.addresses !== undefined && item.addresses.length !== 0) &&
-                            item.addresses.slice(0).map(item => {
+                            item.addresses.slice(0,2).map(item => {
                               return (
-                                <p key={item.line1}><strong>{item.type}:</strong> {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode} </p>
+                                <p key={item.line1}><strong>{item.type} Address</strong> {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode} </p>
                               )
                             })
                           }
@@ -396,7 +400,7 @@ const Campgrounds = styled(Grid)`
     overflow-wrap: break-word;
   }
   p.introduction {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 400;
     letter-spacing: -1px;
   }
