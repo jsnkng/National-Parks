@@ -44,7 +44,7 @@ const Footer = styled.footer`
     display: flex;
     align-content: center;
     margin: -4rem 0;
-    padding: 1rem;
+    padding: 1rem 0;
     font-size: .75rem;
     letter-spacing: -1px;
     font-weight: 400;
