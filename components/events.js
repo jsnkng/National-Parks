@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad, { forceCheck } from 'react-lazyload'
+import formatPhoneNumber from './_utils/formatPhoneNumber'
 import {
   Accordion,
   AccordionItem,
@@ -49,6 +50,7 @@ const Component = ({ events }) => {
                   <Row__Decorated>
                     <Col xs={12} md={8}>
                     <div className="description">
+                      <h3>{item.types.join(', ')}</h3>
                       <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </div>
                       </Col>
@@ -77,6 +79,15 @@ const Component = ({ events }) => {
 
                       {item.infourl !== "" &&
                         <p><strong>More Info: </strong><a href={item.infourl} target="_blank">{item.infourl}</a></p> 
+                      }
+                      {item.contactname !== "" &&
+                        <p><strong>Contact: </strong>{item.contactname}</p>
+                      }
+                      {item.contacttelephonenumber !== "" &&
+                        <p><strong>Phone: </strong> <a href={`tel:${formatPhoneNumber(item.contacttelephonenumber)}`}>{formatPhoneNumber(item.contacttelephonenumber)}</a></p> 
+                      }
+                      {item.contactemailaddress !== "" &&
+                      <p><strong>Email:</strong> <a href={`mailto:${item.contactemailaddress}`}>{item.contactemailaddress}</a></p>
                       }
                       </div>
                     </Col>

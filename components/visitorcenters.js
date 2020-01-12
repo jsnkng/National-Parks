@@ -2,6 +2,7 @@ import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
+import formatPhoneNumber from './_utils/formatPhoneNumber'
 import {
   Accordion,
   AccordionItem,
@@ -10,14 +11,6 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-function formatPhoneNumber(phoneNumberString) {
-  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
-  if (match) {
-    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-  }
-  return null
-}
 const Component = ({ visitorCenters }) => {
   return (  
     <VisitorCenters>

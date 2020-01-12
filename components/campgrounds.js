@@ -5,6 +5,7 @@ import MapLive__Component from './maplive'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { forceCheck } from 'react-lazyload'
+import formatPhoneNumber from './_utils/formatPhoneNumber'
 import {
   Accordion,
   AccordionItem,
@@ -12,14 +13,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion'
-function formatPhoneNumber(phoneNumberString) {
-  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
-  if (match) {
-    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-  }
-  return null
-}
+
 const Component = ({ campgrounds }) => {
   return (
     <Campgrounds>
@@ -124,6 +118,13 @@ const Component = ({ campgrounds }) => {
                             })
                           }
                           
+                          { (item.fees !== undefined && item.fees.length !== 0) &&
+                            item.fees.slice(0).map(item => {
+                              return (
+                                <p key={item.title}><strong>{item.title}:</strong> {item.description}<br />{item.cost !== undefined && `$${Number(item.cost).toFixed(2)}`}</p>
+                              )
+                            })
+                          }
                           </Col>
                       </Row__Decorated>
                       { ((item.directionsoverview !== undefined && item.directionsoverview !=="") ||

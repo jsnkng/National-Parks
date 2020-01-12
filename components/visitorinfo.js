@@ -2,16 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import formatPhoneNumber from './_utils/formatPhoneNumber'
 
 import MapLive__Component from './maplive'
-function formatPhoneNumber(phoneNumberString) {
-  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
-  if (match) {
-    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-  }
-  return null
-}
+
 const Component = ({ park, markers }) => {
   return (
     <VisitorInfo>

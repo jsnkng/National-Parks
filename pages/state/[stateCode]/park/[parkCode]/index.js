@@ -105,12 +105,12 @@ const Park = ({
           { places !== undefined && places.length != 0 &&
           <Places park={park} places={places} />
           }
-          { articles !== undefined && articles.length != 0 &&
-          <Articles park={park} articles={articles} />
-          }
           { people !== undefined && people.length != 0 &&
           <People park={park} people={people} />
           } 
+          { articles !== undefined && articles.length != 0 &&
+          <Articles park={park} articles={articles} />
+          }
         </Content> 
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
