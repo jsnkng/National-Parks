@@ -12,7 +12,7 @@ const Component = ({ themeName, setThemeName }) => {
       <Grid fluid={true}>
         <Row className='bottom'>
           <Col className='bottom__credit' xs={6}>
-            <a href="#">&copy; <strong>JSNKNG</strong> / 2020</a>
+            <a href="#"><strong>JSNKNG</strong> / 2020</a>
           </Col>
           <Col className='bottom__themeswitcher' xs={6}>
           { themeName !== 'lightMode' &&

@@ -10,11 +10,14 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Component = ({ fees }) => {
+const Component = ({ fees, title }) => {
   return (
     <EntryFees>
-        <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-          <Row>
+      <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
+        <Row>
+        <Col xs={12}>
+          <h3>{ title }</h3>
+        </Col>
         <Col xs={12}>
         { fees.slice(0).map((item, index) => {
           
@@ -59,6 +62,10 @@ const EntryFees = styled.div`
     background-color: #00ac47;
     color: #f1f1f1; 
     padding: .5rem;
+  }
+
+  .accordion__item + .accordion__item {
+    border-bottom: none;
   }
   .accordion__item {
     color: #f1f1f1;
@@ -111,7 +118,15 @@ const EntryFees = styled.div`
   .accordion__panel {
     border: none;
   }
-  
+  h3 {
+    background-color: #f1f1f1;
+    color: #00ac47;
+    font-size: 1.75rem;
+    border: none;
+    margin: 0;
+    padding: .5rem;
+   
+  }
   h4 {
     color: #f1f1f1;
     font-size: 1.25rem;

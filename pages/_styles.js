@@ -95,9 +95,10 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
   .large {
-    font-size: 200%;
+    font-size: 160%;
     font-weight:700;
     letter-spacing: -0.1rem;
+    margin: 1.625rem 0 0 0;
     line-height: 1;
     overflow-wrap: break-word;
   }

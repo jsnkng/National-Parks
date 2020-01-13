@@ -6,6 +6,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { forceCheck } from 'react-lazyload'
 import formatPhoneNumber from './_utils/formatPhoneNumber'
+import EntryFees from './entryfees'
 import {
   Accordion,
   AccordionItem,
@@ -51,17 +52,30 @@ const Component = ({ campgrounds }) => {
                     <Row className='introduction'>
                       <Col xs={12}>
                         <p>{item.description}</p>
-                        { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
-                          (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
-                          <p><em>{item.operatingHours[0].description}</em></p>
-                        }
+                        
                       </Col>
                     </Row>
 
+                    { item.latLong !=='' &&
+                        <Row className='section'>
+                          <Col xs={12}>
+                            <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
+                              <MapLive__Component
+                                latLong={item.latLong}
+                                name={item.name}
+                                designation={item.description}
+                                zoom={13}
+                                markers={[{id: item.id, latLong: item.latLong, name: item.name, description: item.description}]}
+                              />
+                            </MapLive__Wrapper> 
+                          </Col>
+                        </Row>  
+                        }  
                     <Row className='section'>
-                      <Col xs={12} md={12} lg={8} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
+                      <Col xs={12} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
-                          <Col xs={12} md={6}>
+                          <Col xs={12} md={4}>
+                            
                             <h4>Contact Information</h4>
                             { (item.contacts !== undefined && item.contacts.length !== 0) &&
                               (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
@@ -87,208 +101,199 @@ const Component = ({ campgrounds }) => {
                                 )
                               })
                             }
-                            </Col>
-                            <Col xs={12} sm={6}>
-                              { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
+                          </Col>
+                          <Col xs={12} md={8}>
+                            
+                            { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
+                            <>
+                              <h4>Directions</h4>
+                              <p>{item.directionsoverview}<br />
+                                <a href={item.directionsUrl} target='_blank'>Click for Directions</a>
+                              </p>
+                            </>
+                            }
+                            { item.weatheroverview !== undefined && item.weatheroverview != '' && 
+                            <>
+                              <span>
+                                <h4>Weather Overview</h4>
+                                <div className='p' dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, '<br />')}}></div>
+                              </span>
+                            </>
+                            }
+                          </Col>
+                          
+                        </Row>
+
+                        
+                        
+                        <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
+                          <Col xs={12} md={4}>
+                              { ((item.campsites !== undefined && item.campsites !== '') && 
+                              (item.campsites.totalsites > 0)) &&
                               <>
-                                <h4>Directions</h4>
-                                <p>{item.directionsoverview}<br />
-                                  <a href={item.directionsUrl} target='_blank'>Click for Directions</a>
-                                </p>
+                                <h4>Campsites</h4>
+                                <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
+                                <ul>
+                                { item.campsites.tentonly > 0 &&
+                                  <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
+                                }
+                                { item.campsites.group > 0 &&
+                                  <li><strong>Group: </strong> { item.campsites.group }</li>
+                                }
+                                { item.campsites.walkboatto > 0 &&
+                                  <li><strong>Walk/Boat To: </strong> { item.campsites.walkboatto }</li>
+                                }
+                                { item.campsites.horse > 0 &&
+                                  <li><strong>Horse: </strong> { item.campsites.horse }</li>
+                                }
+                                { item.campsites.other > 0 &&
+                                  <li><strong>Other: </strong> { item.campsites.other }</li>
+                                }
+                                { item.campsites.rvonly > 0 &&
+                                  <li><strong>RV Only: </strong> { item.campsites.rvonly }</li>
+                                }
+                                { item.campsites.electricalhookups > 0 &&
+                                  <li><strong>Electrical Hookup: </strong> { item.campsites.electricalhookups }</li>
+                                }
+                                </ul>
                               </>
-                            }
+                              }
                             </Col>
+                            <Col xs={12} md={8}>
+                              { (item.fees !== undefined && item.fees.length !== 0) &&
+                                <EntryFees title='Camping Fees (Per Site/Per Night)' fees={item.fees} />
+                              }
+                              { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
+                                (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
+                                <p><em>{item.operatingHours[0].description}</em></p>
+                              }
+                              
+                            </Col>
+                            
                           </Row>
-                        <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} className='section'>
-                          <Col xs={12} className='columns'>
-                          { ((item.campsites !== undefined && item.campsites !== '') && 
-                          (item.campsites.totalsites > 0)) &&
-                          <>
-                            <h4>Campsites</h4>
-                            <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
-                            <ul>
-                            { item.campsites.tentonly > 0 &&
-                              <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
-                            }
-                            { item.campsites.group > 0 &&
-                              <li><strong>Group: </strong> { item.campsites.group }</li>
-                            }
-                            { item.campsites.walkboatto > 0 &&
-                              <li><strong>Walk/Boat To: </strong> { item.campsites.walkboatto }</li>
-                            }
-                            { item.campsites.horse > 0 &&
-                              <li><strong>Horse: </strong> { item.campsites.horse }</li>
-                            }
-                            { item.campsites.other > 0 &&
-                              <li><strong>Other: </strong> { item.campsites.other }</li>
-                            }
-                            { item.campsites.rvonly > 0 &&
-                              <li><strong>RV Only: </strong> { item.campsites.rvonly }</li>
-                            }
-                            { item.campsites.electricalhookups > 0 &&
-                              <li><strong>Electrical Hookup: </strong> { item.campsites.electricalhookups }</li>
-                            }
-                            </ul>
-                          </>
+                          <Row className="section">
+                          <Col xs={12} className="amenities columns">
+                            { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
+                            (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
+                            (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
+                            (item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0) || 
+                            (item.amenities.campstore !== undefined && item.amenities.campstore != 0) || 
+                            (item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0) || 
+                            (item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0) || 
+                            (item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0) || 
+                            (item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0) || 
+                            (item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0) || 
+                            (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
+                            (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
+                            (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
+                              <>
+                              <h4>Amenities</h4>
+                              <ul>
+                                {item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0 && 
+                                  <li><strong>Trash/Recycling:</strong> {item.amenities.trashrecyclingcollection}</li>
+                                }
+                                {item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0 && 
+                                  <li><strong>Internet Connectivity:</strong> {item.amenities.internetconnectivity}</li>
+                                }
+                                {item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0 && 
+                                  <li><strong>Cell Phone Reception:</strong> {item.amenities.cellphonereception}</li>
+                                }
+                                {item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0 && 
+                                  <li><strong>Amphitheater:</strong> {item.amenities.amphitheater}</li>
+                                }
+                                {item.amenities.campstore !== undefined && item.amenities.campstore != 0 && 
+                                  <li><strong>Camp Store:</strong> {item.amenities.campstore}</li>
+                                }
+                                {item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0 && 
+                                  <li><strong>Dump Station:</strong> {item.amenities.dumpstation}</li>
+                                }
+                                {item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0 && 
+                                  <li><strong>Staff or Volunteer Host on Site:</strong> {item.amenities.stafforvolunteerhostonsite}</li>
+                                }
+                                {item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0 && 
+                                  <li><strong>Ice Available For Sale:</strong> {item.amenities.iceavailableforsale}</li>
+                                }
+                                {item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0 && 
+                                  <li><strong>Food Storage Lockers:</strong> {item.amenities.foodstoragelockers}</li>
+                                }
+                                {item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0 && 
+                                  <li><strong>Firewood For Sale:</strong> {item.amenities.firewoodforsale}</li>
+                                }
+                                {item.amenities.potablewater !== undefined && item.amenities.potablewater != 0 && 
+                                  <li><strong>Potable Water:</strong> {item.amenities.potablewater}</li>
+                                }
+                                {item.amenities.showers !== undefined && item.amenities.showers != 0 && 
+                                  <li><strong>Showers:</strong> {item.amenities.showers}</li>
+                                }
+                                {item.amenities.toilets !== undefined && item.amenities.toilets != 0 && 
+                                  <li><strong>Toilets:</strong> {item.amenities.toilets}</li>
+                                }
+                              </ul>
+                            </>
+                          }
+                          </Col>
+                        </Row>
+                          <Row className="section">
+                          <Col xs={12} className="amenities columns">
+                            { ((item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '') ||  
+                            (item.accessibility.classifications !== undefined && item.accessibility.classifications != '') || 
+                            (item.accessibility.adainfo !== undefined && item.accessibility.adainfo != '') ||  
+                            (item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != '') ||  
+                            (item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != '') ||  
+                            (item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != '') ||  
+                            (item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != '') ||  
+                            (item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != '0') ||  
+                            (item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != '0') ||  
+                            (item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != '0') ||  
+                            (item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != '0') ||  
+                            (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != '')) && 
+                            <>
+                              <h4>Accessibility</h4>
+                              <ul>
+                                {item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '' && 
+                                  <li><strong>Access Roads:</strong> {item.accessibility.accessroads}</li>
+                                }
+                                {item.accessibility.classifications !== undefined && item.accessibility.classifications != '' && 
+                                  <li><strong>Classifications:</strong> {item.accessibility.classifications}</li>
+                                }
+                                {item.accessibility.adainfo !== undefined && item.accessibility.adainfo != '' && 
+                                  <li><strong>ADA Info:</strong> {item.accessibility.adainfo}</li>
+                                }
+                                {item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != '' && 
+                                  <li><strong>Additional Info:</strong> {item.accessibility.additionalinfo}</li>
+                                }
+                                {item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != '' && 
+                                  <li><strong>Cellphone Info:</strong> {item.accessibility.cellphoneinfo}</li>
+                                }
+                                {item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != '' && 
+                                  <li><strong>Fire/Stove Policy:</strong> {item.accessibility.firestovepolicy}</li>
+                                }
+                                {item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != '' && 
+                                  <li><strong>Internet Info:</strong> {item.accessibility.internetinfo}</li>
+                                }
+                                {item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != '0' && 
+                                  <li><strong>RV Allowed:</strong> {item.accessibility.rvallowed}</li>
+                                }
+                                {item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != '0' && 
+                                  <li><strong>RV Maxlength:</strong> {item.accessibility.rvmaxlength}</li>
+                                }
+                                {item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != '0' && 
+                                  <li><strong>Trailer Allowed:</strong> {item.accessibility.trailerallowed}</li>
+                                }
+                                {item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != '0' && 
+                                  <li><strong>Trailer Max Length:</strong> {item.accessibility.trailermaxlength}</li>
+                                }
+                                {item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != '' && 
+                                  <li><strong>Wheelchair Access:</strong> {item.accessibility.wheelchairaccess}</li>
+                                }
+                              </ul>
+                            </>
                           }
                           </Col>
                         </Row>
                       </Col>
-                      {item.weatheroverview !== undefined && item.weatheroverview != '' && 
-                      <Col xs={12} lg={4}>
-                        <span>
-                          <h4>Weather Overview</h4>
-                          <div className='p' dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, '<br />')}}></div>
-                        </span>
-                      </Col>
-                      }
                     </Row>
-                    <Row className='section'>
-                      <Col xs={12} sm={8}>
-                        { (item.fees !== undefined && item.fees.length !== 0) &&
-                            item.fees.slice(0).map(item => {
-                              return (
-                                <span key={item.title}>
-                                  <h4>{item.title}</h4>
-                                  <h5>{item.cost !== undefined && `$${Number(item.cost).toFixed(2)}`} per site—per night</h5>
-                               
-                                  <p>{item.description}</p>
-                                  
-                                </span>
-                              )
-                            })
-                          }
-                      </Col>
-                      <Col xs={12} sm={4}>
-                        <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
-                          <MapLive__Component
-                            latLong={item.latLong}
-                            name={item.name}
-                            designation={item.description}
-                            zoom={13}
-                            markers={[{id: item.id, latLong: item.latLong, name: item.name, description: item.description}]}
-                          />
-                        </MapLive__Wrapper> 
-                      </Col>
-                    </Row>  
-                    { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
-                        (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
-                        (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
-                        (item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0) || 
-                        (item.amenities.campstore !== undefined && item.amenities.campstore != 0) || 
-                        (item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0) || 
-                        (item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0) || 
-                        (item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0) || 
-                        (item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0) || 
-                        (item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0) || 
-                        (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
-                        (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
-                        (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
-                  
-                    <Row className='section'>
-                        <Col xs={12} className='columns amenities'>
-                          <h4>Amenities</h4>
-                          <ul>
-                            {item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0 && 
-                              <li><strong>Trash/Recycling:</strong> {item.amenities.trashrecyclingcollection}</li>
-                            }
-                            {item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0 && 
-                              <li><strong>Internet Connectivity:</strong> {item.amenities.internetconnectivity}</li>
-                            }
-                            {item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0 && 
-                              <li><strong>Cell Phone Reception:</strong> {item.amenities.cellphonereception}</li>
-                            }
-                            {item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0 && 
-                              <li><strong>Amphitheater:</strong> {item.amenities.amphitheater}</li>
-                            }
-                            {item.amenities.campstore !== undefined && item.amenities.campstore != 0 && 
-                              <li><strong>Camp Store:</strong> {item.amenities.campstore}</li>
-                            }
-                            {item.amenities.dumpstation !== undefined && item.amenities.dumpstation != 0 && 
-                              <li><strong>Dump Station:</strong> {item.amenities.dumpstation}</li>
-                            }
-                            {item.amenities.stafforvolunteerhostonsite !== undefined && item.amenities.stafforvolunteerhostonsite != 0 && 
-                              <li><strong>Staff or Volunteer Host on Site:</strong> {item.amenities.stafforvolunteerhostonsite}</li>
-                            }
-                            {item.amenities.iceavailableforsale !== undefined && item.amenities.iceavailableforsale != 0 && 
-                              <li><strong>Ice Available For Sale:</strong> {item.amenities.iceavailableforsale}</li>
-                            }
-                            {item.amenities.foodstoragelockers !== undefined && item.amenities.foodstoragelockers != 0 && 
-                              <li><strong>Food Storage Lockers:</strong> {item.amenities.foodstoragelockers}</li>
-                            }
-                            {item.amenities.firewoodforsale !== undefined && item.amenities.firewoodforsale != 0 && 
-                              <li><strong>Firewood For Sale:</strong> {item.amenities.firewoodforsale}</li>
-                            }
-                            {item.amenities.potablewater !== undefined && item.amenities.potablewater != 0 && 
-                              <li><strong>Potable Water:</strong> {item.amenities.potablewater}</li>
-                            }
-                            {item.amenities.showers !== undefined && item.amenities.showers != 0 && 
-                              <li><strong>Showers:</strong> {item.amenities.showers}</li>
-                            }
-                            {item.amenities.toilets !== undefined && item.amenities.toilets != 0 && 
-                              <li><strong>Toilets:</strong> {item.amenities.toilets}</li>
-                            }
-                          </ul>
-                        </Col>
-                      </Row>
-                      }
 
-                      { ((item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '') ||  
-                        (item.accessibility.classifications !== undefined && item.accessibility.classifications != '') || 
-                        (item.accessibility.adainfo !== undefined && item.accessibility.adainfo != '') ||  
-                        (item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != '') ||  
-                        (item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != '') ||  
-                        (item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != '') ||  
-                        (item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != '') ||  
-                        (item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != '0') ||  
-                        (item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != '0') ||  
-                        (item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != '0') ||  
-                        (item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != '0') ||  
-                        (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != '')) && 
-                    <Row className='section'>
-                      <Col xs={12} className='columns accessibility'>
-                        <h4>Accessibility</h4>
-                        <ul>
-                          {item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '' && 
-                            <li><strong>Access Roads:</strong> {item.accessibility.accessroads}</li>
-                          }
-                          {item.accessibility.classifications !== undefined && item.accessibility.classifications != '' && 
-                            <li><strong>Classifications:</strong> {item.accessibility.classifications}</li>
-                          }
-                          {item.accessibility.adainfo !== undefined && item.accessibility.adainfo != '' && 
-                            <li><strong>ADA Info:</strong> {item.accessibility.adainfo}</li>
-                          }
-                          {item.accessibility.additionalinfo !== undefined && item.accessibility.additionalinfo != '' && 
-                            <li><strong>Additional Info:</strong> {item.accessibility.additionalinfo}</li>
-                          }
-                          {item.accessibility.cellphoneinfo !== undefined && item.accessibility.cellphoneinfo != '' && 
-                            <li><strong>Cellphone Info:</strong> {item.accessibility.cellphoneinfo}</li>
-                          }
-                          {item.accessibility.firestovepolicy !== undefined && item.accessibility.firestovepolicy != '' && 
-                            <li><strong>Fire/Stove Policy:</strong> {item.accessibility.firestovepolicy}</li>
-                          }
-                          {item.accessibility.internetinfo !== undefined && item.accessibility.internetinfo != '' && 
-                            <li><strong>Internet Info:</strong> {item.accessibility.internetinfo}</li>
-                          }
-                          {item.accessibility.rvallowed !== undefined && item.accessibility.rvallowed != '0' && 
-                            <li><strong>RV Allowed:</strong> {item.accessibility.rvallowed}</li>
-                          }
-                          {item.accessibility.rvmaxlength !== undefined && item.accessibility.rvmaxlength != '0' && 
-                            <li><strong>RV Maxlength:</strong> {item.accessibility.rvmaxlength}</li>
-                          }
-                          {item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != '0' && 
-                            <li><strong>Trailer Allowed:</strong> {item.accessibility.trailerallowed}</li>
-                          }
-                          {item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != '0' && 
-                            <li><strong>Trailer Max Length:</strong> {item.accessibility.trailermaxlength}</li>
-                          }
-                          {item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != '' && 
-                            <li><strong>Wheelchair Access:</strong> {item.accessibility.wheelchairaccess}</li>
-                          }
-                        </ul>
-                      </Col>
-                    </Row>
-                    }
                       
                     {item.regulationsoverview !== undefined && item.regulationsoverview != '' && 
                     <Row>
@@ -377,6 +382,14 @@ const Campgrounds = styled.div`
       `}
       ${SuperQuery().minWidth.md.css`
         column-count: 3;
+      `}
+    }
+  }
+  .columns--sml {
+    ul {
+      column-count: 1;
+      ${SuperQuery().minWidth.md.css`
+        column-count: 2;
       `}
     }
   }
