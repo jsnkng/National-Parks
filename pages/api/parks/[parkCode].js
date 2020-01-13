@@ -30,7 +30,7 @@ export default (req, res) => {
     console.log(`Getting Park (${parkCode})`)
     const result = {}
     // Check MongoDB for existing park
-    let [park] = await db.collection('parksOnly').find({ parkCode }).toArray()
+    let [park] = await db.collection('parks').find({ parkCode }).toArray()
     // If no park found in MongoDB then fetch from NPS apis
     if (park === undefined || park.length === 0) {
       park = {}
@@ -40,7 +40,7 @@ export default (req, res) => {
       park.parkCode = parkCode
 
       // Insert one JSON object
-      await db.collection('parksOnly').insertOne(park)
+      await db.collection('parks').insertOne(park)
       // Run park images through S3
       console.log(`Processing Park (${parkCode}) Images`)
       await s3Images(park.images)
@@ -112,7 +112,6 @@ export default (req, res) => {
       await db.collection('events').insertOne(events)
     }
     result.events = events.data
-    console.log(result)
     callback(result)
   }
 
