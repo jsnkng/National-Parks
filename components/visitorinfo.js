@@ -5,6 +5,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import formatPhoneNumber from './_utils/formatPhoneNumber'
 
 import MapLive__Component from './maplive'
+import EntryFees from './entryfees'
 
 const Component = ({ park, markers }) => {
   return (
@@ -91,14 +92,8 @@ const Component = ({ park, markers }) => {
           <Col xs={12} md={8}>
             <h3>Park Entry Fees</h3>
             { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
-                park.entranceFees.slice(0).map((item, index) => {
-                  return (
-                    <div key={`${index}${item.line1}`}>
-                    <h4>{item.title}<span>{item.cost !== undefined && item.cost > 0 && `—$${Number(item.cost).toFixed(2)}`}</span></h4>
-                    <p>{item.description}</p>
-                    </div>
-                  )
-                })
+              
+                  <EntryFees fees={park.entranceFees} />
               }
           </Col>
       </Row>

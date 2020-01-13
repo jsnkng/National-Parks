@@ -99,7 +99,7 @@ const Header = styled.header`
     ${SuperQuery().minWidth.md.css`
       font-size: 1.125rem;
       letter-spacing: -1.5px;
-      margin: 1rem 3rem 0 -3rem;
+      margin: 1rem 2.5rem 0 -3rem;
     `}
   }
 

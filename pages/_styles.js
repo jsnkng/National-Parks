@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.5rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
-    margin: 0.75rem 0 0.5rem 0;
+    margin: 0.75rem 0 0 0;
 
   }
 

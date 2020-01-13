@@ -48,7 +48,7 @@ const Image = styled.div`
     min-height:600px;
   `}
   ${SuperQuery().minWidth.lg.css`
-    height: 98vh;
+    height: 85vh;
     min-height:600px;
   `}
 
