@@ -48,9 +48,9 @@ const Component = ({ events }) => {
                       </Col>
                     </Row>
                     }
-                    <Row>
+                    <Row className='introduction'>
                       <Col xs={12} md={8}>
-                        <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
+                        <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </Col>
                       <Col xs={12} md={4}>
                         <div className='details'>
@@ -108,8 +108,6 @@ const Component = ({ events }) => {
 export default Component
 
 const Events = styled.div`
-  padding: 0;
-  margin: 0;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 22rem;

@@ -99,8 +99,8 @@ const GlobalStyle = createGlobalStyle`
   .introduction {
     font-size: 1.375rem;
     font-weight: 400;
-    margin: 0.5rem 0 0.75rem 0;
-
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
     ul {
       margin: 0;
       padding: 0 0 0 1rem;
@@ -128,17 +128,25 @@ const GlobalStyle = createGlobalStyle`
   table.hours {
     width: 100%;
     min-width: 12rem;
-    max-width: 14rem;
+    max-width: 18rem;
 
-    th {
+    ${SuperQuery().minWidth.sm.css`
+      min-width: 12rem;
+      max-width: 14rem;
+    `}
+    th, td {
       padding: 0.25rem;
-      text-align: left;
       border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
+      font-size: 1.25rem;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: .9375rem;
+      `}
+    }
+    th {
+      text-align: left;
     }
     td {
-      padding: 0.25rem;
       text-align: right;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
     }
   }
 
