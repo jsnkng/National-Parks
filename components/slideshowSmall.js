@@ -38,7 +38,7 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 100vw;
+  height: 80vw;
   min-height:200px;
   max-width: 100%;
   max-height: 360px;
