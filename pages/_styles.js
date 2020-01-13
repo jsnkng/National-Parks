@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 2.25rem;
     letter-spacing: -0.075rem;
     line-height: 1.225;
-    margin: 1rem 0 .5rem 0;
+    margin: 1.5rem 0 .5rem 0;
     border: 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.text};
   }
@@ -85,6 +85,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.5rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
+    margin: 1rem 0 1.5rem 0;
   }
   h6 {
   }
@@ -98,7 +99,7 @@ const GlobalStyle = createGlobalStyle`
   .introduction {
     font-size: 1.375rem;
     font-weight: 400;
-    margin: 1rem 0 0.75rem 0;
+    margin: 0.5rem 0 0.75rem 0;
 
     ul {
       margin: 0;
@@ -174,9 +175,10 @@ const GlobalStyle = createGlobalStyle`
   .btn__load-more {
     clear: both;
     display:block;
-    height: 45px;
-    margin: 1rem auto ;
+    height: 1.875rem;
+    margin: 1rem auto;
     padding: 0 1rem;
+    font-size: .75rem;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.color_one};
     border: 1px solid ${({ theme }) => theme.colors.color_two};

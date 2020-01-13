@@ -55,7 +55,7 @@ const Component = ({ campgrounds }) => {
                     </Row>
 
                     <Row className='section'>
-                      <Col xs={12} sm={8} style={{margin: 0,padding:0}}>
+                      <Col xs={12} sm={8} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
                           <Col xs={12} sm={6}>
                             <h4>Contact Information</h4>
@@ -95,7 +95,7 @@ const Component = ({ campgrounds }) => {
                             }
                             </Col>
                           </Row>
-                        <Row style={{padding:0, margin:0}} className='section'>
+                        <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} className='section'>
                           <Col xs={12} className='columns'>
                           { ((item.campsites !== undefined && item.campsites !== '') && 
                           (item.campsites.totalsites > 0)) &&
@@ -167,7 +167,7 @@ const Component = ({ campgrounds }) => {
                         (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
                   
                     <Row className='section'>
-                        <Col xs={12} className='columns'>
+                        <Col xs={12} className='columns amenities'>
                           <h4>Amenities</h4>
                           <ul>
                             {item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0 && 
@@ -227,7 +227,7 @@ const Component = ({ campgrounds }) => {
                         (item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != '0') ||  
                         (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != '')) && 
                     <Row className='section'>
-                      <Col xs={12}>
+                      <Col xs={12} className='columns accessibility'>
                         <h4>Accessibility</h4>
                         <ul>
                           {item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '' && 
@@ -269,7 +269,7 @@ const Component = ({ campgrounds }) => {
                         </ul>
                       </Col>
                     </Row>
-                      }
+                    }
                       
                     {item.regulationsoverview !== undefined && item.regulationsoverview != '' && 
                     <Row>
@@ -283,7 +283,6 @@ const Component = ({ campgrounds }) => {
                     </Row>
                     }
 
-                              
                     {item.reservationsdescription !== undefined && item.reservationsdescription != '' && 
                     <Row>
                       <Col xs={12}>
@@ -316,8 +315,6 @@ const Component = ({ campgrounds }) => {
                       </Col>
                     </Row>
                     }
-                              
-                    
                 </AccordionItemPanel>
               </AccordionItem>
               )}
@@ -358,10 +355,14 @@ const Campgrounds = styled.div`
         column-count: 2;
     }
   }
+  .amenities, 
+  .accessibility {
+    font-size: 1rem;
+  }
   .boxes {
     background-color: ${({ theme }) => theme.colors.box_background};
-    padding: 3.5rem 1.5rem 1rem 1.5rem;
-    margin: .5rem .25rem .5rem .25rem;
+    padding: 3rem 0.75rem 1rem 0.75rem;
+    margin: 1rem -0.75rem 0.5rem -0.75rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`
       margin: .5rem -0.5rem;
