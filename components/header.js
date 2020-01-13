@@ -112,7 +112,7 @@ const Header = styled.header`
 
       &.large {
         font-size: 1.375rem;
-        margin: 1.25rem 0 0 1rem;
+        margin: 1.25rem 0 0 .25rem;
         ${SuperQuery().minWidth.md.css`
           font-size: 1.875rem;
           margin: 1.5rem 0 0 1rem;
@@ -126,7 +126,7 @@ const Header = styled.header`
       font-size: 1rem;
       line-height: 1;
       font-weight: 200;
-      margin: 0 0 0 .25rem;
+      margin: 0 0 0 .375rem;
       ${SuperQuery().minWidth.md.css`
         margin: 0 0 0 1rem;
       `}

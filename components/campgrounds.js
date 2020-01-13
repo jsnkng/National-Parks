@@ -132,9 +132,10 @@ const Component = ({ campgrounds }) => {
                               return (
                                 <span key={item.title}>
                                   <h4>{item.title}</h4>
+                                  <h5>{item.cost !== undefined && `$${Number(item.cost).toFixed(2)}`} per site—per night</h5>
+                               
                                   <p>{item.description}</p>
                                   
-                                  <h5>{item.cost !== undefined && `$${Number(item.cost).toFixed(2)}`} per site—per night</h5>
                                 </span>
                               )
                             })
@@ -352,7 +353,10 @@ const Campgrounds = styled.div`
   }
   .columns {
     ul {
-        column-count: 2;
+      column-count: 2;
+      ${SuperQuery().minWidth.md.css`
+        column-count: 3;
+      `}
     }
   }
   .amenities, 
@@ -384,10 +388,9 @@ const MapLive__Wrapper = styled.div`
   height: 24rem;
   max-width: 100%;
   z-index: 10;
-  ${SuperQuery().minWidth.md.css`
-    margin: 1rem 0 0 0;
-  `}
+  margin: 1rem 0 0 0;
 `
+
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;

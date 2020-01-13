@@ -33,7 +33,7 @@ const Component = ({ visitorCenters }) => {
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <Row  className='introduction'>
+                <Row className='introduction'>
                   <Col xs={12}>
                   <p>{item.description}</p>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&

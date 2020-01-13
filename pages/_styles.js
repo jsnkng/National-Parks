@@ -97,6 +97,7 @@ const GlobalStyle = createGlobalStyle`
   p.introduction,
   .introduction p,
   .introduction {
+    overflow-wrap: break-word;
     font-size: 1.375rem;
     font-weight: 400;
     margin-top: 0.5rem;

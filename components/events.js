@@ -49,10 +49,10 @@ const Component = ({ events }) => {
                     </Row>
                     }
                     <Row className='introduction'>
-                      <Col xs={12} md={8}>
+                      <Col xs={12} lg={8}>
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </Col>
-                      <Col xs={12} md={4}>
+                      <Col xs={12} lg={4}>
                         <div className='details'>
                           <h3>{item.types.join(', ')}</h3>
 
@@ -115,7 +115,7 @@ const Events = styled.div`
       height: 30rem;
     `}
   }
-  .details {
+  ${'' /* .details {
     background-color: ${({ theme }) => theme.colors.box_background};
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
@@ -124,7 +124,24 @@ const Events = styled.div`
       padding: 1rem;
       margin: 1rem 0rem;
     `}
+  } */}
+  .details {
+    background-color: ${({ theme }) => theme.colors.box_background};
+    padding: 2rem 0.75rem 1rem 0.75rem;
+    margin: 1rem -0.75rem 0.5rem -0.75rem;
+    column-count: 1;
+    ${SuperQuery().minWidth.md.css`
+      padding: 2rem 0.75rem 1rem 0.75rem;
+      margin: 1rem -0.75rem 0.5rem -0.75rem;
+      column-count: 2;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      padding: 1rem 0.75rem 1rem 0.75rem;
+      margin: 1rem 0;
+      column-count: 1;
+    `}
   }
+
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
