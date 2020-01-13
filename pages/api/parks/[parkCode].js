@@ -28,38 +28,62 @@ export default (req, res) => {
 
   const getPark = async (db, callback) => {
     console.log(`Getting Park (${parkCode})`)
+    const result = {}
     // Check MongoDB for existing park
-    let [result] = await db.collection('parksCombined').find({ parkCode }).toArray()
+    let [park] = await db.collection('parksOnly').find({ parkCode }).toArray()
     // If no park found in MongoDB then fetch from NPS apis
-    if (result === undefined || result.length === 0) {
-      result = {}
+    if (park === undefined || park.length === 0) {
+      park = {}
       console.log(`Fetching Park (${parkCode}) From API`)
-      const park = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images,addresses,entranceFees,operatinngHours,contacts,entrancePasses&api_key=${process.env.NPS_KEY}`)
-      result.park = park.data[0]
-      result.parkCode = parkCode
+      const parkResult = await fetchWithErrorHandling(`${process.env.NPS_URI}/parks?parkCode=${parkCode}&fields=images,addresses,entranceFees,operatinngHours,contacts,entrancePasses&api_key=${process.env.NPS_KEY}`)
+      park = parkResult.data[0]
+      park.parkCode = parkCode
+
+      // Insert one JSON object
+      await db.collection('parksOnly').insertOne(park)
+      // Run park images through S3
+      console.log(`Processing Park (${parkCode}) Images`)
+      await s3Images(park.images)
+    }
+    result.park = park
+
+    console.log(`Getting ppvac (${parkCode})`)
+    let [ppvac] = await db.collection('ppvac').find({ parkCode }).toArray()
+    // If no park found in MongoDB then fetch from NPS apis
+    if (ppvac === undefined || ppvac.length === 0) {
+      ppvac = {}
+      console.log(`Fetching ppvac (${parkCode}) From API`)
 
       // Fetch additional data from apis
       const people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      result.people = people.data
+      ppvac.people = people.data
       const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      result.places = places.data
+      ppvac.places = places.data
       const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=addresses,operatingHours,contacts&api_key=${process.env.NPS_KEY}`)
-      result.visitorcenters = visitorcenters.data
+      ppvac.visitorcenters = visitorcenters.data
       const articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&fields=listingImage,relatedParks&api_key=${process.env.NPS_KEY}`)
-      result.articles = articles.data
+      ppvac.articles = articles.data
       const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=accessibility,addresses,amenities,campsites,contacts,fees,images,operatingHours&api_key=${process.env.NPS_KEY}`)
-      result.campgrounds = campgrounds.data
+      ppvac.campgrounds = campgrounds.data
 
+      ppvac.parkCode = parkCode
+
+      console.log(`Inserting ppvac (${parkCode}) into MongoDB`)
       // Insert one JSON object
-      await db.collection('parksCombined').insertOne(result)
-      // Run park images through S3
-      console.log(`Processing Park (${parkCode}) Images`)
-      await s3Images(result.park.images)
+      await db.collection('ppvac').insertOne(ppvac)
     }
+
+    result.people = ppvac.people
+    result.places = ppvac.places
+    result.visitorcenters = ppvac.visitorcenters
+    result.articles = ppvac.articles
+    result.campgrounds = ppvac.campgrounds
+
 
     // Since alerts, newsreleases, and events should be updated more frequently these
     // are stored in separate collections and fetched from db or api individually before
     // being passed to the result object
+    console.log(`Getting alerts (${parkCode})`)
     let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
     if (alerts === undefined || alerts.length === 0) {
       console.log(`Fetching Alerts (${parkCode}) From API`)
@@ -69,6 +93,7 @@ export default (req, res) => {
     }
     result.alerts = alerts.data
 
+    console.log(`Getting newsreleases (${parkCode})`)
     let [newsreleases] = await db.collection('newsreleases').find({ parkCode }).toArray()
     if (newsreleases === undefined || newsreleases.length === 0) {
       console.log(`Fetching News Releases (${parkCode}) From API`)
@@ -78,6 +103,7 @@ export default (req, res) => {
     }
     result.newsreleases = newsreleases.data
 
+    console.log(`Getting events (${parkCode})`)
     let [events] = await db.collection('events').find({ parkCode }).toArray()
     if (events === undefined || events.length === 0) {
       console.log(`Fetching Events (${parkCode}) From API`)
@@ -86,7 +112,7 @@ export default (req, res) => {
       await db.collection('events').insertOne(events)
     }
     result.events = events.data
-
+    console.log(result)
     callback(result)
   }
 
