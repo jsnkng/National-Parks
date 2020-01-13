@@ -97,7 +97,7 @@ const GlobalStyle = createGlobalStyle`
   .large {
     font-size: 200%;
     font-weight:700;
-    letter-spacing: -.1rem;
+    letter-spacing: -0.1rem;
     line-height: 1;
     overflow-wrap: break-word;
   }
@@ -331,7 +331,7 @@ const GlobalStyle = createGlobalStyle`
   #nprogress .bar {
     background: ${({ theme }) => theme.colors.color_three};
     position: fixed;
-    z-index: 1031;
+    z-index: 1500;
     top: 0;
     left: 0;
     width: 100%;

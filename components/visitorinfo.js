@@ -31,7 +31,7 @@ const Component = ({ park, markers }) => {
         </Row>
       }
       <Row>
-        <Col xs={12} md={4}>
+        <Col xs={12} md={4} className='introduction'>
         <h3>Contact Information</h3>
           { (park.contacts !== undefined && park.contacts.length !== 0) &&
             (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
