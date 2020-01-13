@@ -50,7 +50,7 @@ const Component = ({ visitorCenters }) => {
                 </Row>
                 <Row className='section'>
 
-                  <Col xs={12} sm={6} md={4}>
+                  <Col xs={12} sm={6} md={4} className='introduction'>
                     <h4>Contact Information</h4>
                     { (item.contacts !== undefined && item.contacts.length !== 0) &&
                       (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&

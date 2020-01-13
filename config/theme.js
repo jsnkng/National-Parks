@@ -19,7 +19,7 @@ const themes = {
   darkMode: {
     background: '#1e1d1e',
     box_background: '#111111',
-    offbackground: '#222222',
+    offbackground: '#303030',
     text: '#ffffff',
     color_one: '#a3dde8',
     color_two: '#45b8e1',

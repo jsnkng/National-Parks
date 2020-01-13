@@ -127,11 +127,11 @@ const Events = styled.div`
   } */}
   .details {
     background-color: ${({ theme }) => theme.colors.box_background};
-    padding: 2rem 0.75rem 1rem 0.75rem;
-    margin: 1rem -0.75rem 0.5rem -0.75rem;
+    padding: 1rem 0.875rem 1rem 0.875rem;
+    margin: 1rem -0.875rem 0.5rem -0.875rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`
-      padding: 2rem 0.75rem 1rem 0.75rem;
+      padding: 2rem 0.75rem 0rem 0.75rem;
       margin: 1rem -0.75rem 0.5rem -0.75rem;
       column-count: 2;
     `}

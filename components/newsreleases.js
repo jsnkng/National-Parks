@@ -27,17 +27,17 @@ const Component = ({ newsReleases }) => {
         <Row key={item.id}>
           <a href={item.url} target="_blank">
             <Col xs={12}>
-              <Row>
-                <Col xs={12} md={7}>
-                  <h4>{item.title}</h4>
+              <Row className={item.image.url === '' ? 'reverseReverse' : 'reverse' }>
+                <Col xs={12} md={8}>
+                  <h4 className={item.image.url === '' ? 'large' : ''}>{item.title}</h4>
                   <span className="articles__date">{toDateFormat(item.releasedate)}</span>
                   { item.image.url !== undefined && item.image.url.length !== 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
                   }
                 </Col>
-                <Col xs={12} md={5}>
+                <Col xs={12} md={4}>
                   { item.image.url === undefined || item.image.url.length === 0 &&
-                    <p>{item.abstract.substring(0, 450)}</p>
+                      <p className='articles__abstract--only'>{item.abstract.substring(0, 320)}</p>
                   }
                   { item.image.url !== undefined && item.image.url.length !== 0 &&
                     <LazyLoad offset={100}>
@@ -77,9 +77,24 @@ const NewsReleases = styled.div`
     `}
   }
   .articles__date {
-    display: block;
-    padding: 1rem 0 0 0;
+    display: block;3
+    padding: 0;
     margin: 0;
+  }
+  .articles__abstract--only {
+    margin: 1.3rem 0 1.3rem 0;
+  }
+  .reverse {
+    flex-direction: column-reverse;
+    ${SuperQuery().minWidth.md.css`
+    flex-direction: row;
+    `}
+  }
+  .reverseReverse {
+    flex-direction: column;
+    ${SuperQuery().minWidth.md.css`
+    flex-direction: row;
+    `}
   }
  
 `

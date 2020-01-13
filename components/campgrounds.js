@@ -55,9 +55,9 @@ const Component = ({ campgrounds }) => {
                     </Row>
 
                     <Row className='section'>
-                      <Col xs={12} sm={8} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
+                      <Col xs={12} md={12} lg={8} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
-                          <Col xs={12} sm={6}>
+                          <Col xs={6} md={6}>
                             <h4>Contact Information</h4>
                             { (item.contacts !== undefined && item.contacts.length !== 0) &&
                               (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
@@ -84,7 +84,7 @@ const Component = ({ campgrounds }) => {
                               })
                             }
                             </Col>
-                            <Col xs={12} sm={6}>
+                            <Col xs={6} sm={6}>
                               { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
                               <>
                                 <h4>Directions</h4>
@@ -117,7 +117,7 @@ const Component = ({ campgrounds }) => {
                         </Row>
                       </Col>
                       {item.weatheroverview !== undefined && item.weatheroverview != '' && 
-                      <Col xs={12} sm={4}>
+                      <Col xs={12} lg={4}>
                         <span>
                           <h4>Weather Overview</h4>
                           <div className='p' dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, '<br />')}}></div>
@@ -365,21 +365,19 @@ const Campgrounds = styled.div`
   }
   .boxes {
     background-color: ${({ theme }) => theme.colors.box_background};
-    padding: 3rem 0.75rem 1rem 0.75rem;
-    margin: 1rem -0.75rem 0.5rem -0.75rem;
+    padding: 1rem 0.875rem 1rem 0.875rem;
+    margin: 1rem -0.875rem 0.5rem -0.875rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`
-      margin: .5rem -0.5rem;
+      padding: 2rem 0.75rem 0rem 0.75rem;
+      margin: 1rem -0.75rem 0.5rem -0.75rem;
       column-count: 2;
     `}
-    h4 {
-
-      margin: -2rem 0 0 0;
-    }
-    p {
-      margin: 0;
-      padding:0;
-    }
+    ${SuperQuery().minWidth.lg.css`
+      padding: 1rem 0.75rem 1rem 0.75rem;
+      margin: 1rem 0;
+      column-count: 1;
+    `}
   }
 `
 const MapLive__Wrapper = styled.div`

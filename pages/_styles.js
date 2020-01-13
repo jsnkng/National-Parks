@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h4 {
-    font-size: 1.5rem;
+    font-size: 1.625rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
     margin: 1rem 0 .5rem 0;
@@ -94,11 +94,14 @@ const GlobalStyle = createGlobalStyle`
     margin: .5rem 0;
     overflow-wrap: break-word;
   }
+  .large {
+    font-size:250%;
+  }
   p.introduction,
   .introduction p,
   .introduction {
     overflow-wrap: break-word;
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     font-weight: 400;
     margin-top: 0.5rem;
     margin-bottom: 0.75rem;
@@ -129,7 +132,7 @@ const GlobalStyle = createGlobalStyle`
   table.hours {
     width: 100%;
     min-width: 12rem;
-    max-width: 18rem;
+    max-width: 30rem;
 
     ${SuperQuery().minWidth.sm.css`
       min-width: 12rem;
