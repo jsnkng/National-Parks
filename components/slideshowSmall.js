@@ -38,20 +38,25 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 80vw;
-  min-height:200px;
+  height: 100vw;
+  min-height: 14rem;
   max-width: 100%;
-  max-height: 360px;
+  max-height: 18rem;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
+  ${SuperQuery().minWidth.sm.css`
+    height: 80vw;
+    min-height: 16rem;
+    max-height: 22rem;
+  `}
   ${SuperQuery().minWidth.md.css`
     height: 50vw;
-    min-height:400px;
-    max-height: 500px;
+    min-height: 22rem;
+    max-height: 28rem;
   `}
   ${SuperQuery().minWidth.lg.css`
-    max-height: 600px;
+    max-height: 33rem;
   `}
 
   .caption {

@@ -89,6 +89,22 @@ const Component = ({ park, markers }) => {
         </Col>
       
       </Row>
+      <Row>
+        <Col xs={12}>
+        { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
+            park.entranceFees.slice(0).map((item, index) => {
+              return (
+                <div key={`${index}${item.line1}`}>
+                <h4>{item.title}</h4>
+                <h5>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}`}</h5>
+                <p>{item.description}</p>
+                </div>
+              )
+            })
+          }
+
+        </Col>
+      </Row>
       </Grid>
     </VisitorInfo>
   )
