@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.5rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
-    margin: 0;
+    margin: 0.75rem 0 0.5rem 0;
 
   }
 
@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.375rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
-    margin: 1rem 0 .5rem 0;
+    margin: .5rem 0 .375rem 0;
   }
   h5 {
     font-size: 1.25rem;
@@ -91,7 +91,7 @@ const GlobalStyle = createGlobalStyle`
   }
   p, .p {
     font-weight: 200;
-    margin: .5rem 0;
+    margin: 0 0 0.5rem 0;
     overflow-wrap: break-word;
   }
   .large {

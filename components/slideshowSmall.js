@@ -36,7 +36,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin: 0;
+  margin: 0.5rem 0 0 0;
   width: 100%;
   height: 100vw;
   min-height: 14rem;
@@ -252,7 +252,6 @@ const Carousel__Styled = styled(Carousel)`
     margin: 0;
     position: relative;
     text-align: center;
-    background: #000; 
   }
   .carousel .slide img {
     width: 100%;

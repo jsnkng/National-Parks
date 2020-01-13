@@ -15,24 +15,9 @@ const Component = ({ park, markers }) => {
           <h2>Visitor Information</h2>
         </Col>
       </Row>
-      { park.latLong !== '' && 
-        <Row>
-          <Col xs={12}>
-            <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
-              <MapLive__Component
-                latLong={park.latLong}
-                name={park.name}
-                designation={park.designation}
-                zoom={10}
-                markers={markers}
-              />
-            </MapLive__Wrapper>
-          </Col>
-        </Row>
-      }
       <Row>
         <Col xs={12} md={4}>
-        <h3>Contact Information</h3>
+          <h3>Contact Information</h3>
           { (park.contacts !== undefined && park.contacts.length !== 0) &&
             (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
             park.contacts.phoneNumbers.slice(0).map(item => {
@@ -55,18 +40,10 @@ const Component = ({ park, markers }) => {
             if (item.type.toLowerCase() === 'mailing') 
               { 
                 return (
-                  <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                  <p className='introduction' key={item.line1}><br /><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                 )
               }
             })
-          }
-        </Col> 
-        <Col xs={12} md={4}>
-          { park.directionsInfo !== undefined && 
-            <>
-              <h3>Directions</h3>
-              <p>{park.directionsInfo}</p>
-            </>
           }
           { (park.addresses !== undefined && park.addresses.length !== 0) &&
             (park.addresses !== undefined && park.addresses.length !== 0) &&
@@ -74,12 +51,36 @@ const Component = ({ park, markers }) => {
               if (item.type.toLowerCase() === 'physical') 
                 { 
                   return (
-                    <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                    <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span><br /><br /></p>
                   )
                 }
             })
-          }</Col>
+          }
+        </Col>
+
+      { park.latLong !== '' && 
+          <Col xs={12} md={8}>
+            <h3>Local Area Map</h3>
+            <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
+              <MapLive__Component
+                latLong={park.latLong}
+                name={park.name}
+                designation={park.designation}
+                zoom={10}
+                markers={markers}
+              />
+            </MapLive__Wrapper>
+          </Col>
+      }
+      </Row>
+      <Row>
         <Col xs={12} md={4}>
+          { park.directionsInfo !== undefined && 
+            <>
+              <h3>Directions</h3>
+              <p>{park.directionsInfo}</p>
+            </>
+          }
           {park.weatherInfo !== "" && 
             <>
               <h3>Weather</h3>
@@ -87,23 +88,19 @@ const Component = ({ park, markers }) => {
             </>
           }
         </Col>
-      
-      </Row>
-      <Row>
-        <Col xs={12}>
-        { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
-            park.entranceFees.slice(0).map((item, index) => {
-              return (
-                <div key={`${index}${item.line1}`}>
-                <h4>{item.title}</h4>
-                <h5>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}`}</h5>
-                <p>{item.description}</p>
-                </div>
-              )
-            })
-          }
-
-        </Col>
+          <Col xs={12} md={8}>
+            <h3>Park Entry Fees</h3>
+            { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
+                park.entranceFees.slice(0).map((item, index) => {
+                  return (
+                    <div key={`${index}${item.line1}`}>
+                    <h4>{item.title}<span>{item.cost !== undefined && item.cost > 0 && `—$${Number(item.cost).toFixed(2)}`}</span></h4>
+                    <p>{item.description}</p>
+                    </div>
+                  )
+                })
+              }
+          </Col>
       </Row>
       </Grid>
     </VisitorInfo>
@@ -117,7 +114,7 @@ const VisitorInfo = styled.div`
 
 const MapLive__Wrapper = styled.div`
   position:relative;
-  height: 42vh;
+  height: 25rem;
   margin: .5rem .125rem 1.25rem .125rem;
   padding:  0;
   z-index: 10;
