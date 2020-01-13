@@ -31,13 +31,13 @@ const Component = ({ park, markers }) => {
         </Row>
       }
       <Row>
-        <Col xs={12} md={4} className='introduction'>
+        <Col xs={12} md={4}>
         <h3>Contact Information</h3>
           { (park.contacts !== undefined && park.contacts.length !== 0) &&
             (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
             park.contacts.phoneNumbers.slice(0).map(item => {
               return (
-                <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                <p className='introduction' key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
               )
             })
           }
@@ -45,7 +45,7 @@ const Component = ({ park, markers }) => {
             (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
             park.contacts.emailAddresses.slice(0).map(item => {
               return (
-                <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                <p className='introduction' key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
               )
             })
           }
@@ -55,7 +55,7 @@ const Component = ({ park, markers }) => {
             if (item.type.toLowerCase() === 'mailing') 
               { 
                 return (
-                  <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                  <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                 )
               }
             })
@@ -74,7 +74,7 @@ const Component = ({ park, markers }) => {
               if (item.type.toLowerCase() === 'physical') 
                 { 
                   return (
-                    <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                    <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                   )
                 }
             })

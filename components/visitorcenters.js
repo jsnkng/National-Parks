@@ -50,13 +50,13 @@ const Component = ({ visitorCenters }) => {
                 </Row>
                 <Row className='section'>
 
-                  <Col xs={12} sm={6} md={4} className='introduction'>
+                  <Col xs={12} sm={6} md={4}>
                     <h4>Contact Information</h4>
                     { (item.contacts !== undefined && item.contacts.length !== 0) &&
                       (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                       item.contacts.phoneNumbers.slice(0).map(item => {
                         return (
-                          <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                          <p className='introduction' key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
                         )
                       })
                     }
@@ -64,7 +64,7 @@ const Component = ({ visitorCenters }) => {
                       (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                       item.contacts.emailAddresses.slice(0).map(item => {
                         return (
-                          <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                          <p className='introduction' key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
                         )
                       })
                     }
@@ -74,7 +74,7 @@ const Component = ({ visitorCenters }) => {
                       if (item.type.toLowerCase() === 'mailing') 
                         { 
                           return (
-                            <p key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                            <p className='introduction' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                           )
                         }
                       })
@@ -84,7 +84,7 @@ const Component = ({ visitorCenters }) => {
                       (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
                         <>
                         <h4>Hours of Operation</h4>
-                          <table className='hours'>
+                          <table className='hours introduction'>
                             <tbody>
                               <tr>
                                 <th>Sunday</th>
@@ -129,7 +129,7 @@ const Component = ({ visitorCenters }) => {
                         if (item.type.toLowerCase() === 'physical') 
                           { 
                             return (
-                              <p className='location__address' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                              <p className='introduction' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                             )
                           }
                       })

@@ -21,7 +21,7 @@ const Component = ({ alerts }) => {
             </Col>
             { alerts.slice(0).map((item) => {
               return (
-                <Col xs={12} sm={6} md={6} lg={4} key={item.id} className="summary">
+                <Col xs={12} sm={12} md={12} lg={6} key={item.id} className="summary">
                   <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>

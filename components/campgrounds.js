@@ -63,7 +63,7 @@ const Component = ({ campgrounds }) => {
                               (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                               item.contacts.phoneNumbers.slice(0,2).map(item => {
                                 return (
-                                  <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                                  <p className='introduction' key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
                                 )
                               })
                             }
@@ -71,7 +71,7 @@ const Component = ({ campgrounds }) => {
                               (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                               item.contacts.emailAddresses.slice(0,1).map(item => {
                                 return (
-                                  <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                                  <p className='introduction' key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
                                 )
                               })
                             }
@@ -79,7 +79,7 @@ const Component = ({ campgrounds }) => {
                               (item.addresses !== undefined && item.addresses.length !== 0) &&
                               item.addresses.slice(0,2).map(item => {
                                 return (
-                                  <p key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                                  <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                                 )
                               })
                             }
@@ -103,13 +103,27 @@ const Component = ({ campgrounds }) => {
                             <h4>Campsites</h4>
                             <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
                             <ul>
+                            { item.campsites.tentonly > 0 &&
                               <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
+                            }
+                            { item.campsites.group > 0 &&
                               <li><strong>Group: </strong> { item.campsites.group }</li>
+                            }
+                            { item.campsites.walkboatto > 0 &&
                               <li><strong>Walk/Boat To: </strong> { item.campsites.walkboatto }</li>
+                            }
+                            { item.campsites.horse > 0 &&
                               <li><strong>Horse: </strong> { item.campsites.horse }</li>
+                            }
+                            { item.campsites.other > 0 &&
                               <li><strong>Other: </strong> { item.campsites.other }</li>
+                            }
+                            { item.campsites.rvonly > 0 &&
                               <li><strong>RV Only: </strong> { item.campsites.rvonly }</li>
+                            }
+                            { item.campsites.electricalhookups > 0 &&
                               <li><strong>Electrical Hookup: </strong> { item.campsites.electricalhookups }</li>
+                            }
                             </ul>
                           </>
                           }

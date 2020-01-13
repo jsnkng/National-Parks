@@ -6,12 +6,22 @@ import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
-  const titleStyle = (title.length >= 29 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.625rem 0 0 1.75rem' } :
-  (title.length >= 29 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
-  (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
-  (title.length >= 27 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
-  (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.875rem 0 0 1.75rem' } : 
-  (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
+  const titleClass = (title.length >= 40 && title__sub !== '') ? 'xtralong_sub' :
+  (title.length >= 40 && title__sub === '') ? 'xtralong_no_sub' :
+  (title.length >= 29 && title__sub !== '') ? 'long_sub' :
+  (title.length >= 29 && title__sub === '') ? 'long_no_sub' : 
+  (title.length >= 27 && title__sub !== '') ? 'med_sub' :
+  (title.length >= 27 && title__sub === '') ? 'med_no_sub' : 
+  (title.length > 24 && title__sub !== '') ? 'short_sub' : 
+  (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
+
+  // const titleClass = (title.length >= 29 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.625rem 0 0 1.75rem' } :
+  // (title.length >= 29 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
+  // (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
+  // (title.length >= 27 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
+  // (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.875rem 0 0 1.75rem' } : 
+  // (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
+
 
   return (
     <Header>
@@ -19,7 +29,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
         <Row className='top'>
           <Col className='top__back' xs={9} md={10}  onClick={() => manageHistory()}>
               <Arrow />
-              <span className={title__sub === '' ? 'title large' : 'title'} style={titleStyle}>{title}</span>
+              <span className={`${title__sub === '' ? 'title large' : 'title'} ${titleClass}` }>{title}</span>
               { title__sub !== '' &&
                 <span className="title__sub">{title__sub}</span>
               }
@@ -105,6 +115,11 @@ const Header = styled.header`
       font-weight: 700;
       letter-spacing: -1.5px;
       margin: 0.8rem 0 0 .25rem;
+
+      ${SuperQuery().maxWidth.of('325px').css`
+        font-size: 1.125rem;
+        margin: 1rem 0 0 .25rem;
+      `}
       ${SuperQuery().minWidth.md.css`
         font-size: 1.875rem;
         margin: 1.125rem 0 0 1rem;
@@ -116,6 +131,137 @@ const Header = styled.header`
         ${SuperQuery().minWidth.md.css`
           font-size: 1.875rem;
           margin: 1.5rem 0 0 1rem;
+        `}
+      }
+
+      &.xtralong_no_sub {
+        font-size: 1.175rem;
+        margin: 0.875rem 0 0 .25rem;
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1rem;
+          margin: 0.5rem 1rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.of('415px').css`
+          font-size: 1.125rem;
+          margin: 1rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.sm.css`
+          font-size: 1.5rem;
+          margin: .625rem 0 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          font-size: 1.75rem;
+          margin: .75rem 8rem 0 1rem;
+        `}
+        ${SuperQuery().minWidth.lg.css`
+          font-size: 1.875rem;
+          margin: 1.625rem 0 0 1rem;
+        `}
+      }
+      &.xtralong_sub {
+        font-size: 1.175rem;
+        margin: 0.875rem 0 0 .25rem;
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1rem;
+          margin: 0.5rem 1rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.of('415px').css`
+          font-size: 1.125rem;
+          margin: 1rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.sm.css`
+          font-size: 1.375rem;
+          margin: .75rem 1rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          font-size: 1.75rem;
+          margin: 1.125rem 0rem 0 1rem;
+        `}
+        ${SuperQuery().minWidth.lg.css`
+          font-size: 1.875rem;
+          margin: 1.25rem 0 0 1rem;
+        `}
+      }
+
+      &.long_no_sub {
+        font-size: 1.175rem;
+        margin: 0.875rem 0 0 .25rem;
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1rem;
+          margin: 0.5rem 1rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.of('415px').css`
+          font-size: 1.125rem;
+          margin: 1rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.sm.css`
+          font-size: 1.5rem;
+          margin: 1.1125rem 0 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          font-size: 1.75rem;
+          margin: 1.625rem 1rem 0 1rem;
+        `}
+        ${SuperQuery().minWidth.lg.css`
+          font-size: 1.875rem;
+          margin: 1.625rem 0 0 1rem;
+        `}
+      }
+      &.long_sub {
+        font-size: 1.125rem;
+        margin: 0.375rem 1.5rem 0 0.375rem;
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1rem;
+          margin: 0.5rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.of('415px').css`
+          font-size: 1.125rem;
+          margin: 1rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.sm.css`
+          font-size: 1.5rem;
+          margin: 0.75rem 0 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          font-size: 1.875rem;
+          margin: 1.125rem 0 0 1rem;
+        `}
+      }
+      &.med_no_sub {
+        font-size: 1.175rem;
+        margin: 0.625rem 0 0 1.75rem;
+        ${SuperQuery().minWidth.md.css`
+        
+        `}
+      }
+      &.med_sub {
+        font-size: 1.175rem;
+        margin: 1rem 0 0 0.375rem;
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1rem;
+          margin: 0.5rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          font-size: 1.5rem;
+          margin: 1.25rem 0 0 1rem;
+        `}
+      }
+      &.short_no_sub {
+        font-size: 1.175rem;
+        margin: 0.625rem 0 0 1.75rem;
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1.25rem;
+          margin: 0.75rem 0.5rem 0 0.375rem;
+        `}
+        ${SuperQuery().minWidth.md.css`
+        
+        `}
+      }
+      &.short_sub {
+        font-size: 1.175rem;
+        margin: 0.625rem 0 0 1.75rem;
+        ${SuperQuery().minWidth.md.css`
+        
         `}
       }
     }
