@@ -9,13 +9,15 @@ import MapLive__Component from './maplive'
 const Component = ({ park, markers }) => {
   return (
     <VisitorInfo>
-      <Row__Decorated>
+    <Grid>
+      <Row>
         <Col xs={12}>
           <h2>Visitor Information</h2>
         </Col>
-      </Row__Decorated>
-      <Row__Decorated>
-        <Col xs={12}>
+      </Row>
+      { park.latLong !== '' && 
+        <Row>
+          <Col xs={12}>
             <MapLive__Wrapper style={{ display : park.latLong != '' ? ' block' : ' none'}}>
               <MapLive__Component
                 latLong={park.latLong}
@@ -25,10 +27,10 @@ const Component = ({ park, markers }) => {
                 markers={markers}
               />
             </MapLive__Wrapper>
-        </Col>
-      </Row__Decorated>
-      <Row__Decorated className='content'>
-       
+          </Col>
+        </Row>
+      }
+      <Row>
         <Col xs={12} md={4}>
         <h3>Contact Information</h3>
           { (park.contacts !== undefined && park.contacts.length !== 0) &&
@@ -86,28 +88,21 @@ const Component = ({ park, markers }) => {
           }
         </Col>
       
-      </Row__Decorated>
+      </Row>
+      </Grid>
     </VisitorInfo>
   )
 }
 export default Component
 
-const VisitorInfo = styled(Grid)`
-  padding: 1rem .25rem;
-  .content {
-    padding: 1rem;
-  }
+const VisitorInfo = styled.div`
 
-  p {
-      ${SuperQuery().minWidth.sm.css`
-      `}
-    }
 `
 
 const MapLive__Wrapper = styled.div`
   position:relative;
   height: 42vh;
-  margin: .5rem .125rem .5rem .125rem;
+  margin: .5rem .125rem 1.25rem .125rem;
   padding:  0;
   z-index: 10;
 
@@ -116,7 +111,3 @@ const MapLive__Wrapper = styled.div`
   `}  
 `
 
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`

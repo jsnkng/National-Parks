@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 2.75rem;
     letter-spacing: -0.1rem;
     line-height: .875;
-    margin: 1rem 0 0.5rem 0;
+    margin: 3rem 0 0.5rem 0;
     span {
       display: inline-block;
       font-size: 2rem;
@@ -142,12 +142,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .section {
-    margin: 1rem .25rem 1rem 0.25rem;
-    padding: 0.5rem 0 0 0;
+    margin-top: .5rem;
     border-top: 2px solid ${({ theme }) => theme.colors.offbackground};
     &:first-of-type {
       border:none;
       margin-bottom: 0;
+    }
+    li {
+      font-weight: 200;
     }
   }
    
@@ -238,7 +240,7 @@ const GlobalStyle = createGlobalStyle`
       margin-bottom:0px;
       margin-inline-end:0px;
       margin-inline-start:0px;
-      margin-left:.5rem;
+      margin-left:-.5rem;
       margin-right:0px;
       margin-top:0px;
     }
@@ -252,7 +254,7 @@ const GlobalStyle = createGlobalStyle`
     content: '';
     height: .5rem;
     width: .5rem;
-    margin: .75rem .5rem 0 -.5rem;
+    margin: .75rem .5rem 0 -1.5rem;
 
     border-bottom: 2px solid currentColor;
     border-right: 2px solid currentColor;

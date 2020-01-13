@@ -14,14 +14,14 @@ import {
 
 const Component = ({ visitorCenters }) => {
   return (  
-    <VisitorCenters>
+    <Grid>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row__Decorated>
+        <Row>
           <Col xs={12}>
             <h2>Visitor Centers</h2>
           </Col>
-        </Row__Decorated>
-        <Row__Decorated>
+        </Row>
+        <Row>
           <Col xs={12}>
           { visitorCenters.slice(0).map(item => {
             return (
@@ -33,7 +33,7 @@ const Component = ({ visitorCenters }) => {
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <Row__Decorated className='introduction'>
+                <Row className='introduction'>
                   <Col xs={12}>
                   <p>{item.description}</p>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
@@ -47,8 +47,8 @@ const Component = ({ visitorCenters }) => {
                       })
                     }
                     </Col>
-                </Row__Decorated>
-                <Row__Decorated className='section'>
+                </Row>
+                <Row className='section'>
 
                   <Col xs={12} sm={6} md={4}>
                     <h4>Contact Information</h4>
@@ -136,7 +136,7 @@ const Component = ({ visitorCenters }) => {
                     }
                     
                   </Col>
-                  </Row__Decorated>
+                  </Row>
                 </AccordionItemPanel>
               </AccordionItem>
             </LazyLoad>
@@ -144,18 +144,10 @@ const Component = ({ visitorCenters }) => {
             })
           }
           </Col>
-        </Row__Decorated>
+        </Row>
       </Accordion>
-    </VisitorCenters>
+    </Grid>
   )
 }
   
 export default Component
-
-const VisitorCenters = styled(Grid)`
-  padding: 1rem .25rem;
-`
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`

@@ -16,17 +16,18 @@ const Component = ({ newsReleases }) => {
 
   return (
     <NewsReleases>
-      <Row__Decorated>
+    <Grid>
+      <Row>
         <Col xs={12}>
           <h2>Park News</h2>
         </Col>
-      </Row__Decorated>
+      </Row>
       { newsReleases.slice(0,limit).map((item) => {
         return (
-        <Row__Decorated key={item.id}>
+        <Row key={item.id}>
           <a href={item.url} target="_blank">
-            <Col__Decorated xs={12}>
-              <Row__Decorated>
+            <Col xs={12}>
+              <Row>
                 <Col xs={12} md={7}>
                   <h4>{item.title}</h4>
                   <span className="articles__date">{toDateFormat(item.releasedate)}</span>
@@ -44,24 +45,24 @@ const Component = ({ newsReleases }) => {
                     </LazyLoad>
                   }
                 </Col>
-              </Row__Decorated>
-            </Col__Decorated>
+              </Row>
+            </Col>
           </a>
-        </Row__Decorated>
+        </Row>
         )
         })
       }
-      <Row__Decorated>
+      <Row>
         <button className={limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More News</button>
-      </Row__Decorated>
+      </Row>
+      </Grid>
     </NewsReleases>
   )
 }
 
 export default Component
 
-const NewsReleases = styled(Grid)`
-padding: 1rem .25rem;
+const NewsReleases = styled.div`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
@@ -90,13 +91,4 @@ const Image = styled.div`
   margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
-`
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`
-
-const Col__Decorated = styled(Col)`
-  padding: 0;
-  margin: 0 1rem;
 `

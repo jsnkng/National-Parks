@@ -9,17 +9,18 @@ const Component = ({ articles }) => {
 
   return (
     <Articles>
-      <Row__Decorated>
+    <Grid>
+      <Row>
         <Col xs={12}>
           <h2>Learn More</h2>
         </Col>
-      </Row__Decorated>
+      </Row>
       { articles.slice(0,limit).map((item) => {
         return (
-        <Row__Decorated key={item.id}>
+        <Row key={item.id}>
           <a href={item.url} target="_blank">
-          <Col__Decorated xs={12}>
-            <Row__Decorated>
+          <Col xs={12}>
+            <Row>
               <Col xs={12} md={5}>
                 { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                   <LazyLoad offset={100}>
@@ -37,24 +38,24 @@ const Component = ({ articles }) => {
                   <p>{item.listingdescription}</p>
                   <span className="btn__read-more" target="_blank">Read More</span>
               </Col>
-            </Row__Decorated>
-          </Col__Decorated>
+            </Row>
+          </Col>
           </a>
-        </Row__Decorated>
+        </Row>
         )
         })
       }
-      <Row__Decorated>
+      <Row>
         <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More Articles</button>
-      </Row__Decorated>
+      </Row>
+      </Grid>
     </Articles>
   )
 }
   
 export default Component
 
-const Articles = styled(Grid)`
-  padding: 1rem .25rem;
+const Articles = styled.div`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
@@ -81,11 +82,4 @@ const Image = styled.div`
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 `
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`
-const Col__Decorated = styled(Col)`
-  padding: 0;
-  margin: 0 1rem;
-`
+

@@ -8,12 +8,13 @@ const Component = ({ people }) => {
   const [limit, setLimit] = useState(3)
   return (
     <People>
-      <Row__Decorated>
+    <Grid>
+      <Row>
         <Col xs={12}>
           <h2>Related People</h2>
         </Col>
-      </Row__Decorated>
-      <Row__Decorated>
+      </Row>
+      <Row>
       { people.slice(0,limit).map((item) => {
         return( 
           <Col xs={12} md={4} key={item.id}>
@@ -36,18 +37,18 @@ const Component = ({ people }) => {
           )
           })
         }
-      </Row__Decorated>
-      <Row__Decorated>
+      </Row>
+      <Row>
         <button className={limit >= people.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit +3 )}>Load More People</button>
-      </Row__Decorated>
+      </Row>
+      </Grid>
     </People>
   )
 }
   
 export default Component
 
-const People = styled(Grid)`
-  padding: 1rem .25rem;
+const People = styled.div`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
@@ -70,14 +71,4 @@ const Image = styled.div`
   margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s; 
   animation: myfirst 1s;
-`
-
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`
-
-const Col__Decorated = styled(Col)`
-  padding: 0;
-  margin: 0 1rem;
 `

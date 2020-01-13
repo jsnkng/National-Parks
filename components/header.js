@@ -85,11 +85,11 @@ const Header = styled.header`
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 0.8rem 2rem 0 -2rem;
+    margin: 0.8rem 1.75rem 0 -2rem;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.125rem;
       letter-spacing: -1.5px;
-      margin: 1rem 3.375rem 0 -3rem;
+      margin: 1rem 3rem 0 -3rem;
     `}
   }
 
@@ -104,10 +104,10 @@ const Header = styled.header`
       line-height: 1;
       font-weight: 700;
       letter-spacing: -1.5px;
-      margin: 0.8rem 0 0 .75rem;
+      margin: 0.8rem 0 0 .25rem;
       ${SuperQuery().minWidth.md.css`
         font-size: 1.875rem;
-        margin: 1rem 0 0 1.5rem;
+        margin: 1.125rem 0 0 1rem;
       `}
 
       &.large {
@@ -115,7 +115,7 @@ const Header = styled.header`
         margin: 1.25rem 0 0 1rem;
         ${SuperQuery().minWidth.md.css`
           font-size: 1.875rem;
-          margin: 1.5rem 0 0 1.5rem;
+          margin: 1.5rem 0 0 1rem;
         `}
       }
     }
@@ -126,9 +126,9 @@ const Header = styled.header`
       font-size: 1rem;
       line-height: 1;
       font-weight: 200;
-      margin: 0 0 0 .75rem;
+      margin: 0 0 0 .25rem;
       ${SuperQuery().minWidth.md.css`
-        margin: 0 0 0 1.5rem;
+        margin: 0 0 0 1rem;
       `}
     }
     svg {

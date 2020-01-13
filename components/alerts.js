@@ -13,40 +13,42 @@ import {
 const Component = ({ alerts }) => {
   return (
     <Alerts>
-      <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row__Decorated>
-          <Col xs={12} sm={6} md={6} lg={4}>
-            <h2>Alerts & Conditions</h2>
-          </Col>
-          { alerts.slice(0).map((item) => {
-            return (
-              <Col xs={12} sm={6} md={6} lg={4} key={item.id} className="summary">
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <span>{item.category}</span>
-                      <h3>{item.title}</h3>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <p>{item.description}{` `}
-                    { item.url !== undefined && item.url !== "" &&
-                    <a href={item.url} target="_blank">[More]</a>
-                    }</p>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              </Col>
-            )
-          })}
-        </Row__Decorated>
-      </Accordion>
+      <Grid>
+        <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
+          <Row>
+            <Col xs={12}>
+              <h2>Alerts & Conditions</h2>
+            </Col>
+            { alerts.slice(0).map((item) => {
+              return (
+                <Col xs={12} sm={6} md={6} lg={4} key={item.id} className="summary">
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <span>{item.category}</span>
+                        <h3>{item.title}</h3>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <p>{item.description}{` `}
+                      { item.url !== undefined && item.url !== "" &&
+                      <a href={item.url} target="_blank">[More]</a>
+                      }</p>
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                </Col>
+              )
+            })}
+          </Row>
+        </Accordion>
+      </Grid>
     </Alerts>
   )
 }
   
 export default Component
 
-const Alerts = styled(Grid)`
+const Alerts = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
 
@@ -60,16 +62,26 @@ const Alerts = styled(Grid)`
     border: none;
     padding: 0;
     margin: .75rem 0 .25rem 0;
-    ${SuperQuery().minWidth.md.css`
-      margin: .5rem 0 .5rem 0;
-    `}
+    
   }
   .accordion__button {
     color: #333333;
     border: none;
-    padding: 0;
     margin: 0;
-    padding: .25rem .75rem 0 .75rem;
+    padding: 0 .25rem 0 1.5rem;
+
+    span {
+      display: block;
+      margin: 0 0 0 -.375rem;
+      text-transform: uppercase;
+      color: #333333;
+      text-indent: 0rem;
+    }
+  }
+  .accordion__button:before {
+    height: .625rem;
+    width: .625rem;
+    margin: .5rem 0 0 -1.5rem;
   }
   .accordion__panel {
     border: none;
@@ -90,21 +102,11 @@ const Alerts = styled(Grid)`
   p {
     font-size: 1rem;
     color: #333333;
-    margin: .5rem 1rem 0 1.25rem;
+    margin: .25rem 1rem 0 1rem;
     a { 
       font-weight: 700;
       color: #333333;
     }
   }
-  span {
-    display: block;
-    margin: .25rem 0  .25rem  0;
-    text-transform: uppercase;
-    color: #333333;
-    text-indent: 0rem;
-  }
 `
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`
+

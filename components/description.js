@@ -7,33 +7,34 @@ import MapDiagram from './mapdiagram'
 const Component = ({ park }) => {
   return (
     <Description>
-      <Row__Decorated>
-        <Col xs={12}>
-          <h1>{park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} <span>{park.designation}</span></h1>
-        </Col>
-      </Row__Decorated>
-      <Row__Decorated>
-        <Col xs={12} sm={7} md={8}>
-          <p className='introduction'>{park.description}</p>
-        </Col>
-        <Col xs={12} sm={5} md={4}>
-          <MapDiagram__Wrapper>
-            <MapDiagram territories={park.states} highlighted={null} onHighlight={(terr) => setHighlight(terr)} />
-          </MapDiagram__Wrapper>
-        </Col>
-      </Row__Decorated>
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <h1>{park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} <span>{park.designation}</span></h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} sm={7} md={8}>
+            <p className='introduction'>{park.description}</p>
+          </Col>
+          <Col xs={12} sm={5} md={4}>
+            <MapDiagram__Wrapper>
+              <MapDiagram territories={park.states} highlighted={null} onHighlight={(terr) => setHighlight(terr)} />
+            </MapDiagram__Wrapper>
+          </Col>
+        </Row>
+      </Grid>
     </Description>
   )
 }
   
 export default Component
 
-const Description = styled(Grid)`
-  padding: 1rem .25rem; 
+const Description = styled.div`
 `
 const MapDiagram__Wrapper = styled.div`
-  margin: 1rem auto 0 auto;
-  width: 70%;
+  margin: .625rem auto;
+  width: 80%;
   ${SuperQuery().minWidth.sm.css`
     width: 100%;
     margin: .75rem auto 0 auto;
@@ -42,8 +43,4 @@ const MapDiagram__Wrapper = styled.div`
     width: 100%;
     margin: 0 auto;
   `}
-`
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
 `

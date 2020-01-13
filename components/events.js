@@ -21,92 +21,95 @@ const Component = ({ events }) => {
   }
   return (
     <Events>
-      <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
-        <Row__Decorated>
-          <Col xs={12}>
-            <h2>Events</h2>
-          </Col>
-        </Row__Decorated>
-        <Row__Decorated>
-          <Col xs={12}>
-          { events.slice(0,10).map((item) => {
-            return (
-              <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    <h3>{item.title}</h3>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className='description'>
-                  { item.images.length !== 0 && item.images[0].url !== undefined && 
-                  <Row__Decorated>
-                    <Col xs={12}>
-                      <LazyLoad offset={0} className='lazyload__image--height'>
-                        <Image backgroundURL={`https://www.nps.gov${item.images[0].url}` } className='lazyload__image--height' />
-                      </LazyLoad>
-                    </Col>
-                  </Row__Decorated>
-                  }
-                  <Row__Decorated>
-                    <Col xs={12} md={8}>
-                      <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
-                    </Col>
-                    <Col xs={12} md={4}>
-                      <div className='details'>
-                        <h3>{item.types.join(', ')}</h3>
+      <Grid>
+        <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
+          <Row>
+            <Col xs={12}>
+              <h2>Events</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+            { events.slice(0,10).map((item) => {
+              return (
+                <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                      <h3>{item.title}</h3>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    { item.images.length !== 0 && item.images[0].url !== undefined && 
+                    <Row>
+                      <Col xs={12}>
+                        <LazyLoad offset={0} className='lazyload__image--height'>
+                          <Image backgroundURL={`https://www.nps.gov${item.images[0].url}` } className='lazyload__image--height' />
+                        </LazyLoad>
+                      </Col>
+                    </Row>
+                    }
+                    <Row>
+                      <Col xs={12} md={8}>
+                        <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
+                      </Col>
+                      <Col xs={12} md={4}>
+                        <div className='details'>
+                          <h3>{item.types.join(', ')}</h3>
 
-                        { item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                          <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
-                        }
-                        <p><strong>Location: </strong>{item.location}</p>
-                        <p><strong>Cost: </strong> 
-                          { item.isfree === 'false' 
-                          ? item.feeinfo 
-                          : item.feeinfo.length !== 0 && item.isfree === true 
-                            ? 'FREE (' + item.feeinfo + ')' 
-                            : 'FREE' 
+                          { item.times[0] !== undefined && item.times.length[0] !== 0 &&
+                            <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                           }
-                        </p> 
-                        { item.regresinfo !== '' &&
-                          <p><strong>Reservations: </strong>{item.regresinfo}
-                          { item.regresurl !== '' &&
-                            <strong> <a href={item.regresurl} target='_blank'>Click here for reservations.</a></strong>
+                          <p><strong>Location: </strong>{item.location}</p>
+                          <p><strong>Cost: </strong> 
+                            { item.isfree === 'false' 
+                            ? item.feeinfo 
+                            : item.feeinfo.length !== 0 && item.isfree === true 
+                              ? 'FREE (' + item.feeinfo + ')' 
+                              : 'FREE' 
+                            }
+                          </p> 
+                          { item.regresinfo !== '' &&
+                            <p><strong>Reservations: </strong>{item.regresinfo}
+                            { item.regresurl !== '' &&
+                              <strong> <a href={item.regresurl} target='_blank'>Click here for reservations.</a></strong>
+                            }
+                          </p> 
                           }
-                        </p> 
-                        }
-                        <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
+                          <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p>
 
-                        {item.infourl !== '' &&
-                          <p><strong>More Info: </strong><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
-                        }
-                        {item.contactname !== '' &&
-                          <p><strong>Contact: </strong>{item.contactname}</p>
-                        }
-                        {item.contacttelephonenumber !== '' &&
-                          <p><strong>Phone: </strong> <a href={`tel:${formatPhoneNumber(item.contacttelephonenumber)}`}>{formatPhoneNumber(item.contacttelephonenumber)}</a></p> 
-                        }
-                        {item.contactemailaddress !== '' &&
-                        <p><strong>Email:</strong> <a href={`mailto:${item.contactemailaddress}`}>{item.contactemailaddress}</a></p>
-                        }
-                      </div>
-                    </Col>
-                  </Row__Decorated>
-                </AccordionItemPanel>
-              </AccordionItem>
-              )
-            })
-          }
-          </Col>
-        </Row__Decorated> 
-      </Accordion>     
+                          {item.infourl !== '' &&
+                            <p><strong>More Info: </strong><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
+                          }
+                          {item.contactname !== '' &&
+                            <p><strong>Contact: </strong>{item.contactname}</p>
+                          }
+                          {item.contacttelephonenumber !== '' &&
+                            <p><strong>Phone: </strong> <a href={`tel:${formatPhoneNumber(item.contacttelephonenumber)}`}>{formatPhoneNumber(item.contacttelephonenumber)}</a></p> 
+                          }
+                          {item.contactemailaddress !== '' &&
+                          <p><strong>Email:</strong> <a href={`mailto:${item.contactemailaddress}`}>{item.contactemailaddress}</a></p>
+                          }
+                        </div>
+                      </Col>
+                    </Row>
+                  </AccordionItemPanel>
+                </AccordionItem>
+                )
+              })
+            }
+            </Col>
+          </Row> 
+        </Accordion>  
+      </Grid>  
     </Events>
   )
 }
   
 export default Component
 
-const Events = styled(Grid)`
-  padding: 1rem .25rem;
+const Events = styled.div`
+  padding: 0;
+  margin: 0;
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 22rem;
@@ -135,8 +138,4 @@ const Image = styled.div`
   padding: 0;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
-`
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
 `

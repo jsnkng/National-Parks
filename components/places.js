@@ -9,12 +9,13 @@ const Component = ({ places }) => {
 
   return (
     <Places>
-      <Row__Decorated>
+    <Grid>
+      <Row>
         <Col xs={12}>
           <h2>Places of Interest</h2>
         </Col>
-      </Row__Decorated>
-      <Row__Decorated>
+      </Row>
+      <Row>
      { places.slice(0,limit).map((item) => {
       return ( 
         <Col xs={12} md={4} key={item.id}>
@@ -37,20 +38,20 @@ const Component = ({ places }) => {
         )
       })
       }
-      </Row__Decorated>
-      <Row__Decorated>
+      </Row>
+      <Row>
         <button 
           className={limit >= places.length ? "hidden btn__load-more" : "btn__load-more" } 
           onClick={() => setLimit(limit + 3)}>Load More Places</button>
-      </Row__Decorated>
+      </Row>
+    </Grid>
     </Places>
   )
 }
   
 export default Component
 
-const Places = styled(Grid)`
-  padding: 1rem .25rem;
+const Places = styled.div`
  .lazyload-placeholder,
   .lazyload__image--height {
     height: 20rem;
@@ -77,8 +78,4 @@ const Image = styled.div`
   margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s; 
   animation: myfirst 1s;
-`
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin: 0 1rem;
 `
