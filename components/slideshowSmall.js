@@ -38,19 +38,19 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 50vw;
+  height: 100vw;
   min-height:200px;
   max-width: 100%;
-  max-height: 300px;
+  max-height: 360px;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
   ${SuperQuery().minWidth.md.css`
+    height: 50vw;
     min-height:400px;
     max-height: 500px;
   `}
   ${SuperQuery().minWidth.lg.css`
-    min-height:400px;
     max-height: 600px;
   `}
 
