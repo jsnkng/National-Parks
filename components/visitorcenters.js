@@ -70,11 +70,11 @@ const Component = ({ visitorCenters }) => {
                     }
                     { (item.addresses !== undefined && item.addresses.length !== 0) &&
                       (item.addresses !== undefined && item.addresses.length !== 0) &&
-                      item.addresses.slice(0).map(item => {
+                      item.addresses.slice(0).map((item, index) => {
                       if (item.type.toLowerCase() === 'mailing') 
                         { 
                           return (
-                            <p key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                            <p key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                           )
                         }
                       })
@@ -125,11 +125,11 @@ const Component = ({ visitorCenters }) => {
                     
                     { (item.addresses !== undefined && item.addresses.length !== 0) &&
                       (item.addresses !== undefined && item.addresses.length !== 0) &&
-                      item.addresses.slice(0).map(item => {
+                      item.addresses.slice(0).map((item, index) => {
                         if (item.type.toLowerCase() === 'physical') 
                           { 
                             return (
-                              <p className='location__address' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                              <p className='location__address' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                             )
                           }
                       })
