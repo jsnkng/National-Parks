@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
     border-bottom: 1px solid ${({ theme }) => theme.colors.text};
   }
   h3 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
     margin: 0;
@@ -76,13 +76,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h4 {
-    font-size: 1.625rem;
+    font-size: 1.375rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
     margin: 1rem 0 .5rem 0;
   }
   h5 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     letter-spacing: -0.05rem;
     line-height: 1.225;
     margin: 1rem 0 1.5rem 0;
@@ -95,7 +95,9 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
   .large {
-    font-size: 220%;
+    font-size: 200%;
+    font-weight:700;
+    letter-spacing: -.1rem;
     line-height: 1;
     overflow-wrap: break-word;
   }
