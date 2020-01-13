@@ -14,6 +14,8 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
+import SlideShow from './slideshowSmall'
+
 const Component = ({ campgrounds }) => {
   return (
     <Campgrounds>
@@ -27,6 +29,7 @@ const Component = ({ campgrounds }) => {
           <Row>
             <Col xs={12}>
             { campgrounds.slice(0).map((item) => {
+              console.log(item.images)
               return(
                 <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
                   <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
@@ -39,7 +42,8 @@ const Component = ({ campgrounds }) => {
                     <Row>
                       <Col xs={12}>
                         <LazyLoad offset={0}>
-                          <Image backgroundURL={`${item.images[0].url}` } className='lazyload__image--height' />
+                        <SlideShow images={item.images} />
+                          {/* <Image backgroundURL={`${item.images[0].url}` } className='lazyload__image--height' /> */}
                         </LazyLoad>
                       </Col>
                     </Row>

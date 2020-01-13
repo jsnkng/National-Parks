@@ -78,7 +78,7 @@ const Park = ({
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&
-          <SlideShow park={park} />
+          <SlideShow images={park.images} />
           }
           { park.images === undefined || park.images.length === 0 &&
           <div style={{height: '90px'}}></div>

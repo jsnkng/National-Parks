@@ -18,7 +18,7 @@ const SlideShow = ({ images }) => {
         return(
           <Image 
             key={item.id} 
-            backgroundURL={`${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`}>
+            backgroundURL={item.url}>
             <span className="caption">{item.title.replace(/\$#257;|&#257;/gi, "ā").replace(/&#299;/gi, "ī")}</span>
           </Image>
         )
@@ -38,18 +38,20 @@ const Image = styled.div`
   background-repeat: no-repeat;
   margin: 0;
   width: 100%;
-  height: 80vh;
-  min-height:400px;
+  height: 50vw;
+  min-height:200px;
   max-width: 100%;
+  max-height: 300px;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
   ${SuperQuery().minWidth.md.css`
-    min-height:600px;
+    min-height:400px;
+    max-height: 500px;
   `}
   ${SuperQuery().minWidth.lg.css`
-    height: 98vh;
-    min-height:600px;
+    min-height:400px;
+    max-height: 600px;
   `}
 
   .caption {
@@ -288,6 +290,7 @@ const Carousel__Styled = styled(Carousel)`
     margin: 10px 0;
     text-align: center;
     width: 100%; 
+    
   }
   @media (min-width: 960px) {
     .carousel .control-dots {
@@ -305,12 +308,17 @@ const Carousel__Styled = styled(Carousel)`
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
     background: #fff;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 8px;
     cursor: pointer;
     display: inline-block;
     margin: 0 12px; 
+    ${SuperQuery().minWidth.md.css`
+      width: 15px;
+      height: 15px;
+    `}
   }
+  .carousel .control-dots .dot 
   .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
     opacity: 1;
     filter: alpha(opacity=100); 
