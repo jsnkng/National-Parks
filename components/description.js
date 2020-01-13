@@ -14,7 +14,7 @@ const Component = ({ park }) => {
       </Row__Decorated>
       <Row__Decorated>
         <Col xs={12} sm={7} md={8}>
-          <p>{park.description}</p>
+          <p className='introduction'>{park.description}</p>
         </Col>
         <Col xs={12} sm={5} md={4}>
           <MapDiagram__Wrapper>

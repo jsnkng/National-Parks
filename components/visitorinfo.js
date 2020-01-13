@@ -62,7 +62,7 @@ const Component = ({ park, markers }) => {
         <Col xs={12} md={4}>
           { park.directionsInfo !== undefined && 
             <>
-              <h3>Location & Directions</h3>
+              <h3>Directions</h3>
               <p>{park.directionsInfo}</p>
             </>
           }
@@ -99,9 +99,7 @@ const VisitorInfo = styled(Grid)`
   }
 
   p {
-      font-size: 1.25rem;
       ${SuperQuery().minWidth.sm.css`
-        font-size: 1rem;
       `}
     }
 `

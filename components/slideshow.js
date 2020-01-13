@@ -54,9 +54,6 @@ const Image = styled.div`
 
   .caption {
     position: absolute;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: -.5px;
     bottom: 35px;
     right: 20px;
     color: #ffffff;

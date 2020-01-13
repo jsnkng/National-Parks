@@ -7,16 +7,20 @@ const GlobalStyle = createGlobalStyle`
   *::before {
     box-sizing: border-box;
   }
-
+  html {
+    font-size: 16px;
+  }
   body {
     font-family: Helvetica, "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
     background-color: ${({ theme }) => theme.colors.background};
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-size: 112.5%;
+    line-height: 1.45;
+    letter-spacing: -0.025rem;
     transition: all .25s ease-in-out;
     opacity: 1.0;
     -webkit-transition: background .25s  ease-in-out;
@@ -41,68 +45,112 @@ const GlobalStyle = createGlobalStyle`
     to {opacity: 1;}
   }
 
-  h1,h2,h3,h4,h5,h6,p {
-    margin: 0;
-    padding: 0;
-  }
   h1,h2,h3,h4,h5,h6 {
     word-break: normal;
   }
   h1 {
-    font-size: 2.5rem;
-    padding: 0;
-    line-height: .9;
-    letter-spacing: -1.5px;
-    margin: .25rem 0 .125rem 0;
+    font-size: 2.75rem;
+    letter-spacing: -0.1rem;
+    line-height: .875;
+    margin: 1rem 0 0.5rem 0;
     span {
       display: inline-block;
+      font-size: 2rem;
       font-weight: 400;
-      font-size: 1.75rem;
-      letter-spacing: -1px;
-      line-height: .875;
     }
   }
   h2 {
-    font-size: 2rem;
-    line-height: 1;
-    margin: 0;
-    padding: .425rem .575rem .425rem 0;
+    font-size: 2.25rem;
+    letter-spacing: -0.075rem;
+    line-height: 1.225;
+    margin: 1rem 0 .5rem 0;
     border: 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.text};
-    ${SuperQuery().minWidth.md.css`
-      padding: .25rem .25rem .25rem 0;
-    `}
   }
   h3 {
-    font-size: 1.5rem;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin: .5rem 0 0 0;
+    font-size: 1.75rem;
+    letter-spacing: -0.05rem;
+    line-height: 1.225;
+    margin: 0;
+
   }
 
   h4 {
     font-size: 1.5rem;
-    line-height: 1.1;
-    letter-spacing: -1.5px;
-    margin: 0;
-    padding: .5rem 0 0 0;
-    ${SuperQuery().minWidth.md.css`
-    font-size: 1.5rem;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-    font-size: 1.5rem;
-    `}
+    letter-spacing: -0.05rem;
+    line-height: 1.225;
+    margin: 1rem 0 .5rem 0;
   }
   h5 {
-    font-size: 1.25rem;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-    margin: 0;
-    padding: .5rem 0 0 0;
+    font-size: 1.5rem;
+    letter-spacing: -0.05rem;
+    line-height: 1.225;
   }
   h6 {
-    font-size: 2rem;
   }
+  p, .p {
+    font-weight: 200;
+    margin: .5rem 0;
+    overflow-wrap: break-word;
+  }
+  p.introduction,
+  .introduction p,
+  .introduction {
+    font-size: 1.375rem;
+    font-weight: 400;
+    margin: 1rem 0 0.75rem 0;
+
+    ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+    }
+    li {
+      padding: 0.5rem 0 0 .25rem;
+    }
+  }
+
+  .description {
+    overflow-wrap: break-word;
+    padding: .5rem .5rem 1rem .5rem;
+    margin: 0;
+    ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+    }
+    li {
+      padding: .5rem 0 0 .25rem;
+    }
+  
+  }
+  
+
+  table.hours {
+    width: 100%;
+    min-width: 12rem;
+    max-width: 14rem;
+
+    th {
+      padding: 0.25rem;
+      text-align: left;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
+    }
+    td {
+      padding: 0.25rem;
+      text-align: right;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
+    }
+  }
+
+  .section {
+    margin: 1rem .25rem 1rem 0.25rem;
+    padding: 0.5rem 0 0 0;
+    border-top: 2px solid ${({ theme }) => theme.colors.offbackground};
+    &:first-of-type {
+      border:none;
+      margin-bottom: 0;
+    }
+  }
+   
   a {
     color: ${({ theme }) => theme.colors.color_one};
     cursor: pointer !important;
@@ -115,14 +163,11 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer !important;
     }
   }
-  p {
-    padding: .5rem 0 0 0;
-    margin: 0 0 .5rem 0;
-    font-size: 1rem;
-    font-weight: 300;
-    overflow-wrap: break-word;
-  }
   
+  table {
+    font-size: .9375rem;
+    border-spacing: 0;
+  }
 
   .btn__load-more {
     clear: both;
@@ -130,8 +175,6 @@ const GlobalStyle = createGlobalStyle`
     height: 45px;
     margin: 1rem auto ;
     padding: 0 1rem;
-    font-size: .875rem;
-    font-weight: 500;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.color_one};
     border: 1px solid ${({ theme }) => theme.colors.color_two};
@@ -153,8 +196,6 @@ const GlobalStyle = createGlobalStyle`
     border: 1px solid ${({ theme }) => theme.colors.color_two};
     padding: .25rem 1.25rem;
     margin: .5rem 2rem 2rem 0;
-    font-size: .875rem;
-    font-weight: 500;
     text-transform: uppercase; 
     color: ${({ theme }) => theme.colors.color_one};
     background-color: ${({ theme }) => theme.colors.spinner};
@@ -164,7 +205,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
-    font-size: .625rem;
     padding: .15rem 1.15rem;
     margin: 1px;
     border: 0;
@@ -186,8 +226,6 @@ const GlobalStyle = createGlobalStyle`
   }
   .accordion__button {
     color: ${({ theme }) => theme.colors.color_one};
-    line-height: 1.2;
-    font-weight: 600;
     text-indent: .5rem;
     padding:  1rem 0 1rem .5rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
@@ -195,7 +233,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     text-indent: 0;
     h3 {
-      letter-spacing:-1px;
       margin-block-end:0px;
       margin-block-start:0px;
       margin-bottom:0px;
@@ -215,7 +252,7 @@ const GlobalStyle = createGlobalStyle`
     content: '';
     height: .5rem;
     width: .5rem;
-    margin: .5rem .5rem 0 -.5rem;
+    margin: .75rem .5rem 0 -.5rem;
 
     border-bottom: 2px solid currentColor;
     border-right: 2px solid currentColor;

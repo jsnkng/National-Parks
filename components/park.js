@@ -71,11 +71,8 @@ const Park = styled.div`
 
     h2 {
       float: left;
-      font-weight: 700;
-      font-size: 1.25rem;
-      line-height: 1;
-      letter-spacing: -1.5px;
       border: none;
+      font-size: 1.25rem;
       margin: .5rem 0 0 .375rem;
       padding: 0; 
     }
@@ -83,10 +80,8 @@ const Park = styled.div`
       float: left;
       clear: left;
       text-align: left;
-      font-weight: 400;
       font-size: 1rem;
-      line-height: 1;
-      letter-spacing: -1px;
+      font-weight: 400;
       margin: 0 0 0 .375rem;
       padding: 0; 
     }
@@ -94,10 +89,6 @@ const Park = styled.div`
       top: .875rem;
       right: .5rem;
       text-align: right;
-      font-weight: 400;
-      font-size: .75rem;
-      line-height: .85;
-      letter-spacing: -1px;
       margin: 0;
       padding: 0;
       width: 50%;

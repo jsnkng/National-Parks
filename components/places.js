@@ -80,5 +80,5 @@ const Image = styled.div`
 `
 const Row__Decorated = styled(Row)`
   padding: 0;
-  margin:0;
+  margin: 0 1rem;
 `

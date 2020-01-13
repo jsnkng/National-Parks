@@ -77,10 +77,8 @@ padding: 1rem .25rem;
   }
   .articles__date {
     display: block;
-    font-size: 1rem;
     padding: 1rem 0 0 0;
     margin: 0;
-    font-weight: 700;
   }
  
 `
@@ -100,5 +98,5 @@ const Row__Decorated = styled(Row)`
 
 const Col__Decorated = styled(Col)`
   padding: 0;
-  margin:0;
+  margin: 0 1rem;
 `

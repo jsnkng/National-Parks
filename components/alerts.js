@@ -58,10 +58,9 @@ const Alerts = styled(Grid)`
   .accordion__item {
     color: #333333;
     border: none;
-    padding:0;
+    padding: 0;
     margin: .75rem 0 .25rem 0;
     ${SuperQuery().minWidth.md.css`
-      padding: 0;
       margin: .5rem 0 .5rem 0;
     `}
   }
@@ -78,30 +77,26 @@ const Alerts = styled(Grid)`
   h2 {
     background-color: #333333;
     color: #ffca13;
-    line-height: 1;
-    padding: 0;
     border: none;
-    padding: .25rem;
-    ${SuperQuery().minWidth.md.css`
-    padding: .375rem 0 .375rem .5rem;
-    margin: 0 0 .125rem 0;
-    `}
+    margin: 0;
+    padding: .5rem;
+   
   }
   h3 {
-    font-size: .875rem;
     color: #333333;
+    font-size: 1.125rem;
     text-indent: 0rem;
   }
   p {
-    font-size: .75rem;
-    font-weight: 400;
-    padding: 0;
-    margin: .5rem 1rem 0 1.25rem;
+    font-size: 1rem;
     color: #333333;
+    margin: .5rem 1rem 0 1.25rem;
+    a { 
+      font-weight: 700;
+      color: #333333;
+    }
   }
   span {
-    font-size: .75rem;
-    font-weight: 400;
     display: block;
     margin: .25rem 0  .25rem  0;
     text-transform: uppercase;
