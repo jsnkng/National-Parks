@@ -45,7 +45,7 @@ const Component = ({ campgrounds }) => {
                     </Row>
                     }
                     <Row className='introduction'>
-                      <Col xs={12} style={{padding:0, margin:0}}>
+                      <Col xs={12}>
                         <p>{item.description}</p>
                         { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                           (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
