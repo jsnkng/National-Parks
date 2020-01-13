@@ -57,7 +57,7 @@ const Component = ({ campgrounds }) => {
                     <Row className='section'>
                       <Col xs={12} md={12} lg={8} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
-                          <Col xs={6} md={6}>
+                          <Col xs={12} md={6}>
                             <h4>Contact Information</h4>
                             { (item.contacts !== undefined && item.contacts.length !== 0) &&
                               (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
@@ -84,7 +84,7 @@ const Component = ({ campgrounds }) => {
                               })
                             }
                             </Col>
-                            <Col xs={6} sm={6}>
+                            <Col xs={12} sm={6}>
                               { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
                               <>
                                 <h4>Directions</h4>
@@ -353,7 +353,10 @@ const Campgrounds = styled.div`
   }
   .columns {
     ul {
-      column-count: 2;
+      column-count: 1;
+      ${SuperQuery().minWidth.sm.css`
+        column-count: 2;
+      `}
       ${SuperQuery().minWidth.md.css`
         column-count: 3;
       `}
@@ -365,7 +368,7 @@ const Campgrounds = styled.div`
   }
   .boxes {
     background-color: ${({ theme }) => theme.colors.box_background};
-    padding: 1rem 0.875rem 1rem 0.875rem;
+    padding: 0.5rem 0.875rem 1rem 0.875rem;
     margin: 1rem -0.875rem 0.5rem -0.875rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`

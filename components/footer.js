@@ -44,7 +44,10 @@ const Footer = styled.footer`
     display: flex;
     align-content: center;
     margin: -4rem 0;
-    padding: 1rem 0;
+    padding: 1rem 0 1rem 0;
+    ${SuperQuery().minWidth.md.css`
+    padding: 4rem 0 2rem 0;
+    `}
     a {
       cursor: pointer;
       text-decoration: none;
@@ -55,6 +58,8 @@ const Footer = styled.footer`
   .bottom__credit {
     display: flex;
     justify-content: flex-start;
+    font-size: 0.75rem;
+    padding: 0.25rem 0;
     z-index: 1000;
   }
   .bottom__themeswitcher {

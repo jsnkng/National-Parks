@@ -95,7 +95,9 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
   .large {
-    font-size:250%;
+    font-size: 220%;
+    line-height: 1;
+    overflow-wrap: break-word;
   }
   p.introduction,
   .introduction p,
