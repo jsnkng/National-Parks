@@ -14,10 +14,9 @@ const SlideShow = ({ images }) => {
       showIndicators={true}
       swipeScrollTolerance={10}
       swipeable={true}>
-      { images.slice(0).map((item) => {
+      { images.slice(0).map((item, index) => {
         return(
-          <Image 
-            key={item.id} 
+          <Image key={`${index}${item.url}`}
             backgroundURL={item.url}>
             <span className="caption">{item.title.replace(/\$#257;|&#257;/gi, "ā").replace(/&#299;/gi, "ī")}</span>
           </Image>

@@ -43,7 +43,7 @@ const Component = ({ newsReleases, windowDimension }) => {
             <Col xs={12}>
               <Row className={item.image.url === '' ? 'reverse' : 'reverseReverse' }>
                
-                <Col xs={12} md={4}>
+                <Col xs={12} md={8}>
                   { item.image.url === undefined || item.image.url.length === 0 &&
                       <p className='articles__abstract--only'>{item.abstract.substring(0, 320)}</p>
                   }
@@ -54,8 +54,8 @@ const Component = ({ newsReleases, windowDimension }) => {
                   }
                     {/* <Arrow className='arrow__read-more' /> */}
                 </Col> 
-                <Col xs={12} md={8}>
-                  <h4 className={item.image.url === '' ? 'large' : ''}>{item.title}</h4>
+                <Col xs={12} md={4}>
+                  <h4 className='large'>{item.title}</h4>
                   <span className="articles__date">{toDateFormat(item.releasedate)}</span>
                   { item.image.url !== undefined && item.image.url.length !== 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
@@ -87,13 +87,8 @@ const NewsReleases = styled.div`
   .lazyload__image--height {
     height: 20rem;
     min-width: 15rem;
-    ${SuperQuery().minWidth.md.css`
-      height: 11rem;
-      min-width: 14rem;
-    `}
     ${SuperQuery().minWidth.lg.css`
-      height: 16rem;
-      min-width: 15rem;
+      height: 26rem;
     `}
   }
   .articles__date {
@@ -104,10 +99,14 @@ const NewsReleases = styled.div`
   .articles__abstract--only {
     margin: 1.3rem 0 1.3rem 0;
   }
+  h4.large {
+    margin: 1.125rem 0 0 0;
+  }
   .reverse {
     flex-direction: column-reverse;
     ${SuperQuery().minWidth.md.css`
-    flex-direction: row;
+    margin: 1rem 0;
+    flex-direction: row-reverse;
     `}
   }
   .reverseReverse {

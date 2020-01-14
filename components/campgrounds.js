@@ -61,7 +61,7 @@ const Component = ({ campgrounds }) => {
                     </Row>
 
                     { item.latLong !=='' &&
-                        <Row className='section'>
+                        <Row>
                           <Col xs={12}>
                             <MapLive__Wrapper style={{ display : item.latLong != '' ? ' block' : ' none'}}>
                               <MapLive__Component
@@ -75,7 +75,7 @@ const Component = ({ campgrounds }) => {
                           </Col>
                         </Row>  
                         }  
-                    <Row className='section'>
+                    <Row className="section">
                       <Col xs={12} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
                           
@@ -153,13 +153,14 @@ const Component = ({ campgrounds }) => {
                             
                           </Row>
                           <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
-                          <Col xs={12} md={4}>
+                          <Col xs={12} md={4} className="amenities">
                           { ((item.campsites !== undefined && item.campsites !== '') && 
                             (item.campsites.totalsites > 0)) &&
                             <>
                               <h4>Campsites</h4>
-                              <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
+                             
                               <ul style={{display: 'inline'}}>
+                              <li><strong>Total Sites: </strong>{ item.campsites.totalsites }</li>
                               { item.campsites.tentonly > 0 &&
                                 <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
                               }
@@ -426,12 +427,12 @@ const Campgrounds = styled.div`
     margin: 1rem -0.875rem 0.5rem -0.875rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`
-      padding: 2rem 0.75rem 1rem 0.75rem;
+      padding: 3rem 0.75rem 1rem 0.75rem;
       margin: 1rem -.875rem 0.5rem -.875rem;
       column-count: 3;
     `}
     h4 {
-      margin-top: -1rem;
+      margin-top: -2rem;
     }
   }
 `
@@ -441,7 +442,7 @@ const MapLive__Wrapper = styled.div`
   height: 24rem;
   max-width: 100%;
   z-index: 10;
-  margin: 1rem 0 0 0;
+  margin: 0 0 1rem 0;
 `
 
 const Image = styled.div`

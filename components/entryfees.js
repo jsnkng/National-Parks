@@ -76,7 +76,7 @@ export default Component
 
 const EntryFees = styled.div`
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
   margin: 0;
 
   .accordion {
@@ -138,6 +138,7 @@ const EntryFees = styled.div`
 
   .accordion__panel {
     border: none;
+    padding: 0;
   }
   h3 {
     background-color: #f1f1f1;
