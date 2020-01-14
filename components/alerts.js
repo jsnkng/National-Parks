@@ -20,7 +20,7 @@ const Component = ({ alerts }) => {
             </Col>
             { alerts.slice(0).map((item) => {
               return (
-                <Col xs={12} lg={6} key={item.id} className="summary">
+                <Col xs={12} md={4} key={item.id} className="summary">
                   <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>

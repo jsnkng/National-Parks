@@ -27,7 +27,9 @@ const Component = ({ fees, title }) => {
                 <AccordionItem key={`${index}${item.title}`}>
                   <AccordionItemHeading>
                     <AccordionItemButton>
-                    <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
+                    {item.cost !== undefined && item.cost > 0 && 
+                      <h4>{item.title}<br />${Number(item.cost).toFixed(2)}</h4>
+                    }
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
@@ -38,7 +40,7 @@ const Component = ({ fees, title }) => {
             )
           } else {
             return (
-              <Col xs={12} md={6}>
+              <Col xs={12} md={4}>
                 <AccordionItem key={`${index}${item.title}`}>
                   <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
                 </AccordionItem>

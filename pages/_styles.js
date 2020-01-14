@@ -159,6 +159,7 @@ const GlobalStyle = createGlobalStyle`
 
   .section {
     margin-top: .5rem;
+    padding-top: .5rem;
     border-top: 2px solid ${({ theme }) => theme.colors.offbackground};
     &:first-of-type {
       border:none;

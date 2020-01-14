@@ -75,7 +75,9 @@ const Component = ({ campgrounds }) => {
                       <Col xs={12} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
                           <Col xs={12} md={4}>
-                            
+                          { ((item.contacts !== undefined && item.contacts.phoneNumbers.length !== 0) ||
+                            (item.addresses !== undefined && item.addresses[0].length !== 0)) &&
+                            <>
                             <h4>Contact Information</h4>
                             { (item.contacts !== undefined && item.contacts.length !== 0) &&
                               (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
@@ -94,12 +96,43 @@ const Component = ({ campgrounds }) => {
                               })
                             }
                             { (item.addresses !== undefined && item.addresses.length !== 0) &&
-                              (item.addresses !== undefined && item.addresses.length !== 0) &&
                               item.addresses.slice(0,2).map(item => {
                                 return (
                                   <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                                 )
                               })
+                            }
+                            </>
+                          }
+                          { ((item.campsites !== undefined && item.campsites !== '') && 
+                            (item.campsites.totalsites > 0)) &&
+                            <>
+                              <h4>Campsites</h4>
+                              <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
+                              <ul style={{display: 'inline'}}>
+                              { item.campsites.tentonly > 0 &&
+                                <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
+                              }
+                              { item.campsites.group > 0 &&
+                                <li><strong>Group: </strong> { item.campsites.group }</li>
+                              }
+                              { item.campsites.walkboatto > 0 &&
+                                <li><strong>Walk/Boat To: </strong> { item.campsites.walkboatto }</li>
+                              }
+                              { item.campsites.horse > 0 &&
+                                <li><strong>Horse: </strong> { item.campsites.horse }</li>
+                              }
+                              { item.campsites.other > 0 &&
+                                <li><strong>Other: </strong> { item.campsites.other }</li>
+                              }
+                              { item.campsites.rvonly > 0 &&
+                                <li><strong>RV Only: </strong> { item.campsites.rvonly }</li>
+                              }
+                              { item.campsites.electricalhookups > 0 &&
+                                <li><strong>Electrical Hookup: </strong> { item.campsites.electricalhookups }</li>
+                              }
+                              </ul>
+                            </>
                             }
                           </Col>
                           <Col xs={12} md={8}>
@@ -107,9 +140,7 @@ const Component = ({ campgrounds }) => {
                             { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
                             <>
                               <h4>Directions</h4>
-                              <p>{item.directionsoverview}<br />
-                                <a href={item.directionsUrl} target='_blank'>Click for Directions</a>
-                              </p>
+                              <p>{item.directionsoverview}</p>
                             </>
                             }
                             { item.weatheroverview !== undefined && item.weatheroverview != '' && 
@@ -120,46 +151,14 @@ const Component = ({ campgrounds }) => {
                               </span>
                             </>
                             }
+                            
                           </Col>
-                          
                         </Row>
 
                         
                         
                         <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
-                          <Col xs={12} md={4}>
-                              { ((item.campsites !== undefined && item.campsites !== '') && 
-                              (item.campsites.totalsites > 0)) &&
-                              <>
-                                <h4>Campsites</h4>
-                                <p><strong>Total Sites: </strong>{ item.campsites.totalsites }</p>
-                                <ul>
-                                { item.campsites.tentonly > 0 &&
-                                  <li><strong>Tent Only: </strong> { item.campsites.tentonly }</li>
-                                }
-                                { item.campsites.group > 0 &&
-                                  <li><strong>Group: </strong> { item.campsites.group }</li>
-                                }
-                                { item.campsites.walkboatto > 0 &&
-                                  <li><strong>Walk/Boat To: </strong> { item.campsites.walkboatto }</li>
-                                }
-                                { item.campsites.horse > 0 &&
-                                  <li><strong>Horse: </strong> { item.campsites.horse }</li>
-                                }
-                                { item.campsites.other > 0 &&
-                                  <li><strong>Other: </strong> { item.campsites.other }</li>
-                                }
-                                { item.campsites.rvonly > 0 &&
-                                  <li><strong>RV Only: </strong> { item.campsites.rvonly }</li>
-                                }
-                                { item.campsites.electricalhookups > 0 &&
-                                  <li><strong>Electrical Hookup: </strong> { item.campsites.electricalhookups }</li>
-                                }
-                                </ul>
-                              </>
-                              }
-                            </Col>
-                            <Col xs={12} md={8}>
+                            <Col xs={12}>
                               { (item.fees !== undefined && item.fees.length !== 0) &&
                                 <EntryFees title='Overnight Camping Fees' fees={item.fees} />
                               }
@@ -397,9 +396,9 @@ const Campgrounds = styled.div`
     margin: 1rem -0.875rem 0.5rem -0.875rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`
-      padding: 2rem 0.75rem 0rem 0.75rem;
+      padding: 2rem 0.75rem 1rem 0.75rem;
       margin: 1rem -.875rem 0.5rem -.875rem;
-      column-count: 2;
+      column-count: 3;
     `}
     h4 {
       margin-top: -1rem;
