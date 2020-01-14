@@ -5,8 +5,10 @@ import MapLive__Component from './maplive'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { forceCheck } from 'react-lazyload'
-import formatPhoneNumber from './_utils/formatPhoneNumber'
 import EntryFees from './entryfees'
+import Address from './elements/address'
+import Email from './elements/email'
+import Phone from './elements/phone'
 import {
   Accordion,
   AccordionItem,
@@ -76,41 +78,52 @@ const Component = ({ campgrounds }) => {
                     <Row className='section'>
                       <Col xs={12} style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}} >
                         <Row style={{padding:0, margin:0}}>
-                          <Col xs={12} md={4}>
-                          { ((item.contacts !== undefined && item.contacts.phoneNumbers.length !== 0) ||
-                            (item.addresses !== undefined && item.addresses[0].length !== 0)) &&
-                            <>
+                          
+                        { ((item.contacts !== undefined && item.contacts.length !== 0) ||
+                          (item.addresses !== undefined && item.addresses[0].length !== 0)) &&
+                          <Col xs={12} sm={12} md={4} lg={4}>
                             <h4>Contact Information</h4>
-                            { (item.contacts !== undefined && item.contacts.length !== 0) &&
-                              (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
+                            <Row>
+                            {(item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                               item.contacts.phoneNumbers.slice(0,2).map((item, index) => {
                                 return (
-                                  <p className='introduction' key={`${index}${item.phoneNumber}`}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                                  
+                                    <Col xs={6} sm={12} lg={6}>
+                                      <Phone key={`${index}${item.line1}`} 
+                                      title={item.type}
+                                      phoneNumber={item.phoneNumber} />
+                                    </Col>
                                 )
                               })
                             }
-                            { (item.contacts !== undefined && item.contacts.length !== 0) &&
-                              (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
+                            {(item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                               item.contacts.emailAddresses.slice(0,1).map((item, index) => {
                                 return (
-                                  <p className='introduction' key={`${index}${item.emailAddress}`}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                                    <Col xs={12}>
+                                      <Email key={`${index}${item.line1}`} 
+                                        title={`Email Address`}
+                                        emailAddress={item.emailAddress} />
+                                    </Col>
                                 )
                               })
                             }
-                            { (item.addresses !== undefined && item.addresses.length !== 0) &&
+                            {(item.addresses !== undefined && item.addresses.length !== 0) &&
                               item.addresses.slice(0,2).map((item, index) => {
                                 return (
-                                  <p className='introduction' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                                    <Col xs={6} sm={12} lg={6}>
+                                      <Address key={`${index}${item.line1}`} 
+                                        title={`${item.type} Address`}
+                                        address={item} />
+                                    </Col>
+                                  
                                 )
                               })
                             }
-                            </>
-                          }
-                          
-                          </Col>
+                          </Row>
+                        </Col>
+                        }
                           <Col xs={12} md={8}>
-                            
-                            { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
+                          { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
                             <>
                               <h4>Directions</h4>
                               <p>{item.directionsoverview}</p>
@@ -124,7 +137,6 @@ const Component = ({ campgrounds }) => {
                               </span>
                             </>
                             }
-                            
                           </Col>
                         </Row>
 

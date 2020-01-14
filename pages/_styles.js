@@ -82,10 +82,15 @@ const GlobalStyle = createGlobalStyle`
     margin: .5rem 0 .375rem 0;
   }
   h5 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     letter-spacing: -0.05rem;
-    line-height: 1.225;
-    margin: 1rem 0 1.5rem 0;
+    line-height: 1;
+    margin: 0.25rem 0 0 0;
+
+    ${SuperQuery().minWidth.sm.css`
+    font-size: 1.125rem;
+    line-height: 1.125;
+    `}
   }
   h6 {
   }
@@ -160,11 +165,11 @@ const GlobalStyle = createGlobalStyle`
       min-width: 12rem;
     `}
     th, td {
-      padding: 0.25rem;
+      padding: 0.25rem 0;
       border-bottom: 1px solid ${({ theme }) => theme.colors.offbackground};
-      font-size: 1.25rem;
+      font-size: 1rem;
       ${SuperQuery().minWidth.sm.css`
-        font-size: .9375rem;
+        font-size: 1rem;
       `}
     }
     th {

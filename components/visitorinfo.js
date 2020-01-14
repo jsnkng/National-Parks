@@ -5,6 +5,9 @@ import SuperQuery from '@themgoncalves/super-query'
 import formatPhoneNumber from './_utils/formatPhoneNumber'
 import Alerts from './alerts'
 
+import Address from './elements/address'
+import Email from './elements/email'
+import Phone from './elements/phone'
 import MapLive__Component from './maplive'
 import EntryFees from './entryfees'
 
@@ -48,64 +51,50 @@ const Component = ({ park, alerts, markers }) => {
         { ((park.contacts !== '' && park.contacts.length !== 0) ||
           (park.addresses !== '' && park.addresses.length !== 0)) &&
           <Col xs={12} md={4}>
-            <h3>Contact Information</h3>
             <Row>
-              <Col xs={12} sm={6} md={12}>
-                { (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
-                  park.contacts.phoneNumbers.slice(0).map((item, index) => {
+            { ((park.contacts !== undefined && park.contacts.length !== 0) ||
+              (park.addresses !== undefined && park.addresses[0].length !== 0)) &&
+              <Col xs={12} md={12} >
+                <h4>Contact Information</h4>
+                <Row>
+                {(park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
+                  park.contacts.phoneNumbers.slice(0,2).map((park, index) => {
                     return (
-                      <p key={`${index}${item.phoneNumber}`}>
-                        <strong>{item.type} </strong>
-                        <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>
-                          {formatPhoneNumber(item.phoneNumber)}
-                        </a>
-                      </p>
+                      
+                        <Col xs={6} sm={6} md={12} lg={6}>
+                          <Phone key={`${index}${park.line1}`} 
+                          title={park.type}
+                          phoneNumber={park.phoneNumber} />
+                        </Col>
                     )
                   })
                 }
-                { (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
-                  park.contacts.emailAddresses.slice(0).map((item, index) => {
+                {(park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
+                  park.contacts.emailAddresses.slice(0,1).map((park, index) => {
                     return (
-                      <p key={`${index}${item.emailAddress}`}>
-                        <strong>Email </strong>
-                        <a href={`mailto:${item.emailAddress}`}>
-                          {item.emailAddress}
-                        </a>
-                      </p>
+                        <Col xs={12}>
+                          <Email key={`${index}${park.line1}`} 
+                            title={`Email Address`}
+                            emailAddress={park.emailAddress} />
+                        </Col>
                     )
                   })
                 }
-              </Col>
-            </Row>
-            <Row style={{marginTop: '.5rem'}}>
-              <Col xs={6} sm={6} md={12}>
-                { (park.addresses !== undefined && park.addresses.length !== 0) &&
-                  park.addresses.slice(0).map((item, index) => {
-                  if (item.type.toLowerCase() === 'mailing') { 
+                {(park.addresses !== undefined && park.addresses.length !== 0) &&
+                  park.addresses.slice(0,2).map((park, index) => {
                     return (
-                      <p key={`${index}${item.line1}`}>
-                        <strong>{item.type} Address</strong><br />
-                        {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}
-                      </p>
+                        <Col xs={6} sm={6} md={12} lg={6}>
+                          <Address key={`${index}${park.line1}`} 
+                            title={`${park.type} Address`}
+                            address={park} />
+                        </Col>
+                      
                     )
-                  }
-                })
-              }
+                  })
+                }
+                </Row>
               </Col>
-              <Col xs={6} sm={6} md={12}>
-              { (park.addresses !== undefined && park.addresses.length !== 0) &&
-                park.addresses.slice(0).map((item, index) => {
-                  if (item.type.toLowerCase() === 'physical') { 
-                      return (
-                        <p key={`${index}${item.line1}`}>
-                          <strong>{item.type} Address</strong><br />
-                          {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}
-                        </p>
-                      )
-                    }
-                })
-              }
-              </Col>
+            }
             </Row>
           </Col>
         }
