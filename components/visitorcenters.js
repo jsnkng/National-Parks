@@ -74,11 +74,23 @@ const Component = ({ visitorCenters }) => {
                       if (item.type.toLowerCase() === 'mailing') 
                         { 
                           return (
-                            <p className='introduction' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                            <p key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                           )
                         }
                       })
-                    }</Col>
+                    }
+                    { (item.addresses !== undefined && item.addresses.length !== 0) &&
+                      (item.addresses !== undefined && item.addresses.length !== 0) &&
+                      item.addresses.slice(0).map((item, index) => {
+                        if (item.type.toLowerCase() === 'physical') 
+                          { 
+                            return (
+                              <p key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                            )
+                          }
+                      })
+                    }
+                    </Col>
                       <Col xs={12} sm={6} md={4}>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                       (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
@@ -123,17 +135,7 @@ const Component = ({ visitorCenters }) => {
                     <h4>Directions</h4>
                     <p>{item.directionsInfo}</p>
                     
-                    { (item.addresses !== undefined && item.addresses.length !== 0) &&
-                      (item.addresses !== undefined && item.addresses.length !== 0) &&
-                      item.addresses.slice(0).map((item, index) => {
-                        if (item.type.toLowerCase() === 'physical') 
-                          { 
-                            return (
-                              <p className='introduction' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
-                            )
-                          }
-                      })
-                    }
+                    
                     
                   </Col>
                   </Row>

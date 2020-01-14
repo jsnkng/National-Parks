@@ -84,12 +84,12 @@ const Park = ({
           <div style={{height: '90px'}}></div>
           }
           <Description park={park} />
-
+{/* 
           { alerts !== undefined && alerts.length != 0 &&
           <Alerts alerts={alerts} />
           }
-         
-          <VisitorInfo park={park} markers={markers} />
+          */}
+          <VisitorInfo park={park} alerts={alerts} markers={markers} />
             
           { visitorcenters !== undefined && visitorcenters.length != 0 &&
           <VisitorCenters park={park} visitorCenters={visitorcenters} />

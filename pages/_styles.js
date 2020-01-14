@@ -135,13 +135,11 @@ const GlobalStyle = createGlobalStyle`
   
 
   table.hours {
-    width: 100%;
+    width: 90%;
     min-width: 12rem;
-    max-width: 30rem;
 
     ${SuperQuery().minWidth.sm.css`
       min-width: 12rem;
-      max-width: 14rem;
     `}
     th, td {
       padding: 0.25rem;
@@ -183,7 +181,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer !important;
 
   .arrow__read-more {
-    transform: rotate(90deg);
     fill: ${({ theme }) => theme.colors.color_two};
     ${'' /* border-radius:12px; */}
   }
@@ -206,11 +203,12 @@ const GlobalStyle = createGlobalStyle`
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.color_one};
     border: none;
+    outline: none;
     border-top: 1px solid ${({ theme }) => theme.colors.color_two};
     background-color: transparent;
     cursor: pointer;
   &:hover {
-    background-color: rgba(255,255,255,.015);
+    color: ${({ theme }) => theme.colors.color_two};
   }
   &.hidden {
     display:none;

@@ -15,38 +15,38 @@ const Component = ({ fees, title }) => {
     <EntryFees>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row>
-        <Col xs={12}>
-          <h3>{ title }</h3>
-        </Col>
-        <Col xs={12}>
+          <Col xs={12}>
+            <h3>{ title }</h3>
+          </Col>
+        </Row>
+        <Row>
         { fees.slice(0).map((item, index) => {
-          
           if(item.description !== '') {
             return (
-              <AccordionItem key={`${index}${item.title}`}>
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                  <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>{item.description}</p>
-                </AccordionItemPanel>
-              </AccordionItem>
+              <Col xs={12} md={4}>
+                <AccordionItem key={`${index}${item.title}`}>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                    <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    <p>{item.description}</p>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              </Col>
             )
           } else {
             return (
-              <AccordionItem key={`${index}${item.title}`}>
+              <Col xs={12} md={6}>
+                <AccordionItem key={`${index}${item.title}`}>
                   <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
-              </AccordionItem>
+                </AccordionItem>
+              </Col>
             )
           }
-          
-          
-          
          
         })}
-          </Col>
         </Row>
         </Accordion>
     </EntryFees>
@@ -58,11 +58,7 @@ export default Component
 const EntryFees = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
-  margin: 0 -.875rem;
-
-  ${SuperQuery().minWidth.md.css`
-    margin: 0;
-  `}
+  margin: 0;
 
   .accordion {
     background-color: #00ac47;
@@ -140,6 +136,7 @@ const EntryFees = styled.div`
   }
   p {
     font-size: 1.125rem;
+    font-weight: 400;
     color: #f1f1f1;
     margin: .25rem 1rem 0 1.5rem;
     a { 

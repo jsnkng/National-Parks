@@ -13,7 +13,6 @@ import {
 const Component = ({ alerts }) => {
   return (
     <Alerts>
-      <Grid>
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
           <Row>
             <Col xs={12}>
@@ -21,7 +20,7 @@ const Component = ({ alerts }) => {
             </Col>
             { alerts.slice(0).map((item) => {
               return (
-                <Col xs={12} sm={12} md={12} lg={6} key={item.id} className="summary">
+                <Col xs={12} lg={6} key={item.id} className="summary">
                   <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>
@@ -41,7 +40,6 @@ const Component = ({ alerts }) => {
             })}
           </Row>
         </Accordion>
-      </Grid>
     </Alerts>
   )
 }
@@ -52,16 +50,12 @@ const Alerts = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
 
+  margin: 1rem 0 .5rem 0;
   .accordion {
     background-color: #ffca13;
     color: #333333; 
-    padding: .5rem;
-
-  margin: 0 -.875rem;
-
-${SuperQuery().minWidth.md.css`
-  margin: 0;
-`}
+    padding: .5rem .5rem 1rem .5rem;
+    margin: 0;
 
   }
   .accordion__item {
@@ -107,6 +101,7 @@ ${SuperQuery().minWidth.md.css`
     text-indent: 0rem;
   }
   p {
+    font-weight: 400;
     font-size: 1rem;
     color: #333333;
     margin: .25rem 1rem 0 1rem;

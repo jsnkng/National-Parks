@@ -6,7 +6,7 @@ import LazyLoad from 'react-lazyload'
 import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ articles }) => {
-  const [limit, setLimit] = useState(6)
+  const [limit, setLimit] = useState(3)
 
   return (
     <Articles>
