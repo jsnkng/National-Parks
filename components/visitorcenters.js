@@ -77,10 +77,10 @@ const Component = ({ visitorCenters }) => {
                     }
                     
                     </Col>
-                    <Col xs={12} sm={6} md={4}>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                       (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
-                        <>
+                       
+                    <Col xs={12} sm={6} md={4}>
                         <h4>Hours of Operation</h4>
                           <table className='hours introduction'>
                             <tbody>
@@ -114,9 +114,8 @@ const Component = ({ visitorCenters }) => {
                               </tr>
                             </tbody>
                           </table>
-                        </>
-                      }
                     </Col>
+                      }
                   <Col xs={12} md={4}>
                     <h4>Directions</h4>
                     <p>{item.directionsInfo}</p>

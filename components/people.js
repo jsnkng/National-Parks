@@ -76,11 +76,10 @@ const People = styled.div`
     ${SuperQuery().minWidth.md.css`
       height: 14rem;
       min-width: 14rem;
-      setLimit(12)
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 15rem;
-      min-width: 15rem;
+      height: 14rem;
+      min-width: 14rem;
     `}
   }
   h4 {

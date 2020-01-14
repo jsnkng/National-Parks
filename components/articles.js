@@ -94,21 +94,32 @@ const Articles = styled.div`
     ${SuperQuery().minWidth.md.css`
       height: 14rem;
       min-width: 14rem;
-      setLimit(12)
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 15rem;
-      min-width: 15rem;
+      height: 14rem;
+      min-width: 14rem;
     `}
   }
   h4 {
     margin: .5rem 0 0 0;
   }
+  h4.large {
+    padding: 0.5rem;
+    margin: 1rem 0 0 0;
+    background-color: ${({ theme }) => theme.colors.offbackground};
+    height: 15.25rem;
+    min-width: 16rem;
+    ${SuperQuery().minWidth.md.css`
+      height: 14rem;
+      min-width: 14rem;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      height: 14rem;
+      min-width: 14rem;
+    `}
+  }
   .reverse {
     flex-direction: column-reverse;
-    ${SuperQuery().minWidth.md.css`
-    flex-direction: row;
-    `}
   }
   .reverseReverse {
     flex-direction: column;
