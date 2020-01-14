@@ -17,7 +17,6 @@ const Component = ({ articles }) => {
   }, [])
   
   useEffect(() => {
-    console.log(windowDimension)
     const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
                         windowDimension.width > 767 ? { cols: 3, limit: 3 } : 
                         windowDimension.width > 575 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 

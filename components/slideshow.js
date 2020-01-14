@@ -9,7 +9,7 @@ const SlideShow = ({ images }) => {
       showArrows={true} 
       showThumbs={false} 
       infiniteLoop={true} 
-      autoPlay={true}
+      autoPlay={false}
       interval={10000}
       transitionTime={600}
       emulateTouch={true} 
