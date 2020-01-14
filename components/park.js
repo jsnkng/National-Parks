@@ -136,7 +136,7 @@ const Spinner = styled.div`
   .sk-cube-grid .sk-cube {
     width: 33%;
     height: 33%;
-    background-color: ${props => props.theme.colors.color_two};
+    background-color: ${({ theme }) => theme.colors.color_three}
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
             animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 

@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
   .large {
-    font-size: 160%;
+    font-size: 190%;
     font-weight:700;
     letter-spacing: -0.1rem;
     margin: 1.625rem 0 0 0;
@@ -181,6 +181,12 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none !important;
       color: ${({ theme }) => theme.colors.color_two};
     cursor: pointer !important;
+
+  .arrow__read-more {
+    transform: rotate(90deg);
+    fill: ${({ theme }) => theme.colors.color_two};
+    ${'' /* border-radius:12px; */}
+  }
     }
   }
   
@@ -193,13 +199,15 @@ const GlobalStyle = createGlobalStyle`
     clear: both;
     display:block;
     height: 1.875rem;
-    margin: 1rem auto;
-    padding: 0 1rem;
+    margin: 0 auto 2rem  auto;
+    width: 100vw;
+    padding: 1rem;
     font-size: .75rem;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.color_one};
-    border: 1px solid ${({ theme }) => theme.colors.color_two};
-    background-color: ${({ theme }) => theme.colors.spinner};
+    border: none;
+    border-top: 1px solid ${({ theme }) => theme.colors.color_two};
+    background-color: transparent;
     cursor: pointer;
   &:hover {
     background-color: rgba(255,255,255,.015);
@@ -209,15 +217,26 @@ const GlobalStyle = createGlobalStyle`
   }
   ${SuperQuery().minWidth.md.css`
     display:block;
+    margin: 2rem auto;
   `}
   }
 
-  .btn__read-more {
+  .arrow__read-more {
+    transform: rotate(180deg);
+    background-color: ${({ theme }) => theme.colors.trans_back};
+    width: 24px;
     float: right;
+    fill: ${({ theme }) => theme.colors.text};
+    margin-top: -10px;
+    border: 4px solid ${({ theme }) => theme.colors.trans_back};
+  }
+  .btn__read-more {
     border: 1px solid ${({ theme }) => theme.colors.color_two};
+    margin: 1rem auto 2rem auto;
     padding: .25rem 1.25rem;
-    margin: .5rem 2rem 2rem 0;
+    width: 52vw;
     text-transform: uppercase; 
+    text-align: center;
     color: ${({ theme }) => theme.colors.color_one};
     background-color: ${({ theme }) => theme.colors.spinner};
     cursor: pointer;
@@ -226,8 +245,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgba(255,255,255,.015);
   }
   ${SuperQuery().minWidth.md.css`
+    float: right;
     padding: .15rem 1.15rem;
     margin: 1px;
+    width: 12rem;
     border: 0;
     background-color: transparent;
     &:hover {

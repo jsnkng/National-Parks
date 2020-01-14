@@ -58,6 +58,12 @@ export default Component
 const EntryFees = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
+  margin: 0 -.875rem;
+
+  ${SuperQuery().minWidth.md.css`
+    margin: 0;
+  `}
+
   .accordion {
     background-color: #00ac47;
     color: #f1f1f1; 

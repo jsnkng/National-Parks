@@ -8,7 +8,10 @@ const SlideShow = ({ images }) => {
     <Carousel__Styled 
       showArrows={true} 
       showThumbs={false} 
-      infiniteLoop={false} 
+      infiniteLoop={true} 
+      autoPlay={true}
+      interval={10000}
+      transitionTime={600}
       emulateTouch={true} 
       showStatus={false}
       showIndicators={true}

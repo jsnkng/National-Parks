@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
+import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ places }) => {
   const [limit, setLimit] = useState(3)
@@ -32,7 +33,7 @@ const Component = ({ places }) => {
               <h4>{item.title}</h4>
             }
               <p>{item.listingdescription}</p>
-              <span className="btn__read-more" target="_blank">Read More</span>
+                    <Arrow className='arrow__read-more' />
             </a>
           </Col>
         )

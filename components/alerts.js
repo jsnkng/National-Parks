@@ -56,6 +56,13 @@ const Alerts = styled.div`
     background-color: #ffca13;
     color: #333333; 
     padding: .5rem;
+
+  margin: 0 -.875rem;
+
+${SuperQuery().minWidth.md.css`
+  margin: 0;
+`}
+
   }
   .accordion__item {
     color: #333333;

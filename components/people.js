@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
+import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ people }) => {
   const [limit, setLimit] = useState(3)
@@ -31,7 +32,7 @@ const Component = ({ people }) => {
               <h4>{item.title}</h4>
             }
               <p>{item.listingdescription}</p>
-              <span className="btn__read-more" target="_blank">Read More</span>
+                    <Arrow className='arrow__read-more' />
             </a>
           </Col>
           )
@@ -62,6 +63,7 @@ const People = styled.div`
       min-width: 15rem;
     `}
   }
+  
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

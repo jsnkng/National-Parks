@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
+import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ articles }) => {
-  const [limit, setLimit] = useState(3)
+  const [limit, setLimit] = useState(6)
 
   return (
     <Articles>
@@ -15,13 +16,13 @@ const Component = ({ articles }) => {
             <h2>Learn More</h2>
           </Col>
         </Row>
+        <Row>
         { articles.slice(0,limit).map((item) => {
           return (
-          <Row key={item.id}>
+          <Col xs={12} md={4} key={item.id}>
             <a href={item.url} target="_blank">
-            <Col xs={12}>
               <Row className={item.listingimage.url === '' ? 'reverseReverse' : 'reverse' }>
-                <Col xs={12} md={4}>
+                <Col xs={12}>
                   { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                     <LazyLoad offset={100}>
                       <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
@@ -31,7 +32,7 @@ const Component = ({ articles }) => {
                     <p className='articles__abstract--only'>{item.listingdescription.substring(0, 250)}</p>
                   }
                 </Col>
-                <Col xs={12} md={8}>
+                <Col xs={12}>
                   { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                     <>
                     <h4>{item.title}</h4>
@@ -43,16 +44,14 @@ const Component = ({ articles }) => {
                     <h4 className='large'>{item.title}</h4>
                   }
                   
-                    
-                    <span className="btn__read-more" target="_blank">Read More</span>
+                    <Arrow className='arrow__read-more' />
                 </Col>
               </Row>
-            </Col>
             </a>
-          </Row>
+          </Col>
           )
           })
-        }
+        }</Row>
         <Row>
           <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More Articles</button>
         </Row>
@@ -66,14 +65,14 @@ export default Component
 const Articles = styled.div`
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 20rem;
+    height: 16rem;
     min-width: 15rem;
     ${SuperQuery().minWidth.md.css`
-      height: 11rem;
+      height: 12rem;
       min-width: 14rem;
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 16rem;
+      height: 14rem;
       min-width: 15rem;
     `}
   }

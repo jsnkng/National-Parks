@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
+import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ newsReleases }) => {
   const toDateFormat = (date) => {
@@ -44,6 +45,7 @@ const Component = ({ newsReleases }) => {
                       <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
                     </LazyLoad>
                   }
+                    <Arrow className='arrow__read-more' />
                 </Col>
               </Row>
             </Col>

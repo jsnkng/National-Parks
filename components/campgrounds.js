@@ -161,7 +161,7 @@ const Component = ({ campgrounds }) => {
                             </Col>
                             <Col xs={12} md={8}>
                               { (item.fees !== undefined && item.fees.length !== 0) &&
-                                <EntryFees title='Camping Fees (Per Site/Per Night)' fees={item.fees} />
+                                <EntryFees title='Overnight Camping Fees' fees={item.fees} />
                               }
                               { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                                 (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
@@ -171,7 +171,7 @@ const Component = ({ campgrounds }) => {
                             </Col>
                             
                           </Row>
-                          <Row className="section">
+                          <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
                           <Col xs={12} className="amenities columns">
                             { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
                             (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
@@ -233,8 +233,8 @@ const Component = ({ campgrounds }) => {
                           }
                           </Col>
                         </Row>
-                          <Row className="section">
-                          <Col xs={12} className="amenities columns">
+                          <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
+                          <Col xs={12} className="accessibility columns">
                             { ((item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '') ||  
                             (item.accessibility.classifications !== undefined && item.accessibility.classifications != '') || 
                             (item.accessibility.adainfo !== undefined && item.accessibility.adainfo != '') ||  
@@ -308,7 +308,7 @@ const Component = ({ campgrounds }) => {
                     }
 
                     {item.reservationsdescription !== undefined && item.reservationsdescription != '' && 
-                    <Row>
+                    <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
                       <Col xs={12}>
                         <div className='boxes'>   
                         {item.reservationsdescription !== undefined && item.reservationsdescription != '' && 
@@ -376,20 +376,13 @@ const Campgrounds = styled.div`
   }
   .columns {
     ul {
-      column-count: 1;
-      ${SuperQuery().minWidth.sm.css`
-        column-count: 2;
+      column-count: 2;
+
+      ${SuperQuery().maxWidth.of('325px').css`
+        column-count: 1;
       `}
       ${SuperQuery().minWidth.md.css`
         column-count: 3;
-      `}
-    }
-  }
-  .columns--sml {
-    ul {
-      column-count: 1;
-      ${SuperQuery().minWidth.md.css`
-        column-count: 2;
       `}
     }
   }
@@ -398,20 +391,19 @@ const Campgrounds = styled.div`
     font-size: 1rem;
   }
   .boxes {
+    font-size: 1rem;
     background-color: ${({ theme }) => theme.colors.box_background};
-    padding: 0.5rem 0.875rem 1rem 0.875rem;
+    padding: 3rem 0.875rem 1rem 0.875rem;
     margin: 1rem -0.875rem 0.5rem -0.875rem;
     column-count: 1;
     ${SuperQuery().minWidth.md.css`
       padding: 2rem 0.75rem 0rem 0.75rem;
-      margin: 1rem -0.75rem 0.5rem -0.75rem;
+      margin: 1rem -.875rem 0.5rem -.875rem;
       column-count: 2;
     `}
-    ${SuperQuery().minWidth.lg.css`
-      padding: 1rem 0.75rem 1rem 0.75rem;
-      margin: 1rem 0;
-      column-count: 1;
-    `}
+    h4 {
+      margin-top: -1rem;
+    }
   }
 `
 const MapLive__Wrapper = styled.div`
