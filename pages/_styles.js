@@ -113,7 +113,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
   .large {
-    font-size: 175%;
+    font-size: 150%;
     font-weight:700;
     letter-spacing: -0.1rem;
     margin: 1.625rem 0 0 0;
