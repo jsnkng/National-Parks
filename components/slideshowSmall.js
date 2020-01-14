@@ -61,16 +61,15 @@ const Image = styled.div`
 
   .caption {
     position: absolute;
-    bottom: 35px;
+    bottom: 30px;
     right: 20px;
     color: #ffffff;
-    margin: 0;
+    font-size: .875rem;
+    margin:  0;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
   }
 `
 const Carousel__Styled = styled(Carousel)`
-  ${SuperQuery().minWidth.sm.css`
-  `}
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;
     -moz-transition: all 0.25s ease-in;
