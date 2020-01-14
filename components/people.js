@@ -5,17 +5,13 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { Arrow } from '../svgs/l-arrow.svg'
 
-const Component = ({ people }) => {
+const Component = ({ people, windowDimension }) => {
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
-  const [windowDimension, setWindowDimension] = useState({ width: 0, height: 0 })
-  const [lastWindowDimension, setLastWindowDimension] = useState(window.innerWidth)
-  useEffect(() => {
-    updateWindowDimensions()
-    window.addEventListener('resize', updateWindowDimensions)
-    return () => window.removeEventListener('resize', updateWindowDimensions)
-  }, [])
   
+  const loadMore = () => {
+    setRows(rows + 1)
+  }
   useEffect(() => {
     const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
                         windowDimension.width > 767 ? { cols: 3, limit: 3 } : 
@@ -25,12 +21,7 @@ const Component = ({ people }) => {
     
     setLimit(newLimit)
   })
-  const updateWindowDimensions = () => {
-    setWindowDimension({ width: window.innerWidth, height: window.innerHeight })
-  }
-  const loadMore = () => {
-    setRows(rows + 1)
-  }
+
   return (
     <People>
     <Grid>

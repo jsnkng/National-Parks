@@ -14,6 +14,7 @@ const stack = []
 const MyApp = ({ appCookies, router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('lightMode')
 
+
   useEffect(() => {
     if (appCookies.themeName) {
       setThemeName(appCookies.themeName)

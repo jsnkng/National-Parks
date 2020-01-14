@@ -5,7 +5,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { Arrow } from '../svgs/l-arrow.svg'
 
-const Component = ({ newsReleases }) => {
+const Component = ({ newsReleases, windowDimension }) => {
   const toDateFormat = (date) => {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])
@@ -14,14 +14,10 @@ const Component = ({ newsReleases }) => {
   }
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
-  const [windowDimension, setWindowDimension] = useState({ width: 0, height: 0 })
-  const [lastWindowDimension, setLastWindowDimension] = useState(window.innerWidth)
-  useEffect(() => {
-    updateWindowDimensions()
-    window.addEventListener('resize', updateWindowDimensions)
-    return () => window.removeEventListener('resize', updateWindowDimensions)
-  }, [])
   
+  const loadMore = () => {
+    setRows(rows + 1)
+  }
   useEffect(() => {
     const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
                         windowDimension.width > 767 ? { cols: 3, limit: 3 } : 
@@ -31,12 +27,7 @@ const Component = ({ newsReleases }) => {
     
     setLimit(newLimit)
   })
-  const updateWindowDimensions = () => {
-    setWindowDimension({ width: window.innerWidth, height: window.innerHeight })
-  }
-  const loadMore = () => {
-    setRows(rows + 1)
-  }
+
   return (
     <NewsReleases>
     <Grid>

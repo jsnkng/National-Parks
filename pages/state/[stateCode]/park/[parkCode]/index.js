@@ -52,6 +52,17 @@ const Park = ({
     markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
   })
 
+  const [windowDimension, setWindowDimension] = useState({ width: 0, height: 0 })
+
+  const updateWindowDimensions = () => {
+    setWindowDimension({ width: window.innerWidth, height: window.innerHeight })
+  }
+  useEffect(() => {
+    updateWindowDimensions()
+    window.addEventListener('resize', updateWindowDimensions)
+    return () => window.removeEventListener('resize', updateWindowDimensions)
+  }, [])
+  
   useEffect(() => {
     window.scrollTo(0, 0)
     loaded === false && setLoaded(true)
@@ -101,16 +112,16 @@ const Park = ({
           <Campgrounds park={park} campgrounds={campgrounds} />
           }
           { newsreleases !== undefined && newsreleases.length != 0 &&
-          <NewsReleases park={park} newsReleases={newsreleases} />
+          <NewsReleases park={park} newsReleases={newsreleases} windowDimension={windowDimension} />
           }
           { places !== undefined && places.length != 0 &&
-          <Places park={park} places={places} />
+          <Places park={park} places={places} windowDimension={windowDimension} />
           }
           { people !== undefined && people.length != 0 &&
-          <People park={park} people={people} />
+          <People park={park} people={people} windowDimension={windowDimension} />
           } 
           { articles !== undefined && articles.length != 0 &&
-          <Articles park={park} articles={articles} />
+          <Articles park={park} articles={articles} windowDimension={windowDimension} />
           }
         </Content> 
       <Footer themeName={themeName} setThemeName={setThemeName} />
