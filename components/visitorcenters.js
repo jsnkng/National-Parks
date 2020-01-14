@@ -55,8 +55,8 @@ const Component = ({ visitorCenters }) => {
                         item.contacts.phoneNumbers.slice(0,2).map((item, index) => {
                           return (
                             
-                              <Col xs={6} sm={12} lg={6}>
-                                <Phone key={`${index}${item.line1}`} 
+                              <Col xs={6} sm={12} lg={6} key={`${index}${item.phoneNumber}`}>
+                                <Phone 
                                 title={item.type}
                                 phoneNumber={item.phoneNumber} />
                               </Col>
@@ -66,8 +66,8 @@ const Component = ({ visitorCenters }) => {
                       {(item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                         item.contacts.emailAddresses.slice(0,1).map((item, index) => {
                           return (
-                              <Col xs={12}>
-                                <Email key={`${index}${item.line1}`} 
+                              <Col xs={12} key={`${index}${item.emailAddresses}`}>
+                                <Email
                                   title={`Email Address`}
                                   emailAddress={item.emailAddress} />
                               </Col>
@@ -77,8 +77,8 @@ const Component = ({ visitorCenters }) => {
                       {(item.addresses !== undefined && item.addresses.length !== 0) &&
                         item.addresses.slice(0,2).map((item, index) => {
                           return (
-                              <Col xs={6} sm={12} lg={6}>
-                                <Address key={`${index}${item.line1}`} 
+                              <Col xs={6} sm={12} lg={6} key={`${index}${item.line1}`}>
+                                <Address 
                                   title={`${item.type} Address`}
                                   address={item} />
                               </Col>

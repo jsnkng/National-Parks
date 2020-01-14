@@ -17,12 +17,12 @@ const SlideShow = ({ images }) => {
       showIndicators={true}
       swipeScrollTolerance={10}
       swipeable={true}>
-      { images.slice(0).map((item) => {
+      { images.slice(0).map((item, index) => {
         return(
           <Image 
-            key={item.id} 
+            key={`${index}${item.id}`} 
             backgroundURL={`${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`}>
-            <span className="caption">{item.title.replace(/\$#257;|&#257;/gi, "ā").replace(/&#299;/gi, "ī")}</span>
+            <span className='caption'>{item.title.replace(/\$#257;|&#257;/gi, 'ā').replace(/&#299;/gi, 'ī')}</span>
           </Image>
         )
         })

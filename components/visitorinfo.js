@@ -58,35 +58,34 @@ const Component = ({ park, alerts, markers }) => {
                 <h4>Contact Information</h4>
                 <Row>
                 {(park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
-                  park.contacts.phoneNumbers.slice(0,2).map((park, index) => {
+                  park.contacts.phoneNumbers.slice(0,2).map((item, index) => {
                     return (
-                      
-                        <Col xs={6} sm={6} md={12} lg={6}>
-                          <Phone key={`${index}${park.line1}`} 
-                          title={park.type}
-                          phoneNumber={park.phoneNumber} />
+                        <Col xs={6} sm={6} md={12} lg={6} key={`${item.phoneNumber}`}>
+                          <Phone
+                          title={item.type}
+                          phoneNumber={item.phoneNumber} />
                         </Col>
                     )
                   })
                 }
                 {(park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
-                  park.contacts.emailAddresses.slice(0,1).map((park, index) => {
+                  park.contacts.emailAddresses.slice(0,1).map((item, index) => {
                     return (
-                        <Col xs={12}>
-                          <Email key={`${index}${park.line1}`} 
+                        <Col xs={12} key={`${index}${item.emailAddress}`}>
+                          <Email 
                             title={`Email Address`}
-                            emailAddress={park.emailAddress} />
+                            emailAddress={item.emailAddress} />
                         </Col>
                     )
                   })
                 }
                 {(park.addresses !== undefined && park.addresses.length !== 0) &&
-                  park.addresses.slice(0,2).map((park, index) => {
+                  park.addresses.slice(0,2).map((item, index) => {
                     return (
-                        <Col xs={6} sm={6} md={12} lg={6}>
-                          <Address key={`${index}${park.line1}`} 
-                            title={`${park.type} Address`}
-                            address={park} />
+                        <Col xs={6} sm={6} md={12} lg={6} key={`${index}${item.line1}`}>
+                          <Address
+                            title={`${item.type} Address`}
+                            address={item} />
                         </Col>
                       
                     )

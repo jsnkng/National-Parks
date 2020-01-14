@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
@@ -10,7 +10,21 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const Component = ({ fees, title }) => {
+const Component = ({ fees, title, windowDimension }) => {
+  const [cols, setCols] = useState({ xs: 12, sm: 12, md: 12, lg: 4 })
+  const numCols = fees.length % 3 === 0 ? 3 :
+                  fees.length % 2 === 0 ? 2 : 1
+
+  const dynCols = numCols === 3 || fees.length > 4 ? { xs: 12, sm: 12, md: 4, lg: 4 } :
+                  numCols === 2 ? { xs: 12, sm: 6, md: 6, lg: 6 } :  
+                  numCols === 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : 
+                                  { xs: 12, sm: 12, md: 12, lg: 4 }
+
+  useEffect(() => {
+    setCols(dynCols)
+  }, [])
+
+
   return (
     <EntryFees>
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
@@ -20,10 +34,10 @@ const Component = ({ fees, title }) => {
           </Col>
         </Row>
         <Row>
-        { fees.slice(0).map((item) => {
+        { fees.slice(0).map((item, index) => {
           if(item.description !== '') {
             return (
-              <Col xs={12} lg={4} key={`${item.title}`}>
+              <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={`${index}${item.title}`}>
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
