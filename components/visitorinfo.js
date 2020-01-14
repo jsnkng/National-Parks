@@ -54,7 +54,7 @@ const Component = ({ park, alerts, markers }) => {
                 { (park.contacts.phoneNumbers !== undefined && park.contacts.phoneNumberslength !== 0) &&
                   park.contacts.phoneNumbers.slice(0).map((item, index) => {
                     return (
-                      <p class='introduction' key={`${index}${item.phoneNumber}`}>
+                      <p key={`${index}${item.phoneNumber}`}>
                         <strong>{item.type} </strong>
                         <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>
                           {formatPhoneNumber(item.phoneNumber)}
@@ -66,7 +66,7 @@ const Component = ({ park, alerts, markers }) => {
                 { (park.contacts.emailAddresses !== undefined && park.contacts.emailAddresses.length !== 0) &&
                   park.contacts.emailAddresses.slice(0).map((item, index) => {
                     return (
-                      <p class='introduction' key={`${index}${item.emailAddress}`}>
+                      <p key={`${index}${item.emailAddress}`}>
                         <strong>Email </strong>
                         <a href={`mailto:${item.emailAddress}`}>
                           {item.emailAddress}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
@@ -12,9 +12,32 @@ const Component = ({ newsReleases }) => {
     const nd = new Date(d1)
     return nd.toLocaleDateString()
   }
+  const [limit, setLimit] = useState(2)
+  const [rows, setRows] = useState(1)
+  const [windowDimension, setWindowDimension] = useState({ width: 0, height: 0 })
+  const [lastWindowDimension, setLastWindowDimension] = useState(window.innerWidth)
+  useEffect(() => {
+    updateWindowDimensions()
+    window.addEventListener('resize', updateWindowDimensions)
+    return () => window.removeEventListener('resize', updateWindowDimensions)
+  }, [])
   
-  const [limit, setLimit] = useState(3)
-
+  useEffect(() => {
+    console.log(windowDimension)
+    const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
+                        windowDimension.width > 768 ? { cols: 3, limit: 3 } : 
+                        windowDimension.width > 576 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 
+    
+    let newLimit = columnWidth.limit * rows
+    
+    setLimit(newLimit)
+  })
+  const updateWindowDimensions = () => {
+    setWindowDimension({ width: window.innerWidth, height: window.innerHeight })
+  }
+  const loadMore = () => {
+    setRows(rows + 1)
+  }
   return (
     <NewsReleases>
     <Grid>
@@ -55,7 +78,11 @@ const Component = ({ newsReleases }) => {
         })
       }
       <Row>
-        <button className={limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More News</button>
+        <button 
+          className={ limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } 
+          onClick={() => loadMore()}>
+            Load More News
+        </button>
       </Row>
       </Grid>
     </NewsReleases>
@@ -79,7 +106,7 @@ const NewsReleases = styled.div`
     `}
   }
   .articles__date {
-    display: block;3
+    display: block;
     padding: 0;
     margin: 0;
   }

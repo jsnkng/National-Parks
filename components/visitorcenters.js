@@ -33,9 +33,9 @@ const Component = ({ visitorCenters }) => {
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <Row className='introduction'>
+                <Row>
                   <Col xs={12}>
-                  <p>{item.description}</p>
+                  <p className='introduction'>{item.description}</p>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                       (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
                       item.operatingHours.slice(0).map(item => {
@@ -56,7 +56,7 @@ const Component = ({ visitorCenters }) => {
                       (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                       item.contacts.phoneNumbers.slice(0).map(item => {
                         return (
-                          <p className='introduction' key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                          <p key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
                         )
                       })
                     }
@@ -64,7 +64,7 @@ const Component = ({ visitorCenters }) => {
                       (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                       item.contacts.emailAddresses.slice(0).map(item => {
                         return (
-                          <p className='introduction' key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                          <p key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
                         )
                       })
                     }

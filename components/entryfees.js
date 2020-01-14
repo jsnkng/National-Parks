@@ -23,12 +23,15 @@ const Component = ({ fees, title }) => {
         { fees.slice(0).map((item, index) => {
           if(item.description !== '') {
             return (
-              <Col xs={12} md={4}>
+              <Col xs={12} lg={4}>
                 <AccordionItem key={`${index}${item.title}`}>
                   <AccordionItemHeading>
                     <AccordionItemButton>
                     {item.cost !== undefined && item.cost > 0 && 
                       <h4>{item.title}<br />${Number(item.cost).toFixed(2)}</h4>
+                    }
+                    {item.cost !== undefined && item.cost == 0 && 
+                      <h4>{item.title}<br />FREE</h4>
                     }
                     </AccordionItemButton>
                   </AccordionItemHeading>

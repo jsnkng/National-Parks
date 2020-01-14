@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
@@ -6,8 +6,32 @@ import LazyLoad from 'react-lazyload'
 import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ articles }) => {
-  const [limit, setLimit] = useState(3)
-
+  const [limit, setLimit] = useState(2)
+  const [rows, setRows] = useState(1)
+  const [windowDimension, setWindowDimension] = useState({ width: 0, height: 0 })
+  const [lastWindowDimension, setLastWindowDimension] = useState(window.innerWidth)
+  useEffect(() => {
+    updateWindowDimensions()
+    window.addEventListener('resize', updateWindowDimensions)
+    return () => window.removeEventListener('resize', updateWindowDimensions)
+  }, [])
+  
+  useEffect(() => {
+    console.log(windowDimension)
+    const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
+                        windowDimension.width > 768 ? { cols: 3, limit: 3 } : 
+                        windowDimension.width > 576 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 
+    
+    let newLimit = columnWidth.limit * rows
+    
+    setLimit(newLimit)
+  })
+  const updateWindowDimensions = () => {
+    setWindowDimension({ width: window.innerWidth, height: window.innerHeight })
+  }
+  const loadMore = () => {
+    setRows(rows + 1)
+  }
   return (
     <Articles>
       <Grid>
@@ -19,7 +43,7 @@ const Component = ({ articles }) => {
         <Row>
         { articles.slice(0,limit).map((item) => {
           return (
-          <Col xs={12} md={4} key={item.id}>
+          <Col xs={12} sm={6} md={4} lg={3} key={item.id}>
             <a href={item.url} target="_blank">
               <Row className={item.listingimage.url === '' ? 'reverseReverse' : 'reverse' }>
                 <Col xs={12}>
@@ -44,7 +68,7 @@ const Component = ({ articles }) => {
                     <h4 className='large'>{item.title}</h4>
                   }
                   
-                    <Arrow className='arrow__read-more' />
+                    {/* <Arrow className='arrow__read-more' /> */}
                 </Col>
               </Row>
             </a>
@@ -53,7 +77,11 @@ const Component = ({ articles }) => {
           })
         }</Row>
         <Row>
-          <button className={limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } onClick={() => setLimit(limit + 3)}>Load More Articles</button>
+          <button 
+            className={ limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } 
+            onClick={() => loadMore()}>
+              Load More Articles
+          </button>
         </Row>
       </Grid>
     </Articles>
@@ -66,19 +94,21 @@ const Articles = styled.div`
   .lazyload-placeholder,
   .lazyload__image--height {
     height: 16rem;
-    min-width: 15rem;
+    min-width: 16rem;
     ${SuperQuery().minWidth.md.css`
-      height: 12rem;
+      height: 14rem;
       min-width: 14rem;
+      setLimit(12)
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 14rem;
+      height: 15rem;
       min-width: 15rem;
     `}
   }
   h4 {
     margin: .5rem 0 0 0;
   }
+
 
   .articles__abstract--only {
     margin: 1.3rem 0 1.3rem 0;
