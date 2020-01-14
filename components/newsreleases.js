@@ -41,14 +41,8 @@ const Component = ({ newsReleases, windowDimension }) => {
         <Row key={item.id}>
           <a href={item.url} target="_blank">
             <Col xs={12}>
-              <Row className={item.image.url === '' ? 'reverseReverse' : 'reverse' }>
-                <Col xs={12} md={8}>
-                  <h4 className={item.image.url === '' ? 'large' : ''}>{item.title}</h4>
-                  <span className="articles__date">{toDateFormat(item.releasedate)}</span>
-                  { item.image.url !== undefined && item.image.url.length !== 0 &&
-                    <p>{item.abstract.substring(0, 450)}</p>
-                  }
-                </Col>
+              <Row className={item.image.url === '' ? 'reverse' : 'reverseReverse' }>
+               
                 <Col xs={12} md={4}>
                   { item.image.url === undefined || item.image.url.length === 0 &&
                       <p className='articles__abstract--only'>{item.abstract.substring(0, 320)}</p>
@@ -58,7 +52,14 @@ const Component = ({ newsReleases, windowDimension }) => {
                       <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
                     </LazyLoad>
                   }
-                    <Arrow className='arrow__read-more' />
+                    {/* <Arrow className='arrow__read-more' /> */}
+                </Col> 
+                <Col xs={12} md={8}>
+                  <h4 className={item.image.url === '' ? 'large' : ''}>{item.title}</h4>
+                  <span className="articles__date">{toDateFormat(item.releasedate)}</span>
+                  { item.image.url !== undefined && item.image.url.length !== 0 &&
+                    <p>{item.abstract.substring(0, 450)}</p>
+                  }
                 </Col>
               </Row>
             </Col>

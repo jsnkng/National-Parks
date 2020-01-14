@@ -89,6 +89,24 @@ const GlobalStyle = createGlobalStyle`
   }
   h6 {
   }
+  a {
+    color: ${({ theme }) => theme.colors.color_one};
+    cursor: pointer !important;
+    p {
+      color:  ${({ theme }) => theme.colors.text};
+    }
+    &:hover {
+      text-decoration: none !important;
+      color: ${({ theme }) => theme.colors.color_two};
+      cursor: pointer !important;
+
+      .arrow__read-more {
+        fill: ${({ theme }) => theme.colors.color_two};
+        ${'' /* border-radius:12px; */}
+      }
+    }
+  }
+  
   p, .p {
     font-weight: 200;
     margin: 0 0 0.5rem 0;
@@ -135,7 +153,7 @@ const GlobalStyle = createGlobalStyle`
   
 
   table.hours {
-    width: 90%;
+    width: 95%;
     min-width: 12rem;
 
     ${SuperQuery().minWidth.sm.css`
@@ -170,23 +188,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
    
-  a {
-    color: ${({ theme }) => theme.colors.color_one};
-    cursor: pointer !important;
-    p {
-      color:  ${({ theme }) => theme.colors.text};
-    }
-    &:hover {
-    text-decoration: none !important;
-      color: ${({ theme }) => theme.colors.color_two};
-    cursor: pointer !important;
 
-  .arrow__read-more {
-    fill: ${({ theme }) => theme.colors.color_two};
-    ${'' /* border-radius:12px; */}
-  }
-    }
-  }
   
   table {
     font-size: .9375rem;

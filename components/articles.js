@@ -35,7 +35,7 @@ const Component = ({ articles, windowDimension }) => {
           return (
           <Col xs={12} sm={6} md={4} lg={3} key={item.id}>
             <a href={item.url} target="_blank">
-              <Row className={item.listingimage.url === '' ? 'reverseReverse' : 'reverse' }>
+              <Row className={item.listingimage.url === '' ? 'reverse' : 'reverseReverse' }>
                 <Col xs={12}>
                   { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
                     <LazyLoad offset={100}>
@@ -65,7 +65,13 @@ const Component = ({ articles, windowDimension }) => {
           </Col>
           )
           })
-        }</Row>
+        }
+
+
+        </Row>
+
+
+        
         <Row>
           <button 
             className={ limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } 
@@ -98,7 +104,18 @@ const Articles = styled.div`
   h4 {
     margin: .5rem 0 0 0;
   }
-
+  .reverse {
+    flex-direction: column-reverse;
+    ${SuperQuery().minWidth.md.css`
+    flex-direction: row;
+    `}
+  }
+  .reverseReverse {
+    flex-direction: column;
+    ${SuperQuery().minWidth.md.css`
+    flex-direction: row;
+    `}
+  }
 
   .articles__abstract--only {
     margin: 1.3rem 0 1.3rem 0;

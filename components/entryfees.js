@@ -16,22 +16,22 @@ const Component = ({ fees, title }) => {
       <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
         <Row>
           <Col xs={12}>
-            <h3>{ title }</h3>
+            <h3>{title}</h3>
           </Col>
         </Row>
         <Row>
-        { fees.slice(0).map((item, index) => {
+        { fees.slice(0).map((item) => {
           if(item.description !== '') {
             return (
-              <Col xs={12} lg={4}>
-                <AccordionItem key={`${index}${item.title}`}>
+              <Col xs={12} lg={4} key={`${item.title}`}>
+                <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
-                    {item.cost !== undefined && item.cost > 0 && 
-                      <h4>{item.title}<br />${Number(item.cost).toFixed(2)}</h4>
+                    {item.cost !== undefined && Number(item.cost) > 0 && 
+                      <h4>${Number(item.cost).toFixed(2)}–{item.title}</h4>
                     }
-                    {item.cost !== undefined && item.cost == 0 && 
-                      <h4>{item.title}<br />FREE</h4>
+                    {item.cost !== undefined && Number(item.cost) === 0 && 
+                      <h4>FREE–{item.title}</h4>
                     }
                     </AccordionItemButton>
                   </AccordionItemHeading>
@@ -43,8 +43,8 @@ const Component = ({ fees, title }) => {
             )
           } else {
             return (
-              <Col xs={12} md={4}>
-                <AccordionItem key={`${index}${item.title}`}>
+              <Col xs={12} lg={4} key={`${item.title}`}>
+                <AccordionItem>
                   <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
                 </AccordionItem>
               </Col>

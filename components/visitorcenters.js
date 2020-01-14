@@ -37,14 +37,8 @@ const Component = ({ visitorCenters }) => {
                   <Col xs={12}>
                   <p className='introduction'>{item.description}</p>
                     { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
-                      (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
-                      item.operatingHours.slice(0).map(item => {
-                        return (
-                          <p>
-                            <em>{item.description}</em>
-                          </p>
-                        )
-                      })
+                      (item.operatingHours[0] !== undefined && item.operatingHours[0].description !== '') &&
+                      <p><em>{item.operatingHours[0].description}</em></p>
                     }
                     </Col>
                 </Row>
@@ -71,7 +65,7 @@ const Component = ({ visitorCenters }) => {
 
                     { (item.addresses !== undefined && item.addresses.length !== 0) &&
                       item.addresses.slice(0).map((item, index) => {
-                        if (item.type.toLowerCase() === 'mailing') { 
+                        if (item.type.toLowerCase() === 'mailing' || item.type.toLowerCase() === 'physical') { 
                           return (
                             <p key={`${index}${item.line1}`}>
                               <strong>{item.type} Address</strong><br />
@@ -126,19 +120,6 @@ const Component = ({ visitorCenters }) => {
                   <Col xs={12} md={4}>
                     <h4>Directions</h4>
                     <p>{item.directionsInfo}</p>
-                    { (item.addresses !== undefined && item.addresses.length !== 0) &&
-                      item.addresses.slice(0).map((item, index) => {
-                        if (item.type.toLowerCase() === 'physical') { 
-                          return (
-                            <p key={`${index}${item.line1}`}>
-                              <strong>{item.type} Address</strong><br />
-                              {item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}
-                            </p>
-                          )
-                        }
-                      })
-                    }
-                    
                     
                   </Col>
                   </Row>

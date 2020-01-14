@@ -29,10 +29,9 @@ const Component = ({ campgrounds }) => {
           </Row>
           <Row>
             <Col xs={12}>
-            { campgrounds.slice(0).map((item) => {
-              console.log(item.images)
+            { campgrounds.slice(0).map((item, index) => {
               return(
-                <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
+                <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
                   <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                     <AccordionItemButton>
                       <h3>{item.name}</h3>
@@ -52,7 +51,10 @@ const Component = ({ campgrounds }) => {
                     <Row className='introduction'>
                       <Col xs={12}>
                         <p>{item.description}</p>
-                        
+                        { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
+                          (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
+                          <p><em>{item.operatingHours[0].description}</em></p>
+                        }
                       </Col>
                     </Row>
 
@@ -81,29 +83,65 @@ const Component = ({ campgrounds }) => {
                             <h4>Contact Information</h4>
                             { (item.contacts !== undefined && item.contacts.length !== 0) &&
                               (item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
-                              item.contacts.phoneNumbers.slice(0,2).map(item => {
+                              item.contacts.phoneNumbers.slice(0,2).map((item, index) => {
                                 return (
-                                  <p className='introduction' key={item.phoneNumber}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
+                                  <p className='introduction' key={`${index}${item.phoneNumber}`}><strong>{item.type}</strong> <a href={`tel:${formatPhoneNumber(item.phoneNumber)}`}>{formatPhoneNumber(item.phoneNumber)}</a></p>
                                 )
                               })
                             }
                             { (item.contacts !== undefined && item.contacts.length !== 0) &&
                               (item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
-                              item.contacts.emailAddresses.slice(0,1).map(item => {
+                              item.contacts.emailAddresses.slice(0,1).map((item, index) => {
                                 return (
-                                  <p className='introduction' key={item.emailAddress}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
+                                  <p className='introduction' key={`${index}${item.emailAddress}`}><strong>Email</strong> <a href={`mailto:${item.emailAddress}`}>{item.emailAddress}</a></p>
                                 )
                               })
                             }
                             { (item.addresses !== undefined && item.addresses.length !== 0) &&
-                              item.addresses.slice(0,2).map(item => {
+                              item.addresses.slice(0,2).map((item, index) => {
                                 return (
-                                  <p className='introduction' key={item.line1}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
+                                  <p className='introduction' key={`${index}${item.line1}`}><strong>{item.type} Address</strong><br /><span>{item.line1}<br />{item.city}, {item.stateCode} {item.postalCode}</span></p>
                                 )
                               })
                             }
                             </>
                           }
+                          
+                          </Col>
+                          <Col xs={12} md={8}>
+                            
+                            { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
+                            <>
+                              <h4>Directions</h4>
+                              <p>{item.directionsoverview}</p>
+                            </>
+                            }
+                            { item.weatheroverview !== undefined && item.weatheroverview != '' && 
+                            <>
+                              <span>
+                                <h4>Weather Overview</h4>
+                                <div className='p' dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, '<br />')}}></div>
+                              </span>
+                            </>
+                            }
+                            
+                          </Col>
+                        </Row>
+
+                        
+                        
+                        <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
+                            <Col xs={12}>
+                              { (item.fees !== undefined && item.fees.length !== 0) &&
+                                <EntryFees title='Overnight Camping Fees' fees={item.fees} />
+                              }
+                              
+                              
+                            </Col>
+                            
+                          </Row>
+                          <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
+                          <Col xs={12} md={4}>
                           { ((item.campsites !== undefined && item.campsites !== '') && 
                             (item.campsites.totalsites > 0)) &&
                             <>
@@ -134,44 +172,9 @@ const Component = ({ campgrounds }) => {
                               </ul>
                             </>
                             }
-                          </Col>
-                          <Col xs={12} md={8}>
-                            
-                            { item.directionsoverview !== undefined && item.directionsoverview !=='' && 
-                            <>
-                              <h4>Directions</h4>
-                              <p>{item.directionsoverview}</p>
-                            </>
-                            }
-                            { item.weatheroverview !== undefined && item.weatheroverview != '' && 
-                            <>
-                              <span>
-                                <h4>Weather Overview</h4>
-                                <div className='p' dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, '<br />')}}></div>
-                              </span>
-                            </>
-                            }
-                            
-                          </Col>
-                        </Row>
 
-                        
-                        
-                        <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
-                            <Col xs={12}>
-                              { (item.fees !== undefined && item.fees.length !== 0) &&
-                                <EntryFees title='Overnight Camping Fees' fees={item.fees} />
-                              }
-                              { (item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
-                                (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
-                                <p><em>{item.operatingHours[0].description}</em></p>
-                              }
-                              
-                            </Col>
-                            
-                          </Row>
-                          <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
-                          <Col xs={12} className="amenities columns">
+                          </Col>
+                          <Col xs={12} md={8} className="amenities columns">
                             { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
                             (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
                             (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
@@ -373,21 +376,36 @@ const Campgrounds = styled.div`
     padding: .3125rem 0;
     overflow-wrap: break-word;
   }
-  .columns {
-    ul {
-      column-count: 2;
+  .amenities {
+    font-size: 1rem;
+    &.columns {
+      ul {
+        column-count: 2;
 
-      ${SuperQuery().maxWidth.of('325px').css`
-        column-count: 1;
-      `}
-      ${SuperQuery().minWidth.md.css`
-        column-count: 3;
-      `}
+        ${SuperQuery().maxWidth.of('325px').css`
+          column-count: 1;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          column-count: 2;
+        `}
+      }
     }
   }
-  .amenities, 
+  
   .accessibility {
     font-size: 1rem;
+    &.columns {
+      ul {
+        column-count: 2;
+
+        ${SuperQuery().maxWidth.of('325px').css`
+          column-count: 1;
+        `}
+        ${SuperQuery().minWidth.md.css`
+          column-count: 3;
+        `}
+      }
+    }
   }
   .boxes {
     font-size: 1rem;
