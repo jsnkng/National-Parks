@@ -81,7 +81,7 @@ const Header = styled.header`
   .top__title--container {
   }
   .top__title {
-    font-size: 1.625rem;
+    font-size: 1.375rem;
     line-height: 1;
     font-weight: 700;
     letter-spacing: -1.5px;

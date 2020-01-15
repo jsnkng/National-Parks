@@ -1,6 +1,7 @@
 function formatPhoneNumber(phoneNumberString) {
-  const split = phoneNumberString.split('/')
-  const split2 = phoneNumberString.split(' ')
+  const nospace = phoneNumberString.replace(/\s/g, '')
+  const split1 = nospace.split('/')
+  const split2 = split1[0].split('x')
   const cleaned = split2[0].toString().replace(/\D/g, '')
   const match = cleaned.match(/^1?(\d{3})(\d{3})(\d{4})$/)
   if (match) {

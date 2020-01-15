@@ -58,60 +58,84 @@ const Component = ({ events }) => {
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </Col>
                       <Col xs={12} lg={4}>
-                        <div className='details'>
-                          {/* <h3>{item.types.join(', ')}</h3> */}
-                          <h4>Event Information</h4>
+                        <h4>Event Information</h4>
+                        <Row>
+                          <Col xs={12} sm={6}>
                           { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <>
                             <h5>Time</h5>
                             <p>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                           </>
                           }
+                          
+                          
                           <h5>Location</h5>
                           <p>{item.location}</p>
-                          <p><strong>Cost: </strong> 
-                            { item.isfree === 'false' 
+                          <h5>Cost: </h5> 
+                          <p>{ item.isfree === 'false' 
                             ? item.feeinfo 
                             : item.feeinfo.length !== 0 && item.isfree === true 
                               ? 'FREE (' + item.feeinfo + ')' 
                               : 'FREE' 
                             }
                           </p> 
-                          { item.regresinfo !== '' &&
-                            <p><strong>Reservations: </strong>{item.regresinfo}
-                            { item.regresurl !== '' &&
-                              <strong> <a href={item.regresurl} target='_blank'>Click here for reservations.</a></strong>
+
+                            {item.contactname !== '' &&
+                              <>
+                                <h5>Contact</h5>
+                                <p>{item.contactname}</p>
+                              </>
                             }
-                          </p> 
-                          }
-                          {/* <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p> */}
-                          <h5>Dates</h5>
-                          <DayPicker showOutsideDays fixedWeeks
-                            initialMonth={new Date(new Date(item.dates[0]).getFullYear(), new Date(item.dates[0]).getMonth())}
-                            selectedDays={ item.dates.map((date) => new Date(date))}
-                          />
-                          {item.infourl !== '' &&
-                            <>
-                              <h5>More Info</h5>
-                              <p><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
-                            </>
-                          }
-                          {item.contactname !== '' &&
-                            <>
-                              <h5>Contact</h5>
-                              <p>{item.contactname}</p>
-                            </>
-                          }
-                          {item.contacttelephonenumber !== '' &&
-                            <Phone
-                              title='Telephone'
-                              phoneNumber={item.contacttelephonenumber} />
-                          }
-                          {item.contactemailaddress !== '' &&
-                            <Email 
-                              title={`Email Address`}
-                              emailAddress={item.contactemailaddress} />
-                           }
+
+                            {item.contacttelephonenumber !== '' &&
+                              <Phone
+                                title='Telephone'
+                                phoneNumber={item.contacttelephonenumber} />
+                            }
+
+                            {item.contactemailaddress !== '' &&
+                              <Email 
+                                title={`Email Address`}
+                                emailAddress={item.contactemailaddress} />
+                            }
+
+                            
+                          </Col>
+                          <Col xs={12} sm={6}>
+                            
+                            <h5>Dates</h5>
+                            <DayPicker showOutsideDays fixedWeeks
+                              initialMonth={new Date(new Date(item.dates[0]).getFullYear(), new Date(item.dates[0]).getMonth())}
+                              selectedDays={ item.dates.map((date) => new Date(date))}
+                            />
+                              
+                            { item.regresinfo !== '' &&
+                              <p><strong>Reservations: </strong>{item.regresinfo}
+                              { item.regresurl !== '' &&
+                                <strong> <a href={item.regresurl} target='_blank'>Click here for reservations.</a></strong>
+                              }
+                            </p> 
+                            }
+                            {item.infourl !== '' &&
+                              <>
+                                <h5>More Info</h5>
+                                <p><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
+                              </>
+                            }
+                            
+                          </Col>
+                        </Row>
+                        <div className='details'>
+                          {/* <h3>{item.types.join(', ')}</h3> */}
+                          
+                          
+                          
+                          
+                          
+                          
+                        
+
+                          
                         </div>
                       </Col>
                     </Row>
@@ -168,7 +192,15 @@ const Events = styled.div`
 
 .DayPicker {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  margin: 0 0 0 -1.625rem;
+  min-width: 90%;
+
+  ${SuperQuery().minWidth.md.css`
+    font-size: 1rem;
+    margin: 0;
+  `}
+
 }
 
 .DayPicker-wrapper {
