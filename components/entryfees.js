@@ -107,7 +107,7 @@ const EntryFees = styled.div`
     color: #f1f1f1;
     border: none;
     padding: 0 1rem 0 0;
-    margin: 1rem 0;
+    margin: 1rem 0 .75rem 0;
     
   }
   .accordion__button {
@@ -164,19 +164,14 @@ const EntryFees = styled.div`
   h4 {
     color: #f1f1f1;
     font-size: 1.25rem;
-    line-height: 1.25;
-    text-indent: -5.375rem;
-    margin-left: 5.5rem;
-  }
-  .accordion__item > h4 {
-    margin-left: 7rem;
-    text-indent: -6rem;
+    line-height: 1.1;
+    margin-left: .25rem;
   }
   p {
     font-size: 1.125rem;
     font-weight: 400;
     color: #f1f1f1;
-    margin: .25rem 0 0 6.875rem;
+    margin: .25rem 0 0 1.75rem;
     a { 
       font-weight: 700;
       color: #f1f1f1;

@@ -19,8 +19,8 @@ const Component = ({ newsReleases, windowDimension }) => {
     setRows(rows + 1)
   }
   useEffect(() => {
-    const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
-                        windowDimension.width > 767 ? { cols: 3, limit: 3 } : 
+    const columnWidth = windowDimension.width > 990 ? { cols: 2, limit: 2 } : 
+                        windowDimension.width > 767 ? { cols: 2, limit: 2 } : 
                         windowDimension.width > 575 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 
     
     let newLimit = columnWidth.limit * rows
@@ -30,54 +30,49 @@ const Component = ({ newsReleases, windowDimension }) => {
 
   return (
     <NewsReleases>
-    <Grid>
-      <Row>
-        <Col xs={12}>
-          <h2>Park News</h2>
-        </Col>
-      </Row>
-      { newsReleases.slice(0,limit).map((item) => {
-        return (
-        <Row key={item.id}>
-          <a href={item.url} target="_blank">
-            <Col xs={12}>
-              <Row className={item.image.url === '' ? 'reverse' : 'reverseReverse' }>
-               
-                <Col xs={12} md={8}>
-                  { item.image.url === undefined || item.image.url.length === 0 &&
-                      <p className='articles__abstract--only'>{item.abstract.substring(0, 320)}</p>
-                  }
-                  { item.image.url !== undefined && item.image.url.length !== 0 &&
-                    <LazyLoad offset={100}>
-                      <Image backgroundURL={item.image.url}  className="lazyload__image--height" />
-                    </LazyLoad>
-                  }
-                    {/* <Arrow className='arrow__read-more' /> */}
-                </Col> 
-                <Col xs={12} md={4} style={{padding: '0 .5rem 1rem 0'}}>
-                  <h4 className='large'>
-                    <span className="articles__date">{toDateFormat(item.releasedate)}</span>
-                    {item.title}
-                  </h4>
-                  
-                  { item.image.url !== undefined && item.image.url.length !== 0 &&
-                    <p>{item.abstract.substring(0, 450)}</p>
-                  }
-                </Col>
-              </Row>
-            </Col>
-          </a>
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <h2>Park News</h2>
+          </Col>
         </Row>
-        )
-        })
-      }
-      <Row>
-        <button 
-          className={ limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } 
-          onClick={() => loadMore()}>
-            Load More News
-        </button>
-      </Row>
+        <Row>
+        { newsReleases.slice(0,limit).map((item) => {
+          return (
+          <Col xs={12} sm={6} key={item.id}>
+            <a href={item.url} target="_blank">
+            {item.image.url === undefined || item.image.url.length === 0 && 
+              <div className='articles__card--noimage'>
+                <div className='articles__card--title'>
+                  <h4>{item.title.substring(0, 80)}</h4>
+                </div>
+                <p><strong>{toDateFormat(item.releasedate)}</strong></p>
+                <p>{item.abstract.substring(0, 420)}</p>
+              </div>
+            }
+            {item.image.url !== undefined && item.image.url.length !== 0 &&
+              <div className='articles__card--image'>
+                <LazyLoad offset={100}>
+                  <Image backgroundURL={item.image.url} className="lazyload__image--height" />
+                </LazyLoad>
+                <p><strong>{toDateFormat(item.releasedate)}</strong></p>
+                <h4>{item.title}</h4>
+                <p>{item.abstract.substring(0, 300)}</p>
+              </div>
+            } 
+            </a>
+          </Col>
+          )
+          })
+        }
+        </Row>
+        <Row>
+          <button 
+            className={ limit >= newsReleases.length ? "hidden btn__load-more" : "btn__load-more" } 
+            onClick={() => loadMore()}>
+              Load More News
+          </button>
+        </Row>
       </Grid>
     </NewsReleases>
   )
@@ -88,50 +83,66 @@ export default Component
 const NewsReleases = styled.div`
   .lazyload-placeholder,
   .lazyload__image--height {
-    height: 20rem;
-    min-width: 15rem;
-    ${SuperQuery().minWidth.lg.css`
-      height: 26rem;
+    margin: 0 0 0.5rem 0;
+    height: 85vw;
+    ${SuperQuery().minWidth.sm.css`
+      height: 14rem;
     `}
-  }
-  .articles__date {
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
-  .articles__abstract--only {
-    margin: 1.3rem 0 1.3rem 0;
-  }
-  h4.large {
-    padding: 0.5rem;
-    margin: 1rem 0 0 0;
-    background-color: ${({ theme }) => theme.colors.offbackground};
     ${SuperQuery().minWidth.md.css`
-      height: 14rem;
-      min-width: 14rem;
+      height: 16rem;
     `}
     ${SuperQuery().minWidth.lg.css`
-      height: 14rem;
-      min-width: 14rem;
+      height: 18rem;
     `}
-    span {
-      font-size: 1rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
+  }
+
+  .articles__card--noimage {
+    margin: 1rem 0 0 0;
+    .articles__card--title {
+      background-color: ${({ theme }) => theme.colors.offbackground};
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: flex-end;
+      height: 85vw;
+      ${SuperQuery().minWidth.sm.css`
+        height: 14rem;
+      `}
+      ${SuperQuery().minWidth.md.css`
+        height: 16rem;
+      `}
+    ${SuperQuery().minWidth.lg.css`
+      height: 18rem;
+    `}
+    }
+    h4 {
+      line-height: 1;
+      letter-spacing: -0.1rem;
+      padding: 0.5rem;
+      font-size: 240%;
+
+      ${SuperQuery().maxWidth.of('325px').css`
+        font-size: 180%;
+      `}
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 150%;
+      `}
+      ${SuperQuery().minWidth.md.css`
+        font-size: 200%;
+      `}
     }
   }
-  .reverse {
-    flex-direction: column-reverse;
-    ${SuperQuery().minWidth.md.css`
-    margin: 1rem 0;
-    flex-direction: row-reverse;
-    `}
-  }
-  .reverseReverse {
-    flex-direction: column;
-    ${SuperQuery().minWidth.md.css`
-    flex-direction: row;
-    `}
+
+  .articles__card--image {
+    margin: 1rem 0 0 0;
+    h4 {
+      line-height: 1;
+      letter-spacing: -0.1rem;
+      margin: 0 0 0.5rem 0;
+      font-size: 150%;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 125%;
+      `}
+    }
   }
  
 `
@@ -140,7 +151,6 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 `
