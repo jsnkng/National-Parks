@@ -24,15 +24,16 @@ const Calendar = styled(DayPicker)`
   position: relative;
   flex-direction: row;
   user-select: none;
+  width: 17rem;
 }
 .DayPicker-Months {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .DayPicker-Month {
   display: table;
-  margin: 0 1rem;
+  margin: 0 0 1rem 0;
   border-spacing: 0;
   border-collapse: collapse;
   user-select: none;
@@ -43,7 +44,7 @@ const Calendar = styled(DayPicker)`
 }
 .DayPicker-NavButton {
   position: absolute;
-  top: 0.1m25rem;
+  top: 0.125rem;
   right: 0.5rem;
   left: auto;
   display: inline-block;
