@@ -40,19 +40,14 @@ const Component = ({ campgrounds }) => {
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-                  { item.images !== undefined &&  
                   <Row>
                     <Col xs={12}>
+                      { item.images !== undefined &&  
                       <LazyLoad offset={0}>
-                      <SlideShow images={item.images} />
-                        {/* <Image backgroundURL={`${item.images[0].url}` } className='lazyload__image--height' /> */}
+                        <SlideShow images={item.images} />
                       </LazyLoad>
-                    </Col>
-                  </Row>
-                  }
-                  <Row className='introduction'>
-                    <Col xs={12}>
-                      <p>{item.description}</p>
+                      }
+                      <p className='introduction'>{item.description}</p>
                       {(item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
                         (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
                         <p><em>{item.operatingHours[0].description}</em></p>
