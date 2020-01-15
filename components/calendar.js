@@ -17,8 +17,8 @@ export default Component
 const Calendar = styled(DayPicker)`
   .DayPicker {
     display: inline-block;
-    font-size: 1rem;
     margin: 0;
+    font-size: 1rem;
   }
   .DayPicker-wrapper {
   position: relative;
@@ -108,11 +108,15 @@ const Calendar = styled(DayPicker)`
 }
 .DayPicker-Day {
   display: table-cell;
-  padding: 0.25rem 0.5rem;
   vertical-align: middle;
   text-align: center;
   cursor: pointer;
   border: 3px solid ${({ theme }) => theme.colors.offbackground};
+  font-size: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  ${SuperQuery().minWidth.md.css`
+    font-size: 1rem;
+  `}
 }
 .DayPicker-WeekNumber {
   display: table-cell;
