@@ -43,7 +43,7 @@ const Component = ({ fees, title, windowDimension }) => {
                   {item.cost !== undefined && item.cost > 0 && 
                     <h4>${Number(item.cost).toFixed(2)} — {item.title}</h4>
                   }
-                  <p>{item.description}</p>
+                  <p style={{marginLeft: '.5rem'}}>{item.description}</p>
                 </AccordionItem>
               </Col>
             )

@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad, { forceCheck } from 'react-lazyload'
-import formatPhoneNumber from './_utils/formatPhoneNumber'
+import Email from './elements/email'
+import Phone from './elements/phone'
 import {
   Accordion,
   AccordionItem,
@@ -12,6 +13,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 import DayPicker from 'react-day-picker'
+import SlideShow from './slideshowSmall'
 // import 'react-day-picker/lib/style.css';
 
 const Component = ({ events }) => {
@@ -42,27 +44,31 @@ const Component = ({ events }) => {
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    { item.images.length !== 0 && item.images[0].url !== undefined && 
-                    <Row>
-                      <Col xs={12}>
+                    
+                    
+                    <Row className='introduction'>
+                      <Col xs={12} lg={8}>
+                      { item.images.length !== 0 && item.images[0].url !== undefined &&
+                        
+                        
                         <LazyLoad offset={0} className='lazyload__image--height'>
                           <Image backgroundURL={`https://www.nps.gov${item.images[0].url}` } className='lazyload__image--height' />
                         </LazyLoad>
-                      </Col>
-                    </Row>
-                    }
-                    <Row className='introduction'>
-                      <Col xs={12} lg={8}>
+                      }
                         <div dangerouslySetInnerHTML={{__html:item.description}}></div>
                       </Col>
                       <Col xs={12} lg={4}>
                         <div className='details'>
-                          <h3>{item.types.join(', ')}</h3>
-
+                          {/* <h3>{item.types.join(', ')}</h3> */}
+                          <h4>Event Information</h4>
                           { item.times[0] !== undefined && item.times.length[0] !== 0 &&
-                            <p><strong>Time: </strong>{item.times[0].timestart}–{item.times[0].timeend}</p> 
+                          <>
+                            <h5>Time</h5>
+                            <p>{item.times[0].timestart}–{item.times[0].timeend}</p> 
+                          </>
                           }
-                          <p><strong>Location: </strong>{item.location}</p>
+                          <h5>Location</h5>
+                          <p>{item.location}</p>
                           <p><strong>Cost: </strong> 
                             { item.isfree === 'false' 
                             ? item.feeinfo 
@@ -79,22 +85,33 @@ const Component = ({ events }) => {
                           </p> 
                           }
                           {/* <p><strong>Dates: </strong>{item.dates.map((date) => toDateFormat(date)).join(', ')}</p> */}
+                          <h5>Dates</h5>
                           <DayPicker showOutsideDays fixedWeeks
                             initialMonth={new Date(new Date(item.dates[0]).getFullYear(), new Date(item.dates[0]).getMonth())}
                             selectedDays={ item.dates.map((date) => new Date(date))}
                           />
                           {item.infourl !== '' &&
-                            <p><strong>More Info: </strong><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
+                            <>
+                              <h5>More Info</h5>
+                              <p><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
+                            </>
                           }
                           {item.contactname !== '' &&
-                            <p><strong>Contact: </strong>{item.contactname}</p>
+                            <>
+                              <h5>Contact</h5>
+                              <p>{item.contactname}</p>
+                            </>
                           }
                           {item.contacttelephonenumber !== '' &&
-                            <p><strong>Phone: </strong> <a href={`tel:${formatPhoneNumber(item.contacttelephonenumber)}`}>{formatPhoneNumber(item.contacttelephonenumber)}</a></p> 
+                            <Phone
+                              title='Telephone'
+                              phoneNumber={item.contacttelephonenumber} />
                           }
                           {item.contactemailaddress !== '' &&
-                          <p><strong>Email:</strong> <a href={`mailto:${item.contactemailaddress}`}>{item.contactemailaddress}</a></p>
-                          }
+                            <Email 
+                              title={`Email Address`}
+                              emailAddress={item.contactemailaddress} />
+                           }
                         </div>
                       </Col>
                     </Row>

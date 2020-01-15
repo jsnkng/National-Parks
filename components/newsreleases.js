@@ -54,9 +54,12 @@ const Component = ({ newsReleases, windowDimension }) => {
                   }
                     {/* <Arrow className='arrow__read-more' /> */}
                 </Col> 
-                <Col xs={12} md={4}>
-                  <h4 className='large'>{item.title}</h4>
-                  <span className="articles__date">{toDateFormat(item.releasedate)}</span>
+                <Col xs={12} md={4} style={{padding: '0 .5rem 1rem 0'}}>
+                  <h4 className='large'>
+                    <span className="articles__date">{toDateFormat(item.releasedate)}</span>
+                    {item.title}
+                  </h4>
+                  
                   { item.image.url !== undefined && item.image.url.length !== 0 &&
                     <p>{item.abstract.substring(0, 450)}</p>
                   }
@@ -100,7 +103,22 @@ const NewsReleases = styled.div`
     margin: 1.3rem 0 1.3rem 0;
   }
   h4.large {
-    margin: 1.125rem 0 0 0;
+    padding: 0.5rem;
+    margin: 1rem 0 0 0;
+    background-color: ${({ theme }) => theme.colors.offbackground};
+    ${SuperQuery().minWidth.md.css`
+      height: 14rem;
+      min-width: 14rem;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      height: 14rem;
+      min-width: 14rem;
+    `}
+    span {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
   }
   .reverse {
     flex-direction: column-reverse;
