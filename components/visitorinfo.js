@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-import formatPhoneNumber from './_utils/formatPhoneNumber'
-import Alerts from './alerts'
 
 import Address from './elements/address'
 import Email from './elements/email'
@@ -15,14 +13,6 @@ const Component = ({ park, alerts, markers }) => {
   return (
     <VisitorInfo>
       <Grid>
-        <Row>
-          <Col xs={12}>
-            { alerts !== undefined && alerts.length != 0 &&
-              <Alerts alerts={alerts} />
-            }
-          </Col>
-        </Row>
-
         <Row>
           <Col xs={12}>
             <h2>Visitor Information</h2>
@@ -114,7 +104,7 @@ const Component = ({ park, alerts, markers }) => {
         </Row>
 
         <Row>
-          <Col xs={12}>
+          <Col xs={12} mdOffset={4} md={8}>
             { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
               <EntryFees title='Park Entry Fees' fees={park.entranceFees} />
             }

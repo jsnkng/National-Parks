@@ -143,16 +143,13 @@ const Component = ({ campgrounds }) => {
                         
                         
                         <Row style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
-                            <Col xs={12}>
-                              { (item.fees !== undefined && item.fees.length !== 0) &&
-                                <EntryFees title='Overnight Camping Fees' fees={item.fees} />
-                              }
-                              
-                              
-                            </Col>
-                            
-                          </Row>
-                          <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
+                          <Col xs={12} mdOffset={4} md={8}>
+                            { (item.fees !== undefined && item.fees.length !== 0) &&
+                              <EntryFees title='Overnight Camping Fees' fees={item.fees} />
+                            }
+                          </Col>
+                        </Row>
+                        <Row className="section" style={{paddingLeft:0, marginLeft:0,paddingRight:0, marginRight:0}}>
                           <Col xs={12} md={4} className="amenities">
                           { ((item.campsites !== undefined && item.campsites !== '') && 
                             (item.campsites.totalsites > 0)) &&

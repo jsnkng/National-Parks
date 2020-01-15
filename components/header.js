@@ -15,8 +15,6 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
- 
-
   return (
     <Header>
       <div className='top__back' onClick={() => manageHistory()}>

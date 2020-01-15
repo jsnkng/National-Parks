@@ -11,14 +11,15 @@ import {
 } from 'react-accessible-accordion'
 
 const Component = ({ fees, title, windowDimension }) => {
-  const [cols, setCols] = useState({ xs: 12, sm: 12, md: 12, lg: 4 })
-  const numCols = fees.length % 3 === 0 ? 3 :
-                  fees.length % 2 === 0 ? 2 : 1
+  const [cols, setCols] = useState({ xs: 12, sm: 12, md: 12, lg: 12 })
+  // const numCols = fees.length % 3 === 0 ? 3 :
+  //                 fees.length % 2 === 0 ? 2 : 1
+  // const dynCols = numCols === 3 || fees.length > 4 ? { xs: 12, sm: 12, md: 4, lg: 4 } :
+  //                 numCols === 2 ? { xs: 12, sm: 6, md: 6, lg: 6 } :  
+  //                 numCols === 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : 
+  //                                 { xs: 12, sm: 12, md: 12, lg: 4 }
 
-  const dynCols = numCols === 3 || fees.length > 4 ? { xs: 12, sm: 12, md: 4, lg: 4 } :
-                  numCols === 2 ? { xs: 12, sm: 6, md: 6, lg: 6 } :  
-                  numCols === 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : 
-                                  { xs: 12, sm: 12, md: 12, lg: 4 }
+  const dynCols = fees.length > 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : {xs: 12, sm: 12, md: 12, lg: 12 }
 
   useEffect(() => {
     setCols(dynCols)
@@ -35,14 +36,25 @@ const Component = ({ fees, title, windowDimension }) => {
         </Row>
         <Row>
         { fees.slice(0).map((item, index) => {
-          if(item.description !== '') {
+          if ((item.cost == 0 && item.description != '') || (fees.length == 1)) {
+            return (
+              <Col xs={12} key={`${index}${item.title}`}>
+                <AccordionItem>
+                  {item.cost !== undefined && item.cost > 0 && 
+                    <h4>${Number(item.cost).toFixed(2)} — {item.title}</h4>
+                  }
+                  <p>{item.description}</p>
+                </AccordionItem>
+              </Col>
+            )
+          } else if (item.cost > 0 && item.description !== '') {
             return (
               <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={`${index}${item.title}`}>
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton>
                     {item.cost !== undefined && Number(item.cost) > 0 && 
-                      <h4>${Number(item.cost).toFixed(2)}–{item.title}</h4>
+                      <h4>${Number(item.cost).toFixed(2)} — {item.title}</h4>
                     }
                     {item.cost !== undefined && Number(item.cost) === 0 && 
                       <h4>FREE–{item.title}</h4>
@@ -55,11 +67,14 @@ const Component = ({ fees, title, windowDimension }) => {
                 </AccordionItem>
               </Col>
             )
-          } else {
+          } else if (item.description === '') {
             return (
-              <Col xs={12} lg={4} key={`${item.title}`}>
+
+              <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={`${index}${item.title}`}>
                 <AccordionItem>
-                  <h4>{item.cost !== undefined && item.cost > 0 && `$${Number(item.cost).toFixed(2)}—`}{item.title}</h4>
+                  {item.cost !== undefined && Number(item.cost) > 0 && 
+                    <h4>${Number(item.cost).toFixed(2)} — {item.title}</h4>
+                  }
                 </AccordionItem>
               </Col>
             )
@@ -80,7 +95,7 @@ const EntryFees = styled.div`
   margin: 0;
 
   .accordion {
-    background-color: #00ac47;
+    background-color: #198b32;
     color: #f1f1f1; 
     padding: .5rem;
   }
@@ -92,11 +107,8 @@ const EntryFees = styled.div`
     color: #f1f1f1;
     border: none;
     padding: 0 1rem 0 0;
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0;
     
-  }
-  .accordion__item > h4 {
-    margin-left: 1.5rem;
   }
   .accordion__button {
     color: #f1f1f1;
@@ -142,7 +154,7 @@ const EntryFees = styled.div`
   }
   h3 {
     background-color: #f1f1f1;
-    color: #00ac47;
+    color: #198b32;
     font-size: 1.75rem;
     border: none;
     margin: 0;
@@ -152,13 +164,19 @@ const EntryFees = styled.div`
   h4 {
     color: #f1f1f1;
     font-size: 1.25rem;
-    text-indent: 0rem;
+    line-height: 1.25;
+    text-indent: -5.375rem;
+    margin-left: 5.5rem;
+  }
+  .accordion__item > h4 {
+    margin-left: 7rem;
+    text-indent: -6rem;
   }
   p {
     font-size: 1.125rem;
     font-weight: 400;
     color: #f1f1f1;
-    margin: .25rem 1rem 0 1.5rem;
+    margin: .25rem 0 0 6.875rem;
     a { 
       font-weight: 700;
       color: #f1f1f1;

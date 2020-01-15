@@ -11,8 +11,17 @@ import {
 } from 'react-accessible-accordion'
 
 const Component = ({ alerts }) => {
+  const numCols = alerts.length % 3 === 0 ? 3 :
+                  alerts.length % 2 === 0 ? 2 : 1
+  const cols = numCols === 3 || alerts.length > 4 ? { xs: 12, sm: 12, md: 4, lg: 4 } :
+               numCols === 2 ? { xs: 12, sm: 6, md: 6, lg: 6 } :  
+               numCols === 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : 
+                               { xs: 12, sm: 12, md: 12, lg: 4 }
+
+
   return (
     <Alerts>
+    <Grid>
         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
           <Row>
             <Col xs={12}>
@@ -20,7 +29,7 @@ const Component = ({ alerts }) => {
             </Col>
             { alerts.slice(0).map((item) => {
               return (
-                <Col xs={12} md={4} key={item.id} className="summary">
+                <Col xs={cols.xs} md={cols.md} key={item.id} className="summary">
                   <AccordionItem>
                     <AccordionItemHeading>
                       <AccordionItemButton>
@@ -40,6 +49,7 @@ const Component = ({ alerts }) => {
             })}
           </Row>
         </Accordion>
+      </Grid>
     </Alerts>
   )
 }
@@ -54,7 +64,7 @@ const Alerts = styled.div`
   .accordion {
     background-color: #ffca13;
     color: #333333; 
-    padding: .5rem .5rem 1rem .5rem;
+    padding: .5rem;
     margin: 0;
 
   }
@@ -62,7 +72,7 @@ const Alerts = styled.div`
     color: #333333;
     border: none;
     padding: 0;
-    margin: .75rem 0 .25rem 0;
+    margin: 1rem 0;
     
   }
   .accordion__button {

@@ -95,11 +95,11 @@ const Park = ({
           <div style={{height: '90px'}}></div>
           }
           <Description park={park} />
-{/* 
+
           { alerts !== undefined && alerts.length != 0 &&
           <Alerts alerts={alerts} />
           }
-          */}
+         
           <VisitorInfo park={park} alerts={alerts} markers={markers} />
             
           { visitorcenters !== undefined && visitorcenters.length != 0 &&
@@ -114,15 +114,15 @@ const Park = ({
           { newsreleases !== undefined && newsreleases.length != 0 &&
           <NewsReleases park={park} newsReleases={newsreleases} windowDimension={windowDimension} />
           }
+          { articles !== undefined && articles.length != 0 &&
+          <Articles park={park} articles={articles} windowDimension={windowDimension} />
+          }
           { places !== undefined && places.length != 0 &&
           <Places park={park} places={places} windowDimension={windowDimension} />
           }
           { people !== undefined && people.length != 0 &&
           <People park={park} people={people} windowDimension={windowDimension} />
           } 
-          { articles !== undefined && articles.length != 0 &&
-          <Articles park={park} articles={articles} windowDimension={windowDimension} />
-          }
         </Content> 
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
