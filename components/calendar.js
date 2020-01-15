@@ -172,19 +172,4 @@ const Calendar = styled(DayPicker)`
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
   background-color: ${({ theme }) => theme.colors.color_five};
 }
-
-
-/* Example modifiers */
-
-${'' /* .DayPicker-Day--sunday {
-  background-color: #F7F8F8;
-}
-.DayPicker-Day--sunday:not(.DayPicker-Day--today) {
-  color: #DCE0E0;
-} */}
-${'' /* .DayPicker:not(.DayPicker--interactionDisabled)
-  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #F0F8FF;
-} */}
-
 `
