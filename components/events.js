@@ -13,7 +13,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 import Calendar from './calendar'
-import SlideShow from './slideshowEvents'
+import SlideShow from './slideShowEvents'
 
 const Component = ({ events }) => {
 
