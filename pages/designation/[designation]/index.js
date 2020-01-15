@@ -13,7 +13,6 @@ import Footer from '../../../components/footer'
 
 const Designations = ({ parks, designation, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
-
   useEffect(() => {
     setLoaded(true)
     pageTransitionReadyToEnter()
@@ -23,11 +22,12 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
     forceCheck()
   })
 
+  console.log(parks)
   if (!loaded) {
     return null
   } else {
     return (
-      <>
+        <>
         <Head>
           <title>National Park Service Guide to {designation}</title>
         </Head>
@@ -38,6 +38,31 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
           manageFuture={manageFuture}
         />
         <Content>
+          <Row__Decorated>
+            {
+            parks.slice(0).map((item, i) => {
+              i++
+              return(
+                <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={`${item.id}`}>
+                  <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
+                    <ParkBanner 
+                      backgroundURL={item.images === undefined || item.images.length == 0 
+                        ? "/noimage.jpg" 
+                        : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
+                      title={item.name}
+                      subtitle={item.designation}
+                      states={item.states}
+                    />
+                  </div>
+                </Col__Decorated>
+              )
+            })
+            }
+          </Row__Decorated>
+        </Content>
+
+
+        {/* <Content>
           <Row__Decorated>
             {
             parks.slice(0).map((item, i=0) => {
@@ -59,7 +84,9 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
             })
             }
           </Row__Decorated>
-        </Content>
+        </Content> */}
+
+
       <Footer themeName={themeName} setThemeName={setThemeName} />
       </>
     )
@@ -69,10 +96,11 @@ const Designations = ({ parks, designation, themeName, setThemeName, pageTransit
 Designations.pageTransitionDelayEnter = true
 
 Designations.getInitialProps = async ({ req, query }) => {
+  const result = {}
   const {designation} = query
   const {origin}  = absoluteUrl(req)
   const stateResult = await fetch(`${origin}/api/designation/${designation}`)
-  const result = await stateResult.json()
+  result.parks = await stateResult.json()
   result.designation = designation
   return result
 }

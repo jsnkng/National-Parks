@@ -15,13 +15,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
-  // const titleClass = (title.length >= 29 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.625rem 0 0 1.75rem' } :
-  // (title.length >= 29 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
-  // (title.length >= 27 && title__sub !== '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } :
-  // (title.length >= 27 && title__sub === '') ? { fontSize: '1.175rem', margin: '0.875rem 0 0 1.75rem' } : 
-  // (title.length > 24 && title__sub !== '') ? { fontSize: '1.25rem', margin: '0.875rem 0 0 1.75rem' } : 
-  // (title.length > 24 && title__sub === '') ? { fontSize: '1.25rem', margin: '1.25rem 0 0 2.25rem' } : {}
-
+ 
 
   return (
     <Header>
@@ -127,7 +121,12 @@ const Header = styled.header`
 
       &.large {
         font-size: 1.375rem;
-        margin: 1.25rem 0 0 .25rem;
+        margin: 1.25rem 0 0 .5rem;
+
+        ${SuperQuery().maxWidth.of('325px').css`
+          font-size: 1rem;
+          margin: 1rem 1rem 0 0.375rem;
+        `}
         ${SuperQuery().minWidth.md.css`
           font-size: 1.875rem;
           margin: 1.5rem 0 0 1rem;
@@ -188,7 +187,7 @@ const Header = styled.header`
         margin: 0.875rem 0 0 .25rem;
         ${SuperQuery().maxWidth.of('325px').css`
           font-size: 1rem;
-          margin: 0.5rem 1rem 0 0.375rem;
+          margin: 1rem 1rem 0 0.375rem;
         `}
         ${SuperQuery().minWidth.of('415px').css`
           font-size: 1.125rem;
@@ -228,10 +227,11 @@ const Header = styled.header`
         `}
       }
       &.med_no_sub {
-        font-size: 1.175rem;
-        margin: 0.625rem 0 0 1.75rem;
+        font-size: 1.375rem;
+        margin: .625rem 0 0 .5rem;
         ${SuperQuery().minWidth.md.css`
-        
+          font-size: 1.875rem;
+          margin: 1.5rem 0 0 1rem;
         `}
       }
       &.med_sub {
@@ -247,8 +247,12 @@ const Header = styled.header`
         `}
       }
       &.short_no_sub {
-        font-size: 1.175rem;
-        margin: 0.625rem 0 0 1.75rem;
+        font-size: 1.375rem;
+        margin: 1.25rem 0 0 .5rem;
+        ${SuperQuery().minWidth.md.css`
+          font-size: 1.875rem;
+          margin: 1.5rem 0 0 1rem;
+        `}
         ${SuperQuery().maxWidth.of('325px').css`
           font-size: 1.25rem;
           margin: 0.75rem 0.5rem 0 0.375rem;
