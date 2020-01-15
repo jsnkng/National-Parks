@@ -21,6 +21,7 @@ import Places from '../../../../../components/places'
 import SlideShow from '../../../../../components/slideshow'
 import VisitorInfo from '../../../../../components/visitorinfo'
 import VisitorCenters from '../../../../../components/visitorcenters'
+import useWindowDimensions from '../../../../../components/useWindowDimensions'
 
 const Park = ({ 
   themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture,
@@ -37,6 +38,17 @@ const Park = ({
   campgrounds }) => {
 
   const [loaded, setLoaded] = useState(false)
+  const windowDimension = useWindowDimensions()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    loaded === false && setLoaded(true)
+    pageTransitionReadyToEnter()
+  }, [])
+
+  useEffect(() => {
+    forceCheck()
+  })
 
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
   visitorcenters !== undefined && visitorcenters.length != 0 &&
@@ -50,27 +62,6 @@ const Park = ({
   places !== undefined && places.length != 0 &&
   places.slice(0).map((item) => {
     markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
-  })
-
-  const [windowDimension, setWindowDimension] = useState({ width: 0, height: 0 })
-
-  const updateWindowDimensions = () => {
-    setWindowDimension({ width: window.innerWidth, height: window.innerHeight })
-  }
-  useEffect(() => {
-    updateWindowDimensions()
-    window.addEventListener('resize', updateWindowDimensions)
-    return () => window.removeEventListener('resize', updateWindowDimensions)
-  }, [])
-  
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    loaded === false && setLoaded(true)
-    pageTransitionReadyToEnter()
-  }, [])
-
-  useEffect(() => {
-    forceCheck()
   })
 
   if (!loaded) {

@@ -42,13 +42,13 @@ const Image = styled.div`
   margin: 0;
   width: 100%;
   height: 80vh;
-  min-height:400px;
+  min-height:300px;
   max-width: 100%;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
   ${SuperQuery().minWidth.md.css`
-    min-height:600px;
+    min-height:300px;
   `}
   ${SuperQuery().minWidth.lg.css`
     height: 85vh;

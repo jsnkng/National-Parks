@@ -110,9 +110,9 @@ const NewsReleases = styled.div`
       ${SuperQuery().minWidth.md.css`
         height: 16rem;
       `}
-    ${SuperQuery().minWidth.lg.css`
-      height: 18rem;
-    `}
+      ${SuperQuery().minWidth.lg.css`
+        height: 18rem;
+      `}
     }
     h4 {
       line-height: 1;
