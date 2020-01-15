@@ -91,7 +91,7 @@ export default Component
 
 const EntryFees = styled.div`
   padding-top: 1rem;
-  padding-bottom: .5rem;
+  padding-bottom: 1rem;
   margin: 0;
 
   .accordion {

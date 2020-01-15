@@ -153,4 +153,11 @@ const Events = styled.div`
       flex-direction: column-reverse;
     `}
   }
+  .section {
+    margin-top:0;
+    padding-top:0;
+    ${SuperQuery().minWidth.lg.css`
+      border: 0;
+    `}
+  }
 `

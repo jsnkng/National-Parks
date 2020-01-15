@@ -73,7 +73,6 @@ const Calendar = styled(DayPicker)`
 .DayPicker-Caption {
   display: table-caption;
   margin-bottom: 0.5rem;
-  padding: 0 0.5rem;
   text-align: left;
 }
 .DayPicker-Caption > div {
