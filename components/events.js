@@ -50,23 +50,22 @@ const Component = ({ events }) => {
                      
                       </Col>
                       <Col xs={12} lg={4}>
-                        <Row>
-                          <Col xs={12} sm={6} lg={12}>
-                          <h4>Event Schedule & Details</h4>
-                          <Calendar dates={item.dates} />
+                        <h4>Event Schedule & Details</h4>
+                        <Row className='reversible'>
+                          <Col xs={12} sm={6} md={6} lg={12}>
                           { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <>
-                            <h4>Time</h4>
+                            <h5>Time</h5>
                             <p>{item.times[0].timestart}–{item.times[0].timeend}</p> 
                           </>
                           }
                           {item.location !== '' &&
                             <>
-                              <h4>Location</h4>
+                              <h5>Location</h5>
                               <p>{item.location}</p>
                             </>
                           }
-                          <h4>Cost</h4> 
+                          <h5>Cost</h5> 
                           <p>{ item.isfree === 'false' 
                             ? item.feeinfo 
                             : item.feeinfo.length !== 0 && item.isfree === true 
@@ -76,7 +75,7 @@ const Component = ({ events }) => {
                           </p> 
 
                           {(item.contactname !== '' || item.contacttelephonenumber !== '' || item.contactemailaddress !== '') &&
-                            <h4>Contact</h4>
+                            <h5>Contact</h5>
                           }
                             {item.contactname !== '' &&
                               <>
@@ -96,11 +95,6 @@ const Component = ({ events }) => {
                                 emailAddress={item.contactemailaddress} />
                             }
 
-                            
-                          </Col>
-                          <Col xs={12} sm={6} lg={12}>
-                            
-                           
                             { item.regresinfo !== '' &&
                               <p><strong>Reservations: </strong>{item.regresinfo}
                               { item.regresurl !== '' &&
@@ -115,6 +109,9 @@ const Component = ({ events }) => {
                               </>
                             }
                             
+                          </Col>
+                          <Col xs={12} sm={6} md={6} lg={12}>
+                            <Calendar dates={item.dates} />
                           </Col>
                         </Row>
                       </Col>
@@ -135,5 +132,10 @@ const Component = ({ events }) => {
 export default Component
 
 const Events = styled.div`
- 
+  .reversible {
+    flex-direction: column-reverse;
+    ${SuperQuery().minWidth.sm.css`
+    flex-direction: row;
+    `}
+  }
 `

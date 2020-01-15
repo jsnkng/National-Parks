@@ -17,21 +17,13 @@ export default Component
 const Calendar = styled(DayPicker)`
   .DayPicker {
     display: inline-block;
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 0;
-    min-width: 100%;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1rem;
-      margin: 0;
-    `}
-
   }
   .DayPicker-wrapper {
   position: relative;
   flex-direction: row;
-  padding-bottom: 1rem;
   user-select: none;
-  border: 3px solid ${({ theme }) => theme.colors.offbackground};
 }
 .DayPicker-Months {
   display: flex;
@@ -41,7 +33,6 @@ const Calendar = styled(DayPicker)`
 .DayPicker-Month {
   display: table;
   margin: 0 1rem;
-  margin-top: 1rem;
   border-spacing: 0;
   border-collapse: collapse;
   user-select: none;
@@ -52,8 +43,8 @@ const Calendar = styled(DayPicker)`
 }
 .DayPicker-NavButton {
   position: absolute;
-  top: 1rem;
-  right: 1.5rem;
+  top: 0.1m25rem;
+  right: 0.5rem;
   left: auto;
   display: inline-block;
   margin-top: 2px;
@@ -151,8 +142,11 @@ const Calendar = styled(DayPicker)`
 }
 /* Default modifiers */
 .DayPicker-Day--today {
-  font-size: 1.5rem !important;
   font-weight: 700;
+  font-size: 120%;
+  padding:0;
+  color: ${({ theme }) => theme.colors.box_background} !important;
+  background-color: ${({ theme }) => theme.colors.text};
 }
 .DayPicker-Day--outside {
   color: #8B9898;
@@ -163,11 +157,17 @@ const Calendar = styled(DayPicker)`
   cursor: default;
   background-color: #eff1f1; 
 }
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside).DayPicker-Day--today {
+  font-weight: 700;
+  font-size: 120%;
+  padding:0;
+  color: ${({ theme }) => theme.colors.text} !important;
+}
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
   position: relative;
   padding: 0.45rem;
-  background-color: ${({ theme }) => theme.colors.color_one};
-  color: ${({ theme }) => theme.colors.color_four};
+  background-color: ${({ theme }) => theme.colors.color_two};
+  color: #f1f1f1;
 }
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
   background-color: ${({ theme }) => theme.colors.color_five};
