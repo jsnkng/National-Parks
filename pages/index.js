@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
+import fetch from 'isomorphic-unfetch'
 
 import Footer from '../components/footer'
 import FindAPark from '../components/findapark'
