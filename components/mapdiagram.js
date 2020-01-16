@@ -56,7 +56,7 @@ const Map = styled.svg.attrs(props => ({
     stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.trans_back};
+    fill: ${({ theme }) => theme.colors.spinner};
     -webkit-transition: fill .4s ease;
     -moz-transition: fill .4s ease;
     -o-transition: fill .4s ease;
@@ -89,7 +89,7 @@ const Map = styled.svg.attrs(props => ({
     stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.trans_back};
+    fill: ${({ theme }) => theme.colors.spinner};
     cursor: default;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;

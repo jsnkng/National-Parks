@@ -25,12 +25,6 @@ const Component = ({manageFuture}) => {
       <Col xs={12} sm={12} md={4} style={{position: 'relative'}}>
         <a href='/'><img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' /></a>
         <h2>Explore America’s National Parks</h2>
-        {/* <h3>O beautiful for spacious skies,<br />
-            For amber waves of grain,<br />
-            For purple mountain majesties<br />
-            Above the fruited plain!<br />
-            America! America!</h3> */}
-       
         <h3>Find a Park</h3>
         <select value={`/state/${highlighted}/`} onChange={handleStateChange.bind(this)}>
           <option>By State</option>
@@ -217,15 +211,6 @@ const FindAPark = styled.div`
     line-height: 1;
     font-weight: 400;
     letter-spacing: -0.1rem;
-    ${'' /* margin: .5rem 0 .5rem .5rem;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.625rem;
-      margin: .75rem 0 0 .25rem;
-    `} 
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 1.75rem;
-      margin: 1rem 0 0 .5rem;
-    `}  */}
   }
 
   select {
@@ -257,22 +242,12 @@ const FindAPark = styled.div`
     ${SuperQuery().minWidth.md.css`
     padding:0;
     `}
-
-    ${'' /* ${SuperQuery().minWidth.md.css`
-    font-size: 1.25rem;
-      margin: .5rem 0 .75rem .25rem;
-    `} 
-    ${SuperQuery().minWidth.lg.css`
-      padding: .25rem;
-      font-size: 1.75rem;
-      margin: .5rem 0 0 .5rem;
-    `}  */}
   }
 `
 
 const MapDiagram__Wrapper = styled.div`
   margin: 2rem -1.25rem;
   ${SuperQuery().minWidth.md.css`
-    margin: -2.25rem -1.25rem 0 3rem;
+    margin: 0 -2rem 0 2rem;
   `}
 `

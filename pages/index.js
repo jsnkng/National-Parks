@@ -36,10 +36,12 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           <FindAPark manageFuture={manageFuture} />
         </FindAPark__Container>
         
-        <div className='backgroundInfo' onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}>
-          <p>{parks[0].name}</p>
-          <p>{parks[0].images[0].title}</p>
-          <p>{parks[0].images[0].credit}</p>
+        <div className='backgroundInfo' 
+          onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
+            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}>
+          <p>{parks[0].name}<br />
+          {parks[0].images[0].title}<br />
+          {parks[0].images[0].credit}</p>
         </div>
       </Content>
       <Footer themeName={themeName} setThemeName={setThemeName} />
@@ -78,25 +80,25 @@ const Content = styled.main`
   .backgroundInfo {
     font-size: .875rem;
     position: absolute;
-    bottom: 4rem;
-    left: 2rem;
+    bottom: 2.5rem;
+    left: 1.25rem;
   }
  .overlay {
-   position: absolute;
-   top: 0;
-   left: 0;
-   height: 100vh;
-   width: 100vw;
-   background-color: ${ ({ theme }) => theme.colors.trans_back };
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: ${ ({ theme }) => theme.colors.trans_back };
  }
 `
 const FindAPark__Container = styled.div`
-  ${SuperQuery().maxWidth.of('360px').css`
+  ${'' /* ${SuperQuery().maxWidth.of('360px').css`
   `}
   ${SuperQuery().minWidth.sm.css`
-    padding: 1.5rem 0 0 2rem;
+    padding: 0 0 0 0.25rem;
   `}
   ${SuperQuery().minWidth.lg.css`
-    padding: 1.5rem 0 0 2rem;
-  `}
+    padding: 0 0 0 1rem;
+  `} */}
 `
