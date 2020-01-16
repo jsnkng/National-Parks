@@ -39,10 +39,10 @@ export default Component
 const Footer = styled.footer`
 color: ${({ theme }) => theme.colors.text};
   z-index: 900;
-  height: 40px;
+  height: 3rem;
   .bottom {
     display: flex;
-    align-content: center;
+    align-content: flex-start;
     ${SuperQuery().minWidth.md.css`
       padding:  0;
     `}
