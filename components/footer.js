@@ -76,8 +76,13 @@ color: ${({ theme }) => theme.colors.text};
       margin: 0;
       &:hover {
         padding: 14px;
+        border-radius: 50%;
       }
+
+      background-color: rgba(0,0,0,0.1);
       filter: ${({ theme }) => theme.colors.color_filter};
+      transition: filter 0.25s;
+
     }
   }
 `

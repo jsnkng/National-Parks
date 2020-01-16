@@ -23,7 +23,7 @@ const Component = ({manageFuture}) => {
   <Grid fluid={true}>
     <Row>
       <Col xs={12} sm={12} md={4} style={{position: 'relative'}}>
-        <img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' />
+        <a href='/'><img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' /></a>
         <h2>Explore America’s National Parks</h2>
         {/* <h3>O beautiful for spacious skies,<br />
             For amber waves of grain,<br />
@@ -272,4 +272,7 @@ const FindAPark = styled.div`
 
 const MapDiagram__Wrapper = styled.div`
   margin: 2rem -1.25rem;
+  ${SuperQuery().minWidth.md.css`
+    margin: -2.25rem -1.25rem 0 3rem;
+  `}
 `

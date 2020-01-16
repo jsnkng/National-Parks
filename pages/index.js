@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import Head from 'next/head'
+
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
@@ -34,7 +35,8 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
         <FindAPark__Container>
           <FindAPark manageFuture={manageFuture} />
         </FindAPark__Container>
-        <div className='backgroundInfo'>
+        
+        <div className='backgroundInfo' onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}>
           <p>{parks[0].name}</p>
           <p>{parks[0].images[0].title}</p>
           <p>{parks[0].images[0].credit}</p>
