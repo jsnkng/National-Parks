@@ -37,16 +37,14 @@ const Component = ({ themeName, setThemeName }) => {
 export default Component
 
 const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
+color: ${({ theme }) => theme.colors.text};
   z-index: 900;
   .bottom {
     display: flex;
-    align-content: center;
-    margin: -4rem 0;
-    padding: 1rem 0 1rem 0;
+    align-content: flex-start;
+    margin: -3rem 0 0 0;
     ${SuperQuery().minWidth.md.css`
-    padding: 4rem 0 2rem 0;
+      padding:  0;
     `}
     a {
       cursor: pointer;
@@ -59,7 +57,7 @@ const Footer = styled.footer`
     display: flex;
     justify-content: flex-start;
     font-size: 0.75rem;
-    padding: 0.25rem 0;
+    padding: 1rem 0 0 0;
     z-index: 1000;
   }
   .bottom__themeswitcher {
@@ -74,11 +72,12 @@ const Footer = styled.footer`
       height: 40px;
       cursor: pointer;
       outline: none;
-      padding: 8px;
-      margin: -8px 0;
+      padding: 12px;
+      margin: 0;
       &:hover {
-        padding: 10px;
+        padding: 14px;
       }
+      filter: ${({ theme }) => theme.colors.color_filter};
     }
   }
 `

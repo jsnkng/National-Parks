@@ -20,8 +20,10 @@ const Component = ({manageFuture}) => {
 
   return (
   <FindAPark>
-    <Row__Decorated>
-      <Col__Decorated xs={12} sm={12} md={4}>
+  <Grid fluid={true}>
+    <Row>
+      <Col xs={12} sm={12} md={4} style={{position: 'relative'}}>
+        <img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' />
         <h2>Explore America’s National Parks</h2>
         {/* <h3>O beautiful for spacious skies,<br />
             For amber waves of grain,<br />
@@ -139,9 +141,9 @@ const Component = ({manageFuture}) => {
           </option>
         </select>
 
-      </Col__Decorated>
-      <Col__Decorated xs={12} sm={12} md={8}>
-        <MapDiagram__Wrapper>
+      </Col>
+      <Col xs={12} sm={12} md={8}>
+          <MapDiagram__Wrapper>
           <MapDiagram
           className="mapdiagram" 
           territories={'none'} 
@@ -150,8 +152,9 @@ const Component = ({manageFuture}) => {
           manageFuture={manageFuture}
           />
         </MapDiagram__Wrapper>
-      </Col__Decorated>
-    </Row__Decorated> 
+      </Col>
+    </Row> 
+    </Grid>
   </FindAPark>
   )
 }
@@ -160,38 +163,61 @@ export default Component
 
 const FindAPark = styled.div`
   position: relative;
+  width: 95vw;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 120;
-  padding: 0 .75rem;
-  h2 {
-    letter-spacing: -1.5px;
-    font-size: 2.75rem;
-    letter-spacing: -1.5px;
-    margin: 0 0 0 .5rem;
-    padding: 0 0 .5rem 0;
+  padding: 0;
+  img.logo {
+    position: absolute;
+    top: 0rem;
+    right: 1.25rem;
+    width: 50px;
+    ${SuperQuery().minWidth.sm.css`
+      top: 0rem;
+      right: 1.5rem;
+      width: 60px;
+    
+    `}
+    ${SuperQuery().minWidth.md.css`
+      top: 0;
+      right: -0.5rem;
+      width: 60px;
+    `}
+    ${SuperQuery().minWidth.lg.css`
+      width: 80px;
+    `}
+  }
 
+  h2 {
+    font-size: 2.5rem;
+    letter-spacing: -0.1rem;
+    line-height: .925;
+    padding-bottom: 1rem;
+    margin:0 4rem 0 0;
     ${SuperQuery().maxWidth.of('325px').css`
       font-size: 2.375rem;
       padding: 1.875rem 0 .5rem 0;
     `}
+
+    ${SuperQuery().minWidth.sm.css`
+    margin:0 15rem 0 0;
+    `}
     ${SuperQuery().minWidth.md.css`
-      font-size: 2.5rem;
-      margin: .75rem 0 0 .25rem;
+    margin:0;
     `} 
     ${SuperQuery().minWidth.lg.css`
       font-size: 3.375rem;
-      margin: .25rem 0 0 .5rem;
     `} 
   }
   h3 {
     text-align: left;
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 1;
     font-weight: 400;
-    letter-spacing: -1px;
-    margin: .5rem 0 .5rem .5rem;
+    letter-spacing: -0.1rem;
+    ${'' /* margin: .5rem 0 .5rem .5rem;
     ${SuperQuery().minWidth.md.css`
       font-size: 1.625rem;
       margin: .75rem 0 0 .25rem;
@@ -199,7 +225,7 @@ const FindAPark = styled.div`
     ${SuperQuery().minWidth.lg.css`
       font-size: 1.75rem;
       margin: 1rem 0 0 .5rem;
-    `} 
+    `}  */}
   }
 
   select {
@@ -207,10 +233,10 @@ const FindAPark = styled.div`
     background: transparent;
     font-size: 1.5rem;
     outline: none;
-    margin: .75rem 0 .75rem .5rem;
-    padding: .125rem;
+    margin: 0.75rem 0 0.75rem -0.125rem;
+    padding: 0.125rem;
     width: 90%;
-    color: ${({ theme }) => theme.colors.text};
+    
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
@@ -218,16 +244,21 @@ const FindAPark = styled.div`
     background-repeat: no-repeat;
     background-size: 1ex;
     background-origin: content-box;
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmVyc2lvbj0iMS4xIgogICBpZD0ic3ZnMiIKICAgdmlld0JveD0iMCAwIDM1Ljk3MDk4MyAyMy4wOTE1MTgiCiAgIGhlaWdodD0iNi41MTY5Mzk2bW0iCiAgIHdpZHRoPSIxMC4xNTE4MTFtbSI+CiAgPGRlZnMKICAgICBpZD0iZGVmczQiIC8+CiAgPG1ldGFkYXRhCiAgICAgaWQ9Im1ldGFkYXRhNyI+CiAgICA8cmRmOlJERj4KICAgICAgPGNjOldvcmsKICAgICAgICAgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PgogICAgICAgIDxkYzp0eXBlCiAgICAgICAgICAgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIgLz4KICAgICAgICA8ZGM6dGl0bGU+PC9kYzp0aXRsZT4KICAgICAgPC9jYzpXb3JrPgogICAgPC9yZGY6UkRGPgogIDwvbWV0YWRhdGE+CiAgPGcKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjAyLjAxNDUxLC00MDcuMTIyMjUpIgogICAgIGlkPSJsYXllcjEiPgogICAgPHRleHQKICAgICAgIGlkPSJ0ZXh0MzMzNiIKICAgICAgIHk9IjYyOS41MDUwNyIKICAgICAgIHg9IjI5MS40Mjg1NiIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4KICAgICAgICAgeT0iNjI5LjUwNTA3IgogICAgICAgICB4PSIyOTEuNDI4NTYiCiAgICAgICAgIGlkPSJ0c3BhbjMzMzgiPjwvdHNwYW4+PC90ZXh0PgogICAgPGcKICAgICAgIGlkPSJ0ZXh0MzM0MCIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTo0MHB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6Rm9udEF3ZXNvbWU7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpGb250QXdlc29tZTtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIj4KICAgICAgPHBhdGgKICAgICAgICAgaWQ9InBhdGgzMzQ1IgogICAgICAgICBzdHlsZT0iZmlsbDojMzMzMzMzO2ZpbGwtb3BhY2l0eToxIgogICAgICAgICBkPSJtIDIzNy41NjY5Niw0MTMuMjU1MDcgYyAwLjU1ODA0LC0wLjU1ODA0IDAuNTU4MDQsLTEuNDczMjIgMCwtMi4wMzEyNSBsIC0zLjcwNTM1LC0zLjY4MzA0IGMgLTAuNTU4MDQsLTAuNTU4MDQgLTEuNDUwOSwtMC41NTgwNCAtMi4wMDg5MywwIEwgMjIwLDQxOS4zOTM0NiAyMDguMTQ3MzIsNDA3LjU0MDc4IGMgLTAuNTU4MDMsLTAuNTU4MDQgLTEuNDUwODksLTAuNTU4MDQgLTIuMDA4OTMsMCBsIC0zLjcwNTM1LDMuNjgzMDQgYyAtMC41NTgwNCwwLjU1ODAzIC0wLjU1ODA0LDEuNDczMjEgMCwyLjAzMTI1IGwgMTYuNTYyNSwxNi41NDAxNyBjIDAuNTU4MDMsMC41NTgwNCAxLjQ1MDg5LDAuNTU4MDQgMi4wMDg5MiwwIGwgMTYuNTYyNSwtMTYuNTQwMTcgeiIgLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=");
-   ${'' /* background-color: ${({ theme }) => theme.colors.offbackground}; */}
-   border:none;
-
+    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 492 492' style='enable-background:new 0 0 492 492;' xml:space='preserve'><path d='M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12 C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084 c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864 l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z'/></svg>");
+    border:none;
+    filter: ${({ theme }) => theme.colors.color_filter};
    ${SuperQuery().maxWidth.of('325px').css`
-      margin: .5rem 0 .75rem .625rem;
-      padding: .125rem;
+      margin: 0.5rem 0 0.75rem 0.625rem;
+      padding: 0.125rem;
+    `}
+    ${SuperQuery().minWidth.sm.css`
+    padding:0 11rem 0 0;
+    `}
+    ${SuperQuery().minWidth.md.css`
+    padding:0;
     `}
 
-    ${SuperQuery().minWidth.md.css`
+    ${'' /* ${SuperQuery().minWidth.md.css`
     font-size: 1.25rem;
       margin: .5rem 0 .75rem .25rem;
     `} 
@@ -235,25 +266,10 @@ const FindAPark = styled.div`
       padding: .25rem;
       font-size: 1.75rem;
       margin: .5rem 0 0 .5rem;
-    `} 
+    `}  */}
   }
 `
-const Row__Decorated = styled(Row)`
-  padding: 0;
-  margin:0;
-`
 
-const Col__Decorated = styled(Col)`
-  padding: 0;
-  padding: 0;
-`
 const MapDiagram__Wrapper = styled.div`
-  padding: 1.5rem 0 1rem .25rem;  
-
-${SuperQuery().maxWidth.of('325px').css`
-  padding: 1rem 0 1rem .25rem;  
-`}
-${SuperQuery().minWidth.md.css`
-  padding: 1rem 0 0 1rem;    
-`} 
+  margin: 2rem -1.25rem;
 `

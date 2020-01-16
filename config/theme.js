@@ -21,13 +21,14 @@ const themes = {
     box_background: '#111111',
     offbackground: '#303030',
     text: '#ffffff',
-    color_one: '#a3dde8',
+    color_one: '#00acd0',
     color_two: '#256f8a',
     color_three: '#5cdfff',
     color_four: '#4e4f58',
-    color_five: '#cdedf2',
-    trans_back: 'rgba(0,0,0,0.8)',
+    color_five: '#c0f0ff',
+    trans_back: 'rgba(0,0,0,0.7)',
     spinner: 'rgba(0,0,0,0.2)',
+    color_filter: 'invert(54%) sepia(28%) saturate(812%) hue-rotate(145deg) brightness(97%) contrast(92%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
   },
   lightMode: {
@@ -35,13 +36,14 @@ const themes = {
     box_background: '#ffffff',
     offbackground: '#d2d1c7',
     text: '#111111',
-    color_one: '#5c2217',
+    color_one: '#722c12',
     color_two: '#ba471e',
     color_three: '#ec8217',
     color_four: '#b1b0a7',
-    color_five: '#32120d',
-    trans_back: 'rgba(245,245,245,0.8)',
+    color_five: '#33160b',
+    trans_back: 'rgba(255,255,255,0.6)',
     spinner: 'rgba(255,255,255,.2)',
+    color_filter: 'invert(18%) sepia(89%) saturate(1065%) hue-rotate(348deg) brightness(91%) contrast(94%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'
   }
 }
