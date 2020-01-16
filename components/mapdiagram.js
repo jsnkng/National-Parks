@@ -11,8 +11,8 @@ const Component = ({ territories, highlighted, setHighlighted, manageFuture }) =
       height="100%"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="174 100 959 593" 
-      enableBackground="new 174 100 959 593" 
+      viewBox="170 100 935 600" 
+      enableBackground="new 170 100 935 600" 
     > 
     <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
       { Object.entries(states).map(([key, value]) => {
@@ -56,11 +56,14 @@ const Map = styled.svg.attrs(props => ({
     stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.spinner};
     -webkit-transition: fill .4s ease;
     -moz-transition: fill .4s ease;
     -o-transition: fill .4s ease;
     transition: fill .4s ease;	 
+    fill: ${({ theme }) => theme.colors.trans_back};
+    ${SuperQuery().minWidth.sm.css`
+      fill: ${({ theme }) => theme.colors.spinner};
+    `}
   }
   path:hover, circle:hover {
     stroke: ${({ theme }) => theme.colors.color_five};
@@ -89,12 +92,15 @@ const Map = styled.svg.attrs(props => ({
     stroke: ${({ theme }) => theme.colors.color_five};
     stroke-width:1px;
     stroke-linejoin: round;
-    fill: ${({ theme }) => theme.colors.spinner};
     cursor: default;
 	 	-webkit-transition: fill .4s ease;
 	 	-moz-transition: fill .4s ease;
 	 	-o-transition: fill .4s ease;
 	 	transition: fill .4s ease;	 
+    fill: ${({ theme }) => theme.colors.trans_back};
+    ${SuperQuery().minWidth.sm.css`
+      fill: ${({ theme }) => theme.colors.spinner};
+    `}
   }
   #path67 {
     fill: none !important;

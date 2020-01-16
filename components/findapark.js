@@ -23,7 +23,6 @@ const Component = ({manageFuture}) => {
   <Grid fluid={true}>
     <Row>
       <Col xs={12} sm={12} md={4} style={{position: 'relative'}}>
-        <a href='/'><img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' /></a>
         <h2>Explore America’s National Parks</h2>
         <h3>Find a Park</h3>
         <select value={`/state/${highlighted}/`} onChange={handleStateChange.bind(this)}>
@@ -163,26 +162,7 @@ const FindAPark = styled.div`
   right: 0;
   z-index: 120;
   padding: 0;
-  img.logo {
-    position: absolute;
-    top: 0rem;
-    right: 1.25rem;
-    width: 50px;
-    ${SuperQuery().minWidth.sm.css`
-      top: 0rem;
-      right: 1.5rem;
-      width: 60px;
-    
-    `}
-    ${SuperQuery().minWidth.md.css`
-      top: 0;
-      right: -0.5rem;
-      width: 60px;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      width: 80px;
-    `}
-  }
+  
 
   h2 {
     font-size: 2.5rem;

@@ -9,12 +9,12 @@ import { Sun } from '../svgs/sun.svg'
 const Component = ({ themeName, setThemeName }) => {
   return (
     <Footer>
-      <Grid fluid={true}>
+      <Grid fluid>
         <Row className='bottom'>
-          <Col className='bottom__credit' xs={6}>
-            <a href="#"><strong>JSNKNG</strong> / 2020</a>
-          </Col>
-          <Col className='bottom__themeswitcher' xs={6}>
+        
+          <Col className='bottom__themeswitcher' xs={12}>
+          <a className='bottom__credit' href="#"><strong>JSNKNG</strong> / 2020</a>
+       
           { themeName !== 'lightMode' &&
             <Sun aria-label='Set Day Mode' onClick={() => { 
               setThemeName('lightMode')
@@ -39,10 +39,10 @@ export default Component
 const Footer = styled.footer`
 color: ${({ theme }) => theme.colors.text};
   z-index: 900;
+  height: 40px;
   .bottom {
     display: flex;
-    align-content: flex-start;
-    margin: -3rem 0 0 0;
+    align-content: center;
     ${SuperQuery().minWidth.md.css`
       padding:  0;
     `}
@@ -54,10 +54,8 @@ color: ${({ theme }) => theme.colors.text};
     }
   }
   .bottom__credit {
-    display: flex;
-    justify-content: flex-start;
     font-size: 0.75rem;
-    padding: 1rem 0 0 0;
+    padding: 0.75rem 0 0 0;
     z-index: 1000;
   }
   .bottom__themeswitcher {
@@ -68,20 +66,19 @@ color: ${({ theme }) => theme.colors.text};
     z-index: 1000;
 
     svg {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       cursor: pointer;
       outline: none;
-      padding: 12px;
+      padding: 10px;
       margin: 0;
       &:hover {
-        padding: 14px;
-        border-radius: 50%;
+        padding: 12px;
       }
 
-      background-color: rgba(0,0,0,0.1);
+      ${'' /* background-color: rgba(0,0,0,0.1);
       filter: ${({ theme }) => theme.colors.color_filter};
-      transition: filter 0.25s;
+      transition: filter 0.25s; */}
 
     }
   }
