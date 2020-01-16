@@ -240,9 +240,8 @@ const BackgroundOverlay = styled.div`
 `
 const BackgroundDetails = styled.div`
 position: absolute;
-bottom: 0.5rem;
+bottom: 1rem;
 left: 1.25rem;
-  width: 10rem;
   color: ${({ theme }) => theme.colors.text};
   text-align: left;
   font-size: .75rem;
