@@ -10,11 +10,11 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
 
-    ${SuperQuery().minWidth.of('1240px').css`
-      font-size: 21px;
+    ${SuperQuery().minWidth.of('1360px').css`
+      font-size: 22px;
     `}
-    ${SuperQuery().minWidth.of('1840px').css`
-      font-size: 30px;
+    ${SuperQuery().minWidth.of('2400px').css`
+      font-size: 28px;
     `}
   }
   body {
@@ -116,6 +116,9 @@ const GlobalStyle = createGlobalStyle`
         fill: ${({ theme }) => theme.colors.color_two};
         ${'' /* border-radius:12px; */}
       }
+    }
+    &:focus {
+      text-decoration: underline !important;
     }
   }
   
@@ -225,6 +228,9 @@ const GlobalStyle = createGlobalStyle`
   &:hover {
     color: ${({ theme }) => theme.colors.color_two};
   }
+  &:focus {
+    text-decoration: underline !important;
+  }
   &.hidden {
     display:none;
   }
@@ -256,6 +262,9 @@ const GlobalStyle = createGlobalStyle`
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.color_two};
     background-color: rgba(255,255,255,.015);
+  }
+  &:focus {
+    text-decoration: underline !important;
   }
   ${SuperQuery().minWidth.md.css`
     float: right;
@@ -297,6 +306,9 @@ const GlobalStyle = createGlobalStyle`
       margin-right:0px;
       margin-top:0px;
     }
+  }
+  .accordion__button:focus {
+    text-decoration: underline;
   }
   .accordion__button:hover {
     color: ${({ theme }) => theme.colors.color_two};

@@ -60,7 +60,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           </div></a>
           <Grid__FindAPark fluid>
             <Row>
-              <Col  xs={12} smOffset={2} sm={8} mdOffset={0} md={4} lg={4}>
+              <Col  xs={12} smOffset={2} sm={8} mdOffset={0} md={4} lg={3}>
                 
                 <h1><a href="/">Explore America’s<br /> National Parks</a></h1>
                 
@@ -108,7 +108,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
               
                 
               </Col>
-              <Col xs={12} smOffset={2} sm={8} mdOffset={0} md={8} lg={8}>
+              <Col xs={12} smOffset={2} sm={8} mdOffset={0} md={8} lg={9}>
 
                 <MapDiagram__Wrapper>
                   <MapDiagram
@@ -218,6 +218,13 @@ const Content = styled.main`
   margin: 0 auto;
   color: ${({ theme }) => theme.colors.home_text };
   z-index: 100;
+  width: 90%;
+
+  ${SuperQuery().minWidth.of('1360px').css`
+  padding: 6rem;
+    width: 100%;
+    `}
+
   a {
     cursor: pointer;
     text-decoration: none;
@@ -319,6 +326,13 @@ const Grid__FindAPark = styled(Grid)`
     margin: 0 0 1rem 0;
   `}
 
+  ${'' /* ${SuperQuery().minWidth.of('1240px').css`
+    margin: 0  0 0 -12rem;
+    `}
+    ${SuperQuery().minWidth.of('1840px').css`
+    margin: 0  0 0 -22rem;
+    `} */}
+
   h1 {
     font-size: 2.5rem;
     letter-spacing: -0.1rem;
@@ -412,4 +426,11 @@ const MapDiagram__Wrapper = styled.div`
   ${SuperQuery().minWidth.md.and.landscape.css`
     margin: 0 2rem 0 3rem;
   `}
+
+  ${'' /* ${SuperQuery().minWidth.of('1240px').css`
+    margin: 0 -18rem 0 0;
+    `}
+    ${SuperQuery().minWidth.of('1840px').css`
+    margin: 0 -28rem 0 0;
+    `} */}
 `

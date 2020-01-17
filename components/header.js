@@ -61,12 +61,18 @@ const Header = styled.header`
     text-decoration: none;
     border: none;
     color: inherit;
+    &:focus {
+      text-decoration: underline !important;
+    }
   }
   .top__back {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-grow: 3;
+    &:focus {
+      text-decoration: underline !important;
+    }
   }
   svg {
     width: 1.875rem;
