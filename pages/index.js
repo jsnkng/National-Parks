@@ -96,10 +96,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <option label='National Parks' value='/designation/National%20Park/'>National Parks</option>
                 <option label='National Preserves' value='/designation/National%20Preserve/'>National Preserves</option>
                 <option label='National Recreation Areas' value='/designation/National%20Recreation%20Area/'>National Recreation Areas</option>
-                <option label='National Recreational Rivers' value='/designation/National%20Recreational%20River/'>National Recreational Rivers</option>
-                <option label='National Rivers' value='/designation/National%20River/'>National Rivers</option>
                 <option label='National Rivers & Recreation Areas' value='/designation/National%20River%20%26%20Recreation%20Area/'>National Rivers & Recreation Areas</option>
-                <option label='National Scenic Riverways' value='/designation/National%20Scenic%20Riverway/'>National Scenic Riverways</option>
                 <option label='National Scenic Trails' value='/designation/National%20Scenic%20Trail/'>National Scenic Trails</option>
                 <option label='National Seashores' value='/designation/National%20Seashore/'>National Seashores</option>
                 <option label='Cultural Heritage Corridors' value='/designation/Cultural%20Heritage%20Corridor/'>Cultural Heritage Corridors</option>
