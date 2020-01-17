@@ -11,6 +11,8 @@ import SuperQuery from '@themgoncalves/super-query'
 import states from '../config/states'
 import MapDiagram from '../components/mapdiagram'
 import Footer from '../components/footer'
+import { Moon } from '../svgs/moon.svg'
+import { Sun } from '../svgs/sun.svg'
 
 const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
@@ -34,7 +36,8 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
     setLoaded(true)
     pageTransitionReadyToEnter()
 
-    console.log(parks)
+    
+    // console.log(parks)
 
   }, [])
 
@@ -201,7 +204,30 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
         </Content>
 
         <FooterHome>
-          <Footer themeName={themeName} setThemeName={setThemeName} />
+
+          <Grid fluid>
+          <Row className='bottom'>
+          
+            <Col className='bottom__themeswitcher' xs={12}>
+            <a className='bottom__credit' href="#"><strong>JSNKNG</strong> / 2020</a>
+        
+            { themeName !== 'lightMode' &&
+              <Sun aria-label='Set Day Mode' onClick={() => { 
+                setThemeName('lightMode')
+                document.cookie = `themeName=lightMode; path=/`
+              } } />
+            }
+            { themeName === 'lightMode' &&
+              <Moon aria-label='Set Night Mode'  onClick={() => { 
+                setThemeName('darkMode')
+                document.cookie = `themeName=darkMode; path=/`
+              } } />
+            }
+            </Col>
+          </Row> 
+        </Grid>
+
+        
         </FooterHome>
 
       </Background>
@@ -247,10 +273,10 @@ const BackgroundDetails = styled.div`
 position: absolute;
 bottom: 1rem;
 left: 1.25rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.home_text};
   text-align: left;
   font-size: .75rem;
-  text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.background};
+  text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
   z-index: 100;
 
   img.logo {
@@ -259,7 +285,7 @@ left: 1.25rem;
 `
 const Content = styled.main`
   margin: 0 auto;
-  color: ${({ theme }) => theme.colors.text };
+  color: ${({ theme }) => theme.colors.home_text };
   z-index: 100;
   a {
     cursor: pointer;
@@ -304,6 +330,53 @@ position: absolute;
   left: 0;
   right: 0;
   z-index: 100;
+  color: ${({ theme }) => theme.colors.home_text };
+  z-index: 900;
+  height: 3rem;
+  .bottom {
+    display: flex;
+    align-content: flex-start;
+    ${SuperQuery().minWidth.md.css`
+      padding:  0;
+    `}
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      color: inherit;
+    }
+  }
+  .bottom__credit {
+    font-size: 0.75rem;
+    padding: 0.75rem 0 0 0;
+    z-index: 1000;
+  }
+  .bottom__themeswitcher {
+    display: flex;
+    justify-content: flex-end;
+    width: 52px;
+    height: 28px;
+    z-index: 1000;
+
+    svg {
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      outline: none;
+      padding: 10px;
+      margin: 0;
+      &:hover {
+        padding: 12px;
+      }
+      margin-right: -1rem;
+
+      ${'' /* background-color: rgba(0,0,0,0.1); */}
+      ${'' /* filter: ${({ theme }) => theme.colors.color_filter}; */}
+      transition: filter 0.25s;
+
+    }
+  }
+
 `
 
 const Grid__FindAPark = styled(Grid)`
@@ -319,7 +392,8 @@ const Grid__FindAPark = styled(Grid)`
     line-height: .925;
     margin: 0;
     padding: 0;
-    text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.background};
+    text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
+    border-bottom:1px solid ${({ theme }) => theme.colors.home_text};
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.75rem;
     `}
@@ -330,7 +404,7 @@ const Grid__FindAPark = styled(Grid)`
       font-size: 2.5rem;
     `}
     a {
-      color: ${({ theme }) => theme.colors.text};
+      color: ${({ theme }) => theme.colors.home_text};
       text-decoration: none !important;
     }
   }
@@ -340,7 +414,8 @@ const Grid__FindAPark = styled(Grid)`
     line-height: 1;
     font-weight: 400;
     letter-spacing: -0.1rem;
-    text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.background};
+    text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
+    border-bottom: 0;
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.25rem;
     `}
@@ -356,12 +431,14 @@ const Grid__FindAPark = styled(Grid)`
     display: block;
     width: 100%;
     background: rgba(0,0,0,0);
+    color:#bbb;
     filter: ${({ theme }) => theme.colors.color_filter};
 
     font-size: 1.5rem;
     outline: none;
     margin: 0.75rem 0 0.75rem -0.125rem;
     padding: 0.375rem 0.25rem;
+    
     
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -372,7 +449,7 @@ const Grid__FindAPark = styled(Grid)`
     background-origin: content-box;
     background-image: url("data:image/svg+xml;utf8,<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 492 492' style='enable-background:new 0 0 492 492;' xml:space='preserve'><path d='M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12 C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084 c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864 l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z'/></svg>");
     border: none;
-    border-bottom: 3px solid #000000;
+    border-bottom: 3px solid #666;
     border-radius: 0;
 
 

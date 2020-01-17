@@ -129,21 +129,25 @@ const Header = styled.header`
     min-width: 110px;
   }
 
+  
   .top__logo--image {
     cursor: pointer;
     border: none;
-    width: 2.25em;
+    width: 2.5em;
     margin-right: .5rem;
+    ${SuperQuery().minWidth.md.css`
+      width: 3.25rem;
+    `}
   }
   .top__logo--text {
     text-align:right;
-    font-size: .875rem;
+    font-size: .925rem;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin-right: .5rem;
+    margin-right: .375rem;
     ${SuperQuery().minWidth.md.css`
-      font-size: .875rem;
+      font-size: 1.0625rem;
       letter-spacing: -1.5px;
     `}
   }
