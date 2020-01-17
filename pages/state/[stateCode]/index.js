@@ -48,9 +48,9 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
         </Head>
 
         <Background backgroundURL={backgroundURL}> 
-          <Spinner__top className={isSpinnerVisible ? 'show' : 'hide'}>
+          <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
             <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
-          </Spinner__top>
+          </Spinner>
           <BackgroundOverlay onClick={() => { 
               manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
               handleBannerClick()
@@ -161,7 +161,7 @@ const BackgroundOverlay = styled.div`
   height: 100vh;
   width: 100vw;
   z-index:1;
-  background-color: ${ ({ theme }) => theme.colors.spinner };
+  background-color: ${ ({ theme }) => theme.colors.image_overlay_light };
 `
 const BackgroundDetails = styled.div`
   position: absolute;
@@ -232,7 +232,7 @@ const Spinner = styled.div`
   height: 100%;
   position: absolute;
   z-index: 100;
-  background-color: ${props => props.theme.colors.trans_back};
+  background-color: ${props => props.theme.colors.image_overlay_light};
   color: ${props => props.theme.colors.text};
   font-size: .7em;
   &.show {
@@ -246,49 +246,6 @@ const Spinner = styled.div`
     display: block;
     z-index: 12031;
   }
-  #progress .spinner-icon {
-    width: 3rem;
-    height: 3rem;
-    margin: 100px auto;
-    box-sizing: border-box;
-    border: solid 8px transparent;
-    border-top-color:  ${({ theme }) => theme.colors.color_two};
-    border-left-color:  ${({ theme }) => theme.colors.color_three};
-    border-radius: 50%;
-    -webkit-animation: nprogress-spinner 400ms linear infinite;
-    animation: nprogress-spinner 400ms linear infinite;
-  }
-
-  @-webkit-keyframes nprogress-spinner {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  @keyframes nprogress-spinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-`
-
-const Spinner__top = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 100;
-  background-color: ${props => props.theme.colors.trans_back};
-  color: ${props => props.theme.colors.text};
-  font-size: .7em;
-  &.show {
-    display: block;
-  }
-  &.hide {
-    display: none;
-  }
-
-  #progress .spinner {
-    display: block;
-    z-index: 12031;
-  }
-
   #progress .spinner-icon {
     width: 4rem;
     height: 4rem;
@@ -301,8 +258,7 @@ const Spinner__top = styled.div`
     -webkit-animation: nprogress-spinner 400ms linear infinite;
     animation: nprogress-spinner 400ms linear infinite;
   }
-  
- 
+
   @-webkit-keyframes nprogress-spinner {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }

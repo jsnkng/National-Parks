@@ -36,7 +36,7 @@ const Park = styled.div`
   margin: 0;
   padding: 0;
   box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
-  background-color: ${({ theme }) => theme.colors.trans_back};
+  background-color: ${({ theme }) => theme.colors.image_overlay_light};
   background-image: ${props => props.backgroundURL};
   background-size: cover;
   background-position: center bottom;
@@ -47,7 +47,7 @@ const Park = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    background-color: ${({ theme }) => theme.colors.spinner};
+    background-color: ${({ theme }) => theme.colors.image_overlay_light};
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
     height: 100%;
@@ -64,16 +64,16 @@ const Park = styled.div`
       top: 10rem;
       left: 1rem;
       border: none;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       margin: .5rem 0 0 .375rem;
       padding: 0; 
     }
     h3 {
       position:absolute;
-      top: 11.75rem;
+      top: 12rem;
       left: 1rem;
       text-align: left;
-      font-size: 1rem;
+      font-size: 1.25rem;
       font-weight: 400;
       margin: 0 0 0 .375rem;
       padding: 0; 
@@ -94,7 +94,7 @@ const ResponsiveImage = styled.div`
   top: 0;
   left: 0;
   
-  background-color: ${({ theme }) => theme.colors.trans_back};
+  background-color: ${({ theme }) => theme.colors.image_overlay_light};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center bottom;
@@ -112,7 +112,7 @@ const Spinner = styled.div`
   height: 100%;
   position: absolute;
   z-index: 100;
-  background-color: ${props => props.theme.colors.trans_back};
+  background-color: ${props => props.theme.colors.image_overlay_light};
   color: ${props => props.theme.colors.text};
   font-size: .7em;
   &.show {

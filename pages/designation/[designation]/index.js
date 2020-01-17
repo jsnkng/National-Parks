@@ -52,11 +52,11 @@ const Designations = ({ data, designation, themeName, setThemeName, pageTransiti
             <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
           </Spinner>
           <BackgroundOverlay onClick={() => { 
-              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
+              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}/park/${data[backgroundIdx].parkCode}`)
               handleBannerClick()
            }} />
           <BackgroundDetails onClick={() => { 
-              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
+              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}`)
               handleBannerClick()
            }} >
             <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
@@ -160,7 +160,7 @@ const BackgroundOverlay = styled.div`
   height: 100vh;
   width: 100vw;
   z-index:1;
-  background-color: ${ ({ theme }) => theme.colors.spinner };
+  background-color: ${ ({ theme }) => theme.colors.image_overlay_light };
 `
 const BackgroundDetails = styled.div`
   position: absolute;
@@ -226,12 +226,13 @@ const Description = styled.div`
 const MapDiagram__Wrapper = styled.div`
 
 `
+
 const Spinner = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
   z-index: 100;
-  background-color: ${props => props.theme.colors.trans_back};
+  background-color: ${props => props.theme.colors.image_overlay_light};
   color: ${props => props.theme.colors.text};
   font-size: .7em;
   &.show {
@@ -246,9 +247,9 @@ const Spinner = styled.div`
     z-index: 12031;
   }
   #progress .spinner-icon {
-    width: 3rem;
-    height: 3rem;
-    margin: 100px auto;
+    width: 4rem;
+    height: 4rem;
+    margin: 300px auto;
     box-sizing: border-box;
     border: solid 8px transparent;
     border-top-color:  ${({ theme }) => theme.colors.color_two};
@@ -257,8 +258,7 @@ const Spinner = styled.div`
     -webkit-animation: nprogress-spinner 400ms linear infinite;
     animation: nprogress-spinner 400ms linear infinite;
   }
-  
- 
+
   @-webkit-keyframes nprogress-spinner {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -268,3 +268,4 @@ const Spinner = styled.div`
     100% { transform: rotate(360deg); }
   }
 `
+

@@ -29,8 +29,9 @@ const themes = {
     trans_back: 'rgba(0,0,0,0.8)',
     home_text: '#cfcfcf',
     home_text_shadow: '#111111',
-    overlay: 'rgba(0,0,0,0.72)',
-    spinner: 'rgba(0,0,0,0.4)',
+    image_overlay_light: 'rgba(0,0,0,0.45)',
+    image_overlay_opaque: 'rgba(0,0,0,0.55)',
+    spinner: 'rgba(0,0,0,0.9)',
     color_filter: 'invert(54%) sepia(28%) saturate(400%) hue-rotate(145deg) brightness(97%) contrast(92%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
   },
@@ -44,11 +45,12 @@ const themes = {
     color_three: '#ec8217',
     color_four: '#b1b0a7',
     color_five: '#D4CAB8',
-    trans_back: 'rgba(255,255,255,0.7)',
+    trans_back: 'rgba(255,255,255,0.8)',
     home_text: '#cfcfcf',
     home_text_shadow: '#111111',
-    overlay: 'rgba(50,50,50,.7)',
-    spinner: 'rgba(50,50,50,.4)',
+    image_overlay_light: 'rgba(50,50,50,0.35)',
+    image_overlay_opaque: 'rgba(0,0,0,0.40)',
+    spinner: 'rgba(255,255,255,.4)',
     color_filter: 'invert(18%) sepia(89%) saturate(1065%) hue-rotate(348deg) brightness(91%) contrast(94%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'
   }
