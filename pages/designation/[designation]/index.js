@@ -6,8 +6,9 @@ import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad, { forceCheck } from 'react-lazyload'
+import territories from '../../../config/states'
 
-import states from '../../../config/states'
+// import states from '../../../config/states'
 
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
@@ -60,8 +61,11 @@ const Designations = ({ data, designation, themeName, setThemeName, pageTransiti
               handleBannerClick()
            }} >
             <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
-            <div className='background__subtitle'>{data[backgroundIdx].designation}</div>
+            <div className='background__subtitle'>{data[backgroundIdx].states !== undefined ? data[backgroundIdx].states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / '): data[backgroundIdx].designation}</div>
             {/* <p className='background__description'>{data[backgroundIdx].description}</p> */}
+
+            
+            
           </BackgroundDetails> 
 
         <Header 

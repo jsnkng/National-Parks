@@ -78,7 +78,6 @@ color: ${({ theme }) => theme.colors.text};
       margin-right: -1rem;
 
       ${'' /* background-color: rgba(0,0,0,0.1); */}
-      filter: ${({ theme }) => theme.colors.color_filter};
       transition: filter 0.25s;
 
     }

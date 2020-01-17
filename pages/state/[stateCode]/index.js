@@ -85,7 +85,6 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
                     : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
                   title={item.name}
                   subtitle={item.designation}
-                  states={item.states}
                   href="/state/[stateCode]/park/[parkCode]"
                   as={`/state/${stateCode}/park/${item.parkCode}`}
 

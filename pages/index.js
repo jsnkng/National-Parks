@@ -317,6 +317,7 @@ const Content = styled.main`
     font-weight: 700;
     letter-spacing: -1px;
     margin-right: .5rem;
+    text-shadow: 0.5px 0.5px 1px ${({ theme }) => theme.colors.home_text_shadow};
     ${SuperQuery().minWidth.md.css`
       font-size: .875rem;
       letter-spacing: -1.5px;
@@ -350,6 +351,7 @@ position: absolute;
     font-size: 0.75rem;
     padding: 0.75rem 0 0 0;
     z-index: 1000;
+    text-shadow: 0.5px 0.5px 1px ${({ theme }) => theme.colors.home_text_shadow};
   }
   .bottom__themeswitcher {
     display: flex;
@@ -389,11 +391,11 @@ const Grid__FindAPark = styled(Grid)`
   h1 {
     font-size: 2.5rem;
     letter-spacing: -0.1rem;
-    line-height: .925;
+    line-height: .975;
     margin: 0;
-    padding: 0;
-    text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
-    border-bottom:1px solid ${({ theme }) => theme.colors.home_text};
+    padding: 0 0 0.5rem 0;
+    text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
+    border-bottom:3px solid ${({ theme }) => theme.colors.home_text};
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.75rem;
     `}
@@ -414,7 +416,7 @@ const Grid__FindAPark = styled(Grid)`
     line-height: 1;
     font-weight: 400;
     letter-spacing: -0.1rem;
-    text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
+    text-shadow: 0.5px 0.5px 2px ${({ theme }) => theme.colors.home_text_shadow};
     border-bottom: 0;
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.25rem;
@@ -429,16 +431,16 @@ const Grid__FindAPark = styled(Grid)`
 
   select {
     display: block;
-    width: 100%;
+    width: 104%;
     background: rgba(0,0,0,0.07);
     color:#222;
     filter: ${({ theme }) => theme.colors.color_filter};
 
-    text-shadow: 1px 1px 1px #fff;
+    text-shadow: 0.5px 0.5px 1px rgba(255,255,255,.4);
     font-size: 1.5rem;
     outline: none;
-    margin: 0.75rem 0 0.75rem -0.125rem;
-    padding: 0.375rem 0.25rem;
+    margin: 1rem -0.75rem 0.75rem -0.5rem;
+    padding: 0.375rem 0.5rem;
     
     
     -moz-appearance: none;
