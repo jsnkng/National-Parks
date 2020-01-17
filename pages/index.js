@@ -189,7 +189,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                   onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
                   `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}
                 >
-                  {parks[0].name}<br />
+                  {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
                   <strong>{parks[0].designation}</strong><br />
                   {states[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
                   {/* <a href='/'><img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' /></a> */}
