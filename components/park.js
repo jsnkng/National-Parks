@@ -13,22 +13,22 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
   return (
     <Park onClick={handleBannerClick}>
      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        {/* <div className="sk-cube-grid">
-          <div className="sk-cube sk-cube1"></div>
-          <div className="sk-cube sk-cube2"></div>
-          <div className="sk-cube sk-cube3"></div>
-          <div className="sk-cube sk-cube4"></div>
-          <div className="sk-cube sk-cube5"></div>
-          <div className="sk-cube sk-cube6"></div>
-          <div className="sk-cube sk-cube7"></div>
-          <div className="sk-cube sk-cube8"></div>
-          <div className="sk-cube sk-cube9"></div>
+        {/* <div className='sk-cube-grid'>
+          <div className='sk-cube sk-cube1'></div>
+          <div className='sk-cube sk-cube2'></div>
+          <div className='sk-cube sk-cube3'></div>
+          <div className='sk-cube sk-cube4'></div>
+          <div className='sk-cube sk-cube5'></div>
+          <div className='sk-cube sk-cube6'></div>
+          <div className='sk-cube sk-cube7'></div>
+          <div className='sk-cube sk-cube8'></div>
+          <div className='sk-cube sk-cube9'></div>
         Loading
         </div> */}
-        <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
+        <div id='progress'><div class='bar' role='bar'><div class='peg'></div></div><div class='spinner' role='spinner'><div class='spinner-icon'></div></div></div>
       </Spinner>
-      <div className="banner__header">
-        <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
+      <div className='banner__header'>
+        <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, 'ō')}}></h2>
         <h3>{subtitle}</h3>
       </div>
       <LazyLoad height={'100%'} offset={600}>

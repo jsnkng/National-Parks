@@ -95,7 +95,7 @@ const EntryFees = styled.div`
   margin: 0;
 
   .accordion {
-    background-color: #198b32;
+    background-color: #157E2C;
     color: #f1f1f1; 
     padding: .5rem;
   }
@@ -154,7 +154,7 @@ const EntryFees = styled.div`
   }
   h3 {
     background-color: #f1f1f1;
-    color: #198b32;
+    color: #157E2C;
     font-size: 1.75rem;
     border: none;
     margin: 0;

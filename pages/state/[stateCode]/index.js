@@ -49,17 +49,17 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
 
         <Background backgroundURL={backgroundURL}> 
           <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-            <div id="progress"><div className="bar" role="bar"><div className="peg"></div></div><div className="spinner" role="spinner"><div className="spinner-icon"></div></div></div>
+            <div class='progress' aria-hidden='true'><div className='bar' role='bar'><div className='peg'></div></div><div className='spinner' role='spinner'><div className='spinner-icon'></div></div></div>
           </Spinner>
           <BackgroundOverlay onClick={() => { 
-              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
+              manageFuture('/state/[stateCode]/park/[parkCode]', `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
               handleBannerClick()
            }} />
           <BackgroundDetails onClick={() => { 
-              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
+              manageFuture('/state/[stateCode]/park/[parkCode]', `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
               handleBannerClick()
            }} >
-            <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
+            <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, 'ō').replace(/&#257;/gi, 'ā')} </div>
             <div className='background__subtitle'>{data[backgroundIdx].designation}</div>
             {/* <p className='background__description'>{data[backgroundIdx].description}</p> */}
           </BackgroundDetails> 
@@ -77,15 +77,15 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
             i++
             return(
               <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 5 : i % 4 === 2 ? 7 : i % 4 === 3 ? 7 : 5 } key={item.id}>
-              <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${item.parkCode}`)}>
+              <div onClick={() => manageFuture('/state/[stateCode]/park/[parkCode]', `/state/${stateCode}/park/${item.parkCode}`)}>
               <LazyLoad offset={300}>
                 <ParkBanner
                   backgroundURL={item.images === undefined || item.images.length == 0 
-                    ? "/noimage.jpg" 
+                    ? '/noimage.jpg' 
                     : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
                   title={item.name}
                   subtitle={item.designation}
-                  href="/state/[stateCode]/park/[parkCode]"
+                  href='/state/[stateCode]/park/[parkCode]'
                   as={`/state/${stateCode}/park/${item.parkCode}`}
 
                 />
@@ -242,11 +242,11 @@ const Spinner = styled.div`
     display: none;
   }
 
-  #progress .spinner {
+  .progress .spinner {
     display: block;
     z-index: 12031;
   }
-  #progress .spinner-icon {
+  .progress .spinner-icon {
     width: 4rem;
     height: 4rem;
     margin: 300px auto;

@@ -329,7 +329,7 @@ const Component = ({ campgrounds }) => {
                       <div className='boxes'>
                         <h4>Regulations</h4>
                         <div className='p' dangerouslySetInnerHTML={{__html: item.regulationsoverview.replace(/\n/gi, '<br />')}}></div>
-                        <p><a href={item.regulationsurl} target='_blank' style={{ wordBreak: 'break-all'}}>{item.regulationsurl}</a></p>
+                        <p><a href={item.regulationsurl} target='_blank' style={{ wordBreak: 'break-all'}} rel="noreferrer">{item.regulationsurl}</a></p>
                       </div>
                     </Col>
                   </Row>
@@ -360,7 +360,7 @@ const Component = ({ campgrounds }) => {
                       {item.reservationsurl !== undefined && item.reservationsurl != '' && 
                         <span>
                           <h4>Reservations URL</h4>
-                          <p><a href={item.reservationsurl} target='_blank'>{item.reservationsurl}</a></p>
+                          <p><a href={item.reservationsurl} target='_blank' rel="noreferrer">{item.reservationsurl}</a></p>
                         </span>
                       }
                       </div>

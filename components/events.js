@@ -117,7 +117,7 @@ const Component = ({ events }) => {
                             {item.infourl !== '' &&
                               <>
                                 <h5>More Info</h5>
-                                <p><a href={item.infourl} target='_blank'>{item.infourl}</a></p> 
+                                <p><a href={item.infourl} target='_blank' rel="noreferrer">{item.infourl}</a></p> 
                               </>
                             }
                             

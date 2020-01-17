@@ -35,10 +35,10 @@ const Component = ({ people }) => {
       { people.slice(0,limit).map((item) => {
         return( 
           <Col xs={12} sm={6} md={4} lg={3} key={item.id}>
-            <a href={item.url} target="_blank">
+            <a href={item.url} target='_blank' rel="noreferrer">
             { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
               <LazyLoad offset={100}>
-                <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
+                <Image backgroundURL={item.listingimage.url}  className='lazyload__image--height' />
               </LazyLoad>
             }
             { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
@@ -57,7 +57,7 @@ const Component = ({ people }) => {
       </Row>
       <Row>
         <button 
-          className={ limit >= people.length ? "hidden btn__load-more" : "btn__load-more" } 
+          className={ limit >= people.length ? 'hidden btn__load-more' : 'btn__load-more' } 
           onClick={() => loadMore()}>
             Load More People
         </button>

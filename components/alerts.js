@@ -39,7 +39,7 @@ const Component = ({ alerts }) => {
                     <AccordionItemPanel>
                       <p>{item.description}{` `}
                       { item.url !== undefined && item.url !== "" &&
-                      <a href={item.url} target="_blank">[More]</a>
+                      <a href={item.url} target="_blank" rel="noreferrer">[More]</a>
                       }</p>
                     </AccordionItemPanel>
                   </AccordionItem>

@@ -41,7 +41,7 @@ const Component = ({ newsReleases }) => {
         { newsReleases.slice(0,limit).map((item) => {
           return (
           <Col xs={12} sm={6} key={item.id}>
-            <a href={item.url} target="_blank">
+            <a href={item.url} target="_blank" rel="noreferrer">
             {item.image.url === undefined || item.image.url.length === 0 && 
               <div className='articles__card--noimage'>
                 <div className='articles__card--title'>

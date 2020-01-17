@@ -36,7 +36,7 @@ const Component = ({ articles }) => {
         { articles.slice(0,limit).map((item) => {
           return (
           <Col xs={12} sm={6} md={4} lg={3} key={item.id}>
-            <a href={item.url} target="_blank">
+            <a href={item.url} target="_blank" rel="noreferrer">
             {item.listingimage.url === undefined || item.listingimage.url.length === 0 && 
               <div className='articles__card--noimage'>
                 <div className='articles__card--title'>

@@ -13,10 +13,10 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
   return (
     <Park onClick={handleBannerClick}>
       <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <div id="progress"><div className="bar" role="bar"><div className="peg"></div></div><div className="spinner" role="spinner"><div className="spinner-icon"></div></div></div>
+        <div class='progress' aria-hidden='true'><div className='bar' role='bar'><div className='peg'></div></div><div className='spinner' role='spinner'><div className='spinner-icon'></div></div></div>
       </Spinner>
-      <div className="banner__header">
-        <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
+      <div className='banner__header'>
+        <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, 'ō')}}></h2>
         <h3>{states !== undefined ? states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / '): subtitle}</h3>
       </div>
       <LazyLoad height={'100%'} offset={600}>
@@ -126,11 +126,11 @@ const Spinner = styled.div`
     display: none;
   }
 
-  #progress .spinner {
+  .caretprogress .spinner {
     display: block;
     z-index: 12031;
   }
-  #progress .spinner-icon {
+  .progress .spinner-icon {
     width: 3rem;
     height: 3rem;
     margin: 100px auto;

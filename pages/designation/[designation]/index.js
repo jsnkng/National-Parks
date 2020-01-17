@@ -50,17 +50,17 @@ const Designations = ({ data, designation, themeName, setThemeName, pageTransiti
         
         <Background backgroundURL={backgroundURL}> 
           <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-            <div id="progress"><div className="bar" role="bar"><div className="peg"></div></div><div className="spinner" role="spinner"><div className="spinner-icon"></div></div></div>
+            <div class='progress' aria-hidden='true'><div className='bar' role='bar'><div className='peg'></div></div><div className='spinner' role='spinner'><div className='spinner-icon'></div></div></div>
           </Spinner>
           <BackgroundOverlay onClick={() => { 
-              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}/park/${data[backgroundIdx].parkCode}`)
+              manageFuture('/state/[stateCode]/park/[parkCode]', `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}/park/${data[backgroundIdx].parkCode}`)
               handleBannerClick()
            }} />
           <BackgroundDetails onClick={() => { 
-              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}`)
+              manageFuture('/state/[stateCode]/park/[parkCode]', `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}`)
               handleBannerClick()
            }} >
-            <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
+            <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, 'ō').replace(/&#257;/gi, 'ā')} </div>
             <div className='background__subtitle'>{data[backgroundIdx].states !== undefined ? data[backgroundIdx].states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / '): data[backgroundIdx].designation}</div>
             {/* <p className='background__description'>{data[backgroundIdx].description}</p> */}
 
@@ -81,10 +81,10 @@ const Designations = ({ data, designation, themeName, setThemeName, pageTransiti
               i++
               return(
                 <Col__Decorated  xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={`${item.id}`}
-                 onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
+                 onClick={() => manageFuture('/state/[stateCode]/park/[parkCode]', `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
                   <ParkBanner 
                     backgroundURL={item.images === undefined || item.images.length == 0 
-                      ? "/noimage.jpg" 
+                      ? '/noimage.jpg' 
                       : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
                     title={item.name}
                     subtitle={item.designation}
@@ -246,11 +246,11 @@ const Spinner = styled.div`
     display: none;
   }
 
-  #progress .spinner {
+  .progress .spinner {
     display: block;
     z-index: 12031;
   }
-  #progress .spinner-icon {
+  .progress .spinner-icon {
     width: 4rem;
     height: 4rem;
     margin: 300px auto;
