@@ -12,7 +12,7 @@ const SlideShow = ({ images }) => {
       infiniteLoop={false} 
       emulateTouch={true} 
       showStatus={false}
-      showIndicators={true}
+      showIndicators={images.length > 1 ? true : false}
       swipeScrollTolerance={10}
       swipeable={true}>
       { images.slice(0).map((item, index) => {
