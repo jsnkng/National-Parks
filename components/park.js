@@ -13,7 +13,7 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
   return (
     <Park onClick={handleBannerClick}>
      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <div className="sk-cube-grid">
+        {/* <div className="sk-cube-grid">
           <div className="sk-cube sk-cube1"></div>
           <div className="sk-cube sk-cube2"></div>
           <div className="sk-cube sk-cube3"></div>
@@ -24,7 +24,8 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
           <div className="sk-cube sk-cube8"></div>
           <div className="sk-cube sk-cube9"></div>
         Loading
-        </div>
+        </div> */}
+        <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
       </Spinner>
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
@@ -128,6 +129,38 @@ const Spinner = styled.div`
   &.hide {
     display: none;
   }
+
+  #progress .spinner {
+    display: block;
+    z-index: 12031;
+  }
+  #progress .spinner-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 100px auto;
+    box-sizing: border-box;
+    border: solid 8px transparent;
+    border-top-color:  ${({ theme }) => theme.colors.color_two};
+    border-left-color:  ${({ theme }) => theme.colors.color_three};
+    border-radius: 50%;
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+  }
+  
+ 
+  @-webkit-keyframes nprogress-spinner {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes nprogress-spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+
+
+
   .sk-cube-grid {
     width: 40px;
     height: 40px;

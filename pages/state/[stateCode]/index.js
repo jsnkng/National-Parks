@@ -54,7 +54,7 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
                 <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
                 <div className='background__subtitle'>{data[backgroundIdx].designation}</div>
              
-                  <p className='background__description'>{data[backgroundIdx].description}</p>
+                  {/* <p className='background__description'>{data[backgroundIdx].description}</p> */}
               
         </BackgroundDetails> 
           
@@ -117,7 +117,7 @@ export default State
 
 const Content = styled.main`
   position:relative;
-  margin-top: 86vh;
+  margin-top: 100vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -158,7 +158,7 @@ const BackgroundOverlay = styled.div`
 `
 const BackgroundDetails = styled.div`
   position: absolute;
-  top: 33vh;
+  top: 66vh;
   left: 2rem;
   color: ${({ theme }) => theme.colors.home_text};
   text-align: left;

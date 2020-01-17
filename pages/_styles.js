@@ -384,9 +384,9 @@ const GlobalStyle = createGlobalStyle`
   ${'' /* #nprogress .spinner {
     display: block;
     position: fixed;
-    z-index: 1031;
-    top: .875rem;
-    left: .625rem;
+    z-index: 12031;
+    top: 1.875rem;
+    left: 3.625rem;
   }
   #nprogress .spinner-icon {
     width: 2.5rem;
@@ -398,7 +398,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 50%;
     -webkit-animation: nprogress-spinner 400ms linear infinite;
     animation: nprogress-spinner 400ms linear infinite;
-  } */}
+  }
   
   .nprogress-custom-parent {
     overflow: hidden;
@@ -410,7 +410,7 @@ const GlobalStyle = createGlobalStyle`
     position: absolute;
   }
   
-  ${'' /* @-webkit-keyframes nprogress-spinner {
+  @-webkit-keyframes nprogress-spinner {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
   }

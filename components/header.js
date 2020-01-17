@@ -42,7 +42,7 @@ const Header = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  height: 4rem;
+  height: 4.5rem;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -53,7 +53,7 @@ const Header = styled.header`
     position: relative;
   `}
   ${SuperQuery().minWidth.md.css`
-    height: 5rem;
+    height: 4.5rem;
   `}
   a {
     cursor: pointer;
