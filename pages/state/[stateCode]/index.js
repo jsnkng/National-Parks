@@ -74,7 +74,8 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
             return(
               <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 5 : i % 4 === 2 ? 7 : i % 4 === 3 ? 7 : 5 } key={item.id}>
               <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${item.parkCode}`)}>
-              <ParkBanner
+              <LazyLoad offset={300}>
+                <ParkBanner
                   backgroundURL={item.images === undefined || item.images.length == 0 
                     ? "/noimage.jpg" 
                     : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
@@ -84,7 +85,8 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
                   href="/state/[stateCode]/park/[parkCode]"
                   as={`/state/${stateCode}/park/${item.parkCode}`}
 
-                /></div>
+                />
+              </LazyLoad></div>
               </Col__Decorated>
             )
           })
@@ -120,19 +122,15 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: center;
   justify-content: left;
-  ${'' /* margin: 14rem 0 0 0;
-  ${SuperQuery().minWidth.md.css`
-    margin: 15rem 0 0 0;
-  `} */}
-  ${'' /* ${SuperQuery().maxWidth.of('896px').and.landscape.css`
-    margin: 0 0 4rem 0;
-  `} */}
+
 
 `
 const Row__Decorated = styled(Row)`
+  margin: 0;
   padding: 0;
 `
 const Col__Decorated = styled(Col)`
+  margin: 0;
   padding: 0;
 `
 const Background = styled.div`

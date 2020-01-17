@@ -33,6 +33,8 @@ const Component = ({ campgrounds }) => {
             <Col xs={12}>
               { campgrounds.slice(0).map((item, index) => {
               return(
+
+                <LazyLoad offset={120}>
               <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
                 <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                   <AccordionItemButton>
@@ -43,9 +45,8 @@ const Component = ({ campgrounds }) => {
                   <Row>
                     <Col xs={12}>
                       { item.images !== undefined &&  
-                      <LazyLoad offset={0}>
                         <SlideShow images={item.images} />
-                      </LazyLoad>
+                      
                       }
                       <p className='introduction'>{item.description}</p>
                       {(item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
@@ -368,6 +369,7 @@ const Component = ({ campgrounds }) => {
                   }
                 </AccordionItemPanel>
               </AccordionItem>
+              </LazyLoad>
                 )}
               )
             }
