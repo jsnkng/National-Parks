@@ -124,6 +124,10 @@ const Header = styled.header`
     ${SuperQuery().maxWidth.of('325px').css`
       font-size: 1.375rem;
     `}
+    &.xtralong_no_sub {
+      font-size: 1.125rem;
+      line-height: 1.05;
+    }
   }
   .long_no_sub {
     font-size: 1.175rem;

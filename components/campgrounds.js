@@ -34,7 +34,7 @@ const Component = ({ campgrounds }) => {
               { campgrounds.slice(0).map((item, index) => {
               return(
 
-                <LazyLoad offset={120} key={`${index}${item.id}`}>
+             <LazyLoad offset={120} key={`${index}${item.id}`}>
               <AccordionItem onClick={()=>setTimeout(forceCheck, 10)}>
                 <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
                   <AccordionItemButton>

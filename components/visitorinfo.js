@@ -38,8 +38,9 @@ const Component = ({ park, alerts, markers }) => {
         </Row>
         
         <Row>
-        { ((park.contacts !== '' && park.contacts.length !== 0) ||
-          (park.addresses !== '' && park.addresses.length !== 0)) &&
+        { ((park.contacts !== undefined && park.contacts.phoneNumbers.length !== 0) ||
+          (park.contacts !== undefined && park.contacts.emailAddresses.length !== 0) ||
+          (park.addresses !== undefined && park.addresses.length !== 0)) &&
           <Col xs={12} md={4}>
             <Row>
             { ((park.contacts !== undefined && park.contacts.length !== 0) ||
@@ -88,7 +89,7 @@ const Component = ({ park, alerts, markers }) => {
           </Col>
         }
           <Col xs={12} md={8}>
-            { park.directionsInfo !== undefined && 
+            { park.directionsInfo !== '' && 
               <>
                 <h3>Directions</h3>
                 <p>{park.directionsInfo}</p>
