@@ -469,7 +469,7 @@ const MapDiagram__Wrapper = styled.div`
     margin: 2rem 0 0 0;
   `}
   ${SuperQuery().minWidth.md.css`
-    margin-top: 0;
+    margin: 0;
   `}
 
   ${SuperQuery().minWidth.md.and.landscape.css`

@@ -48,6 +48,7 @@ const Image = styled.div`
   animation: myfirst 1s;
 
   ${SuperQuery().minWidth.md.css`
+    height: 85vh;
     min-height:300px;
   `}
   ${SuperQuery().minWidth.lg.css`

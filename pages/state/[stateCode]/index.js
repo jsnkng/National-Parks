@@ -6,22 +6,22 @@ import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad, { forceCheck } from 'react-lazyload'
-import MapDiagram from '../../../components/mapdiagram'
 
 import states from '../../../config/states'
 
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
-import ParkBanner from '../../../components/park'
+import ParkBanner from '../../../components/park2'
 
 const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
   const [highlighted, setHighlighted] = useState('')
   const [backgroundURL, setBackgroundURL] = useState('')
   const [backgroundIdx, setBackgroundIdx] = useState(Math.floor(Math.random()*(data.length)))
-  // const [parks, setParks] = useState(data)
-  // console.log(parks.splice(backgroundIdx,1))
-  // setParks(parks.splice(backgroundIdx,1))
+  const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
+  const handleBannerClick = () => {
+    setIsSpinnerVisible(true)
+  }
   const parks = data.slice()
   parks.splice(backgroundIdx,1)
   
@@ -47,18 +47,22 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
           <title>National Park Service Guide to {states[stateCode][0]}</title>
         </Head>
 
-        <Background backgroundURL={backgroundURL}>
-        <BackgroundOverlay onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)} />
-        <BackgroundDetails onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)} >
-        
-                <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
-                <div className='background__subtitle'>{data[backgroundIdx].designation}</div>
-             
-                  {/* <p className='background__description'>{data[backgroundIdx].description}</p> */}
-              
-        </BackgroundDetails> 
-          
-          
+        <Background backgroundURL={backgroundURL}> 
+          <Spinner__top className={isSpinnerVisible ? 'show' : 'hide'}>
+            <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
+          </Spinner__top>
+          <BackgroundOverlay onClick={() => { 
+              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
+              handleBannerClick()
+           }} />
+          <BackgroundDetails onClick={() => { 
+              manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
+              handleBannerClick()
+           }} >
+            <div className='background__title'>{data[backgroundIdx].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} </div>
+            <div className='background__subtitle'>{data[backgroundIdx].designation}</div>
+            {/* <p className='background__description'>{data[backgroundIdx].description}</p> */}
+          </BackgroundDetails> 
 
         <Header 
           title={states[stateCode][0]}
@@ -123,6 +127,9 @@ const Content = styled.main`
   align-items: center;
   justify-content: left;
 
+  ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
+    margin-top: calc(100vh - 4rem)
+  `}
 
 `
 const Row__Decorated = styled(Row)`
@@ -154,7 +161,7 @@ const BackgroundOverlay = styled.div`
   height: 100vh;
   width: 100vw;
   z-index:1;
-  background-color: ${ ({ theme }) => theme.colors.overlay };
+  background-color: ${ ({ theme }) => theme.colors.spinner };
 `
 const BackgroundDetails = styled.div`
   position: absolute;
@@ -219,4 +226,89 @@ const Description = styled.div`
 `
 const MapDiagram__Wrapper = styled.div`
 
+`
+const Spinner = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  background-color: ${props => props.theme.colors.trans_back};
+  color: ${props => props.theme.colors.text};
+  font-size: .7em;
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
+
+  #progress .spinner {
+    display: block;
+    z-index: 12031;
+  }
+  #progress .spinner-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 100px auto;
+    box-sizing: border-box;
+    border: solid 8px transparent;
+    border-top-color:  ${({ theme }) => theme.colors.color_two};
+    border-left-color:  ${({ theme }) => theme.colors.color_three};
+    border-radius: 50%;
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+  }
+
+  @-webkit-keyframes nprogress-spinner {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes nprogress-spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`
+
+const Spinner__top = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  background-color: ${props => props.theme.colors.trans_back};
+  color: ${props => props.theme.colors.text};
+  font-size: .7em;
+  &.show {
+    display: block;
+  }
+  &.hide {
+    display: none;
+  }
+
+  #progress .spinner {
+    display: block;
+    z-index: 12031;
+  }
+
+  #progress .spinner-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 300px auto;
+    box-sizing: border-box;
+    border: solid 8px transparent;
+    border-top-color:  ${({ theme }) => theme.colors.color_two};
+    border-left-color:  ${({ theme }) => theme.colors.color_three};
+    border-radius: 50%;
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+  }
+  
+ 
+  @-webkit-keyframes nprogress-spinner {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes nprogress-spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 `

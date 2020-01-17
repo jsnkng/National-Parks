@@ -42,18 +42,18 @@ const Header = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  height: 4.5rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1200;
-  ${SuperQuery().maxWidth.of('896px').and.landscape.css`
+  ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
     position: relative;
   `}
   ${SuperQuery().minWidth.md.css`
-    height: 4.5rem;
+    height: 4rem;
   `}
   a {
     cursor: pointer;
