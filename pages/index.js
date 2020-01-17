@@ -84,17 +84,18 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <option label='National Heritage Areas' value='/designation/National%20Heritage%20Area/'>National Heritage Areas</option>
                 <option label='National Heritage Corridors' value='/designation/National%20Heritage%20Corridor/'>National Heritage Corridors</option>
                 <option label='National Historical Parks' value='/designation/National%20Historical%20Park/'>National Historical Parks</option>
-                <option label='National Historical Park and Ecological Preserve' value='/designation/National%20Historical%20Park%20and%20Ecological%20Preserve/'>National Historical Park and Ecological Preserve</option>
+                <option label='National Historical Park & Ecological Preserve' value='/designation/National%20Historical%20Park%20%26%20Ecological%20Preserve/'>National Historical Park & Ecological Preserve</option>
                 <option label='National Historical Reserves' value='/designation/National%20Historical%20Reserve/'>National Historical Reserves</option>
                 <option label='National Historic Sites' value='/designation/National%20Historic%20Site/'>National Historic Sites</option>
                 <option label='National Historic Trails' value='/designation/National%20Historic%20Trail/'>National Historic Trails</option>
                 <option label='National Lakeshores' value='/designation/National%20Lakeshore/'>National Lakeshores</option>
                 <option label='National Military Parks' value='/designation/National%20Military%20Park/'>National Military Parks</option>
                 <option label='National Memorials' value='/designation/National%20Memorial/'>National Memorials</option>
-                <option label='National Memorial Parkway' value='/designation/National%20Memorial%20Parkway/'>National Memorial Parkway</option>
                 <option label='National Monuments' value='/designation/National%20Monument/'>National Monuments</option>
                 <option label='National Monuments & Preserves' value='/designation/National%20Monument%20%26%20Preserve/'>National Monuments & Preserves</option>
                 <option label='National Parks' value='/designation/National%20Park/'>National Parks</option>
+                <option label='National Parkway' value='/designation/National%20Parkway/'>National Parkway</option>
+                <option label='National Park & Preserve' value='/designation/National%20Park%20%26%20Preserve/'>National Park & Preserve</option>
                 <option label='National Preserves' value='/designation/National%20Preserve/'>National Preserves</option>
                 <option label='National Recreation Areas' value='/designation/National%20Recreation%20Area/'>National Recreation Areas</option>
                 <option label='National Rivers & Recreation Areas' value='/designation/National%20River%20%26%20Recreation%20Area/'>National Rivers & Recreation Areas</option>
