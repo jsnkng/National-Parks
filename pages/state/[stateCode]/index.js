@@ -49,7 +49,7 @@ const State = ({ data, state_id, stateCode, themeName, setThemeName, pageTransit
 
         <Background backgroundURL={backgroundURL}> 
           <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-            <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
+            <div id="progress"><div className="bar" role="bar"><div className="peg"></div></div><div className="spinner" role="spinner"><div className="spinner-icon"></div></div></div>
           </Spinner>
           <BackgroundOverlay onClick={() => { 
               manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${stateCode}/park/${data[backgroundIdx].parkCode}`)
@@ -132,6 +132,7 @@ const Content = styled.main`
 
 `
 const Row__Decorated = styled(Row)`
+  width: 100%;
   margin: 0;
   padding: 0;
 `

@@ -50,7 +50,7 @@ const Designations = ({ data, designation, themeName, setThemeName, pageTransiti
         
         <Background backgroundURL={backgroundURL}> 
           <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-            <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
+            <div id="progress"><div className="bar" role="bar"><div className="peg"></div></div><div className="spinner" role="spinner"><div className="spinner-icon"></div></div></div>
           </Spinner>
           <BackgroundOverlay onClick={() => { 
               manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${data[backgroundIdx].states.toLowerCase().split(',')[0]}/park/${data[backgroundIdx].parkCode}`)
@@ -80,17 +80,16 @@ const Designations = ({ data, designation, themeName, setThemeName, pageTransiti
             parks.slice(0).map((item, i) => {
               i++
               return(
-                <Col__Decorated xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={`${item.id}`}>
-                  <div onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
-                    <ParkBanner 
-                      backgroundURL={item.images === undefined || item.images.length == 0 
-                        ? "/noimage.jpg" 
-                        : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
-                      title={item.name}
-                      subtitle={item.designation}
-                      states={item.states}
-                    />
-                  </div>
+                <Col__Decorated  xs={12} sm={6} md={i % 4 === 1 ? 7 : i % 4 === 2 ? 5 : i % 4 === 3 ? 5 : 7 } key={`${item.id}`}
+                 onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}>
+                  <ParkBanner 
+                    backgroundURL={item.images === undefined || item.images.length == 0 
+                      ? "/noimage.jpg" 
+                      : process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')}
+                    title={item.name}
+                    subtitle={item.designation}
+                    states={item.states}
+                  />
                 </Col__Decorated>
               )
             })
@@ -136,6 +135,7 @@ const Content = styled.main`
 
 `
 const Row__Decorated = styled(Row)`
+  width: 100%;
   margin: 0;
   padding: 0;
 `

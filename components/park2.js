@@ -12,8 +12,8 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
   
   return (
     <Park onClick={handleBannerClick}>
-     <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
-        <div id="progress"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>
+      <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+        <div id="progress"><div className="bar" role="bar"><div className="peg"></div></div><div className="spinner" role="spinner"><div className="spinner-icon"></div></div></div>
       </Spinner>
       <div className="banner__header">
         <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, "ō")}}></h2>
@@ -47,40 +47,43 @@ const Park = styled.div`
     top: 0;
     left: 0;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
     background-color: ${({ theme }) => theme.colors.image_overlay_light};
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
     height: 100%;
-    padding: .125rem .5rem;
+    width: 100%;
+    padding: .125rem 0.5rem;
     z-index: 20;
-    -webkit-transition: background .5s linear;
-    -moz-transition: background .5s linear;
-    -o-transition: background .5s linear;
-    -ms-transition: background .5s linear;
-    transition: background .5s linear;
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    transition: background 0.5s linear;
 
     h2 {
-      position:absolute;
-      top: 10rem;
-      left: 1rem;
+      width: 100%;
       border: none;
       font-size: 1.5rem;
-      margin: .5rem 0 0 .375rem;
-      padding: 0; 
+      line-height: 1.1;
+      margin: 0 0 0 0.375rem;
+      padding: 6rem 0 0 0; 
     }
     h3 {
-      position:absolute;
-      top: 12rem;
-      left: 1rem;
-      text-align: left;
+      width: 100%;
       font-size: 1.25rem;
       font-weight: 400;
-      margin: 0 0 0 .375rem;
+      margin: 0 0 0 0.375rem;
       padding: 0; 
     }
-    span {position: absolute;
+    span {
+      position: absolute;
       top: .875rem;
-      right: .5rem;
+      right: 0.5rem;
       text-align: right;
       margin: 0;
       padding: 0;
@@ -94,6 +97,7 @@ const ResponsiveImage = styled.div`
   top: 0;
   left: 0;
   
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.image_overlay_light};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;

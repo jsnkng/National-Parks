@@ -8,10 +8,9 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
   const titleClass = (title.length >= 40 && title__sub !== '') ? 'xtralong_sub' :
   (title.length >= 40 && title__sub === '') ? 'xtralong_no_sub' :
-  (title.length >= 29 && title__sub !== '') ? 'long_sub' :
-  (title.length >= 29 && title__sub === '') ? 'long_no_sub' : 
-  (title.length >= 27 && title__sub !== '') ? 'med_sub' :
-  (title.length >= 27 && title__sub === '') ? 'med_no_sub' : 
+  (title.length >= 27 && title__sub !== '') ? 'long_sub' :
+  (title.length >= 27 && title__sub === '') ? 'long_no_sub' : 
+
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
@@ -22,7 +21,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
         <div className='top__title--container'>
           <h1 className={`${title__sub === '' ? 'top__title--large' : 'top__title'} ${titleClass}`}>{title}</h1>
           { title__sub !== '' &&
-            <h2 className="top__title--sub">{title__sub}</h2>
+            <h2 className={`top__title--sub ${titleClass}`}>{title__sub}</h2>
           }
         </div>
       </div>
@@ -68,53 +67,16 @@ const Header = styled.header`
     flex-grow: 3;
   }
   svg {
-    width: 2rem;
+    width: 1.875rem;
     height: 2rem;
-    fill: ${({ theme }) => theme.colors.text};
+    margin-right: 0.125rem
+    fill: ${({ theme }) => theme.colors.dim_text};
     cursor: pointer;
     outline: none;
   }
   .top__title--container {
   }
-  .top__title {
-    font-size: 1.375rem;
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-    margin: 0;
-    padding: 0;
-    ${SuperQuery().minWidth.sm.css`
-      font-size: 1.75rem;
-    `}
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.875rem;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 2rem;
-    `}
-  } 
-  .top__title--large {
-    font-size: 1.75rem;
-    margin: 0;
-    padding: 0;
-    ${SuperQuery().maxWidth.of('325px').css`
-      font-size: 1.375rem;
-    `}
-  }
-  .top__title--sub {
-    font-size: 1rem;
-    line-height: 1;
-    font-weight: 200;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    ${SuperQuery().minWidth.sm.css`
-      font-size: 1.125rem;
-    `}
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.25rem;
-    `}
-  }   
+
   .top__logo {
     display: flex;
     align-items: center;
@@ -122,8 +84,6 @@ const Header = styled.header`
     flex-grow: 1;
     min-width: 110px;
   }
-
-  
   .top__logo--image {
     cursor: pointer;
     border: none;
@@ -145,6 +105,26 @@ const Header = styled.header`
       letter-spacing: -1.5px;
     `}
   }
+
+  .top__title {
+    font-size: 1.375rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin: 0;
+    padding: 0;
+    ${SuperQuery().minWidth.sm.css`
+      font-size: 1.75rem;
+    `}
+  } 
+  .top__title--large {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    ${SuperQuery().maxWidth.of('325px').css`
+      font-size: 1.375rem;
+    `}
+  }
   .long_no_sub {
     font-size: 1.175rem;
     ${SuperQuery().maxWidth.of('325px').css`
@@ -163,12 +143,6 @@ const Header = styled.header`
       font-size: 1.875rem;
     `}
   }
-  .med_no_sub {
-    font-size: 1.375rem;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.875rem;
-    `}
-  }
   .short_no_sub {
     font-size: 1.375rem;
     ${SuperQuery().minWidth.md.css`
@@ -178,31 +152,37 @@ const Header = styled.header`
       font-size: 1.25rem;
     `}
   }
-  .med_sub {
-    font-size: 1.175rem;
-    ${SuperQuery().minWidth.sm.css`
-      font-size: 1.5rem;
-    `}
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.75rem;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 1.875rem;
-    `}
-  }
   .long_sub {
-    font-size: 1.125rem;
+    font-size: 1rem;
     ${SuperQuery().minWidth.sm.css`
       font-size: 1.5rem;
-    `}
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.75rem;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 1.875rem;
     `}
   }
   .short_sub {
     font-size: 1.175rem;
   }
+
+  .top__title--sub {
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 200;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    ${SuperQuery().minWidth.sm.css`
+      font-size: 1.125rem;
+    `}
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.1875rem;
+    `}
+    &.long_sub {
+      font-size: .875rem;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 1.125rem;
+      `}
+    }
+  }   
+  
+
+
 `
