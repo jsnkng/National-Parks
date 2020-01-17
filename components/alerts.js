@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
 import {
   Accordion,
   AccordionItem,

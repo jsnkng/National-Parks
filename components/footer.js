@@ -75,10 +75,11 @@ color: ${({ theme }) => theme.colors.text};
       &:hover {
         padding: 12px;
       }
+      margin-right: -1rem;
 
-      ${'' /* background-color: rgba(0,0,0,0.1);
+      ${'' /* background-color: rgba(0,0,0,0.1); */}
       filter: ${({ theme }) => theme.colors.color_filter};
-      transition: filter 0.25s; */}
+      transition: filter 0.25s;
 
     }
   }

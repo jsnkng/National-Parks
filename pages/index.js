@@ -50,6 +50,11 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
         <BackgroundOverlay />
         
         <Content>
+        <a href="/">
+          <div className='top__logo'>
+            <span className="top__logo--text" href="/">National<br />Park<br />Service</span>
+            <img className="top__logo--image" src="/us-nps.png" width="90" alt="National Parks Service" />
+          </div></a>
           <Grid__FindAPark fluid>
             <Row>
               <Col  xs={12} smOffset={2} sm={8} mdOffset={0} md={4} lg={4}>
@@ -185,7 +190,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                   `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}
                 >
                   {parks[0].name}<br />
-                  {parks[0].designation}<br />
+                  <strong>{parks[0].designation}</strong><br />
                   {states[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
                   {/* <a href='/'><img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' /></a> */}
                 </BackgroundDetails>
@@ -256,6 +261,42 @@ const Content = styled.main`
   margin: 0 auto;
   color: ${({ theme }) => theme.colors.text };
   z-index: 100;
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    color: inherit;
+  }
+  .top__logo {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+    min-width: 110px;
+  }
+
+  .top__logo--image {
+    cursor: pointer;
+    border: none;
+    width: 2.25em;
+    margin-right: .5rem;
+  }
+  .top__logo--text {
+    text-align:right;
+    font-size: .875rem;
+    line-height: .875;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-right: .5rem;
+    ${SuperQuery().minWidth.md.css`
+      font-size: .875rem;
+      letter-spacing: -1.5px;
+    `}
+  }
+
 `
 const FooterHome = styled.div`
 position: absolute;
@@ -269,7 +310,7 @@ const Grid__FindAPark = styled(Grid)`
   z-index: 100;
 
   ${SuperQuery().maxWidth.of('375px').css`
-    margin: 0 0 4rem 0;
+    margin: 0 0 1rem 0;
   `}
 
   h1 {
@@ -280,7 +321,7 @@ const Grid__FindAPark = styled(Grid)`
     padding: 0;
     text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.background};
     ${SuperQuery().maxWidth.of('375px').css`
-      font-size: 2rem;
+      font-size: 1.75rem;
     `}
     ${SuperQuery().minWidth.md.css`
       font-size: 2rem;
@@ -301,7 +342,7 @@ const Grid__FindAPark = styled(Grid)`
     letter-spacing: -0.1rem;
     text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.background};
     ${SuperQuery().maxWidth.of('375px').css`
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     `}
     ${SuperQuery().minWidth.md.css`
       font-size: 1.5rem;
@@ -336,7 +377,7 @@ const Grid__FindAPark = styled(Grid)`
 
 
     ${SuperQuery().maxWidth.of('375px').css`
-      font-size: 1.25rem;
+      font-size: 1rem;
     `}
 
   }
@@ -344,6 +385,9 @@ const Grid__FindAPark = styled(Grid)`
 `
 const MapDiagram__Wrapper = styled.div`
   margin:3rem 0 0 0rem;
+  ${SuperQuery().maxWidth.md.and.landscape.css`
+    display: none;
+  `}
   ${SuperQuery().maxWidth.of('375px').css`
     margin: 2rem 0 0 0;
   `}

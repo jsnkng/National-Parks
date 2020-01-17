@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react'
+import useWindowDimensions from './useWindowDimensions'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { Arrow } from '../svgs/l-arrow.svg'
 
-const Component = ({ people, windowDimension }) => {
+const Component = ({ people }) => {
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
   
+  const windowDimension = useWindowDimensions()
   const loadMore = () => {
     setRows(rows + 1)
   }
+ 
   useEffect(() => {
     const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
                         windowDimension.width > 767 ? { cols: 3, limit: 3 } : 
                         windowDimension.width > 575 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 
-    
     let newLimit = columnWidth.limit * rows
-    
     setLimit(newLimit)
   })
 

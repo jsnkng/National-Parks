@@ -27,7 +27,7 @@ const themes = {
     color_four: '#4e4f58',
     color_five: '#c0f0ff',
     trans_back: 'rgba(0,0,0,0.8)',
-    overlay: 'rgba(0,0,0,0.6)',
+    overlay: 'rgba(0,0,0,0.65)',
     spinner: 'rgba(0,0,0,0.33)',
     color_filter: 'invert(54%) sepia(28%) saturate(600%) hue-rotate(145deg) brightness(97%) contrast(92%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
@@ -42,8 +42,8 @@ const themes = {
     color_three: '#ec8217',
     color_four: '#b1b0a7',
     color_five: '#33160b',
-    trans_back: 'rgba(255,255,255,0.8)',
-    overlay: 'rgba(255,255,255,0.6)',
+    trans_back: 'rgba(255,255,255,0.7)',
+    overlay: 'rgba(255,255,255,0.75)',
     spinner: 'rgba(255,255,255,.33)',
     color_filter: 'invert(18%) sepia(89%) saturate(1065%) hue-rotate(348deg) brightness(91%) contrast(94%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'

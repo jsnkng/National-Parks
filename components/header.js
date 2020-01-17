@@ -68,15 +68,11 @@ const Header = styled.header`
     flex-grow: 3;
   }
   svg {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2rem;
+    height: 2rem;
     fill: ${({ theme }) => theme.colors.text};
     cursor: pointer;
     outline: none;
-    ${SuperQuery().minWidth.md.css`
-      width: 2.5rem;
-      height: 2.5rem;
-    `}
   }
   .top__title--container {
   }
@@ -136,21 +132,18 @@ const Header = styled.header`
   .top__logo--image {
     cursor: pointer;
     border: none;
-    width: 2.5em;
-    margin-right: .25rem;
-    ${SuperQuery().minWidth.md.css`
-      width: 3.5rem;
-    `}
+    width: 2.25em;
+    margin-right: .5rem;
   }
   .top__logo--text {
     text-align:right;
-    font-size: .925rem;
+    font-size: .875rem;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin-right: .25rem;
+    margin-right: .5rem;
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.125rem;
+      font-size: .875rem;
       letter-spacing: -1.5px;
     `}
   }

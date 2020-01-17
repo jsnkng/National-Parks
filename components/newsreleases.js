@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import useWindowDimensions from './useWindowDimensions'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
 import { Arrow } from '../svgs/l-arrow.svg'
 
-const Component = ({ newsReleases, windowDimension }) => {
+const Component = ({ newsReleases }) => {
   const toDateFormat = (date) => {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])
@@ -15,16 +16,16 @@ const Component = ({ newsReleases, windowDimension }) => {
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
   
+  const windowDimension = useWindowDimensions()
   const loadMore = () => {
     setRows(rows + 1)
   }
+ 
   useEffect(() => {
     const columnWidth = windowDimension.width > 990 ? { cols: 2, limit: 2 } : 
                         windowDimension.width > 767 ? { cols: 2, limit: 2 } : 
                         windowDimension.width > 575 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 
-    
     let newLimit = columnWidth.limit * rows
-    
     setLimit(newLimit)
   })
 
