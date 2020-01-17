@@ -84,6 +84,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <option label='National Heritage Areas' value='/designation/National%20Heritage%20Area/'>National Heritage Areas</option>
                 <option label='National Heritage Corridors' value='/designation/National%20Heritage%20Corridor/'>National Heritage Corridors</option>
                 <option label='National Historical Parks' value='/designation/National%20Historical%20Park/'>National Historical Parks</option>
+                <option label='National Historical Park and Ecological Preserve' value='/designation/National%20Historical%20Park%20and%20Ecological%20Preserve/'>National Historical Park and Ecological Preserve</option>
                 <option label='National Historical Reserves' value='/designation/National%20Historical%20Reserve/'>National Historical Reserves</option>
                 <option label='National Historic Sites' value='/designation/National%20Historic%20Site/'>National Historic Sites</option>
                 <option label='National Historic Trails' value='/designation/National%20Historic%20Trail/'>National Historic Trails</option>
@@ -100,7 +101,6 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <option label='National Scenic Trails' value='/designation/National%20Scenic%20Trail/'>National Scenic Trails</option>
                 <option label='National Seashores' value='/designation/National%20Seashore/'>National Seashores</option>
                 <option label='Cultural Heritage Corridors' value='/designation/Cultural%20Heritage%20Corridor/'>Cultural Heritage Corridors</option>
-                <option label='Ecological & Historic Preserves' value='/designation/Ecological%20%26%20Historic%20Preserve/'>Ecological & Historic Preserves</option>
                 <option label='International Historic Sites' value='/designation/International%20Historic%20Site/'>International Historic Sites</option>
                 <option label='International Parks' value='/designation/International%20Park/'>International Parks</option>
               </select>
