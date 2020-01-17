@@ -60,10 +60,7 @@ const Map = styled.svg.attrs(props => ({
     -moz-transition: fill .4s ease;
     -o-transition: fill .4s ease;
     transition: fill .4s ease;	 
-    fill: ${({ theme }) => theme.colors.trans_back};
-    ${SuperQuery().minWidth.sm.css`
-      fill: ${({ theme }) => theme.colors.spinner};
-    `}
+    fill: ${({ theme }) => theme.colors.image_overlay_opaque};
   }
   path:hover, circle:hover {
     stroke: ${({ theme }) => theme.colors.color_five};
@@ -97,10 +94,7 @@ const Map = styled.svg.attrs(props => ({
 	 	-moz-transition: fill .4s ease;
 	 	-o-transition: fill .4s ease;
 	 	transition: fill .4s ease;	 
-    fill: ${({ theme }) => theme.colors.trans_back};
-    ${SuperQuery().minWidth.sm.css`
-      fill: ${({ theme }) => theme.colors.spinner};
-    `}
+    fill: ${({ theme }) => theme.colors.image_overlay_opaque};
   }
   #path67 {
     fill: none !important;

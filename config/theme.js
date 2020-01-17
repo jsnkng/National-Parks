@@ -32,7 +32,7 @@ const themes = {
     image_overlay_light: 'rgba(0,0,0,0.45)',
     image_overlay_opaque: 'rgba(0,0,0,0.55)',
     spinner: 'rgba(0,0,0,0.9)',
-    color_filter: 'invert(54%) sepia(28%) saturate(400%) hue-rotate(145deg) brightness(97%) contrast(92%)',
+    color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
   },
   lightMode: {
@@ -51,7 +51,7 @@ const themes = {
     image_overlay_light: 'rgba(50,50,50,0.35)',
     image_overlay_opaque: 'rgba(0,0,0,0.40)',
     spinner: 'rgba(255,255,255,.4)',
-    color_filter: 'invert(18%) sepia(89%) saturate(1065%) hue-rotate(348deg) brightness(91%) contrast(94%)',
+    color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
     gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'
   }
 }

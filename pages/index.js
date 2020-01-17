@@ -430,10 +430,11 @@ const Grid__FindAPark = styled(Grid)`
   select {
     display: block;
     width: 100%;
-    background: rgba(0,0,0,0);
-    color:#bbb;
+    background: rgba(0,0,0,0.07);
+    color:#222;
     filter: ${({ theme }) => theme.colors.color_filter};
 
+    text-shadow: 1px 1px 1px #fff;
     font-size: 1.5rem;
     outline: none;
     margin: 0.75rem 0 0.75rem -0.125rem;

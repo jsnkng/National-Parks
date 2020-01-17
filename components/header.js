@@ -100,9 +100,6 @@ const Header = styled.header`
     ${SuperQuery().maxWidth.of('325px').css`
       font-size: 1.375rem;
     `}
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.875rem;
-    `}
   }
   .top__title--sub {
     font-size: 1rem;
@@ -116,9 +113,6 @@ const Header = styled.header`
     `}
     ${SuperQuery().minWidth.md.css`
       font-size: 1.25rem;
-    `}
-    ${SuperQuery().minWidth.lg.css`
-      font-size: 1.375rem;
     `}
   }   
   .top__logo {
