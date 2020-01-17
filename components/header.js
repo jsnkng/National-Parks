@@ -19,7 +19,9 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
       <div className='top__back' onClick={() => manageHistory()}>
         <Arrow />
         <div className='top__title--container'>
-          <h1 className={`${title__sub === '' ? 'top__title--large' : 'top__title'} ${titleClass}`}>{title}</h1>
+          <h1 className={`${title__sub === '' ? 'top__title--large' : 'top__title'} ${titleClass}`}
+          dangerouslySetInnerHTML={{__html: title }}></h1>
+
           { title__sub !== '' &&
             <h2 className={`top__title--sub ${titleClass}`}>{title__sub}</h2>
           }
@@ -124,10 +126,15 @@ const Header = styled.header`
     ${SuperQuery().maxWidth.of('325px').css`
       font-size: 1.375rem;
     `}
+    &.xtralong_sub,
     &.xtralong_no_sub {
       font-size: 1.125rem;
       line-height: 1.05;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 1.375rem;
+      `}
     }
+    
   }
   .long_no_sub {
     font-size: 1.175rem;

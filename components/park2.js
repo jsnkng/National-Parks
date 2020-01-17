@@ -16,7 +16,7 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
         <div class='progress' aria-hidden='true'><div className='bar' role='bar'><div className='peg'></div></div><div className='spinner' role='spinner'><div className='spinner-icon'></div></div></div>
       </Spinner>
       <div className='banner__header'>
-        <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, 'ō')}}></h2>
+        <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
         <h3>{states !== undefined ? states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / '): subtitle}</h3>
       </div>
       <LazyLoad height={'100%'} offset={600}>

@@ -28,7 +28,7 @@ const Component = ({ backgroundURL, title, subtitle, states }) => {
         <div id='progress'><div class='bar' role='bar'><div class='peg'></div></div><div class='spinner' role='spinner'><div class='spinner-icon'></div></div></div>
       </Spinner>
       <div className='banner__header'>
-        <h2 dangerouslySetInnerHTML={{__html: title.replace(/&#333;/gi, 'ō')}}></h2>
+        <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
         <h3>{subtitle}</h3>
       </div>
       <LazyLoad height={'100%'} offset={600}>

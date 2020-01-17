@@ -73,7 +73,7 @@ const Park = ({
           <title>{states[stateCode][0]} | {park.name} {park.designation}</title>
         </Head>
         <Header 
-          title={park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} 
+          title={park.name} 
           title__sub={park.designation}
           manageHistory={manageHistory}
           manageFuture={manageFuture}

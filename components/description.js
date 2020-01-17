@@ -10,7 +10,7 @@ const Component = ({ park }) => {
       <Grid>
         <Row>
           <Col xs={12}>
-            <h1>{park.name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")} <span>{park.designation}</span></h1>
+            <h1><div dangerouslySetInnerHTML={{__html: park.name }}></div> <span>{park.designation}</span></h1>
           </Col>
         </Row>
         <Row>
