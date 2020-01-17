@@ -71,7 +71,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                   { Object.entries(states).map(([key, value]) => {
                     return ( 
                       <option label={states[key][0]} value={`/state/${key}/`} 
-                        key={key} />
+                        key={key}>{states[key][0]}</option>
                     )
                   })}
                 </select>
@@ -79,33 +79,34 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <label for='designation'>By Designation</label>
                 <select id='designation' value='' onChange={handleDesignationChange.bind(this)}>
                 <option label='By Designation'>By Designation</option>
-                <option label='National Battlefields' value='/designation/National%20Battlefield/' />
-                <option label='National Geologic Trails' value='/designation/National%20Geologic%20Trail/' />
-                <option label='National Heritage Areas' value='/designation/National%20Heritage%20Area/' />
-                <option label='National Heritage Corridors' value='/designation/National%20Heritage%20Corridor/' />
-                <option label='National Historical Parks' value='/designation/National%20Historical%20Park/' />
-                <option label='National Historical Reserves' value='/designation/National%20Historical%20Reserve/' />
-                <option label='National Historic Sites' value='/designation/National%20Historic%20Site/' />
-                <option label='National Historic Trails' value='/designation/National%20Historic%20Trail/' />
-                <option label='National Lakeshores' value='/designation/National%20Lakeshore/' />
-                <option label='National Military Parks' value='/designation/National%20Military%20Park/' />
-                <option label='National Memorials' value='/designation/National%20Memorial/' />
-                <option label='National Monuments' value='/designation/National%20Monument/' />
-                <option label='National Monuments & Preserves' value='/designation/National%20Monument%20%26%20Preserve/' />
-                <option label='National Parks' value='/designation/National%20Park/' />
-                <option label='National Preserves' value='/designation/National%20Preserve/' />
-                <option label='National Recreation Areas' value='/designation/National%20Recreation%20Area/' />
-                <option label='National Recreational Rivers' value='/designation/National%20Recreational%20River/' />
-                <option label='National Rivers' value='/designation/National%20River/' />
-                <option label='National Rivers & Recreation Areas' value='/designation/National%20River%20%26%20Recreation%20Area/' />
-                <option label='National Scenic Riverways' value='/designation/National%20Scenic%20Riverway/' />
-                <option label='National Scenic Trails' value='/designation/National%20Scenic%20Trail/' />
-                <option label='National Seashores' value='/designation/National%20Seashore/' />
-                <option label='Cultural Heritage Corridors' value='/designation/Cultural%20Heritage%20Corridor/' />
-                <option label='Ecological & Historic Preserves' value='/designation/Ecological%20%26%20Historic%20Preserve/' />
-                <option label='Wild & Scenic Rivers' value='/designation/Wild%20%26%20Scenic%20River/' />
-                <option label='International Historic Sites' value='/designation/International%20Historic%20Site/' />
-                <option label='International Parks' value='/designation/International%20Park/' />
+                <option label='National Battlefields' value='/designation/National%20Battlefield/'>National Battlefields</option>
+                <option label='National Geologic Trails' value='/designation/National%20Geologic%20Trail/'>National Geologic Trails</option>
+                <option label='National Heritage Areas' value='/designation/National%20Heritage%20Area/'>National Heritage Areas</option>
+                <option label='National Heritage Corridors' value='/designation/National%20Heritage%20Corridor/'>National Heritage Corridors</option>
+                <option label='National Historical Parks' value='/designation/National%20Historical%20Park/'>National Historical Parks</option>
+                <option label='National Historical Reserves' value='/designation/National%20Historical%20Reserve/'>National Historical Reserves</option>
+                <option label='National Historic Sites' value='/designation/National%20Historic%20Site/'>National Historic Sites</option>
+                <option label='National Historic Trails' value='/designation/National%20Historic%20Trail/'>National Historic Trails</option>
+                <option label='National Lakeshores' value='/designation/National%20Lakeshore/'>National Lakeshores</option>
+                <option label='National Military Parks' value='/designation/National%20Military%20Park/'>National Military Parks</option>
+                <option label='National Memorials' value='/designation/National%20Memorial/'>National Memorials</option>
+                <option label='National Memorial Parkway' value='/designation/National%20Memorial%20Parkway/'>National Memorial Parkway</option>
+                <option label='National Monuments' value='/designation/National%20Monument/'>National Monuments</option>
+                <option label='National Monuments & Preserves' value='/designation/National%20Monument%20%26%20Preserve/'>National Monuments & Preserves</option>
+                <option label='National Parks' value='/designation/National%20Park/'>National Parks</option>
+                <option label='National Preserves' value='/designation/National%20Preserve/'>National Preserves</option>
+                <option label='National Recreation Areas' value='/designation/National%20Recreation%20Area/'>National Recreation Areas</option>
+                <option label='National Recreational Rivers' value='/designation/National%20Recreational%20River/'>National Recreational Rivers</option>
+                <option label='National Rivers' value='/designation/National%20River/'>National Rivers</option>
+                <option label='National Rivers & Recreation Areas' value='/designation/National%20River%20%26%20Recreation%20Area/'>National Rivers & Recreation Areas</option>
+                <option label='National Scenic Riverways' value='/designation/National%20Scenic%20Riverway/'>National Scenic Riverways</option>
+                <option label='National Scenic Trails' value='/designation/National%20Scenic%20Trail/'>National Scenic Trails</option>
+                <option label='National Seashores' value='/designation/National%20Seashore/'>National Seashores</option>
+                <option label='Cultural Heritage Corridors' value='/designation/Cultural%20Heritage%20Corridor/'>Cultural Heritage Corridors</option>
+                <option label='Ecological & Historic Preserves' value='/designation/Ecological%20%26%20Historic%20Preserve/'>Ecological & Historic Preserves</option>
+                <option label='Wild & Scenic Rivers' value='/designation/Wild%20%26%20Scenic%20River/'>Wild & Scenic Rivers</option>
+                <option label='International Historic Sites' value='/designation/International%20Historic%20Site/'>International Historic Sites</option>
+                <option label='International Parks' value='/designation/International%20Park/'>International Parks</option>
               </select>
               
               
