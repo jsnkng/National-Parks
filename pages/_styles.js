@@ -9,6 +9,13 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     font-size: 16px;
+
+    ${SuperQuery().minWidth.of('1240px').css`
+      font-size: 21px;
+    `}
+    ${SuperQuery().minWidth.of('1840px').css`
+      font-size: 30px;
+    `}
   }
   body {
     font-family: Helvetica, "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;

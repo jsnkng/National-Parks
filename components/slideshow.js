@@ -6,10 +6,11 @@ import SuperQuery from '@themgoncalves/super-query'
 const SlideShow = ({ images }) => {
   return (
     <Carousel__Styled 
+    useKeyboardArrows={true}
       showArrows={true} 
       showThumbs={false} 
       infiniteLoop={true} 
-      autoPlay={false}
+      autoPlay={true}
       interval={10000}
       transitionTime={600}
       emulateTouch={true} 

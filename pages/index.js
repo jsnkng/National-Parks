@@ -101,7 +101,6 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <option label='National Seashores' value='/designation/National%20Seashore/'>National Seashores</option>
                 <option label='Cultural Heritage Corridors' value='/designation/Cultural%20Heritage%20Corridor/'>Cultural Heritage Corridors</option>
                 <option label='Ecological & Historic Preserves' value='/designation/Ecological%20%26%20Historic%20Preserve/'>Ecological & Historic Preserves</option>
-                <option label='Wild & Scenic Rivers' value='/designation/Wild%20%26%20Scenic%20River/'>Wild & Scenic Rivers</option>
                 <option label='International Historic Sites' value='/designation/International%20Historic%20Site/'>International Historic Sites</option>
                 <option label='International Parks' value='/designation/International%20Park/'>International Parks</option>
               </select>
