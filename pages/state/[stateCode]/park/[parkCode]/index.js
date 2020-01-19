@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad, { forceCheck } from 'react-lazyload'
 import territories from '../../../../../config/states'
 
 import Header from '../../../../../components/header'
@@ -40,6 +41,10 @@ const Park = ({
     !loaded && setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
+
+  useEffect(() => {
+    forceCheck()
+  })
 
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
   visitorcenters !== undefined && visitorcenters.length != 0 &&

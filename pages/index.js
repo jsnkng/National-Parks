@@ -5,6 +5,7 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
+import LazyLoad, { forceCheck } from 'react-lazyload'
 
 import states from '../config/states'
 import MapDiagram from '../components/elements/mapdiagram'
@@ -32,6 +33,10 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
     setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
+
+  useEffect(() => {
+    forceCheck()
+  })
 
   if (!loaded) {
     return null
