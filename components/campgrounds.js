@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import MapLive__Component from './maplive'
 import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad from 'react-lazyload'
-import { forceCheck } from 'react-lazyload'
+import LazyLoad, { forceCheck } from 'react-lazyload'
 import EntryFees from './entryfees'
+import MapLive__Component from './elements/maplive'
 import Address from './elements/address'
 import Email from './elements/email'
 import Phone from './elements/phone'
@@ -17,7 +16,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-import SlideShow from './slideshowSmall'
+import SlideShow from './elements/slideshow'
 
 const Component = ({ campgrounds }) => {
   return (
@@ -33,7 +32,6 @@ const Component = ({ campgrounds }) => {
             <Col xs={12}>
               { campgrounds.slice(0).map((item, index) => {
               return(
-
              <LazyLoad offset={120} key={`${index}${item.id}`}>
               <AccordionItem onClick={()=>setTimeout(forceCheck, 10)}>
                 <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
@@ -45,8 +43,9 @@ const Component = ({ campgrounds }) => {
                   <Row>
                     <Col xs={12}>
                       { item.images !== undefined &&  
-                        <SlideShow images={item.images} />
-                      
+                      <SlideShow__Decorated>
+                        <SlideShow images={item.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.caption}))} />
+                      </SlideShow__Decorated>
                       }
                       <p className='introduction'>{item.description}</p>
                       {(item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
@@ -472,7 +471,6 @@ const MapLive__Wrapper = styled.div`
   z-index: 10;
   margin: 0 0 1rem 0;
 `
-
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
@@ -490,4 +488,15 @@ const Image = styled.div`
       display: block;
     `}
   }
+`
+const SlideShow__Decorated = styled.div`
+  ${SuperQuery().minWidth.sm.css`
+    height: 18rem;
+  `}
+  ${SuperQuery().minWidth.md.css`
+    height: 22rem;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 28rem;
+  `}
 `

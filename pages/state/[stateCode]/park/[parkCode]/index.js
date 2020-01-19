@@ -4,29 +4,25 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad, { forceCheck } from 'react-lazyload'
-
-import states from '../../../../../config/states'
+import territories from '../../../../../config/states'
 
 import Header from '../../../../../components/header'
-import Footer from '../../../../../components/footer'
-import Alerts from '../../../../../components/alerts'
-import Articles from '../../../../../components/articles'
-import Campgrounds from '../../../../../components/campgrounds'
+import SlideShow from '../../../../../components/elements/slideshow'
 import Description from '../../../../../components/description'
+import Alerts from '../../../../../components/alerts'
+import VisitorInfo from '../../../../../components/visitorinfo'
+import VisitorCenters from '../../../../../components/visitorcenters'
 import Events from '../../../../../components/events'
+import Campgrounds from '../../../../../components/campgrounds'
 import NewsReleases from '../../../../../components/newsreleases'
 import People from '../../../../../components/people'
 import Places from '../../../../../components/places'
-import SlideShow from '../../../../../components/slideshow'
-import VisitorInfo from '../../../../../components/visitorinfo'
-import VisitorCenters from '../../../../../components/visitorcenters'
-import useWindowDimensions from '../../../../../components/useWindowDimensions'
+import Articles from '../../../../../components/articles'
+import Footer from '../../../../../components/footer'
 
 const Park = ({ 
   themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture,
   stateCode,
-  parkCode, 
   park, 
   alerts, 
   newsreleases, 
@@ -38,17 +34,12 @@ const Park = ({
   campgrounds }) => {
 
   const [loaded, setLoaded] = useState(false)
-  const windowDimension = useWindowDimensions()
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    loaded === false && setLoaded(true)
+    !loaded && setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
-
-  useEffect(() => {
-    forceCheck()
-  })
 
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
   visitorcenters !== undefined && visitorcenters.length != 0 &&
@@ -70,7 +61,7 @@ const Park = ({
     return (
       <>
         <Head>
-          <title>{states[stateCode][0]} | {park.name} {park.designation}</title>
+          <title>{territories[stateCode][0]} | {park.name} {park.designation}</title>
         </Head>
         <Header 
           title={park.name} 
@@ -80,12 +71,14 @@ const Park = ({
         />
         <Content>
           { park.images !== undefined && park.images.length !== 0 &&
-          <SlideShow images={park.images} />
+            <SlideShow__Decorated>
+            <SlideShow images={park.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.title}))} />
+            </SlideShow__Decorated>
           }
           { park.images === undefined || park.images.length === 0 &&
           <div style={{height: '90px'}}></div>
           }
-          <Description park={park} />
+          <Description park={park} alerts={alerts} />
 
           { alerts !== undefined && alerts.length != 0 &&
           <Alerts alerts={alerts} />
@@ -103,19 +96,22 @@ const Park = ({
           <Campgrounds park={park} campgrounds={campgrounds} />
           }
           { newsreleases !== undefined && newsreleases.length != 0 &&
-          <NewsReleases park={park} newsReleases={newsreleases} windowDimension={windowDimension} />
+          <NewsReleases park={park} newsReleases={newsreleases} />
           }
           { articles !== undefined && articles.length != 0 &&
-          <Articles park={park} articles={articles} windowDimension={windowDimension} />
+          <Articles park={park} articles={articles} />
           }
           { places !== undefined && places.length != 0 &&
-          <Places park={park} places={places} windowDimension={windowDimension} />
+          <Places park={park} places={places} />
           }
           { people !== undefined && people.length != 0 &&
-          <People park={park} people={people} windowDimension={windowDimension} />
+          <People park={park} people={people} />
           } 
         </Content> 
-      <Footer themeName={themeName} setThemeName={setThemeName} />
+      
+        <Footer__Wrapper>
+          <Footer themeName={themeName} setThemeName={setThemeName} />
+        </Footer__Wrapper>
       </>
     )
   }
@@ -155,4 +151,25 @@ const Content = styled.main`
       text-decoration: underline;
     }
   }
+`
+const Footer__Wrapper = styled.div`
+    height: 3rem;
+    color: ${({ theme }) => theme.colors.text } !important; 
+`
+const SlideShow__Decorated = styled.div`
+  width: 100%;
+  height: 80vh;
+  min-height:300px;
+  max-width: 100%;
+  -webkit-animation: myfirst 1s;
+  animation: myfirst 1s;
+
+  ${SuperQuery().minWidth.md.css`
+    height: 85vh;
+    min-height:300px;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 85vh;
+    min-height:600px;
+  `}
 `

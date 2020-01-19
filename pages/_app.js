@@ -5,7 +5,7 @@ import { PageTransition } from 'next-page-transitions'
 import NProgress from 'nprogress'
 import { ThemeProvider } from 'styled-components'
 import themes from '../config/theme'
-import GlobalStyle from './_styles'
+import GlobalStyle from '../config/styles'
 import * as gtag from '../config/gtag'
 import cookies from 'next-cookies'
 

@@ -163,14 +163,11 @@ const GlobalStyle = createGlobalStyle`
     li {
       padding: .5rem 0 0 .25rem;
     }
-  
   }
-  
 
   table.hours {
     width: 95%;
     min-width: 12rem;
-
     ${SuperQuery().minWidth.sm.css`
       min-width: 12rem;
     `}
@@ -189,7 +186,6 @@ const GlobalStyle = createGlobalStyle`
       text-align: right;
     }
   }
-
   .section {
     margin-top: .5rem;
     padding-top: .5rem;
@@ -202,9 +198,6 @@ const GlobalStyle = createGlobalStyle`
       font-weight: 200;
     }
   }
-   
-
-  
   table {
     font-size: .9375rem;
     border-spacing: 0;
@@ -370,8 +363,8 @@ const GlobalStyle = createGlobalStyle`
     transition: opacity 300ms;
   }
 
-/* Make clicks pass-through */
-#nprogress {
+  /* Make clicks pass-through */
+  #nprogress {
     pointer-events: none;
   }
   
@@ -399,43 +392,5 @@ const GlobalStyle = createGlobalStyle`
     transform: rotate(3deg) translate(0px, -4px);
   }
   
-  /* Rremove these to get rid of the spinner */
-  ${'' /* #nprogress .spinner {
-    display: block;
-    position: fixed;
-    z-index: 12031;
-    top: 1.875rem;
-    left: 3.625rem;
-  }
-  #nprogress .spinner-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    box-sizing: border-box;
-    border: solid 8px transparent;
-    border-top-color:  ${({ theme }) => theme.colors.color_two};
-    border-left-color:  ${({ theme }) => theme.colors.color_three};
-    border-radius: 50%;
-    -webkit-animation: nprogress-spinner 400ms linear infinite;
-    animation: nprogress-spinner 400ms linear infinite;
-  }
-  
-  .nprogress-custom-parent {
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .nprogress-custom-parent #nprogress .spinner,
-  .nprogress-custom-parent #nprogress .bar {
-    position: absolute;
-  }
-  
-  @-webkit-keyframes nprogress-spinner {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  @keyframes nprogress-spinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  } */}
 `
 export default GlobalStyle

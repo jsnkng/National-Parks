@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
 const SlideShow = ({ images }) => {
-  console.log(images)
   return (
     <Carousel__Styled 
+      useKeyboardArrows={true}
       showArrows={true} 
       showThumbs={false} 
       infiniteLoop={false} 
@@ -17,9 +17,9 @@ const SlideShow = ({ images }) => {
       swipeable={true}>
       { images.slice(0).map((item, index) => {
         return(
-          <Image key={`${index}${item.url}`}
-            backgroundURL={`https://www.nps.gov${item.url}`}>
-            <span className="caption">{item.caption }</span>
+          <Image key={`${item.id}`}
+            backgroundURL={item.url}>
+            <span className="caption">{item.caption}</span>
           </Image>
         )
         })
@@ -36,22 +36,13 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  margin: 0.5rem 0 0 0;
+  ${'' /* margin: 0.5rem 0 0 0; */}
   width: 100%;
+  height: 100%;
   min-height: 16rem;
-  max-width: 100%;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
-  ${SuperQuery().minWidth.sm.css`
-    height: 18rem;
-  `}
-  ${SuperQuery().minWidth.md.css`
-    height: 22rem;
-  `}
-  ${SuperQuery().minWidth.lg.css`
-    height: 28rem;
-  `}
 
   .caption {
     position: absolute;
@@ -64,6 +55,11 @@ const Image = styled.div`
   }
 `
 const Carousel__Styled = styled(Carousel)`
+  height: 100%;
+
+  .carousel.carousel-slider {
+    height: 100%;
+  }
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;
     -moz-transition: all 0.25s ease-in;
@@ -194,6 +190,7 @@ const Carousel__Styled = styled(Carousel)`
     overflow: hidden;
     margin: auto;
     width: 100%;
+    height: 100%;
     -webkit-transition: height 0.15s ease-in;
     -moz-transition: height 0.15s ease-in;
     -ms-transition: height 0.15s ease-in;
@@ -208,6 +205,7 @@ const Carousel__Styled = styled(Carousel)`
     display: -moz-flex;
     display: -webkit-flex;
     display: flex; 
+    height: 100%;
   }
   .carousel .slider-wrapper.axis-horizontal .slider .slide {
     flex-direction: column;
@@ -234,6 +232,7 @@ const Carousel__Styled = styled(Carousel)`
     width: 100%; 
   }
   .carousel .slider.animated {
+    height: 100%;
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -ms-transition: all 0.35s ease-in-out;

@@ -6,7 +6,7 @@ import SuperQuery from '@themgoncalves/super-query'
 import Address from './elements/address'
 import Email from './elements/email'
 import Phone from './elements/phone'
-import MapLive__Component from './maplive'
+import MapLive__Component from './elements/maplive'
 import EntryFees from './entryfees'
 
 const Component = ({ park, alerts, markers }) => {

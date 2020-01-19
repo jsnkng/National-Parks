@@ -19,8 +19,9 @@ export default (req, res) => {
   // more results from any NPS api
   const getParksByType = async (db, callback) => {
     console.log(`Getting Parks By Type (${designation})`)
-    const parks = await db.collection('parks').aggregate([{ $match: { designation } }, { $sample: { size: 60 } }]).toArray()
-    const result = parks
+    const data = await db.collection('parks').aggregate([{ $match: { designation } }, { $sample: { size: 100 } }]).toArray()
+    const result = {}
+    result.data = data
     callback(result)
   }
 

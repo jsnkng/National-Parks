@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import MapDiagram from './mapdiagram'
+import MapDiagram from './elements/mapdiagram'
 
 const Component = ({ park }) => {
   return (

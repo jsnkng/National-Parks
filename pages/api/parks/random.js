@@ -1,9 +1,20 @@
+/*
+API endpoint returns a random park
+Arguments:
+  none
+  example:
+  http://localhost:3000/parks/random
+Returns:
+  Nested JSON object containing park, people, places, visitorcenters, articles, and campgrounds for the specified parkCode.
+  Upon init checks MongoDB for existing park record, if not found fetches all data from NPS apis and then inserts into MongoDB
+*/
+
 import { MongoClient } from 'mongodb'
 
 export default (req, res) => {
 
-  const getAggregatePark = async (db, callback) => {
-    console.log(`Getting Aggregated Parks`)
+  const getRandomPark = async (db, callback) => {
+    console.log(`Getting Random Parks`)
     const parks = await db.collection('parks').aggregate([{ $sample: { size: 1} }]).toArray()
     const result = { parks }
     callback(result)
@@ -18,7 +29,7 @@ export default (req, res) => {
 
     const db = client.db(process.env.DB_NAME)
 
-    getAggregatePark(db, result => {
+    getRandomPark(db, result => {
       client.close()
       res.statusCode = 200
       res.setHeader('Content-Type', 'application/json')

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
-import states from '../config/states'
+import states from '../../config/states'
 
 const Component = ({ territories, highlighted, setHighlighted, manageFuture }) => {
   return (
@@ -11,8 +11,8 @@ const Component = ({ territories, highlighted, setHighlighted, manageFuture }) =
       height="100%"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="170 100 935 600" 
-      enableBackground="new 170 100 935 600" 
+      viewBox="170 100 930 700" 
+      enableBackground="new 170 100 930 700" 
     > 
     <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
       { Object.entries(states).map(([key, value]) => {

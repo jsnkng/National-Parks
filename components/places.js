@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import useWindowDimensions from './useWindowDimensions'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
@@ -9,7 +9,6 @@ import { Arrow } from '../svgs/l-arrow.svg'
 const Component = ({ places }) => {
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
-  
   const windowDimension = useWindowDimensions()
   const loadMore = () => {
     setRows(rows + 1)
@@ -22,7 +21,6 @@ const Component = ({ places }) => {
     let newLimit = columnWidth.limit * rows
     setLimit(newLimit)
   })
-  
 
   return (
     <Places>
@@ -83,7 +81,6 @@ const Places = styled.div`
     margin: .5rem 0 0 0;
   }
 `
-
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;

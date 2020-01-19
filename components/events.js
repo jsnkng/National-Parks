@@ -12,11 +12,10 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion'
-import Calendar from './calendar'
-import SlideShow from './slideShowEvents'
+import Calendar from './elements/calendar'
+import SlideShow from './elements/slideshow'
 
 const Component = ({ events }) => {
-
   return (
     <Events>
       <Grid>
@@ -37,16 +36,16 @@ const Component = ({ events }) => {
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    
-                    
                     <Row>
                       <Col xs={12} lg={8}>
                       { item.images.length !== 0 && item.images[0].url !== undefined &&
                         <LazyLoad offset={0}>
-                          <SlideShow images={item.images} />
+                          <SlideShow__Decorated>
+                            <SlideShow images={item.images.map((item, index) => ({ id: index+item.url, url: `https://www.nps.gov${item.url}`, caption: item.caption}))} />
+                          </SlideShow__Decorated>
                         </LazyLoad>
                       }
-                      <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
+                        <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
                      
                       </Col>
                       <Col xs={12} lg={4} className='section details'>
@@ -146,7 +145,6 @@ const Component = ({ events }) => {
 export default Component
 
 const Events = styled.div`
- 
   .section {
     margin-top:0;
     padding-top:0;
@@ -154,4 +152,15 @@ const Events = styled.div`
       border: 0;
     `}
   }
+`
+const SlideShow__Decorated = styled.div`
+  ${SuperQuery().minWidth.sm.css`
+    height: 18rem;
+  `}
+  ${SuperQuery().minWidth.md.css`
+    height: 22rem;
+  `}
+  ${SuperQuery().minWidth.lg.css`
+    height: 28rem;
+  `}
 `

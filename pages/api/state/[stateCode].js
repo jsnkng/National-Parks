@@ -30,7 +30,6 @@ export default (req, res) => {
 
   const getState = async (db, callback) => {
     console.log(`Getting State (${stateCode})`)
-
     // Check MongoDB for existing state
     let [result] = await db.collection('states').find({ stateCode }).toArray()
     if (result === undefined || result.length === 0) {

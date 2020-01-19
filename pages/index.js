@@ -1,18 +1,14 @@
 import React, {useState, useEffect } from 'react'
 import Head from 'next/head'
-
 import absoluteUrl from 'next-absolute-url'
 import fetch from 'isomorphic-unfetch'
-
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 
 import states from '../config/states'
-import MapDiagram from '../components/mapdiagram'
+import MapDiagram from '../components/elements/mapdiagram'
 import Footer from '../components/footer'
-import { Moon } from '../svgs/moon.svg'
-import { Sun } from '../svgs/sun.svg'
 
 const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
@@ -35,10 +31,6 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
     setBackgroundURL(url)
     setLoaded(true)
     pageTransitionReadyToEnter()
-
-    
-    // console.log(parks)
-
   }, [])
 
   if (!loaded) {
@@ -65,7 +57,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <h1><a href="/">Explore America’s<br /> National Parks</a></h1>
                 
                 <h2>Find a Park</h2>
-                <label for='state'>By State</label>
+                <label htmlFor='state'>By State</label>
                 <select id='state' value={`/state/${highlighted}/`} onChange={handleStateChange.bind(this)}>
                   <option label='By State'>By State</option>
                   { Object.entries(states).map(([key, value]) => {
@@ -76,7 +68,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                   })}
                 </select>
 
-                <label for='designation'>By Designation</label>
+                <label htmlFor='designation'>By Designation</label>
                 <select id='designation' value='' onChange={handleDesignationChange.bind(this)}>
                 <option label='By Designation'>By Designation</option>
                 <option label='National Battlefields' value='/designation/National%20Battlefield/'>National Battlefields</option>
@@ -105,8 +97,6 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <option label='International Historic Sites' value='/designation/International%20Historic%20Site/'>International Historic Sites</option>
                 <option label='International Parks' value='/designation/International%20Park/'>International Parks</option>
               </select>
-              
-              
                 
               </Col>
               <Col xs={12} smOffset={2} sm={8} mdOffset={0} md={8} lg={9}>
@@ -120,47 +110,24 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                     manageFuture={manageFuture}
                   />
                 </MapDiagram__Wrapper>
-                <BackgroundDetails
-                  onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
-                  `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}
-                >
-                  {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
-                  <strong>{parks[0].designation}</strong><br />
-                  {states[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
-                  {/* <a href='/'><img className='logo' src='/us-nps.png' width='90' alt='National Parks Guide' /></a> */}
-                </BackgroundDetails>
+                
               </Col>
             </Row>
 
           </Grid__FindAPark>
+          <BackgroundDetails
+            onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
+            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}
+          >
+            {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
+            <strong>{parks[0].designation}</strong><br />
+            {states[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
+          </BackgroundDetails>
         </Content>
 
-        <FooterHome>
-
-          <Grid fluid>
-          <Row className='bottom'>
-          
-            <Col className='bottom__themeswitcher' xs={12}>
-            <a className='bottom__credit' href="#"><strong>JSNKNG</strong> / 2020</a>
-        
-            { themeName !== 'lightMode' &&
-              <Sun aria-label='Set Day Mode' onClick={() => { 
-                setThemeName('lightMode')
-                document.cookie = `themeName=lightMode; path=/`
-              } } />
-            }
-            { themeName === 'lightMode' &&
-              <Moon aria-label='Set Night Mode'  onClick={() => { 
-                setThemeName('darkMode')
-                document.cookie = `themeName=darkMode; path=/`
-              } } />
-            }
-            </Col>
-          </Row> 
-        </Grid>
-
-        
-        </FooterHome>
+        <Footer__Wrapper>
+          <Footer themeName={themeName} setThemeName={setThemeName} />
+        </Footer__Wrapper>
 
       </Background>
       </>
@@ -172,12 +139,14 @@ Home.pageTransitionDelayEnter = true
 
 Home.getInitialProps = async ({ req, query }) => {
   const {origin}  = absoluteUrl(req)
-  const park = await fetch(`${origin}/api/parks/aggregate`)
+  const park = await fetch(`${origin}/api/parks/random`)
   const result = await park.json()
   return result
 }
 
 export default Home
+
+
 const Background = styled.div`
   position: absolute;
   top: 0;
@@ -202,14 +171,14 @@ const BackgroundOverlay = styled.div`
   background-color: ${ ({ theme }) => theme.colors.image_overlay_opaque };
 `
 const BackgroundDetails = styled.div`
-position: absolute;
-bottom: 1rem;
-left: 1.25rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
   color: ${({ theme }) => theme.colors.home_text};
   text-align: left;
   font-size: .75rem;
   text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
-  z-index: 100;
+  z-index: 10;
 
   img.logo {
     width: 3rem;
@@ -218,13 +187,13 @@ left: 1.25rem;
 const Content = styled.main`
   margin: 0 auto;
   color: ${({ theme }) => theme.colors.home_text };
-  z-index: 100;
+  z-index: 1000;
   width: 90%;
 
   ${SuperQuery().minWidth.of('1360px').css`
-  padding: 6rem;
+    padding: 6rem;
     width: 100%;
-    `}
+  `}
 
   a {
     cursor: pointer;
@@ -264,76 +233,11 @@ const Content = styled.main`
   }
 
 `
-const FooterHome = styled.div`
-position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  color: ${({ theme }) => theme.colors.home_text };
-  z-index: 900;
-  height: 3rem;
-  .bottom {
-    display: flex;
-    align-content: flex-start;
-    ${SuperQuery().minWidth.md.css`
-      padding:  0;
-    `}
-    a {
-      cursor: pointer;
-      text-decoration: none;
-      border: none;
-      color: inherit;
-    }
-  }
-  .bottom__credit {
-    font-size: 0.75rem;
-    padding: 0.75rem 0 0 0;
-    z-index: 1000;
-    text-shadow: 0.5px 0.5px 1px ${({ theme }) => theme.colors.home_text_shadow};
-  }
-  .bottom__themeswitcher {
-    display: flex;
-    justify-content: flex-end;
-    width: 52px;
-    height: 28px;
-    z-index: 1000;
-
-    svg {
-      width: 38px;
-      height: 38px;
-      cursor: pointer;
-      outline: none;
-      padding: 10px;
-      margin: 0;
-      &:hover {
-        padding: 12px;
-      }
-      margin-right: -1rem;
-
-      ${'' /* background-color: rgba(0,0,0,0.1); */}
-      ${'' /* filter: ${({ theme }) => theme.colors.color_filter}; */}
-      transition: filter 0.25s;
-
-    }
-  }
-
-`
-
 const Grid__FindAPark = styled(Grid)`
-  z-index: 100;
-
   ${SuperQuery().maxWidth.of('375px').css`
     margin: 0 0 1rem 0;
   `}
-
-  ${'' /* ${SuperQuery().minWidth.of('1240px').css`
-    margin: 0  0 0 -12rem;
-    `}
-    ${SuperQuery().minWidth.of('1840px').css`
-    margin: 0  0 0 -22rem;
-    `} */}
-
+ 
   h1 {
     font-size: 2.5rem;
     letter-spacing: -0.1rem;
@@ -384,14 +288,11 @@ const Grid__FindAPark = styled(Grid)`
     background: rgba(0,0,0,0.07);
     color:#222;
     filter: ${({ theme }) => theme.colors.color_filter};
-
     text-shadow: 0.5px 0.5px 1px rgba(255,255,255,.4);
     font-size: 1.5rem;
     outline: none;
     margin: 1rem -0.75rem 0.75rem -0.5rem;
     padding: 0.375rem 0.5rem;
-    
-    
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
@@ -404,13 +305,10 @@ const Grid__FindAPark = styled(Grid)`
     border-bottom: 3px solid #666;
     border-radius: 0;
 
-
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1rem;
     `}
-
   }
-
 `
 const MapDiagram__Wrapper = styled.div`
   margin:3rem 0 0 0rem;
@@ -423,15 +321,17 @@ const MapDiagram__Wrapper = styled.div`
   ${SuperQuery().minWidth.md.css`
     margin: 0;
   `}
-
   ${SuperQuery().minWidth.md.and.landscape.css`
     margin: 0 2rem 0 3rem;
   `}
-
-  ${'' /* ${SuperQuery().minWidth.of('1240px').css`
-    margin: 0 -18rem 0 0;
-    `}
-    ${SuperQuery().minWidth.of('1840px').css`
-    margin: 0 -28rem 0 0;
-    `} */}
+`
+const Footer__Wrapper = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    color: ${({ theme }) => theme.colors.home_text } !important;
+    height: 3rem;
+  }
 `

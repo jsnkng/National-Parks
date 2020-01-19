@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import useWindowDimensions from './useWindowDimensions'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
-import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ articles }) => {
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
-  
   const windowDimension = useWindowDimensions()
   const loadMore = () => {
     setRows(rows + 1)
@@ -22,7 +20,6 @@ const Component = ({ articles }) => {
     let newLimit = columnWidth.limit * rows
     setLimit(newLimit)
   })
-
   return (
     <Articles>
       <Grid>
@@ -31,7 +28,6 @@ const Component = ({ articles }) => {
             <h2>Learn More</h2>
           </Col>
         </Row>
-       
         <Row>
         { articles.slice(0,limit).map((item) => {
           return (
@@ -60,8 +56,6 @@ const Component = ({ articles }) => {
           })
         }
         </Row>
-
-        
         <Row>
           <button 
             className={ limit >= articles.length ? "hidden btn__load-more" : "btn__load-more" } 
@@ -85,7 +79,6 @@ const Articles = styled.div`
       height: 14rem;
     `}
   }
-
   .articles__card--noimage {
     margin: 1rem 0 0 0;
     .articles__card--title {
@@ -125,7 +118,6 @@ const Articles = styled.div`
       `}
     }
   }
- 
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

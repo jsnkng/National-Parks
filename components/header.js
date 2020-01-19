@@ -140,7 +140,6 @@ const Header = styled.header`
         font-size: 1.375rem;
       `}
     }
-    
   }
   .long_no_sub {
     font-size: 1.175rem;
@@ -199,7 +198,4 @@ const Header = styled.header`
       `}
     }
   }   
-  
-
-
 `

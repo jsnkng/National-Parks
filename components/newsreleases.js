@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import useWindowDimensions from './useWindowDimensions'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
@@ -96,7 +96,6 @@ const NewsReleases = styled.div`
       height: 18rem;
     `}
   }
-
   .articles__card--noimage {
     margin: 1rem 0 0 0;
     .articles__card--title {
@@ -132,7 +131,6 @@ const NewsReleases = styled.div`
       `}
     }
   }
-
   .articles__card--image {
     margin: 1rem 0 0 0;
     h4 {
@@ -145,7 +143,6 @@ const NewsReleases = styled.div`
       `}
     }
   }
- 
 `
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});

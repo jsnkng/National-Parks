@@ -12,19 +12,12 @@ import {
 
 const Component = ({ fees, title, windowDimension }) => {
   const [cols, setCols] = useState({ xs: 12, sm: 12, md: 12, lg: 12 })
-  // const numCols = fees.length % 3 === 0 ? 3 :
-  //                 fees.length % 2 === 0 ? 2 : 1
-  // const dynCols = numCols === 3 || fees.length > 4 ? { xs: 12, sm: 12, md: 4, lg: 4 } :
-  //                 numCols === 2 ? { xs: 12, sm: 6, md: 6, lg: 6 } :  
-  //                 numCols === 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : 
-  //                                 { xs: 12, sm: 12, md: 12, lg: 4 }
 
   const dynCols = fees.length > 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : {xs: 12, sm: 12, md: 12, lg: 12 }
 
   useEffect(() => {
     setCols(dynCols)
   }, [])
-
 
   return (
     <EntryFees>
@@ -124,7 +117,6 @@ const EntryFees = styled.div`
       text-indent: 0rem;
     }
   }
-
   .accordion__button:before {
     display: inline-block;
     float: left;
@@ -145,7 +137,6 @@ const EntryFees = styled.div`
   .accordion__button[aria-selected='true']::before {
     transform: rotate(0deg);
     content: '-';
-
   }
 
   .accordion__panel {
@@ -178,4 +169,3 @@ const EntryFees = styled.div`
     }
   }
 `
-
