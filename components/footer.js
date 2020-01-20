@@ -82,7 +82,8 @@ const Footer = styled.footer`
   .bottom__logo--image {
     cursor: pointer;
     border: none;
-    width: 2.25em;
+    width: 40px;
+    height: 40px;
   }
   .bottom__logo--text {
     text-align:right;
