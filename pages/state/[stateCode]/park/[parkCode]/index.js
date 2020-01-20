@@ -75,11 +75,12 @@ const Park = ({
           manageFuture={manageFuture}
         />
         <Content>
-          { park.images !== undefined && park.images.length !== 0 &&
-            <SlideShow__Decorated>
-            <SlideShow images={park.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.title}))} />
-            </SlideShow__Decorated>
+          { park.images !== undefined &&  
+          <SlideShow__Decorated>
+            <SlideShow images={park.images.map((item, index) => ({ id: index+item.url, url: `${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`, caption: item.title}))} />
+          </SlideShow__Decorated>
           }
+          
           { park.images === undefined || park.images.length === 0 &&
           <div style={{height: '90px'}}></div>
           }
