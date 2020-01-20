@@ -160,15 +160,24 @@ const Events = styled.div`
       flex-direction: row;
     `}
   }
+  h5 {
+    font-size:1.5rem;
+  }
+  p {
+    font-size:1.25rem;
+  }
 `
 const SlideShow__Decorated = styled.div`
+    height: 60vw;
   ${SuperQuery().minWidth.sm.css`
-    height: 18rem;
+    max-height: 23rem;
   `}
   ${SuperQuery().minWidth.md.css`
-    height: 22rem;
+    height: 29rem;
+    max-height: 29rem;
   `}
   ${SuperQuery().minWidth.lg.css`
-    height: 28rem;
+    height: 26rem;
+    max-height: 26rem;
   `}
 `

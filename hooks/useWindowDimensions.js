@@ -20,8 +20,8 @@ function useWindowDimensions() {
     }
     window.addEventListener('resize', handleResize)
     window.addEventListener('scroll', handleResize)
-    return () => { window.removeEventListener('resize', handleResize) 
-    window.removeEventListener('scroll', handleResize) }
+    return () => {  window.removeEventListener('resize', handleResize) 
+                    window.removeEventListener('scroll', handleResize) }
   }, []) // Empty array ensures that effect is only run on mount and unmount
 
   return windowSize

@@ -24,9 +24,10 @@ const Calendar = styled(DayPicker)`
   position: relative;
   flex-direction: row;
   user-select: none;
-    width: 14rem;
+  width: 70vw;
+  margin:0 auto;
   ${SuperQuery().minWidth.lg.css`
-    width: 20rem;
+    ${'' /* width: 100%; */}
   `}
 }
 .DayPicker-Months {
@@ -117,8 +118,17 @@ const Calendar = styled(DayPicker)`
   text-align: center;
   cursor: pointer;
   border: 3px solid ${({ theme }) => theme.colors.offbackground};
-  font-size: .75rem;
-  padding: 0.5rem;
+  font-size: 1.125rem;
+  padding: 0.8rem;
+  font-weight: 700;
+  ${SuperQuery().maxWidth.of('360px').css`
+    font-size: .925rem;
+    padding: 0.5rem;
+  `}
+  ${SuperQuery().minWidth.sm.css`
+    font-size: .875rem;
+    padding: 0.5rem;
+  `}
   ${SuperQuery().minWidth.lg.css`
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
