@@ -99,6 +99,8 @@ const Header = styled.header`
   }
   .top__back--title {
     font-weight: 700;
+    max-width: 50%;
+    line-height: .9;
   }
   svg {
     width: 1.875rem;
