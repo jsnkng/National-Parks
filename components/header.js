@@ -8,8 +8,8 @@ import { Arrow } from '../svgs/l-arrow.svg'
 const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage }) => {
   const windowDimension = useWindowDimensions()
   /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
-  const titleClass = (title.length >= 40 && title__sub !== '') ? 'xtralong_sub' :
-  (title.length >= 40 && title__sub === '') ? 'xtralong_no_sub' :
+  const titleClass = (title.length >= 38 && title__sub !== '') ? 'xtralong_sub' :
+  (title.length >= 38 && title__sub === '') ? 'xtralong_no_sub' :
   (title.length >= 27 && title__sub !== '') ? 'long_sub' :
   (title.length >= 27 && title__sub === '') ? 'long_no_sub' : 
 
@@ -29,8 +29,9 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
         </div>
 
       </div>
-      <div className={windowDimension.scrollY > .5 * windowDimension.height ? 'hidden' : '' }>
-        <Logo onClick={() => manageFuture('/', '/')}>
+      <div>
+        <Logo className={windowDimension.scrollY > .5 * windowDimension.height ? 'hidden' : '' } 
+              onClick={() => manageFuture('/', '/')}>
           <div className='top__logo'>
             <a className='top__logo--text'>National<br />Park<br />Service</a>
             <img className='top__logo--image' src='/us-nps.png' width='90' alt='National Parks Service' />
@@ -80,14 +81,13 @@ const Header = styled.header`
     color: ${({ theme }) => theme.colors.home_text};
     background-color: transparent;
     fill: ${({ theme }) => theme.colors.home_text};
+    
   }
 
   .hidden {
-    display:none;
+    opacity:0;
   }
-  ${'' /* ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
-    position: relative;
-  `} */}
+ }
   ${SuperQuery().minWidth.md.css`
     height: 4rem;
   `}
@@ -104,13 +104,10 @@ const Header = styled.header`
     justify-content: space-around;
     flex-grow: 3;
     width: 100%;
-    
-    &.hidden {
-      display:none;
-    }
+    opacity: 1;
   }
   .top__back--title {
-    font-weight: 700;
+    font-weight: 200;
     max-width: 50%;
     line-height: .9;
       font-size: 1rem;
@@ -138,6 +135,8 @@ const Header = styled.header`
     position: absolute;
     top: 0;
     right: 0;
+    width: 40rem;
+    max-width: 50%;
     display: flex;
     align-items: flex-end;
     flex-direction: column;
@@ -159,6 +158,7 @@ const Header = styled.header`
   }
   .top__title {
     display: block;
+    text-align:right;
     font-size: 1.375rem;
     line-height: 1;
     font-weight: 700;
@@ -178,14 +178,15 @@ const Header = styled.header`
     ${SuperQuery().maxWidth.of('325px').css`
       font-size: 1.375rem;
     `}
-    &.xtralong_sub,
-    &.xtralong_no_sub {
-      font-size: 1.125rem;
-      line-height: 1.05;
-      ${SuperQuery().minWidth.sm.css`
+    
+  }
+  .xtralong_sub,
+  .xtralong_no_sub {
+    font-size: 1rem;
+    line-height: 1.05;
+    ${SuperQuery().minWidth.sm.css`
         font-size: 1.375rem;
-      `}
-    }
+    `}
   }
   .long_no_sub {
     font-size: 1.175rem;
@@ -215,8 +216,8 @@ const Header = styled.header`
     `}
   }
   .long_sub {
-    font-size: 1rem;
-    ${SuperQuery().minWidth.sm.css`
+    font-size: 1.175rem;
+    ${SuperQuery().minWidth.md.css`
       font-size: 1.5rem;
     `}
   }
@@ -251,6 +252,10 @@ const Logo = styled.div`
   top: 0;
   right: 0;
   z-index: 10000;
+    opacity:1;
+  &.hidden {
+    opacity:0;
+  }
   a {
     cursor: pointer;
     text-decoration: none;
@@ -271,13 +276,11 @@ const Logo = styled.div`
     flex-grow: 1;
     min-width: 110px;
   }
+  
   .top__logo--image {
     cursor: pointer;
     border: none;
     width: 2.25em;
-    ${SuperQuery().minWidth.md.css`
-    width: 3.25em;
-    `}
   }
   .top__logo--text {
     text-align:right;
@@ -286,9 +289,8 @@ const Logo = styled.div`
     font-weight: 700;
     letter-spacing: -1px;
     margin-right: .5rem;
-    text-shadow: 0.5px 0.5px 2px ${({ theme }) => theme.colors.home_text_shadow};
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.125rem;
+      font-size: .875rem;
       letter-spacing: -1.5px;
     `}
 }
