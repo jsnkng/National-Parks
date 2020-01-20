@@ -88,7 +88,7 @@ const Image = styled.div`
 
 const Content = styled.div`
   height: 100%;
-
+  position: relative;
   .hero__header {
     position: absolute;
     top: 0;
