@@ -56,7 +56,6 @@ const Banner = styled.div`
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
     height: 100%;
     width: 100%;
-    padding: .125rem 0.5rem;
     z-index: 20;
     -webkit-transition: background 0.5s linear;
     -moz-transition: background 0.5s linear;

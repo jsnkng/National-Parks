@@ -77,7 +77,7 @@ const Park = ({
         <Content>
           { park.images !== undefined &&  
           <SlideShow__Decorated>
-            <SlideShow images={park.images.map((item, index) => ({ id: index+item.url, url: `${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`, caption: item.title}))} />
+            <SlideShow title={park.name} subtitle={park.designation} images={park.images.map((item, index) => ({ id: index+item.url, url: `${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`, caption: item.title}))} />
           </SlideShow__Decorated>
           }
           
@@ -164,18 +164,8 @@ const Footer__Wrapper = styled.div`
 `
 const SlideShow__Decorated = styled.div`
   width: 100%;
-  height: 80vh;
-  min-height:300px;
-  max-width: 100%;
+  height: 100vh;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
-
-  ${SuperQuery().minWidth.md.css`
-    height: 85vh;
-    min-height:300px;
-  `}
-  ${SuperQuery().minWidth.lg.css`
-    height: 85vh;
-    min-height:600px;
-  `}
+  margin-bottom: 2rem;
 `

@@ -3,8 +3,20 @@ import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
-const SlideShow = ({ images }) => {
+const SlideShow = ({ title, subtitle, images }) => {
+  if(images.length > 0) {
+  const first = images[0]
+  const newImages = images.splice(0,1)
+  images.push(first)
+}
   return (
+    <Content>
+      { (title !== '' || subtitle !== '') &&
+      <div className='hero__header'>
+        <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
+        <h3>{subtitle}</h3>
+      </div>
+      }
     <Carousel__Styled 
       useKeyboardArrows={true}
       showArrows={true} 
@@ -25,10 +37,12 @@ const SlideShow = ({ images }) => {
         })
       }
     </Carousel__Styled>
+    </Content>
   )
 }
 
 export default SlideShow
+
 
 const Image = styled.div`
   position: relative;
@@ -39,20 +53,62 @@ const Image = styled.div`
   ${'' /* margin: 0.5rem 0 0 0; */}
   width: 100%;
   height: 100%;
-  min-height: 16rem;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
-
   .caption {
     position: absolute;
-    bottom: 30px;
-    right: 20px;
+    bottom: 6%;
+    left: 8%;
     color: #ffffff;
     font-size: .875rem;
     margin:  0;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
   }
+
+`
+
+const Content = styled.div`
+  height: 100%;
+
+  .hero__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+    pointer-events: none;
+    height: 100%;
+    z-index: 100;
+    background-color: ${({ theme }) => theme.colors.image_overlay_light};
+    color: ${({ theme }) => theme.colors.home_text};
+    text-shadow: 2px 2px 2px ${({ theme }) => theme.colors.home_text_shadow};
+   }
+
+   h2 {
+      width: 94%;
+      border: none;
+      font-size: 2.5rem;
+      line-height: 0.875;
+      letter-spacing: -0.1rem;
+      margin: 0 0 0 1rem;
+      padding: 50vh 0 0 0; 
+    }
+    h3 {
+      width: 94%;
+      font-weight: 400;
+      font-size: 2.125rem;
+      margin: 0 0 0 1rem;
+      padding: 0; 
+    }
+  } 
+
+
+
 `
 const Carousel__Styled = styled(Carousel)`
   height: 100%;

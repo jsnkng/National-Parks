@@ -8,11 +8,11 @@ const Component = ({ park }) => {
   return (
     <Description>
       <Grid>
-        <Row>
+        {/* <Row>
           <Col xs={12}>
             <h1><div dangerouslySetInnerHTML={{__html: park.name }}></div> <span>{park.designation}</span></h1>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col xs={12} sm={7} md={8}>
             <p className='introduction'>{park.description}</p>

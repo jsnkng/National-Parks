@@ -143,6 +143,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     margin-top: 0.5rem;
     margin-bottom: 0.75rem;
+
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.5rem;
+    `}
     ul {
       margin: 0;
       padding: 0 0 0 1rem;
