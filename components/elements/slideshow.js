@@ -72,9 +72,10 @@ const Image = styled.div`
   animation: myfirst 1s;
 
   .caption {
+    position: absolute;
+    bottom: 3rem;
+    left: 1rem;
     display: block;
-    text-align: left;
-    padding: 94vh 0 0 0; 
     color: #ffffff;
     font-size: .875rem;
     margin:  0;
@@ -108,6 +109,7 @@ const Content = styled.div`
       letter-spacing: -0.1rem;
       margin: 0;
       padding: 50vh 0 0.125rem 0; 
+    z-index: 1000;
 
       ${SuperQuery().minWidth.sm.css`
         font-size: 8vw;
@@ -120,6 +122,7 @@ const Content = styled.div`
       line-height: 0.875;
       margin: 0;
       padding: 0; 
+    z-index: 1000;
       ${SuperQuery().minWidth.sm.css`
         font-size: 5vw;
       `}

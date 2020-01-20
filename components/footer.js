@@ -46,7 +46,7 @@ export default Component
 
 const Footer = styled.footer`
   position: relative;
-  height: 5rem;
+  height: 4.5rem;
   .bottom__themeswitcher {
   position: absolute;
   bottom: 1.5rem;
@@ -84,14 +84,14 @@ const Footer = styled.footer`
 
 const Logo = styled.div`
   position: absolute;
-  bottom: 1.5rem;
-  right: 0.25rem;
+  bottom: 1rem;
+  right: 0.75rem;
   z-index: 10000;
   a {
     cursor: pointer;
     text-decoration: none;
     border: none;
-    color: ${({ theme }) => theme.colors.home_text};
+    color: ${({ theme }) => theme.colors.text};
     &:focus {
       text-decoration: underline !important;
     }
@@ -107,23 +107,18 @@ const Logo = styled.div`
   .top__logo--image {
     cursor: pointer;
     border: none;
-    width: 2.5rem;
-    margin-right: .5rem;
-    ${SuperQuery().minWidth.md.css`
-      width: 2.5rem;
-    `}
+    width: 2.25em;
   }
   .top__logo--text {
     text-align:right;
-    font-size: .8rem;
+    font-size: .875rem;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin-right: .375rem;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    margin-right: .5rem;
     ${SuperQuery().minWidth.md.css`
-      font-size: .75rem;
+      font-size: .875rem;
       letter-spacing: -1.5px;
-  `}
-}
+    `}
+  }
 `
