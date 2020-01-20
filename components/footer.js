@@ -92,9 +92,7 @@ const Logo = styled.div`
     text-decoration: none;
     border: none;
     color: ${({ theme }) => theme.colors.text};
-    &:focus {
-      text-decoration: underline !important;
-    }
+ 
   }
 
   .top__logo {

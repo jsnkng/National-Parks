@@ -21,10 +21,9 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
   return (
     <>
     <Header className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden" } >
-      <div className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden top__back" } 
-        onClick={() => manageHistory()}>
+      <div className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden top__back" } >
         
-        <div className='top__back--container'>
+        <div className='top__back--container'   onClick={() => manageHistory()}>
           <Arrow />
           <div className='top__back--title'>
             {lastPage}
@@ -85,9 +84,7 @@ const Header = styled.header`
     text-decoration: none;
     border: none;
     color: inherit;
-    &:focus {
-      text-decoration: underline !important;
-    }
+    
   }
   .top__back {
     display: flex;
@@ -95,9 +92,7 @@ const Header = styled.header`
     justify-content: space-around;
     flex-grow: 3;
     width: 100%;
-    &:focus {
-      text-decoration: underline !important;
-    }
+    
     &.hidden {
       display:none;
     }
@@ -233,9 +228,9 @@ const Logo = styled.div`
     text-decoration: none;
     border: none;
     color: ${({ theme }) => theme.colors.home_text};
-    &:focus {
-      text-decoration: underline !important;
-    }
+   &:hover {
+     color:${({ theme }) => theme.colors.home_text};
+   }
   }
 
   .top__logo {

@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: ${({ theme }) => theme.colors.background};
-    height: 100vh;
     margin: 0;
     padding: 0;
     font-size: 112.5%;
@@ -117,9 +116,7 @@ const GlobalStyle = createGlobalStyle`
         ${'' /* border-radius:12px; */}
       }
     }
-    &:focus {
-      text-decoration: underline !important;
-    }
+   
   }
   
   p, .p {
@@ -225,9 +222,6 @@ const GlobalStyle = createGlobalStyle`
   &:hover {
     color: ${({ theme }) => theme.colors.color_two};
   }
-  &:focus {
-    text-decoration: underline !important;
-  }
   &.hidden {
     display:none;
   }
@@ -259,9 +253,6 @@ const GlobalStyle = createGlobalStyle`
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.color_two};
     background-color: rgba(255,255,255,.015);
-  }
-  &:focus {
-    text-decoration: underline !important;
   }
   ${SuperQuery().minWidth.md.css`
     float: right;
@@ -303,9 +294,6 @@ const GlobalStyle = createGlobalStyle`
       margin-right:0px;
       margin-top:0px;
     }
-  }
-  .accordion__button:focus {
-    text-decoration: underline;
   }
   .accordion__button:hover {
     color: ${({ theme }) => theme.colors.color_two};
