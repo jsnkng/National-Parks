@@ -122,7 +122,8 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           </Grid__FindAPark>
           <BackgroundDetails
             onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
-            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`)}
+            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`,
+            parks[0].designation)}
           >
             {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
             <strong>{parks[0].designation}</strong><br />
@@ -185,6 +186,10 @@ const BackgroundDetails = styled.div`
   text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
   z-index: 10;
 
+  ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
+  bottom: 0.5rem;
+  line-height: 0.875rem;
+  `}
   img.logo {
     width: 3rem;
   }
@@ -250,6 +255,10 @@ const Grid__FindAPark = styled(Grid)`
     padding: 0 0 0.5rem 0;
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
     border-bottom:3px solid ${({ theme }) => theme.colors.home_text};
+
+  ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
+    font-size: 1.75rem;
+  `}
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.75rem;
     `}
@@ -272,9 +281,14 @@ const Grid__FindAPark = styled(Grid)`
     letter-spacing: -0.1rem;
     text-shadow: 0.5px 0.5px 2px ${({ theme }) => theme.colors.home_text_shadow};
     border-bottom: 0;
+    margin: 0.25rem 0;
+    padding: 0;
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.25rem;
     `}
+  ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
+    font-size: 1.25rem;
+  `}
     ${SuperQuery().minWidth.md.css`
       font-size: 1.5rem;
     `}
@@ -312,6 +326,10 @@ const Grid__FindAPark = styled(Grid)`
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1rem;
     `}
+
+  ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
+    font-size: 1rem;
+  `}
   }
 `
 const MapDiagram__Wrapper = styled.div`
@@ -320,7 +338,8 @@ const MapDiagram__Wrapper = styled.div`
     display: none;
   `}
   ${SuperQuery().maxWidth.of('375px').css`
-    margin: 2rem 0 0 0;
+    display: none;
+    font-size: 1rem;
   `}
   ${SuperQuery().minWidth.md.css`
     margin: 0;
@@ -329,13 +348,7 @@ const MapDiagram__Wrapper = styled.div`
     margin: 0 2rem 0 3rem;
   `}
 `
-const Footer__Wrapper = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    color: ${({ theme }) => theme.colors.home_text } !important;
+  const Footer__Wrapper = styled.div`
     height: 3rem;
-  }
+    color: ${({ theme }) => theme.colors.text } !important; 
 `

@@ -134,9 +134,9 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: center;
   justify-content: left;
-  ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
+  ${'' /* ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
     margin-top: calc(100vh - 4rem)
-  `}
+  `} */}
 `
 const Row__Decorated = styled(Row)`
   width: 100%;

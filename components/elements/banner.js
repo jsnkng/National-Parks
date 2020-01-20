@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import territories from '../../config/states'
 import Spinner from './spinner'
+import SuperQuery from '@themgoncalves/super-query'
 
 const Component = ({ backgroundURL, title, subtitle, hero, states, manageFuture }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
@@ -91,15 +92,21 @@ const Banner = styled.div`
 
   .hero__header {
     h2 {
-      font-size: 2.5rem;
+        font-size: 3rem;
       line-height: 0.875;
       letter-spacing: -0.1rem;
       margin: 0 0 0 1rem;
       padding: 50vh 0 0 0; 
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 8vw;
+      `}
     }
     h3 {
-      font-size: 2.125rem;
       margin: 0 0 0 1rem;
+        font-size: 5vw;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 5vw;
+      `}
     }
   }
 `

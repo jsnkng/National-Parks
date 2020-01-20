@@ -46,7 +46,7 @@ export default Component
 
 const Footer = styled.footer`
   position: relative;
-  height: 4.5rem;
+  height: 6rem;
   .bottom__themeswitcher {
   position: absolute;
   bottom: 1.5rem;

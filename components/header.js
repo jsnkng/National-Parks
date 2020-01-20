@@ -247,6 +247,9 @@ const Logo = styled.div`
     cursor: pointer;
     border: none;
     width: 2.25em;
+    ${SuperQuery().minWidth.md.css`
+    width: 3.25em;
+    `}
   }
   .top__logo--text {
     text-align:right;
@@ -257,7 +260,7 @@ const Logo = styled.div`
     margin-right: .5rem;
     text-shadow: 0.5px 0.5px 1px ${({ theme }) => theme.colors.home_text_shadow};
     ${SuperQuery().minWidth.md.css`
-      font-size: .875rem;
+      font-size: 1.125rem;
       letter-spacing: -1.5px;
     `}
 }
