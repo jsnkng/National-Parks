@@ -174,7 +174,7 @@ const BackgroundOverlay = styled.div`
   height: 100vh;
   width: 100vw;
   z-index:1;
-  background-color: ${ ({ theme }) => theme.colors.image_overlay_opaque };
+  background: ${({ theme }) => theme.colors.image_overlay_gradient};
 `
 const BackgroundDetails = styled.div`
   position: absolute;

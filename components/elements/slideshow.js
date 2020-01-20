@@ -10,9 +10,12 @@ const SlideShow = ({ title, subtitle, images }) => {
     const newImages = images.splice(0,1)
     images.push(first)
   }
+  console.log('tit', title)
+  console.log('sub', subtitle)
+
   return (
     <Content>
-      { (title !== '' || subtitle !== '') &&
+      { (title !== undefined || subtitle !== undefined) &&
       
       <div className='hero__header'>
         <Grid fluid>
@@ -97,7 +100,9 @@ const Content = styled.div`
     pointer-events: none;
     height: 100%;
     text-align: left;
-    background-color: ${({ theme }) => theme.colors.image_overlay_light};
+    ${'' /* background-color: ${({ theme }) => theme.colors.image_overlay_gradient}; */}
+
+    background: ${({ theme }) => theme.colors.image_overlay_gradient};
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 2px 2px 2px ${({ theme }) => theme.colors.home_text_shadow};
     z-index: 1000;

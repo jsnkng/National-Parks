@@ -32,6 +32,7 @@ const themes = {
     home_text_shadow: 'rgba(0,0,0,0.45)',
     image_overlay_light: 'rgba(0,0,0,0.4)',
     image_overlay_opaque: 'rgba(0,0,0,0.55)',
+    image_overlay_gradient: 'linear-gradient(180deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.05) 100%)',
     spinner: 'rgba(0,0,0,0.9)',
     color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
     // gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
@@ -52,6 +53,7 @@ const themes = {
     home_text_shadow: '#111111',
     image_overlay_light: 'rgba(50,50,50,0.3)',
     image_overlay_opaque: 'rgba(0,0,0,0.40)',
+    image_overlay_gradient: 'linear-gradient(180deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.05) 100%)',
     spinner: 'rgba(255,255,255,.4)',
     color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
     // gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'

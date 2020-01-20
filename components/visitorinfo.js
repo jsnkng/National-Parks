@@ -37,7 +37,7 @@ const Component = ({ park, alerts, markers }) => {
           </Col>
         </Row>
         
-        <Row className='section'>
+        <Row className={ park.latLong !== '' && 'section'}>
         { ((park.contacts !== undefined && park.contacts.phoneNumbers.length !== 0) ||
           (park.contacts !== undefined && park.contacts.emailAddresses.length !== 0) ||
           (park.addresses !== undefined && park.addresses.length !== 0)) &&

@@ -40,11 +40,11 @@ const Calendar = styled(DayPicker)`
     position:relative;
   }
   .DayPicker-NavButton {
+    display:none;
     position: absolute;
     top: 0.125rem;
     right: 0.5rem;
     left: auto;
-    display: inline-block;
     margin-top: 2px;
     width: 1.25rem;
     height: 1.25rem;

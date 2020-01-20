@@ -52,6 +52,7 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
             }
             title={data[heroIdx].name}
             subtitle={data[heroIdx].states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
+            headline={`${designation}s`}
             hero={true}
             manageFuture= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
                                               `/state/${data[heroIdx].states.toLowerCase().split(',')[0]}/park/${data[heroIdx].parkCode}`,

@@ -5,7 +5,7 @@ import territories from '../../config/states'
 import Spinner from './spinner'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Component = ({ backgroundURL, title, subtitle, hero, states, manageFuture }) => {
+const Component = ({ backgroundURL, title, subtitle, headline, hero, states, manageFuture }) => {
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
  
   return (
@@ -15,6 +15,9 @@ const Component = ({ backgroundURL, title, subtitle, hero, states, manageFuture 
       }}>
       <Spinner isSpinnerVisible={isSpinnerVisible} />
       <div className={hero ? 'hero__header' : 'banner__header'}>
+        {headline !==undefined && 
+          <h1>{headline}</h1>
+        }
         <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
         <h3>{states !== undefined ? states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / '): subtitle}</h3>
       </div>
@@ -70,7 +73,6 @@ const Banner = styled.div`
       font-size: 1.5rem;
       line-height: 1.05;
       margin: 0 0 0 0.375rem;
-      padding: 10rem 0 0 0; 
     }
     h3 {
       width: 94%;
@@ -91,21 +93,38 @@ const Banner = styled.div`
   }
 
   .hero__header {
-    h2 {
-        font-size: 3rem;
+    
+    h1 {
+      font-size: 3.5rem;
       line-height: 0.875;
       letter-spacing: -0.1rem;
       margin: 0 0 0 1rem;
-      padding: 50vh 0 0 0; 
+      padding: 10rem 0 0 0; 
+      max-width: 70vw;
+      text-shadow: 2px 2px 6px ${({ theme }) => theme.colors.home_text_shadow};
       ${SuperQuery().minWidth.sm.css`
         font-size: 8vw;
       `}
     }
-    h3 {
+    h2 {
+      font-size: 2.25rem;
+      line-height: 0.875;
+      letter-spacing: -0.1rem;
       margin: 0 0 0 1rem;
-        font-size: 5vw;
+      padding: 2rem 0 0 0; 
+      max-width: 70vw;
+      text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
       ${SuperQuery().minWidth.sm.css`
         font-size: 5vw;
+      `}
+    }
+    h3 {
+      margin: 0 0 0 1rem;
+      font-size: 1.75rem;
+      max-width: 70vw;
+      text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 4vw;
       `}
     }
   }

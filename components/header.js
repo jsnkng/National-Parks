@@ -19,37 +19,44 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
   
 
   return (
-    <>
-    <Header className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden" } >
-      <div className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden top__back" } >
-        
-        <div className='top__back--container'   onClick={() => manageHistory()}>
-          <Arrow />
-          <div className='top__back--title'>
-            {lastPage}
-          </div>
+    <Header className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
+      
+     
+      <div>
+        <div className='top__back--container' onClick={() => manageHistory()}>
+          <Arrow  className={windowDimension.scrollY < .5 * windowDimension.height ? 'light' : 'dark' } />
+          <div className='top__back--title'>{lastPage}</div>
         </div>
 
-        <div className='top__title--container'>
-          <div className={`${title__sub === '' ? 'top__title' : 'top__title'} ${titleClass}`}
-              dangerouslySetInnerHTML={{__html: title }}></div>
+      </div>
+      <div className={windowDimension.scrollY > .5 * windowDimension.height ? 'hidden' : '' }>
+        <Logo onClick={() => manageFuture('/', '/')}>
+          <div className='top__logo'>
+            <a className='top__logo--text'>National<br />Park<br />Service</a>
+            <img className='top__logo--image' src='/us-nps.png' width='90' alt='National Parks Service' />
+          </div>
+        </Logo>
+      </div>
 
+{/* 
+      <div className={windowDimension.scrollY < .5 * windowDimension.height && 'hidden' }>
+        <div className='top__back--container' onClick={() => manageHistory()}>
+          <Arrow />
+          <div className='top__back--title'>{lastPage}</div>
+        </div>
+      </div> */}
+
+      <div className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
+        <div className='top__title--container' onClick={() => window.scrollTo(0,0)}>
+          <div className={`top__title ${titleClass}`}>{title}</div>
           { title__sub !== '' &&
             <div className={`top__title--sub ${titleClass}`}>{title__sub}</div>
           }
         </div>
-
       </div>
 
       
     </Header>
-    <Logo onClick={() => manageFuture('/', '/')}>
-      <div className="top__logo">
-        <a className="top__logo--text" href="#">National<br />Park<br />Service</a>
-        <img className="top__logo--image" src="/us-nps.png" width="90" alt="National Parks Service" />
-      </div>
-    </Logo>
-    </>
   )
 }
 
@@ -69,9 +76,14 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.text};
   z-index: 1200;
   &.hidden {
-  text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
-  color: ${({ theme }) => theme.colors.home_text};
+    text-shadow: 0.5px 0.5px 2px ${({ theme }) => theme.colors.home_text_shadow};
+    color: ${({ theme }) => theme.colors.home_text};
     background-color: transparent;
+    fill: ${({ theme }) => theme.colors.home_text};
+  }
+
+  .hidden {
+    display:none;
   }
   ${'' /* ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
     position: relative;
@@ -101,11 +113,23 @@ const Header = styled.header`
     font-weight: 700;
     max-width: 50%;
     line-height: .9;
+      font-size: 1rem;
+    ${SuperQuery().minWidth.sm.css`
+      font-size: 1.5rem;
+    `}
   }
-  svg {
+  svg.light {
     width: 1.875rem;
     height: 2rem;
-    margin-right: 0.125rem
+    margin-right: 0.125rem;
+    cursor: pointer;
+    outline: none;
+    fill: ${({ theme }) => theme.colors.home_text};
+  }
+  svg.dark {
+    width: 1.875rem;
+    height: 2rem;
+    margin-right: 0.125rem;
     fill: ${({ theme }) => theme.colors.dim_text};
     cursor: pointer;
     outline: none;
@@ -126,6 +150,8 @@ const Header = styled.header`
     position: absolute;
     top: 0;
     left: 0;
+    width: 40rem;
+    max-width: 50%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -260,7 +286,7 @@ const Logo = styled.div`
     font-weight: 700;
     letter-spacing: -1px;
     margin-right: .5rem;
-    text-shadow: 0.5px 0.5px 1px ${({ theme }) => theme.colors.home_text_shadow};
+    text-shadow: 0.5px 0.5px 2px ${({ theme }) => theme.colors.home_text_shadow};
     ${SuperQuery().minWidth.md.css`
       font-size: 1.125rem;
       letter-spacing: -1.5px;

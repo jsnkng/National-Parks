@@ -60,6 +60,7 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
             }
             title={data[heroIdx].name}
             subtitle={data[heroIdx].designation}
+            headline={territories[stateCode][0]}
             hero={true}
             manageFuture= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
                                               `/state/${stateCode}/park/${data[heroIdx].parkCode}`,
