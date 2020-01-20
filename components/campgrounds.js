@@ -499,13 +499,16 @@ const Image = styled.div`
   }
 `
 const SlideShow__Decorated = styled.div`
+    height: 60vw;
   ${SuperQuery().minWidth.sm.css`
-    height: 18rem;
+    max-height: 23rem;
   `}
   ${SuperQuery().minWidth.md.css`
-    height: 22rem;
+    height: 29rem;
+    max-height: 29rem;
   `}
   ${SuperQuery().minWidth.lg.css`
-    height: 28rem;
+    height: 26rem;
+    max-height: 26rem;
   `}
 `
