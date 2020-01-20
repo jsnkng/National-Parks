@@ -150,6 +150,10 @@ const Col__Decorated = styled(Col)`
   margin: 0;
   padding: 0;
 `
+const Footer__Wrapper = styled.div`
+height: 3rem;
+color: ${({ theme }) => theme.colors.text } !important; 
+`
 const BackgroundOverlay = styled.div`
   position: absolute;
   top: 0;

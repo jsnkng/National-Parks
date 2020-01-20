@@ -50,10 +50,10 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
   }
   const manageHistory = () => { 
     const back = stack.pop()
-    // const href = back !== undefined && back.length !== 0 ? back[0] : '/'
-    // const as = back !== undefined && back.length !== 0 ? back[1] : '/'
-    // router.push(href, as)
-    window.history.back()
+    const href = back !== undefined && back.length !== 0 ? back[0] : '/'
+    const as = back !== undefined && back.length !== 0 ? back[1] : '/'
+    router.push(href, as)
+    // window.history.back()
   }
 
   return (
