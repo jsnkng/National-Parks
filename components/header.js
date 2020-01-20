@@ -225,8 +225,8 @@ const Header = styled.header`
 
 const Logo = styled.div`
   position: absolute;
-  top: 0.5rem;
-  right: 0.25rem;
+  top: 0;
+  right: 0;
   z-index: 10000;
   a {
     cursor: pointer;
@@ -239,6 +239,9 @@ const Logo = styled.div`
   }
 
   .top__logo {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -248,23 +251,19 @@ const Logo = styled.div`
   .top__logo--image {
     cursor: pointer;
     border: none;
-    width: 2.5em;
-    margin-right: .5rem;
-    ${SuperQuery().minWidth.md.css`
-      width: 3.25rem;
-    `}
+    width: 2.25em;
   }
   .top__logo--text {
     text-align:right;
-    font-size: .925rem;
+    font-size: .875rem;
     line-height: .875;
     font-weight: 700;
     letter-spacing: -1px;
-    margin-right: .375rem;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    margin-right: .5rem;
+    text-shadow: 0.5px 0.5px 1px ${({ theme }) => theme.colors.home_text_shadow};
     ${SuperQuery().minWidth.md.css`
-      font-size: 1.0625rem;
+      font-size: .875rem;
       letter-spacing: -1.5px;
-  `}
+    `}
 }
 `
