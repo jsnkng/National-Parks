@@ -130,9 +130,9 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           </BackgroundDetails>
         </Content>
 
-        <Footer__Wrapper>
+        {/* <Footer__Wrapper>
           <Footer themeName={themeName} setThemeName={setThemeName} />
-        </Footer__Wrapper>
+        </Footer__Wrapper> */}
 
       </Background>
       </>
@@ -221,7 +221,6 @@ const Content = styled.main`
     cursor: pointer;
     border: none;
     width: 2.25em;
-    margin-right: .5rem;
   }
   .top__logo--text {
     text-align:right;

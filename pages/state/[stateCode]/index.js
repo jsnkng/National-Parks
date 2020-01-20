@@ -48,6 +48,7 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
           title__sub=''
           manageHistory={manageHistory}
           manageFuture={manageFuture}
+          lastPage='Home'
         />
 
         <BackgroundOverlay>
@@ -61,7 +62,8 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
             subtitle={data[heroIdx].designation}
             hero={true}
             manageFuture= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                              `/state/${stateCode}/park/${data[heroIdx].parkCode}`)}
+                                              `/state/${stateCode}/park/${data[heroIdx].parkCode}`,
+                                                `${territories[stateCode][0]}`)}
           />
         </BackgroundOverlay>
              
@@ -90,7 +92,8 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
                     subtitle={item.designation}
                     hero={false}
                     manageFuture={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                                      `/state/${stateCode}/park/${item.parkCode}`)}
+                                                      `/state/${stateCode}/park/${item.parkCode}`,
+                                                      `${territories[stateCode][0]}`)}
                     />
                 </Col__Decorated>
               )
@@ -100,7 +103,11 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
         </Content>
 
         <Footer__Wrapper>
-          <Footer themeName={themeName} setThemeName={setThemeName} />
+          <Footer themeName={themeName} 
+            setThemeName={setThemeName}
+            manageHistory={manageHistory}
+            manageFuture={manageFuture} 
+          />
         </Footer__Wrapper>
       </>
     )

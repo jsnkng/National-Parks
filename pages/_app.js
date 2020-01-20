@@ -13,6 +13,7 @@ const stack = []
 
 const MyApp = ({ appCookies, router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('lightMode')
+  const [lastPage, setLastPage] = useState('National Park Guides')
 
 
   useEffect(() => {
@@ -40,7 +41,8 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
 
   
 
-  const manageFuture = (href, as) => {
+  const manageFuture = (href, as, title) => {
+    setLastPage(title)
     // Get current route and push to stack
     stack.push([router.route, router.asPath])
     // Get arguments href/as and push router to new routex
@@ -48,9 +50,10 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
   }
   const manageHistory = () => { 
     const back = stack.pop()
-    const href = back !== undefined && back.length !== 0 ? back[0] : '/'
-    const as = back !== undefined && back.length !== 0 ? back[1] : '/'
-    router.push(href, as)
+    // const href = back !== undefined && back.length !== 0 ? back[0] : '/'
+    // const as = back !== undefined && back.length !== 0 ? back[1] : '/'
+    // router.push(href, as)
+    window.history.back()
   }
 
   return (
@@ -65,7 +68,7 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
           exit: 400,
         }}
         loadingClassNames="loading-indicator">
-          <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} manageFuture={manageFuture} key={router.asPath} />
+          <Component {...pageProps} router={router} themeName={themeName} setThemeName={setThemeName} manageHistory={manageHistory} manageFuture={manageFuture} lastPage={lastPage} key={router.asPath} />
       </PageTransition>
     </ThemeProvider>
   )

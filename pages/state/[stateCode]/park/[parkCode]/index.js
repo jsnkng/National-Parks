@@ -22,7 +22,7 @@ import Articles from '../../../../../components/articles'
 import Footer from '../../../../../components/footer'
 
 const Park = ({ 
-  themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture,
+  themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture, lastPage,
   stateCode,
   park, 
   alerts, 
@@ -73,6 +73,7 @@ const Park = ({
           title__sub={park.designation}
           manageHistory={manageHistory}
           manageFuture={manageFuture}
+          lastPage={lastPage}
         />
         <Content>
           { park.images !== undefined &&  
@@ -116,7 +117,11 @@ const Park = ({
         </Content> 
       
         <Footer__Wrapper>
-          <Footer themeName={themeName} setThemeName={setThemeName} />
+          <Footer themeName={themeName} 
+            setThemeName={setThemeName}
+            manageHistory={manageHistory}
+            manageFuture={manageFuture} 
+          />
         </Footer__Wrapper>
       </>
     )
@@ -144,9 +149,9 @@ const Content = styled.main`
   margin: 100vh 0 0 0; 
   padding: 2rem 0 4rem 0;
 
-  ${SuperQuery().maxWidth.md.and.landscape.css`
+  ${'' /* ${SuperQuery().maxWidth.md.and.landscape.css`
     margin: -5rem 0 4rem 0;
-  `}  
+  `}   */}
 
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};

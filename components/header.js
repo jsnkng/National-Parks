@@ -5,7 +5,7 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import { Arrow } from '../svgs/l-arrow.svg'
 
-const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
+const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage }) => {
   const windowDimension = useWindowDimensions()
   /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
   const titleClass = (title.length >= 40 && title__sub !== '') ? 'xtralong_sub' :
@@ -16,35 +16,41 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
-  useEffect(() => {
-
-
-
-    if(windowDimension.scrollY > windowDimension.height) {
-      console.log(windowDimension.scrollY)
-    }
-  })
+  
 
   return (
+    <>
     <Header className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden" } >
-      <div className={windowDimension.scrollY > .5 * windowDimension.height ? "top__back" : "hidden top__back" } 
+      <div className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden top__back" } 
         onClick={() => manageHistory()}>
-        <Arrow />
+        
+        <div className='top__back--container'>
+          <Arrow />
+          <div className='top__back--title'>
+            {lastPage}
+          </div>
+        </div>
+
         <div className='top__title--container'>
-          <h1 className={`${title__sub === '' ? 'top__title--large' : 'top__title'} ${titleClass}`}
-          dangerouslySetInnerHTML={{__html: title }}></h1>
+          <div className={`${title__sub === '' ? 'top__title' : 'top__title'} ${titleClass}`}
+              dangerouslySetInnerHTML={{__html: title }}></div>
 
           { title__sub !== '' &&
-            <h2 className={`top__title--sub ${titleClass}`}>{title__sub}</h2>
+            <div className={`top__title--sub ${titleClass}`}>{title__sub}</div>
           }
         </div>
+
       </div>
 
-      <div className='top__logo' onClick={() => manageFuture('/', '/')}>
-         <a className="top__logo--text" href="#">National<br />Park<br />Service</a>
-         <img className="top__logo--image" src="/us-nps.png" width="90" alt="National Parks Service" />
-      </div>
+      
     </Header>
+    <Logo onClick={() => manageFuture('/', '/')}>
+      <div className="top__logo">
+        <a className="top__logo--text" href="#">National<br />Park<br />Service</a>
+        <img className="top__logo--image" src="/us-nps.png" width="90" alt="National Parks Service" />
+      </div>
+    </Logo>
+    </>
   )
 }
 
@@ -68,9 +74,9 @@ const Header = styled.header`
   color: ${({ theme }) => theme.colors.home_text};
     background-color: transparent;
   }
-  ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
+  ${'' /* ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
     position: relative;
-  `}
+  `} */}
   ${SuperQuery().minWidth.md.css`
     height: 4rem;
   `}
@@ -86,14 +92,18 @@ const Header = styled.header`
   .top__back {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-grow: 3;
+    width: 100%;
     &:focus {
       text-decoration: underline !important;
     }
     &.hidden {
       display:none;
     }
+  }
+  .top__back--title {
+    font-weight: 700;
   }
   svg {
     width: 1.875rem;
@@ -104,38 +114,28 @@ const Header = styled.header`
     outline: none;
   }
   .top__title--container {
-  }
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    height: 4rem;
+    margin-right: 1rem;
 
-  .top__logo {
+  }
+  .top__back--container {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-grow: 1;
-    min-width: 110px;
+    justify-content: flex-start;
+    height: 4rem;
   }
-  .top__logo--image {
-    cursor: pointer;
-    border: none;
-    width: 2.5em;
-    margin-right: .5rem;
-    ${SuperQuery().minWidth.md.css`
-      width: 3.25rem;
-    `}
-  }
-  .top__logo--text {
-    text-align:right;
-    font-size: .925rem;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-right: .375rem;
-    ${SuperQuery().minWidth.md.css`
-      font-size: 1.0625rem;
-      letter-spacing: -1.5px;
-    `}
-  }
-
   .top__title {
+    display: block;
     font-size: 1.375rem;
     line-height: 1;
     font-weight: 700;
@@ -147,7 +147,9 @@ const Header = styled.header`
     `}
   } 
   .top__title--large {
-    font-size: 1.5rem;
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
     margin: 0;
     padding: 0;
     ${SuperQuery().maxWidth.of('325px').css`
@@ -219,4 +221,50 @@ const Header = styled.header`
       `}
     }
   }   
+`
+
+const Logo = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.25rem;
+  z-index: 10000;
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    color: ${({ theme }) => theme.colors.home_text};
+    &:focus {
+      text-decoration: underline !important;
+    }
+  }
+
+  .top__logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+    min-width: 110px;
+  }
+  .top__logo--image {
+    cursor: pointer;
+    border: none;
+    width: 2.5em;
+    margin-right: .5rem;
+    ${SuperQuery().minWidth.md.css`
+      width: 3.25rem;
+    `}
+  }
+  .top__logo--text {
+    text-align:right;
+    font-size: .925rem;
+    line-height: .875;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-right: .375rem;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    ${SuperQuery().minWidth.md.css`
+      font-size: 1.0625rem;
+      letter-spacing: -1.5px;
+  `}
+}
 `

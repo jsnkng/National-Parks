@@ -54,7 +54,8 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
             subtitle={data[heroIdx].states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
             hero={true}
             manageFuture= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                              `/state/${data[heroIdx].states.toLowerCase().split(',')[0]}/park/${data[heroIdx].parkCode}`)}
+                                              `/state/${data[heroIdx].states.toLowerCase().split(',')[0]}/park/${data[heroIdx].parkCode}`,
+                                              `${designation}s`)}
           />
         </BackgroundOverlay>
       
@@ -63,6 +64,7 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
           title__sub=''
           manageHistory={manageHistory}
           manageFuture={manageFuture}
+          lastPage='Home'
         />
 
         <Content>
@@ -90,7 +92,8 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
                     subtitle={item.states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
                     hero={false}
                     manageFuture={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                                      `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`)}
+                                                      `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`,
+                                                      `${designation}s`)}
                     />
                 </Col__Decorated>
               )
@@ -99,9 +102,13 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
           </Row__Decorated>
         </Content>
 
-        <FooterHome>
-          <Footer themeName={themeName} setThemeName={setThemeName} />
-        </FooterHome>
+        <Footer__Wrapper>
+          <Footer themeName={themeName} 
+            setThemeName={setThemeName}
+            manageHistory={manageHistory}
+            manageFuture={manageFuture} 
+          />
+        </Footer__Wrapper>
       </>
     )
   }
