@@ -1,20 +1,28 @@
 import React from 'react'
+import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
 const SlideShow = ({ title, subtitle, images }) => {
   if(images.length > 0) {
-  const first = images[0]
-  const newImages = images.splice(0,1)
-  images.push(first)
-}
+    const first = images[0]
+    const newImages = images.splice(0,1)
+    images.push(first)
+  }
   return (
     <Content>
       { (title !== '' || subtitle !== '') &&
+      
       <div className='hero__header'>
-        <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
-        <h3>{subtitle}</h3>
+        <Grid fluid>
+          <Row>
+            <Col xs={12} >
+            <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
+          <h3>{subtitle}</h3>
+            </Col>
+          </Row>
+        </Grid>
       </div>
       }
     <Carousel__Styled 
@@ -31,7 +39,14 @@ const SlideShow = ({ title, subtitle, images }) => {
         return(
           <Image key={`${item.id}`}
             backgroundURL={item.url}>
-            <span className="caption">{item.caption}</span>
+            <Grid fluid>
+              <Row>
+                <Col xs={12} >
+                <span className="caption">{item.caption}</span>
+                </Col>
+              </Row>
+            </Grid>
+            
           </Image>
         )
         })
@@ -57,9 +72,9 @@ const Image = styled.div`
   animation: myfirst 1s;
 
   .caption {
-    position: absolute;
-    bottom: 6%;
-    left: 8%;
+    display: block;
+    text-align: left;
+    padding: 94vh 0 0 0; 
     color: #ffffff;
     font-size: .875rem;
     margin:  0;
@@ -76,34 +91,38 @@ const Content = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: center;
-    justify-content: center;
     pointer-events: none;
     height: 100%;
-    z-index: 100;
+    text-align: left;
     background-color: ${({ theme }) => theme.colors.image_overlay_light};
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 2px 2px 2px ${({ theme }) => theme.colors.home_text_shadow};
+    z-index: 1000;
    }
 
    h2 {
-      width: 94%;
+      max-width: 66vw;
       border: none;
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       line-height: 0.875;
       letter-spacing: -0.1rem;
-      margin: 0 0 0 1rem;
-      padding: 50vh 0 0 0; 
+      margin: 0;
+      padding: 50vh 0 0.125rem 0; 
+
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 8vw;
+      `}
     }
     h3 {
-      width: 94%;
-      font-weight: 400;
-      font-size: 2.125rem;
-      margin: 0 0 0 1rem;
+      max-width: 66vw;
+      font-weight: 200;
+      font-size: 1.75rem;
+      line-height: 0.875;
+      margin: 0;
       padding: 0; 
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 5vw;
+      `}
     }
   } 
 

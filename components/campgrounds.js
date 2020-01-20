@@ -130,7 +130,7 @@ const Component = ({ campgrounds }) => {
                     { item.weatheroverview !== undefined && item.weatheroverview != '' && 
                     <>
                       <span>
-                        <h4>Weather Overview</h4>
+                        <h4>Weather</h4>
                         <div className='p' dangerouslySetInnerHTML={{__html: item.weatheroverview.replace(/\n/gi, '<br />')}}></div>
                       </span>
                     </>
@@ -139,13 +139,7 @@ const Component = ({ campgrounds }) => {
                   </Row>
                   }  
 
-                  { (item.fees !== undefined && item.fees.length !== 0) &&
-                  <Row>
-                    <Col xs={12} mdOffset={4} md={8}>
-                      <EntryFees title='Overnight Camping Fees' fees={item.fees} />
-                    </Col>
-                  </Row>
-                  }
+                 
                   
                   {((item.campsites !== undefined && item.campsites.length !== 0 && item.campsites.totalsites > 0) ||
                     ((item.amenities !== undefined && item.amenities.length !== 0) &&
@@ -198,8 +192,21 @@ const Component = ({ campgrounds }) => {
                       }
 
                     </Col>
-                    <Col xs={12} md={8} className="amenities columns">
-                      { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
+                    <Col xs={12} md={8}>
+                    { (item.fees !== undefined && item.fees.length !== 0) &&
+                      <Row>
+                        <Col xs={12}>
+                          <EntryFees title='Overnight Camping Fees' fees={item.fees} />
+                        </Col>
+                      </Row>
+                      }
+                    </Col>
+                  </Row>
+                  }
+
+                 
+
+                  { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
                       (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 
                       (item.amenities.cellphonereception !== undefined && item.amenities.cellphonereception != 0) || 
                       (item.amenities.amphitheater !== undefined && item.amenities.amphitheater != 0) || 
@@ -212,7 +219,10 @@ const Component = ({ campgrounds }) => {
                       (item.amenities.potablewater !== undefined && item.amenities.potablewater != 0) || 
                       (item.amenities.showers !== undefined && item.amenities.showers != 0) || 
                       (item.amenities.toilets !== undefined && item.amenities.toilets != 0)) && 
-                        <>
+                        
+                  <Row className="section">
+                    <Col xs={12} className="accessibility columns">
+                    <>
                         <h4>Amenities</h4>
                         <ul>
                           {item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0 && 
@@ -256,11 +266,9 @@ const Component = ({ campgrounds }) => {
                           }
                         </ul>
                       </>
-                    }
                     </Col>
                   </Row>
                   }
-
 
                   
                   { ((item.accessibility.accessroads !== undefined && item.accessibility.accessroads != '') ||  
@@ -275,6 +283,7 @@ const Component = ({ campgrounds }) => {
                       (item.accessibility.trailerallowed !== undefined && item.accessibility.trailerallowed != '0') ||  
                       (item.accessibility.trailermaxlength !== undefined && item.accessibility.trailermaxlength != '0') ||  
                       (item.accessibility.wheelchairaccess !== undefined && item.accessibility.wheelchairaccess != '')) && 
+                  
                   <Row className="section">
                     <Col xs={12} className="accessibility columns">
                       <>

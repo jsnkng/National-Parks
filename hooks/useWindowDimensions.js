@@ -5,7 +5,9 @@ function useWindowDimensions() {
   function getSize() {
     return {
       width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
+      height: isClient ? window.innerHeight : undefined,
+      scrollX: isClient ? window.scrollX : undefined,
+      scrollY: isClient ? window.scrollY : undefined,
     }
   }
   const [windowSize, setWindowSize] = useState(getSize)
@@ -17,7 +19,9 @@ function useWindowDimensions() {
       setWindowSize(getSize())
     }
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleResize)
+    return () => { window.removeEventListener('resize', handleResize) 
+    window.removeEventListener('scroll', handleResize) }
   }, []) // Empty array ensures that effect is only run on mount and unmount
 
   return windowSize

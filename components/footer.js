@@ -35,6 +35,7 @@ const Component = ({ themeName, setThemeName }) => {
 export default Component
 
 const Footer = styled.footer`
+  height: 4rem;
   a {
     cursor: pointer;
     text-decoration: none;

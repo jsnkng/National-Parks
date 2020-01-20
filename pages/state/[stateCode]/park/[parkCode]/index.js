@@ -84,7 +84,7 @@ const Park = ({
           { park.images === undefined || park.images.length === 0 &&
           <div style={{height: '90px'}}></div>
           }
-          <Description park={park} alerts={alerts} />
+          <Description park={park} alerts={alerts} markers={markers} />
 
           { alerts !== undefined && alerts.length != 0 &&
           <Alerts alerts={alerts} />
@@ -141,7 +141,8 @@ export default Park
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
-  margin: 0 0 4rem 0; 
+  margin: 100vh 0 0 0; 
+  padding: 2rem 0 4rem 0;
 
   ${SuperQuery().maxWidth.md.and.landscape.css`
     margin: -5rem 0 4rem 0;
@@ -163,9 +164,11 @@ const Footer__Wrapper = styled.div`
     color: ${({ theme }) => theme.colors.text } !important; 
 `
 const SlideShow__Decorated = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
-  margin-bottom: 2rem;
 `

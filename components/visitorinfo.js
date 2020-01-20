@@ -37,7 +37,7 @@ const Component = ({ park, alerts, markers }) => {
           </Col>
         </Row>
         
-        <Row>
+        <Row className='section'>
         { ((park.contacts !== undefined && park.contacts.phoneNumbers.length !== 0) ||
           (park.contacts !== undefined && park.contacts.emailAddresses.length !== 0) ||
           (park.addresses !== undefined && park.addresses.length !== 0)) &&
@@ -104,7 +104,7 @@ const Component = ({ park, alerts, markers }) => {
           </Col>
         </Row>
 
-        <Row>
+        <Row className='section'>
           <Col xs={12} mdOffset={4} md={8}>
             { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
               <EntryFees title='Park Entry Fees' fees={park.entranceFees} />

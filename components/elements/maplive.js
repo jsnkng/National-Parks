@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import LazyLoad from 'react-lazyload'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 const mapStyles = {
@@ -25,7 +24,6 @@ const MapLive = props => {
     return {lat: lat, lng: lng}
   }
   return (
-    <LazyLoad height={'100%'} offset={100}>
       <Map
         google={google}
         zoom={props.zoom}
@@ -52,7 +50,7 @@ const MapLive = props => {
           </div>
         </InfoWindow>
       </Map>
-    </LazyLoad>
+
   )
 }
 

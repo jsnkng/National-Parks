@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
+  const windowDimension = useWindowDimensions()
   /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
   const titleClass = (title.length >= 40 && title__sub !== '') ? 'xtralong_sub' :
   (title.length >= 40 && title__sub === '') ? 'xtralong_no_sub' :
@@ -14,9 +16,19 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
+  useEffect(() => {
+
+
+
+    if(windowDimension.scrollY > windowDimension.height) {
+      console.log(windowDimension.scrollY)
+    }
+  })
+
   return (
-    <Header>
-      <div className='top__back' onClick={() => manageHistory()}>
+    <Header className={windowDimension.scrollY > .5 * windowDimension.height ? "" : "hidden" } >
+      <div className={windowDimension.scrollY > .5 * windowDimension.height ? "top__back" : "hidden top__back" } 
+        onClick={() => manageHistory()}>
         <Arrow />
         <div className='top__title--container'>
           <h1 className={`${title__sub === '' ? 'top__title--large' : 'top__title'} ${titleClass}`}
@@ -36,6 +48,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture }) => {
   )
 }
 
+
 export default Component
 
 const Header = styled.header`
@@ -50,6 +63,11 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.trans_back};
   color: ${({ theme }) => theme.colors.text};
   z-index: 1200;
+  &.hidden {
+  text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
+  color: ${({ theme }) => theme.colors.home_text};
+    background-color: transparent;
+  }
   ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
     position: relative;
   `}
@@ -72,6 +90,9 @@ const Header = styled.header`
     flex-grow: 3;
     &:focus {
       text-decoration: underline !important;
+    }
+    &.hidden {
+      display:none;
     }
   }
   svg {

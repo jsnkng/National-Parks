@@ -36,26 +36,16 @@ const Component = ({ events }) => {
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    <Row>
-                      <Col xs={12} lg={8}>
-                      { item.images.length !== 0 && item.images[0].url !== undefined &&
-                        <LazyLoad offset={0}>
-                          <SlideShow__Decorated>
-                            <SlideShow images={item.images.map((item, index) => ({ id: index+item.url, url: `https://www.nps.gov${item.url}`, caption: item.caption}))} />
-                          </SlideShow__Decorated>
-                        </LazyLoad>
-                      }
-                        <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
-                     
-                      </Col>
+                    <Row className='events__row--reversible'>
+                      
                       <Col xs={12} lg={4} className='section details'>
-                        <h4>Event Schedule & Details</h4>
-                        <Row className='reversible'>
-                         
-                          <Col xs={12} sm={7} md={7} lg={12}>
+                        <Row>
+
+                          <Col xs={12} sm={6} md={4}>
                             <Calendar dates={item.dates} />
                           </Col>
-                          <Col xs={12} sm={5} md={5} lg={12}>
+
+                          <Col xs={12} sm={6} md={8} lg={12}>
                           { item.times[0] !== undefined && item.times.length[0] !== 0 &&
                           <>
                             <h5>Time</h5>
@@ -128,6 +118,17 @@ const Component = ({ events }) => {
 
                         </Row>
                       </Col>
+                      <Col xs={12} lg={8}>
+                      { item.images.length !== 0 && item.images[0].url !== undefined &&
+                        <LazyLoad offset={0}>
+                          <SlideShow__Decorated>
+                            <SlideShow images={item.images.map((item, index) => ({ id: index+item.url, url: `https://www.nps.gov${item.url}`, caption: item.caption}))} />
+                          </SlideShow__Decorated>
+                        </LazyLoad>
+                      }
+                        <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
+                     
+                      </Col>
                     </Row>
                   </AccordionItemPanel>
                 </AccordionItem>
@@ -150,6 +151,13 @@ const Events = styled.div`
     padding-top:0;
     ${SuperQuery().minWidth.lg.css`
       border: 0;
+    `}
+  }
+  .events__row--reversible {
+    margin-top: 1rem;
+    flex-direction: column-reverse;
+    ${SuperQuery().minWidth.lg.css`
+      flex-direction: row;
     `}
   }
 `

@@ -16,7 +16,7 @@ export default Component
 
 const Calendar = styled(DayPicker)`
   .DayPicker {
-    display: inline-block;
+    display: block;
     margin: 0;
     font-size: 1rem;
   }
@@ -24,7 +24,10 @@ const Calendar = styled(DayPicker)`
   position: relative;
   flex-direction: row;
   user-select: none;
-  width: 17rem;
+    width: 14rem;
+  ${SuperQuery().minWidth.lg.css`
+    width: 20rem;
+  `}
 }
 .DayPicker-Months {
   display: flex;
@@ -72,12 +75,14 @@ const Calendar = styled(DayPicker)`
 }
 .DayPicker-Caption {
   display: table-caption;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.125rem;
   text-align: left;
+  background-color: ${({ theme }) => theme.colors.image_overlay_light};
 }
 .DayPicker-Caption > div {
   font-size: 1.25rem;
   font-weight: 700;
+  padding: 0.375rem;
 }
 .DayPicker-Weekdays {
   display: table-header-group;
@@ -112,10 +117,11 @@ const Calendar = styled(DayPicker)`
   text-align: center;
   cursor: pointer;
   border: 3px solid ${({ theme }) => theme.colors.offbackground};
-  font-size: 1.25rem;
-  padding: 0.5rem 0.75rem;
-  ${SuperQuery().minWidth.md.css`
+  font-size: .75rem;
+  padding: 0.5rem;
+  ${SuperQuery().minWidth.lg.css`
     font-size: 1rem;
+    padding: 0.5rem 0.75rem;
   `}
 }
 .DayPicker-WeekNumber {

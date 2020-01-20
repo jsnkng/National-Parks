@@ -15,6 +15,8 @@ const Component = ({ fees, title, windowDimension }) => {
 
   const dynCols = fees.length > 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : {xs: 12, sm: 12, md: 12, lg: 12 }
 
+
+  
   useEffect(() => {
     setCols(dynCols)
   }, [])
@@ -66,7 +68,7 @@ const Component = ({ fees, title, windowDimension }) => {
               <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={`${index}${item.title}`}>
                 <AccordionItem>
                   {item.cost !== undefined && Number(item.cost) > 0 && 
-                    <h4>${Number(item.cost).toFixed(2)} — {item.title}</h4>
+                    <h4 style={{marginLeft:'1.75rem'}}>${Number(item.cost).toFixed(2)} — {item.title}</h4>
                   }
                 </AccordionItem>
               </Col>
@@ -146,7 +148,7 @@ const EntryFees = styled.div`
   h3 {
     background-color: #f1f1f1;
     color: #157E2C;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     border: none;
     margin: 0;
     padding: .5rem;
@@ -154,12 +156,12 @@ const EntryFees = styled.div`
   }
   h4 {
     color: #f1f1f1;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.1;
     margin-left: .25rem;
   }
   p {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 400;
     color: #f1f1f1;
     margin: .25rem 0 0 1.75rem;
