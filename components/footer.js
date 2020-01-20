@@ -46,10 +46,10 @@ export default Component
 
 const Footer = styled.footer`
   position: relative;
-  height: 4rem;
+  height: 5rem;
   .bottom__themeswitcher {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 1.5rem;
   left: 0.25rem;
   display: flex;
   justify-content: flex-start;
@@ -84,7 +84,7 @@ const Footer = styled.footer`
 
 const Logo = styled.div`
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 1.5rem;
   right: 0.25rem;
   z-index: 10000;
   a {
