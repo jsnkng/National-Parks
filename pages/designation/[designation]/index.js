@@ -4,8 +4,7 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
-import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad, { forceCheck } from 'react-lazyload'
+import { forceCheck } from 'react-lazyload'
 import territories from '../../../config/states'
 
 import Header from '../../../components/header'
@@ -53,8 +52,8 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
             title={data[heroIdx].name}
             subtitle={data[heroIdx].states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
             headline={`${designation}s`}
-            hero={true}
-            manageFuture= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
+            dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '100vh', 'minWidth': '100vw'}}
+            handleClick= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
                                               `/state/${data[heroIdx].states.toLowerCase().split(',')[0]}/park/${data[heroIdx].parkCode}`,
                                               `${designation}s`)}
           />
@@ -91,8 +90,8 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
                     }
                     title={item.name}
                     subtitle={item.states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
-                    hero={false}
-                    manageFuture={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
+                    dimensions={{xl: false, height: '100%', width: '100%', 'minHeight': '24rem', 'minWidth': '100%'}}
+                    handleClick={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
                                                       `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`,
                                                       `${designation}s`)}
                     />

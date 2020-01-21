@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
-import territories from '../../config/states'
 import Spinner from './spinner'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Component = ({ backgroundURL, title, subtitle, headline, hero, states, manageFuture }) => {
+const Element = ({ backgroundURL, title, subtitle, headline, dimensions, handleClick }) => {
+
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
- 
+
   return (
-    <Banner onClick={() => {
+    <Banner dimensions={dimensions}
+        onClick={() => {
         setIsSpinnerVisible(true)
-        manageFuture()
+        handleClick()
       }}>
       <Spinner isSpinnerVisible={isSpinnerVisible} />
-      <div className={hero ? 'hero__header' : 'banner__header'}>
+      <div className='header'>
         {headline !==undefined && 
           <h1>{headline}</h1>
         }
         <h2 dangerouslySetInnerHTML={{__html: title }}></h2>
-        <h3>{states !== undefined ? states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / '): subtitle}</h3>
+        <h3>{subtitle}</h3>
       </div>
       <LazyLoad height={'100%'} offset={600}>
         <ResponsiveImage backgroundURL={backgroundURL} />
@@ -27,99 +28,9 @@ const Component = ({ backgroundURL, title, subtitle, headline, hero, states, man
     </Banner>
   )
 }
-export default Component
 
-const Banner = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 22rem;
-  min-width: 300px;
-  
-  .hero__header,
-  .banner__header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: center;
-    justify-content: center;
-    background: ${({ theme }) => theme.colors.image_overlay_gradient};
-    color: ${({ theme }) => theme.colors.home_text};
-    text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
-    height: 100%;
-    width: 100%;
-    z-index: 20;
-    -webkit-transition: background 0.5s linear;
-    -moz-transition: background 0.5s linear;
-    -o-transition: background 0.5s linear;
-    -ms-transition: background 0.5s linear;
-    transition: background 0.5s linear;
+export default Element
 
-    h2 {
-      width: 94%;
-      border: none;
-      font-size: 1.5rem;
-      line-height: 1.05;
-      margin: 0 0 0 1rem;
-    }
-    h3 {
-      width: 94%;
-      font-size: 1.25rem;
-      font-weight: 400;
-      margin: 0 0 0 1rem;
-      padding: 0; 
-    }
-    span {
-      position: absolute;
-      top: .875rem;
-      right: 0.5rem;
-      text-align: right;
-      margin: 0;
-      padding: 0;
-      width: 50%;
-    }
-  }
-
-  .hero__header {
-    background: ${({ theme }) => theme.colors.image_overlay_darkgradient};
-    
-    h1 {
-      font-size: 3rem;
-      line-height: 0.875;
-      letter-spacing: -0.1rem;
-      margin: 10rem 0 0 3vw;
-      max-width: 70vw;
-      text-shadow: 2px 2px 6px ${({ theme }) => theme.colors.home_text_shadow};
-      ${SuperQuery().minWidth.sm.css`
-        font-size: 8vw;
-      `}
-    }
-    h2 {
-      font-size: 2rem;
-      line-height: 0.875;
-      letter-spacing: -0.1rem;
-      margin: 1rem 0 0 3vw;
-      max-width: 70vw;
-      text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
-      ${SuperQuery().minWidth.sm.css`
-        font-size: 5vw;
-      `}
-    }
-    h3 {
-      font-size: 1.5rem;
-      max-width: 70vw;
-      margin: 0 0 0 3vw;
-      text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
-      ${SuperQuery().minWidth.sm.css`
-        font-size: 4vw;
-      `}
-    }
-  }
-`
 const ResponsiveImage = styled.div`
   position: absolute;
   top: 0;
@@ -135,4 +46,103 @@ const ResponsiveImage = styled.div`
   z-index: 10;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
+`
+
+const Banner = styled.section`
+  position: relative;
+  width: ${props => props.dimensions.width};
+  height: ${props => props.dimensions.height};
+  min-width: ${props => props.dimensions.minWidth};
+  min-height: ${props => props.dimensions.minHeight};
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+
+    background: ${props => props.dimensions.xl 
+      ? ({ theme }) => theme.colors.image_overlay_darkgradient
+      : ({ theme }) => theme.colors.image_overlay_gradient
+    };
+
+    color: ${({ theme }) => theme.colors.home_text};
+    text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
+
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+
+    z-index: 20; 
+    
+    height: 100%;
+    width: 100%;
+  }
+
+  h1 {
+    width: 90%;
+    max-width: 70vw;
+    font-size: 3rem;
+    line-height: 0.875;
+    letter-spacing: -0.1rem;
+    margin: 5vh 0 10vh 4%;
+    text-shadow: 2px 2px 6px ${({ theme }) => theme.colors.home_text_shadow};
+    ${SuperQuery().minWidth.sm.css`
+      font-size: 7.5vw;
+    `}
+  }
+  h2 {
+    width: 90%;
+    max-width: 70vw;
+    font-size: ${props => props.dimensions.xl 
+      ? '2.25rem'
+      : '1.5rem'
+    };
+    line-height: .925;
+    letter-spacing: -0.1rem;
+    margin: 1rem 0 0 4%;
+    text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
+    border: none;
+    ${SuperQuery().minWidth.sm.css`
+      font-size: ${props => props.dimensions.xl 
+        ? '6vw'
+        : '1.75rem'
+      };
+    `}
+  }
+  h3 {
+    width: 90%;
+    max-width: 70vw;
+    font-size: ${props => props.dimensions.xl 
+      ? '1.5rem'
+      : '1.125rem'
+    };
+    font-weight: 200;
+    line-height: 0.875;
+    margin: 0 0 0 4%;
+    text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
+    ${SuperQuery().minWidth.sm.css`
+      font-size: ${props => props.dimensions.xl 
+        ? '3.5vw'
+        : '1.375rem'
+      };
+    `}
+  }
+  span {
+    position: absolute;
+    top: .875rem;
+    right: 0.5rem;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+  }
+
 `

@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 
-const Component = ({ isSpinnerVisible }) => {
+const Element = ({ isSpinnerVisible }) => {
   return (
-    <Spinner className={isSpinnerVisible ? 'show' : 'hide'}>
+    <Spinner className={isSpinnerVisible || 'hide'}>
       <div className='progress' aria-hidden='true'>
         <div className='spinner' role='spinner'>
           <div className='spinner-icon'></div>
@@ -13,45 +13,37 @@ const Component = ({ isSpinnerVisible }) => {
   )
 }
   
-export default Component
+export default Element
 
 const Spinner = styled.div`
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  min-height: 190px;
-  z-index: 100;
   background-color: ${props => props.theme.colors.image_overlay_opaque};
   color: ${props => props.theme.colors.text};
-  font-size: .7em;
-    z-index: 12031;
-  &.show {
-    display: block;
-  }
+  z-index: 100;
   &.hide {
     display: none;
   }
-
-.progress {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .progress {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .progress .spinner {
     display: block;
-    flex: 0 1 auto;
   }
   .progress .spinner-icon {
     width: 3rem;
     height: 3rem;
     margin: 0 auto;
-    box-sizing: border-box;
-    border: solid 8px transparent;
+    border: solid 0.5rem transparent;
     border-top-color:  ${({ theme }) => theme.colors.color_two};
     border-left-color:  ${({ theme }) => theme.colors.color_three};
     border-radius: 50%;

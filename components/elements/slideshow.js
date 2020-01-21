@@ -4,14 +4,16 @@ import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 
-const SlideShow = ({ title, subtitle, images }) => {
+const Element = ({ title, subtitle, images, dimensions }) => {
+
   if(images.length > 0) {
     const first = images[0]
     const newImages = images.splice(0,1)
     images.push(first)
   }
+
   return (
-    <Content>
+    <SlideShow dimensions={dimensions}>
       { (title !== undefined || subtitle !== undefined) &&
       <div className='hero__header'>
         <Grid fluid>
@@ -24,32 +26,32 @@ const SlideShow = ({ title, subtitle, images }) => {
         </Grid>
       </div>
       }
-    <Carousel__Styled 
-      useKeyboardArrows={true}
-      showArrows={true} 
-      showThumbs={false} 
-      infiniteLoop={false} 
-      autoPlay={false}
-      emulateTouch={true} 
-      showStatus={false}
-      showIndicators={images.length > 1 ? true : false}
-      swipeScrollTolerance={3}
-      swipeable={true}>
-      { images.slice(0).map((item, index) => {
-        return(
-          <Image key={`${item.id}`}
-            backgroundURL={item.url}>
-            <span className="caption">{item.caption}</span>
-          </Image>
-        )
-        })
-      }
-    </Carousel__Styled>
-    </Content>
+      <Carousel__Styled 
+        useKeyboardArrows={true}
+        showArrows={true} 
+        showThumbs={false} 
+        infiniteLoop={false} 
+        autoPlay={false}
+        emulateTouch={true} 
+        showStatus={false}
+        showIndicators={images.length > 1 ? true : false}
+        swipeScrollTolerance={3}
+        swipeable={true}>
+        { images.slice(0).map((item, index) => {
+          return(
+            <Image dimensions={dimensions} key={`${item.id}`}
+              backgroundURL={item.url}>
+              <span className="caption">{item.caption}</span>
+            </Image>
+          )
+          })
+        }
+      </Carousel__Styled>
+    </SlideShow>
   )
 }
 
-export default SlideShow
+export default Element
 
 
 const Image = styled.div`
@@ -58,10 +60,12 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  ${'' /* margin: 0.5rem 0 0 0; */}
-  width: 100%;
-  min-height:15rem;
-  height: 100%;
+
+  width: ${props => props.dimensions.width};
+  height: ${props => props.dimensions.height};
+  min-width: ${props => props.dimensions.minWidth};
+  min-height: ${props => props.dimensions.minHeight};
+
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
@@ -69,22 +73,58 @@ const Image = styled.div`
     position: absolute;
     bottom: 2.5rem;
     left: 1rem;
+    display: block;
     text-align: left;
-    display:block;
     color: #ffffff;
     font-size: .875rem;
     margin:  0;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
   }
-
 `
 
-const Content = styled.div`
+const SlideShow = styled.div`
   height: 100%;
   position: relative;
-  
-
-
+  .hero__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    height: 100%;
+    text-align: left;
+    background: ${({ theme }) => theme.colors.image_overlay_gradient};
+    color: ${({ theme }) => theme.colors.home_text};
+    text-shadow: 2px 2px 2px ${({ theme }) => theme.colors.home_text_shadow};
+    z-index: 1000;
+   }
+   h2 {
+      width: 90%;
+      max-width: 70vw;
+      border: none;
+      font-size: 2.25rem;
+      line-height: 0.875;
+      letter-spacing: -0.1rem;
+      margin: 60vh 0 0.125rem 3vw;
+      padding: 0;
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 6vw;
+      `}
+    }
+    h3 {
+      width: 90%;
+      max-width: 70vw;
+      font-size: 1.5rem;
+      font-weight: 200;
+      line-height: 0.875;
+      margin: 0 0 0 3vw;
+      padding: 0; 
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 3.5vw;
+        letter-spacing: -0.05rem;
+      `}
+    }
+  } 
 `
 const Carousel__Styled = styled(Carousel)`
   height: 100%;
@@ -133,6 +173,10 @@ const Carousel__Styled = styled(Carousel)`
   }
   .carousel .control-next.control-arrow:before {
     border-left: 8px solid #fff; 
+  }
+  .carousel {
+    position: relative;
+    width: 100%; 
   }
   .carousel * {
     -webkit-box-sizing: border-box;

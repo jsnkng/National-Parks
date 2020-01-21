@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import LazyLoad from 'react-lazyload'
-import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ places }) => {
   const [limit, setLimit] = useState(2)
@@ -23,7 +22,6 @@ const Component = ({ places }) => {
   })
 
   return (
-    <Places>
     <Grid>
       <Row>
         <Col xs={12}>
@@ -37,17 +35,16 @@ const Component = ({ places }) => {
             <a href={item.url} target="_blank" rel="noreferrer">
             { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
               <LazyLoad offset={100}>
-                <Image backgroundURL={item.listingimage.url}  className="lazyload__image--height" />
+                <Image backgroundURL={item.listingimage.url} />
               </LazyLoad>
-            }
-            { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
-              <h4>{item.title}</h4>
             }
             { item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
               <h4>{item.title}</h4>
             }
+            { item.listingimage.url === undefined || item.listingimage.url.length === 0 &&
+              <h4>{item.title}</h4>
+            }
               <p>{item.listingdescription}</p>
-                    {/* <Arrow className='arrow__read-more' /> */}
             </a>
           </Col>
         )
@@ -62,25 +59,11 @@ const Component = ({ places }) => {
         </button>
       </Row>
     </Grid>
-    </Places>
   )
 }
   
 export default Component
 
-const Places = styled.div`
-  .lazyload-placeholder,
-  .lazyload__image--height {
-    height: 20rem;
-    ${SuperQuery().minWidth.md.css`
-      height: 14rem;
-      min-width: 14rem;
-    `}
-  }
-  h4 {
-    margin: .5rem 0 0 0;
-  }
-`
 const Image = styled.div`
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
@@ -89,4 +72,9 @@ const Image = styled.div`
   margin: 1rem 0 0 0;
   -webkit-animation: myfirst 1s; 
   animation: myfirst 1s;
+  height: 20rem;
+  ${SuperQuery().minWidth.md.css`
+    height: 14rem;
+    min-width: 14rem;
+  `}
 `

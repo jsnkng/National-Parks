@@ -4,7 +4,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 const mapStyles = {
 }
 
-const MapLive = props => {
+const Element = props => {
   const [showingInfoWindow, setShowingInfoWindow] = useState()
   const [activeMarker, setActiveMarker] = useState()
   const [selectedPlace, setSelectedPlace] = useState()
@@ -56,5 +56,5 @@ const MapLive = props => {
 
 export default GoogleApiWrapper({
   apiKey: process.env.GOO_KEY
-})(MapLive);
+})(Element);
 

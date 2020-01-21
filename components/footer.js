@@ -9,12 +9,11 @@ import { Sun } from '../svgs/sun.svg'
 
 
 
-const Component = ({ themeName, setThemeName, manageHistory, manageFuture, }) => {
+const Component = ({ themeName, setThemeName, manageFuture, }) => {
 
 const setTheme = () => {
   const newTheme = themeName === 'lightMode' ? 'darkMode' : 'lightMode'
   setThemeName(newTheme)
-
 }
   return (
     <Footer>

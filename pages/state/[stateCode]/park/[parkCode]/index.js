@@ -3,12 +3,11 @@ import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
-import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad, { forceCheck } from 'react-lazyload'
+import { forceCheck } from 'react-lazyload'
 import territories from '../../../../../config/states'
 
 import Header from '../../../../../components/header'
-import SlideShow from '../../../../../components/elements/slideshowhero'
+import SlideShow from '../../../../../components/elements/slideshow'
 import Description from '../../../../../components/description'
 import Alerts from '../../../../../components/alerts'
 import VisitorInfo from '../../../../../components/visitorinfo'
@@ -47,18 +46,19 @@ const Park = ({
   })
 
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
+        
   visitorcenters !== undefined && visitorcenters.length != 0 &&
-  visitorcenters.slice(0).map((item) => {
-    markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
-  })
+    visitorcenters.slice(0).map((item) => {
+      markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
+    })
   campgrounds !== undefined && campgrounds.length != 0 &&
-  campgrounds.slice(0).map((item) => {
-    markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
-  })
+    campgrounds.slice(0).map((item) => {
+      markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
+    })
   places !== undefined && places.length != 0 &&
-  places.slice(0).map((item) => {
-    markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
-  })
+    places.slice(0).map((item) => {
+      markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
+    })
 
   if (!loaded) {
     return null
@@ -78,7 +78,12 @@ const Park = ({
         <Content>
           { park.images !== undefined &&  
           <SlideShow__Decorated>
-            <SlideShow title={park.name} subtitle={park.designation} images={park.images.map((item, index) => ({ id: index+item.url, url: `${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`, caption: item.title}))} />
+            <SlideShow 
+              title={park.name} 
+              subtitle={park.designation} 
+              images={park.images.map((item, index) => ({ id: index+item.url, url: `${process.env.AWS_URI}${item.url.replace(/[/:-]/g, '_')}`, caption: item.title}))} 
+              dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '100vh', 'minWidth': '100vw'}}  
+            />
           </SlideShow__Decorated>
           }
           
@@ -149,10 +154,6 @@ const Content = styled.main`
   margin: 100vh 0 0 0; 
   padding: 2rem 0 4rem 0;
 
-  ${'' /* ${SuperQuery().maxWidth.md.and.landscape.css`
-    margin: -5rem 0 4rem 0;
-  `}   */}
-
   h4 a {
     color: ${({ theme }) => theme.colors.color_two};
   }
@@ -165,8 +166,8 @@ const Content = styled.main`
   }
 `
 const Footer__Wrapper = styled.div`
-    height: 3rem;
-    color: ${({ theme }) => theme.colors.text } !important; 
+  height: 3rem;
+  color: ${({ theme }) => theme.colors.text } !important; 
 `
 const SlideShow__Decorated = styled.div`
   position: absolute;

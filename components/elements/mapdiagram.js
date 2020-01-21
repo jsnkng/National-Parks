@@ -1,10 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
-import SuperQuery from '@themgoncalves/super-query'
 import states from '../../config/states'
 
-const Component = ({ territories, highlighted, setHighlighted, manageFuture }) => {
+const Element = ({ territories, highlighted, setHighlighted, handleClick }) => {
   return (
     <Map
       width="100%"
@@ -15,8 +13,17 @@ const Component = ({ territories, highlighted, setHighlighted, manageFuture }) =
       enableBackground="new 170 100 930 700" 
     > 
     <path id="path67" fill="none" stroke="#A9A9A9" strokeWidth="2" d="M385,593v55l36,45 M174,525h144l67,68h86l53,54v46"/>
+      
       { Object.entries(states).map(([key, value]) => {
-        if(territories === "none") {
+        if(territories !== undefined) {
+          return ( 
+            <path 
+              key={key}
+              id={key} 
+              className={territories.split(',').includes(key.toUpperCase())  ? 'highlight' : 'nohighlight'} 
+              d={value[1]} />
+          )
+        } else {
           return ( 
             <path 
               key={key}
@@ -25,15 +32,7 @@ const Component = ({ territories, highlighted, setHighlighted, manageFuture }) =
               onMouseOver={() => setHighlighted(key)} 
               onMouseOut={() => setHighlighted('')} 
               d={value[1]}
-              onClick={()=>manageFuture('/state/[stateCode]', `/state/${key}/`)}  />
-          )
-        } else {
-          return ( 
-            <path 
-              key={key}
-              id={key} 
-              className={territories.split(',').includes(key.toUpperCase())  ? 'highlight' : 'nohighlight'} 
-              d={value[1]} />
+              onClick={()=>handleClick('/state/[stateCode]', `/state/${key}/`)}  />
           )
         }
       })
@@ -42,13 +41,11 @@ const Component = ({ territories, highlighted, setHighlighted, manageFuture }) =
   )
 }
   
-export default Component
+export default Element
 
 
-const Map = styled.svg.attrs(props => ({
-  margin: "0 auto",
-}))`
-
+const Map = styled.svg`
+  margin: "0 auto"; 
   * {
       pointer-events: fill;
   }

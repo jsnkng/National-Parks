@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import DayPicker from 'react-day-picker'
 
-const Component = ({ dates }) => {
+const Element = ({ dates }) => {
   return (
     <Calendar 
       initialMonth={new Date(new Date(dates[0]).getFullYear(), new Date(dates[0]).getMonth())}
@@ -12,7 +12,7 @@ const Component = ({ dates }) => {
   )
 }
   
-export default Component
+export default Element
 
 const Calendar = styled(DayPicker)`
   .DayPicker {

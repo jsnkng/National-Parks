@@ -5,11 +5,10 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad, { forceCheck } from 'react-lazyload'
+import { forceCheck } from 'react-lazyload'
 
-import states from '../config/states'
+import territories from '../config/states'
 import MapDiagram from '../components/elements/mapdiagram'
-import Footer from '../components/footer'
 
 const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
@@ -65,10 +64,10 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <label htmlFor='state'>By State</label>
                 <select id='state' value={`/state/${highlighted}/`} onChange={handleStateChange.bind(this)}>
                   <option label='By State'>By State</option>
-                  { Object.entries(states).map(([key, value]) => {
+                  { Object.entries(territories).map(([key, value]) => {
                     return ( 
-                      <option label={states[key][0]} value={`/state/${key}/`} 
-                        key={key}>{states[key][0]}</option>
+                      <option label={territories[key][0]} value={`/state/${key}/`} 
+                        key={key}>{territories[key][0]}</option>
                     )
                   })}
                 </select>
@@ -109,10 +108,9 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                 <MapDiagram__Wrapper>
                   <MapDiagram
                     className="mapdiagram" 
-                    territories={'none'} 
                     highlighted={highlighted} 
                     setHighlighted={setHighlighted} 
-                    manageFuture={manageFuture}
+                    handleClick={manageFuture}
                   />
                 </MapDiagram__Wrapper>
                 
@@ -122,19 +120,13 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           </Grid__FindAPark>
           <BackgroundDetails
             onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
-            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`,
-            parks[0].designation)}
-          >
+            `/state/${parks[0].territories.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`,
+            parks[0].designation)}>
             {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
             <strong>{parks[0].designation}</strong><br />
-            {states[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
+            {territories[`${parks[0].territories.split(',')[0].toLowerCase()}`][0]}
           </BackgroundDetails>
         </Content>
-
-        {/* <Footer__Wrapper>
-          <Footer themeName={themeName} setThemeName={setThemeName} />
-        </Footer__Wrapper> */}
-
       </Background>
       </>
     )
@@ -151,7 +143,6 @@ Home.getInitialProps = async ({ req, query }) => {
 }
 
 export default Home
-
 
 const Background = styled.div`
   position: absolute;
@@ -185,10 +176,9 @@ const BackgroundDetails = styled.div`
   font-size: .75rem;
   text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
   z-index: 10;
-
   ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
-  bottom: 0.5rem;
-  line-height: 0.875rem;
+    bottom: 0.5rem;
+    line-height: 0.875rem;
   `}
   img.logo {
     width: 3rem;
@@ -199,12 +189,10 @@ const Content = styled.main`
   color: ${({ theme }) => theme.colors.home_text };
   z-index: 1000;
   width: 90%;
-
   ${SuperQuery().minWidth.of('1360px').css`
     padding: 6rem;
     width: 100%;
   `}
-
   a {
     cursor: pointer;
     text-decoration: none;
@@ -221,7 +209,6 @@ const Content = styled.main`
     flex-grow: 1;
     min-width: 110px;
   }
-
   .top__logo--image {
     cursor: pointer;
     border: none;
@@ -240,13 +227,11 @@ const Content = styled.main`
       letter-spacing: -1.5px;
     `}
   }
-
 `
 const Grid__FindAPark = styled(Grid)`
   ${SuperQuery().maxWidth.of('375px').css`
     margin: 0 0 1rem 0;
   `}
- 
   h1 {
     font-size: 2.5rem;
     letter-spacing: -0.1rem;
@@ -255,7 +240,6 @@ const Grid__FindAPark = styled(Grid)`
     padding: 0 0 0.5rem 0;
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
     border-bottom:3px solid ${({ theme }) => theme.colors.home_text};
-
   ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
     font-size: 1.75rem;
   `}
@@ -286,9 +270,9 @@ const Grid__FindAPark = styled(Grid)`
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1.25rem;
     `}
-  ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
-    font-size: 1.25rem;
-  `}
+    ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
+      font-size: 1.25rem;
+    `}
     ${SuperQuery().minWidth.md.css`
       font-size: 1.5rem;
     `}
@@ -322,14 +306,12 @@ const Grid__FindAPark = styled(Grid)`
     border: none;
     border-bottom: 3px solid #666;
     border-radius: 0;
-
     ${SuperQuery().maxWidth.of('375px').css`
       font-size: 1rem;
     `}
-
-  ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
-    font-size: 1rem;
-  `}
+    ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
+      font-size: 1rem;
+    `}
   }
 `
 const MapDiagram__Wrapper = styled.div`
@@ -348,7 +330,7 @@ const MapDiagram__Wrapper = styled.div`
     margin: 0 2rem 0 3rem;
   `}
 `
-  const Footer__Wrapper = styled.div`
-    height: 3rem;
-    color: ${({ theme }) => theme.colors.text } !important; 
+const Footer__Wrapper = styled.div`
+  height: 3rem;
+  color: ${({ theme }) => theme.colors.text } !important; 
 `

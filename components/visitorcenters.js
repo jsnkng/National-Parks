@@ -1,7 +1,5 @@
 import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
-import styled from 'styled-components'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import Address from './elements/address'
 import Email from './elements/email'
@@ -54,35 +52,33 @@ const Component = ({ visitorCenters }) => {
                       {(item.contacts.phoneNumbers !== undefined && item.contacts.phoneNumberslength !== 0) &&
                         item.contacts.phoneNumbers.slice(0,2).map((item, index) => {
                           return (
-                            
-                              <Col xs={6} sm={12} lg={6} key={`${index}${item.phoneNumber}`}>
-                                <Phone 
-                                title={item.type}
-                                phoneNumber={item.phoneNumber} />
-                              </Col>
+                            <Col xs={6} sm={12} lg={6} key={`${index}${item.phoneNumber}`}>
+                              <Phone 
+                              title={item.type}
+                              phoneNumber={item.phoneNumber} />
+                            </Col>
                           )
                         })
                       }
                       {(item.contacts.emailAddresses !== undefined && item.contacts.emailAddresses.length !== 0) &&
                         item.contacts.emailAddresses.slice(0,1).map((item, index) => {
                           return (
-                              <Col xs={12} key={`${index}${item.emailAddresses}`}>
-                                <Email
-                                  title={`Email Address`}
-                                  emailAddress={item.emailAddress} />
-                              </Col>
+                            <Col xs={12} key={`${index}${item.emailAddresses}`}>
+                              <Email
+                                title={`Email Address`}
+                                emailAddress={item.emailAddress} />
+                            </Col>
                           )
                         })
                       }
                       {(item.addresses !== undefined && item.addresses.length !== 0) &&
                         item.addresses.slice(0,2).map((item, index) => {
                           return (
-                              <Col xs={6} sm={12} lg={6} key={`${index}${item.line1}`}>
-                                <Address 
-                                  title={`${item.type} Address`}
-                                  address={item} />
-                              </Col>
-                            
+                            <Col xs={6} sm={12} lg={6} key={`${index}${item.line1}`}>
+                              <Address 
+                                title={`${item.type} Address`}
+                                address={item} />
+                            </Col>
                           )
                         })
                       }

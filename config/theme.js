@@ -36,8 +36,7 @@ const themes = {
     image_overlay_darkgradient: 'linear-gradient(180deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.20) 100%)',
     toggle_track: '#333333',
     spinner: 'rgba(0,0,0,0.9)',
-    color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
-    // gradient_one: 'radial-gradient(ellipse at center, rgba(59, 59, 59, 1.0), rgba(16, 16, 16, 1.0))'
+    color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)'
   },
   lightMode: {
     background: '#ededed',
@@ -59,8 +58,7 @@ const themes = {
     image_overlay_darkgradient: 'linear-gradient(180deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.20) 100%)',
     toggle_track: '#999999',
     spinner: 'rgba(255,255,255,.4)',
-    color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
-    // gradient_one: 'radial-gradient(ellipse at center, rgba(252, 251, 231, 1.0), rgba(224, 219, 213, 1.0))'
+    color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)'
   }
 }
 

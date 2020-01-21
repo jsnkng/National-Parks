@@ -1,27 +1,23 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import styled from 'styled-components'
-import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import { Arrow } from '../svgs/l-arrow.svg'
 
 const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage }) => {
+
   const windowDimension = useWindowDimensions()
+
   /* Hacky, but trying to set semi intelligent sizes and margins based on title length */
   const titleClass = (title.length >= 38 && title__sub !== '') ? 'xtralong_sub' :
   (title.length >= 38 && title__sub === '') ? 'xtralong_no_sub' :
   (title.length >= 27 && title__sub !== '') ? 'long_sub' :
   (title.length >= 27 && title__sub === '') ? 'long_no_sub' : 
-
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
-  
-
   return (
     <Header className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
-      
-     
       <div>
         <div className='top__back--container' onClick={() => manageHistory()}>
           <Arrow className={windowDimension.scrollY < .5 * windowDimension.height ? 'light' : 'dark' } />
@@ -39,14 +35,6 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
         </Logo>
       </div>
 
-{/* 
-      <div className={windowDimension.scrollY < .5 * windowDimension.height && 'hidden' }>
-        <div className='top__back--container' onClick={() => manageHistory()}>
-          <Arrow />
-          <div className='top__back--title'>{lastPage}</div>
-        </div>
-      </div> */}
-
       <div className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
         <div className='top__title--container' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className={`top__title ${titleClass}`}>{title}</div>
@@ -55,8 +43,6 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
           }
         </div>
       </div>
-
-      
     </Header>
   )
 }
@@ -81,9 +67,7 @@ const Header = styled.header`
     color: ${({ theme }) => theme.colors.home_text};
     background-color: transparent;
     fill: ${({ theme }) => theme.colors.home_text};
-    
   }
-
   .hidden {
     opacity:0;
   }

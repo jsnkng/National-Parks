@@ -10,7 +10,7 @@ function formatPhoneNumber(phoneNumberString) {
   return null
 }
 
-const Component = ({ title, phoneNumber }) => {
+const Element = ({ title, phoneNumber }) => {
   return (
     <div>
       <h4>{title.toLowerCase() === 'voice' ? 'Telephone' : title}</h4> 
@@ -22,4 +22,4 @@ const Component = ({ title, phoneNumber }) => {
     </div>
   )
 }
-export default Component
+export default Element

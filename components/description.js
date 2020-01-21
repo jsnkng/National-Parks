@@ -3,17 +3,11 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
 import SuperQuery from '@themgoncalves/super-query'
 import MapDiagram from './elements/mapdiagram'
-import MapLive from './elements/maplive'
 
 const Component = ({ park, markers  }) => {
   return (
     <Description>
       <Grid>
-        {/* <Row>
-          <Col xs={12}>
-            <h1><div dangerouslySetInnerHTML={{__html: park.name }}></div> <span>{park.designation}</span></h1>
-          </Col>
-        </Row> */}
         <Row>
           <Col xs={12} sm={12} md={8}>
             <p className='introduction'>{park.description}</p>

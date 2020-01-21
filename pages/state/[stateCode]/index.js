@@ -4,8 +4,7 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
-import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad, { forceCheck } from 'react-lazyload'
+import { forceCheck } from 'react-lazyload'
 import territories from '../../../config/states'
 
 import Header from '../../../components/header'
@@ -61,10 +60,10 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
             title={data[heroIdx].name}
             subtitle={data[heroIdx].designation}
             headline={territories[stateCode][0]}
-            hero={true}
-            manageFuture= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
+            dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '100vh', 'minWidth': '100vw'}}
+            handleClick={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
                                               `/state/${stateCode}/park/${data[heroIdx].parkCode}`,
-                                                `${territories[stateCode][0]}`)}
+                                              `${territories[stateCode][0]}`)}
           />
         </BackgroundOverlay>
              
@@ -83,19 +82,19 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
                   } 
                   key={index+item.id}
                 >
-                  <Banner
-                    backgroundURL={
-                      item.images !== undefined && item.images.length !== 0 
-                      ? process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')
-                      : '/noimage.jpg' 
-                    }
-                    title={item.name}
-                    subtitle={item.designation}
-                    hero={false}
-                    manageFuture={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                                      `/state/${stateCode}/park/${item.parkCode}`,
-                                                      `${territories[stateCode][0]}`)}
-                    />
+                <Banner
+                  backgroundURL={
+                    item.images !== undefined && item.images.length !== 0 
+                    ? process.env.AWS_URI + item.images[0].url.replace(/[/:-\s]/g, '_')
+                    : '/noimage.jpg' 
+                  }
+                  title={item.name}
+                  subtitle={item.designation}
+                  dimensions={{xl: false, height: '100%', width: '100%', 'minHeight': '24rem', 'minWidth': '100%'}}
+                  handleClick={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
+                                                    `/state/${stateCode}/park/${item.parkCode}`,
+                                                    `${territories[stateCode][0]}`)}
+                  />
                 </Col__Decorated>
               )
             })

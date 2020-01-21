@@ -44,7 +44,9 @@ const Component = ({ campgrounds }) => {
                     <Col xs={12}>
                       { item.images !== undefined &&  
                       <SlideShow__Decorated>
-                        <SlideShow images={item.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.caption}))} />
+                        <SlideShow 
+                          images={item.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.caption}))}
+                          dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '15rem', 'minWidth': '100%'}}  />
                       </SlideShow__Decorated>
                       }
                       <p className='introduction'>{item.description}</p>
@@ -203,8 +205,6 @@ const Component = ({ campgrounds }) => {
                     </Col>
                   </Row>
                   }
-
-                 
 
                   { ((item.amenities.trashrecyclingcollection !== undefined && item.amenities.trashrecyclingcollection != 0) || 
                       (item.amenities.internetconnectivity !== undefined && item.amenities.internetconnectivity != 0) || 

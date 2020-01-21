@@ -1,4 +1,4 @@
-const Component = ({ title, emailAddress }) => {
+const Element = ({ title, emailAddress }) => {
   return (
     <div>
       <h4>{title}</h4> 
@@ -10,4 +10,4 @@ const Component = ({ title, emailAddress }) => {
     </div>
   )
 }
-export default Component
+export default Element

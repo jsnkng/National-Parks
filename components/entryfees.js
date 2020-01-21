@@ -14,8 +14,6 @@ const Component = ({ fees, title, windowDimension }) => {
   const [cols, setCols] = useState({ xs: 12, sm: 12, md: 12, lg: 12 })
 
   const dynCols = fees.length > 1 ? { xs: 12, sm: 12, md: 12, lg: 12 } : {xs: 12, sm: 12, md: 12, lg: 12 }
-
-
   
   useEffect(() => {
     setCols(dynCols)
@@ -74,7 +72,6 @@ const Component = ({ fees, title, windowDimension }) => {
               </Col>
             )
           }
-         
         })}
         </Row>
         </Accordion>
@@ -88,13 +85,11 @@ const EntryFees = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 0;
-
   .accordion {
     background-color: #157E2C;
     color: #f1f1f1; 
     padding: .5rem;
   }
-
   .accordion__item + .accordion__item {
     border-bottom: none;
   }
@@ -103,14 +98,12 @@ const EntryFees = styled.div`
     border: none;
     padding: 0 1rem 0 0;
     margin: 1rem 0 .75rem 0;
-    
   }
   .accordion__button {
     color: #f1f1f1;
     border: none;
     margin: 0;
     padding: 0 .25rem 0 1.5rem;
-
     span {
       display: block;
       margin: 0 0 0 -.375rem;
@@ -140,7 +133,6 @@ const EntryFees = styled.div`
     transform: rotate(0deg);
     content: '-';
   }
-
   .accordion__panel {
     border: none;
     padding: 0;
@@ -152,7 +144,6 @@ const EntryFees = styled.div`
     border: none;
     margin: 0;
     padding: .5rem;
-   
   }
   h4 {
     color: #f1f1f1;
