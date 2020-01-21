@@ -29,8 +29,8 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
         <Logo className={windowDimension.scrollY > .5 * windowDimension.height ? 'hidden' : '' } 
               onClick={() => manageFuture('/', '/')}>
           <div className='top__logo'>
-            <a className='top__logo--text'>National<br />Park<br />Service</a>
-            <img className='top__logo--image' src='/us-nps.png' width='90' alt='National Parks Service' />
+            <a className='top__logo--text'>National<br />Park<br />Guides</a>
+            <img className='top__logo--image' src='/us-nps.png' width='90' alt='National Parks Guides' />
           </div>
         </Logo>
       </div>

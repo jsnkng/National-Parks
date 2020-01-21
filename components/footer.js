@@ -17,10 +17,6 @@ const setTheme = () => {
 }
   return (
     <Footer>
-      <div className='bottom__credit'>
-        <a href="#"><strong><span>JSN</span><br />KNG</strong><br />2020</a>
-      </div>
-
       <div className='bottom__toggle'>
         <Toggle
           defaultChecked={themeName === 'lightMode' ? false : true }
@@ -32,9 +28,8 @@ const setTheme = () => {
           onChange={setTheme} />
         </div>
       
-        <div className='bottom__logo' onClick={() => manageFuture('/', '/')}>
-          <a className="bottom__logo--text" href="#">National<br />Park<br />Service</a>
-          <img className="bottom__logo--image" src="/us-nps.png" width="90" alt="National Parks Service" />
+        <div className='bottom__credit'>
+          <a href="#"><strong><span>JSN</span><br />KNG</strong><br />2020</a>
         </div>
     </Footer>
   )
@@ -49,12 +44,14 @@ const Footer = styled.footer`
   height: 5rem;
   padding: 1rem;
   .bottom__credit {
+    display: flex;
+    position: absolute;
+    right: 1rem;
     font-size: 0.8rem;
     line-height: .75;
     align-items:center;
     span {
-    font-size: 0.9rem;
-
+      font-size: 0.9rem;
     }
     a {
       cursor: pointer;
@@ -65,36 +62,6 @@ const Footer = styled.footer`
   }
   .bottom__toggle{
     width: 52px;
-    margin: 0 1rem;
-  }
-
-  .bottom__logo {
-    display: flex;
-    position: absolute;
-    right: 1rem;
-  a {
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    color: ${({ theme }) => theme.colors.text};
-  }
-  .bottom__logo--image {
-    cursor: pointer;
-    border: none;
-    width: 40px;
-    height: 40px;
-  }
-  .bottom__logo--text {
-    text-align:right;
-    font-size: .875rem;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-right: .5rem;
-    ${SuperQuery().minWidth.md.css`
-      font-size: .875rem;
-      letter-spacing: -1.5px;
-    `}
   }
 }
 

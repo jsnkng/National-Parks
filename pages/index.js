@@ -51,8 +51,8 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
         <Content>
         <a href="/">
           <div className='top__logo'>
-            <span className="top__logo--text" href="/">National<br />Park<br />Service</span>
-            <img className="top__logo--image" src="/us-nps.png" width="90" alt="National Parks Service" />
+            <span className="top__logo--text" href="/">National<br />Park<br />Guides</span>
+            <img className="top__logo--image" src="/us-nps.png" width="90" alt="National Parks Guides" />
           </div></a>
           <Grid__FindAPark fluid>
             <Row>
