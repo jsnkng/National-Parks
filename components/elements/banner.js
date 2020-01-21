@@ -95,11 +95,10 @@ const Banner = styled.div`
   .hero__header {
     
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       line-height: 0.875;
       letter-spacing: -0.1rem;
-      margin: 0 0 0 1rem;
-      padding: 10rem 0 0 0; 
+      margin: 10rem 0 0 3vw;
       max-width: 70vw;
       text-shadow: 2px 2px 6px ${({ theme }) => theme.colors.home_text_shadow};
       ${SuperQuery().minWidth.sm.css`
@@ -107,11 +106,10 @@ const Banner = styled.div`
       `}
     }
     h2 {
-      font-size: 2.25rem;
+      font-size: 2rem;
       line-height: 0.875;
       letter-spacing: -0.1rem;
-      margin: 0 0 0 1rem;
-      padding: 2rem 0 0 0; 
+      margin: 1rem 0 0 3vw;
       max-width: 70vw;
       text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
       ${SuperQuery().minWidth.sm.css`
@@ -119,9 +117,9 @@ const Banner = styled.div`
       `}
     }
     h3 {
-      margin: 0 0 0 1rem;
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       max-width: 70vw;
+      margin: 0 0 0 3vw;
       text-shadow: 1px 1px 4px ${({ theme }) => theme.colors.home_text_shadow};
       ${SuperQuery().minWidth.sm.css`
         font-size: 4vw;

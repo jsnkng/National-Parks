@@ -48,7 +48,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
       </div> */}
 
       <div className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
-        <div className='top__title--container' onClick={() => window.scrollTo(0,0)}>
+        <div className='top__title--container' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className={`top__title ${titleClass}`}>{title}</div>
           { title__sub !== '' &&
             <div className={`top__title--sub ${titleClass}`}>{title__sub}</div>
@@ -251,9 +251,10 @@ const Logo = styled.div`
   top: 0;
   right: 0;
   z-index: 10000;
-    opacity:1;
+  opacity:1;
   &.hidden {
     opacity:0;
+    top: -100px;
   }
   a {
     cursor: pointer;
