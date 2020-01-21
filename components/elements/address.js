@@ -1,7 +1,7 @@
 const Component = ({ title, address }) => {
   return (
     <div>
-      <h5>{title}</h5>
+      <h4>{title}</h4>
       <p style={{fontSize: '95%'}}>
         {address.line1 !== '' &&
           <>

@@ -33,6 +33,7 @@ const Component = ({ park, markers  }) => {
 export default Component
 
 const Description = styled.div`
+padding: 2rem 0 0 0;
 `
 const MapDiagram__Wrapper = styled.div`
   margin: .625rem auto;
@@ -46,7 +47,7 @@ const MapDiagram__Wrapper = styled.div`
 const MapLive__Wrapper = styled.div`
   position:relative;
   height: 25rem;
-  margin: .5rem -0.5rem 1.25rem -0.5rem;
+  padding: .5rem 0 1.25rem 0;
   padding:  0;
   z-index: 10;
 

@@ -13,7 +13,7 @@ function formatPhoneNumber(phoneNumberString) {
 const Component = ({ title, phoneNumber }) => {
   return (
     <div>
-      <h5>{title.toLowerCase() === 'voice' ? 'Telephone' : title}</h5> 
+      <h4>{title.toLowerCase() === 'voice' ? 'Telephone' : title}</h4> 
       <p>
         <a href={`tel:${formatPhoneNumber(phoneNumber)}`}>
           {formatPhoneNumber(phoneNumber)}

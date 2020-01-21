@@ -71,7 +71,6 @@ const Calendar = styled(DayPicker)`
     display: table-caption;
     margin-bottom: 0.125rem;
     text-align: left;
-    background-color: ${({ theme }) => theme.colors.image_overlay_light};
   }
   .DayPicker-Caption > div {
     font-size: 1.25rem;
