@@ -120,15 +120,15 @@ const Component = ({ events }) => {
                       </Col>
                       <Col xs={12} lg={8}>
                       { item.images.length !== 0 && item.images[0].url !== undefined &&
+                        <LazyLoad offset={300}>
                           <SlideShow__Decorated>
                             <SlideShow 
                               images={item.images.map((item, index) => ({ id: index+item.url, url: `https://www.nps.gov${item.url}`, caption: item.caption}))} 
                               dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '15rem', 'minWidth': '100%'}}  />
                           </SlideShow__Decorated>
-                       
-                      }
+                        </LazyLoad>
+                        }
                         <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
-                     
                       </Col>
                     </Row>
                   </AccordionItemPanel>

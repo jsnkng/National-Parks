@@ -1,6 +1,5 @@
 import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import LazyLoad, { forceCheck } from 'react-lazyload'
 import Address from './elements/address'
 import Email from './elements/email'
 import Phone from './elements/phone'
@@ -26,14 +25,13 @@ const Component = ({ visitorCenters }) => {
           <Col xs={12}>
             { visitorCenters.slice(0).map((item, index) => {
               return (
-              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
+              <AccordionItem key={`${index}${item.id}`}>
                 <AccordionItemHeading>
                   <AccordionItemButton>
                     <h3>{item.name}</h3>
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-            <LazyLoad height={'100%'} offset={100}>
                   <Row>
                     <Col xs={12}>
                     <p className='introduction'>{item.description}</p>
@@ -131,7 +129,6 @@ const Component = ({ visitorCenters }) => {
                     </Col>
                     }
                   </Row>
-                  </LazyLoad>
                 </AccordionItemPanel>
               </AccordionItem>
             )

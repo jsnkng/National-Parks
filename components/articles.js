@@ -29,10 +29,14 @@ const Component = ({ articles }) => {
           </Col>
         </Row>
         <Row>
+        
         { articles.slice(0,limit).map((item) => {
+          
           return (
+          
           <Col xs={12} sm={6} md={4} lg={3} key={item.id}>
             <a href={item.url} target="_blank" rel="noreferrer">
+            
             {item.listingimage.url === undefined || item.listingimage.url.length === 0 && 
               <div className='articles__card--noimage'>
                 <div className='articles__card--title'>
@@ -41,6 +45,7 @@ const Component = ({ articles }) => {
                 <p>{item.listingdescription.substring(0, 420)}</p>
               </div>
             }
+
             {item.listingimage.url !== undefined && item.listingimage.url.length !== 0 &&
               <div className='articles__card--image'>
                 <LazyLoad offset={100}>
@@ -50,11 +55,13 @@ const Component = ({ articles }) => {
                 <p>{item.listingdescription.substring(0, 300)}</p>
               </div>
             } 
+
             </a>
           </Col>
           )
           })
         }
+
         </Row>
         <Row>
           <button 

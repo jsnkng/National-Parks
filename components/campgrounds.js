@@ -39,15 +39,16 @@ const Component = ({ campgrounds }) => {
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-             <LazyLoad offset={120}>
                   <Row>
                     <Col xs={12}>
                       { item.images !== undefined &&  
-                      <SlideShow__Decorated>
-                        <SlideShow 
-                          images={item.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.caption}))}
-                          dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '15rem', 'minWidth': '100%'}}  />
-                      </SlideShow__Decorated>
+                      <LazyLoad offset={300}>
+                        <SlideShow__Decorated>
+                          <SlideShow 
+                            images={item.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.caption}))}
+                            dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '15rem', 'minWidth': '100%'}}  />
+                        </SlideShow__Decorated>
+                      </LazyLoad>
                       }
                       <p className='introduction'>{item.description}</p>
                       {(item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
@@ -375,7 +376,6 @@ const Component = ({ campgrounds }) => {
                     </Col>
                   </Row>
                   }
-              </LazyLoad>
                 </AccordionItemPanel>
               </AccordionItem>
                 )}
