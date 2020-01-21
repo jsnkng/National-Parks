@@ -42,11 +42,11 @@ const Component = ({ campgrounds }) => {
                   <Row>
                     <Col xs={12}>
                       { item.images !== undefined &&  
-                        <LazyLoad offset={300} height={'18rem'}>
+                        <LazyLoad offset={300} height={'16rem'}>
                         <SlideShow__Decorated>
                           <SlideShow 
                             images={item.images.map((item, index) => ({ id: index+item.url, url: item.url, caption: item.title}))}
-                            dimensions={{xl: false, height: '100%', width: '100%', 'minHeight': '18rem', 'minWidth': '100%'}}  />
+                            dimensions={{xl: false, height: '100%', width: '100%', 'minHeight': '16rem', 'minWidth': '100%'}}  />
                         </SlideShow__Decorated>
                       </LazyLoad>
                       }
