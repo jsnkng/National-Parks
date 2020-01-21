@@ -120,11 +120,11 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           </Grid__FindAPark>
           <BackgroundDetails
             onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
-            `/state/${parks[0].territories.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`,
+            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`,
             parks[0].designation)}>
             {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
             <strong>{parks[0].designation}</strong><br />
-            {territories[`${parks[0].territories.split(',')[0].toLowerCase()}`][0]}
+            {territories[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
           </BackgroundDetails>
         </Content>
       </Background>
