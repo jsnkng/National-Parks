@@ -24,7 +24,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
      
       <div>
         <div className='top__back--container' onClick={() => manageHistory()}>
-          <Arrow  className={windowDimension.scrollY < .5 * windowDimension.height ? 'light' : 'dark' } />
+          <Arrow className={windowDimension.scrollY < .5 * windowDimension.height ? 'light' : 'dark' } />
           <div className='top__back--title'>{lastPage}</div>
         </div>
 
@@ -107,17 +107,17 @@ const Header = styled.header`
     opacity: 1;
   }
   .top__back--title {
-    font-weight: 200;
-    max-width: 50%;
+    font-weight: 400;
+    max-width: 70%;
     line-height: .9;
       font-size: 1rem;
     ${SuperQuery().minWidth.sm.css`
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     `}
   }
   svg.light {
     width: 1.875rem;
-    height: 2rem;
+    height: 1.875rem;
     margin-right: 0.125rem;
     cursor: pointer;
     outline: none;
@@ -125,7 +125,7 @@ const Header = styled.header`
   }
   svg.dark {
     width: 1.875rem;
-    height: 2rem;
+    height: 1.875rem;
     margin-right: 0.125rem;
     fill: ${({ theme }) => theme.colors.dim_text};
     cursor: pointer;
@@ -143,7 +143,6 @@ const Header = styled.header`
     justify-content: center;
     height: 4rem;
     margin-right: 1rem;
-
   }
   .top__back--container {
     position: absolute;
@@ -268,7 +267,7 @@ const Logo = styled.div`
 
   .top__logo {
     position: absolute;
-    top: 1rem;
+    top: .75rem;
     right: 1rem;
     display: flex;
     align-items: center;

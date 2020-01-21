@@ -66,7 +66,7 @@ const Footer = styled.footer`
   }
   .bottom__toggle{
     width: 52px;
-    margin: 0 1.5rem;
+    margin: 0 1rem;
   }
 
   .bottom__logo {
