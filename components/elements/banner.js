@@ -35,15 +35,7 @@ const Banner = styled.div`
   height: 100%;
   min-height: 22rem;
   min-width: 300px;
-  margin: 0;
-  padding: 0;
-  box-shadow: 3px 3px 3px 0px rgba(0,0,0,.05);
-  background-color: ${({ theme }) => theme.colors.image_overlay_light};
-  background-image: ${props => props.backgroundURL};
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-
+  
   .hero__header,
   .banner__header {
     position: absolute;
@@ -55,7 +47,7 @@ const Banner = styled.div`
     align-items: flex-start;
     align-content: center;
     justify-content: center;
-    background-color: ${({ theme }) => theme.colors.image_overlay_light};
+    background: ${({ theme }) => theme.colors.image_overlay_gradient};
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
     height: 100%;
@@ -72,13 +64,13 @@ const Banner = styled.div`
       border: none;
       font-size: 1.5rem;
       line-height: 1.05;
-      margin: 0 0 0 0.375rem;
+      margin: 0 0 0 1rem;
     }
     h3 {
       width: 94%;
       font-size: 1.25rem;
       font-weight: 400;
-      margin: 0 0 0 0.375rem;
+      margin: 0 0 0 1rem;
       padding: 0; 
     }
     span {
@@ -93,6 +85,7 @@ const Banner = styled.div`
   }
 
   .hero__header {
+    background: ${({ theme }) => theme.colors.image_overlay_darkgradient};
     
     h1 {
       font-size: 3rem;
@@ -132,7 +125,6 @@ const ResponsiveImage = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.image_overlay_light};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center bottom;

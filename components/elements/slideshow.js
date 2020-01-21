@@ -10,9 +10,6 @@ const SlideShow = ({ title, subtitle, images }) => {
     const newImages = images.splice(0,1)
     images.push(first)
   }
-  console.log('tit', title)
-  console.log('sub', subtitle)
-
   return (
     <Content>
       { (title !== undefined || subtitle !== undefined) &&
@@ -33,23 +30,17 @@ const SlideShow = ({ title, subtitle, images }) => {
       showArrows={true} 
       showThumbs={false} 
       infiniteLoop={false} 
+      autoPlay={false}
       emulateTouch={true} 
       showStatus={false}
       showIndicators={images.length > 1 ? true : false}
-      swipeScrollTolerance={10}
+      swipeScrollTolerance={1}
       swipeable={true}>
       { images.slice(0).map((item, index) => {
         return(
           <Image key={`${item.id}`}
             backgroundURL={item.url}>
-            <Grid fluid>
-              <Row>
-                <Col xs={12} >
-                <span className="caption">{item.caption}</span>
-                </Col>
-              </Row>
-            </Grid>
-            
+            <span className="caption">{item.caption}</span>
           </Image>
         )
         })
@@ -64,6 +55,7 @@ export default SlideShow
 
 const Image = styled.div`
   position: relative;
+  opacity: ${({ theme }) => theme.colors.image_opacity};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
