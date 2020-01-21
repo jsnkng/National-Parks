@@ -27,9 +27,9 @@ const Component = ({ events }) => {
           </Row>
           <Row>
             <Col xs={12}>
-            { events.slice(0,10).map((item) => {
+            { events.slice(0,10).map((item, index) => {
               return (
-                <AccordionItem key={item.id} onClick={()=>setTimeout(forceCheck, 10)}>
+              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
                   <AccordionItemHeading>
                     <AccordionItemButton>
                       <h3>{item.title}</h3>
@@ -120,11 +120,10 @@ const Component = ({ events }) => {
                       </Col>
                       <Col xs={12} lg={8}>
                       { item.images.length !== 0 && item.images[0].url !== undefined &&
-                        <LazyLoad offset={0}>
                           <SlideShow__Decorated>
                             <SlideShow images={item.images.map((item, index) => ({ id: index+item.url, url: `https://www.nps.gov${item.url}`, caption: item.caption}))} />
                           </SlideShow__Decorated>
-                        </LazyLoad>
+                       
                       }
                         <div className='introduction' dangerouslySetInnerHTML={{__html:item.description}}></div>
                      
@@ -146,6 +145,7 @@ const Component = ({ events }) => {
 export default Component
 
 const Events = styled.div`
+
   .section {
     margin-top:0;
     padding-top:0;
@@ -154,8 +154,8 @@ const Events = styled.div`
     `}
   }
   .events__row--reversible {
-    margin-top: 1rem;
     flex-direction: column-reverse;
+    padding: .3125rem 0;
     ${SuperQuery().minWidth.lg.css`
       flex-direction: row;
     `}
@@ -169,6 +169,7 @@ const Events = styled.div`
 `
 const SlideShow__Decorated = styled.div`
     height: 60vw;
+    min-height: 15rem;
   ${SuperQuery().minWidth.sm.css`
     max-height: 23rem;
   `}

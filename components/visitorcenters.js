@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import styled from 'styled-components'
-import LazyLoad from 'react-lazyload'
+import LazyLoad, { forceCheck } from 'react-lazyload'
 import Address from './elements/address'
 import Email from './elements/email'
 import Phone from './elements/phone'
@@ -26,16 +26,16 @@ const Component = ({ visitorCenters }) => {
         </Row>
         <Row>
           <Col xs={12}>
-            { visitorCenters.slice(0).map(item => {
+            { visitorCenters.slice(0).map((item, index) => {
               return (
-            <LazyLoad height={'100%'} offset={100} key={item.id}>
-              <AccordionItem>
+              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
                 <AccordionItemHeading>
                   <AccordionItemButton>
                     <h3>{item.name}</h3>
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
+            <LazyLoad height={'100%'} offset={100}>
                   <Row>
                     <Col xs={12}>
                     <p className='introduction'>{item.description}</p>
@@ -135,9 +135,9 @@ const Component = ({ visitorCenters }) => {
                     </Col>
                     }
                   </Row>
+                  </LazyLoad>
                 </AccordionItemPanel>
               </AccordionItem>
-            </LazyLoad>
             )
           })
         }

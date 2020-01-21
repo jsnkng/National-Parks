@@ -8,7 +8,7 @@ import LazyLoad, { forceCheck } from 'react-lazyload'
 import territories from '../../../../../config/states'
 
 import Header from '../../../../../components/header'
-import SlideShow from '../../../../../components/elements/slideshow'
+import SlideShow from '../../../../../components/elements/slideshowhero'
 import Description from '../../../../../components/description'
 import Alerts from '../../../../../components/alerts'
 import VisitorInfo from '../../../../../components/visitorinfo'

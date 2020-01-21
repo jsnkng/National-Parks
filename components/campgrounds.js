@@ -32,14 +32,14 @@ const Component = ({ campgrounds }) => {
             <Col xs={12}>
               { campgrounds.slice(0).map((item, index) => {
               return(
-             <LazyLoad offset={120} key={`${index}${item.id}`}>
-              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)}>
-                <AccordionItemHeading onMouseDown={()=>setTimeout(forceCheck, 200)}>
+              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
+                <AccordionItemHeading >
                   <AccordionItemButton>
                     <h3>{item.name}</h3>
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
+             <LazyLoad offset={120}>
                   <Row>
                     <Col xs={12}>
                       { item.images !== undefined &&  
@@ -375,9 +375,9 @@ const Component = ({ campgrounds }) => {
                     </Col>
                   </Row>
                   }
+              </LazyLoad>
                 </AccordionItemPanel>
               </AccordionItem>
-              </LazyLoad>
                 )}
               )
             }
@@ -392,14 +392,7 @@ const Component = ({ campgrounds }) => {
 export default Component
 
 const Campgrounds = styled.div`
-  .lazyload-placeholder,
-  .lazyload__image--height {
-    height: 22rem;
-    ${SuperQuery().minWidth.md.css`
-      height: 30rem;
-    `}
-  }
-  
+ 
   ul {
     column-count: 1;
     list-style-type: none;
@@ -500,6 +493,7 @@ const Image = styled.div`
 `
 const SlideShow__Decorated = styled.div`
     height: 60vw;
+    min-height: 15rem;
   ${SuperQuery().minWidth.sm.css`
     max-height: 23rem;
   `}

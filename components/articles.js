@@ -120,7 +120,6 @@ const Articles = styled.div`
   }
 `
 const Image = styled.div`
-  opacity: ${({ theme }) => theme.colors.image_opacity};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;

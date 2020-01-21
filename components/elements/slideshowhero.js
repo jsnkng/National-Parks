@@ -54,14 +54,15 @@ export default SlideShow
 
 const Image = styled.div`
   position: relative;
+  opacity: ${({ theme }) => theme.colors.image_opacity};
   background-image: url(${props => props.backgroundURL});
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   ${'' /* margin: 0.5rem 0 0 0; */}
   width: 100%;
-  min-height:15rem;
-  height: 100%;
+  min-height:23rem;
+  height: 100vh;
   -webkit-animation: myfirst 1s;
   animation: myfirst 1s;
 
@@ -69,8 +70,9 @@ const Image = styled.div`
     position: absolute;
     bottom: 2.5rem;
     left: 1rem;
+    display: block;
     text-align: left;
-    display:block;
+    
     color: #ffffff;
     font-size: .875rem;
     margin:  0;
@@ -82,7 +84,48 @@ const Image = styled.div`
 const Content = styled.div`
   height: 100%;
   position: relative;
-  
+  .hero__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    height: 100%;
+    text-align: left;
+    ${'' /* background-color: ${({ theme }) => theme.colors.image_overlay_gradient}; */}
+
+    background: ${({ theme }) => theme.colors.image_overlay_gradient};
+    color: ${({ theme }) => theme.colors.home_text};
+    text-shadow: 2px 2px 2px ${({ theme }) => theme.colors.home_text_shadow};
+    z-index: 1000;
+   }
+
+   h2 {
+      max-width: 66vw;
+      border: none;
+      font-size: 2.25rem;
+      line-height: 0.875;
+      letter-spacing: -0.1rem;
+      margin: 0;
+      padding: 50vh 0 0.125rem 0; 
+
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 8vw;
+      `}
+    }
+    h3 {
+      max-width: 66vw;
+      font-weight: 200;
+      font-size: 1.75rem;
+      line-height: 0.875;
+      margin: 0;
+      padding: 0; 
+      ${SuperQuery().minWidth.sm.css`
+        font-size: 5vw;
+      `}
+    }
+  } 
+
 
 
 `
@@ -133,6 +176,10 @@ const Carousel__Styled = styled(Carousel)`
   }
   .carousel .control-next.control-arrow:before {
     border-left: 8px solid #fff; 
+  }
+  .carousel {
+    position: relative;
+    width: 100%; 
   }
   .carousel * {
     -webkit-box-sizing: border-box;
