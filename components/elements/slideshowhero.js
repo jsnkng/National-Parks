@@ -33,7 +33,7 @@ const SlideShow = ({ title, subtitle, images }) => {
       emulateTouch={true} 
       showStatus={false}
       showIndicators={images.length > 1 ? true : false}
-      swipeScrollTolerance={3}
+      swipeScrollTolerance={5}
       swipeable={true}>
       { images.slice(0).map((item, index) => {
         return(
