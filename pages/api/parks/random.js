@@ -15,7 +15,11 @@ export default (req, res) => {
 
   const getRandomPark = async (db, callback) => {
     console.log(`Getting Random Parks`)
-    const parks = await db.collection('parks').aggregate([{ $sample: { size: 1} }]).toArray()
+
+    // const parkCodes = ['chis', 'arch', 'yose', 'seki', 'pinn', 'whsa', 'elmo', 'glac', 'biho', 'ciro', 'crmo', ]
+    // const parkCode = parkCodes[Math.floor(Math.random() * parkCodes.length)]
+    // const parks = await db.collection('parks').find({ parkCode }).toArray()
+    const parks = await db.collection('parks').aggregate([{ $sample: { size: 1 } }]).toArray()
     const result = { parks }
     callback(result)
   }

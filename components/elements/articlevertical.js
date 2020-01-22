@@ -78,11 +78,11 @@ const Article = styled.div`
       line-height: 1;
       letter-spacing: -0.1rem;
       padding: 0.5rem;
-      font-size: 240%;
+      font-size: 165%;
 
       
       ${SuperQuery().maxWidth.of('325px').css`
-        font-size: 180%;
+        font-size: 165%;
       `}
       ${SuperQuery().minWidth.sm.css`
         font-size: 150%;

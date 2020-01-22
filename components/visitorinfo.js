@@ -100,16 +100,13 @@ const Component = ({ park, alerts, markers }) => {
               <p>{park.weatherInfo}</p>
             </>
           }
-        </Col>
-      </Row>
-
-      <Row className='section'>
-        <Col xs={12} mdOffset={4} md={8}>
           { (park.entranceFees !== undefined && park.entranceFees.length !== 0) &&
-            <EntryFees title='Park Entry Fees' fees={park.entranceFees} />
+            <EntryFees title='Park Admissions' fees={park.entranceFees} />
           }
         </Col>
       </Row>
+
+      
     </Grid>
   )
 }
