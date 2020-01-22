@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import useWindowDimensions from '../hooks/useWindowDimensions'
-import styled from 'styled-components'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import SuperQuery from '@themgoncalves/super-query'
-import LazyLoad from 'react-lazyload'
 import ArticleVertical from './elements/articlevertical'
 
 const Component = ({ newsReleases }) => {

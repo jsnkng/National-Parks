@@ -20,10 +20,7 @@ const setTheme = () => {
       <div className='bottom__toggle'>
         <Toggle
           defaultChecked={themeName === 'lightMode' ? false : true }
-          icons={{
-            checked: <Sun />,
-            unchecked: <Moon />,
-          }}
+          icons={false}
           aria-label='Set Light|Dark Mode'
           onChange={setTheme} />
         </div>
@@ -46,6 +43,7 @@ const Footer = styled.footer`
   .bottom__credit {
     display: flex;
     position: absolute;
+    bottom: 1.5rem;
     right: 1rem;
     font-size: 0.8rem;
     line-height: .75;
