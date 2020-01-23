@@ -49,6 +49,7 @@ const ResponsiveImage = styled.div`
 `
 
 const Banner = styled.section`
+cursor: pointer;
   position: relative;
   width: ${props => props.dimensions.width};
   height: ${props => props.dimensions.height};
