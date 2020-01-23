@@ -54,8 +54,8 @@ const themes = {
     home_text_shadow: '#111111',
     image_overlay_light: 'rgba(50,50,50,0.1)',
     image_overlay_opaque: 'rgba(0,0,0,0.40)',
-    image_overlay_gradient: 'linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%)',
-    image_overlay_darkgradient: 'linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.40) 100%)',
+    image_overlay_gradient: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%)',
+    image_overlay_darkgradient: 'linear-gradient(180deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.20) 100%)',
     toggle_track: '#999999',
     spinner: 'rgba(255,255,255,.4)',
     color_filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)'
