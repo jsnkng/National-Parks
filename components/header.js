@@ -138,6 +138,7 @@ const Header = styled.header`
     align-items: center;
     justify-content: flex-start;
     height: 4rem;
+  cursor: pointer;
   }
   .top__title {
     display: block;
@@ -147,6 +148,7 @@ const Header = styled.header`
     font-weight: 700;
     letter-spacing: -1.5px;
     margin: 0;
+  cursor: pointer;
     padding: 0;
     ${SuperQuery().minWidth.sm.css`
       font-size: 1.75rem;
