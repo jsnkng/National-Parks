@@ -96,6 +96,7 @@ const Banner = styled.section`
     &:focus,
     &:active,
     &:focus-within {
+      outline: none;
       background: ${({ theme }) => theme.colors.image_overlay_darkgradient};
 
     }
