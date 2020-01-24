@@ -24,7 +24,7 @@ const Element = ({ backgroundURL, title, subtitle, headline, dimensions, handleC
         }
       }} >
       <Spinner isSpinnerVisible={isSpinnerVisible} />
-      <div className='header' tabindex={1}>
+      <div className='header' tabIndex={1}>
         {headline !==undefined && 
           <h1>{headline}</h1>
         }

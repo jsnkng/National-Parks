@@ -32,6 +32,10 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
     })
     Router.events.on('routeChangeComplete', url => { 
       gtag.pageview(url)
+      const lastStack = stack.slice(-1)
+      if(lastStack[0] !== undefined && url === lastStack[0][1]) {
+        stack.pop()
+      }
       NProgress.done()
     })
     Router.events.on('routeChangeError', () => {
