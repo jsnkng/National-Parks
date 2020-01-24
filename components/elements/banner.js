@@ -13,9 +13,18 @@ const Element = ({ backgroundURL, title, subtitle, headline, dimensions, handleC
         onClick={() => {
         setIsSpinnerVisible(true)
         handleClick()
-      }}>
+      }}
+      onKeyPress={(event) => { 
+        if (event.which == 13 || event.keyCode == 13) {
+          setIsSpinnerVisible(true)
+          handleClick()
+          return false;
+        } else {
+          return true;
+        }
+      }} >
       <Spinner isSpinnerVisible={isSpinnerVisible} />
-      <div className='header'>
+      <div className='header' tabindex={1}>
         {headline !==undefined && 
           <h1>{headline}</h1>
         }
@@ -67,10 +76,7 @@ const Banner = styled.section`
     align-content: center;
     justify-content: center;
 
-    background: ${props => props.dimensions.xl 
-      ? ({ theme }) => theme.colors.image_overlay_darkgradient
-      : ({ theme }) => theme.colors.image_overlay_gradient
-    };
+    background: ${({ theme }) => theme.colors.image_overlay_gradient};
 
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
@@ -86,8 +92,9 @@ const Banner = styled.section`
     height: 100%;
     width: 100%;
 
-    &:hover {
-      background: ${({ theme }) => theme.colors.image_overlay_light};
+    &:hover,
+    &:focus {
+      background: ${({ theme }) => theme.colors.image_overlay_darkgradient};
 
     }
   }
