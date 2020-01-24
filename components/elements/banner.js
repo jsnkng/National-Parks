@@ -93,7 +93,9 @@ const Banner = styled.section`
     width: 100%;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &:active,
+    &:focus-within {
       background: ${({ theme }) => theme.colors.image_overlay_darkgradient};
 
     }
