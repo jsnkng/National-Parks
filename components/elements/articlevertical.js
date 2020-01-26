@@ -12,7 +12,7 @@ const Element = ({ title, date, imageURL, description, url, dimensions }) => {
         {imageURL === undefined || imageURL.length === 0 && 
           <div className='articles__card--noimage'>
             <div className='articles__card--title'>
-              <h4>{title.substring(0, 80)}</h4>
+              <h4>{title.substring(0, 120)}</h4>
             </div>
             {date !== undefined && 
               <p><strong>{date}</strong></p>

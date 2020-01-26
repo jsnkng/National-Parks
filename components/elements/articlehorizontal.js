@@ -79,7 +79,7 @@ const Article = styled.div`
     `}
   }
   .articles__card--noimage {
-    margin: 1rem 0 0 0;
+    margin: 0;
     width: 100%;
     padding: 0;
     .articles__card--title {
@@ -104,7 +104,7 @@ const Article = styled.div`
       line-height: 1;
       letter-spacing: -0.1rem;
       padding: 0.5rem;
-      font-size: 240%;
+      font-size: 110%;
 
       
       ${SuperQuery().maxWidth.of('325px').css`
