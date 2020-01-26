@@ -19,9 +19,7 @@ const Element = ({ title, date, imageURL, description, url, dimensions }) => {
               </Col__Decorated>
               <Col__Decorated xs={8} sm={6} md={8} lg={6}>
               <div className='articles__card--noimage'>
-                <div className='articles__card--title'>
-                  <h4>{title.substring(0, 80)}</h4>
-                </div>
+                
                 {date !== undefined && 
                   <p><strong>{date}</strong></p>
                 }
@@ -35,9 +33,9 @@ const Element = ({ title, date, imageURL, description, url, dimensions }) => {
 
             <Row className='articles__card--image'>
               <Col__Decorated xs={4} sm={6} md={4} lg={6}>
-              <LazyLoad offset={100}>
-                <Image backgroundURL={imageURL} className="lazyload__image--height" />
-              </LazyLoad>
+                <LazyLoad offset={100}>
+                  <Image backgroundURL={imageURL} className="lazyload__image--height" />
+                </LazyLoad>
               </Col__Decorated>
               <Col__Decorated xs={8} sm={6} md={8} lg={6}>
                 {date !== undefined && 

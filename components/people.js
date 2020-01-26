@@ -20,7 +20,7 @@ const Component = ({ people }) => {
   }, [people])
 
   useEffect(() => {
-    const columnWidth = windowDimension.width > 990 ? { cols: 4, limit: 4 } : 
+    const columnWidth = windowDimension.width > 990 ? { cols: 2, limit: 2 } : 
                         windowDimension.width > 767 ? { cols: 2, limit: 2 } : 
                         windowDimension.width > 575 ? { cols: 2, limit: 2 } : { cols: 1, limit: 2 } 
     let newLimit = columnWidth.limit * rows
