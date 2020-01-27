@@ -61,9 +61,13 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
             subtitle={data[heroIdx].designation}
             headline={territories[stateCode][0]}
             dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '100vh', 'minWidth': '100vw'}}
-            handleClick={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                              `/state/${stateCode}/park/${data[heroIdx].parkCode}`,
-                                              `${territories[stateCode][0]}`)}
+            manageFuture={manageFuture}
+            link={{ 
+              href: `/state/[stateCode]/park/[parkCode]`, 
+              as: `/state/${stateCode}/park/${data[heroIdx].parkCode}`, 
+              title: `${territories[stateCode][0]}` 
+            }}
+            
           />
         </BackgroundOverlay>
              
@@ -91,9 +95,12 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
                   title={item.name}
                   subtitle={item.designation}
                   dimensions={{xl: false, height: '100%', width: '100%', 'minHeight': '24rem', 'minWidth': '100%'}}
-                  handleClick={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                                    `/state/${stateCode}/park/${item.parkCode}`,
-                                                    `${territories[stateCode][0]}`)}
+                  manageFuture={manageFuture}
+                  link={{ 
+                    href: `/state/[stateCode]/park/[parkCode]`, 
+                    as: `/state/${stateCode}/park/${item.parkCode}`, 
+                    title: `${territories[stateCode][0]}` 
+                  }}
                   />
                 </Col__Decorated>
               )

@@ -2,7 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import states from '../../config/states'
 
-const Element = ({ territories, highlighted, setHighlighted, handleClick }) => {
+const Element = ({ territories, highlighted, setHighlighted, manageFuture }) => {
+
+  // const handleClick = () => {
+  //   manageFuture( link.href, link.as, link.title )
+  // }
   return (
     <Map
       width="100%"
@@ -32,7 +36,7 @@ const Element = ({ territories, highlighted, setHighlighted, handleClick }) => {
               onMouseOver={() => setHighlighted(key)} 
               onMouseOut={() => setHighlighted('')} 
               d={value[1]}
-              onClick={()=>handleClick('/state/[stateCode]', `/state/${key}/`)}  />
+              onClick={()=>manageFuture('/state/[stateCode]', `/state/${key}/`)}  />
           )
         }
       })

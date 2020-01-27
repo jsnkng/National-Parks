@@ -16,6 +16,9 @@ import Calendar from './elements/calendar'
 import SlideShow from './elements/slideshow'
 
 const Component = ({ events }) => {
+  const delayForceCheck = () => {
+    setTimeout(forceCheck, 10)
+  }
   return (
     <Events>
       <Grid>
@@ -29,7 +32,7 @@ const Component = ({ events }) => {
             <Col xs={12}>
             { events.slice(0,10).map((item, index) => {
               return (
-              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
+              <AccordionItem onClick={delayForceCheck} key={`${index}${item.id}`}>
                   <AccordionItemHeading>
                     <AccordionItemButton>
                       <h3>{item.title}</h3>

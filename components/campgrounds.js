@@ -19,6 +19,10 @@ import {
 import SlideShow from './elements/slideshow'
 
 const Component = ({ campgrounds }) => {
+
+  const delayForceCheck = () => {
+    setTimeout(forceCheck, 10)
+  }
   return (
     <Campgrounds>
       <Grid>
@@ -32,7 +36,7 @@ const Component = ({ campgrounds }) => {
             <Col xs={12}>
               { campgrounds.slice(0).map((item, index) => {
               return(
-              <AccordionItem onClick={()=>setTimeout(forceCheck, 10)} key={`${index}${item.id}`}>
+              <AccordionItem onClick={delayForceCheck} key={`${index}${item.id}`}>
                 <AccordionItemHeading >
                   <AccordionItemButton>
                     <h3>{item.name}</h3>

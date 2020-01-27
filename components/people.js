@@ -52,7 +52,7 @@ const Component = ({ people }) => {
       <Row>
         <button 
           className={ limit >= people.length ? 'hidden btn__load-more' : 'btn__load-more' } 
-          onClick={() => loadMore()}>
+          onClick={loadMore}>
             Load More People
         </button>
       </Row>

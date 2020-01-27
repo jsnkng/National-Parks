@@ -4,19 +4,18 @@ import LazyLoad from 'react-lazyload'
 import Spinner from './spinner'
 import SuperQuery from '@themgoncalves/super-query'
 
-const Element = ({ backgroundURL, title, subtitle, headline, dimensions, handleClick }) => {
+const Element = ({ backgroundURL, title, subtitle, headline, dimensions, manageFuture, link }) => {
 
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false)
-
+  const handleClick = () => {
+    setIsSpinnerVisible(true)
+    manageFuture( link.href, link.as, link.title )
+  }
   return (
     <Banner dimensions={dimensions}
-        onClick={() => {
-        setIsSpinnerVisible(true)
-        handleClick()
-      }}
+        onClick={handleClick}
       onKeyPress={(event) => { 
         if (event.which == 13 || event.keyCode == 13) {
-          setIsSpinnerVisible(true)
           handleClick()
           return false;
         } else {

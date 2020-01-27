@@ -15,7 +15,6 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
   const [themeName, setThemeName] = useState('lightMode')
   const [lastPage, setLastPage] = useState('National Park Guides')
 
-
   useEffect(() => {
     if (appCookies.themeName) {
       setThemeName(appCookies.themeName)

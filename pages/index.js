@@ -17,13 +17,19 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
 
   const handleStateChange = (e) => {
     e.preventDefault()
-    manageFuture('/state/[stateCode]', e.target.value)
+    manageFuture(`/state/[stateCode]`, e.target.value)
   }
   const handleDesignationChange = (e) => {
     e.preventDefault()
-    manageFuture('/designation/[designation]', e.target.value)
+    manageFuture(`/designation/[designation]`, e.target.value)
   }
-  
+  const handleClick = () => {
+    manageFuture(
+      `/state/[stateCode]/park/[parkCode]`, 
+      `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`, 
+      parks[0].designation)
+  }
+
   useEffect(() => {
     const url =  parks[0].images === undefined || parks[0].images.length == 0 
       ? '/noimage.jpg' 
@@ -56,7 +62,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
           </div></a>
           <Grid__FindAPark fluid>
             <Row>
-              <Col  xs={12} smOffset={2} sm={8} mdOffset={0} md={4} lg={3}>
+              <Col xs={12} smOffset={2} sm={8} mdOffset={0} md={4} lg={3}>
                 
                 <h1><a href="/">Explore America’s<br /> National Parks</a></h1>
                 
@@ -107,10 +113,10 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
 
                 <MapDiagram__Wrapper>
                   <MapDiagram
-                    className="mapdiagram" 
+                    className={`mapdiagram`}
                     highlighted={highlighted} 
                     setHighlighted={setHighlighted} 
-                    handleClick={manageFuture}
+                    manageFuture={manageFuture}
                   />
                 </MapDiagram__Wrapper>
                 
@@ -119,9 +125,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
 
           </Grid__FindAPark>
           <BackgroundDetails
-            onClick={() => manageFuture("/state/[stateCode]/park/[parkCode]", 
-            `/state/${parks[0].states.split(',')[0].toLowerCase()}/park/${parks[0].parkCode}`,
-            parks[0].designation)}>
+            onClick={handleClick}>
             {parks[0].name.replace(/&#333;/gi, "ō").replace(/&#257;/gi, "ā")}<br />
             <strong>{parks[0].designation}</strong><br />
             {territories[`${parks[0].states.split(',')[0].toLowerCase()}`][0]}
@@ -175,6 +179,7 @@ const BackgroundDetails = styled.div`
   text-align: left;
   font-size: .75rem;
   text-shadow: 1px 1px 1px ${({ theme }) => theme.colors.home_text_shadow};
+  cursor: pointer;
   z-index: 10;
   ${SuperQuery().maxWidth.md.and.maxHeight.of('320px').css`
     bottom: 0.5rem;

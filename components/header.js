@@ -16,10 +16,12 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
   (title.length > 24 && title__sub !== '') ? 'short_sub' : 
   (title.length > 24 && title__sub === '') ? 'short_no_sub' : ''
 
+  const handleClick = () => manageFuture('/', '/')
+  const handleScroll = () => window.scrollTo({ top: 0, behavior: 'smooth' })
   return (
     <Header className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
       <div>
-        <div className='top__back--container' onClick={() => manageHistory()}>
+        <div className='top__back--container' onClick={manageHistory}>
           <Arrow className={windowDimension.scrollY < .5 * windowDimension.height ? 'light' : 'dark' } />
           <div className='top__back--title'>{lastPage}</div>
         </div>
@@ -27,7 +29,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
       </div>
       <div>
         <Logo className={windowDimension.scrollY > .5 * windowDimension.height ? 'hidden' : '' } 
-              onClick={() => manageFuture('/', '/')}>
+              onClick={handleClick}>
           <div className='top__logo'>
             <a className='top__logo--text'>National<br />Park<br />Guides</a>
             <img className='top__logo--image' src='/us-nps.png' width='90' alt='National Parks Guides' />
@@ -36,7 +38,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
       </div>
 
       <div className={windowDimension.scrollY < .5 * windowDimension.height ? 'hidden' : '' }>
-        <div className='top__title--container' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div className='top__title--container' onClick={handleScroll}>
           <div className={`top__title ${titleClass}`}>{title}</div>
           { title__sub !== '' &&
             <div className={`top__title--sub ${titleClass}`}>{title__sub}</div>
