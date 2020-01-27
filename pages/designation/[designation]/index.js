@@ -53,9 +53,12 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
             subtitle={data[heroIdx].states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
             headline={`${designation}s`}
             dimensions={{xl: true, height: '100%', width: '100%', 'minHeight': '100vh', 'minWidth': '100vw'}}
-            handleClick= {() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                              `/state/${data[heroIdx].states.toLowerCase().split(',')[0]}/park/${data[heroIdx].parkCode}`,
-                                              `${designation}s`)}
+            manageFuture={manageFuture}
+            link={{ 
+              href: `/state/[stateCode]/park/[parkCode]`, 
+              as: `/state/${stateCode}/park/${data[heroIdx].parkCode}`, 
+              title: `${territories[stateCode][0]}` 
+            }}
           />
         </BackgroundOverlay>
       
@@ -91,9 +94,12 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
                     title={item.name}
                     subtitle={item.states.split(',').map(state => territories[state.toLowerCase()][0]).join(' / ')}
                     dimensions={{xl: false, height: '100%', width: '100%', 'minHeight': '24rem', 'minWidth': '100%'}}
-                    handleClick={() => manageFuture(`/state/[stateCode]/park/[parkCode]`, 
-                                                      `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`,
-                                                      `${designation}s`)}
+                    manageFuture={manageFuture}
+                    link={{ 
+                      href: `/state/[stateCode]/park/[parkCode]`, 
+                      as: `/state/${stateCode}/park/${item.parkCode}`, 
+                      title: `${territories[stateCode][0]}` 
+                    }}
                     />
                 </Col__Decorated>
               )

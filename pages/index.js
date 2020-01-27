@@ -7,8 +7,9 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import SuperQuery from '@themgoncalves/super-query'
 import { forceCheck } from 'react-lazyload'
 
-import territories from '../config/states'
 import MapDiagram from '../components/elements/mapdiagram'
+
+import territories from '../config/states'
 
 const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, manageFuture }) => {
   const [loaded, setLoaded] = useState(false)
