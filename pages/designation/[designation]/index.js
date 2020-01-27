@@ -56,8 +56,8 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
             manageFuture={manageFuture}
             link={{ 
               href: `/state/[stateCode]/park/[parkCode]`, 
-              as: `/state/${stateCode}/park/${data[heroIdx].parkCode}`, 
-              title: `${territories[stateCode][0]}` 
+              as: `/state/${data[heroIdx].states.toLowerCase().split(',')[0]}/park/${data[heroIdx].parkCode}`, 
+              title: `${designation}s` 
             }}
           />
         </BackgroundOverlay>
@@ -97,8 +97,8 @@ const Page = ({ data, designation, themeName, setThemeName, pageTransitionReadyT
                     manageFuture={manageFuture}
                     link={{ 
                       href: `/state/[stateCode]/park/[parkCode]`, 
-                      as: `/state/${stateCode}/park/${item.parkCode}`, 
-                      title: `${territories[stateCode][0]}` 
+                      as: `/state/${item.states.toLowerCase().split(',')[0]}/park/${item.parkCode}`, 
+                      title: `${designation}s` 
                     }}
                     />
                 </Col__Decorated>
