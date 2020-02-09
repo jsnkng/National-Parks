@@ -12,8 +12,13 @@ import cookies from 'next-cookies'
 const stack = []
 
 const MyApp = ({ appCookies, router, Component, pageProps }) => {
-  const [themeName, setThemeName] = useState('lightMode')
+  const [themeName, setTheme] = useState('lightMode')
   const [lastPage, setLastPage] = useState('National Park Guides')
+
+  const setThemeName = themeName => {
+    setTheme(themeName)
+    document.cookie = `themeName=${themeName}; path=/`
+  }
 
   useEffect(() => {
     if (appCookies.themeName) {
