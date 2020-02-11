@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import Router from 'next/router'
 import App from 'next/app'
 import { PageTransition } from 'next-page-transitions'
