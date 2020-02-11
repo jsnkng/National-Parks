@@ -66,6 +66,14 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
 
   return (
     <ThemeProvider theme={ { colors: themes[themeName], flexboxgrid: themes.flexboxgrid }}>
+      <Head>
+        <title>National Park Service: A State-by-State Guide</title>
+        <meta property="og:title" content="National Park Service: A State-by-State Guide" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.natparguides.com" />
+        <meta property="og:image" content="https://www.natparguides.com/us-nps.png" />
+        <meta name="description" content="An homage to the iconic NPS print guides, National Park Guides combines all 450 plus parks into a simple, easily navigated digital guide." />
+      </Head>
       <GlobalStyle />
       <PageTransition
         timeout={400}
