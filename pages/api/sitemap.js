@@ -36,13 +36,20 @@ export default (req, res) => {
             changefreq: 'daily',
             priority: 0.9
           })
+          state.data.forEach(park => {
+            smStream.write({
+              url: `/state/${state.stateCode}/park/${park.parkCode}`,
+              changefreq: 'daily',
+              priority: 0.9
+            })
+          })
         })
 
         // End sitemap stream
         smStream.end()
         // XML sitemap string
         const sitemapOutput = streamToPromise(smStream).toString()
-        console.log(sitemapOutput)
+
 
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/xml')
