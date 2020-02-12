@@ -32,7 +32,6 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
   useEffect(() => {
     forceCheck()
   })
-console.log(parks)
   if (!loaded) {
     return null
   } else {
