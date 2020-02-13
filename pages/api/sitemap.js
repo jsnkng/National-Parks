@@ -37,7 +37,7 @@ export default (req, res) => {
         result.forEach(state => {
           smStream.write({
             url: `/state/${state.stateCode}`,
-            changefreq: 'daily',
+            changefreq: 'monthly',
             priority: 0.9
           })
           state.data.forEach(park => {

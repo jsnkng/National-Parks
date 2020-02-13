@@ -73,7 +73,7 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://natparguides.com" />
         <meta property="og:image" content="https://natparguides.com/natparguides_ogimage.jpg" />
-        <meta name="description" content="An homage to the iconic NPS print guides, National Park Guides combines all 450 plus parks into a simple, easily navigated digital guide." />
+        <meta name="description" content="Every one of America’s National Park in an easily navigated photo-rich digital guide." />
       </Head>
       <GlobalStyle />
       <PageTransition
