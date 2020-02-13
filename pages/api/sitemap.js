@@ -29,7 +29,11 @@ export default (req, res) => {
         client.close()
         // Create each URL row
         // console.log(result)
-
+        smStream.write({
+          url: `/`,
+          changefreq: 'daily',
+          priority: 0.9
+        })
         result.forEach(state => {
           smStream.write({
             url: `/state/${state.stateCode}`,
