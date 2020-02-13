@@ -32,7 +32,7 @@ const StateList = styled.div`
   margin: 1rem 0;
   padding: 1.25rem 1rem;
   columns: auto 9rem;
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 400; 
   border-radius: 4px;
   ul, li {
@@ -42,6 +42,6 @@ const StateList = styled.div`
   }
   ${SuperQuery().minWidth.sm.css`
     columns: auto 16rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
   `}
 `

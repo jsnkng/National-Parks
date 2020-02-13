@@ -133,13 +133,27 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
               </Grid__FindAPark>
               
             </TabPanel>
-            <TabPanel>
+            <TabPanel> 
+              <Grid fluid>
+                <Row>
+                  <Col__Decorated xs={12}>
                 {/* <h2>By Designation</h2> */}
               <DesignationList />
+                  </Col__Decorated>
+                </Row>
+
+              </Grid>
             </TabPanel>
-            <TabPanel>
+            <TabPanel> 
+              <Grid fluid>
+                <Row>
+                  <Col__Decorated xs={12}>
                 {/* <h2>By State</h2> */}
               <StateList />
+                  </Col__Decorated>
+                </Row>
+
+              </Grid>
             </TabPanel>
           </Tabs>
 
@@ -329,9 +343,8 @@ border-radius: 4px;
     margin: 0 0 1rem 0;
   `}
   .reversible {
-display: flex;
-flex-direction: column;
-align-content: space-between;
+    display: flex;
+    align-content: space-between;
   }
   label {
     position: absolute;
@@ -381,8 +394,8 @@ const Footer__Wrapper = styled.div`
 `
 
 const Col__Decorated = styled(Col)`
-display: flex;
-flex-direction: column;
-align-items: stretch;
-justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
 `

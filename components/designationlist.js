@@ -55,6 +55,6 @@ const DesignationList = styled.div`
   }
   ${SuperQuery().minWidth.sm.css`
     columns: auto 16rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
   `}
 `
