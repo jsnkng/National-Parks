@@ -2,5 +2,5 @@ Sitemap: https://www.natparguides.com/api/sitemap
 
 User-agent: *
 Allow: /*
-
 Disallow: /api/*
+Allow: /api/sitemap
