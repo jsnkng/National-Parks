@@ -69,7 +69,7 @@ const Park = ({
           <title>{territories[stateCode][0]} | {park.name} {park.designation}</title> 
           <meta property="og:title" key="ogtitle" content={`National Park Service Guide to ${park.name} ${park.designation}`} />
           <meta property="og:type" key="ogtype" content="website" />
-          <meta property="og:url" key="ogurl" content={`https://natparguides.com/state/${stateCode}/park/${park.parkCode}`} />
+          <meta property="og:url" key="ogurl" content={`https://www.natparguides.com/state/${stateCode}/park/${park.parkCode}`} />
           <meta property="og:image" key="ogimage" content={process.env.AWS_URI + park.images[0].url.replace(/[/:-]/g, '_')}  />
           <meta name="description" key="description" content={`Digital guide to ${park.name} ${park.designation} | ${park.description.substring(0, 130)} `} />
      

@@ -71,8 +71,8 @@ const MyApp = ({ appCookies, router, Component, pageProps }) => {
         <title>National Park Service: A State-by-State Guide</title>
         <meta property="og:title" key="ogtitle" content="National Park Service: A State-by-State Guide" />
         <meta property="og:type" key="ogtype" content="website" />
-        <meta property="og:url" key="ogurl" content="https://natparguides.com" />
-        <meta property="og:image" key="ogimage" content="https://natparguides.com/natparguides_ogimage.jpg" />
+        <meta property="og:url" key="ogurl" content="https://www.natparguides.com" />
+        <meta property="og:image" key="ogimage" content="https://www.natparguides.com/natparguides_ogimage.jpg" />
         <meta name="description" key="description" content="Every one of America’s National Park in an easily navigated photo-rich digital guide." />
       </Head>
       <GlobalStyle />

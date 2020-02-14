@@ -41,8 +41,8 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
           <title>National Park Service Guide to {territories[stateCode][0]}</title>  
           <meta property="og:title" key="ogtitle" content={`National Park Service Guide to ${territories[stateCode][0]}`} />
           <meta property="og:type" key="ogtype" content="website" />
-          <meta property="og:url" key="ogurl" content={`https://natparguides.com/state/${stateCode}/`} />
-          <meta property="og:image" key="ogimage" content="https://natparguides.com/natparguides_ogimage.jpg" />
+          <meta property="og:url" key="ogurl" content={`https://www.natparguides.com/state/${stateCode}/`} />
+          <meta property="og:image" key="ogimage" content="https://www.natparguides.com/natparguides_ogimage.jpg" />
           <meta name="description" key="description" content={`National Park Guide to ${territories[stateCode][0]}: There are ${data.length} National Parks in ${territories[stateCode][0]}.`} />
      
         </Head>
