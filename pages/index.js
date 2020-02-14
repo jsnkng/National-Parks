@@ -288,11 +288,11 @@ const Content = styled.main`
     background-repeat: no-repeat;
 
     ${SuperQuery().minWidth.sm.css`
-    top: 1rem;
-    right: 1rem;
-    width: 150px;
-    height: 80px;
-  `}
+      top: 1rem;
+      right: 1rem;
+      width: 150px;
+      height: 80px;
+    `}
   }
   .top__logo--image {
     cursor: pointer;

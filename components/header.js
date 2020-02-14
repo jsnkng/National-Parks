@@ -95,7 +95,8 @@ const Header = styled.header`
     font-weight: 400;
     max-width: 70%;
     line-height: .9;
-      font-size: 1rem;
+    font-size: 1rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
     ${SuperQuery().minWidth.sm.css`
       font-size: 1.25rem;
     `}
@@ -252,7 +253,7 @@ const Logo = styled.div`
   }
   .top__logo {
     position: absolute;
-    top: 0.5rem;
+    top: 0.875rem;
     right: 0.375rem;
     width: 80px;
     height: 50px;
@@ -261,12 +262,11 @@ const Logo = styled.div`
     background-repeat: no-repeat;
 
     ${SuperQuery().minWidth.sm.css`
-    top: 1rem;
-    right: 1rem;
-    width: 150px;
-    height: 80px;
-  `}
-  }
+      top: 0.375rem;
+      width: 109px;
+      height: 60px;
+    `}
+    }
   .top__logo--image {
     cursor: pointer;
     border: none;
