@@ -30,10 +30,7 @@ const Component = ({ title, title__sub, manageHistory, manageFuture, lastPage })
       <div>
         <Logo className={windowDimension.scrollY > .5 * windowDimension.height ? 'hidden' : '' } 
               onClick={handleClick}>
-          <div className='top__logo'>
-            <a className='top__logo--text'>National<br />Park<br />Guides</a>
-            <img className='top__logo--image' src='/us-nps.png' width='90' alt='National Parks Guides' />
-          </div>
+           <div className='top__logo'></div>
         </Logo>
       </div>
 
@@ -77,6 +74,8 @@ const Header = styled.header`
   ${SuperQuery().minWidth.md.css`
     height: 4rem;
   `}
+
+
   a {
     cursor: pointer;
     text-decoration: none;
@@ -244,42 +243,33 @@ const Logo = styled.div`
     opacity:0;
     top: -100px;
   }
+  
   a {
     cursor: pointer;
     text-decoration: none;
     border: none;
-    color: ${({ theme }) => theme.colors.home_text};
-   &:hover {
-     color:${({ theme }) => theme.colors.home_text};
-   }
+    color: inherit;
   }
-
   .top__logo {
     position: absolute;
-    top: .75rem;
+    top: 0.5rem;
+    right: 0.375rem;
+    width: 80px;
+    height: 50px;
+    background: url('/us-nps-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    ${SuperQuery().minWidth.sm.css`
+    top: 1rem;
     right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-grow: 1;
-    min-width: 110px;
+    width: 150px;
+    height: 80px;
+  `}
   }
-  
   .top__logo--image {
     cursor: pointer;
     border: none;
-    width: 2.25em;
   }
-  .top__logo--text {
-    text-align:right;
-    font-size: .875rem;
-    line-height: .875;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-right: .5rem;
-    ${SuperQuery().minWidth.md.css`
-      font-size: .875rem;
-      letter-spacing: -1.5px;
-    `}
-}
+
 `

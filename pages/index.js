@@ -276,12 +276,13 @@ const Content = styled.main`
     border: none;
     color: inherit;
   }
+  
   .top__logo {
     position: absolute;
     top: 0.5rem;
     right: 0.375rem;
     width: 80px;
-    height: 110px;
+    height: 50px;
     background: url('/us-nps-logo.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -290,7 +291,7 @@ const Content = styled.main`
     top: 1rem;
     right: 1rem;
     width: 150px;
-    height: 190px;
+    height: 80px;
   `}
   }
   .top__logo--image {
