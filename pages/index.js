@@ -62,12 +62,8 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
       <Background backgroundURL={backgroundURL}>
         <BackgroundOverlay />
         <Content>
-        <a href="/">
-          <div className='top__logo'>
-          </div></a>
+        <a href="/"><div className='top__logo'></div></a>
 
-          
-          
           <Tabs>
             <h1>Explore America’s<br /> National Parks</h1>
             <TabList>
@@ -79,9 +75,8 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
             <TabPanel>
               <Grid__FindAPark fluid>
                 <Row className='reversible'>
-                  <Col__Decorated xs={12} smOffset={2} sm={8} mdOffset={0} md={4} lg={3}>
+                  <Col__Decorated xs={12} smOffset={1} sm={10} mdOffset={0} md={4} lg={3}>
                     
-                    {/* <h2>Find a Park</h2> */}
                     <label htmlFor='state'>By State</label>
                     <select id='state' value={`/state/${highlighted}/`} onChange={handleStateChange.bind(this)}>
                       <option label='By State'>By State</option>
@@ -123,7 +118,7 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                       <option label='International Parks' value='/designation/International%20Park/'>International Parks</option>
                     </select>
                   </Col__Decorated>
-                  <Col__Decorated xs={12} smOffset={2} sm={8} mdOffset={0} md={8} lg={9}>
+                  <Col__Decorated xs={12} md={8} lg={9}>
                     <MapDiagram__Wrapper>
                       <MapDiagram
                         className={`mapdiagram`}
@@ -134,34 +129,22 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                     </MapDiagram__Wrapper>
                   </Col__Decorated>
                 </Row>
-
               </Grid__FindAPark>
               
             </TabPanel>
-            <TabPanel> 
-              <Grid fluid>
-                <Row>
-                  <Col__Decorated xs={12}>
-                {/* <h2>By Designation</h2> */}
-              <DesignationList />
-                  </Col__Decorated>
-                </Row>
 
-              </Grid>
+            <TabPanel> 
+
+                    <DesignationList />
+
             </TabPanel>
-            <TabPanel> 
-              <Grid fluid>
-                <Row>
-                  <Col__Decorated xs={12}>
-                {/* <h2>By State</h2> */}
-              <StateList />
-                  </Col__Decorated>
-                </Row>
 
-              </Grid>
+            <TabPanel> 
+
+                    <StateList />
+
             </TabPanel>
           </Tabs>
-
           
           <BackgroundDetails
             onClick={handleClick}>
@@ -318,11 +301,15 @@ const Content = styled.main`
   .react-tabs__tab-list {
     display: flex;
     justify-content: space-around;
-    margin: 1.25rem 0 0 0;
+    margin: 0.5rem 0 0 0;
     padding: 0;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight:400;
+    ${SuperQuery().maxWidth.of('375px').css`
+    font-size: 0.875rem;
+    `}
     ${SuperQuery().minWidth.sm.css`
+      font-size: 1.25rem;
       padding: 0 1rem 0 1rem;
     `}
   }
@@ -340,12 +327,12 @@ const Content = styled.main`
   }
 `
 const Grid__FindAPark = styled(Grid)`
-background: rgba(0,0,0,0.33);
-padding: 2rem;
-margin: 0.5rem 0;
-border-radius: 4px;
-  ${SuperQuery().maxWidth.of('375px').css`
-    margin: 0 0 1rem 0;
+  background: rgba(0,0,0,0.33);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  ${SuperQuery().minWidth.md.css`
+    padding: 2rem 2rem;
   `}
   .reversible {
     display: flex;
@@ -388,7 +375,6 @@ border-radius: 4px;
 const MapDiagram__Wrapper = styled.div`
   margin: 2rem 0 1rem 0;
   padding: 0;
-  
   ${SuperQuery().minWidth.md.and.landscape.css`
     margin: 0 2rem 0 3rem;
   `}
