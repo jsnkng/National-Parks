@@ -13,7 +13,7 @@ const Element = ({ backgroundURL, title, subtitle, headline, dimensions, manageF
   }
   return (
     <Banner dimensions={dimensions}
-        onClick={handleClick}
+      onClick={handleClick}
       onKeyPress={(event) => { 
         if (event.which == 13 || event.keyCode == 13) {
           handleClick()
@@ -76,15 +76,15 @@ const Banner = styled.section`
     justify-content: center;
 
     background: ${({ theme }) => theme.colors.image_overlay_gradient};
-
+    background: rgba(0,0,0,0.2);
     color: ${({ theme }) => theme.colors.home_text};
     text-shadow: 1px 1px 2px ${({ theme }) => theme.colors.home_text_shadow};
 
-    -webkit-transition: background 0.5s linear;
-    -moz-transition: background 0.5s linear;
-    -o-transition: background 0.5s linear;
-    -ms-transition: background 0.5s linear;
-    transition: background 0.5s linear;
+    -webkit-transition: background 0.5s ease;
+    -moz-transition: background 0.5s ease;
+    -o-transition: background 0.5s ease;
+    -ms-transition: background 0.5s ease;
+    transition: background 0.5s ease;
 
     z-index: 20; 
     
@@ -97,6 +97,7 @@ const Banner = styled.section`
     &:focus-within {
       outline: none;
       background: ${({ theme }) => theme.colors.image_overlay_darkgradient};
+      background: rgba(0,0,0,0.5);
 
     }
   }
