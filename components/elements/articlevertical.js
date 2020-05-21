@@ -17,7 +17,7 @@ const Element = ({ title, date, imageURL, description, url, dimensions }) => {
             {date !== undefined && 
               <p><strong>{date}</strong></p>
             }
-            <p>{description.substring(0, 420)}</p>
+            {/* <p>{description.substring(0, 420)}</p> */}
           </div>
         }
 

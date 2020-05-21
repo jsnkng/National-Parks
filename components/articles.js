@@ -40,7 +40,7 @@ const Component = ({ articles }) => {
           <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={item.id}>
             <ArticleVertical 
               title={item.title} 
-              imageURL={item.listingimage.url} 
+              imageURL={item.listingimage ? item.listingimage.url : ''} 
               description={item.listingdescription} 
               url={item.url} 
               dimensions={dim} />
