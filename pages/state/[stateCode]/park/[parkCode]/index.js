@@ -55,6 +55,8 @@ const Park = ({
     campgrounds.slice(0).map((item) => {
       markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
     })
+
+    // (!Array.isArray(places) || !places.length) ||
   places !== undefined && places.length != 0 &&
     places.slice(0).map((item) => {
       markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
@@ -113,18 +115,29 @@ const Park = ({
           { campgrounds !== undefined && campgrounds.length != 0 &&
           <Campgrounds park={park} campgrounds={campgrounds} />
           }
-          { newsreleases !== undefined && newsreleases.length != 0 &&
+
+
+          { (!Array.isArray(newsreleases) || !newsreleases.length) ||
           <NewsReleases park={park} newsReleases={newsreleases} />
+          
           }
-          { articles !== undefined && articles.length != 0 &&
-          <Articles park={park} articles={articles} />
+
+          { (!Array.isArray(articles) || !articles.length) ||
+            <Articles park={park} articles={articles} />
+
           }
-          { places !== undefined && places.length != 0 &&
-          <Places park={park} places={places} />
+{/* 
+          { (!Array.isArray(places) || !places.length) ||
+            <Places park={park} places={places} />
+
           }
-          { people !== undefined && people.length != 0 &&
-          <People park={park} people={people} />
-          } 
+
+          { (!Array.isArray(people) || !people.length) ||
+            <People park={park} people={people} />
+
+          } */}
+
+        
         </Content> 
       
         <Footer__Wrapper>

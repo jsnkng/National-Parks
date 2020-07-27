@@ -55,16 +55,16 @@ export default (req, res) => {
       console.log(`Fetching ppvac (${parkCode}) From API`)
 
       // Fetch additional data from apis
-      const people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      ppvac.people = people.data
-      const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      ppvac.places = places.data
-      const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=addresses,operatingHours,contacts&api_key=${process.env.NPS_KEY}`)
-      ppvac.visitorcenters = visitorcenters.data
-      const articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&fields=listingImage,relatedParks&api_key=${process.env.NPS_KEY}`)
-      ppvac.articles = articles.data
-      const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=accessibility,addresses,amenities,campsites,contacts,fees,images,operatingHours&api_key=${process.env.NPS_KEY}`)
-      ppvac.campgrounds = campgrounds.data
+      // const people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      // ppvac.people = people.data
+      // const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      // ppvac.places = places.data
+      // const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=addresses,operatingHours,contacts&api_key=${process.env.NPS_KEY}`)
+      // ppvac.visitorcenters = visitorcenters.data
+      // const articles = await fetchWithErrorHandling(`${process.env.NPS_URI}/articles?parkCode=${parkCode}&api_key=${process.env.NPS_KEY}`)
+      // ppvac.articles = articles.data
+      // const campgrounds = await fetchWithErrorHandling(`${process.env.NPS_URI}/campgrounds?parkCode=${parkCode}&fields=accessibility,addresses,amenities,campsites,contacts,fees,images,operatingHours&api_key=${process.env.NPS_KEY}`)
+      // ppvac.campgrounds = campgrounds.data
 
       ppvac.parkCode = parkCode
 
@@ -73,45 +73,46 @@ export default (req, res) => {
       await db.collection('ppvac').insertOne(ppvac)
     }
 
-    result.people = ppvac.people
-    result.places = ppvac.places
-    result.visitorcenters = ppvac.visitorcenters
-    result.articles = ppvac.articles
-    result.campgrounds = ppvac.campgrounds
+    // result.people = ppvac.people
+    // result.places = ppvac.places
+    // result.visitorcenters = ppvac.visitorcenters
+    // result.articles = ppvac.articles
+    // result.campgrounds = ppvac.campgrounds
 
 
     // Since alerts, newsreleases, and events should be updated more frequently these
     // are stored in separate collections and fetched from db or api individually before
     // being passed to the result object
-    console.log(`Getting alerts (${parkCode})`)
-    let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
-    if (alerts === undefined || alerts.length === 0) {
-      console.log(`Fetching Alerts (${parkCode}) From API`)
-      alerts = await fetchWithErrorHandling(`${process.env.NPS_URI}/alerts?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      alerts.parkCode = parkCode
-      await db.collection('alerts').insertOne(alerts)
-    }
-    result.alerts = alerts.data
+    // console.log(`Getting alerts (${parkCode})`)
+    // let [alerts] = await db.collection('alerts').find({ parkCode }).toArray()
+    
+    // if (alerts === undefined || alerts.length === 0) {
+    //   console.log(`Fetching Alerts (${parkCode}) From API`)
+    //   alerts = await fetchWithErrorHandling(`${process.env.NPS_URI}/alerts?parkCode=${parkCode}&api_key=${process.env.NPS_KEY}`)
+    //   alerts.parkCode = parkCode
+    //   await db.collection('alerts').insertOne(alerts)
+    // }
+    // result.alerts = alerts.data
 
-    console.log(`Getting newsreleases (${parkCode})`)
-    let [newsreleases] = await db.collection('newsreleases').find({ parkCode }).toArray()
-    if (newsreleases === undefined || newsreleases.length === 0) {
-      console.log(`Fetching News Releases (${parkCode}) From API`)
-      newsreleases = await fetchWithErrorHandling(`${process.env.NPS_URI}/newsreleases?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
-      newsreleases.parkCode = parkCode
-      await db.collection('newsreleases').insertOne(newsreleases)
-    }
-    result.newsreleases = newsreleases.data
+    // console.log(`Getting newsreleases (${parkCode})`)
+    // let [newsreleases] = await db.collection('newsreleases').find({ parkCode }).toArray()
+    // if (newsreleases === undefined || newsreleases.length === 0) {
+    //   console.log(`Fetching News Releases (${parkCode}) From API`)
+    //   newsreleases = await fetchWithErrorHandling(`${process.env.NPS_URI}/newsreleases?parkCode=${parkCode}&api_key=${process.env.NPS_KEY}`)
+    //   newsreleases.parkCode = parkCode
+    //   await db.collection('newsreleases').insertOne(newsreleases)
+    // }
+    // result.newsreleases = newsreleases.data
 
-    console.log(`Getting events (${parkCode})`)
-    let [events] = await db.collection('events').find({ parkCode }).toArray()
-    if (events === undefined || events.length === 0) {
-      console.log(`Fetching Events (${parkCode}) From API`)
-      events = await fetchWithErrorHandling(`${process.env.NPS_URI}/events?parkCode=${parkCode}&fields=images,dates,tags,times,types&api_key=${process.env.NPS_KEY}`)
-      events.parkCode = parkCode
-      await db.collection('events').insertOne(events)
-    }
-    result.events = events.data
+    // console.log(`Getting events (${parkCode})`)
+    // let [events] = await db.collection('events').find({ parkCode }).toArray()
+    // if (events === undefined || events.length === 0) {
+    //   console.log(`Fetching Events (${parkCode}) From API`)
+    //   events = await fetchWithErrorHandling(`${process.env.NPS_URI}/events?parkCode=${parkCode}&api_key=${process.env.NPS_KEY}`)
+    //   events.parkCode = parkCode
+    //   await db.collection('events').insertOne(events)
+    // }
+    // result.events = events.data
     callback(result)
   }
 
