@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@themgoncalves/super-query": "^3.0.0",
-    "aws-sdk": "^2.719.0",
+    "aws-sdk": "^2.721.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.2.0",
@@ -22,7 +22,7 @@
     "gzip": "^0.1.0",
     "isomorphic-unfetch": "^3.0.0",
     "mongodb": "^3.5.9",
-    "next": "^9.4.4",
+    "next": "^9.5.0",
     "next-absolute-url": "^1.2.2",
     "next-connect": "^0.5.1",
     "next-cookies": "^2.0.3",
