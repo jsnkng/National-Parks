@@ -36,12 +36,13 @@ const Component = ({ places }) => {
       </Row>
       <Row>
      { places.slice(0,limit).map((item) => {
+       let imageUrl = item.images[0].url
       return ( 
         <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={item.id}>
             <ArticleHorizontal 
               title={item.title} 
-              imageURL={item.listingimage.url} 
-              description={item.listingdescription} 
+              imageURL={imageUrl} 
+              description={item.listingDescription} 
               url={item.url} 
               dimensions={dim} />
         </Col>

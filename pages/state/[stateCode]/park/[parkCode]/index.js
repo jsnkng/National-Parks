@@ -126,7 +126,7 @@ const Park = ({
             <Articles park={park} articles={articles} />
 
           }
-{/* 
+
           { (!Array.isArray(places) || !places.length) ||
             <Places park={park} places={places} />
 
@@ -135,7 +135,7 @@ const Park = ({
           { (!Array.isArray(people) || !people.length) ||
             <People park={park} people={people} />
 
-          } */}
+          }
 
         
         </Content> 

@@ -66,7 +66,7 @@ export default (req, res) => {
       // Fetch additional data from apis
       const people = await fetchWithErrorHandling(`${process.env.NPS_URI}/people?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
       ppvac.people = people.data
-      const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&fields=images&api_key=${process.env.NPS_KEY}`)
+      const places = await fetchWithErrorHandling(`${process.env.NPS_URI}/places?parkCode=${parkCode}&api_key=${process.env.NPS_KEY}`)
       ppvac.places = places.data
       const visitorcenters = await fetchWithErrorHandling(`${process.env.NPS_URI}/visitorcenters?parkCode=${parkCode}&fields=addresses,operatingHours,contacts&api_key=${process.env.NPS_KEY}`)
       ppvac.visitorcenters = visitorcenters.data
@@ -128,7 +128,6 @@ export default (req, res) => {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   }, (err, client) => {
-    console.log(`\n\nerr:${err}`)
     console.log('Connected to MongoDB')
 
     const db = client.db(process.env.DB_NAME)
