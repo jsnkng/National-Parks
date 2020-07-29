@@ -5,10 +5,13 @@ import ArticleVertical from './elements/articlevertical'
 
 const Component = ({ newsReleases }) => {
   const toDateFormat = (date) => {
+    if(typeof date !== undefined && date !== null) {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])
     const nd = new Date(d1)
     return nd.toLocaleDateString()
+  }
+  return null
   }
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
@@ -35,6 +38,7 @@ const Component = ({ newsReleases }) => {
         </Row>
         <Row>
         { newsReleases.slice(0,limit).map((item) => {
+          console.log(item)
           return (
           <Col xs={12} sm={6} key={item.id}>
 
