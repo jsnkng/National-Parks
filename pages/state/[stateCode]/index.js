@@ -12,7 +12,7 @@ import Footer from '../../../components/footer'
 import Banner from '../../../components/elements/banner'
 
 const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
-  console.log(data)
+  // console.log(data)
   /* Flag loaded state of page for pageTransitions */
   const [loaded, setLoaded] = useState(false)
 

@@ -3,6 +3,18 @@ import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import SuperQuery from '@themgoncalves/super-query'
 
+const toDateFormat = (date) => {
+  if(typeof date !== undefined && date !== null) {
+    const d = date.split(' ')
+    const d1 = Date.parse(d[0])
+    const nd = new Date(d1)
+    return nd.toLocaleDateString()
+  }
+  return null
+}
+
+  
+
 const Element = ({ title, date, imageURL, description, url, dimensions }) => {
   return (
     <Article dimensions={dimensions}>
@@ -14,9 +26,7 @@ const Element = ({ title, date, imageURL, description, url, dimensions }) => {
             <div className='articles__card--title'>
               <h4>{title.substring(0, 120)}</h4>
             </div>
-            {date !== undefined && 
-              <p><strong>{date}</strong></p>
-            }
+              <p><strong>{toDateFormat(date)}</strong></p>
             {/* <p>{description.substring(0, 420)}</p> */}
           </div>
         }
@@ -26,9 +36,7 @@ const Element = ({ title, date, imageURL, description, url, dimensions }) => {
             <LazyLoad offset={100}>
               <Image backgroundURL={imageURL} className="lazyload__image--height" />
             </LazyLoad>
-            {date !== undefined && 
-              <p><strong>{date}</strong></p>
-            }
+              <p><strong>{toDateFormat(date)}</strong></p>
             <h4>{title}</h4>
             <p>{description.substring(0, 400)}</p>
           </div>

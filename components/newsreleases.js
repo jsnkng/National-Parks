@@ -4,15 +4,7 @@ import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import ArticleVertical from './elements/articlevertical'
 
 const Component = ({ newsReleases }) => {
-  const toDateFormat = (date) => {
-    if(typeof date !== undefined && date !== null) {
-    const d = date.split(' ')
-    const d1 = Date.parse(d[0])
-    const nd = new Date(d1)
-    return nd.toLocaleDateString()
-  }
-  return null
-  }
+  
   const [limit, setLimit] = useState(2)
   const [rows, setRows] = useState(1)
   
@@ -44,7 +36,7 @@ const Component = ({ newsReleases }) => {
 
           <ArticleVertical 
             title={item.title} 
-            // date={toDateFormat(item.releaseDate)} 
+            date={item.releaseDate} 
             imageURL={item.image.url} 
             description={item.abstract} 
             url={item.url} 
