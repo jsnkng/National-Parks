@@ -44,7 +44,7 @@ const Component = ({ newsReleases }) => {
 
           <ArticleVertical 
             title={item.title} 
-            date={toDateFormat(item.releaseDate)} 
+            // date={toDateFormat(item.releaseDate)} 
             imageURL={item.image.url} 
             description={item.abstract} 
             url={item.url} 
