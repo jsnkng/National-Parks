@@ -5,7 +5,7 @@ import LazyLoad from 'react-lazyload'
 import SuperQuery from '@themgoncalves/super-query'
 
 const toDateFormat = (date) => {
-  if(typeof date !== undefined && date !== null) {
+  if(date !== undefined) {
     const d = date.split(' ')
     const d1 = Date.parse(d[0])
     const nd = new Date(d1)
