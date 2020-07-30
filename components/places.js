@@ -36,7 +36,7 @@ const Component = ({ places }) => {
       </Row>
       <Row>
      { places.slice(0,limit).map((item) => {
-       let imageUrl = item.images[0].url
+       let imageUrl = item.images[0] ? item.images[0].url : ''
       return ( 
         <Col xs={cols.xs} sm={cols.sm} md={cols.md} lg={cols.lg} key={item.id}>
             <ArticleHorizontal 

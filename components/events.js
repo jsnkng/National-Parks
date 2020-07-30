@@ -122,7 +122,7 @@ const Component = ({ events }) => {
                         </Row>
                       </Col>
                       <Col xs={12} lg={8}>
-                      { item.images.length !== 0 && item.images[0].url !== undefined &&
+                      { item.images.length !== 0 && item.images[0] && item.images[0].url !== undefined &&
                         <LazyLoad offset={300} height={'15rem'}>
                           <SlideShow__Decorated>
                             <SlideShow 

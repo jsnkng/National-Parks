@@ -56,7 +56,7 @@ const Component = ({ campgrounds }) => {
                       }
                       <p className='introduction'>{item.description}</p>
                       {(item.operatingHours !== undefined && item.operatingHours.length !== 0) &&
-                        (item.operatingHours[0] !== undefined && item.operatingHours[0].length !== 0) &&
+                        (item.operatingHours[0] !== undefined && item.operatingHours[0] && item.operatingHours[0].length !== 0) &&
                         <p><em>{item.operatingHours[0].description}</em></p>
                       }
                     </Col>
@@ -80,14 +80,14 @@ const Component = ({ campgrounds }) => {
 
                   {((item.contacts !== undefined && item.contacts.phoneNumbers.length !== 0) ||
                     (item.contacts !== undefined && item.contacts.emailAddresses.length !== 0) ||
-                    (item.addresses !== undefined && item.addresses[0].length !== 0) ||
+                    (item.addresses !== undefined && item.addresses[0] && item.addresses[0].length !== 0) ||
                     (item.directionsoverview !== undefined && item.directionsoverview !== '') ||
                     (item.weatheroverview !== undefined && item.weatheroverview !== '')) &&
                 
                   <Row className="section">
                     {((item.contacts !== undefined && item.contacts.phoneNumbers.length !== 0) ||
                     (item.contacts !== undefined && item.contacts.emailAddresses.length !== 0) ||
-                    (item.addresses !== undefined && item.addresses[0].length !== 0)) &&
+                    (item.addresses !== undefined && item.addresses[0] && item.addresses[0].length !== 0)) &&
                     <Col xs={12} sm={12} md={4} lg={4}>
                       <h4>Contact Information</h4>
                       <Row>

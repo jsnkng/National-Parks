@@ -43,7 +43,7 @@ const Component = ({ visitorCenters }) => {
                   </Row>
                   <Row className='section'>
                   { ((item.contacts !== undefined && item.contacts.phoneNumbers.length !== 0) ||
-                    (item.addresses !== undefined && item.addresses[0].length !== 0)) &&
+                    (item.addresses !== undefined && item.addresses[0] && item.addresses[0].length !== 0)) &&
                     <Col xs={12} sm={12} md={4} lg={4}>
                       <h4>Contact Information</h4>
                       <Row>
