@@ -1,5 +1,5 @@
 function formatPhoneNumber(phoneNumberString) {
-  if(typeof phoneNumberString !== undefined && phoneNumberString !== null) {
+  if(phoneNumberString !== undefined) {
     const nospace = phoneNumberString.replace(/\s/g, '')
     const split1 = nospace.split('/')
     const split2 = split1[0].split('x')
