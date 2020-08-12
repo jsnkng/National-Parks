@@ -153,13 +153,24 @@ const Park = ({
 }
 
 Park.getInitialProps = async ({ req, query }) => {
+  // destructure the query object to get the parameters for the api call
   const { stateCode } = query
   const { parkCode } = query
+ 
+  // use the next-absolute-url module to get this Next.js's url
   const { origin } = absoluteUrl(req)
+
+  // fetch blocking data from api
   const parkResult = await fetch(`${origin}/api/parks/${parkCode}`)
+
+  // transform blocking data from api into json result
   const result = await parkResult.json()
+ 
+  // add parmaters to resulting json object
   result.stateCode = stateCode
   result.parkCode = parkCode
+
+  // return data
   return result
 }
 
