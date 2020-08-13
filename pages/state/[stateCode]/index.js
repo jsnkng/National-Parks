@@ -11,9 +11,13 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import Banner from '../../../components/elements/banner'
 
-const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
-  // console.log(data)
-  /* Flag loaded state of page for pageTransitions */
+const origin =process.env.WEB_URI
+
+const Page = ({ result, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
+  const { data } = result
+  const { stateCode }  = result
+  
+   /* Flag loaded state of page for pageTransitions */
   const [loaded, setLoaded] = useState(false)
 
   /* Choose a random item to be the hero */
@@ -128,14 +132,31 @@ const Page = ({ data, stateCode, themeName, setThemeName, pageTransitionReadyToE
 
 Page.pageTransitionDelayEnter = true
 
-Page.getInitialProps = async ({ req, query }) => {
-  const {stateCode} = query
-  const {origin} = absoluteUrl(req)
-  const apiResult = await fetch(`${origin}/api/state/${stateCode}`)
+
+export async function getStaticProps(context) {
+  const apiResult = await fetch(`${origin}/state/${context.params.stateCode}`)
   const result = await apiResult.json()
-  result.stateCode = stateCode
-  return result
+  result.stateCode = context.params.stateCode
+
+  return {
+    props: {
+       result 
+    }, // will be passed to the page component as props
+  }
+
 }
+
+export async function getStaticPaths() {
+  // Get the paths we want to pre-render from the states configuration file we've already loaded at var = territories
+  const paths = Object.entries(territories).map(([key, value]) => {
+    return { params: { stateCode: key }}
+  })
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: false }
+}
+
 
 export default Page
 
