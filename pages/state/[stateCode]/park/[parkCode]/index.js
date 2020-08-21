@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
-import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import { forceCheck } from 'react-lazyload'
@@ -152,31 +151,68 @@ const Park = ({
   }
 }
 
-Park.getInitialProps = async ({ req, query }) => {
-  // destructure the query object to get the parameters for the api call
-  const { stateCode } = query
-  const { parkCode } = query
- 
-  // use the next-absolute-url module to get this Next.js's url
-  const { origin } = absoluteUrl(req)
-
-  // fetch blocking data from api
-  const parkResult = await fetch(`${origin}/api/parks/${parkCode}`)
-
-  // transform blocking data from api into json result
-  const result = await parkResult.json()
- 
-  // add parmaters to resulting json object
-  result.stateCode = stateCode
-  result.parkCode = parkCode
-
-  // return data
-  return result
-}
 
 Park.pageTransitionDelayEnter = true
 
-export default Park
+async function getParks(territory) {
+  const result = await (await fetch(`${process.env.WEB_URI}/state/${territory}`)).json()
+  
+  return result.data.map(item => { 
+    return { params: { stateCode: territory, parkCode: item.parkCode }}
+  })
+
+  
+}
+
+
+export async function getStaticProps(context) {
+  const apiResult = await fetch(`${process.env.WEB_URI}/parks/${context.params.parkCode}`)
+  const result = await apiResult.json()
+  const stateCode  = context.params.stateCode
+  const parkCode  = context.params.parkCode
+  const park  = result.park ? result.park : ""
+  const alerts  = result.alerts ? result.alerts : ""
+  const newsreleases  = result.newsreleases ? result.newsreleases : ""
+  const events  = result.events ? result.events : ""
+  const articles  = result.articles ? result.articles : ""
+  const people  = result.people ? result.people : ""
+  const places  = result.places ? result.places : ""
+  const visitorcenters  = result.visitorcenters ? result.visitorcenters : ""
+  const campgrounds  = result.campgrounds ? result.campgrounds : ""
+
+  return {
+    props: {
+       stateCode,
+       parkCode, 
+       park,
+       alerts,
+       newsreleases,
+       events,
+       articles,
+       people,
+       places,
+       visitorcenters,
+       campgrounds
+    }, // will be passed to the page component as props
+  }
+}
+
+export async function getStaticPaths() {
+  // Get the paths we want to pre-render from the states configuration file we've already loaded at var = territories
+  // const states = Object.values(territories)
+  const parks = await Promise.all(Object.keys(territories).map(territory => { 
+    return getParks(territory)
+
+  }))
+  
+  const paths = [].concat.apply([], parks);
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: false }
+}
+
+export default Park 
 
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};

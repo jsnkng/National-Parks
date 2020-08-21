@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import { forceCheck } from 'react-lazyload'
@@ -11,7 +10,6 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import Banner from '../../../components/elements/banner'
 
-const origin =process.env.WEB_URI
 
 const Page = ({ result, themeName, setThemeName, pageTransitionReadyToEnter, manageHistory, manageFuture }) => {
   const { data } = result
@@ -134,7 +132,7 @@ Page.pageTransitionDelayEnter = true
 
 
 export async function getStaticProps(context) {
-  const apiResult = await fetch(`${origin}/state/${context.params.stateCode}`)
+  const apiResult = await fetch(`${process.env.WEB_URI}/state/${context.params.stateCode}`)
   const result = await apiResult.json()
   result.stateCode = context.params.stateCode
 
@@ -151,7 +149,7 @@ export async function getStaticPaths() {
   const paths = Object.entries(territories).map(([key, value]) => {
     return { params: { stateCode: key }}
   })
-
+console.log(paths)
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false }
