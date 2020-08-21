@@ -10,7 +10,6 @@ Returns:
 */
 
 import { MongoClient } from 'mongodb'
-import fetch from 'isomorphic-unfetch'
 import s3Images from '../_utils/s3ImageUpload'
 
 const fetchWithErrorHandling = async url => {

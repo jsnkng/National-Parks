@@ -20,7 +20,6 @@
     "eslint-plugin-import": "^2.22.0",
     "google-maps-react": "^2.0.6",
     "gzip": "^0.1.0",
-    "isomorphic-unfetch": "^3.0.0",
     "mongodb": "^3.5.9",
     "next": "^9.5.0",
     "next-absolute-url": "^1.2.2",

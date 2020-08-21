@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
-import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import absoluteUrl from 'next-absolute-url'
 import { forceCheck } from 'react-lazyload'
