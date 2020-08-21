@@ -13,7 +13,6 @@ Returns:
 */
 
 import { MongoClient } from 'mongodb'
-import fetch from 'isomorphic-unfetch'
 
 const fetchWithErrorHandling = async url => {
   try {
