@@ -1,11 +1,14 @@
+/* Basic Setup */
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 import styled from 'styled-components'
-import absoluteUrl from 'next-absolute-url'
 import { forceCheck } from 'react-lazyload'
+
+/* State Data & SVG Config */
 import territories from '../../../config/states'
 
+/* Page Components */
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import Banner from '../../../components/elements/banner'
@@ -25,15 +28,19 @@ const Page = ({ result, themeName, setThemeName, pageTransitionReadyToEnter, man
   const parks = [ ...data ]
   parks.splice(heroIdx,1)
 
+  /* Reset Page & Set Loaded */
   useEffect(() => {
     window.scrollTo(0, 0)
     setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
 
+/* Manually trigger checking for elements that may have moved into viewport during refresh */
   useEffect(() => {
     forceCheck()
   })
+
+  /* Wait until page is loaded triggers */
   if (!loaded) {
     return null
   } else {
@@ -46,7 +53,6 @@ const Page = ({ result, themeName, setThemeName, pageTransitionReadyToEnter, man
           <meta property="og:url" key="ogurl" content={`https://www.natparguides.com/state/${stateCode}/`} />
           <meta property="og:image" key="ogimage" content="https://www.natparguides.com/natparguides_ogimage.jpg" />
           <meta name="description" key="description" content={`National Park Guide to ${territories[stateCode][0]}: There are ${data.length} National Parks in ${territories[stateCode][0]}.`} />
-     
         </Head>
       
         <Header 
@@ -74,7 +80,6 @@ const Page = ({ result, themeName, setThemeName, pageTransitionReadyToEnter, man
               as: `/state/${stateCode}/park/${data[heroIdx].parkCode}`, 
               title: `${territories[stateCode][0]}` 
             }}
-            
           />
         </BackgroundOverlay>
              
@@ -130,7 +135,6 @@ const Page = ({ result, themeName, setThemeName, pageTransitionReadyToEnter, man
 
 Page.pageTransitionDelayEnter = true
 
-
 export async function getStaticProps(context) {
   const apiResult = await fetch(`${process.env.WEB_URI}/state/${context.params.stateCode}`)
   const result = await apiResult.json()
@@ -139,19 +143,18 @@ export async function getStaticProps(context) {
   return {
     props: {
        result 
-    }, // will be passed to the page component as props
+    }, /* will be passed to the page component as props */
   }
 
 }
 
 export async function getStaticPaths() {
-  // Get the paths we want to pre-render from the states configuration file we've already loaded at var = territories
-  const paths = Object.entries(territories).map(([key, value]) => {
-    return { params: { stateCode: key }}
+  /* Get the paths we want to pre-render from the states configuration file we've already loaded at var = territories */
+  const paths = Object.keys(territories).map(territory => {
+    return { params: { stateCode: territory }}
   })
-console.log(paths)
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
+  /* We'll pre-render only these paths at build time.
+     { fallback: false } means other routes should 404. */
   return { paths, fallback: false }
 }
 
@@ -165,9 +168,6 @@ const Content = styled.main`
   flex-wrap: wrap;
   align-items: center;
   justify-content: left;
-  ${'' /* ${SuperQuery().minWidth.of('568px').and.maxWidth.of('896px').and.landscape.css`
-    margin-top: calc(100vh - 4rem)
-  `} */}
 `
 const Row__Decorated = styled(Row)`
   width: 100%;

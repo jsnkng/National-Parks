@@ -129,19 +129,14 @@ const Home = ({ parks, themeName, setThemeName, pageTransitionReadyToEnter, mana
                   </Col__Decorated>
                 </Row>
               </Grid__FindAPark>
-              
             </TabPanel>
 
             <TabPanel> 
-
-                    <DesignationList />
-
+              <DesignationList />
             </TabPanel>
 
             <TabPanel> 
-
-                    <StateList />
-
+              <StateList />
             </TabPanel>
           </Tabs>
           
@@ -218,7 +213,7 @@ const Content = styled.main`
   z-index: 1000;
   width: 90%;
   ${SuperQuery().minWidth.of('1360px').css`
-    padding: 6rem;
+    padding: 0 2rem;
     width: 100%;
   `}
   h1 {

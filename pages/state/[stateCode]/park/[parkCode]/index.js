@@ -1,10 +1,13 @@
+/* Basic Setup */
 import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import absoluteUrl from 'next-absolute-url'
 import { forceCheck } from 'react-lazyload'
+
+/* State Data & SVG Config */
 import territories from '../../../../../config/states'
 
+/* Page Components */
 import Header from '../../../../../components/header'
 import SlideShow from '../../../../../components/elements/slideshow'
 import Description from '../../../../../components/description'
@@ -32,35 +35,43 @@ const Park = ({
   visitorcenters, 
   campgrounds }) => {
 
+   /* Flag loaded state of page for pageTransitions */
   const [loaded, setLoaded] = useState(false)
 
+  /* Reset Page & Set Loaded */
   useEffect(() => {
     window.scrollTo(0, 0)
     !loaded && setLoaded(true)
     pageTransitionReadyToEnter()
   }, [])
 
+  /* Manually trigger checking for elements that may have moved into viewport during refresh */
   useEffect(() => {
     forceCheck()
   })
 
+  /* Google Map Markers */
   const markers = [{id: park.id, latLong: park.latLong, name: park.name, description: park.description}]
-        
+      
+  /* Plot visitor centers markers */
   visitorcenters !== undefined && visitorcenters.length != 0 &&
     visitorcenters.slice(0).map((item) => {
       markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description}) 
     })
+  
+  /* Plot campgrounds markers */  
   campgrounds !== undefined && campgrounds.length != 0 &&
     campgrounds.slice(0).map((item) => {
       markers.push({id: item.id, latLong: item.latLong, name: item.name, description: item.description})
     })
 
-    // (!Array.isArray(places) || !places.length) ||
+  /* Plot places markers */ 
   places !== undefined && places.length != 0 &&
     places.slice(0).map((item) => {
       markers.push({id: item.id, latLong: item.latLong, name: item.title, description: item.listingdescription})
     })
 
+  /* Wait until page is loaded triggers */
   if (!loaded) {
     return null
   } else {
@@ -73,8 +84,8 @@ const Park = ({
           <meta property="og:url" key="ogurl" content={`https://www.natparguides.com/state/${stateCode}/park/${park.parkCode}`} />
           <meta property="og:image" key="ogimage" content={process.env.AWS_URI + park.images[0].url.replace(/[/:-]/g, '_')}  />
           <meta name="description" key="description" content={`Digital guide to ${park.name} ${park.designation} | ${park.description.substring(0, 130)} `} />
-     
         </Head>
+
         <Header 
           title={park.name} 
           title__sub={park.designation}
@@ -82,6 +93,7 @@ const Park = ({
           manageFuture={manageFuture}
           lastPage={lastPage}
         />
+
         <Content>
           { park.images !== undefined &&  
           <SlideShow__Decorated>
@@ -93,18 +105,14 @@ const Park = ({
             />
           </SlideShow__Decorated>
           }
-          
           { park.images === undefined || park.images.length === 0 &&
           <div style={{height: '90px'}}></div>
           }
           <Description park={park} alerts={alerts} markers={markers} />
-
           { alerts !== undefined && alerts.length != 0 &&
           <Alerts alerts={alerts} />
           }
-         
           <VisitorInfo park={park} alerts={alerts} markers={markers} />
-            
           { visitorcenters !== undefined && visitorcenters.length != 0 &&
           <VisitorCenters park={park} visitorCenters={visitorcenters} />
           }
@@ -114,29 +122,18 @@ const Park = ({
           { campgrounds !== undefined && campgrounds.length != 0 &&
           <Campgrounds park={park} campgrounds={campgrounds} />
           }
-
-
           { (!Array.isArray(newsreleases) || !newsreleases.length) ||
           <NewsReleases park={park} newsReleases={newsreleases} />
-          
           }
-
           { (!Array.isArray(articles) || !articles.length) ||
             <Articles park={park} articles={articles} />
-
           }
-
           { (!Array.isArray(places) || !places.length) ||
             <Places park={park} places={places} />
-
           }
-
           { (!Array.isArray(people) || !people.length) ||
             <People park={park} people={people} />
-
           }
-
-        
         </Content> 
       
         <Footer__Wrapper>
@@ -154,17 +151,17 @@ const Park = ({
 
 Park.pageTransitionDelayEnter = true
 
+/* Fetch Park Async Function */
 async function getParks(territory) {
   const result = await (await fetch(`${process.env.WEB_URI}/state/${territory}`)).json()
   
   return result.data.map(item => { 
     return { params: { stateCode: territory, parkCode: item.parkCode }}
   })
-
-  
 }
 
 
+/* Fetch content for SSR */
 export async function getStaticProps(context) {
   const apiResult = await fetch(`${process.env.WEB_URI}/parks/${context.params.parkCode}`)
   const result = await apiResult.json()
@@ -193,27 +190,27 @@ export async function getStaticProps(context) {
        places,
        visitorcenters,
        campgrounds
-    }, // will be passed to the page component as props
+    }, /* will be passed to the page component as props */
   }
 }
 
+/* Fetch paths to pre-render from the states configuration file we've already loaded at var = territories */
 export async function getStaticPaths() {
-  // Get the paths we want to pre-render from the states configuration file we've already loaded at var = territories
-  // const states = Object.values(territories)
-  const parks = await Promise.all(Object.keys(territories).map(territory => { 
+  const parks = Promise.all(Object.keys(territories).map(territory => { 
     return getParks(territory)
 
   }))
   
   const paths = [].concat.apply([], parks);
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
+  /* We'll pre-render only these paths at build time.
+    { fallback: false } means other routes should 404. */
   return { paths, fallback: false }
 }
 
 export default Park 
 
+/* Stylized Components */
 const Content = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
